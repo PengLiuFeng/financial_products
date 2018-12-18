@@ -72,8 +72,13 @@
           <table class="table table-hover table-responsive-md mb-0 table-bordered">
             <thead class="lighten-2">
               <tr>
-                <th *ngFor="let head of table_head" scope="row">
-                  {{head}}
+                <th *ngFor="let head of table_head;let i=index" scope="row">
+                  <span  *ngIf="head!='check';">
+                      {{head}}
+                  </span>
+                  <span  *ngIf="head=='check';">
+                      <mdb-checkbox [(ngModel)]="allcheck"></mdb-checkbox>
+                  </span>
                 </th>
               </tr>
             </thead>
@@ -81,18 +86,19 @@
               <ng-container *ngFor="let el of table_body; let i = index">
                 <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
                   <td scope="row">{{i+1}}</td>
-                  <td scope="row">{{el.idType}}</td>
-                  <td scope="row">{{el.idNo}}</td>
-                  <td scope="row">{{el.cifNo}}</td>
-                  <td scope="row">{{el.cifName}}</td>
+                  <td scope="row"> <mdb-checkbox [checked]="allcheck"></mdb-checkbox></td>
+                  <td scope="row">{{el.cuNo}}</td>
+                  <td scope="row">{{el.cuName}}</td>
+                  <td scope="row">{{el.contNo}}</td>
                   <td scope="row">{{el.busType}}</td>
-                  <td scope="row">{{el.feeType}}</td>
-                  <td scope="row">{{el.feeFlg}}</td>
-                  <td scope="row">{{el.feeTerm}}</td>
-                  <td scope="row">{{el.feeAmt}}</td>
-                  <td scope="row">{{el.payCd}}</td>
-                  <td scope="row">{{el.repayAmt}}</td>
-                  <td scope="row">{{el.ordNm}}</td>
+                  <td scope="row">{{el.actualAmt}}</td>
+                  <td scope="row">{{el.termType}}</td>
+                  <td scope="row">{{el.term}}</td>
+                  <td scope="row">{{el.auRate}}</td>
+                  <td scope="row">{{el.startTimestamp}}</td>
+                  <td scope="row">{{el.dueTimestamp}}</td>
+                  <td scope="row">{{el.loanIs}}</td>
+                  <td scope="row">{{el.begTimestamp}}</td>
 
                   <!-- <a routerLink="/finas/home/zhxx">
                                       <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
@@ -158,10 +164,10 @@
         </h4>
       </div>
 
-      <div class="modal-body">
-        <div style="overflow-y:auto;height:600px;">
-          <app-fafangxinxi></app-fafangxinxi>
-        </div>
+      <div class="modal-body" style="overflow-y:auto;height:600px;">
+        
+          <app-fafangxinxi [inputdata]="inputdata"></app-fafangxinxi>
+        
       </div>
     </div>
   </div>

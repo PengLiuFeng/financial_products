@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-fafangxinxi',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fafangxinxi.component.scss']
 })
 export class FafangxinxiComponent implements OnInit {
-
+  @Input() inputdata:any;
+  
   constructor() { }
   optionsSelect:any;
   ngOnInit() {
+  
   }
 
 }

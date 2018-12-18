@@ -12,6 +12,7 @@ export class RongzifafangComponent implements OnInit {
   optionsSelect:any;
   model: any;
   modell: any;
+  allcheck:boolean=false;
   check:boolean=false;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   public myDatePickerOptions: IMyOptions = { 
@@ -29,6 +30,39 @@ export class RongzifafangComponent implements OnInit {
     showTodayBtn: true,
     showClearDateBtn: true
   };
+  //融资发放的搜索框内容
+  outputdata:any={
+    cuNo:'',          //客户号
+    cuName:'',        //客户名称
+    contNo:'',        //合同编号
+    busType:'',       //业务类型
+    signTimestamp:'',  //合同签署日期
+    dueTimestamp:'',  //合同到期日
+  }
+  //传入到子页面中的数据
+  inputdata:any={
+    cuNo:'',          //客户号
+    cuName:'',        //客户名称
+    contNo:'',        //合同编号
+    signTimestamp:'',  //合同签署日期
+    // jibenxinxi:{
+    //   contNo:'',        //合同编号
+    //   authAmt:'',        //总授信额度
+    //   authSplitType:'',   //分项授信额度类型
+    //   recycle:'',         //额度使用方式（是否循环，1循环 0不循环）
+    //   sauthAmt:'',         //分项授信额度
+    //   authSts:'',         //授信状态
+    //   begTimestamp:'' ,    //分享授信起始日期
+    //   endTimestamp:'',     //分项授信结束日期
+    // }
+    // yingshouzhuangkuanmingxi:[
+
+    // ],
+    // rongzixinxi:{
+
+    // }
+  }
+
   type_optionsSelect=[
     {value:"1",label:'身份证'},
     {value:"2",label:'统一社会信用代码'},
@@ -41,24 +75,13 @@ export class RongzifafangComponent implements OnInit {
 
   ]
   table_head=[
-      '序号','客户号','客户名称','合同编号','业务类型','实际融资金额','期限类型','期限','利率'
+      '序号','check','客户号','客户名称','合同编号','业务类型','实际融资金额','期限类型','期限','利率'
       ,'合同起始日期','合同到期日','发放状态','发放时间','操作',
   ];
   table_body=[
-    { id:1, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:2,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:3, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:4, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:5, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:6,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:7,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
+    { id:1, cuNo:'客户号',cuName:'客户名称',contNo:'合同编号',busType:'业务类型',actualAmt:'实际融资金额',termType:'期限类型',term:'期限',auRate:'利率',
+    startTimestamp:'合同起始日期',dueTimestamp:'合同到期日',loanIs:'发放状态',begTimestamp:'发放时间'},
+    
   ]
   activePage = 1;
   itemsPerPage = 6;//每页显示条数
@@ -154,6 +177,7 @@ pageTable=[];
     for (let i = 1; i <= this.numberOfPaginators; i++) {
       this.paginators.push(i);
     }
+   
   }
  search():void {
     $("#formsearch").submit();

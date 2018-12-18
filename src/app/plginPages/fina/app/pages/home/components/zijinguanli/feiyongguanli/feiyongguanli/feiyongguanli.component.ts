@@ -27,6 +27,54 @@ export class FeiyongguanliComponent implements OnInit {
     showTodayBtn: true,
     showClearDateBtn: true
   };
+  //以下是页面数据
+  outputdata:any={
+    idType:'',          //证件类型
+    idNo:'',            //证件号
+    cuName:'',          //客户名称
+    cuNo:'',            //客户号 
+    busType:'',         //业务类型
+    feeType:'',         //服务费类型
+
+
+  }
+//以下是需要传递到费用收取界面的值
+  inputdata:any={
+    cuNo:'',            //客户号 
+    cuName:'',          //客户名称
+    busType:'',         //业务类型
+    contNo:'',          //合同编号
+    feiyongxinxi:{
+      feeType:'',         //费用类型
+      payCd:'',           //付费方
+      feeFlg:'',          //收取方式
+      payOrder:'',        //支付方式
+      feeAmt:'',          //费用总额
+      feeFlt:'',          //费率
+      insAmt:'',          //每期费用金额
+      repayAmt:'',        //实际支付金额
+      feeTerm:'',         //费用总期数
+      ordNm:'' ,           //当前期数
+      monAccFlag:0,       //是否月结
+    },
+    zhanghuxinxi:{
+      payName:'',           //付款人名称
+      payAcct:'',           //付款银行账户
+      payAcna:'',           //付款账户名称
+      payAcbk:'',           //付款账户开户行
+      reName:'',            //收款人名称
+      reAcct:'',            //收款银行账户
+      reAcnm:'',            //收款账户名称
+      reAcbk:'',            //收款账户开户行
+      remarks:'',           //备注
+    }
+  }
+//以下是下拉框需要的数据
+idTypes:any=[];
+busTypes:any=[];
+feeTypes:any=[];
+
+
 
   title=[
     "融资管理",
@@ -39,24 +87,13 @@ export class FeiyongguanliComponent implements OnInit {
     {value:"2",label:'统一社会信用代码'},
   ];
   table_head=[
-      '序号','证件类型','证件号码','客户号','客户名称','业务类型','费用类型','支付方式','期数'
-      ,'费用总额','付费方','已支付金额','费用日期','费用支付状态','操作',
+      '序号','证件类型','证件号码','客户号','客户名称','合同编号','业务类型','合同金额','费用类型','支付方式','期数'
+      ,'费用总额','付费方','合同签订日期','操作',
   ];
   table_body=[
-    { id:1, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:2,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:3, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:4, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:5, idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:6,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
-    { id:7,idType:'身份证',idNo:'999999999',cifNo:'Pldste456',cifName:'张三',busType:'保理',feeType:'手续费',feeFlg:'一次性收取',feeTerm:'6',
-    feeAmt:'10000',repayAmt:'3000',payCd:'腾讯科技股份有限公司',ordNm:'2018-3-2',feeSta:'待支付'},
+    { id:1, idType:'证件类型',idNo:'证件号码',cifNo:'客户号',cifName:'客户名称',contNo:'合同编号',busType:'业务类型',appAmt:'合同金额',feeType:'费用类型',feeFlg:'支付方式',feeTerm:'期数',
+    feeAmt:'费用总额',payCd:'腾讯科技股份有限公司',signTimestamp:"合同签订日期",},
+   
   ]
   activePage = 1;
   itemsPerPage = 4;//每页显示条数

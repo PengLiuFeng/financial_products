@@ -12,29 +12,29 @@
           <form action="" method="" id="formsearch">
             
             <div class="col-md-6" >
-                    <mdb-select [options]="optionsSelect" placeholder="请选择" label="证件类型"></mdb-select>
+                    <mdb-select [options]="idTypes" name="idType" [(ngModel)]="outputdata.idType" placeholder="请选择" label="证件类型"></mdb-select>
             </div>
             
             <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
+              <input mdbInputDirective type="text" name="idNo" [(ngModel)]="outputdata.idNo" id="form1" class="form-control">
               <label for="form1" class="">证件号码</label>
             </div>
             <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
+              <input mdbInputDirective type="text" name="cuName" [(ngModel)]="outputdata.cuName" id="form1" class="form-control">
               <label for="form1" class="">客户名称</label>
             </div>
             <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
+              <input mdbInputDirective type="text" name="cuNo" [(ngModel)]="outputdata.cuNo" id="form1" class="form-control">
               <label for="form1" class="">客户号</label>
             </div>
             <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="请选择" label="业务类型"></mdb-select>
+                  <mdb-select [options]="busTypes" name="busType" [(ngModel)]="outputdata.busType" placeholder="请选择" label="业务类型"></mdb-select>
             </div>
             <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="请选择" label="费用"></mdb-select>
+                  <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="outputdata.feeType" placeholder="请选择" label="费用类型"></mdb-select>
             </div>
             <button mdbBtn type="button" color="primary" outline="true" size="sm" mdbWavesEffect>查询</button>
-            <button mdbBtn type="button" color="info" outline="true" size="sm" mdbWavesEffect>取消</button>
+            <button mdbBtn type="button" color="info" outline="true" size="sm" mdbWavesEffect>重置</button>
             
           
           </form> 
@@ -61,15 +61,15 @@
                                       <td scope="row">{{el.idNo}}</td>
                                       <td scope="row">{{el.cifNo}}</td>
                                       <td scope="row">{{el.cifName}}</td>
+                                      <td scope="row">{{el.contNo}}</td>
                                       <td scope="row">{{el.busType}}</td>
+                                      <td scope="row">{{el.appAmt}}</td>
                                       <td scope="row">{{el.feeType}}</td>
                                       <td scope="row">{{el.feeFlg}}</td>
                                       <td scope="row">{{el.feeTerm}}</td>
                                       <td scope="row">{{el.feeAmt}}</td>
                                       <td scope="row">{{el.payCd}}</td>
-                                      <td scope="row">{{el.repayAmt}}</td>
-                                      <td scope="row">{{el.ordNm}}</td>
-                                      <td scope="row">{{el.feeSta}}</td>
+                                      <td scope="row">{{el.signTimestamp}}</td>
                                      <!-- <a routerLink="/finas/home/zhxx">
                                       <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
                                     </a>
@@ -77,10 +77,10 @@
                                     </td> -->
                                     <td scope="row">
                                       
-                                      <a routerLink="/finas/home/fysq">
+                                      <a (click)="basicModal.show();">
                                           收取
                                       </a> 
-                                      <a routerLink="/finas/home/fysq">
+                                      <a  (click)="basicModal.show();">
                                         调整
                                       </a>
 
@@ -127,3 +127,22 @@
   </div>
 </div>
 
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg"   role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">&nbsp;</h4>
+        </div>
+        <div class="modal-body"  style="overflow:auto;height: 600px;">
+              <app-feiyongshouqu [inputdata]="inputdata"></app-feiyongshouqu>
+        </div>
+        <div class="modal-footer">
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

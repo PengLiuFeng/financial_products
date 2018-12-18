@@ -1,99 +1,142 @@
 <div class="row">
-      <div class="fysqpage">
-            <div class="titletop">
-                  <span>费用收取</span>
-            </div>
-            <div class="pagehead">
-                <div class="md-form">
-                    <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
-                    <label for="form1" class="">客户号</label>
-                </div>
-                <div class="md-form">
-                    <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
-                    <label for="form1" class="">客户名称</label>
-                </div>
-                <div class="md-form">
-                    <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
-                    <label for="form1" class="">业务类型</label>
-                </div>
-                <div class="md-form">
-                    <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
-                    <label for="form1" class="">合同编号</label>
-                </div>
-                
-            </div>
-            <div class="pagebody">
-                    <div class="inside">
-                          <div class="feiyongxinxi">
-                              
-                                  <div class="col-md-6">
-                                    <mdb-select [options]="optionsSelect" placeholder=" " label="费用类型"></mdb-select>
-                                  </div>
-                             
-                                  <div class="col-md-6">
-                                    <mdb-select [options]="optionsSelect" placeholder=" " label="付费方"></mdb-select>
-                                  </div>
-                              
-                                  <div class="col-md-6">
-                                    <mdb-select [options]="optionsSelect" placeholder=" " label="收取方式"></mdb-select>
-                                  </div>
-                             
-                                  <div class="col-md-6">
-                                    <mdb-select [options]="optionsSelect" placeholder=" " label="支付方式"></mdb-select>
-                                  </div>
-                                  <div class="md-form">
-                                      <input mdbInputDirective type="text" id="form1" class="form-control">
-                                      <label for="form1" class="">分期次数（次支付）</label>
-                                  </div>
-                                  <div class="md-form">
-                                      <input mdbInputDirective type="text" id="form1" class="form-control">
-                                      <label for="form1" class="">费率（%）</label>
-                                  </div>
-                                  <div class="md-form">
-                                      <input mdbInputDirective type="text" id="form1" class="form-control">
-                                      <label for="form1" class="">每期金额</label>
-                                  </div>
-                                  <div class="md-form">
-                                      <input mdbInputDirective type="text" id="form1" class="form-control">
-                                      <label for="form1" class="">费用总额</label>
-                                  </div>
-
-                          </div> 
-                          <div class="zhanghuxinxi">
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">付款银行账户</label>
-                              </div>
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">付款银行账户户名</label>
-                              </div>
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">付款账户开户行</label>
-                              </div>
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">收款银行账号</label>
-                              </div>
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">收款银行账号户名</label>
-                              </div>
-                              <div class="md-form">
-                                  <input mdbInputDirective type="text" id="form1" class="form-control">
-                                  <label for="form1" class="">收款账户开户行</label>
-                              </div>
-                          </div> 
-                    </div>
-                    <div class="pagefoot">
-                        <button type="button" mdbBtn color="primary" mdbWavesEffect>提交</button>
-                        <button mdbBtn type="button" color="info" outline="true" mdbWavesEffect>取消</button>
-        
-                    </div>
-            </div>
-            
+  <div class="fysqpage">
+      <div class="titletop">
+          <span>费用收取</span>
+          <!-- <button mdbBtn type="button" color="info" style="float: right;" outline="true" size="sm" mdbWavesEffect>返回</button> -->
+      </div>
+      <div class="pagehead">
+          <div class="md-form">
+              <input mdbInputDirective type="text" id="form1" name="cuNo" [(ngModel)]="inputdata.cuNo" [disabled]="true" class="form-control">
+              <label for="form1" class="">客户号</label>
+          </div>
+          <div class="md-form">
+              <input mdbInputDirective type="text" id="form1"  name="cuName" [(ngModel)]="inputdata.cuName" [disabled]="true" class="form-control">
+              <label for="form1" class="">客户名称</label>
+          </div>
+          <div class="md-form">
+              <input mdbInputDirective type="text" id="form1" name="busType" [(ngModel)]="inputdata.busType"  [disabled]="true" class="form-control">
+              <label for="form1" class="">业务类型</label>
+          </div>
+          <div class="md-form">
+              <input mdbInputDirective type="text" id="form1"  name="contNo" [(ngModel)]="inputdata.contNo" [disabled]="true" class="form-control">
+              <label for="form1" class="">合同编号</label>
+          </div>
 
       </div>
+
+      <div class="pagebody">
+          <div class="inside">
+              <div style="position:relative;left:3% ;top:4%;background-color:white;max-width: 30%;">费用信息</div>
+              <div class="feiyongxinxi">
+
+                  <div class="col-md-6">
+                      <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="inputdata.feiyongxinxi.feeType"  placeholder=" " label="费用类型"></mdb-select>
+                  </div>
+
+                  <div class="col-md-6">
+                      <mdb-select [options]="payCds" name="payCd" [(ngModel)]="inputdata.feiyongxinxi.payCd"  placeholder=" " label="付费方"></mdb-select>
+                  </div>
+
+                  <div class="col-md-6">
+                      <mdb-select [options]="feeFlgs" name="feeFlg" [(ngModel)]="inputdata.feiyongxinxi.feeFlg"  placeholder=" " label="收取方式"></mdb-select>
+                  </div>
+
+                  <div class="col-md-6">
+                      <mdb-select [options]="payOrders" name="payOrder" [(ngModel)]="inputdata.feiyongxinxi.payOrder"  placeholder=" " label="支付方式"></mdb-select>
+                  </div>
+
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="feeFlt" [(ngModel)]="inputdata.feiyongxinxi.feeFlt"  id="form1" class="form-control">
+                      <label for="form1" class="">费率（%）</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="insAmt" [(ngModel)]="inputdata.feiyongxinxi.insAmt"  id="form1" class="form-control">
+                      <label for="form1" class="">每期金额</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="feeAmt" [(ngModel)]="inputdata.feiyongxinxi.feeAmt"  id="form1" class="form-control">
+                      <label for="form1" class="">费用总额</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="feeTerm" [(ngModel)]="inputdata.feiyongxinxi.feeTerm"  id="form1" class="form-control">
+                      <label for="form1" class="">费用总期数</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="ordNm" [(ngModel)]="inputdata.feiyongxinxi.ordNm"  id="form1" class="form-control">
+                      <label for="form1" class="">当前期数</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="repayAmt" [(ngModel)]="inputdata.feiyongxinxi.repayAmt"  id="form1" class="form-control">
+                      <label for="form1" class="">实际支付金额</label>
+                  </div>
+                  <!-- Material inline 1 -->
+                  <div style="float:left;margin-left:3%;position:relative;top:30px;">
+                      <span>是否月结</span>
+                      <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" value="1" [(ngModel)]="inputdata.feiyongxinxi.monAccFlag" id="materialInline1" name="inlineMaterialRadiosExample"
+                              mdbInputDirective>
+                          <label class="form-check-label" for="materialInline1">是</label>
+                      </div>
+
+                      <!-- Material inline 2 -->
+                      <div class="form-check form-check-inline">
+                          <input type="radio" class="form-check-input" value="0"  [(ngModel)]="inputdata.feiyongxinxi.monAccFlag" id="materialInline2" name="inlineMaterialRadiosExample"
+                              mdbInputDirective>
+                          <label class="form-check-label" for="materialInline2">否</label>
+                      </div>
+                  </div>
+
+
+              </div>
+              <div style="max-width: 30%;position:relative;left:3% ;background-color:white;">账户信息</div>
+              <div class="zhanghuxinxi">
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="payName" [(ngModel)]="inputdata.zhanghuxinxi.payName"  id="form1" class="form-control">
+                      <label for="form1" class="">付款人名称</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text"  name="payAcct" [(ngModel)]="inputdata.zhanghuxinxi.payAcct"  id="form1" class="form-control">
+                      <label for="form1" class="">付款银行账户</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="payAcna" [(ngModel)]="inputdata.zhanghuxinxi.payAcna"  id="form1" class="form-control">
+                      <label for="form1" class="">付款账户名称</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="payAcbk" [(ngModel)]="inputdata.zhanghuxinxi.payAcbk"  id="form1" class="form-control">
+                      <label for="form1" class="">付款账户开户行</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text"  name="reName" [(ngModel)]="inputdata.zhanghuxinxi.reName" id="form1" class="form-control">
+                      <label for="form1" class="">收款人名称</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="reAcct" [(ngModel)]="inputdata.zhanghuxinxi.reAcct"  id="form1" class="form-control">
+                      <label for="form1" class="">收款银行账号</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="reAcnm" [(ngModel)]="inputdata.zhanghuxinxi.reAcnm"  id="form1" class="form-control">
+                      <label for="form1" class="">收款账号名称</label>
+                  </div>
+                  <div class="md-form">
+                      <input mdbInputDirective type="text" name="reAcbk" [(ngModel)]="inputdata.zhanghuxinxi.reAcbk"  id="form1" class="form-control">
+                      <label for="form1" class="">收款账户开户行</label>
+                  </div>
+                  <div>
+                      <textarea type="text" id="form7" name="remarks" [(ngModel)]="inputdata.zhanghuxinxi.remarks"  class="md-textarea form-control" mdbInputDirective></textarea>
+                      <label for="form7">备注</label>
+                  </div>
+
+              </div>
+          </div>
+          <div class="pagefoot">
+              <button type="button" mdbBtn color="primary" mdbWavesEffect>提交</button>
+              <button mdbBtn type="button" color="info" outline="true" style="margin-left:3%;" mdbWavesEffect>保存</button>
+
+          </div>
+      </div>
+
+
+  </div>
 
 </div>

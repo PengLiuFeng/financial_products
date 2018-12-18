@@ -90,6 +90,9 @@ import { YonghuguanliComponent } from './pages/home/components/xitongguanli/yong
 import { YonghuzhuceComponent } from './pages/home/components/xitongguanli/yonghuguanli/yonghuzhuce/yonghuzhuce.component';
 import { BreadcrumbsComponent } from './pages/components/breadcrumbs/breadcrumbs.component';
 
+import { MaifanghuikuanComponent } from './pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
+import { HuikuanyemianComponent } from './pages/home/components/zijinguanli/maifanghuikuan/huikuanyemian/huikuanyemian.component';
+
 @NgModule({
   declarations: [
     XykhComponent,
@@ -139,7 +142,8 @@ import { BreadcrumbsComponent } from './pages/components/breadcrumbs/breadcrumbs
     ZhjymxComponent,
     WodehetongComponent,
     FuwukaitongComponent,
-
+    MaifanghuikuanComponent,
+    HuikuanyemianComponent,
     MygongzuotaiComponent,
     JkftjComponent,
     HtqsIndexComponent,

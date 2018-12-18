@@ -98,10 +98,11 @@ export class HomeComponent implements OnInit  {
         this.menuId=3;
         this.treeData=[
           {
-            label: '融资发放(开发中)',
+            label: '融资发放',
             url:'/finas/home/rzgl/zjgl/rzff',
             treeid:'1'
           },
+          
           {
             label: '贷款还款(开发中)',
             url:'',
@@ -121,6 +122,11 @@ export class HomeComponent implements OnInit  {
             label: '资金账户',
             url:'/finas/home/rzgl/zjgl/zjzh',
             treeid:'5'
+          },
+          {
+            label: '买方回款',
+            url:'/finas/home/rzgl/zjgl/mfhk',
+            treeid:'6'
           },
         ]
       }

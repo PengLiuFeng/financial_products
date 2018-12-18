@@ -29,7 +29,11 @@
             margin-left: 2%;
             & /deep/ mdb-select > label{
                 position: relative;
-                top:20px ;
+                top:20px;
+            }
+            & /deep/ mdb-select > div > div.single{
+                position: relative;
+                top: 12px;
             }
         }
         & button{
@@ -63,3 +67,10 @@ td , th {
 .page-link{
     font-size: 10px;
 } 
+/deep/  mdb-select label{
+     position: relative;
+     top:15px !important ;
+}
+/deep/ .modal-lg{
+    min-width: 1000px;
+}

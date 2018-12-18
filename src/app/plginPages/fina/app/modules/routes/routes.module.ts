@@ -68,7 +68,7 @@ import { HetongDbxqComponent } from './../../pages/home/components/rongzifuwu/he
 import { YewuxianpeizhiComponent } from './../../pages/home/components/chanpingongchang/yewuxianpeizhi/yewuxianpeizhi.component';
 import { ChanpinxianpeizhiComponent } from './../../pages/home/components/chanpingongchang/chanpinxianpeizhi/chanpinxianpeizhi.component';
 import { XinzengchanpinxianComponent } from './../../pages/home/components/chanpingongchang/xinzengchanpinxian/xinzengchanpinxian.component';
-
+import { MaifanghuikuanComponent } from './../../pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
 const routes: Routes = [
   {
     path: '',
@@ -247,6 +247,7 @@ const routes: Routes = [
                       { path: 'wdht' ,component: WodehetongComponent},      //我的合同界面
                       { path: 'fygl' ,component: FeiyongguanliComponent},   //费用管理
                       { path: 'rzff' ,component: RongzifafangComponent},   //融资发放界面
+                      { path: 'mfhk' ,component: MaifanghuikuanComponent},   //买方回款
                     ]
                   },
                   //贷后管理

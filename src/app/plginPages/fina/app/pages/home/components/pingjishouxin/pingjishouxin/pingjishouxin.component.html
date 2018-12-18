@@ -2,8 +2,6 @@
   <div id="head_div">
     <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
-
-
   <div id="body_top_div">
     <br>
       <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
@@ -76,7 +74,7 @@
     <div id="bottom_title_div">
       <h3><strong>应收账款信息查询结果</strong></h3>
       <div id="head_right_div">
-        <button mdbBtn (click)="Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
+        <button mdbBtn (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
         <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
         <button mdbBtn type="button" (click)="del()" color="success" class="waves-light" mdbWavesEffect>删除</button>
         <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>导出</button>
@@ -124,7 +122,7 @@
             <td scope="row">{{dateFormat(data.begDate)}}</td>
             <td scope="row">{{data.endDate}}</td>
             <td scope="row">
-              <a (click)="Idisabled=true;demoBasic.show()">授信详情</a>
+              <a (click)="dataObject.Idisabled=true;dataBinding(); demoBasic.show()">授信详情</a>
             </td>
           </tr>
         </ng-container>
@@ -175,7 +173,7 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
+      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [(controlIndicators)]="dataObject.controlIndicators" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
     </div>
   </div>
 </div>
@@ -189,7 +187,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div">
-       <app-shouxinxiangqing [Idisabled]="Idisabled"></app-shouxinxiangqing>
+       <app-shouxinxiangqing [(dataObject)]="dataObject"></app-shouxinxiangqing>
       </div>
     </div>
   </div>

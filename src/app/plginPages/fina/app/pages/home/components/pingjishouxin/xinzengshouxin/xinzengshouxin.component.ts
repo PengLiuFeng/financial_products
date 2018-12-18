@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
-
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { MDBDatePickerComponent, IMyOptions,ModalDirective } from 'ng-uikit-pro-standard';
 @Component({
   selector: 'app-xinzengshouxin',
   templateUrl: './xinzengshouxin.component.html',
@@ -8,8 +7,11 @@ import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 })
 export class XinzengshouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
-  @Input() newInfoDemoBasic:any;
-  @Input()newDemoBasic:any;
+
+  @Input() newInfoDemoBasic:ModalDirective;
+  @Input() newDemoBasic:ModalDirective;
+  @Input() controlIndicators:any;
+  @Output() controlIndicatorsChange = new EventEmitter();
  
   ID_TYPE = [
     {label:"请选择证件类型",disabled:"disabled"},
@@ -25,4 +27,9 @@ export class XinzengshouxinComponent implements OnInit {
   ngOnInit() {
   }
   public myDatePickerOptions: IMyOptions = {};
+  dataRes(){
+    this.controlIndicators.cuName=this.xzsx.cuName
+    
+    this.newInfoDemoBasic.show()
+  }
 }

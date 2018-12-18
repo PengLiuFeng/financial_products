@@ -1,0 +1,40 @@
+<div id="body_div">
+  <div id="title_div">
+    业务调查与审批
+  </div>
+  <div id="fu_div">
+    <div id="zi_div">
+      <span>客户号:{{khh}}</span>
+      <span>客户名称:{{khmc}}</span>
+    </div>
+  </div>
+    <div class="col-xs-12">
+        <div >
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="zrtz" mdbWavesEffect>
+                <a (click)="radioModel='zrtz'">客户综合信息</a>
+            </label>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="qrhz" mdbWavesEffect>
+                <a (click)="radioModel='zlsc'">资料上传</a>
+            </label>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="pjsx" mdbWavesEffect>
+              <a (click)="radioModel='pjsx'">评级授信</a>
+            </label>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="dqjd" mdbWavesEffect>
+                <a (click)="radioModel='dqjd'">贷前尽调报告</a>
+            </label>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="spxq" mdbWavesEffect>
+              <a (click)="radioModel='spxq'">融资申请详情</a>
+            </label>
+        </div>
+      </div>
+      <div *ngIf="radioModel=='pjsx'">
+        <app-ywdcysp-pjsx></app-ywdcysp-pjsx>
+      </div>
+      <div *ngIf="radioModel=='spxq'">
+        <app-shenpixiangqing></app-shenpixiangqing>
+      </div>
+      <div *ngIf="radioModel=='dqjd'">
+        <app-daiqianjindiaobaogao></app-daiqianjindiaobaogao>
+      </div>
+</div>
+      

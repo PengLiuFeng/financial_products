@@ -1,0 +1,118 @@
+<div class="newyewuxianpage">
+        <div class="pagehead">
+                <span *ngIf="data.page=='zichanfang'">资产方业务线</span>
+                <span *ngIf="data.page=='zijinfang'">资金方业务线</span>
+        </div>
+        <div class="zichanfang" *ngIf="data.page=='zichanfang'">
+                <div class="zichanfang_head">
+                        <div>
+                                <span class="ui-float-label">
+                                        <input id="float-input" type="text" size="18" pInputText>
+                                        <label for="float-input">业务线名称：</label>
+                                </span>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="cities" [style]="{'width':'150px'}" [(ngModel)]="selectedCity"
+                                        placeholder="融资类型" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="cities" [style]="{'width':'150px'}" [(ngModel)]="selectedCity"
+                                        placeholder="交易模型" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="cities" [style]="{'width':'150px'}" [(ngModel)]="selectedCity"
+                                        placeholder="服务费结算方式" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="cities" [style]="{'width':'150px'}" [(ngModel)]="selectedCity"
+                                        placeholder="使用方" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+
+                        <table mdbTable bordered="true" style="margin:2% 2% 2% 2%; width: 90%;">
+                                <thead>
+                                        <tr>
+                                                <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr mdbTableCol>
+                                                <th scope="row">{{elements.id}}</th>
+                                                <td><input mdbInputDirective type="text" id="form1" class="form-control form-control-sm">
+                                                </td>
+                                                <td><input mdbInputDirective type="text" id="form1" class="form-control form-control-sm">
+                                                </td>
+                                                <td><input mdbInputDirective type="text" id="form1" class="form-control form-control-sm"></td>
+                                                <td>
+                                                        <p-dropdown [options]="cities" [style]="{'width':'120px'}"
+                                                                [(ngModel)]="selectedCity" placeholder="" optionLabel="name"
+                                                                [showClear]="true"></p-dropdown>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+                <div style="text-align:center;">
+                        <button mdbBtn type="button" size="sm" color="light-blue" mdbWavesEffect>提交</button>
+                        <button mdbBtn type="button" size="sm" style="margin-left:5%;" color="primary" outline="true"
+                                mdbWavesEffect>取消</button>
+                </div>
+
+        </div>
+        <div class="zijinfang" *ngIf="data.page=='zijinfang'">
+                <div class="zichanfang_head">
+                        <div>
+                                <span class="ui-float-label">
+                                        <input id="float-input" type="text" [(ngModel)]="zhijinfangdata.busName" size="18"
+                                                pInputText>
+                                        <label for="float-input">业务线名称：</label>
+                                </span>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="zhijinfangdata.pmCores" [style]="{'width':'150px'}" [(ngModel)]="zhijinfangdata.pmCore"
+                                        placeholder="核心平台" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="busModles" [style]="{'width':'150px'}" [(ngModel)]="zhijinfangdata.busModle"
+                                        placeholder="交易模型" optionLabel="name" [showClear]="true"></p-dropdown>
+                        </div>
+                        <div>
+                                <p-dropdown [options]="zhijinfangdata.feePatypes" [style]="{'width':'150px'}"
+                                        [(ngModel)]="zhijinfangdata.feePatype" placeholder="服务费结算方式" optionLabel="name"
+                                        [showClear]="true"></p-dropdown>
+                        </div>
+
+
+                        <table mdbTable bordered="true">
+                                <thead>
+                                        <tr>
+                                                <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                        <tr mdbTableCol>
+                                                <th scope="row">{{elements.id}}</th>
+                                                <td><input mdbInputDirective type="text" id="form1" [(ngModel)]="zhijinfangdata.minamt"
+                                                                class="form-control form-control-sm">
+                                                </td>
+                                                <td><input mdbInputDirective type="text" id="form1" [(ngModel)]="zhijinfangdata.maxamt"
+                                                                class="form-control form-control-sm">
+                                                </td>
+                                                <td><input mdbInputDirective type="text" id="form1" [(ngModel)]="zhijinfangdata.feeRate"
+                                                                class="form-control form-control-sm"></td>
+                                                <td>
+                                                        <p-dropdown [options]="zhijinfangdata.feeRatypes" [style]="{'width':'120px'}"
+                                                                [(ngModel)]="zhijinfangdata.feeRatype" placeholder=""
+                                                                optionLabel="name" [showClear]="true"></p-dropdown>
+                                                </td>
+                                        </tr>
+                                </tbody>
+                        </table>
+                </div>
+                <div style="text-align:center;">
+                        <button mdbBtn type="button" size="sm" color="light-blue" mdbWavesEffect>提交</button>
+                        <button mdbBtn type="button" size="sm" style="margin-left:5%;" color="primary" outline="true"
+                                mdbWavesEffect>取消</button>
+                </div>
+        </div>
+
+</div>

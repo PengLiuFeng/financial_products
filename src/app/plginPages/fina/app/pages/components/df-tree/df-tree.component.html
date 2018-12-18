@@ -1,0 +1,13 @@
+<div class="el-tree">
+    <ng-container *ngFor="let it of data;let i=index;">
+        <div class="el-tree-node is-focusable">
+            <div class="el-tree-node__content" [style.padding-left]="pads+'px'" (click)="onSelect(it)" [class.active]="activer.itactive==it.treeid">
+                <span class="df-icon fa fa-caret-right" [class.is-leaf]="!(it.children&&it.children.length>0)" [class.expanded]="it.isshow"></span>
+                <span class="el-tree-node__label">{{it.label}}</span>
+            </div>
+            <div role="group" *ngIf="(it.children&&it.children.length>0)" class="el-tree-node__children" [ngStyle]="{'display':it.isshow==1?'block':'none'}">
+                <df-tree [(data)]="it.children" [pads]="(pads+18)" [nodeClick]="nodeClick"></df-tree>
+            </div>
+        </div>
+    </ng-container>
+</div>

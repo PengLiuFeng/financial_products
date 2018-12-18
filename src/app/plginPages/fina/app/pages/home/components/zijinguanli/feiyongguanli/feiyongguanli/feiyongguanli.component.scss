@@ -1,0 +1,65 @@
+.fyglpage{
+    min-width: 660px;
+    border:1px solid black;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(232, 239, 247);
+    
+}
+.fygl_body{
+    min-width: 620px;
+    background-color: rgb(200, 214, 224);
+    width: 95%;
+    border:1px solid black;
+    & .fygl_body_head{
+        margin: 1% 2% 0 2%;
+        min-height: 180px;
+        background-color: white;
+        border:1px solid black;
+        & .md-form{
+            height: 15px;
+            width: 20%;
+            float: left;
+            margin-left: 2%;
+        }
+        & .col-md-6{
+            height: 15px;
+            width: 25%;
+            float: left;
+            margin-left: 2%;
+            & /deep/ mdb-select > label{
+                position: relative;
+                top:20px ;
+            }
+        }
+        & button{
+            margin: 3% 3% 3% 3%;
+            float: left;
+        }
+    }
+
+    & .fygl_body_table{
+        
+        margin: 1% 2% 2% 2%;
+        & .px-4{
+            background-color: white;
+             width: 100%;
+             padding: 2% 3% 2% 2%;
+            // min-width: 620px;
+            overflow: auto;
+            
+        }
+        & span{
+            font-size: 18px;
+            margin-left: 3%;
+            margin-bottom: 1%;
+        }
+    }
+}
+td , th {  
+ white-space: nowrap;
+ text-align: center;
+} 
+.page-link{
+    font-size: 10px;
+} 

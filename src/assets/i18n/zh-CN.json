@@ -1,0 +1,86 @@
+{
+  "common":{
+  "status":"状态",
+  "please":"请添加表头信息",
+  "out":"退出",
+  "yes":"是",
+  "no":"否",
+  "start":"运行",
+  "stop":"停止",
+  "call":"调用",
+  "pagedown":"下一页",
+  "pageup":"上一页",
+  "postsucc":"创建成功",
+  "posterr":"创建失败",
+  "putsucc":"修改成功",
+  "puterr":"修改失败",
+  "isdelete":"确认删除",
+  "deletesuccess":"删除成功",
+  "isspace":"不可含有特殊字符",
+  "min-1":"必须大于等于-1",
+  "min":"必须大于0",
+  "max-0":"必须大于0",
+  "max-1":"必须大于1",
+  "paramsValue":"参数值",
+  "paramsName":"参数名称",
+  "minutes":"分钟",
+  "integer":"整数",
+  "second":"秒",
+  "dataLoding":"处理中......",
+  "output":"输出信息",
+  "isExit":"已经存在!"
+  },
+  "general": {
+    "king": "wu.shaohua",
+    "home": "Home",
+    "backtop":"回到顶部",
+    "forms": {
+      "option1": "Option 1"
+    },
+    "menu": {
+      "mdb":"MDB",
+      "bootstrapComponents":"Bootstrap组件",
+      "bootstrapChil":{
+        "accordion":"Accordion",
+        "alert":"Alert",
+        "button":"Button",
+        "carousel":"Carousel",
+        "collapse":"Collapse",
+        "datepicker":"Datepicker",
+        "dropdown":"Dropdown",
+        "modal":"Modal",
+        "pagination":"Pagination",
+        "popover":"Popover",
+        "progressbar":"Progressbar",
+        "rating":"Rating",
+        "tabs":"Tabs",
+        "timepicker":"Timepicker",
+        "tooltip":"Tooltip",
+        "typeahead":"Typeahead"
+      }
+    },
+    "created_with": "金融服务平台"
+  },
+  "finas":{
+    "menu":{
+      "name":"金融服务平台"
+    }
+  },
+  "buttons":{
+    "back":"返回",
+    "submit":"提交",
+    "query":"查询",
+    "view":"详情",
+    "add":"新增",
+    "edit":"编辑",
+    "delete":"删除",
+    "historyView":"历史",
+    "start":"运行",
+    "stop":"停止",
+    "call":"调用",
+    "modelUpload":"模型上传",
+    "operation":"操作",
+    "other":"其他",
+    "close":"关闭"
+  }
+}

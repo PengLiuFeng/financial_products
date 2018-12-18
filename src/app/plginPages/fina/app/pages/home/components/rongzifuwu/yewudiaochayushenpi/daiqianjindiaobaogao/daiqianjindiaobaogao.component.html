@@ -1,0 +1,38 @@
+<div id="dom_div">
+  <div id="body_div">
+      <div class="bk_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective [(ngModel)]="dqjd.authAppNo" name="dqjd.authAppNo" type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">授信协议编号:</label>
+        </div>
+      </div>
+      <div class="bk_div col-md-6 mx-auto mt-5">
+        <mdb-select name="dqjd.busType" label="业务类型:" placeholder="请选择" [options]="BUS_TYPE" [(ngModel)]="dqjd.busType"></mdb-select>
+      </div>
+      <div class="bk_div rqgs_div">
+        <mdb-date-picker name="dqjd.adjustDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="尽调时间*" [(ngModel)]="dqjd.adjustDate" required></mdb-date-picker>
+      </div>
+      <div class=" mt-5">
+          <div class="md-form">
+              <textarea [(ngModel)]="dqjd.dajustPlace" name="dqjd.dajustPlace" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
+              <label for="JYFW_text">尽调地点<span class="font_red">*</span>:</label>
+          </div>
+      </div>
+      <div class=" mt-5">
+          <div class="md-form">
+              <textarea [(ngModel)]="dqjd.adjustOpName" name="dqjd.adjustOpName" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
+              <label for="JYFW_text">尽调参与人<span class="font_red">*</span>:</label>
+          </div>
+      </div>
+      <div class=" mt-5">
+          <div class="md-form">
+              <textarea [(ngModel)]="dqjd.adjustContext" name="dqjd.adjustContext" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
+              <label for="JYFW_text">尽调内容<span class="font_red">*</span>:</label>
+          </div>
+      </div>
+  </div>
+  <div id="button_div">
+    <button mdbBtn type="button" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+  </div>
+
+</div>

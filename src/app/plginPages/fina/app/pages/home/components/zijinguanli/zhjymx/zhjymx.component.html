@@ -1,0 +1,134 @@
+<div id="dom_div">
+  <div id="head_div">
+    <span id="title_span">账户流水明细</span>
+    <a routerLink="/finas/home/zjzh">
+      <button mdbBtn type="button" id="back_btn" color="primary" class="waves-light" mdbWavesEffect>返回</button>
+    </a>
+  </div>
+  <br>
+
+  <div id="body_div">
+      <br><br>
+      <div id="body_top_div">
+          <div id="title_div"><strong id="title_b">基本信息</strong></div>
+          <form action="">
+          <div id="zi_div">
+            <div class="bk_div">
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <mdb-select name="accType" [options]="zhlx" [(ngModel)]="accType" placeholder="账户类型:" ></mdb-select>
+                </div>
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="acctNo" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">账号：</label>
+                    </div>
+                </div>
+            </div>
+            <div class="bk_div">
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="acctName" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">户名：</label>
+                    </div>
+                </div>
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="acctOpnbk" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">开户行：</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bk_div">
+
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="initAmt" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">账户期初余额：</label>
+                    </div>
+                </div>
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="acctBal" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">余额：</label>
+                    </div>
+                </div>
+            </div>
+            <div class="bk_div">
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <mdb-select name="acctSta" [options]="zhzt" [(ngModel)]="acctSta" placeholder="账户状态:" ></mdb-select>
+                </div>
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <mdb-select name="curType" [options]="bz" [(ngModel)]="curType" placeholder="币种:" ></mdb-select>
+                </div>
+            </div>
+
+            <div class="bk_div">
+
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <div class="md-form">
+                        <input mdbInputDirective name="contNo" type="text" id="apPer" class="form-control">
+                        <label for="fddbr_input" class="">合同编号：</label>
+                    </div>
+                </div>
+                <div class="bk_div col-md-6 mx-auto mt-5">
+                    <mdb-select name="acctUse" [options]="zhyt" [(ngModel)]="acctUse" placeholder="账户用途:" ></mdb-select>
+                </div>
+            </div>
+            <div class="bk_div"></div>
+          </div>
+        </form>
+          <div id="table_title"><strong>账户交易明细</strong></div>
+      </div>
+      <br><br><br>
+      <div id="yszkmx_table_div">
+          <div id="btn_div">
+                <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>近一个月</button>
+                <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>近三个月</button>
+                <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>更多...</button>
+          </div>
+          <table id="yszkmx_table" class="table table-hover table-responsive-md mb-0 table-bordered">
+              <thead class="lighten-2">
+                 
+                <tr>
+                  <th scope="row">序号</th>
+                  <th scope="row">账户</th>
+                  <th scope="row">交易时间</th>
+                  <th scope="row">交易流水号</th>
+                  <th scope="row">交易金额</th>
+                  <th scope="row">交易后余额</th>
+                  <th scope="row">对方账号</th>
+                  <th scope="row">对方户名</th>
+                  <th scope="row">对方账户开户行</th>
+                  <th scope="row">交易类型</th>
+                  <th scope="row">交易摘要</th>
+                  <th scope="row">交易地点</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <ng-container *ngFor="let data of tableData; let i = index">
+                      <tr>
+                          <td scope="row" class="bianse_td">{{i+1}}</td>
+                          <td scope="row" class="dc_td">{{data.acctNO}}</td>
+                          <td scope="row" class="dc_td1">{{data.trsdaTime}}</td>
+                          <td scope="row">{{data.serseqNo}}</td>
+                          <td scope="row">{{data.trsAmt}}</td>
+                          <td scope="row">{{data.trsAcbal}}</td>
+                          <td scope="row">{{data.opAcct}}</td>
+                          <td scope="row">{{data.opName}}</td>
+                          <td scope="row">{{data.opOpbnk}}</td>
+                          <td scope="row">{{data.trsType}}</td>
+                          <td scope="row">{{data.digest}}</td>
+                          <td scope="row" class="dc_td2">{{data.trsAddrs}}</td>
+                      </tr>
+                    </ng-container>
+              </tbody>
+            </table>
+        </div>
+        <br><br>
+  </div>
+  <div id="foot_div">
+      <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>保存</button>
+      <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>取消</button>
+  </div>
+</div>

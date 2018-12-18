@@ -1,0 +1,27 @@
+#tree-view .tree {
+  & .node-value {
+    color: inherit;
+  }
+  & .folding {
+    &.node-expanded::before {
+      color: inherit;
+    }
+    &.node-collapsed::before  {
+      color: inherit;
+    }
+    &.node-leaf::before {
+      color: inherit;
+    }
+  }
+  & .over-drop-target {
+    border: 4px solid ghostwhite;
+  }
+  & .node-value{
+    & .node-selected::after {
+      background-color: white;
+    }
+    &:after {
+      background-color: white;
+    }
+  }
+}

@@ -1,0 +1,637 @@
+<div class="htxq" style="overflow: auto;">
+<div [class.dfdisabled]="isEdit">
+        <fieldset class="row-2">
+            <legend>基本信息</legend>
+            <div class="container jbxx">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="htbh" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label class="btx"for="htbh" [class.disabled]="isEdit">合同编号</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="zsxed" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="zsxed"[class.disabled]="isEdit">总授信额度</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="fxsxedlx" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fxsxedlx" [class.disabled]="isEdit">分项授信额度类型</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="edsyfs" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="edsyfs" [class.disabled]="isEdit">额度使用方式</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="fxsxed" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fxsxed" [class.disabled]="isEdit">分项授信额度</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="sxedzt" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="sxedzt" [class.disabled]="isEdit">授信额度状态</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="fxsxqsrq" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fxsxqsrq" [class.disabled]="isEdit">分项授信起始日期</label>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="md-form">
+                            <input id="fxsxzzrq" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fxsxzzrq" [class.disabled]="isEdit">分项授信终止日期</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  <div class="flex">
+          <div class="fxw">
+            <div class="flex">
+                <div class="fx1 left">
+                    <span class="labname">
+                        <span class="btx"></span>
+                        合同编号 :
+                    </span>
+                </div>
+                <div class="fx1">
+                    <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                </div>
+            </div>
+          </div>
+          <div class="zwfdf"></div>
+          <div class="fxw"><div class="flex"><div class="fx1 left">
+              <span class="labname">
+                  总授信额度 :
+              </span>
+            </div><div class="fx1">
+                <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+            </div></div>
+         </div>
+         <div class="zwf"></div>
+        </div>
+        <div class="flex">
+            <div class="fxw"><div class="flex"><div class="fx1 left">
+                  <span class="labname">
+                      分项授信额度类型 :
+                  </span>
+                </div><div class="fx1">
+                    <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                </div></div>
+            </div>
+            <div class="zwfdf"></div>
+            <div class="fxw"><div class="flex"><div class="fx1 left">
+                <span class="labname">
+                    额度使用方式 :
+                </span>
+              </div><div class="fx1">
+                  <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit" >
+              </div></div>
+           </div>
+           <div class="zwf"></div>
+          </div>
+          <div class="flex">
+              <div class="fxw"><div class="flex"><div class="fx1 left">
+                    <span class="labname">
+                        
+                        分项授信额度 :
+                    </span>
+                  </div><div class="fx1">
+                      <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                  </div></div>
+              </div>
+              <div class="zwfdf"></div>
+              <div class="fxw"><div class="flex"><div class="fx1 left">
+                  <span class="labname">
+                      
+                      授信额度状态 :
+                  </span>
+                </div><div class="fx1">
+                    <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                </div></div>
+             </div>
+             <div class="zwf"></div>
+            </div>
+            <div class="flex">
+                <div class="fxw"><div class="flex"><div class="fx1 left">
+                      <span class="labname">
+                          
+                          分项授信起始日期 :
+                      </span>
+                    </div><div class="fx1">
+                        <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                    </div></div>
+                </div>
+                <div class="zwfdf"></div>
+                <div class="fxw"><div class="flex"><div class="fx1 left">
+                    <span class="labname">
+                        
+                        分项授信终止日期 :
+                    </span>
+                  </div><div class="fx1">
+                      <input id=""  type="text" placeholder="请填写" class="form-control"  [disabled]="isEdit">
+                  </div></div>
+               </div>
+               <div class="zwf"></div>
+              </div> -->
+        </fieldset>
+        <fieldset>
+            <legend>应收账款明细</legend>
+            <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable mdbTableScroll>
+                <thead class="lighten-2">
+                    <tr>
+                        <ng-container *ngFor="let data of yszkTable.thead; let i = index">
+                            <th scope="row">{{data}}</th>
+                        </ng-container>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let data of yszkTable.data; let i = index">
+                        <tr>
+                            <td scope="row">{{i+1}}</td>
+                            <td scope="row">{{data.firstName}}</td>
+                            <td scope="row">{{data.lastName}}</td>
+                            <td scope="row">{{data.username}}</td>
+                            <td scope="row">{{data.username}}</td>
+                            <td scope="row">{{data.username}}</td>
+                            <td scope="row">{{data.username}}</td>
+                            <td scope="row">{{data.username}}</td>
+                            <td scope="row" name="融资比例">
+                                <ng-container *ngIf="isEdit">
+                                    {{data.username}}
+                                </ng-container>
+                                <ng-container *ngIf="!isEdit">
+                                    <input id="" type="text" placeholder="请输入" class="form-control rzbl">
+                                </ng-container>
+                            </td>
+                            <td scope="row" name="融资款金额">
+                                <ng-container *ngIf="isEdit">
+                                    {{data.username}}
+                                </ng-container>
+                                <ng-container *ngIf="!isEdit">
+                                    <input id="" type="text" placeholder="请输入" class="form-control rzbl">
+                                </ng-container>
+                            </td>
+                            <td scope="row" name="指定收款金额">
+                                <ng-container *ngIf="isEdit">
+                                    {{data.username}}
+                                </ng-container>
+                                <ng-container *ngIf="!isEdit">
+                                    <input id="" type="text" placeholder="请输入" class="form-control rzbl">
+                                </ng-container>
+                            </td>
+                        </tr>
+                    </ng-container>
+                    <tr>
+                        <ng-container *ngFor="let data of yszkTable.thead; let i = index">
+                            <td scope="row">{{onHeji(i)}}</td>
+                        </ng-container>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <legend>融资信息</legend>
+            <div class="container rzxx">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="rjje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="rjje" [class.disabled]="isEdit" class="btx">已融资金额</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="kyed" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="kyed" [class.disabled]="isEdit" class="btx">可用额度</label>
+                        </div>
+                    </div>
+                    <div class="col-sm" [class.disabled]="isEdit">
+                        <div class="md-form input-group mb-0 bbot">
+                            <span class="input-group-text md-addon btx">占用授信额度</span>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text md-addon">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios111" value="1" [(ngModel)]="rzxxData.zysced" [class.disabled]="isEdit" [disabled]="isEdit">
+                                    <label class="form-check-label" for="exampleRadios111" [class.disabled]="isEdit">是</label>
+                                </div>
+                            </div>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text md-addon">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" id="materialChecked" [class.disabled]="isEdit" [disabled]="isEdit" value="2" [(ngModel)]="rzxxData.zysced">
+                                    <label class="form-check-label" for="materialChecked" [class.disabled]="isEdit">否</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="djdykrz" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="djdykrz" [class.disabled]="isEdit" class="btx">单据对应可融资额</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="rzksqje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="rzksqje" [class.disabled]="isEdit" class="btx">本次融资可申请金额</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="zdhkje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="zdhkje" [class.disabled]="isEdit" class="btx">指定收款金额</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="sjrzje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="sjrzje" [class.disabled]="isEdit" class="btx">实际融资金额</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="ll" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="ll" [class.disabled]="isEdit" class="btx">利率(%)</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="yqll" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="yqll" [class.disabled]="isEdit" class="btx">逾期利率(%)</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form input-group df-select">
+                            <input id="qx" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="qx" [class.disabled]="isEdit" class="btx">期限</label>
+                            <div class="input-group-append">
+                                <div *ngIf="isEdit" class="btn-group" mdbDropdown>
+                                    <span class="nyr-disabled">{{rzxxData.qx.dw}}</span>
+                                </div>
+                                <div *ngIf="!isEdit" class="btn-group" mdbDropdown>
+                                    <button mdbDropdownToggle type="button" mdbBtn color="light" outline="true" size="md"
+                                        class="dropdown-toggle z-depth-0 nyr-but" mdbWavesEffect>{{rzxxData.qx.dw}}</button>
+                                    <div class="dropdown-menu nyr">
+                                        <span class="dropdown-item" (click)="rzxxData.qx.dw='天'">天</span>
+                                        <span class="dropdown-item" (click)="rzxxData.qx.dw='月'">月</span>
+                                        <span class="dropdown-item" (click)="rzxxData.qx.dw='年'">年</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <mdb-select [options]="optionsSelect.hkfs" placeholder="请选择" label="还款方式" [disabled]="isEdit"></mdb-select>
+                        </div>
+                    </div>
+                    <div class="col-sm row md-form">
+                        <div style="margin-top: 8px;">还本付息日:</div>
+                        <div class="col-sm-4 pd0">
+                            <mdb-select [options]="optionsSelect.hbfxr.j" placeholder="请选择" label="" [disabled]="isEdit"></mdb-select>
+                        </div>
+                        <div class="col-sm-4 pd0">
+                            <mdb-select [options]="optionsSelect.hbfxr.r" placeholder="请选择" label="" [disabled]="isEdit"></mdb-select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="fwbl" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fwbl" [class.disabled]="isEdit" class="">服务费比例（%）</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="fwze" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fwze" [class.disabled]="isEdit" class="">服务费总额</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="fwfsqfs" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="fwfsqfs" [class.disabled]="isEdit" class="">服务费收取方式</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <mdb-date-picker (click)="pickerFocus($event)" id="htqsrq" class="picker-labek" name="mydate" [options]="params.mdb_es"  [(ngModel)]="rzxxData.htqsrq"  [disabled]="isEdit" required></mdb-date-picker>
+                            <label for="htqsrq" [class.disabled]="isEdit" [class.active]="rzxxData.htqsrq" class="btx">合同签署日期</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <mdb-date-picker id="htdqrq" (click)="pickerFocus($event)" class="picker-labek" name="mydate" [options]="params.mdb_es"  [(ngModel)]="rzxxData.htdqrq" required [disabled]="isEdit"></mdb-date-picker>
+                            <label for="htdqrq" [class.disabled]="isEdit"[class.active]="rzxxData.htdqrq" class="btx">合同到期日期</label>
+                        </div>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form input-group df-select">
+                            <input id="yqwyjbl" type="text" class="form-control" mdbInputDirective [disabled]="isEdit" style="width:50px" [(ngModel)]="rzxxData.yqwyjbl.vals">
+                            <label for="yqwyjbl" [class.disabled]="isEdit" class="btx">逾期违约金比例</label>
+                            <div class="input-group-append">
+                                <div *ngIf="isEdit" class="btn-group" mdbDropdown>
+                                    <span class="nyr-disabled">{{rzxxData.yqwyjbl.zb}} &nbsp; {{rzxxData.yqwyjbl.dw}}</span>
+                                </div>
+                                <div *ngIf="!isEdit" class="btn-group" mdbDropdown>
+                                    <button mdbDropdownToggle type="button" mdbBtn color="light" outline="true" size="md"
+                                        class="dropdown-toggle z-depth-0 nyr-but" mdbWavesEffect>{{rzxxData.yqwyjbl.zb}}</button>
+                                    <div class="dropdown-menu nyr">
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.zb='‱'">‱</span>
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.zb='‰'">‰</span>
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.zb='%'">%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="!isEdit" class="input-group-append">
+                                <div class="btn-group" mdbDropdown>
+                                    <button mdbDropdownToggle type="button" mdbBtn color="light" outline="true" size="md"
+                                        class="dropdown-toggle z-depth-0 nyr-but" mdbWavesEffect>{{rzxxData.yqwyjbl.dw}}</button>
+                                    <div class="dropdown-menu nyr">
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.dw='天'">天</span>
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.dw='月'">月</span>
+                                        <span class="dropdown-item" (click)="rzxxData.yqwyjbl.dw='年'">年</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        其他事项：
+                    </div>
+                    <div class="col-sm txtleft">
+                        <textarea cols="10" rows="5" style="width:100%"></textarea>
+                    </div>
+                    <div class="col-sm-4 df-colss">
+                            <div class="row align-items-center" style="height:50%">
+                                <div class="col">
+                                    <div class="md-form">
+                                        <input id="dbbl" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                                        <label for="dbbl" [class.disabled]="isEdit" class="">担保比例(%)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center" style="height:50%">
+                                    <div class="col">
+                                        <div class="md-form">
+                                            <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                                            <label for="dbje" [class.disabled]="isEdit" class="">担保金额</label>
+                                        </div>
+                                    </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="row-2">
+            <legend>费用信息</legend>
+            <div class="container fyxx">
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="dbje" [class.disabled]="isEdit" class="">调查费</label>
+                        </div>
+                    </div>
+                    <div class="col-sm md-form">
+                        <mdb-select [options]="optionsSelect.fffs" placeholder="请选择" label="付费方式" [disabled]="isEdit"></mdb-select>
+                    </div>
+                    <div class="col-sm">
+                            <div class="md-form">
+                                <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                                <label for="dbje" [class.disabled]="isEdit" class="">预付金额</label>
+                            </div>
+                        </div>
+                        <div class="col-sm md-form">
+                            <mdb-select [options]="optionsSelect.fffs" placeholder="请选择" label="付费方式" [disabled]="isEdit"></mdb-select>
+                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm md-form">
+                        <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                        <label for="dbje" [class.disabled]="isEdit" class="">发票处理费</label>
+                    </div>
+                    <div class="col-sm md-form">
+                        <mdb-select [options]="optionsSelect.fffs" placeholder="请选择" label="付费方式" [disabled]="isEdit"></mdb-select>
+                    </div>
+                    <div class="col-sm">
+                        <div class="md-form">
+                            <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="dbje" [class.disabled]="isEdit" class="">其他</label>
+                        </div>
+                    </div>
+                    <div class="col-sm md-form">
+                        <mdb-select [options]="optionsSelect.fffs" placeholder="请选择" label="付费方式" [disabled]="isEdit"></mdb-select>
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-sm col-sm-3 md-form">
+                            <input id="dbje" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                            <label for="dbje" [class.disabled]="isEdit" class="">发票处理费</label>
+                        </div>
+                        <div class="col-sm-3 md-form">
+                            <mdb-select [options]="optionsSelect.fffs" placeholder="请选择" label="付费方式" [disabled]="isEdit" style="text-align: center;"></mdb-select>
+                        </div>
+                    </div>
+            </div>
+        </fieldset>
+    <fieldset>
+        <div class="col-sm" [class.disabled]="isEdit">
+            <div class="md-form input-group mb-0 bbot">
+                <span class="input-group-text md-addon btx">是否当日放款</span>
+                <div class="input-group-prepend">
+                    <div class="input-group-text md-addon">
+                        <input class="form-check-input" type="radio" name="exampleRadios2" id="exampleRadios2" value="1" [(ngModel)]="rzxxData.zysced" [class.disabled]="isEdit" [disabled]="isEdit">
+                        <label class="form-check-label" for="exampleRadios2" [class.disabled]="isEdit">是</label>
+                    </div>
+                </div>
+                <div class="input-group-prepend">
+                    <div class="input-group-text md-addon">
+                        <input class="form-check-input" type="radio" name="exampleRadios2" id="materialChecked3" [class.disabled]="isEdit" [disabled]="isEdit" value="2" [(ngModel)]="rzxxData.zysced">
+                        <label class="form-check-label" for="materialChecked3" [class.disabled]="isEdit">否</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>放款信息</legend>
+        <div class="container fyxx">
+            <div class="col-md-3">
+                <div class="md-form">
+                    <mdb-date-picker (click)="pickerFocus($event)" class="picker-labek" name="mydate" [options]="params.mdb_es" placeholder="合同起始日期" [(ngModel)]="model"  [disabled]="isEdit" required></mdb-date-picker>
+                    <label for="" [class.disabled]="isEdit" class="btx"></label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm txtleft">
+                    <span class="btx" style="padding-top: 0.98rem;">收款账户</span>
+                </div>
+                <div class="col-sm txtright">
+                    <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.skData)">
+                        <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm">
+                    <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable mdbTableScroll>
+                        <thead class="lighten-2">
+                            <tr>
+                                <ng-container *ngFor="let data of fkxx.zhTable.thead; let i = index">
+                                    <th scope="row">{{data}}</th>
+                                </ng-container>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngFor="let data of fkxx.zhTable.skData; let i = index">
+                                <tr>
+                                    <td scope="row">{{i+1}}</td>
+                                    <td scope="row">
+                                        <input  type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                    </td>
+                                    <td scope="row">
+                                        <input  type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                    </td>
+                                    <td scope="row">
+                                        <input  type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                    </td>
+                                    <td scope="row">
+                                        <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.skData,i)">
+                                            <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 14px;">
+                    <div class="col-sm txtleft">
+                        <span class="btx" style="padding-top: 0.98rem;">还款账户</span>
+                    </div>
+                    <div class="col-sm txtright">
+                        <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.hkData)">
+                            <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable mdbTableScroll>
+                            <thead class="lighten-2">
+                                <tr>
+                                    <ng-container *ngFor="let data of fkxx.zhTable.thead; let i = index">
+                                        <th scope="row">{{data}}</th>
+                                    </ng-container>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let data of fkxx.zhTable.hkData; let i = index">
+                                    <tr>
+                                        <td scope="row">{{i+1}}</td>
+                                        <td scope="row">
+                                            <input  type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                        </td>
+                                        <td scope="row">
+                                            <input  type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                        </td>
+                                        <td scope="row">
+                                            <input  type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                        </td>
+                                        <td scope="row">
+                                            <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.hkData,i)">
+                                                <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+    </fieldset>
+    <fieldset class="row-2">
+        <legend>登记信息</legend>
+        <div class="container djxx">
+            <div class="row">
+                <div class="col-sm md-form">
+                    <input id="djdw" [(ngModel)]="djdw" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                    <label for="djdw" [class.disabled]="isEdit" class="">登记单位</label>
+                </div>
+                <div class="col-sm md-form">
+                    <input id="dedwmc" [(ngModel)]="dedwmc" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                    <label for="dedwmc" [class.disabled]="isEdit" class="">登记单位名称</label>
+                </div>
+                <div class="col-sm md-form">
+                    <input id="djrmc" [(ngModel)]="djrmc" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                    <label for="djrmc" [class.disabled]="isEdit" class="">登记人名称</label>
+                </div>
+                <div class="col-sm md-form">
+                    <input id="xgrmc" [(ngModel)]="xgrmc" type="text" class="form-control" mdbInputDirective [disabled]="isEdit">
+                    <label for="xgrmc" [class.disabled]="isEdit" class="">修改人名称</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm"></div>
+                <div class="col-md-3">
+                    <div class="md-form">
+                        <mdb-date-picker (click)="pickerFocus($event)" id="htqsrq" class="picker-labek" name="mydate" [options]="params.mdb_es" (blur)="pickerBlur($event)" [(ngModel)]="djxxData.djsj"  [disabled]="isEdit" required></mdb-date-picker>
+                        <label for="djsj" [class.disabled]="isEdit" [class.active]="djxxData.djsj">登记时间</label>
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+                <div class="col-md-3">
+                    <div class="md-form">
+                        <mdb-date-picker (click)="pickerFocus($event)" id="xgsj" class="picker-labek" name="mydate" [options]="params.mdb_es"  [(ngModel)]="djxxData.xgsj"  [disabled]="isEdit" required></mdb-date-picker>
+                        <label for="xgsj" [class.disabled]="isEdit" [class.active]="djxxData.xgsj">修改时间</label>
+                    </div>
+                </div>
+                <div class="col-sm"></div>
+            </div>
+        </div>
+    </fieldset>
+    </div>
+    <div class="df-footer">
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>保存</button>
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="demoBasic.hide()"
+            mdbWavesEffect>关闭</button>
+    </div>
+</div>
+<style>
+    .container .col-sm {
+        text-align: center;
+    }
+
+    .labname {
+        text-align: right;
+        padding: 0;
+    }
+
+    .labname-v {
+        padding-left: 5px;
+    }
+</style>

@@ -1,0 +1,96 @@
+<div class="zhxxpage">
+    <div>
+        <!-- 左侧的页面设计 -->
+        <div class="row"  >
+            <div class="left_zonghexinxi" > 
+                    <div class="kuhugaikuang">
+                    <label >客户管理</label><br/>
+                        <button (click)="opens('jbxx')">基本信息</button>
+                        <button (click)="opens('zzxx')">资质信息</button>
+                        <button (click)="opens('gpxx')">股票信息</button>
+                        <button (click)="opens('zjxx')">债券信息</button>
+                        <button (click)="opens('gdzc')">固定资产</button>
+                    </div><br/>
+                    <div class="caiwuxinxi">
+                        <label >财务信息</label><br/>
+                        <button (click)="opens('bbxx')">报表信息</button>
+                        <button (click)="opens('bbmx')">报表明细</button>
+        
+                    </div><br/>
+                    <div class="yewuxinxi">
+                        <label >业务信息</label><br/>
+                        <button (click)="opens('ywxx')">业务信息</button>  
+                        <button (click)="opens('khtz')">客户台账</button>
+                    </div><br/>
+                    <div  class="guanlianxinxi">
+                        <label >关联信息</label><br/>
+                        <button (click)="opens('glqy')">关联企业</button>
+                        <button  (click)="opens('ggry')">高管人员</button>
+                        <button (click)="opens('gdxx')" >股东信息</button>
+                        <button (click)="opens('dytz')" >对外投资</button>
+                    </div><br/>
+                    <div class="baobiaofenxi">
+                        <label >报表分析</label><br/>
+                        <button (click)="opens('cwzb')" >财务指标</button>
+                        <button (click)="opens('cwbg')">财务报告</button>
+                        <button (click)="opens('dbfx')">杜邦分析</button>
+                        <button (click)="opens('cwfx')" >财务分析</button>
+                    </div><br/>
+                    <div class="zhongdashijian">
+                        <label >重大事件</label><br/>
+                        <button (click)="opens('zdsj')">重大事件</button>
+                    </div>
+        
+            </div>
+
+            <!-- 右上侧的页面设计 -->
+            <div class="right_zonghexinxi">
+                <div class="top_zonghexinxi">
+                    <div style="width: 100%;height:3%;max-height:40px;float:right">
+                            <button mdbBtn type="button" style="float:right" (click)="gaibian()" color="warning" rounded="true" outline="true" size="sm" mdbWavesEffect>修改信息</button>
+                            <button mdbBtn type="button" style="float:right" (click)="goback()" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>返回上一级</button>
+                    </div>
+                    <div style="text-align:center">
+                        <div class="md-form">
+                            
+                            <input mdbInputDirective type="text" name="cifNo" [(ngModel)]="Client.Client_no" id="form1" class="form-control"  [disabled]="true">
+                            <label for="form1">客户号 ： </label>
+                        </div>
+                        <div class="md-form">
+                            
+                            <input mdbInputDirective type="text" name="cifName" [(ngModel)]="Client.Client_name" id="form2" class="form-control"  [disabled]="true">
+                            <label for="form2">客户名称 ： </label>
+                        </div>
+                        <div class="md-form">
+                                
+                            <input mdbInputDirective type="text" name="idType" [(ngModel)]="Client.Id_type" id="form3" class="form-control"  [disabled]="true">
+                            <label for="form3">证件类型 ： </label>
+                        </div>
+                        <div class="md-form">
+                                
+                            <input mdbInputDirective type="text" name="idNo" [(ngModel)]="Client.Id_no" id="form4" class="form-control" [disabled]="true">
+                            <label for="form4">证件号码 ： </label>
+                        </div>
+                    </div>
+                </div>
+                <!-- 按钮设计，进行页面的跳转 -->
+                
+                <div class="title_top"  >
+                        <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('jbxx')" mdbWavesEffect>基本信息</button>
+                        <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('lxxx')" mdbWavesEffect>联系信息</button>
+                        <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('gkxx')" mdbWavesEffect>概况信息</button>
+                    
+                </div>
+                <!-- 右下侧的页面设计 -->
+                    <div class="down_zonghexinxi">
+                            
+                            <app-jibenxinxi [bo]="bo" *ngIf="apps=='jbxx'"></app-jibenxinxi>
+                            <app-lianxixinxi *ngIf="apps=='lxxx'"></app-lianxixinxi>
+                            <app-gaikuangxinxi *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
+                            
+                    </div>
+            </div>
+        </div>
+        
+    </div> 
+</div>

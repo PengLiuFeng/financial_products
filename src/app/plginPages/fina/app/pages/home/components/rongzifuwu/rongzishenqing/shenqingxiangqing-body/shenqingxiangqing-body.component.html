@@ -1,0 +1,144 @@
+<div class="sqxq_body">
+      <form action="" method="" id="sqxqform">
+      <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
+        基本交易信息
+      </diV>
+      <div class="jibenjiaoyixinxi">
+              
+              <div class="col-md-6" >
+                <mdb-select [options]="testarray.finproNos" class="select"  name="finproNo" placeholder="请选择" [(ngModel)]="testarray.finproNo"  [disabled]="bo" label="融资类型" ></mdb-select>
+              </div>
+            
+            
+                <div class="col-md-6" >
+                  <mdb-select [options]="testarray.busTypes" class="select" name="busType" placeholder="请选择" [(ngModel)]="testarray.busType"  [disabled]="bo" label="交易模型"  ></mdb-select>
+                </div>
+              
+              
+                  <div class="col-md-6" >
+                    <mdb-select [options]="testarray.payTypes" class="select" name="payType" placeholder="请选择" [(ngModel)]="testarray.payType" [disabled]="bo" label="付款方式"></mdb-select>
+                  </div>
+                
+                
+                    <div class="col-md-6" >
+                      <mdb-select [options]="testarray.busUses" class="select" name="busUse" placeholder="请选择" [(ngModel)]="testarray.busUse" [disabled]="bo" label="融资用途"  ></mdb-select>
+                    </div>
+                    <div  style="margin-top: 2%;">是否是单笔业务
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="materialInline1" name="singBus" value="1" [(ngModel)]="testarray.singBus" [disabled]="bo" mdbInputDirective>
+                            <label class="form-check-label" for="materialInline1">是</label>
+                          </div>
+                          
+                          <!-- Material inline 2 -->
+                          <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" id="materialInline2" name="singBus" value="0" [(ngModel)]="testarray.singBus" [disabled]="bo" mdbInputDirective>
+                            <label class="form-check-label" for="materialInline2">否</label>
+                          </div>
+                    </div>
+      </div>
+      <!-- 应收账款明细 -->
+      <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
+          应收账款明细
+      </diV>
+      <div class="yingshouzhangkuanmingxi">
+            <div>
+                <table mdbTable bordered="true">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of headElements" scope="col">{{head}} </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr mdbTableCol *ngFor="let el of elements,let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{el.BUS_NAME}}</td>
+                        <td>{{el.BUS_COUNA}}</td>
+                        <td>{{el.BUS_COUN}}</td>
+                        <td>{{el.BUS_TYPE}}</td>
+                        <td>{{el.BUS_NO}}</td>
+                        <td>{{el.BUS_RECEI}}</td>
+                        <td>{{el.END_DATE}}</td>
+                        
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+      </div>
+      <!-- 融资信息 -->
+      <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
+         融资信息
+        </diV>
+      <div class="rongzixinxi">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="form1" name="mayAmt" [(ngModel)]="testarray.mayAmt" class="form-control" [disabled]="bo">
+          <label for="form1" class="">单据对应可融资金</label>
+        </div>
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="form1" name="auAmt" [(ngModel)]="testarray.auAmt" class="form-control" [disabled]="bo">
+          <label for="form1" class="">本次申请融资金额</label>
+        </div>
+        
+        
+        <div class="md-form">
+          <mdb-date-picker name="mydate"  [options]="myDatePickerOptions" name="endDate" [placeholder]="'融资到期日'" label="融资到期日" [(ngModel)]="testarray.endDate"
+              required [disabled]="bo"></mdb-date-picker>
+        </div>
+        <div class="md-form input-group" id="inputandselect" >
+            <input type="text" style="width:60%;" class="form-control" name="term" [(ngModel)]="testarray.term"  placeholder="期限" label="期限" aria-describedby="basic-addon2" [disabled]="bo">
+            <div class="input-group-prepend" id="basic-addon2">
+                <span class="input-group-text" id="basic-addon2">
+                    
+                        <mdb-select style="height: 15%;width: 20% ;min-width: 35px;min-height:15px;border: 1px bisque ;text-align: center;appearance: none;" name="numType" [disabled]="bo" [options]="numType"  ></mdb-select>
+                      
+                </span>
+            </div>
+            
+        </div>
+        
+          <textarea type="text" id="form7" class="md-textarea form-control" mdbInputDirective [disabled]="bo"></textarea>
+          <label for="form7" >其他标注</label>
+        
+      </div>
+      <!-- 登记信息 -->
+      <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
+          登记信息
+      </diV>
+      <div class="dengjixinxi">
+              <div class="md-form">
+                    
+                    <input mdbInputDirective type="text" name="opName"    [(ngModel)]="testarray.opName" id="form20" class="form-control" [disabled]="bo">
+                    <label for="form20">登记人名称 ： </label>
+              </div> 
+              
+              
+              <div class="md-form">
+                         
+                          <input mdbInputDirective type="text" name="upOpName"   [(ngModel)]="testarray.upOpName" id="form21" class="form-control" [disabled]="bo">
+                          <label for="form21">修改人名称 ： </label>
+              </div> 
+              <div class="md-form">
+                          
+                          <input mdbInputDirective type="text" name="brNo"   [(ngModel)]="testarray.brNo" id="form22" class="form-control" [disabled]="bo">
+                          <label for="form22">登记单位 ： </label>
+              </div>  
+              <div class="md-form" style="padding-top:35px;">
+                         
+                          <input mdbInputDirective type="text" name="brName"  [(ngModel)]="testarray.brName" id="form23" class="form-control" [disabled]="bo">
+                          <label for="form23">登记单位名称 ： </label>
+              </div>  
+              <div class="md-form">
+                          <mdb-date-picker  id="form24" [options]="myDatePickerOptions" name="txDate" [placeholder]="'登记日期'" label="登记日期" [(ngModel)]="testarray.txDate"
+                          required [disabled]="bo"></mdb-date-picker>
+              </div>
+              <div class="md-form">
+                          <mdb-date-picker  id="form25" [options]="myDatePickerOptions" name="upDate  " [placeholder]="'修改日期'" label="修改日期" [(ngModel)]="testarray.upDate"
+                          required [disabled]="bo"></mdb-date-picker>
+              </div>
+      </div>
+    </form>
+      <div class="buttonhero">
+          <button mdbBtn type="button" color="info" rounded="true" (click)="tijiao()" mdbWavesEffect>保存</button>
+          <button mdbBtn type="button" color="warning" rounded="true" (click)="revision()" mdbWavesEffect>修改</button>
+          <button mdbBtn type="button" color="danger" rounded="true"  mdbWavesEffect>取消</button>          
+      </div>
+</div>

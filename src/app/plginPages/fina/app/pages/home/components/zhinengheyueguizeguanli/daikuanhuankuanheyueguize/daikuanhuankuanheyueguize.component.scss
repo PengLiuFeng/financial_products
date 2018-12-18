@@ -1,0 +1,80 @@
+#dom_div{
+    width: 100%;
+    background-color: #e6ecf7;
+}
+#body_div{
+    width: 95%;
+    border: 1px solid #AABCF9;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+.title_div{
+    color: blue;
+    padding: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+}
+.body_div{
+    width: 95%;
+    border: 1px solid #615a5a;
+    margin: 0 auto;
+    margin-top: 30px !important; 
+    position: relative;
+    background-color: #ffffff;
+}
+#head_div{
+    padding-bottom: 10px;
+    margin-left: 2%;
+}
+#foot_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+} 
+#foot_div{
+    width: 100%;
+    text-align: center;
+    background-color: #e6ecf7;
+}
+input{
+    border:none;
+    outline:none;
+    border-bottom: 1px dashed #999999;
+}
+.byte_input{
+    width: 10%;
+}
+.short_input{
+    width: 75%;
+}
+.margincz_div{
+    width: 27%;
+    display:inline-block;
+    margin:0 7%;
+}
+.int_input{
+    display: inline-block !important;
+    width: 60% !important;
+}
+.lang_input{
+    width: 75%;
+}
+.fh_span{
+    margin: 10px;
+}
+.zi_div{
+    margin: 3% auto;
+    width: 90%;
+    text-align: left;
+}
+.dj_zi_div{
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    margin: 3% 0;
+}

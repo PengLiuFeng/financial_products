@@ -1,0 +1,105 @@
+#body_div{
+    width: 100%;
+    background-color: #e6ecf7;
+}
+#alert_div{
+    position: absolute;
+    top: 30px;
+}
+.lable_div{
+    width: 100%;
+    text-align: right;
+}
+input{
+    border:none;
+    outline:none;
+    border-bottom: 1px dashed #999999;
+}
+#title_div{
+    margin: 20px auto;
+}
+#text_div{
+    width: 95%;
+    border: 1px solid #AABCF9;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+#text_body_div{
+    text-align: left;
+    width: 90%;
+    margin: 0 auto;
+    
+}
+#wenben_div{
+    position:relative;
+}
+#yszkmx_table_div{
+    width:100%;
+    height:170px;
+    border:1px solid #999999;
+    box-shadow: 0px -1px 0px #787878;
+    overflow: scroll; 
+}
+#yszkmx_table{
+    width: 95%;
+    margin: 0 auto;
+}
+td,th{
+    text-align: center;
+}
+th{
+    background-color: #f2f2f2;
+}
+#table_title{
+    color: blue;
+    position: absolute;
+    left: 1%;
+    top: 130%;
+    background-color: #ffffff;
+}
+.align_left_div{
+    text-align: left !important;
+}
+.margin_left_span{
+    margin-left: 5%;
+}
+.span_Dwidth{
+    display: inline-block;
+    width: 15% !important;
+}
+.qlzrf_span{
+    margin-right: 17%;
+}
+.text_right_div{
+    text-align: right;
+}
+.zhanwei_span{
+    display: inline-block;
+    width: 4%;
+}
+#foot_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+} 
+#foot_div{
+    width: 100%;
+    text-align: center;
+    background-color: #e6ecf7;
+}
+.byte_input{
+    width: 5%;
+}
+.short_input{
+    width: 15%;
+}
+.int_input{
+    width: 20%;
+}
+.lang_input{
+    width: 30%;
+}
+

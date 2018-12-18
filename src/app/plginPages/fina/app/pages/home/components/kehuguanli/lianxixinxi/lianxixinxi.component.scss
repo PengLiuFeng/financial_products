@@ -1,0 +1,58 @@
+/* #head_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin:10px 30px;
+}
+ #head_div, */#button_div{
+    background: #dedeff;
+}
+.bk_div{
+    display: inline-block;
+    width: 50%;
+}
+.chang_div{
+    width: 70%;
+    margin-left: 0px !important;
+}
+.font_red{
+    color: red;
+}
+#form_div{
+    margin-top: 30px;
+    border: 1px solid #615a5a;
+    padding-top:35px;
+}
+#body_div{
+    text-align: center;
+    position: relative;
+    background-color: #ffffff;
+    margin: 0 auto;
+    width: 95%;
+}
+#title_b{
+    // 标题大小 
+    font-size: 14px
+}
+#title_div{
+    color: blue;
+    padding: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 5%;
+    top: -1%;
+}
+#button_div{
+    width: 100%;
+    text-align: center;
+}
+mdb-select{
+    text-align: left !important;
+}
+#button_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+} 

@@ -1,0 +1,100 @@
+
+<div class="body" style="margin-bottom:15%;">
+  <!-- <div>
+    <div style="display: inline-block; margin: 1em;"><strong>新增产品线</strong></div>
+    <div style="float: right;">
+      <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect (click)="changeIsHidden()">返回</button>
+    </div>
+  </div> -->
+  <form >
+      <div class="white px-3 mt-0" style="padding:1em 3em 1em 0em" >
+        <h3 style="text-align: center">产品线 </h3>
+        <hr>
+        <div class ="md-form" > 
+        <table  style=" margin:auto; width:100%;border: 1px">
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">产品代码：</td>
+            <td><mdb-select [options]="chanpinxianData.finproNos" name="finproNo" placeholder="选择公司" class="placeholder"  [(ngModel)]="chanpinxianData.finproNo"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">产品名称：</td>
+            <td><mdb-select [options]="chanpinxianData.finproNms" placeholder="选择公司" class="placeholder" name="finproNm" [(ngModel)]="chanpinxianData.finproNm" ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">业务线名称：</td>
+            <td><mdb-select [options]="chanpinxianData.busNames" placeholder="选择公司" class="placeholder"  name="busName"  [(ngModel)]="chanpinxianData.busName" ></mdb-select></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">资金方：</td>
+            <td><mdb-select [options]="chanpinxianData.capNms" placeholder="选择公司" class="placeholder"  name="capNm" [(ngModel)]="chanpinxianData.capNm"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">币种：</td>
+            <td><mdb-select [options]="chanpinxianData.curTypes" placeholder="选择公司" class="placeholder"  name="curType" [(ngModel)]="chanpinxianData.curType"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">启用标志：</td>
+            <td><mdb-select [options]="chanpinxianData.avaiFlgs" placeholder="选择公司" class="placeholder"  name="avaiFlg" [(ngModel)]="chanpinxianData.avaiFlg"   ></mdb-select></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">利率代码：</td>
+            <td><input mdbInputDirective type="text"  name="rateCode"  [(ngModel)]="chanpinxianData.rateCode" class="form-control"></td>
+            <td style="text-align: right;width: 15%; " >利率：</td>
+            <td><input mdbInputDirective type="text"  name="rate" [(ngModel)]="chanpinxianData.rate" class="form-control"></td>
+            <td style="text-align: right;width: 15%; ">单笔限额：</td>
+            <td><input mdbInputDirective type="text"   name="limtAmt" [(ngModel)]="chanpinxianData.limtAmt" class="form-control"></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">期限类型：</td>
+            <td><mdb-select [options]="chanpinxianData.termTypes" placeholder="选择公司"  name="termType" [(ngModel)]="chanpinxianData.termType" class="placeholder"   ></mdb-select></td>
+            <td style="text-align: right;width: 15%; "> 期限：</td>
+            <td><input mdbInputDirective type="text"   name="term" [(ngModel)]="chanpinxianData.term"  class="form-control"></td>
+            <td style="text-align: right;width: 15%; ">项目金额是否可修改：</td>
+            <td><mdb-select [options]="chanpinxianData.ifupts" placeholder="选择公司" class="placeholder"  name="ifupt" [(ngModel)]="chanpinxianData.ifupt"  ></mdb-select></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">保证金比例%：</td>
+            <td><mdb-select [options]="chanpinxianData.margFlts" placeholder="选择公司" class="placeholder"  name="margFlt" [(ngModel)]="chanpinxianData.margFlt"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">保证金结算方式：</td>
+            <td><mdb-select [options]="chanpinxianData.margForms" placeholder="选择公司" class="placeholder"  name="margForm" [(ngModel)]="chanpinxianData.margForm"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">保证金支付方式：</td>
+            <td><mdb-select [options]="chanpinxianData.margPays" placeholder="选择公司" class="placeholder"  name="margPay" [(ngModel)]="chanpinxianData.margPay"  ></mdb-select></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">还款方式：</td>
+            <td><mdb-select [options]="chanpinxianData.repayTypes" placeholder="选择公司" class="placeholder"  name="repayType" [(ngModel)]="chanpinxianData.repayType" ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">还款日计划：</td>
+            <td><mdb-select [options]="chanpinxianData.paDayps" placeholder="选择公司" class="placeholder"  name="paDayp"  [(ngModel)]="chanpinxianData.paDayp"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">资金流向：</td>
+            <td><mdb-select [options]="chanpinxianData.capGos" placeholder="选择公司" class="placeholder"  name="capGo" [(ngModel)]="chanpinxianData.capGo"  ></mdb-select></td>
+          </tr>
+          <tr class="height">
+            <td style="text-align: right;width: 15%; ">融资款支付方式：</td>
+            <td><mdb-select [options]="chanpinxianData.onOffs" placeholder="选择公司" class="placeholder"  name="onOff" [(ngModel)]="chanpinxianData.onOff"  ></mdb-select></td>
+            <td style="text-align: right;width: 15%; ">融资额折扣比例%：</td>
+            <td><input mdbInputDirective type="text"  name="downPaymentFlt" [(ngModel)]="chanpinxianData.downPaymentFlt" class="form-control"></td>
+            <td style="text-align: right;width: 15%; ">逾期是否计收复利：</td>
+            <td><mdb-select [options]="chanpinxianData.ifComInts" placeholder="选择公司" class="placeholder"  name="ifComInt" [(ngModel)]="chanpinxianData.ifComInt"  ></mdb-select></td>
+          </tr>
+        </table>
+        </div>
+        
+        <h5 style="text-align: center"> 产品生命周期配置</h5>
+        <hr>
+      </div>
+        <div style="padding-left: 0.5em !important;text-align:center; background-color: white" >
+          <!-- <mdb-checkbox class="checkbox" >发起》</mdb-checkbox><mdb-checkbox class="checkbox">初审》</mdb-checkbox>
+          <mdb-checkbox class="checkbox">终审》</mdb-checkbox><mdb-checkbox class="checkbox">合同》</mdb-checkbox>
+          <mdb-checkbox class="checkbox">付保证金》</mdb-checkbox><mdb-checkbox class="checkbox">付融资款》</mdb-checkbox>
+          <mdb-checkbox class="checkbox">还款》</mdb-checkbox><mdb-checkbox class="checkbox">退还保证金》</mdb-checkbox>
+          <mdb-checkbox class="checkbox">结束</mdb-checkbox> -->
+          <span *ngFor="let data of Outputchanpinlife;let id=index;">
+            <mdb-checkbox class="checkbox" name="data.capCode" [(ngModel)]="data.value" >{{data.capDes}}>></mdb-checkbox>
+          </span>
+        </div>
+      <div style="text-align: center; margin-top: 1em">
+          <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect (click)="changeIsHidden()">提交</button>
+          <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect type="reset">取消</button>
+      </div>
+  </form>
+</div>
+<style>
+  .height{
+  height: 50px; 
+}
+.checkbox{
+  display: inline-block;
+}
+</style>

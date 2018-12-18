@@ -1,0 +1,38 @@
+.khxx{
+    & .inputVal{
+        opacity: 0;
+    }
+    & /deep/ .placeholder{
+        color: #757575;
+    }
+    & /deep/ .toggle{
+        color: #8c8c8c;
+    }
+    & .body{
+        background: #e6ecf7;
+    }
+    height: 100%;
+    background: #e6ecf7;
+}
+/deep/.btn.btn-outline-primary.active, .btn.btn-outline-primary.focus, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:hover:not(:disabled){
+    color: royalblue;
+}
+.setdiv{
+    // background: #8c8c8c;
+    padding: 16px 32px;
+    & .row{
+      box-shadow: 0 0 0 1px #cfcfcf;
+      background: #fff;
+    }
+  }
+.inputd{
+  min-width:180px;
+  margin-left: 20px;
+}
+.khxxb{
+    padding: 16px;
+    overflow: auto;
+}
+/deep/ .table > thead > tr > th{
+    text-align: center;
+}

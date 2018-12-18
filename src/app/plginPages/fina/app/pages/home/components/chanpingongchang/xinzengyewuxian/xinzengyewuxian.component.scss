@@ -1,0 +1,38 @@
+.pagehead{
+    width: 90%;
+    margin: 2% 5% 2% 5%;
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.zichanfang{
+    height: 90%;
+    margin: 2% 2% 2% 2%;
+    padding: 1%  1%  1%  1% ;
+}
+.zichanfang_head{
+    margin: 2% 2% 2% 2%;
+    & div{
+        width: 20%;
+        float:left;
+        margin:2% 2% 2% 2%;
+    }
+
+}
+.zijinfang{
+    height: 90%;
+    margin: 2% 2% 2% 2%;
+    padding: 1%  1%  1%  1% ;
+}
+.zijinfang_head{
+    margin: 2% 2% 2% 2%;
+    & div{
+        width: 20%;
+        float:left;
+        margin:2% 2% 2% 2%;
+    }
+
+}
+/deep/ .ng-tns-c16-14 ui-dropdown-label ui-inputtext ui-corner-all ui-placeholder ui-dropdown-label-empty ng-star-inserted{
+    height: 31px;
+    
+}

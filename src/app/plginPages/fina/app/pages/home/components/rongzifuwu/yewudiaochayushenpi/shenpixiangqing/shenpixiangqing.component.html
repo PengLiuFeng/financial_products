@@ -1,0 +1,185 @@
+<div id="dom_div">
+  <div class="body_div">
+    <div class="title_div"><strong class="title_b">基本交易信息</strong></div>
+    <div id="kuai_div" class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.authId" name="spxq.authId" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">授信核准编号:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.authAppNo" name="spxq.authAppNo" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">授信协议编号:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="spxq.finproNm" label="金融服务产品*:" placeholder="请选择" [options]="FINPRO_NM" [(ngModel)]="spxq.finproNm"></mdb-select>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select id="qwe" name="spxq.busType" label="业务类型*:" placeholder="请选择" [options]="BUS_TYPE" [(ngModel)]="spxq.busType"></mdb-select>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="spxq.payType" label="付款方式*:" placeholder="请选择" [options]="PAY_TYPE" [(ngModel)]="spxq.payType"></mdb-select>
+    </div>
+
+    <div class="bk_div">
+      <div class="check_div">是否单笔业务<span class="font_red">*</span></div>
+        <div class="radio_left custom-control custom-radio custom-control-inline">
+          <input  type="radio" class="custom-control-input" id="EDSYFS3" value="true" [(ngModel)]="spxq.singBus" name="spxq.singBus" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">是</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input  type="radio" class="custom-control-input" id="EDSYFS4" value="false" [(ngModel)]="spxq.singBus" name="spxq.singBus" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">否</label>
+        </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="spxq.busUse" label="融资用途*:" placeholder="请选择" [options]="BUS_USE" [(ngModel)]="spxq.busUse"></mdb-select>
+    </div>
+    <div id="table_title"><strong>应收账款明细</strong></div>
+  </div>
+  <div id="yszkmx_table_div">
+    <br>
+    <table class="table table-hover table-responsive-md mb-0 table-bordered">
+        <thead class="lighten-2">
+          <tr>
+            <th scope="row"></th>
+            <th scope="row"><mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn" ></mdb-checkbox></th>
+            <th scope="row">买方</th>
+            <th scope="row">基础交易合同名称</th>
+            <th scope="row">基础交易合同编号</th>
+            <th scope="row">单据号</th>
+            <th scope="row">应收账款金额</th>
+            <th scope="row">应收账款到期日</th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of tableData; let i = index">
+                <tr>
+                    <td scope="row" class="index_td">{{i+1}}</td>
+                    <td scope="row">
+                        <mdb-checkbox [(ngModel)]="check_arr[i]" ></mdb-checkbox>
+                    </td>
+                    <td scope="row">{{data.busName}}</td>
+                    <td scope="row">{{data.busCouna}}</td>
+                    <td scope="row">{{data.busCoun}}</td>
+                    <td scope="row">{{data.busNo}}</td>
+                    <td scope="row">{{data.busRecei}}</td>
+                    <td scope="row">{{data.endAdte}}</td>
+                </tr>
+              </ng-container>
+        </tbody>
+      </table>
+  </div>
+  <div class="body_div">
+    <div class="title_div"><strong class="title_b">融资信息</strong></div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.mayAmt" name="spxq.mayAmt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">单据对应可融资金额<span class="font_red">*</span></label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.auAmt" name="spxq.auAmt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">本次融资申请金额<span class="font_red">*</span></label>
+      </div>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.auRate" name="spxq.auRate" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">利率<span class="font_red">*</span></label>
+      </div>
+    </div>
+
+    <div class="input-group bk_div">
+      <div id="qx_input" class="md-form">
+        <input  mdbInputDirective [(ngModel)]="spxq.term" name="spxq.term" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">期限<span class="font_red">*</span></label>
+      </div>
+      <div id="inlineb_div" class="input-group-append">
+        <div class="btn-group" mdbDropdown>
+          <button id="qx_btn" mdbDropdownToggle type="button" mdbBtn color="default" size="md" class="dropdown-toggle z-depth-0"
+            mdbWavesEffect>{{button_text}}</button>
+          <div class="dropdown-menu">
+            <span class="dropdown-item " href="javascript:;" *ngFor="let item of TERM_TYPE; let i=index" (click)="qx_show(i)">
+              {{item.label}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- ------------------------------------------------------------------------------------------ --> 
+
+    <div class="bk_div">
+      <mdb-date-picker  name="spxq.begDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资申请审批日期*" [(ngModel)]="spxq.begDate" required></mdb-date-picker>
+    </div>
+    <div class="bk_div">
+      <mdb-date-picker  name="spxq.endDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资到期日期*" [(ngModel)]="spxq.endDate" required></mdb-date-picker>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.vouFlt" name="spxq.vouFlt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">担保比例 (%)</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.vouAmt" name="spxq.vouAmt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">担保金额:</label>
+      </div>
+    </div>
+
+    <div class=" mt-5">
+        <div class="md-form">
+            <textarea [(ngModel)]="spxq.filler" name="spxq.filler" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
+            <label for="JYFW_text">其他事项:</label>
+        </div>
+    </div>
+  </div>
+  <div class="body_div">
+    <div class="title_div"><strong class="title_b">登记信息</strong></div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.brNo" name="spxq.brNo" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">登记单位:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.brName" name="spxq.brName" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">登记单位名称:</label>
+      </div>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.opName" name="spxq.opName" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">登记人名称:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="spxq.upOpName" name="spxq.upOpName" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">修改人名称:</label>
+      </div>
+    </div>
+
+    <div class="bk_div">
+      <mdb-date-picker  name="spxq.createTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="登记时间" [(ngModel)]="spxq.createTime" required></mdb-date-picker>
+    </div>
+    <div class="bk_div">
+      <mdb-date-picker  name="spxq.updateTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="修改时间*" [(ngModel)]="spxq.updateTime" required></mdb-date-picker>
+    </div>
+
+  </div>
+  <div id="foot_div">
+      <button mdbBtn type="button" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+      <button mdbBtn type="button" color="danger" class="waves-light form_button" mdbWavesEffect>提交</button>
+  </div>
+
+</div>

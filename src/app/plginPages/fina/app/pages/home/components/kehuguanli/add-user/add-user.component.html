@@ -1,0 +1,33 @@
+<div id="body_div">
+    
+      <div id="zhen_div">
+        <div id="title_div"><strong>客户基础信息</strong></div>
+        <form action="" method="POST">
+          <div class="col-md-6 mx-auto mt-5">
+              <mdb-select [options]="testdata" [(ngModel)]="client.idType" name="client.idType" id="select1" placeholder="请选择证件类型"></mdb-select>
+              <label for="select1">证件类型</label>
+          </div>
+    
+          
+          <div class="col-md-6 mx-auto mt-5">
+              <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="client.idNo" name="client.idNo" type="text" id="form1" class="form-control">
+                <label for="form1" class="">证件号码<span class="font_red">*</span></label>
+              </div>
+          </div>
+    
+          <div class="col-md-6 mx-auto mt-5">
+              <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="client.cifName" name="client.cifName" type="text" id="form2" class="form-control">
+                <label for="form2" class="">客户名称<span class="font_red">*</span></label>
+              </div>
+          </div>
+          <div id="button_div">
+            <a routerLink="/finas/home/zhxx">
+              <button mdbBtn type="button" (click)="tijiao()" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+            </a>
+              <button mdbBtn type="button" (click)="go_reset()" color="danger" (click)="newDemoBasic.hide()" class="waves-light form_button" mdbWavesEffect>重置</button>
+          </div>
+      </form>
+      </div>
+    </div>

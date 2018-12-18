@@ -1,0 +1,23 @@
+<div class="sqxqpage" style="background-color:rgb(221, 221, 241);">
+    <div class="head">
+        <app-shenqingxiangqing-head></app-shenqingxiangqing-head>
+    </div>
+    <div class="buttonpage">
+            <button mdbBtn type="button" color="primary" size="sm" (click)="opens('khjbxx')" mdbWavesEffect>客户信息</button>
+            <button mdbBtn type="button" color="primary" size="sm" (click)="opens('myxx')" mdbWavesEffect>贸易信息</button>
+            <button mdbBtn type="button" color="primary" size="sm" (click)="opens('rqsqxq')" mdbWavesEffect>申请详情</button>
+        
+    </div>
+    <div class="body">
+        <span *ngIf="apppage=='rqsqxq'">
+            <app-shenqingxiangqing-body></app-shenqingxiangqing-body>
+        </span>
+        <span *ngIf="apppage=='khjbxx'">
+            <app-jibenxinxi [bo]="bo"></app-jibenxinxi>
+        </span>
+        <span *ngIf="apppage=='myxx'">
+            
+        </span>
+    </div>   
+</div>
+

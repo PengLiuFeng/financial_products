@@ -1,0 +1,108 @@
+<!-- <div id="head_div">
+        <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>基本信息</button>
+        <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>联系信息</button>
+        <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>概况信息</button>
+</div> -->
+
+<div id="body_div">
+  <div id="title_div"><strong id="title_b">企业联系信息</strong></div>
+  <div id="form_div">
+    <form id="LXXX_form" action="" method="POST">
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.apPer" name="lxxx.apPer" type="text" id="apPer" class="form-control">
+                <label for="fddbr_input" class="">法定代表人<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+                <mdb-select name="lxxx.apSex" label="法定代表人性别:" placeholder="请选择" [options]="AP_SEX" [(ngModel)]="lxxx.apSex" ></mdb-select>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <mdb-select name="lxxx.apIdType" label="法定代表人证件类型*:" placeholder="请选择" [options]="AP_ID_TYPE" [(ngModel)]="lxxx.apIdType"></mdb-select>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective type="text" [(ngModel)]="lxxx.apIdNo" name="lxxx.apIdNo" id="dbrzjh_input" class="form-control">
+                <label for="dbrzjh_input" class="">法定代表人证件号<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective name="lxxx.apHoldNo"  [(ngModel)]="lxxx.apHoldNo" type="text" id="dbrzgz_input" class="form-control">
+                <label for="dbrzgz_input" class="">法定代表人任职资格证:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+                <div class="md-form">
+                    <input mdbInputDirective [(ngModel)]="lxxx.apPhone" name="lxxx.apPhone" type="text" id="dbrdh_input" class="form-control">
+                    <label for="dbrdh_input" class="">法定代表人联系电话<span class="font_red">*</span>:</label>
+                </div>
+        </div>
+        <div class="chang_div col-md-9  mx-auto mt-5">
+                <div class="md-form">
+                    <input mdbInputDirective [(ngModel)]="lxxx.apAddr" name="lxxx.apAddr" type="text" id="dbrdz_input" class="form-control">
+                    <label for="dbrdz_input" class="">法定代表人居住地址:</label>
+                </div>
+        </div>
+        <div class="chang_div col-md-6 mx-auto mt-5">
+                <div class="md-form">
+                    <input mdbInputDirective [(ngModel)]="lxxx.apMate" name="lxxx.apMate" type="text" id="dbrpl_input" class="form-control">
+                    <label for="dbrpl_input" class="">法定代表人配偶姓名:</label>
+                </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+                <mdb-select label="法定代表人配偶证件类型:" placeholder="请选择" name="lxxx.apMateIdType" [options]="AP_MATE_ID_TYPE" [(ngModel)]="lxxx.apMateIdType"></mdb-select>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.apMateIdNo" name="lxxx.apMateIdNo" type="text" id="plzjh_input" class="form-control">
+                <label for="plzjh_input" class="">法定代表人配偶证件号码:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.commPer" name="lxxx.commPer" type="text" id="cwlxr_input" class="form-control">
+                <label for="cwlxr_input" class="">财务部联系人<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.commTel" name="lxxx.commTel" type="text" id="cwdh_input" class="form-control">
+                <label for="cwdh_input" class="">财务部联系电话<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="chang_div col-md-9  mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.cifFax" name="lxxx.cifFax" type="text" id="cz_input" class="form-control">
+                <label for="cz_input" class="">传真:</label>
+            </div>
+        </div>
+        <div class="chang_div col-md-9  mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.comAddr" type="text" name="lxxx.comAddr" id="dwdz_input" class="form-control">
+                <label for="dwdz_input" class="">单位地址<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.webUrl" name="lxxx.webUrl" type="text" id="wldz_input" class="form-control">
+                <label for="wldz_input" class="">网络地址:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [(ngModel)]="lxxx.email" name="lxxx.email" type="text" id="dzyx_input" class="form-control">
+                <label for="dzyx_input" class="">电子邮箱地址:</label>
+            </div>
+        </div>
+    </form>
+    <br><br>
+  </div>
+  <br>
+</div>
+  <div id="button_div">
+        <button mdbBtn type="button" color="secondary" form="LXXX_form" class="waves-light" mdbWavesEffect>暂存</button>
+        <button mdbBtn type="button" color="success" form="LXXX_form" class="waves-light" mdbWavesEffect>保存</button>
+        <button mdbBtn type="button" color="danger" form="LXXX_form" class="waves-light" mdbWavesEffect>取消</button>
+  </div>
+ 

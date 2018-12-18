@@ -1,0 +1,37 @@
+<div class="htqs-index" [ngStyle]="{'max-height':'calc(100vh - 100px)'}">
+  <div>
+    <div>融资合同</div>
+    <div class="htqs-khxx">
+        <div class="flex khx">
+          <div class="fx1">
+              客户号：  20070801-091
+            </div>
+            <div class="fx1">
+                客户名称：鸿雁轮胎原材料销售商
+          </div>
+        </div>
+        <div class="flex khx">
+            <div class="fx1">
+                业务类型： 有追索公开型保理
+            </div>
+            <div class="fx1">
+                授信协议编号：  20070801-091
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <mdb-tabset [buttonClass]="'pills-primary white mb-2'" [contentClass]="'card'">
+            <mdb-tab heading="合同详细">
+              <div>
+                <app-hetongxq [(edit)]="isedit" [demoBasic]='demoBasic'></app-hetongxq>
+              </div>
+            </mdb-tab>
+            <mdb-tab heading="合同担保">
+              <div>
+                <app-hetong-db></app-hetong-db>
+              </div>
+            </mdb-tab>
+          </mdb-tabset>
+    </div>
+  </div>
+</div>

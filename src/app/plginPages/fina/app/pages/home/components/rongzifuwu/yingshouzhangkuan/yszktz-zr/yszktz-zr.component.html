@@ -1,0 +1,166 @@
+<div id="body_div">
+    <div id="text_div">
+        <div id="title_div">
+            <h3><strong>应收账款转让通知书</strong></h3>
+        </div>
+        <div id="text_body_div">
+            <div class="lable_div">
+                编号:<input class="short_input" name="zrtzs.traInfNo" [(ngModel)]="zrtzs.traInfNo" placeholder="  输入"
+                    type="text">
+                号
+            </div>
+            <div>
+                致:<input class="short_input" name="zrtzs.rcuNo" [(ngModel)]="zrtzs.rcuNo" placeholder="  输入" type="text">
+                公司
+            </div>
+            <br>
+            <div id="wenben_div">
+                根据我方（<input class="short_input" name="zrtzs.cuName" [(ngModel)]="zrtzs.cuName" placeholder="  输入" type="text">公司）
+                与 <input name="zrtzs.contOw" [(ngModel)]="zrtzs.contOw" class="int_input" placeholder="  输入" type="text">（以下简称保理公司）
+                于<input name="signDate.year" (blur)="verification($event,'year');" [(ngModel)]="signDate.year" (input)="verificationNumber($event,'busYear')"
+                    class="byte_input" type="text">年
+                <input name="signDate.month" (blur)="verification($event,'month');" [(ngModel)]="signDate.month"
+                    (input)="verificationNumber($event,'busMonth')" class="byte_input" type="text">月
+                <input name="signDate.day" (blur)="verification($event,'busDay');" [(ngModel)]="signDate.day" (input)="verificationNumber($event,'busDay')"
+                    class="byte_input" type="text">日
+                <br><br>
+                签订的编号为<input class="short_input" name="zrtzs.contNo" [(ngModel)]="zrtzs.contNo" type="text">的《国内保理合同》，
+                我方已将对下表所列贵司应向我方支付的应收账款转让给<input class="short_input" name="zrtzs.capNm" [(ngModel)]="zrtzs.capNm" type="text">有限公司。
+                现通知贵方，并请贵方按以下要求支付应收账款。
+                <div id="table_title"><strong>应收账款明细</strong></div>
+            </div>
+            <br><br>
+
+            <div id="yszkmx_table_div">
+                <br>
+                <table id="yszkmx_table" class="table table-hover table-responsive-md mb-0 table-bordered">
+                    <thead class="lighten-2">
+
+                        <tr>
+                            <th scope="row">应收账款编号</th>
+                            <th scope="row">基础交易合同名称</th>
+                            <th scope="row">基础交易合同编号</th>
+                            <th scope="row">单据号</th>
+                            <th scope="row">应收账款金额(元)</th>
+                            <th scope="row">应收账款到期日</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let data of tableData; let i = index">
+                            <tr>
+                                <td scope="row">{{data.buReceiNo}}</td>
+                                <td scope="row">{{data.busCouna}}</td>
+                                <td scope="row">{{data.busCoun}}</td>
+                                <td scope="row">{{data.busNo}}</td>
+                                <td scope="row">{{data.busRecei}}</td>
+                                <td scope="row">{{data.endDate}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+            <br>
+            <div>在上述合同项下应收账款期满或付款条件成就时，请贵司直接付款至保理公司账户：</div>
+            <br>
+            <div>
+                <span class="span_Dwidth">账户开户名 :</span><input name="zrtzs.reacctna" [(ngModel)]="zrtzs.reacctna" class="lang_input"
+                    type="text">
+            </div>
+            <br>
+            <div>
+                <span class="span_Dwidth">账号 :</span><input name="zrtzs.reacct" [(ngModel)]="zrtzs.reacct" class="lang_input"
+                    type="text">
+            </div>
+            <br>
+            <div>
+                <span class="span_Dwidth">开户行 :</span><input name="zrtzs.reacctbk" [(ngModel)]="zrtzs.reacctbk" class="lang_input"
+                    type="text">
+            </div>
+            <br><br>
+            <div><span class="zhanwei_span"></span>
+                1、对于保理公司所受让之账款，保理公司有权按照本通知书及相关的交易合同的约定，以自身名义向你方提出付款要求及处 理索赔，你方应按照本通知书的要求进行支付。
+            </div>
+            <br>
+            <div><span class="zhanwei_span"></span>
+                2、你方应按时足额将上表所列应收账款支付至保理公司，贵方付款时“用途”栏、填写“国内保理款项”，“备注”栏填写应收账款转让编号。
+            </div>
+            <br>
+            <div> <span class="zhanwei_span"></span>
+                3、根据前述《国内保理合同》，我方与贵司签署的交易合同项下的义务仍由我方承担，并未转让给保理公司，所有与我方承担的义务有关的诉讼、反诉、反索赔或者抵消，不论是否基于交易合同，均只能向我方提起，不得向保理公司提起。在向本公司提出相关争议的同时，应通知保理公司有关争议事项。
+            </div>
+            <br>
+            <div><span class="zhanwei_span"></span>
+                4、上表所列的各笔应收款中，如我方转让给保理公司的应收账款金额小于你方在应收账款到期日的实际应付额，你方仍应就差额部分向我方履行付款义务，该差额部分应通过保理公司向我方支付。
+            </div>
+            <br>
+            <div><span class="zhanwei_span"></span>
+                5、你方按以上第3点发送通知，应寄送或通知至保理公司
+            </div>
+            <br><br>
+            <div class="align_left_div">
+                <span class="margin_left_span">
+                    地址 :<input name="zrtzs.comAddr" [(ngModel)]="zrtzs.comAddr" class="int_input" type="text">
+                </span>
+            </div>
+            <br>
+            <div class="align_left_div">
+                <span class="margin_left_span">
+                    邮编 :<input name="zrtzs.postCode" [(ngModel)]="zrtzs.postCode" class="int_input" type="text">
+                </span>
+                <span class="margin_left_span">
+                    联系人 :<input name="zrtzs.foreLicNo" [(ngModel)]="zrtzs.foreLicNo" class="int_input" type="text">
+                </span>
+                <span>
+                    电子邮件 :<input name="zrtzs.email" [(ngModel)]="zrtzs.email" class="int_input" type="text">
+                </span>
+            </div>
+            <br><br>
+            <div>
+                以上内容请贵公司予以确认。
+            </div>
+            <br>
+            <div class="text_right_div">
+                <span class="qlzrf_span">权利转让方 :</span>
+                <span>公司 (公章)</span>
+            </div>
+            <br><br>
+            <div>
+                <div class="text_right_div">
+                    <span class="qlzrf_span">权利受让方 :</span>
+                    <span class="qlzrf_span">公司 (公章)</span>
+                </div>
+                <br><br>
+                <div class="text_right_div">
+                    <input name="traInfTime.year" (blur)="verification($event,'year');" (input)="verificationNumber($event,'traInfYear')"
+                        [(ngModel)]="traInfTime.year" class="byte_input" type="text">年
+                    <input name="traInfTime.month" (blur)="verification($event,'month');" (input)="verificationNumber($event,'traInfMonth')"
+                        [(ngModel)]="traInfTime.month" class="byte_input" type="text">月
+                    <input name="traInfTime.day" (blur)="verification($event,'traInfDay');" (input)="verificationNumber($event,'traInfDay')"
+                        [(ngModel)]="traInfTime.day" class="byte_input" type="text">日
+                </div>
+                <br><br>
+                <div>
+                    <div> <span class="zhanwei_span"></span>填写说明：</div>
+                    <div><span class="zhanwei_span"></span>
+                        1、应收账款金额之保理公司受让的、买方根据基础交易合同在应收账款到期日应向卖方支付的金额，买方在基础交易合同项下的付款义务分期履行的，应分期分别填写应收账款金额。
+                    </div>
+                    <br>
+                    <div><span class="zhanwei_span"></span>
+                        2、应收账款到期日是指基础交易合同所规定的最晚付款日，如买方在同一基础交易合同项下的付款义务系分期履行的，则该应收账款到期日按照各期应收账款的最晚付款日分别计算、分别填写。
+                    </div>
+                    <br>
+                    <div><span class="zhanwei_span"></span>
+                        3、本通知书一式叁份，买方、卖方、保理公司各执一份
+                    </div>
+                </div>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <div id="foot_div">
+        <button mdbBtn type="button" color="secondary" form="" class="waves-light" (click)="timestamp()" mdbWavesEffect>提交</button>
+    </div>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+        <strong>该日期输入不合法 请校对后重新输入</strong>
+    </div>
+</div>

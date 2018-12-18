@@ -1,0 +1,22 @@
+<div class="home">
+  <!-- <div class="backs">
+    <h4 style="margin-bottom: 0;">金融服务平台
+    </h4>
+  </div> -->
+  <div class="backs-body">
+    <div class="left-menu" *ngIf="treeData&&(treeData.length>0)" [class.left-menu-active]="ismenu">
+      <div class="menu">
+        <df-tree [(data)]="treeData" [(itactive)]='itactive' [nodeClick]="nodeClick"></df-tree>
+        <div class="jtzr" (click)="ismenu=!ismenu;">
+          <i class="fa fa-caret-left"></i>
+        </div>
+      </div>
+    </div>
+    <span class="hr-h" *ngIf="treeData&&(treeData.length>0)"></span>
+    <div class="flex1 router r-body">
+      <div class="r-body-z">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

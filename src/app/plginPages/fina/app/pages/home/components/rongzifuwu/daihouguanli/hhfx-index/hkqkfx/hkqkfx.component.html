@@ -1,0 +1,163 @@
+<div class="hkqkfx">
+  <div>贷后资产详情</div>
+  <div class="right">
+    <button   mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >返回</button>
+  </div>
+  <div class="body">
+    <div class="md-form">
+      <div class="card">
+        <div class="card-body" >
+          <h3 style="text-align: center"><a routerLink="../khmyxxjrzls">鸿雁轮胎原材料销售商【20070801-091 】</a></h3>
+          <table class="text-center" style=" margin:auto; width:100%;" >
+            <tr style="border-bottom-style: dotted;">
+              <td ></td>
+              <td ></td>
+              <td ></td>
+            </tr>
+            <tr class="height">
+              <td >融资金额</td>
+              <td >年化利率</td>
+              <td >融资期限（月）</td> 
+            </tr>
+            <tr class="height">
+              <td  style="font-weight:bold; color:red" >CNY500.000.00</td>
+              <td  style="font-weight:bold; color:red" >11.16%</td>
+              <td  style="font-weight:bold; color:red" >3</td> 
+            </tr>
+            <tr class="height">
+              <td >还款方式：按月还息，到期还本</td>
+              <td >起息日期：2018-10-20</td>
+              <td >授信评级：AAA</td> 
+            </tr >
+            <tr style="border-bottom-style: dotted;">
+              <td colspan="3"></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="border:2px solid #0066FF">
+    <div class="body">
+      <div class="white px-3 mt-0" > 
+        <br>
+        <fieldset class="card" >
+          <legend class="sub" >应收账款回款明细</legend>
+          <div class="hkqkfxb">
+            <table mdbTable bordered="true" class="mb-0">
+              <thead class="grey lighten-3 black-text"> 
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" >融资合同编号</th>
+                  <th scope="col">单据号码</th>
+                  <th scope="col">应收账款到期日</th>
+                  <th scope="col">应收账款金额</th>
+                  <th scope="col">融资比例(%)</th>
+                  <th scope="col">融资款金额</th>
+                  <th scope="col">指定收款金额</th>
+                  <th scope="col">回款金额</th>
+                  <th scope="col">回款时间</th>
+                  <th scope="col">回款账户</th>
+                  <th scope="col">回款账户名称</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr mdbTableCol *ngFor="let data of tableData;">
+                  <td ></td>
+                  <td contenteditable  >{{ data.firstName }}</td>
+                  <td contenteditable  >{{  data.lastName }}</td>
+                  <td contenteditable  >{{ data.username }}</td>
+                  <td contenteditable  >{{ data.username }}</td>
+                  <td contenteditable  >{{  data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                  <td contenteditable  >{{  data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                </tr>
+                <tr mdbTableCol >
+                    <td >合计</td>
+                    <td contenteditable  >1</td>
+                    <td contenteditable  >3</td>
+                    <td contenteditable  >2</td>
+                    <td contenteditable  >4</td>
+                    <td contenteditable  >5</td>
+                    <td contenteditable  >6</td>
+                    <td contenteditable  >7</td>
+                    <td contenteditable  >8</td>
+                    <td contenteditable  >9</td>
+                    <td contenteditable  >10</td>
+                    <td contenteditable  >11</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </fieldset>
+      </div>
+      <br>
+      <br>
+<div><h2 style="text-align: center">近四年融资需求量分析</h2></div>
+      <div style="display: block">
+          <canvas mdbChart
+              [chartType]="chartType"
+              [datasets]="chartDatasets"
+              [labels]="chartLabels"
+              [colors]="chartColors"
+              [options]="chartOptions"
+              [legend]="true"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)">
+          </canvas>
+      </div>
+    </div>
+    <br>
+    <div class="body">
+      <div class="md-form">
+        <div class="card">
+          <div class="card-body" >
+            <table class="text-center" style=" margin:auto; width:100%;" >
+              <tr style="border-bottom-style: dotted;" class="height">
+                <th >客户名称</th>
+                <th >金融服务产品</th>
+                <th >资金机构</th>
+                <th >开始时间</th>
+                <th >结束时间</th>
+                <th >申请渠道</th>
+                <th >操作说明</th>
+              </tr>
+              <tr class="height">
+                <td >鸿雁轮胎原材料销售商</td>
+                <td >保理业务</td>
+                <td >XXX保理公司</td> 
+                <td >2018-01-01</td>
+                <td >2018-01-01</td>
+                <td >电商平台</td> 
+                <td >融资申请审批中</td>
+              </tr >
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>
+<style>
+.red{
+  font-weight:bold;
+}
+.height{
+  height: 50px;
+  
+}
+.right{
+  text-align: right;
+}
+.sub{
+      width: auto;
+        padding: 0 10px;
+        margin-left: 53px; 
+        background:#fff;
+        color:#0066FF; 
+    }
+</style>

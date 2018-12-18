@@ -1,0 +1,213 @@
+<div class="jbxx_page">
+
+      <!-- <form action=""  method=""> -->
+      <div>
+
+            公司客户信息
+      </div>
+      <div class="company_client">
+            <div class="md-form">
+                  <input mdbInputDirective type="text" id="form1" name="cuId" [disabled]="bo" [(ngModel)]="testarray.cuId"
+                        class="form-control">
+                  <label for="form1" class="">客户号</label>
+            </div>
+            <!-- <div class="md-form">
+                        <mdb-select [options]="testarray" [disabled]="bo" name="idType"  id="form2"  label="证件类型"></mdb-select><br/>
+                  </div> -->
+            <div class="md-form">
+
+                  <input mdbInputDirective type="text" [disabled]="bo" name="cuName" [(ngModel)]="testarray.cuName" id="form3"
+                        class="form-control">
+                  <label for="form3">客户名称 ： </label>
+            </div>
+
+            <div class="md-form" style="padding-top:45px;">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="engName" [(ngModel)]="testarray.engName"
+                        id="form4" class="form-control">
+                  <label for="form4">英文名称 ： </label>
+            </div>
+            <div class="col-md-6">
+                  <mdb-select [options]="testarray.idTypes" [disabled]="bo" name="idType" [(ngModel)]="testarray.idType"
+                        placeholder="请选择" label="证件类型"></mdb-select>
+            </div>
+
+      </div>
+      <!-- 以上是公司客户信息界面 -->
+
+      <diV>
+            企业类别信息
+      </diV>
+      <div class="company_type_inform">
+            <!-- <div class="type-form">
+                                    
+                                    <input mdbInputDirective type="text" [(ngModel)]="Client.Client_name" id="form2" class="form-control">
+                                    <label for="form2">客户名称 ： </label>
+                              </div> -->
+            <div class="col-md-6">
+
+                  <mdb-select id="form5" name="country" [disabled]="bo" [(ngModel)]="testarray.country" [options]="testarray.countrys"
+                        placeholder="请选择" label="国别"></mdb-select>
+            </div>
+            <div class="col-md-6">
+
+                  <mdb-select id="form6" name="cifArea" [disabled]="bo" [(ngModel)]="testarray.cifArea" [options]="testarray.cifAreas"
+                        placeholder="请选择" label="行政区代码"></mdb-select><br />
+            </div>
+            <div class="col-md-6">
+
+                  <mdb-select id="form6" name="cuType" [disabled]="bo" [(ngModel)]="testarray.cuType" [options]="testarray.cuTypes"
+                        placeholder="请选择" label="客户类型"></mdb-select><br />
+            </div>
+            <div class="col-md-6">
+
+                  <mdb-select id="form8" name="wayNo" [disabled]="bo" [(ngModel)]="testarray.wayNo" placeholder="请选择"
+                        [options]="testarray.wayNos" label="行业分类"></mdb-select><br />
+            </div>
+            <div class="md-form">
+                  <mdb-date-picker name="setupDate" id="form9" [disabled]="bo" [options]="myDatePickerOptions" label=" 成立时间"
+                        [(ngModel)]="testarray.setupDate" required></mdb-date-picker>
+            </div>
+            <div class="md-form" style="padding-top:30px;">
+                  <input mdbInputDirective type="text" name="areaName" [disabled]="bo" [(ngModel)]="testarray.areaName"
+                        id="form7" class="form-control">
+                  <label for="form7">行政区划名称 </label>
+            </div>
+            <div class="md-form" style="padding-top:30px;">
+                  <input mdbInputDirective type="text" name="watName" [disabled]="bo" [(ngModel)]="testarray.watName"
+                        id="form7" class="form-control">
+                  <label for="form7">行业分类名称 </label>
+            </div>
+
+      </div>
+
+      <!-- 以上是企业类别信息 -->
+
+      <diV>
+            营业执照信息
+      </diV>
+      <div class="charter_inform">
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="license" [(ngModel)]="testarray.license"
+                        id="form10" class="form-control">
+                  <label for="form10">营业执照号 ： </label>
+            </div>
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="regAddr" [(ngModel)]="testarray.regAddr"
+                        id="form15" class="form-control">
+                  <label for="form15">营业执照注册地址 ： </label>
+            </div>
+            <!-- <div class="col-md-6">
+                                    
+                                    <mdb-select  id="form11" name="regType" [disabled]="bo" [options]="testarray" placeholder=""  label="营业执照登记注册类型"></mdb-select><br/>
+                              </div>
+                              <div class="col-md-6">
+                                    
+                                    <mdb-select  id="form12" name="holdType"  [disabled]="bo" [options]="testarray" placeholder=""  label="控股类型"></mdb-select><br/>
+                              </div> -->
+            <div class="col-md-6">
+                  <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="testarray.regType" [options]="testarray.regTypes"
+                        placeholder="请选择" label="营业执照登记注册类型"></mdb-select><br />
+
+            </div>
+            <div class="col-md-6">
+                  <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="testarray.holdType" [options]="testarray.holdTypes"
+                        placeholder="请选择" label="控股类型"></mdb-select><br />
+
+            </div>
+            <div class="md-form" style="width:20%;">
+
+                  <mdb-date-picker name="licBegDate" id="form13" [disabled]="bo" label=" 注册登记时间" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.licBegDate" required></mdb-date-picker>
+            </div>
+            <div class="md-form" style="width:20%;">
+
+                  <mdb-date-picker name="licEndDate" id="form14" [disabled]="bo" label=" 到期时间" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.licEndDate" required></mdb-date-picker>
+            </div>
+
+            <div class="md-form" style="width:20%;">
+
+                  <mdb-date-picker name="licChkDate" id="form16" label="营业执照年检时间" [disabled]="bo" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.licChkDate" required></mdb-date-picker>
+            </div>
+            <div class="md-form" style="width:20%;">
+
+                  <mdb-date-picker name="idChkDate" id="form17" label=" 组织机构代码年检时间" [disabled]="bo" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.idChkDate" required></mdb-date-picker>
+            </div>
+
+
+      </div>
+      <!-- 以上是营业执照信息 -->
+
+      <diV>
+            评级信息
+      </diV>
+      <div class="credit_inform">
+            <div class="col-md-6" style="padding-top:3%;">
+                  <mdb-select id="form18" name="outGrade" placeholder="请选择" [disabled]="bo" [(ngModel)]="testarray.outGrade"
+                        [options]="testarray.outGrades" label="外部信用等级"></mdb-select><br />
+            </div>
+            <div class="md-form" style="padding-top: 30px;">
+                  <mdb-date-picker name="outGradeEndDate" id="form19" [disabled]="bo" label="外部信用等级到期日期" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.outGradeEndDate" required></mdb-date-picker>
+            </div>
+
+
+      </div>
+      <!-- 以上是评级信息 -->
+      <diV>
+            登记信息
+      </diV>
+      <div class="register_inform">
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="opName" [(ngModel)]="testarray.opName" id="form20"
+                        class="form-control">
+
+                  <label for="form20">登记人名称 ： </label>
+            </div>
+
+
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="upOpName" [(ngModel)]="testarray.upOpName"
+                        id="form21" class="form-control">
+
+                  <label for="form21">修改人名称 ： </label>
+            </div>
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="brNo" [(ngModel)]="testarray.brNo" id="form22"
+                        class="form-control">
+
+                  <label for="form22">登记单位 ： </label>
+            </div>
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="brName" [(ngModel)]="testarray.brName" id="form23"
+                        class="form-control">
+
+                  <label for="form23">登记单位名称 ： </label>
+            </div>
+            <div class="md-form">
+
+                  <mdb-date-picker name="txDate" id="form24" [disabled]="bo" label="登记日期" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.txDate" required></mdb-date-picker>
+            </div>
+            <div class="md-form">
+
+                  <mdb-date-picker name="upDate" id="form25" [disabled]="bo" label="修改日期" [options]="myDatePickerOptions"
+                        [(ngModel)]="testarray.upDate" required></mdb-date-picker>
+            </div>
+
+
+      </div>
+      <!-- 以上是登记信息 -->
+
+
+      <!-- </form> -->
+      <div  style="text-align: center;">
+            <button mdbBtn color="primary" class="waves-light"  size="sm" mdbWavesEffect>保存</button>
+            <button mdbBtn color="info"  (click)="go_reset();"  style="margin-left:3%;" size="sm"
+                  mdbWavesEffect>取消</button>
+      </div>
+
+
+</div>

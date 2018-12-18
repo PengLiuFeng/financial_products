@@ -1,0 +1,18 @@
+.yszkhg-xx{
+    & .inputVal{
+        opacity: 0;
+    }
+    & /deep/ .placeholder{
+        color: #757575;
+    }
+    & /deep/ .toggle{
+        color: #8c8c8c;
+    }
+    & .body{
+        background: #e6ecf7;
+    }
+}
+
+/deep/.btn.btn-outline-primary.active, .btn.btn-outline-primary.focus, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:hover:not(:disabled){
+    color: royalblue;
+}

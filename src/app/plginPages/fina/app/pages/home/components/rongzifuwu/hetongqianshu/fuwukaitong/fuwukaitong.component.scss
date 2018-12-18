@@ -1,0 +1,44 @@
+.fwktpage{
+    min-width: 660px;
+    border:1px solid black;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(232, 239, 247);
+    
+}
+.fwkt_body{
+    min-width: 620px;
+    background-color: rgb(200, 214, 224);
+    width: 95%;
+    border:1px solid black;
+    & .fwkt_body_head{
+        font-size: 15px;
+        color: white;
+        margin: 2% 2% 2% 2%;
+        padding: 2% 2% 2% 2%;
+        height: 5%;
+        min-height: 35px;
+        background-color: rgb(42, 86, 153);
+        //border:1px solid black;
+    }
+
+    & .fwkt_body_body{
+            text-align: center;
+            font-size: 30px;
+            height: 10%;
+            min-height: 70px;
+            padding: 2% 2% 2% 2%;
+    }
+    & .fwkt_body_foot{
+        padding-left: 35%;
+        background-color:white;
+        height: 30%;
+        min-height: 300px;
+        & .yinzhang{
+            height: 260px;
+            width: 260px;
+            border: 1px solid black;
+        }
+        
+    }
+}

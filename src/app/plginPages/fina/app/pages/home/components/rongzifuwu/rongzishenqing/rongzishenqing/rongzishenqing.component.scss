@@ -1,0 +1,58 @@
+.rzsqpage{
+    min-width: 660px;
+    border:1px solid black;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(232, 239, 247);
+    
+}
+.rzsq_body{
+    min-width: 620px;
+    background-color: rgb(200, 214, 224);
+    width: 95%;
+    border:1px solid black;
+    & .rzsq_body_head{
+        margin: 1% 2% 0 2%;
+        
+         min-height: 250px;
+        background-color: white;
+        border:1px solid black;
+    & .md-form{
+         width: 15%;
+         float: left;
+         margin: 2% 2% 2% 2%;
+        //  min-height: 80px;
+
+    }
+    & .col-md-6{
+        width: 15%;
+        float: left;
+        //margin-left: 2%;
+        min-height: 80px;
+        margin: 2% 2% 2% 2%;
+    }
+    }   
+
+    & .rzsq_body_table{
+        
+        margin: 1% 2% 2% 2%;
+        & .px-4{
+            background-color: white;
+             width: 100%;
+             padding: 2% 3% 2% 2%;
+            // min-width: 620px;
+            overflow: auto;
+            
+        }
+        & div{
+            font-size: 18px;
+            margin-bottom: 1%;
+        }
+    }
+}
+.mybox{
+
+    position: relative;
+    opacity: 1;
+    pointer-events:auto;
+}

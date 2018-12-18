@@ -1,0 +1,251 @@
+.fina-main{
+    background: #ffffff;
+    margin-left: 130px;
+    transition:margin .6s;
+    & /deep/ .btn.btn-sm{
+        font-size: 12px;
+    }
+    & /deep/ .al-content{
+        padding-bottom: 0;
+    }
+    & /deep/ ::-webkit-scrollbar-thumb{
+        background: #d9d9d9;
+        cursor: pointer;
+        border-radius: 50px;
+    }
+    & /deep/ ::-webkit-scrollbar{
+        height: 8px;
+    }
+}
+@media only screen and (max-width: 500px ) {
+    .fina-main{
+        margin-left: 60px;
+        transition:margin 0s;
+    }
+}
+@media only screen and (min-width: 1200px ) {
+    .fina-main{
+        margin-left: 0px;
+        transition:margin 0s;
+    }
+}
+/deep/ .al-sidebar .al-sidebar-list-link span{
+    opacity: 1;
+    transition:opacity .4s;
+}
+@media (min-width: 501px){
+    /deep/ .menu-collapsed .al-sidebar {
+       width: 52.555px;
+       /deep/ .al-sidebar-list-link span{
+        opacity: 0;
+        }
+    }
+    .fina-main{
+        margin-left: 0px;
+    }
+}
+/deep/ .fina-main-max{
+    margin-left: 50px;
+}
+/deep/ button{
+    white-space: nowrap !important;
+}
+/deep/ .al-sidebar-fina{
+    transition:width .4s;
+    width: 52.666px !important;
+    /deep/ & .al-sidebar-list-link span {
+        opacity: 0;
+    }
+    &:hover{
+        width: 180px !important;
+        /deep/ & .al-sidebar-list-link span {
+            opacity: 1;
+        }
+    }
+}
+/deep/.flex{
+    display: flex;
+    & .fx1,& .zfw{
+        flex: 1;
+    }
+  }
+  /deep/ thead > tr > th{
+    text-align: center;
+}
+/deep/ .table-center tr td{
+    text-align: center;
+}
+/deep/ .form-control[disabled]{
+    border-color: #e2e2e2;
+}
+/deep/ .form-control.focus,/deep/ .form-control:focus {
+    border-color: #4285f4;
+    color: #575962;
+    box-shadow: none;
+}
+/deep/.table{
+    background: #fff;
+    & > tbody > tr > td{
+      text-align: center;
+    }
+    table.table-hover tbody tr:hover{
+      background-color: #ecf5ff;
+    }
+  }
+
+  /deep/.ui-datepicker span.ui-datepicker-year{
+    position: relative;
+    right:15px;
+    &::after{
+        content:'年';
+        margin:0 2px;
+    }
+  }
+  /deep/.ui-datepicker span.ui-datepicker-month{
+    position: absolute;
+    left: 50%;
+    transform: translateX(10px)
+}
+/deep/ .ui-inputgroup .ui-inputtext:not(:last-child){
+    border-right: 1px #c0c0c0 solid;
+}
+
+//禁用样式
+/deep/.disabled{
+    opacity: 0.5;
+  }
+  /deep/.disabled, :disabled {
+    pointer-events:none !important;
+  }
+  /deep/.dfdisabled{
+    cursor:not-allowed;
+  }
+  /deep/.btx{
+    display: inline-block;
+    &::before,&label::before {
+      content: '*' !important;
+      vertical-align: middle;
+      color: red;
+      opacity:1 !important;
+      position: relative;
+      top: auto !important;
+      margin: 0 5px;
+    }
+  }
+  /deep/label{
+    // width: 100%;
+    text-align: left;
+    z-index: 0;
+  }
+  /deep/.md-form{
+    &  input[type=text]{
+        position: relative;
+        // z-index: 1;
+    }
+  }
+  /deep/mdb-date-picker{
+    z-index: 2;
+    position: relative;
+  }
+  //禁用样式-------END
+  
+//底边线-必填项 是单选的
+/deep/.bbot{
+    border-bottom: 1px solid #ccc;
+    & .input-group-text{
+      padding-left: 0;
+    }
+  }
+/deep/.picker.picker--opened .picker__holder{
+    z-index: 1;
+    position: fixed;
+}
+//--END
+  /deep/.btn.btn-outline-primary.active,/deep/.btn.btn-outline-primary.focus,/deep/.btn.btn-outline-primary:focus,/deep/.btn.btn-outline-primary:hover:not(:disabled){
+    color: #5a95f5 !important;
+  }
+  /deep/ .nyr{
+    min-width: 66px;
+    text-align: center;
+  }
+  /deep/.nyr-but{
+    padding:0 5px!important;
+    border: none !important;
+      color: #3f3d3d !important;
+      font-size: 14px !important;
+  }
+  /deep/.md-form.input-group.df-select label{
+    margin-top: 10px;
+  }
+  /deep/.df-footer{
+      text-align: center;
+      padding: 1rem;
+  }
+  /deep/.nyr-disabled{
+    padding-top: 0.58rem;
+    color: #ccc;
+  }
+
+  /deep/.home .single{
+      height: 44px;
+      height: 34px;
+      padding: 4px 0;
+}
+/deep/mdb-select label{
+    top: 0.4rem !important;
+}
+/deep/.pd0{
+    padding: 0;
+}
+/deep/.wins {
+    background: #fff;
+    top: 50px;
+    min-height: 100px;
+    min-width: 700px;
+    min-width:1214px;
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+/deep/ .picker-labek .mydp.picker{
+    margin-top: -32px;
+    & input.form-control{
+        height: 36px !important;
+        padding: 8px 0 0 15px;
+        margin-top: 10px;
+        transform: translateX(-2px);
+        width: calc(100% - 10px);
+    }
+    & label.btx{
+        margin-left: -3px;
+    }
+}
+@media (max-height: 740px){
+    /deep/.picker__box .picker__header .picker__date-display{
+        height: 0;
+        opacity: 0;
+    }
+    /deep/.picker--opened .picker__frame{
+        min-height: 1px !important;
+        top: 19%;
+    }
+}
+/deep/ .txtleft{
+    text-align: left !important;
+}
+/deep/ .txtright{
+    text-align: right !important;
+}
+/deep/::-webkit-scrollbar-track {
+    background: rgba(102, 102, 102, 0.05);
+}
+/deep/.df-btn:hover{
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15) !important;
+}
+/deep/div .df-btn:not([disabled]):not(.disabled):active:focus{
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.35) !important;
+}
+/deep/.df-btn-border-none{
+    border:none !important;
+}

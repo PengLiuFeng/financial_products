@@ -1,0 +1,72 @@
+.fysqpage{
+    width: 100%;
+    background-color: rgb(204, 220, 250)
+}
+.titletop{
+    width: 96%;
+    min-height: 20px;
+    margin: 1% 2% 0 2%;
+    & span{
+        background-color: white;
+    }
+}
+.pagehead{
+    text-align: center;
+    width: 88%;
+    margin: 2% 6% 2% 6%;
+    min-height: 200px;
+    background-color: white;
+    padding: 2% 2% 2% 2%;
+    & div{
+        width: 40%;
+        margin-left: 5%;
+        float: left;
+        text-align: center;
+    }
+}
+.pagebody{
+    width: 96%;
+    margin: 2% 2% 2% 2%;
+    min-height: 500px;
+    border: 3px blue solid;
+
+}
+.inside{
+    background-color: white;
+    width: 96%;
+    min-height: 350px;
+    margin: 2% 2% 2% 2% ;
+    padding: 2% 2% 2% 2% ;
+    & .feiyongxinxi{
+        border: 1px solid black;
+        min-height: 180px;
+        padding: 2% 2% 2% 2%;
+        margin-bottom: 2%;
+        & .col-md-6{
+            width: 20%;
+            margin-left: 3%;
+            float: left;
+        }
+        & .md-form{
+            width: 19%;
+            margin-left: 4%;
+            float: left;
+        }
+    }
+    & .zhanghuxinxi{
+        border: 1px solid black;
+        min-height: 200px;
+        padding: 2% 2% 2% 2%;
+        margin-top: 2%;
+        & .md-form{
+            width: 30%;
+            margin-left: 2%;
+            float: left;
+        }
+    }
+    
+
+}
+.pagefoot{
+    text-align: center;
+}

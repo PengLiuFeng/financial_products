@@ -1,0 +1,31 @@
+<div id="body_div">
+    
+  <div id="zhen_div">
+    <div id="title_div"><strong>评级授信</strong></div>
+    <form action="" method="POST">
+      <div class="col-md-6 mx-auto mt-5">
+          <mdb-select [options]="ID_TYPE" [(ngModel)]="xzsx.idType" name="xzsx.idType" id="select1" placeholder="请选择证件类型"></mdb-select>
+          <label for="select1">证件类型</label>
+      </div>
+
+      
+      <div class="col-md-6 mx-auto mt-5">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="xzsx.idNo" name="xzsx.idNo" type="text" id="form1" class="form-control">
+            <label for="form1" class="">证件号码<span class="font_red">*</span></label>
+          </div>
+      </div>
+
+      <div class="col-md-6 mx-auto mt-5">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="xzsx.cuName" name="xzsx.cuName" type="text" id="form2" class="form-control">
+            <label for="form2" class="">客户名称<span class="font_red">*</span></label>
+          </div>
+      </div>
+      <div id="button_div">
+          <button mdbBtn type="button" (click)="newInfoDemoBasic.show()" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+          <button mdbBtn type="button" color="danger" (click)="newDemoBasic.hide()" class="waves-light form_button" mdbWavesEffect>取消</button>
+      </div>
+  </form>
+  </div>
+</div>

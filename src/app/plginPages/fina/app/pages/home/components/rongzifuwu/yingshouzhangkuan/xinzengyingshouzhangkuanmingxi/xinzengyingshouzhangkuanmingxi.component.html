@@ -1,0 +1,138 @@
+<div class="xzyszkmx">
+    <div class="body">
+        新增应收账款明细
+      <div class="right">
+        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >返回</button>
+      </div>
+    </div>
+  </div>
+<div class="xzyszkmx">
+  <div></div>
+  <div class="body">
+     <div class="md-form">
+        <div class="card">
+          <div class="card-body" >
+            <table style="margin:auto; width:100%;">
+              <tr style="border-bottom-style: dotted;" class="center">
+                <!-- style="border-top:1px dashed #00F ;" -->
+                <td >证件类型：统一社会信用代码</td>
+                <td>证件号码*：739835608-X</td>
+                <td>客户名称：鸿雁轮胎原材料销售商</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+    </div>
+
+    <form>
+      <div class ="md-form" > 
+        <div class="card-body">
+        <div id="table" class="table-editable">
+          <span class="table-add float-right mb-3 mr-2">
+            <a class="text-success" (click)="add()">
+              <mdb-icon icon="plus" size="2x"></mdb-icon>
+            </a>
+          </span>
+        </div>
+          <table class="table table-bordered table-responsive-md table-striped text-center">
+            <tr>
+              <th class="text-center">买方</th>
+              <th class="text-center">基础交易合同</th>
+              <th class="text-center">基础交易合同编号</th>
+              <th class="text-center">单据类型</th>
+              <th class="text-center">单据号码</th>
+              <th class="text-center">票面金额</th>
+              <th class="text-center">票面日期</th>
+              <th class="text-center">应收账款金额</th>
+              <th class="text-center">应收账款到期日</th>
+              <th class="text-center">删除</th>
+            </tr>
+            
+            <tr *ngFor="let person of personList; let id = index">
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td><input mdbInputDirective type="text"  class="form-control"></td>
+              <td>
+                <span class="table-remove">
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <fieldset  class="card">
+            <legend class="sub" >登记信息</legend>
+            <div class="setdiv"> 
+              <div class="row">
+                <div class="inputd" style="padding-top: 11px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >登记单位</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 11px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >登记单位名称</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 11px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >登记人名称</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 11px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"  id="form1" class="form-control">
+                    <label for="form1" >修改人名称</label>
+                  </div>
+                </div>                
+                <div class="inputd">
+                  <div style="padding-top: 0;">
+                    <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'登记日期'"
+                      required></mdb-date-picker>
+                  </div>
+                </div>
+                <div class="inputd">
+                    <div style="padding-top: 0;">
+                      <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'修改日期'"
+                        required></mdb-date-picker>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </fieldset>
+      </div>
+   
+      <div class="center">
+          <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" mdbWavesEffect>保存</button>
+      </div>
+    </form>
+  </div>
+</div>
+<style>
+    .table{
+      background: #fff;
+    }
+    .center{
+      text-align: center;
+    }
+    .sub{
+      width: auto;
+        padding: 0 10px;
+        margin-left: 53px; 
+        background:#fff;
+        color:#0066FF;
+        
+    }
+    .right{
+  text-align: right;
+}
+    </style>

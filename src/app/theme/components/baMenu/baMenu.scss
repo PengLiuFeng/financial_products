@@ -1,0 +1,16 @@
+@import '../../sass/conf/conf';
+:host /deep/.ui-widget-content {
+  border: 0px solid #D5D5D5;
+  background-color: #336799;
+  color: #222222;
+}
+:host /deep/.ui-scrollpanel-bar {
+  background-color: transparentize(black,0.6) ;
+}
+:host /deep/.ui-scrollpanel:hover .ui-scrollpanel-bar, .ui-scrollpanel:active .ui-scrollpanel-bar{
+  opacity: 0.7;
+}
+:host /deep/.ui-scrollpanel-bar-y{
+  width: 3px;
+}
+

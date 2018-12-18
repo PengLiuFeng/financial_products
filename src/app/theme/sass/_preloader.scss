@@ -1,0 +1,187 @@
+//@-webkit-keyframes spin {
+//  0% {
+//    transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+//  }
+//  100% {
+//    transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+//  }
+//}
+//
+//@-moz-keyframes spin {
+//  0% {
+//    -moz-transform: rotate(0deg); /* Firefox 16+*/
+//  }
+//  100% {
+//    -moz-transform: rotate(360deg); /* Firefox 16+*/
+//  }
+//}
+//
+//@keyframes spin {
+//  0% {
+//    transform: rotate(0deg); /* Firefox 16+, IE 10+, Opera */
+//  }
+//  100% {
+//    transform: rotate(360deg); /* Firefox 16+, IE 10+, Opera */
+//  }
+//}
+
+//#preloader {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  width: 100%;
+//  height: 100%;
+//  z-index: 10000;
+//  background:url("/assets/img/theme/lg.cloudy-sky-preloader.gif") center center no-repeat #000;
+//  & > div {
+//    display: block;
+//    position: relative;
+//    left: 50%;
+//    top: 50%;
+//    width: 150px;
+//    height: 150px;
+//    margin: -75px 0 0 -75px;
+//    border-radius: 50%;
+//    border: 3px solid transparent;
+//    border-top-color: $danger;
+//    transform: translate3d(0, 0, 0);
+//    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+//    &:before {
+//      content: "";
+//      position: absolute;
+//      top: 5px;
+//      left: 5px;
+//      right: 5px;
+//      bottom: 5px;
+//      border-radius: 50%;
+//      border: 3px solid transparent;
+//      border-top-color: $primary;
+//      -webkit-animation: spin 3s linear infinite; /* Chrome, Opera 15+, Safari 5+ */
+//      animation: spin 3s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+//    }
+//    &:after {
+//      content: "";
+//      position: absolute;
+//      top: 15px;
+//      left: 15px;
+//      right: 15px;
+//      bottom: 15px;
+//      border-radius: 50%;
+//      border: 3px solid transparent;
+//      border-top-color: $warning;
+//      animation: spin 1.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+//    }
+//  }
+//}
+#preloader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: -webkit-linear-gradient(left top, #336799 , #3399cc); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #336799, #3399cc); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #336799, #3399cc); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #336799 , #3399cc); /* 标准的语法（必须放在最后） */
+    z-index: 10000;
+}
+@keyframes lds-gear {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes lds-gear {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+.lds-gear > div {
+  -webkit-transform-origin: 100px 100px;
+ // transform-origin: 100px 100px;
+  -webkit-animation: lds-gear 4.7s infinite linear;
+  animation: lds-gear 4.7s infinite linear;
+  position: relative;
+}
+.lds-gear > div div {
+  z-index: 10000;
+  position: absolute;
+  width: 26px;
+  height: 192px;
+  background: #fff;
+  left: 100px;
+  top: 100px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.lds-gear > div div:nth-child(1) {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+}
+.lds-gear > div div:nth-child(3) {
+  -webkit-transform: translate(-50%, -50%) rotate(30deg);
+  transform: translate(-50%, -50%) rotate(30deg);
+}
+.lds-gear > div div:nth-child(4) {
+  -webkit-transform: translate(-50%, -50%) rotate(60deg);
+  transform: translate(-50%, -50%) rotate(60deg);
+}
+.lds-gear > div div:nth-child(5) {
+  -webkit-transform: translate(-50%, -50%) rotate(90deg);
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+.lds-gear > div div:nth-child(6) {
+  -webkit-transform: translate(-50%, -50%) rotate(120deg);
+  transform: translate(-50%, -50%) rotate(120deg);
+}
+.lds-gear > div div:nth-child(7) {
+  -webkit-transform: translate(-50%, -50%) rotate(150deg);
+  transform: translate(-50%, -50%) rotate(150deg);
+}
+.lds-gear > div div:nth-child(8) {
+  width: 80px;
+  height: 80px;
+  background: -webkit-linear-gradient(left top, #336799 , #3399cc); /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(bottom right, #336799, #3399cc); /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(bottom right, #336799, #3399cc); /* Firefox 3.6 - 15 */
+  background: linear-gradient(to bottom right, #336799 , #3399cc); /* 标准的语法（必须放在最后） */
+  border-radius: 50%;
+}
+.lds-gear {
+  width: 200px !important;
+  height: 200px !important;
+  margin: 9rem  auto;
+  text-align: center;
+  -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+  transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+}
+ .preloader {
+
+  position: fixed;
+  margin-top: 25rem;
+   text-align: center;
+  color: #ffffff;
+  font-size: 22px;
+  animation: bounce 2s  linear infinite;
+  &:before{
+    content: '页面加载中,请稍等...';
+  }
+}

@@ -1,0 +1,33 @@
+<div id="body_div">
+  <div id="title_div">
+    应收账款转让通知
+  </div>
+    <div id="fu_div">
+      <div id="zi_div">
+        <span>客户号:{{khh}}</span>
+        <span>客户名称:{{khmc}}</span>
+        <span>授信协议编号:{{sxxybh}}</span>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+        <div class="py-3 px-3" >
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="zrtz" mdbWavesEffect>
+                <a (click)="radioModel='zrtz'">转让通知</a>
+            </label>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="qrhz" mdbWavesEffect>
+                <a (click)="radioModel='qrhz'">确认回执</a>
+            </label>
+        </div>
+      </div>
+      
+      <div *ngIf="radioModel=='zrtz'">
+        <app-yszktz-zr></app-yszktz-zr>
+      </div>
+      <div *ngIf="radioModel=='qrhz'">
+        <app-yszkzrqrhz></app-yszkzrqrhz>
+      </div>
+      
+      
+</div>
+

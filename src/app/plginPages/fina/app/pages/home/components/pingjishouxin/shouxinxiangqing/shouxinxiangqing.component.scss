@@ -1,0 +1,118 @@
+.title_div{
+    color: blue;
+    padding: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50px;
+    top: -15px;
+}
+#sxxybh_div{
+    display: inline-block !important;
+}
+#head_div,#button_div{
+    background: #dedeff;
+}
+#head_div button{
+    padding: 0px;
+    height: 25px;
+    width: 100px;
+    margin:10px 30px;
+}
+#button_div{
+    width: 100%;
+    text-align: center;
+}
+.bk_div{
+    display: inline-block;
+    width: 49%;
+}
+#zi_div{
+    margin: 20px auto;
+    width: 80%;
+    border-bottom: 1px dashed #999999;
+}
+.margin_span{
+    margin: 10%;
+}
+#tongse_div{
+    background-color: #dedeff;
+}
+#back_button{
+    float: right;
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    background-color: #4285f4 !important;
+    margin-right: 0%;
+    margin-top: 0%;
+}
+#title_div{
+    margin: 0 10px;
+    margin-bottom: 10px;
+    padding-top: 20px !important;
+    padding-bottom: 5px;
+    background-color: #dedeff;
+}
+#fu_div{
+    width: 95%;
+    border: 1px solid #AABCF9;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+#sfflsx_div{
+    font-size: 14px;
+    margin: 4%
+}
+.radio_left{
+    margin-left: 10%;
+}
+.check_div{
+    margin-left: 4%;
+    display: inline-block;
+    
+}
+.short_div{
+    display: inline-block;
+    width:44%;
+    margin: 0 18px;
+}
+.chang_div{
+    margin-left: 0px !important;
+    width: 49% !important;
+}
+form{
+    width: 95%;
+    margin: 0% auto;
+    background: #fff;
+}
+#body_bg_div{
+    background-color: #DEDEFF;
+    min-width: 750px;
+
+}
+.body_div{
+    width: 95%;
+    border: 1px solid #615a5a;
+    margin: 0 auto;
+    margin-top: 30px !important; 
+    position: relative;
+    background-color: #ffffff;
+}
+#button_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+}
+.title_b{
+    font-size: 14px
+}
+.font_red{
+    color: red;
+}
+/deep/.win.shows .win.shows{
+    width: 100vw !important;
+    left: -50% !important;
+}

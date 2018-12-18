@@ -1,0 +1,35 @@
+.htqs-index{
+    min-height: 400px;
+    background: #fbffff;
+    overflow: auto;
+    min-width: 900px;
+    max-width: 1400px;
+    width: 100%;
+    padding: 8px 20px;
+    & .body{
+        margin:20px;
+        min-height: 400px;
+        box-shadow: 0 0 0 1px #c1d3e1;
+        padding: 10px;
+        & /deep/ .card{
+            box-shadow:0 0px 0px 0 rgba(0, 0, 0, 0.16), 0 0px 1px 0 rgba(0, 0, 0, 0.12);
+        }
+    }
+}
+$khxxpd:10px;
+.htqs-khxx{
+    background: #fff;
+    box-shadow: 0 0 0 1px #ccc;
+    margin: 20px;
+    padding: $khxxpd 25px ($khxxpd+15px);
+    text-align: center;
+    & .khx{
+        border-bottom: 1px #ccc dashed;
+        & .fx1{
+            line-height: 40px;
+        }
+    }
+  }
+  /deep/ .tab-content {
+    padding-top: 1.5rem;
+}

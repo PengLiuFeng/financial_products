@@ -1,0 +1,120 @@
+<div id="body_div">
+    <div id="head_div">
+        <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    </div>
+  
+    <div id="body_top_div">
+        <div id="head_right_div">
+            <button mdbBtn type="button" color="secondary" class="waves-light" mdbWavesEffect>查询</button>
+            <button mdbBtn type="reset" color="danger" class="waves-light" mdbWavesEffect>重置</button>
+        </div>
+      <form action="">
+        <div id="top_zi_div">
+            <div class="bk_div col-md-6 mx-auto mt-5">
+              <div class="md-form">
+                  <input mdbInputDirective [(ngModel)]="zrdj.cuNo" name="zrdj.cuNo" type="text" id="fddbr_input" class="form-control">
+                  <label for="fddbr_input" class="">客户号:</label>
+              </div>
+            </div>
+            <div class="bk_div col-md-6 mx-auto mt-5">
+              <div class="md-form">
+                  <input mdbInputDirective [(ngModel)]="zrdj.cuName" name="zrdj.cuName" type="text" id="fddbr_input" class="form-control">
+                  <label for="fddbr_input" class="">客户名称:</label>
+              </div>
+            </div>
+            <div class="bk_div col-md-6 mx-auto mt-5">
+              <div class="md-form">
+                  <input mdbInputDirective [(ngModel)]="zrdj.authAppNo" name="zrdj.authAppNo" type="text" id="fddbr_input" class="form-control">
+                  <label for="fddbr_input" class="">授信协议编号:</label>
+              </div>
+            </div>
+            <div class="bk_div col-md-6 mx-auto mt-5">
+              <mdb-select name="zrdj.recSta" [(ngModel)]="zrdj.recSta" [options]="REC_STA" placeholder="应收账款状态:" ></mdb-select>
+            </div>
+        </div>
+      </form>
+    </div>
+  
+    <div id="body_bottom_div">
+      <div id="bottom_title_div">
+        <h3><strong>应收账款信息查询结果</strong></h3>
+      </div>
+      <table class="table table-hover table-responsive-md mb-0 table-bordered">
+        <thead class="lighten-2">
+           
+          <tr>
+            <th scope="row"></th>
+            <th scope="row"><mdb-checkbox [(ngModel)]="qx_btn" (click)="quanXuan()"></mdb-checkbox></th>
+            <th scope="row" class="dc_td1">买方</th>
+            <th scope="row">基础交易合同编号</th>
+            <th scope="row">单据类型</th>
+            <th scope="row">单据号码</th>
+            <th scope="row">单据票面金额</th>
+            <th scope="row">应收账款金额</th>
+            <th scope="row" class="dc_td">票据日期</th>
+            <th scope="row">应收账款到期日</th>
+            <th scope="row">应收账款状态</th>
+            <th scope="row">登记状态</th>
+            <th scope="row" class="dc_td">操作</th>
+          </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let data of tableData; let i = index">
+                <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+                    <td scope="row" class="index_td">{{i+1}}</td>
+                    <td scope="row">
+                        <mdb-checkbox [(ngModel)]="check_arr[i]" ></mdb-checkbox>
+                    </td>
+                    <td scope="row">{{data.busName}}</td>
+                    <td scope="row">{{data.busCoun}}</td>
+                    <td scope="row">{{data.busType}}</td>
+                    <td scope="row">{{data.busNo}}</td>
+                    <td scope="row">{{data.billAmt}}</td>
+                    <td scope="row">{{data.busRecei}}</td>
+                    <td scope="row">{{data.billDate}}</td>
+                    <td scope="row">{{data.endDate}}</td>
+                    <td scope="row">{{data.recSta}}</td>
+                    <td scope="row">{{data.regInfAgr}}</td>
+                    <td scope="row">
+                      <a href="https://www.zhongdengwang.org.cn/zhongdeng/index.shtml" target="_blank">转让登记</a>
+                    </td>
+                </tr>
+              </ng-container>
+        </tbody>
+      </table>
+    </div>
+  
+    <div id="foot_div">
+      <div class="d-flex justify-content-center">
+        <nav class="my-4 pt-2 ">
+          <ul class="pagination pagination-circle pg-purple mb-0">
+            <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                <a class="page-link">首页</a>
+              </li>
+            <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+              <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
+              [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+              <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+            </li>
+            <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+              <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+            <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+              <a class="page-link">尾页</a>
+            </li>
+            <li class="page-item clearfix d-none d-md-block disabled">
+               <span class="page-link">{{itemsPerPage}}条/页</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+</div>

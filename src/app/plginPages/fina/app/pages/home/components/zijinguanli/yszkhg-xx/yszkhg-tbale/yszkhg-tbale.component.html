@@ -1,0 +1,212 @@
+<div class="yszkhg-table" >
+  <form>
+    <div class="body">
+      <div class ="md-form" > 
+        <fieldset  class="card">
+          <legend class="sub" >基本信息</legend>
+          <div class="setdiv"> 
+            <div class="row">
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"   class="form-control" readonly>
+                  <label >融资金额</label>
+                </div>
+              </div>
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"   class="form-control" readonly>
+                  <label >利率</label>
+                </div>
+              </div>
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"   class="form-control" readonly>
+                  <label >计息天数</label>
+                </div>
+              </div>
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >贷款余额</label>
+                </div>
+              </div>    
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >应收利息</label>
+                </div>
+              </div> 
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >手续费余额</label>
+                </div>
+              </div>
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >付款账号</label>
+                </div>
+              </div>
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >户名</label>
+                </div>
+              </div> 
+              <div class="inputd" style="padding-top: 1px;">
+                <div class="md-form">
+                  <input mdbInputDirective type="text"  id="form1" class="form-control">
+                  <label for="form1" >开户行</label>
+                </div>
+              </div>            
+            
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <div class="white px-3 mt-0">
+      <fieldset class="card" >
+        <legend class="sub" >指定回款应收账款明细</legend>
+        <div class="yszkhg-tableb">
+          <table mdbTable bordered="true" class="mb-0">
+            <thead class="grey lighten-3 black-text"> 
+              <tr>
+                <th> 
+                  <div class="custom-control custom-checkbox">
+                    <mdb-checkbox>&nbsp;</mdb-checkbox>
+                  </div>
+                </th>
+                <th scope="col">序号</th>
+                <th scope="col" >买方</th>
+                <th scope="col">基础交易合同名称</th>
+                <th scope="col">基础交易合同编号</th>
+                <th scope="col">单据类型</th>
+                <th scope="col">单据号码</th>
+                <th scope="col">应收账款到期日</th>
+                <th scope="col">应收账款金额</th>
+                <th scope="col">融资比例(%)</th>
+                <th scope="col">融资款金额</th>
+                <th scope="col">指定收款金额</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr mdbTableCol *ngFor="let data of tableData;let i = index">
+                <td scope="row"  >
+                  <div class="custom-control custom-checkbox">
+                    <mdb-checkbox>&nbsp;</mdb-checkbox>
+                  </div>
+                </td>
+                <td >{{ data.id }}</td>
+                <td contenteditable  >{{ data.firstName }}</td>
+                <td contenteditable  >{{  data.lastName }}</td>
+                <td contenteditable  >{{ data.username }}</td>
+                <td contenteditable  >{{ data.username }}</td>
+                <td contenteditable  >{{  data.lastName }}</td>
+                <td contenteditable  >{{ data.lastName }}</td>
+                <td contenteditable  >{{ data.lastName }}</td>
+                <td contenteditable  >{{  data.lastName }}</td>
+                <td contenteditable  >{{ data.lastName }}</td>
+                <td contenteditable  >{{ data.lastName }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </fieldset>
+      <div class="body">
+        <div class ="md-form" > 
+          <fieldset  class="card">
+            <legend class="sub" >回购交易信息</legend>
+            <div class="setdiv"> 
+              <div class="row">
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >贷款余额</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >应收利息</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control" readonly>
+                    <label >本次回购金额*</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control">
+                    <label  >本次回购应收利息*</label>
+                  </div>
+                </div>    
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control">
+                    <label >本次回购后贷款余额*</label>
+                  </div>
+                </div> 
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control">
+                    <label >已使用额度</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control">
+                    <label >剩余额度</label>
+                  </div>
+                </div>
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"  class="form-control">
+                    <label  >释放额度</label>
+                  </div>
+                </div> 
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"  class="form-control">
+                    <label >本次释放后额度余额</label>
+                  </div>
+                </div> 
+                <div class="inputd" style="padding-top: 1px;">
+                  <div class="md-form">
+                    <input mdbInputDirective type="text"   class="form-control">
+                    <label >回购原因</label>
+                  </div>
+                </div>           
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="center">
+          <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" mdbWavesEffect>保存</button>
+      </div>
+    </div>
+  </form>
+</div>
+  <style>
+    .table{
+      background: #fff;
+    }
+    .center{
+      text-align: center;
+      
+    }
+    .sub{
+      width: auto;
+        padding: 0 10px;
+        margin-left: 53px; 
+        background:#fff;
+        color:#0066FF;
+        
+        
+    }
+
+</style>

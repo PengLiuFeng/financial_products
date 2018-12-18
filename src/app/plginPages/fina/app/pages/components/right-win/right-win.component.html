@@ -1,0 +1,5 @@
+<div class="win" *ngIf="myIsShow" [class.shows]="isshowdf" (click)="onhides()" [class.top]="position=='top'" [class.right]="position=='right'" [class.left]="position=='left'" [class.bottom]="position=='bottom'">
+    <div class="win-body" (click)="onhidesNo($event)">
+        <ng-content select="div"></ng-content>
+    </div>
+</div>

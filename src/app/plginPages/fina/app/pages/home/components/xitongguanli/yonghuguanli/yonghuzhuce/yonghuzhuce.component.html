@@ -1,0 +1,73 @@
+<div class ="md-form" > 
+  <div >
+    <fieldset class="card" >
+      <legend class="sub" >用户基础数据</legend>
+      <div class="hkqkfxb">
+        <table  mdbTableScroll class="text-center" style=" margin:auto;" scrollY="true" maxHeight="450" bordered="true">
+          <tr>
+            <th style="text-align: right">用户编号*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">登录账号*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">初始登录密码*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">用户姓名*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">性别*：</th>
+            <th>
+                <mdb-select [options]="grxx.apSex.selects" placeholder="选择性别" class="placeholder"  [(ngModel)]="grxx.apSex.vals"></mdb-select>
+           </th>
+          </tr>
+          <tr>
+            <th style="text-align: right">联系方式*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">机构名称*：</th>
+            <th  > <mdb-select [options]="grxx.brName.selects" placeholder="选择机构名称" class="placeholder"  [(ngModel)]="grxx.brName.vals"></mdb-select></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">机构编码：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">证件类型*：</th>
+            <th  ><mdb-select [options]="grxx.apIdType.selects" placeholder="选择证件类型" class="placeholder"  [(ngModel)]="grxx.apIdType.vals"></mdb-select></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">证件号码*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">电子邮件*：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">职务：</th>
+            <th  > <input mdbInputDirective type="text" class="form-control"></th>
+          </tr>
+          <tr>
+            <th style="text-align: right">用户角色*：</th>
+            <th  ><mdb-select [options]="grxx.brName.selects" placeholder="选择用户角色" class="placeholder"  [(ngModel)]="grxx.brName.vals"></mdb-select></th>
+          </tr>
+        </table>
+      </div>
+    </fieldset>
+  </div>
+  <div class="center">
+      <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" mdbWavesEffect>保存</button>
+  </div>
+</div>
+<style>
+  .center{
+  text-align: center;
+    }
+</style>

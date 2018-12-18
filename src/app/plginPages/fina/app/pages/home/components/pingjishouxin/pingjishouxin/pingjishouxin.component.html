@@ -1,0 +1,197 @@
+<div id="body_div">
+  <div id="head_div">
+    <app-breadcrumbs [title]="title"></app-breadcrumbs>
+  </div>
+
+
+  <div id="body_top_div">
+    <br>
+      <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
+    <form action="">
+      <div id="top_zi_div">
+        <div class="bk_div">
+
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+              <input mdbInputDirective [(ngModel)]="pjsx.cuNo" name="pjsx.cuNo" type="text" id="fddbr_1input" class="form-control">
+              <label for="fddbr_1input" class="">客户号:</label>
+            </div>
+          </div>
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+              <input mdbInputDirective [(ngModel)]="pjsx.cuName" name="pjsx.cuName" type="text" id="fddbr_input" class="form-control">
+              <label for="fddbr_input" class="">客户名称:</label>
+            </div>
+          </div>
+        </div>
+        <div class="bk_div">
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+              <input mdbInputDirective [(ngModel)]="pjsx.authId" name="pjsx.authId" type="text" id="fddbr_input" class="form-control">
+              <label for="fddbr_input" class="">授信核准编号:</label>
+            </div>
+          </div>
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+              <input mdbInputDirective [(ngModel)]="pjsx.authAppNo" name="pjsx.authAppNo" type="text" id="fddbr_input" class="form-control">
+              <label for="fddbr_input" class="">授信协议编号:</label>
+            </div>
+          </div>
+        </div>
+        <div class="bk_div">
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <mdb-select [options]="FINPRO_NO" [(ngModel)]="pjsx.finproNo" placeholder="授信金融产品:" name="pjsx.finproNo"></mdb-select>
+          </div>
+          <div class="bk_div col-md-6 mx-auto mt-5">
+            <mdb-select name="pjsx.authSplitType" [options]="AUTH_SPLI_TYPE" [(ngModel)]="pjsx.authSplitType" placeholder="分项授信类型:"></mdb-select>
+          </div>
+        </div>
+
+        <!---->
+        <div class="bk_div">
+          <div class="md-form-df">
+            <div class="ui-inputgroup">
+              <span class="i-h">授信起始日期:</span>
+
+              <div class="er_input">
+                <div class="md-form">
+                  <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateBeg" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateBeg"
+                    class="form-control" required></mdb-date-picker>
+                </div>
+              </div>
+              <span class="ui-inputgroup-addon" class="i-h">至</span>
+              <div class="er_input">
+                <div class="md-form">
+                  <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateEnd" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateEnd"
+                    class="form-control" required></mdb-date-picker>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="body_bottom_div">
+    <div id="bottom_title_div">
+      <h3><strong>应收账款信息查询结果</strong></h3>
+      <div id="head_right_div">
+        <button mdbBtn (click)="Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
+        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
+        <button mdbBtn type="button" (click)="del()" color="success" class="waves-light" mdbWavesEffect>删除</button>
+        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>导出</button>
+        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>提交</button>
+      </div>
+    </div>
+    <table class="table table-hover table-responsive-md mb-0 table-bordered">
+      <thead class="lighten-2">
+
+        <tr>
+          <th scope="row"></th>
+          <th scope="row">
+            <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
+          </th>
+          <th scope="row">客户号</th>
+          <th scope="row">客户名称</th>
+          <th scope="row">综合授信额度</th>
+          <th scope="row">金融服务产品</th>
+          <th scope="row">分项授信类型</th>
+          <th scope="row">分项子额度</th>
+          <th scope="row">额度余额</th>
+          <th scope="row">额度使用方式</th>
+          <th scope="row">期限月</th>
+          <th scope="row">授信起始日期</th>
+          <th scope="row">授信结束日期</th>
+          <th scope="row" class="dc_td">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of tableData; let i = index">
+          <tr>
+            <td scope="row" class="index_td">{{i+1}}</td>
+            <td scope="row">
+              <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
+            </td>
+            <td scope="row">{{data.cuNo}}</td>
+            <td scope="row">{{data.cuName}}</td>
+            <td scope="row">{{data.maxhAmt}}</td>
+            <td scope="row">{{data.finproNo}}</td>
+            <td scope="row">{{data.authSplitType}}</td>
+            <td scope="row">{{data.authAmt}}</td>
+            <td scope="row">{{data.authBal}}</td>
+            <td scope="row">{{data.resycle}}</td>
+            <td scope="row">{{data.termMon}}</td>
+            <td scope="row">{{dateFormat(data.begDate)}}</td>
+            <td scope="row">{{data.endDate}}</td>
+            <td scope="row">
+              <a (click)="Idisabled=true;demoBasic.show()">授信详情</a>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="foot_div">
+    <div class="d-flex justify-content-center">
+      <nav class="my-4 pt-2 ">
+        <ul class="pagination pagination-circle pg-purple mb-0">
+          <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+            <a class="page-link">首页</a>
+          </li>
+          <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+            class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+            <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+          </li>
+          <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+            <a class="page-link">尾页</a>
+          </li>
+          <li class="page-item clearfix d-none d-md-block disabled">
+            <span class="page-link">{{itemsPerPage}}条/页</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  
+  <!-- 新增授信模态框 -->
+  <div mdbModal #newDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
+    </div>
+  </div>
+</div>
+
+<!-- 授信详情查看页面 -->
+<div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div">
+       <app-shouxinxiangqing [Idisabled]="Idisabled"></app-shouxinxiangqing>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

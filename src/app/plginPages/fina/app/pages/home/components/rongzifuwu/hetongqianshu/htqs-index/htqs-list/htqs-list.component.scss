@@ -1,0 +1,60 @@
+.htqs{
+    & .inputVal{
+        opacity: 0;
+    }
+    & /deep/ .placeholder{
+        color: #757575;
+    }
+    & /deep/ .toggle{
+        color: #8c8c8c;
+    }
+    & .body{
+        background: #e6ecf7;
+    }
+    height: 100%;
+    background: #e6ecf7;
+}
+/deep/.btn.btn-outline-primary.active, .btn.btn-outline-primary.focus, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:hover:not(:disabled){
+    color: royalblue;
+}
+.setdiv{
+    // background: #8c8c8c;
+    padding: 16px 32px;
+    & .row{
+      box-shadow: 0 0 0 1px #cfcfcf;
+      background: #fff;
+    }
+  }
+.inputd{
+  min-width:180px;
+  margin-left: 20px;
+}
+.htqs{
+    padding: 16px;
+    overflow: auto;
+}
+/deep/ .table > thead > tr > th{
+    text-align: center;
+}
+/deep/ .counter-success{
+    border-color: #ebedf2 !important;
+    box-shadow: 0 0 0 0 #ebedf2 !important;
+}
+.htqs /deep/ input{
+    padding: 0.554rem 0.75rem;
+}
+.htqs /deep/ input::-webkit-input-placeholder{
+    font-size: 14px !important;
+}
+/deep/ .ui-datepicker {
+    padding: 0.857em;
+}
+/deep/ mdb-select > div > div.single{
+    padding: 13px 0;
+}
+thead tr{
+    color: #909399;
+    & th{
+        font-weight: 600;
+    }
+  }

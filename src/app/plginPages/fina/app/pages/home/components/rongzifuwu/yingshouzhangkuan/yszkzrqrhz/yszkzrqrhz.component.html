@@ -1,0 +1,46 @@
+<div>
+<div id="body_div">
+  <div id="text_div">
+    <div id="title_div">
+      <h3><strong>确认回执</strong></h3>
+    </div><br>
+    <form action="">
+      <div id="text_body_div">
+        <div>
+            致:<input class="short_input" name="qrhz.cuName" [(ngModel)]="qrhz.cuName" placeholder="  输入" type="text">
+            公司
+        </div>
+        <br>
+        <div id="wenben_div"><span class="zhanwei_span"></span>
+          我司已经收到贵行于
+          <input name="traInfTime.year" (blur)="verification($event,'year');" (input)="verificationNumber($event,'traInfYear')" [(ngModel)]="traInfTime.year" [(ngModel)]="traInfTime.year" class="byte_input">年
+          <input name="traInfTime.month" (blur)="verification($event,'month');" (input)="verificationNumber($event,'traInfMonth')" [(ngModel)]="traInfTime.month" [(ngModel)]="traInfTime.month" class="byte_input">月
+          <input name="traInfTime.day" (blur)="verification($event,'traInfDay');" (input)="verificationNumber($event,'traInfDay')" [(ngModel)]="traInfTime.day" class="byte_input">日
+          向我司发出的编号为<input name="qrhz.traInfNo" [(ngModel)]="qrhz.traInfNo" class="short_input">
+          的《应收账款债权转让通知书》。我司谨确认上述应付款项并承诺将按上述通知要求对贵行履行付款责任。
+        </div>
+        <br>
+        <div><span class="zhanwei_span"></span>
+            应收账款到期日、我方应主动支付《应收账款转让通知书》中载明的应收账款，
+            若<input name="qrhz.contOw" [(ngModel)]="qrhz.contOw" class="short_input">保理公司到期未收到我方付款的，
+            该保理公司有权就我方应收未付账款，
+            按我方与贵司签署的基础交易合同载明的违约金率自应收账款到期日起记收违约金。
+        </div>
+
+        <br><br><br>
+        <div class="text_right_div">
+          <span class="qlzrf_span">回执签收方 :</span>
+          <span>(盖章)</span>
+        </div>
+        <br><br><br>
+      </div>
+    </form>
+  </div>
+</div>
+<div id="foot_div">
+    <button mdbBtn type="button" (click)="timestamp()" color="secondary" form="" class="waves-light" mdbWavesEffect>提交</button>
+</div>
+<div class="alert alert-danger" [hidden]="danger_hid" id="alert_div"role="alert">
+  <strong>该日期输入不合法 请校对后重新输入</strong>
+</div>
+</div>

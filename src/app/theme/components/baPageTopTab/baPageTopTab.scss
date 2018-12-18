@@ -1,0 +1,146 @@
+.viewport{
+  padding: 0px;
+  //margin-left: 5px;
+  //margin-right: 5px;
+  flex: 0 0 92% !important;
+  max-width: 92% !important;
+  //width: 93%;
+  //min-width: 93% !important;
+  //max-width: 93% !important;
+}
+.leftButton{
+  width: 100%;
+  background: #336799 !important;
+  border-color:#336799 !important;
+}
+.rightButton{
+  width: 100%;
+  margin-right: 5px !important;
+  background: #336799 !important;
+  border-color:#336799 !important;
+}
+.change{
+  padding: 0px;
+  margin: 0px;
+  flex: 0 0 3% !important;
+  max-width: 3% !important;
+}
+.ui-carousel {
+  top:66px;
+  height: 38px;
+  margin: 0px !important;
+  position:fixed;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  padding: .063em;
+  z-index: 1022 !important;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items {
+  list-style: none outside none;
+  margin: 0;
+  padding:0;
+  position: relative;
+  width: 32000px;
+  left: 0;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
+  margin: 1px;
+  padding: 0;
+  text-align: center;
+  word-break:keep-all;/* 不换行 */
+  white-space:nowrap;/* 不换行 */
+  overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+  text-overflow:ellipsis;/* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/
+  float: left;
+  box-sizing: border-box;
+}
+
+.ui-carousel .ui-carousel-viewport {
+  overflow: hidden;
+  position: relative;
+  border: 0;
+}
+
+.ui-carousel .ui-carousel-footer {
+  margin: 1px 1px 0px 1px;
+  padding: .5em;
+  overflow: hidden;
+}
+
+.ui-carousel .ui-carousel-header {
+  margin: 0 1px;
+  overflow: hidden;
+  padding: .625em;
+}
+
+.ui-carousel .ui-carousel-header .ui-carousel-header-title {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.ui-carousel .ui-carousel-dropdown,
+.ui-carousel .ui-carousel-mobiledropdown {
+  float: right;
+  margin: 0px .625em;
+  background-image: none;
+}
+
+.ui-carousel .ui-carousel-dropdown option,
+.ui-carousel .ui-carousel-mobiledropdown option{
+  background-image: none;
+  border: 0 none;
+  box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
+}
+
+.ui-carousel .ui-carousel-button {
+  float: right;
+  margin: .125em;
+}
+
+.ui-carousel .ui-carousel-page-link {
+  float: left;
+  margin: 0 .125em;
+  text-decoration: none;
+}
+
+.ui-carousel .ui-carousel-page-link,
+.ui-carousel .ui-carousel-button {
+  cursor: pointer;
+}
+
+.ui-carousel .ui-carousel-page-links {
+  margin: 0px .5em;
+  margin-top: .125em;
+  float: right;
+}
+
+.ui-carousel .ui-carousel-mobiledropdown {
+  display: none;
+}
+.ui-menuitem-link{
+  //float: unset !important;
+  line-height: 32px;
+}
+.tabSelect{
+  background: #209e91 !important;
+  border: 1px solid  #209e91 !important;
+  a{
+    color: #fff !important;
+  }
+}
+:host /deep/ .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a{
+  width: 100%;
+  text-align: center;
+  padding: unset !important;
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  margin:0px 5px 1px 0px !important;
+}
+:host /deep/ .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+  margin:0px 5px 1px 0px !important;
+}

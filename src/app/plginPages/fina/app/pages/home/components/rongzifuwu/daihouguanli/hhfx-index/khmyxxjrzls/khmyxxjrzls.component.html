@@ -1,0 +1,127 @@
+<div class="khmyxxjrzls">
+ <div class="card-body">
+    客户贸易信息及融资历史
+    <div style="  float: right;">
+      <button  mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >返回</button>
+    </div>
+  </div>
+  <div class="body">
+    <div class="md-form">
+      <div class="card">
+        <div class="card-body" >
+          
+          <h3 style="text-align: center"><a>鸿雁轮胎原材料销售商【20070801-091 】</a></h3>
+          <div style="float:left; width:80%;">
+          <table class="text-center" style=" margin:auto; width:100%;" >
+            <tr class="height">
+              <td >融资金额</td>
+              <td >年化利率</td>
+              <td >融资期限（月）</td> 
+            </tr>
+            <tr class="height">
+              <td  style="font-weight:bold; color:red" >CNY500.000.00</td>
+              <td  style="font-weight:bold; color:red" >11.16%</td>
+              <td  style="font-weight:bold; color:red" >3</td> 
+            </tr>
+            <tr class="height">
+              <td >还款方式：按月还息，到期还本</td>
+              <td >起息日期：2018-10-20</td>
+              <td >授信评级：AAA</td> 
+            </tr >
+          </table>
+          </div>
+          <div style="width:18%;height: 120px; float: right; border-left: 3px solid #9966FF">
+              <table style="margin: 0 auto;text-align:center;">
+                <tr >
+                  <th class="height">完成日期</th>
+                </tr>
+                <tr >
+                  <th class="height" style="font-weight:bold; color:red"><h4>未完成</h4></th>
+                </tr>
+              </table>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <div style="border:2px solid #0066FF">
+      <button mdbBtn (click)="changeJump1()" color="primary" rounded="true"  size="sm" mdbWavesEffect >项目信息</button>
+      <button mdbBtn (click)="changeJump2()" color="primary" rounded="true"  size="sm" mdbWavesEffect >贸易数据</button>
+      <button mdbBtn (click)="changeJump3()" color="primary" rounded="true"  size="sm" mdbWavesEffect >下游客户</button>
+      <button mdbBtn (click)="changeJump4()" color="primary" rounded="true"  size="sm" mdbWavesEffect >融资历史</button>
+      <br>
+      <br>
+      <div class="body"> 
+        <div *ngIf="jump=='khmy'" style="padding:20px">
+          <br>
+          <p><strong>项目基本情况</strong></p>
+          <hr>
+          <p><strong>企业基本信息：</strong>鸿雁轮胎原材料销售商</p>
+          <p ><strong>企业基本情况介绍：</strong>鸿雁轮胎原材料销售商注册于我国首批14个国家级经济技术开发区之一的南通经济技术开发区，是国家
+              环保总局授予的"ISO14000"国家示范区，是国家权威机构评选的跨国公司眼中最具投资价值的开发区前10强。南通智新是南
+              通开发区的龙头企业，具有进出口资质，银行AA+级信用企业。进出口贸易、转口贸易、大宗商品、机电产品贸易经验丰富，
+              清关物流全程代理。国内贸易产品包括钢材、聚乙烯、乙二醇、沥青、机械设备、液压控制系统、设备零部件等等。</p>
+          <p><strong>经营模式：</strong>自营</p>
+          <p><strong>交易结构：</strong><img src="http://www.runoob.com/wp-content/uploads/2016/04/trolltunga.jpg" width="500" height="150"></p>
+
+          <p><strong>风控措施：</strong>在货易融保理融资中，华软科技产融平台为保理商提供金融服务及财务监管服务，即是产融交易撮合平台亦是金融服务平台，同时也可在对接银行等金融机构作为银行贷后管理的一部分，派驻的财务监管人员需监控融资企业的财务状况，包括订单、供货及应收账款的形成和回收过程，同时对企业的经营情况进行监管，根据风险规则向银行提供监管报告及风险事件预警。</p>
+          <p><strong>预期还款计划</strong></p>
+          <hr>
+          
+          <table mdbTable bordered="true" class="mb-0">
+              <thead class="grey lighten-3 black-text"> 
+                <tr>
+                  <th scope="col"></th>
+                  <th scope="col" >应还日期</th>
+                  <th scope="col">应还本金</th>
+                  <th scope="col">应还利息</th>
+                  <th scope="col">管理费</th>
+                  <th scope="col">逾期罚金</th>
+                  <th scope="col">其他费用</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr mdbTableCol *ngFor="let data of tableData;">
+                  <td ></td>
+                  <td contenteditable  >{{ data.firstName }}</td>
+                  <td contenteditable  >{{  data.lastName }}</td>
+                  <td contenteditable  >{{ data.username }}</td>
+                  <td contenteditable  >{{ data.username }}</td>
+                  <td contenteditable  >{{  data.lastName }}</td>
+                  <td contenteditable  >{{ data.lastName }}</td>
+                </tr>
+                <tr mdbTableCol >
+                    <td >合计</td>
+                    <td contenteditable  >1</td>
+                    <td contenteditable  >3</td>
+                    <td contenteditable  >2</td>
+                    <td contenteditable  >4</td>
+                    <td contenteditable  >5</td>
+                    <td contenteditable  >6</td>
+                  </tr>
+              </tbody>
+            </table>
+
+        </div>
+        <app-xykh *ngIf="jump=='xykh'"></app-xykh>
+        <app-rzls *ngIf="jump=='rzls'"></app-rzls>
+        <app-myxx *ngIf="jump=='myxx'"></app-myxx>
+      </div>
+    </div>
+</div>
+    <style>
+  .height{
+  height: 35px;
+}
+  .right{
+  text-align: right; 
+}
+ .align{
+   align-content: center
+ }
+ p{
+  line-height:200%
+ }
+
+</style>

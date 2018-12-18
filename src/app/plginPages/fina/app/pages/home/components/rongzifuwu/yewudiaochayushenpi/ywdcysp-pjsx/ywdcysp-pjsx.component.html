@@ -1,0 +1,109 @@
+<div id="dom_div">
+  <div class="body_div">
+    <div class="title_div"><strong class="title_b">综合授信额度</strong></div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="zhsx.authId" name="zhsx.authId" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">额度核准编号<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="zhsx.creRatin" label="评级信用等级*:" placeholder="请选择" [options]="CRE_RATIN" [(ngModel)]="zhsx.creRatin"></mdb-select>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="zhsx.authAmt" name="zhsx.authAmt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">综合授信额度<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="zhsx.authBal" name="zhsx.authBal" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">综合授信余额<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="zhsx.termMon" name="zhsx.termMon" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">期限月<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="zhsx.authSts" label="综合授信状态*:" placeholder="请选择" [options]="AUTH_STS" [(ngModel)]="zhsx.authSts"></mdb-select>
+    </div>
+
+    <div class="bk_div rqgs_div">
+      <mdb-date-picker name="zhsx.begDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="综合授信额度起始日期*" [(ngModel)]="zhsx.begDate" required></mdb-date-picker>
+    </div>
+    <div class="bk_div rqgs_div">
+      <mdb-date-picker name="zhsx.endDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="额度终止日期*" [(ngModel)]="zhsx.endDate" required></mdb-date-picker>
+    </div>
+
+    <div class="bk_div">
+      <div class="check_div">额度使用方式<span class="font_red">*</span>:</div>
+        <div class="radio_left custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS3" value="true" [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">循环</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS4" value="false" [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">非循环</label>
+        </div>
+    </div>
+    <div class="bk_div">
+      <div class="check_div">额度是否冻结<span class="font_red">*</span>:</div>
+        <div class="radio_left custom-control custom-radio custom-control-inline">
+          <input  type="radio" class="custom-control-input" id="EDSYFS3" value="true" [(ngModel)]="zhsx.authStsFreeze" name="zhsx.authStsFreeze" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">是</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input  type="radio" class="custom-control-input" id="EDSYFS4" value="false" [(ngModel)]="zhsx.authStsFreeze" name="zhsx.authStsFreeze" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">否</label>
+        </div>
+    </div>
+
+  </div>
+  <div class="body_div">
+    <div class="title_div"><strong class="title_b">分类业务授信</strong></div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="fxsx.finproNo" label="金融服务产品*:" placeholder="请选择" [options]="FINPRO_NO" [(ngModel)]="fxsx.finproNo"></mdb-select>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <mdb-select name="fxsx.authSplitType" label="分项授信额度类型*:" placeholder="请选择" [options]="AUTH_SPLIT_TYPE" [(ngModel)]="fxsx.authSplitType"></mdb-select>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="fxsx.authAmt" name="fxsx.authAmt" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">分项子额度<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="fxsx.authBal" name="fxsx.authBal" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">分项子额度余额<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+
+    <div class="bk_div rqgs_div">
+      <mdb-date-picker  name="fxsx.begDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="分项授信起始日期*" [(ngModel)]="fxsx.begDate" required></mdb-date-picker>
+    </div>
+    <div class="bk_div rqgs_div">
+      <mdb-date-picker  name="fxsx.endDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="分享授信终止日期*" [(ngModel)]="fxsx.endDate" required></mdb-date-picker>
+    </div>
+
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class="md-form">
+        <input mdbInputDirective [(ngModel)]="fxsx.authAppNp" name="fxsx.authAppNp" type="text" id="fddbr_1input" class="form-control">
+        <label for="fddbr_1input" class="">授信协议编号<span class="font_red">*</span>:</label>
+      </div>
+    </div>
+
+  </div>
+  <div id="button_div">
+    <button mdbBtn type="button" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+  </div>
+</div>

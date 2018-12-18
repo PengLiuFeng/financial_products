@@ -1,0 +1,243 @@
+<div class="row">
+  <div class="fyglpage">
+    <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
+      <div style="background-color:white;min-width:190px;padding: 1% 0 0% 0;margin: 1% 0 0 0%; float: left;">
+          <app-breadcrumbs [title]="title"></app-breadcrumbs>
+      </div>
+      <div style=" width:60%;margin: 2% 0 0 2%;float: left;">
+        <button mdbBtn type="button" color="primary" outline="true" style="float:right;" size="sm" (click)="gaibianpage('zichanfang')"
+          mdbWavesEffect>资产方</button>
+        <button mdbBtn type="button" color="primary" outline="true" style="float:right;" size="sm" (click)="gaibianpage('zijinfang')"
+          mdbWavesEffect>资金方</button>
+      </div>
+    </div>
+
+    <!--   以下是资产方的界面  -->
+    <div class="zichanfang" *ngIf="newpage=='zichanfang'">
+      <!-- 以下是搜索框内容 -->
+      <div class="fygl_body">
+        <div class="fygl_body_head">
+          <!-- <p-dropdown [options]="FinproNms" [style]="{'width':'200px'}"   name="FinproNm" [showClear]="true"></p-dropdown> -->
+
+          <mdb-select [options]="assCunms" [(ngModel)]="assCunm" style="width:25%;" placeholder="请选择" label="资产方"></mdb-select>
+
+          <button type="button" (click)="assCunm==null?nulltishi():newxinzengyewuxian('zichanfang');" style="float:right;"
+            size="sm" mdbBtn color="info" mdbWavesEffect>新增业务线</button>
+        </div>
+        <div class="fygl_body_table">
+          <span>查询列表信息</span>
+
+          <div class="px-4">
+            <table class="table table-hover table-responsive-md mb-0 table-bordered">
+              <thead class="lighten-2">
+                <tr>
+                  <th *ngFor="let head of zichanfang_table_head" scope="row">
+                    {{head}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let el of zichanfang_table_body; let i = index">
+                  <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                    <td scope="row">{{i+1}}</td>
+                    <td scope="row">{{el.assCunm}}</td>
+                    <td scope="row">{{el.busName}}</td>
+                    <td scope="row">{{el.finType}}</td>
+                    <td scope="row">{{el.busModle}}</td>
+                    <td scope="row">
+                      <a href="#">查看</a>
+
+                    </td>
+
+                    <td scope="row">{{el.feePatype}}</td>
+                    <td scope="row">{{el.user}}</td>
+
+                    <!-- <a routerLink="/finas/home/zhxx">
+                                          <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
+                                        </a>
+                                        
+                                        </td> -->
+                    <td scope="row">
+                      <button type="button" mdbBtn color="light" (click)="oldxinzengyewuxian('zichanfang');basicModal.show()"
+                        size="sm" mdbWavesEffect>修改</button>
+                      <button type="button" mdbBtn color="light" (click)="remove(id,'zichanfang')" size="sm"
+                        mdbWavesEffect>删除</button>
+
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-center">
+            <nav class="my-4 pt-2">
+              <ul class="pagination pagination-circle pg-purple mb-0">
+                <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link">首页</a>
+                </li>
+                <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                  class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                  <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+                </li>
+                <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link">尾页</a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block disabled">
+                  <span class="page-link">{{itemsPerPage}}条/页</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <!-- <app-right-win [(isShow)]="xzzhichanfang" [position]="''" style="height: 0px">
+              <div class="wins">
+                <button type="button" class="close" aria-label="Close" (click)="xzzhichanfang=false">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <app-xinzengyewuxian [data]="output"></app-xinzengyewuxian>
+                <app-htqs-index [top]="'100px'" [(isedit)]="isedit"></app-htqs-index>
+              </div>
+          </app-right-win> -->
+
+
+      <div mdbModal #basicModal="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">业务线</h4>
+            </div>
+            <div class="modal-body">
+              <app-xinzengyewuxian [data]="output"></app-xinzengyewuxian>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <!--   以下是资金方的界面  -->
+    <div class="zijinfang" *ngIf="newpage=='zijinfang'">
+      <!-- 以下是搜索框内容 -->
+      <div class="fygl_body">
+        <div class="fygl_body_head">
+          <!-- <p-dropdown [options]="FinproNms" [style]="{'width':'200px'}"   name="FinproNm" [(ngModel)]="FinproNm" [showClear]="true"></p-dropdown>{{FinproNm}} -->
+
+          <mdb-select [options]="FinproNms" style="width:25%;" placeholder="请选择" label="资金方"></mdb-select>
+
+          <!-- <button pButton type="button" label="新增业务线" (click)="newxinzengyewuxian('zijinfang');basicModal.show()" style="float:right;" class="ui-button-rounded ui-button-secondary"></button> -->
+          <button type="button" (click)="newxinzengyewuxian('zijinfang');basicModal.show()" style="float: right;" size="sm"
+            mdbBtn color="info" mdbWavesEffect>新增业务线</button>
+        </div>
+        <div class="fygl_body_table">
+          <span>查询列表信息</span>
+
+          <div class="px-4">
+            <table class="table table-hover table-responsive-md mb-0 table-bordered">
+              <thead class="lighten-2">
+                <tr>
+                  <th *ngFor="let head of zijinfang_table_head" scope="row">
+                    {{head}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let el of zijinfang_table_body; let i = index">
+                  <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                    <td scope="row">{{i+1}}</td>
+                    <td scope="row">{{el.pmCore}}</td>
+                    <td scope="row">{{el.busName}}</td>
+                    <td scope="row">
+                      <a href="">查看</a>
+                    </td>
+                    <td scope="row">{{el.feePatype}}</td>
+                    <td scope="row">
+
+                      <button type="button" mdbBtn color="light" (click)="oldxinzengyewuxian('zijinfang');basicModal.show()"
+                        size="sm" mdbWavesEffect>修改</button>
+                      <button type="button" mdbBtn color="light" (click)="remove(id,'zijinfang')" size="sm"
+                        mdbWavesEffect>删除</button>
+
+
+                      <!-- <button pButton type="button" label="修改" (click)="oldxinzengyewuxian('zijinfang');basicModal.show()" class="ui-button-rounded ui-button-info"></button>
+                                                <button pButton type="button" label="删除" (click)="remove(id,'zijinfang')"  class="ui-button-rounded ui-button-info"></button> -->
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-center">
+            <nav class="my-4 pt-2">
+              <ul class="pagination pagination-circle pg-purple mb-0">
+                <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link">首页</a>
+                </li>
+                <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                  class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                  <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+                </li>
+                <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link">尾页</a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block disabled">
+                  <span class="page-link">{{itemsPerPage}}条/页</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div mdbModal #basicModal="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                <span aria-hidden="true">×</span>
+              </button>
+              <h4 class="modal-title w-100" id="myModalLabel">业务线
+              </h4>
+            </div>
+            <div class="modal-body">
+              <app-xinzengyewuxian [data]="output"></app-xinzengyewuxian>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

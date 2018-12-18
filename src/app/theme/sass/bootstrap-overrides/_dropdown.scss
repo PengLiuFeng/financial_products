@@ -1,0 +1,12 @@
+.dropdown-item {
+  line-height: 1;
+}
+
+.dropdown-menu {
+  font-size: inherit;
+}
+.dropdown-item.active, .dropdown-item:active {
+  color: #fff;
+  text-decoration: none;
+  background-color: #4db1a7;
+}

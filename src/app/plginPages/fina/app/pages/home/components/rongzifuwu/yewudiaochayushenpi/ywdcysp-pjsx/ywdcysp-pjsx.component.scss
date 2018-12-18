@@ -1,0 +1,44 @@
+.title_div{
+    color: blue;
+    padding: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50px;
+    top: -12px;
+}
+.check_div{
+    margin-left: 4% !important;
+    display: inline-block;
+}
+.radio_left{
+    margin-left: 10%;
+}
+.body_div{
+    border: 1px solid #615a5a;
+    margin: 0 auto;
+    margin-top: 30px !important;
+    position: relative;
+    background-color: #ffffff;
+    width: 95%;
+    padding-bottom: 5%;
+}
+.font_red{
+    color: red;
+}
+#button_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+}
+#button_div{
+    width: 100%;
+    text-align: center;
+    background: #dedeff;
+}
+.bk_div{
+    margin-left: 0% !important;
+    width: 50%;
+    display:inline-block;
+}

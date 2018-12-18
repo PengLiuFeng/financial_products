@@ -1,0 +1,128 @@
+<app-znhygzgl-header [(radioModel)]="radioModel"></app-znhygzgl-header>
+<div id="dom_div">
+  <div id="head_div">
+    应收账款收取
+  </div>
+  <div id="body_div">
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">基本信息</strong></div>
+          <br><br>
+            <div>
+              <span>甲方:</span><input type="text" class="lang_input">
+            </div>
+            <br>
+            <div>
+              <span>乙方:</span><input type="text" class="lang_input">
+            </div>
+            <br>
+            <div>
+              <span>买方:</span><input type="text" class="lang_input">
+            </div>
+            <br>
+            <div>
+              <span>其他:</span><input type="text" class="lang_input">
+            </div>
+            <br><br>
+      </div>
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">应收账款到期还款</strong></div>
+          <div class="zi_div">  
+              <div>应收账款到期后，乙方有权直接从应收账款还款账户中扣划与指定收款金额等额的资金。</div>
+              <br>
+              <div>应收账款是否按期足额归不影响乙方直接从应收账款还款账户扣划上述款项的权利。</div>
+              <br>
+              <div>
+                <span>贷款到期日期:</span><input type="text" class="byte_input">
+                <span class="fh_span"><strong>=</strong></span>
+                <span>当前日期:</span><input type="text" class="byte_input">
+              </div>
+              <br>
+              <div>
+                <span>还款账户余额:</span><input type="text" class="byte_input">
+                <span class="fh_span"><strong>></strong></span>
+                <input type="text" class="byte_input" value="0.01">
+              </div>
+          </div>
+          
+      </div>
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">应收账款提前还款</strong></div>
+          <div class="zi_div">  
+              <div>买方提前全额或部分归还单笔应收账款的，乙方有权直接从应收账款还款账户中扣划与指定收款金额等额的资金。</div>
+              <br>
+              <div>
+                <span>贷款到期日期:</span><input type="text" class="byte_input">
+                <span class="fh_span"><strong>></strong></span>
+                <span>当前日期:</span><input type="text" class="byte_input">
+              </div>
+              <br>
+              <div>
+                <span>还款账户余额:</span><input type="text" class="byte_input">
+                <span class="fh_span"><strong>></strong></span>
+                <input type="text" class="byte_input" value="0.01">
+              </div>
+          </div>
+      </div>
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">应收账款剩余款项继续冲减和转付</strong></div>
+          <div class="zi_div">  
+              <div>有权扣划应收账款剩余款项以抵销冲减自甲方受让的其他应收账款项下的指定收款金额、应付未付利息及其他应付未付费用</div>
+              <br>
+              <div>如仍有剩余款项，应将剩余款项划入下述账户：</div>
+              <br>
+              <div class="margincz_div">
+                <span>户名:</span><input type="text" class="short_input">
+              </div>        
+              <div class="margincz_div">
+                <span>开户行:</span><input type="text" class="short_input">
+              </div>
+              <br><br>
+              <div class="margincz_div">
+                <span>账号:</span><input type="text" class="short_input">
+              </div>
+          </div>
+      </div>
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">应收账款偿付顺序</strong></div>
+          <div class="zi_div">  
+              <div>如果买方付款未指明偿付特定的应收账款，乙方有权自行确定该笔付款偿付何笔应收账款。</div>
+              <br><br><br><br><br>
+          </div>
+      </div>
+      <div class="body_div">
+          <div class="title_div"><strong class="title_b">登记信息</strong></div>
+         <div class="dj_zi_div">
+            <div>
+              <span>登记单位:</span><input type="text" class="int_input">
+            </div>
+            <br>
+            <div>
+              <span>登记人名称:</span><input type="text" class="int_input">
+            </div>
+            <br>
+            <div>
+                <span>登记时间:</span><mdb-date-picker class="int_input" name="endDate" [options]="myDatePickerOptions" [(ngModel)]="endDate" required></mdb-date-picker>
+              </div>
+         </div>
+         <div class="dj_zi_div">
+            <div>
+              <span>登记单位名称:</span><input type="text" class="int_input">
+            </div>
+            <br>
+            <div>
+              <span>修改人名称:</span><input type="text" class="int_input">
+            </div>
+            <br>
+            <div>
+              <span>修改时间:</span><mdb-date-picker  class="int_input" name="endDate1" [options]="myDatePickerOptions" [(ngModel)]="endDate" required></mdb-date-picker>
+            </div>
+          </div>
+      </div>
+    
+    
+  </div>
+  <div id="foot_div">
+      <button mdbBtn type="button" color="secondary" form="" class="waves-light" mdbWavesEffect>保存</button>
+      <button mdbBtn type="button" color="secondary" form="" class="waves-light" mdbWavesEffect>提交</button>
+  </div>
+</div>

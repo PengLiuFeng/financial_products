@@ -1,0 +1,100 @@
+.htxq{
+    & .jbxx{
+        padding: 0 50px;
+    }
+    & fieldset{
+        &.row-2{
+            & .fxw{
+                width: 522px;
+            }
+        }
+        .labname{
+            font-size: 14px;
+            line-height: 33.5px;
+        }
+        & .row3{
+            text-align: center;
+            & .fxw{
+
+            }
+        }
+        & .row-3{
+            display: inline-flex;
+            & .fxw{
+                width: 332px;
+            }
+        }
+        & .fxw{
+            & .left{
+                text-align: right;
+            }
+            & .fx1{
+                padding: 8px 5px;
+            }
+        }
+    }
+    fieldset{
+        position: relative;
+        padding: 0 0 20px;
+        margin-bottom:20px;
+        &::after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            border-bottom: 1px #ccc dashed;
+            bottom: 0;
+            left: 0;
+        }
+       & legend{
+            font-size: 18px;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+        }
+        &:last-child{
+        margin-bottom:0;
+        &::after{
+                display: none;
+            }
+        }
+    }
+}
+
+.md-form input[type=text] + label:after{
+    display: inline-block;
+}
+.zwfdf{
+    width: 20px;
+}
+input.rzbl{
+    width: 70px;
+    display: inline-block;
+    margin-top: 2px;
+}
+.rzxx{
+    padding: 0 20px;
+    overflow: hidden;
+}
+/deep/ .col-example {
+    background-color: #33b5e5;
+}
+/deep/.df-colss{
+    & .md-form{
+        margin-top: 0;
+        margin-bottom:0;
+    }
+}
+.col-sm.md-form label{
+    left: 15px;
+}
+.df-icon.fa{
+    font-size: 12px;
+    margin-right: 5px;
+    vertical-align: initial;
+}
+.fyxx /deep/ .table tbody tr td{
+    padding:10px 8px 5px;
+}
+/* .btn.btn-outline-danger:hover:not(:disabled){
+    color: #ccc;
+} */

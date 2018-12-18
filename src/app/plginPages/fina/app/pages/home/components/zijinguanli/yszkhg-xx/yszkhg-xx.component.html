@@ -1,0 +1,45 @@
+<!-- <div class="yszkhg-xx">
+    <div class="body">
+      <div class="right">
+        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >返回</button>
+      </div>
+    </div>
+</div> -->
+<div class="yszkhg-xx">
+  <div></div>
+  <div class="body">
+      <div class="md-form">
+        <div class="card">
+          <div class="card-body" >
+           <table class="margin"style="width:80%; text-align: center;">
+              <tr style="border-bottom-style: dotted; ">
+                  <td > 客户号：  20070801-091</td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <td>客户名称：  鸿雁轮胎原材料销售商</td>
+                </tr>
+                <br>
+                <tr style="border-bottom-style: dotted;">
+                  <td>合同编号：  BL2018100100001</td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <td>业务类型：  有追索公开型保理</td>
+                </tr>
+           </table>
+              <!-- <div style="height:1px; width:100%; border-bottom:1px dashed #999999;     width: 350%;" ></div> -->
+          </div>
+        </div>
+      </div>
+      <div style="border:2px solid #0066FF">
+        <button mdbBtn type="button" color="primary" rounded="true" class="waves-light" size="sm"  (click)="change1()" mdbWavesEffect>合同详情</button>
+        <button mdbBtn type="button" color="primary" rounded="true" class="waves-light" size="sm" (click)="change()" mdbWavesEffect>应收账款回购</button>
+        <span *ngIf="!isChildRouteLoaded"><app-yszkhg-tbale></app-yszkhg-tbale></span>
+      </div>
+
+  </div>
+</div>
+ <style>
+ .margin{
+  margin:auto;
+    }
+  .right{
+    float:right; 
+  }
+ </style>     
+

@@ -1,0 +1,29 @@
+<div  class="xzrzsqpage">
+
+    <div class="pagehead">
+        <div>
+            <span >融资申请</span>
+        </div>
+    </div>
+    <div class="pagebody">
+            <div class="row">
+                <div class="col-md-6" >
+                <mdb-select [options]="testarray.idType" name="idType" placeholder="请选择" label="证件类型"></mdb-select>
+                </div>
+            </div>
+            <div class="md-form">
+                <input mdbInputDirective type="text" [(ngModel)]="testarray.idNo" name="idNo" id="form2" class="form-control">
+                <label for="form2" class="">证件号码</label>  
+            </div>
+            <div class="md-form">
+                <input mdbInputDirective type="text" [(ngModel)]="testarray.cifNmae" name="cifNmae" id="form1" class="form-control">
+                <label for="form1" class="">客户名称</label>
+            </div>
+    </div>
+    <div class="pagefoot">
+        <a routerLink="/finas/home/rqsqxq">
+            <button mdbBtn type="button" (click)="tijiao()" color="primary" mdbWavesEffect>保存</button>
+        </a>
+            <button mdbBtn type="button" (click)="go_back()" color="primary" outline="true" mdbWavesEffect>取消</button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<div #container [ngClass]="{'ui-carousel ui-widget ui-widget-content ui-corner-all':true}"  class="row col-12 " >
+    <button (click)="onPrevNav()" class="col-lg-1  col-md-1 col-sm-1 col-1 change btn btn-primary btn-icon rightButton" [disabled]="(page === 0 && !circular)"
+            *ngIf="value&&value.length" ><i  class="fa fa-arrow-left"></i></button>
+  <div #viewport  class=" col-lg-10  col-md-10 col-sm-10 col-10 ui-carousel-viewport viewport" [ngClass]="'ui-tabmenu ui-widget ui-widget-content ui-corner-all'" [ngStyle]="style" [class]="styleClass">
+    <ul  #items class="ui-tabmenu-nav ui-carousel-items ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" [style.left.px]="left" [style.transitionProperty]="'left'"
+         [style.transitionDuration]="effectDuration" [style.transitionTimingFunction]="easing" role="tablist">
+      <li  *ngFor="let item of value"
+           [ngClass]="{'ui-tabmenuitem ui-state-default ui-corner-top':true}"
+           routerLinkActive="tabSelect"  >
+        <a  [routerLink]="item.path||'#'" class="ui-menuitem-link ui-corner-all">
+          <span class="ui-menuitem-text">{{item.name}}</span>
+        </a>
+
+      </li>
+    </ul>
+  </div>
+    <button (click)="onNextNav()" class="col-lg-1  col-md-1 col-sm-1 col-1  change btn btn-primary btn-icon leftButton" [disabled]="(page === (totalPages-1)) && !circular"
+            *ngIf="value&&value.length"><i  class="fa fa-arrow-right"></i></button>
+</div>

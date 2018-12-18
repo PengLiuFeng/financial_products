@@ -1,0 +1,81 @@
+.sqxq_body{
+    width: 96%;
+    min-width: 400px;
+    margin: 2% 2% 2% 2%;
+    overflow: auto;
+    background-color: white;
+    & .jibenjiaoyixinxi{
+        border: 1px solid black;
+        margin: 2% 2% 2% 2% ;
+        padding: 2% 2% 2% 2% ;
+        width: 96%;
+         
+       // min-width: 1000px;
+        & .col-md-6{
+            min-height: 80px;
+            float: left;
+        }
+    }
+    & .yingshouzhangkuanmingxi{
+        border: 1px solid black;
+        margin: 2% 2% 2% 2% ;
+        padding: 2% 2% 2% 2% ;
+        width: 96%;
+        overflow: auto;
+        //min-width: 1000px;
+        max-height: 300px;
+    }
+    & .rongzixinxi{
+        border: 1px solid black;
+        margin: 2% 2% 2% 2% ;
+        padding: 2% 2% 2% 2% ;
+        width: 96%;
+        min-height: 350px;
+        //min-width: 1000px;
+        & .md-form{
+            width: 40%;
+            float: left;
+            margin-left: 3%;
+        }
+        & .dateType{
+             
+            width: 4%;
+            height: 4%;
+            min-width: 80px;
+            min-height: 25px;
+            float: left;
+            border: black 1px solid;
+            background-color: rgb(235, 252, 252)
+        }
+    }
+    & .dengjixinxi{
+        border: 1px solid black;
+        margin: 2% 2% 2% 2% ;
+        padding: 2% 2% 2% 2% ;
+        width: 96%;
+        min-height: 250px;
+        //min-width: 1000px;
+        & .md-form{
+            width: 30%;
+            
+            float: left;
+            margin-left: 2%;
+            
+        }
+    }
+    & .buttonhero{
+        text-align: center;
+        & input{
+            margin-left: 5%;
+        }
+
+    }
+}
+#inputandselect{
+            width: 35%;
+            height: 20%;
+            min-width: 200px;
+            min-height: 60px;
+            float: left;
+            margin-left: 3%;
+}

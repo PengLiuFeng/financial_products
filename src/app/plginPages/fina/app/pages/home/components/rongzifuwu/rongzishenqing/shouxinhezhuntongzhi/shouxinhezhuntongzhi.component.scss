@@ -1,0 +1,27 @@
+.xzrzsqpage{
+    margin: 2% 2% 2% 2%;
+    padding: 2% 5% 2% 5%;
+    background-color: rgb(182, 197, 240);
+}
+.pagehead{
+    padding: 2% 2% 2% 2%;
+    background-color: rgb(217, 236, 247)
+    & span{
+        font-size: 20px;
+    }
+}
+.pagebody{
+    padding: 2%  10% 2% 10%;
+    background-color: white;
+}
+.pagefoot{
+    text-align: center ;
+    & button{
+        margin: 3%;
+    }
+}
+.short_input{
+    border: none;
+    outline: none;
+    border-bottom: 1px dashed rgb(196, 188, 188);
+}

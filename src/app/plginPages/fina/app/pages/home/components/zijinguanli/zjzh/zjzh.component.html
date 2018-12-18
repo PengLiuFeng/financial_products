@@ -1,0 +1,117 @@
+<div id="body_div">
+  <div id="head_div">
+      <app-breadcrumbs [title]="title"></app-breadcrumbs>
+  </div>
+
+  <div id="body_top_div">
+    <form action="">
+      <div id="top_zi_div">
+        <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="md-form">
+            <input mdbInputDirective name="cifName" type="text" id="fddbr_input" class="form-control">
+            <label for="fddbr_input" class="">客户名称:</label>
+          </div>
+        </div>
+
+        <div class="bk_div col-md-6 mx-auto mt-5">
+          <mdb-select name="idType" [(ngModel)]="idType" [options]="zjlx" placeholder="证件类型:"></mdb-select>
+        </div>
+
+        <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="md-form">
+            <input mdbInputDirective name="idNo" type="text" id="fddbr_input" class="form-control">
+            <label for="fddbr_input" class="">证件号码:</label>
+          </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <button mdbBtn type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
+          </div>
+      </div>
+    </form>
+  </div>
+
+  <div id="body_bottom_div">
+    <div id="bottom_title_div">
+      <h3><strong>账户信息列表</strong></h3>
+      <div id="head_right_div">
+        <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
+        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>删除</button>
+        <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>导入</button>
+      </div>
+    </div>
+    <table class="table table-hover table-responsive-md mb-0 table-bordered">
+      <thead class="lighten-2">
+
+        <tr>
+          <th scope="row"></th>
+          <th scope="row">
+            <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
+          </th>
+          <th scope="row" class="dc_td1">账号</th>
+          <th scope="row" class="dc_td2">户名</th>
+          <th scope="row" class="dc_td3">开户行</th>
+          <th scope="row" class="dc_td1">账户类型</th>
+          <th scope="row">账户状态</th>
+          <th scope="row">账户余额</th>
+          <th scope="row">合同编号</th>
+          <th scope="row" class="dc_td">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of tableData; let i = index">
+          <tr *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+            <td scope="row" class="index_td">{{i+1}}</td>
+            <td scope="row">
+              <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
+            </td>
+            <td scope="row">{{data.accTno}}</td>
+            <td scope="row">{{data.acctName}}</td>
+            <td scope="row">{{data.acctOpnbk}}</td>
+            <td scope="row">{{data.acctType}}</td>
+            <td scope="row">{{data.acctSta}}</td>
+            <td scope="row">{{data.acctBal}}</td>
+            <td scope="row">{{data.contNo}}</td>
+            <td scope="row">
+              <a routerLink="/finas/home/zhjymx">账户交易明细</a>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <div id="foot_div">
+    <div class="d-flex justify-content-center">
+      <nav class="my-4 pt-2 ">
+        <ul class="pagination pagination-circle pg-purple mb-0">
+          <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+            <a class="page-link">首页</a>
+          </li>
+          <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+            <a class="page-link" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+            class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+            <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+          </li>
+          <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+            <a class="page-link" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+          <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+            <a class="page-link">尾页</a>
+          </li>
+          <li class="page-item clearfix d-none d-md-block disabled">
+            <span class="page-link">{{itemsPerPage}}条/页</span>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+</div>

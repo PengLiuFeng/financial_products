@@ -1,0 +1,16 @@
+{
+  "port":"8080",
+  "auth":{
+    "url":"http://49.4.93.173:31009",
+    "rolename":"dapwebui",
+    "servicename":"dapwebui"
+  },
+
+  "baoli":"http://39.106.44.163:9090",
+  "apigetway":"http://61.153.188.154:5050",
+  "algorithm":"http://49.4.93.173:31056",
+  "cdc":"http://61.153.188.154:8083",
+  "discovery":"http://115.239.250.88:8889/discovery",
+  "aggregator":"http://115.239.250.88:8844",
+  "scheduling":"http://115.239.250.88:8811"
+}

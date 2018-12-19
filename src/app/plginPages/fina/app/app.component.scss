@@ -249,3 +249,13 @@
 /deep/.df-btn-border-none{
     border:none !important;
 }
+// MDB日期组件起止时间
+/deep/.picker-arr{
+    & .md-form{
+        margin-top:0;
+        margin-bottom:0;
+        & input{
+            height: auto !important;
+        }
+    }
+}

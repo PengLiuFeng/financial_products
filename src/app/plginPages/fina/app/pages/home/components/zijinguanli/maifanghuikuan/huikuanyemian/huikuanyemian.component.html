@@ -5,19 +5,19 @@
     </div>
     <div class="pagehead">
       <div class="md-form">
-        <input mdbInputDirective type="text" id="form1" name="cuName" [(ngModel)]="" [disabled]="true" class="form-control">
+        <input mdbInputDirective type="text" id="form1" name="cuName" [(ngModel)]="huikuandata.cuName" [disabled]="true" class="form-control">
         <label for="form1" class="">卖方名称</label>
       </div>
       <div class="md-form">
-        <input mdbInputDirective type="text" id="form1" name="busName" [(ngModel)]="" [disabled]="true" class="form-control">
+        <input mdbInputDirective type="text" id="form1" name="busName" [(ngModel)]="huikuandata.busName" [disabled]="true" class="form-control">
         <label for="form1" class="">买方名称</label>
       </div>
       <div class="md-form">
-        <input mdbInputDirective type="text" id="form1" name="busType" [(ngModel)]="" [disabled]="true" class="form-control">
+        <input mdbInputDirective type="text" id="form1" name="busType" [(ngModel)]="huikuandata.busType" [disabled]="true" class="form-control">
         <label for="form1" class="">业务类型</label>
       </div>
       <div class="md-form">
-        <input mdbInputDirective type="text" id="form1" name="contNo" [(ngModel)]="" [disabled]="true" class="form-control">
+        <input mdbInputDirective type="text" id="form1" name="contNo" [(ngModel)]="huikuandata.contNo" [disabled]="true" class="form-control">
         <label for="form1" class="">合同编号</label>
       </div>
     </div>
@@ -26,27 +26,27 @@
       <span style="position:relative;top:2rem;left:3rem;background-color: white">基本信息</span>
       <div class="jibenxinxi">
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="traInfNo" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="traInfNo" [(ngModel)]="huikuandata.jibenxinxi.traInfNo" [disabled]="true" class="form-control">
           <label for="form1" class="">转让通知书编号</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]="huikuandata.jibenxinxi.resAmt" [disabled]="true" class="form-control">
           <label for="form1" class="">指定应收账款总金额</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="opAcct" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="opAcct" [(ngModel)]="huikuandata.jibenxinxi.opAcct" [disabled]="true" class="form-control">
           <label for="form1" class="">买方付款账户</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="acctBal" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="acctBal" [(ngModel)]="huikuandata.jibenxinxi.acctBal" [disabled]="true" class="form-control">
           <label for="form1" class="">付款账户余额</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="acctname" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="acctname" [(ngModel)]="huikuandata.jibenxinxi.acctname" [disabled]="true" class="form-control">
           <label for="form1" class="">户名</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="acctOpnbk" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="acctOpnbk" [(ngModel)]="huikuandata.jibenxinxi.acctOpnbk" [disabled]="true" class="form-control">
           <label for="form1" class="">开户行</label>
         </div>
         <table mdbTable bordered="true">
@@ -72,7 +72,7 @@
           </tbody>
         </table>
         <div class="md-form" style="width:35%;">
-          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]="huikuandata.jibenxinxi.resAmt" [disabled]="true" class="form-control">
           <label for="form1" class="">本次回款总额</label>
         </div>
       </div>
@@ -110,27 +110,27 @@
       <span style="position:relative;top:2rem;left:3rem;background-color: white">回款信息</span>
       <div class="huikuanxinxi">
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="busRecei" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="busRecei" [(ngModel)]="huikuandata.huikuan.busRecei" [disabled]="true" class="form-control">
           <label for="form1" class="">应收账款金额合计：</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]=""  [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="resAmt" [(ngModel)]="huikuandata.huikuan.resAmt"  [disabled]="true" class="form-control">
           <label for="form1" class="">本次回款金额：</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="reAcct" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="reAcct" [(ngModel)]="huikuandata.huikuan.reAcct" [disabled]="true" class="form-control">
           <label for="form1" class="">回款存入指定账户：</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="reAcnm" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="reAcnm" [(ngModel)]="huikuandata.huikuan.reAcnm" [disabled]="true" class="form-control">
           <label for="form1" class="">指定账户名称：</label>
         </div>
         <div class="md-form">
-          <input mdbInputDirective type="text" id="form1" name="reAcbk" [(ngModel)]="" [disabled]="true" class="form-control">
+          <input mdbInputDirective type="text" id="form1" name="reAcbk" [(ngModel)]="huikuandata.huikuan.reAcbk" [disabled]="true" class="form-control">
           <label for="form1" class="">指定账户开户行：</label>
         </div>
         <!-- <div class="md-form" style="width:90%;"> -->
-          <textarea type="text" id="form7"  name="remarks" [(ngModel)]="" class="md-textarea form-control" mdbInputDirective></textarea>
+          <textarea type="text" id="form7"  name="remarks" [(ngModel)]="huikuandata.huikuan.remarks" class="md-textarea form-control" mdbInputDirective></textarea>
           <label for="form7">备注</label>
         <!-- </div> -->
       </div>

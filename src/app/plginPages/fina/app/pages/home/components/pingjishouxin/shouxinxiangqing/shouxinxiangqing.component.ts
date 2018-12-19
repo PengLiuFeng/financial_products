@@ -8,7 +8,7 @@ import { ParamsService } from './../../../../../params.service'
 })
 export class ShouxinxiangqingComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
-  @Input() Idisabled:boolean;
+  @Input() dataObject:any;
   isShow:boolean = false;
   CRE_RATIN=[
     {label:"评级信用等级",disabled:"disabled"},
@@ -36,9 +36,6 @@ export class ShouxinxiangqingComponent implements OnInit {
     {label:"预付类额度",value:"0"},
     {label:"存货类额度",value:"2"}
   ]
-//头部信息展示
-  cuNo:any=10000828;
-  cuName:any="对公客户0001";
 
   //文本框的model
     zhsx={

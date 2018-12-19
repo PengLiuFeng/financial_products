@@ -11,8 +11,13 @@ export class PingjishouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
 
-  Idisabled: boolean;
-  newInfoDemoBasic: any;
+  dataObject={
+    Idisabled:false,
+    controlIndicators:{
+      cuName:'',
+      cuNo:''
+    },
+  }
 
   FINPRO_NO = [
     { label: "授信金融产品", disabled: "disabled" }
@@ -196,5 +201,8 @@ export class PingjishouxinComponent implements OnInit {
       }
     }
   }
-
+  dataBinding(){
+    this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
+    this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
+  }
 }

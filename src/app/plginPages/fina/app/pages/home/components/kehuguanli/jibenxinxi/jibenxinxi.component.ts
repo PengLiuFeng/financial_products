@@ -1,96 +1,71 @@
-import { Component,Input, ViewChild,OnInit } from '@angular/core';
+import { Component,Input, ViewChild,OnInit, OnChanges } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { ParamsService } from './../../../../../params.service'
+import { Data } from '@agm/core/services/google-maps-types';
 @Component({
   selector: 'app-jibenxinxi',
   templateUrl: './jibenxinxi.component.html',
   styleUrls: ['./jibenxinxi.component.scss']
 })
-export class JibenxinxiComponent implements OnInit {
+export class JibenxinxiComponent implements OnInit,OnChanges{
   @Input() bo:boolean;
+  // @Input() inputdata:any;
+  @Input() cuNo:any;
   model: any;
   modell: any;
-  testarray: any;
+  testarray: any={
+    cuNo:'',
+    cuName: '',
+    engName:' ',
+    idType:'',    
+    country:'',
+    cifArea:'',
+    areaName:'',
+    wayNo:'',
+    watName:'',
+    license:'',
+    regAddr:'',
+    regType:'',
+    cuType:'',
+    holdType:'',
+    outGrade:'',
+    opName:'',
+    upOpName:'',
+    brNo:'',
+    brName:'',
+    setupDate:'',
+    licBegDate:'',
+    licEndDate:'',
+    licChkDate:'',
+    idChkDate:'',
+    outGradeEndDate:'',
+    txDate:'',
+    upDate:'',
+  }; 
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   
-  // sft:string;
-  // kh={
-  //   name:'',
-  //   hm:'',//证件号码
-  //   zjlx:{
-  //     vals:' ',
-  //     selects:[
-  //       { value: ' ', label: '证件类型',disabled:'1'},
-  //       { value: '1', label: '身份证' },
-  //       { value: '2', label: '护照' },
-  //     ]
-  //   }
-  // }
-  // Client= {
-  //     Client_name:'彭刘锋',       //客户名称
-  //     Client_id:'1902042',         //客户id
-  //     Client_fname:'mrpeng',      //外文名称
-  //     ClientCar_type:[          //证件类型
-  //       {value:'1', label:'身份证'},
-  //       {value:'2', label:'统一社会信用代码证'},
-  //     ],
-  //     ClientCountry:[
-  //         { value: '1',label:'中华人民共和国'},
-  //         { value:'2',label :'美利坚合众国'},
-  //     ],
-  //     Client_cifArea: 123845,
-  //     Client_areaName:'中国上海',
-  //     Client_industry:[
-  //         {value : '1', label:'互联网类'},
-  //         {value:'2',label:'金融类'},
-  //         {value:'3', label:'工业类'},
-  //     ],
-    
-  //     Client_district:[
-  //       {value:'1',label: 100012},
-  //       {value:'2',label: 100015},
-  //       {value:'3',label: 100016},
-  //       {value:'4',label: 100018},
-  //     ],
-  //     Client_license:'5DFA31Z',
-  //     Client_regAddr:'中国北京',
-  //     Client_regType:[
-  //       {value:'1',label:'国家机关'},
-  //       {value:'2',label:'事业单位'},
-  //       {value:'3',label:'三资企业'},
-  //       {value:'4',label:'股份制公司'},
-  //       {value:'5',label:'个体工商户'},
-  //       {value:'6',label:'民营企业'},
-  //     ],
-  //     Client_holdType:[
-  //       {value:'1',label:'外商绝对控股'},
-  //       {value:'2',label:'国有相对控股'},
-  //       {value:'3',label:'集体相对控股'},
-  //       {value:'4',label:'港澳台商相对控股'},
-  //       {value:'5',label:'私人绝对控股'},
-  //       {value:'6',label:'港澳台商绝对控股'},
-  //     ],
-  //     Client_licBegDate:'2014-3-8',
-  //     Client_licEndDate:'2019-3-8',
-  //     Client_licChkDate:'2016-3-8',
-  //     Client_idChkDate:'2016-3-8',
-  //     Client_outGrade:[
-  //       {value:'1',label:'A'},
-  //       {value:'2',label:'AA'},
-  //       {value:'3',label:'AAA'},
-  //       {value:'4',label:'AAAA'},
-  //       {value:'5',label:'AAAAA'},
-  //     ],
-
-  //     Client_outGradeEndDate:'2020-6-7',
-  //     Client_opName:'张三',
-  //     Client_upOpName:'李四' ,
-  //     Client_brNo: 5642314975 ,
-  //     Client_brName :'华软金科' ,
-  //     Client_txDate:'2016-3-8',
-  //     Client_upDate:'2016-2-14',
-  // }
-  
+ 
+  private pickeri=2;
+  private pickerdom=null;
+  private picker_m=null;
+  pickerFocus(e){
+    if((!this.picker_m)||this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+      this.picker_m=e.target.parentNode.parentNode;
+      this.pickeri++;
+      window['e']=e.target;
+      console.log(e)
+      this.pickerdom=e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index']=this.pickeri;
+    }else{
+      setTimeout(()=>{
+        if(this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+          this.picker_m=null;
+          this.pickerdom.style['z-index']=0;
+        }
+      },200)
+    }
+  }
   public myDatePickerOptions: IMyOptions = {
     dayLabels: {su: '日', mo: '一', tu: '二', we: '三', th: '四', fr: '五', sa: '六'},
     dayLabelsFull: {su: "周日", mo: "周一", tu: "周二", we: "周三", th: "周四", fr: "周五",
@@ -106,12 +81,69 @@ export class JibenxinxiComponent implements OnInit {
     showTodayBtn: true,
     showClearDateBtn: true
   };
-  constructor() { }
+  //定义请求对象
+  _http:any;
 
+  constructor(public param:ParamsService) {
+    this._http=param._http;
+    
+   }
+  allData:any;
+  //将时间戳转换为日期格式
+  trandate(data:any):Data{
+    var  newData=new Date(data)['Format']('yyyy-MM-dd')
+    return newData
+  }
+  //请求数据并将数据转换到testarray
+  requestData() {
+    this._http.get('/fina/custom/detail?cuNo='+this.cuNo,(e)=>{
+        this.allData=e.data.apb
+        this.testarray=this.allData; 
+        //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
+        for(var p in this.allData){
+        
+          if(p.search('Date')!=-1){
+            console.log(p)
+            this.testarray[p]=this.trandate(this.allData[p]);
+            console.log(this.testarray.p)
+          }
+          
+        }
+        console.log(this.testarray)
+    },()=>{
+      alert('请求失败')
+    })
+    
+  }
+  ngOnChanges(it:any){        //监视事件，it监视全局变量的改变
+    
+    if(!!this.cuNo){
+      this.requestData();
+    }
+    if(!!this.allData){
+      this.testarray=this.allData
+    }
+  }
+  //基本信息内的数据与testarray绑定
+  //下拉框的数据
+  idTypes:Array<any>
+  countrys:Array<any>
+  cifAreas:Array<any>
+  wayNos:Array<any>
+  regTypes:Array<any>
+  cuTypes:Array<any>
+  holdTypes:Array<any>
+  outGrades:Array<any>
   ngOnInit() {
+    // console.log(this.cuNo)
+    // if(this.cuNo==null&&this.cuNo==undefined){
+    //   this.cuNo=''
+    // }else if(!!this.cuNo){
+    //   this.requestData();
+    // }
     //console.log(this.bo);
     this.testarray={
-      cuId:'324251513',
+      cuNo:'324251513',
       cuName: '中国移动',
       engName:'china mobile',
       idTypes:[

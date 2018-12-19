@@ -7,27 +7,27 @@
       </div>
       <div class="company_client">
             <div class="md-form">
-                  <input mdbInputDirective type="text" id="form1" name="cuId" [disabled]="bo" [(ngModel)]="testarray.cuId"
+                  <input mdbInputDirective type="text" id="form1" name="cuNo" [disabled]="bo" [(ngModel)]="testarray.cuNo"
                         class="form-control">
                   <label for="form1" class="">客户号</label>
             </div>
             <!-- <div class="md-form">
                         <mdb-select [options]="testarray" [disabled]="bo" name="idType"  id="form2"  label="证件类型"></mdb-select><br/>
                   </div> -->
-            <div class="md-form">
+            <div class="md-form" >
 
                   <input mdbInputDirective type="text" [disabled]="bo" name="cuName" [(ngModel)]="testarray.cuName" id="form3"
                         class="form-control">
                   <label for="form3">客户名称 ： </label>
             </div>
 
-            <div class="md-form" style="padding-top:45px;">
+            <div class="md-form" >
                   <input mdbInputDirective type="text" [disabled]="bo" name="engName" [(ngModel)]="testarray.engName"
                         id="form4" class="form-control">
                   <label for="form4">英文名称 ： </label>
             </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="testarray.idTypes" [disabled]="bo" name="idType" [(ngModel)]="testarray.idType"
+            <div class="col-md-6" style="position:relative;top:-30px;">
+                  <mdb-select [options]="idTypes" [disabled]="bo" name="idType" [(ngModel)]="testarray.idType"
                         placeholder="请选择" label="证件类型"></mdb-select>
             </div>
 
@@ -45,26 +45,26 @@
                               </div> -->
             <div class="col-md-6">
 
-                  <mdb-select id="form5" name="country" [disabled]="bo" [(ngModel)]="testarray.country" [options]="testarray.countrys"
+                  <mdb-select id="form5" name="country" [disabled]="bo" [(ngModel)]="testarray.country" [options]="countrys"
                         placeholder="请选择" label="国别"></mdb-select>
             </div>
             <div class="col-md-6">
 
-                  <mdb-select id="form6" name="cifArea" [disabled]="bo" [(ngModel)]="testarray.cifArea" [options]="testarray.cifAreas"
+                  <mdb-select id="form6" name="cifArea" [disabled]="bo" [(ngModel)]="testarray.cifArea" [options]="cifAreas"
                         placeholder="请选择" label="行政区代码"></mdb-select><br />
             </div>
             <div class="col-md-6">
 
-                  <mdb-select id="form6" name="cuType" [disabled]="bo" [(ngModel)]="testarray.cuType" [options]="testarray.cuTypes"
+                  <mdb-select id="form6" name="cuType" [disabled]="bo" [(ngModel)]="testarray.cuType" [options]="cuTypes"
                         placeholder="请选择" label="客户类型"></mdb-select><br />
             </div>
             <div class="col-md-6">
 
-                  <mdb-select id="form8" name="wayNo" [disabled]="bo" [(ngModel)]="testarray.wayNo" placeholder="请选择"
+                  <mdb-select id="form8" name="wayNo" [disabled]="bo" [(ngModel)]="wayNo" placeholder="请选择"
                         [options]="testarray.wayNos" label="行业分类"></mdb-select><br />
             </div>
             <div class="md-form">
-                  <mdb-date-picker name="setupDate" id="form9" [disabled]="bo" [options]="myDatePickerOptions" label=" 成立时间"
+                  <mdb-date-picker name="setupDate" id="form9" (click)="pickerFocus($event);" [disabled]="bo" [options]="myDatePickerOptions" label=" 成立时间"
                         [(ngModel)]="testarray.setupDate" required></mdb-date-picker>
             </div>
             <div class="md-form" style="padding-top:30px;">
@@ -105,34 +105,34 @@
                                     <mdb-select  id="form12" name="holdType"  [disabled]="bo" [options]="testarray" placeholder=""  label="控股类型"></mdb-select><br/>
                               </div> -->
             <div class="col-md-6">
-                  <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="testarray.regType" [options]="testarray.regTypes"
+                  <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="testarray.regType" [options]="regTypes"
                         placeholder="请选择" label="营业执照登记注册类型"></mdb-select><br />
 
             </div>
             <div class="col-md-6">
-                  <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="testarray.holdType" [options]="testarray.holdTypes"
+                  <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="testarray.holdType" [options]="holdTypes"
                         placeholder="请选择" label="控股类型"></mdb-select><br />
 
             </div>
             <div class="md-form" style="width:20%;">
 
-                  <mdb-date-picker name="licBegDate" id="form13" [disabled]="bo" label=" 注册登记时间" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="licBegDate" id="form13" (click)="pickerFocus($event);" [disabled]="bo" label=" 注册登记时间" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.licBegDate" required></mdb-date-picker>
             </div>
             <div class="md-form" style="width:20%;">
 
-                  <mdb-date-picker name="licEndDate" id="form14" [disabled]="bo" label=" 到期时间" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="licEndDate" id="form14" (click)="pickerFocus($event);" [disabled]="bo" label=" 到期时间" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.licEndDate" required></mdb-date-picker>
             </div>
 
             <div class="md-form" style="width:20%;">
 
-                  <mdb-date-picker name="licChkDate" id="form16" label="营业执照年检时间" [disabled]="bo" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="licChkDate" id="form16" (click)="pickerFocus($event);" label="营业执照年检时间" [disabled]="bo" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.licChkDate" required></mdb-date-picker>
             </div>
             <div class="md-form" style="width:20%;">
 
-                  <mdb-date-picker name="idChkDate" id="form17" label=" 组织机构代码年检时间" [disabled]="bo" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="idChkDate" id="form17" (click)="pickerFocus($event);" label=" 组织机构代码年检时间" [disabled]="bo" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.idChkDate" required></mdb-date-picker>
             </div>
 
@@ -149,7 +149,7 @@
                         [options]="testarray.outGrades" label="外部信用等级"></mdb-select><br />
             </div>
             <div class="md-form" style="padding-top: 30px;">
-                  <mdb-date-picker name="outGradeEndDate" id="form19" [disabled]="bo" label="外部信用等级到期日期" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="outGradeEndDate" id="form19" (click)="pickerFocus($event);" [disabled]="bo" label="外部信用等级到期日期" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.outGradeEndDate" required></mdb-date-picker>
             </div>
 
@@ -188,12 +188,12 @@
             </div>
             <div class="md-form">
 
-                  <mdb-date-picker name="txDate" id="form24" [disabled]="bo" label="登记日期" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="txDate" id="form24" (click)="pickerFocus($event);" [disabled]="bo" label="登记日期" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.txDate" required></mdb-date-picker>
             </div>
             <div class="md-form">
 
-                  <mdb-date-picker name="upDate" id="form25" [disabled]="bo" label="修改日期" [options]="myDatePickerOptions"
+                  <mdb-date-picker name="upDate" id="form25" (click)="pickerFocus($event);" [disabled]="bo" label="修改日期" [options]="myDatePickerOptions"
                         [(ngModel)]="testarray.upDate" required></mdb-date-picker>
             </div>
 

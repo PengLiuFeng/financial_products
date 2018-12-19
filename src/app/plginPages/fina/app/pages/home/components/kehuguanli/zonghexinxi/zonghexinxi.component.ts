@@ -11,6 +11,9 @@ import { LianxixinxiComponent } from './../../kehuguanli/lianxixinxi/lianxixinxi
 })
 export class ZonghexinxiComponent implements OnInit {
   @Input() id:any ;
+  @Input() inputdata:any;
+  // cuNo:any=this.inputdata.cuNo;
+ // cuNo:any=111;
   apps:any='jbxx';
   model: any;
   modell: any;
@@ -27,6 +30,14 @@ export class ZonghexinxiComponent implements OnInit {
   constructor( private location:Location) { }
 
   ngOnInit() {
+    if(this.inputdata==null&&this.inputdata==undefined){
+      this.inputdata={
+        cuNo:'',
+        cuName:'',
+        idType:'',
+        idNo:''
+      }
+    }
   }
   goback():void{
     this.location.back();

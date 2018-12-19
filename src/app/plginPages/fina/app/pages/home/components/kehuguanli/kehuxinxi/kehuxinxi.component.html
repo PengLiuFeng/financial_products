@@ -76,7 +76,7 @@
                       <td scope="row">{{data.createTime}}</td>
                       <td scope="row">{{data.opName}}</td>
                       <td scope="row">
-                        <button type="button" (click)="demoBasicShow()" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
+                        <button type="button" (click)="transmit(i);demoBasicShow()" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
                       </td>
                   </tr>
                 </ng-container>
@@ -149,7 +149,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div">
-        <app-zonghexinxi></app-zonghexinxi>
+        <app-zonghexinxi [inputdata]="inputdata" ></app-zonghexinxi>
       </div>
     </div>
   </div>

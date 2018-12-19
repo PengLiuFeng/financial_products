@@ -17,6 +17,10 @@
     min-height: 220px;
     border: 1px solid black;
     margin: 2% 2% 2% 2%;
+    // & /deep/ mdb-select > div > div.single{
+    //     position: relative;
+    //     top: -30px;
+    // }
    
 }
 // 以上是公司客户信息的css样式
@@ -99,3 +103,4 @@
     float: left;
     margin: 2% 2% 2% 2% ;
 }
+

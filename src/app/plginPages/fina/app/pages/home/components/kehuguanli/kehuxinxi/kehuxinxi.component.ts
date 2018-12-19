@@ -27,6 +27,7 @@ kh={
     ]
   }
 }
+inputdata:any;           //传入到综合信息界面的数据
 oncz(e):void{
   console.log(e);
   this.kh.zjlx.vals=" ";
@@ -158,6 +159,7 @@ requestTableData(){
     this.isAjax=false;
    this.tableData=e.data.pb.list
     console.log(e)
+     console.log(this.tableData);
     this.theTotalNumberOfEntries = e.data.pb.totalRecord;
   //  console.log("表数据",this.tableData)
     if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
@@ -174,6 +176,9 @@ requestTableData(){
    this.isAjax=false;
  
    })
+ }
+ transmit(id:number){
+      this.inputdata=this.tableData[id];
  }
  ngOnInit() {
   this.requestTableData();

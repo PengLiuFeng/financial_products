@@ -53,22 +53,22 @@
                     <div style="text-align:center">
                         <div class="md-form">
                             
-                            <input mdbInputDirective type="text" name="cifNo" [(ngModel)]="Client.Client_no" id="form1" class="form-control"  [disabled]="true">
+                            <input mdbInputDirective type="text" name="cuNo" [(ngModel)]="inputdata.cuNo" id="form1" class="form-control"  [disabled]="true">
                             <label for="form1">客户号 ： </label>
                         </div>
                         <div class="md-form">
                             
-                            <input mdbInputDirective type="text" name="cifName" [(ngModel)]="Client.Client_name" id="form2" class="form-control"  [disabled]="true">
+                            <input mdbInputDirective type="text" name="cuName" [(ngModel)]="inputdata.cuName" id="form2" class="form-control"  [disabled]="true">
                             <label for="form2">客户名称 ： </label>
                         </div>
                         <div class="md-form">
                                 
-                            <input mdbInputDirective type="text" name="idType" [(ngModel)]="Client.Id_type" id="form3" class="form-control"  [disabled]="true">
+                            <input mdbInputDirective type="text" name="idType" [(ngModel)]="inputdata.idType" id="form3" class="form-control"  [disabled]="true">
                             <label for="form3">证件类型 ： </label>
                         </div>
                         <div class="md-form">
                                 
-                            <input mdbInputDirective type="text" name="idNo" [(ngModel)]="Client.Id_no" id="form4" class="form-control" [disabled]="true">
+                            <input mdbInputDirective type="text" name="idNo" [(ngModel)]="inputdata.idNo" id="form4" class="form-control" [disabled]="true">
                             <label for="form4">证件号码 ： </label>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                 <!-- 右下侧的页面设计 -->
                     <div class="down_zonghexinxi">
                             
-                            <app-jibenxinxi [bo]="bo" *ngIf="apps=='jbxx'"></app-jibenxinxi>
+                            <app-jibenxinxi [bo]="bo" [cuNo]="inputdata.cuNo" *ngIf="apps=='jbxx'"></app-jibenxinxi>
                             <app-lianxixinxi *ngIf="apps=='lxxx'"></app-lianxixinxi>
                             <app-gaikuangxinxi *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
                             

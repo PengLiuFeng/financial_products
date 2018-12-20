@@ -102,7 +102,16 @@ export class PingjishouxinComponent implements OnInit {
         // e.forEach(i => {
         //   console.log(i)
         // });
-        console.log(e.data[0])
+        let it=null;
+        for(let i=0;i<e.data.length;i++){
+          it=e.data[i];
+          if(it.myid=='FINPRO_NO'){
+            this.FINPRO_NO=it.data;
+          }else if(it.myid=='AUTH_SPLIT_TYPE'){
+            
+          }
+        }
+        console.log(e.data[0].data[0])
       },()=>{
      this.isAjax=false;
      })

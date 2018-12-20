@@ -107,6 +107,13 @@ module.exports = function attachHandlers(router) {
                     body: {"fieldName":""+id}
                 };
                 request(options, function(error, response, data){
+                    data['myid']=id;
+                    let it=null;
+                    for(let i=0;i<data.data.length;i++){
+                        it=data.data[i];
+                        data.data[i]['label']=it.keyName;
+                        data.data[i]['value']=it.keyValue;
+                    }
                     arr2.push(data);
                     responses=response;
                     xlk(back,arr,arr2,responses,error);

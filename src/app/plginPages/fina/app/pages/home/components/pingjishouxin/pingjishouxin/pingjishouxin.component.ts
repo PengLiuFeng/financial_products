@@ -18,15 +18,8 @@ export class PingjishouxinComponent implements OnInit {
       cuNo:''
     },
   }
-
-  FINPRO_NO = [
-    { label: "授信金融产品", disabled: "disabled" }
-  ]
-  AUTH_SPLI_TYPE = [
-    { label: "分项授信类型", disabled: "disabled" }
-  ]
-  isShow: boolean;
-  isShow_add: boolean;
+  FINPRO_NO = []
+  AUTH_SPLI_TYPE = []
 
 /*当前页面位置 */
   title = [
@@ -45,8 +38,8 @@ export class PingjishouxinComponent implements OnInit {
     authSplitType:"",
 
     //日期的model
-    begDateBeg:null,
-    begDateEnd:null
+    begDate:"",
+    endDate:""
   }
 
 
@@ -69,6 +62,55 @@ export class PingjishouxinComponent implements OnInit {
   constructor(public params:ParamsService) {
     this._http=params._http;
    }
+   reSetModel(){
+    this.pjsx = {
+      //文本框的model
+      cuName:"",
+      authId:"",
+      authAppNo:"",
+      cuNo:"",
+      //下拉菜单的model
+      
+      finproNo:"",
+      authSplitType:"",
+  
+      //日期的model
+      begDate:"",
+      endDate:""
+    }
+   }
+   queryTableDataWithConditions(){
+    this.isAjax=true;
+    var path = '/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+
+    '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+'&authId='+this.pjsx.authId+
+    '&authAppNo='+this.pjsx.authAppNo+'&finproNo='+this.pjsx.finproNo+
+    '&authSplitType='+this.pjsx.authSplitType;
+    
+    if(!!this.pjsx.endDate){
+      path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
+    }
+    if(this.pjsx.begDate){
+      path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
+    }
+
+    this._http.get(path,(e)=>{
+      this.isAjax=false;
+     this.tableData=e.data.pb.list
+      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
+      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
+      } else {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
+      }
+      this.paginators=[];
+      for (let i = 1; i <= this.numberOfPaginators; i++) {
+        this.paginators.push(i);
+      }
+      this.isAjax=false;
+     },()=>{
+       this.isAjax=false;
+     })
+   }
    requestTableData(){
     this.isAjax=true;
     this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage,(e)=>{
@@ -86,35 +128,34 @@ export class PingjishouxinComponent implements OnInit {
       for (let i = 1; i <= this.numberOfPaginators; i++) {
         this.paginators.push(i);
       }
-      
+      this.reSetModel();
+      this.isAjax=false;
      },()=>{
      this.isAjax=false;
    
      })
    }
-
-  ngOnInit() {/* 初始化动态赋值与显示 */
-    this.requestTableData();
-
+   reqDdListData(){
     this.isAjax=true;
       this._http.get('/fina/dict/dictListList?ids=FINPRO_NO,AUTH_SPLIT_TYPE',(e)=>{
-        console.log(e);
-        // e.forEach(i => {
-        //   console.log(i)
-        // });
         let it=null;
         for(let i=0;i<e.data.length;i++){
           it=e.data[i];
           if(it.myid=='FINPRO_NO'){
             this.FINPRO_NO=it.data;
           }else if(it.myid=='AUTH_SPLIT_TYPE'){
-            
+            this.AUTH_SPLI_TYPE=it.data;
           }
         }
-        console.log(e.data[0].data[0])
+        this.isAjax=false;
       },()=>{
      this.isAjax=false;
      })
+   }
+  ngOnInit() {/* 初始化动态赋值与显示 */
+    this.requestTableData();
+    this.reqDdListData();
+    
   }
   dateFormat(e):string{
     if(!e){
@@ -213,7 +254,18 @@ export class PingjishouxinComponent implements OnInit {
       }
     }
   }
-  dataBinding(){
+  sxxqAllDate:any;
+  submitAllData(item){
+    this.isAjax=true;
+    this._http.get('/fina/grade/detail?authId='+item,(e)=>{
+      this.sxxqAllDate = e;
+      this.isAjax=false;
+    },()=>{
+   this.isAjax=false;
+   })
+  }
+
+  dataBinding(item){
     this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
     this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
   }

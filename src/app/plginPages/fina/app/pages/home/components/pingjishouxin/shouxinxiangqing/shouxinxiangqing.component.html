@@ -81,7 +81,7 @@
                 <div class="bk_div">
                     <div class="check_div">额度是否冻结<span class="font_red">*</span></div>
                     <div class="radio_left custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts==2" type="radio" class="custom-control-input" id="EDSYFS3" value="true"
+                        <input disabled="disabled" [checked]="zhsx.authSts=='冻结'" type="radio" class="custom-control-input" id="EDSYFS3" value="true"
                             [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS3">是</label>
                     </div>
@@ -157,7 +157,7 @@
             <div class="form_div">
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="djxx.brNo" [(ngModel)]="djxx.brNo" type="text"
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.brNo" [(ngModel)]="zhsx.brNo" type="text"
                             id="djdw_input" class="form-control">
                         <label for="djdw_input" class="">登记单位:</label>
                     </div>
@@ -165,7 +165,7 @@
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="djxx.brName" name="djxx.brName" type="text"
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.brName" name="zhsx.brName" type="text"
                             id="djdwmc_input" class="form-control">
                         <label for="djdwmc_input" class="">登记单位名称:</label>
                     </div>
@@ -173,26 +173,26 @@
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="djxx.opName" name="djxx.opName" type="text"
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.opName" name="zhsx.opName" type="text"
                             id="djrmc_input" class="form-control">
                         <label for="djrmc_input" class="">登记人名称:</label>
                     </div>
                 </div>
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="djxx.upOpName" [(ngModel)]="djxx.upOpName"
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.upOpName" [(ngModel)]="zhsx.upOpName"
                             type="text" id="xgrmc_input" class="form-control">
                         <label for="xgrmc_input" class="">修改人名称:</label>
                     </div>
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="djxx.djsj" [options]="myDatePickerOptions" label="登记时间"
-                        [(ngModel)]="djxx.txDate" required></mdb-date-picker>
+                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.djsj" [options]="myDatePickerOptions" label="登记时间"
+                        [(ngModel)]="zhsx.txDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="djxx.xgsj" [options]="myDatePickerOptions" label="修改时间"
-                        [(ngModel)]="djxx.upDate" required></mdb-date-picker>
+                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.xgsj" [options]="myDatePickerOptions" label="修改时间"
+                        [(ngModel)]="zhsx.upDate" required></mdb-date-picker>
                 </div>
 
                 <br><br>
@@ -215,8 +215,9 @@
         
 
         <div id="button_div">
-            <button mdbBtn type="button" [disabled]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
-            <button mdbBtn type="button" [disabled]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>提交</button>
+            <button mdbBtn type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
+            <button mdbBtn type="button" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
+            <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
     </form>
 </div>

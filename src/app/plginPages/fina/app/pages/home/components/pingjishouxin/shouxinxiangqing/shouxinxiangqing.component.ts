@@ -9,33 +9,12 @@ import { ParamsService } from './../../../../../params.service'
 export class ShouxinxiangqingComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() dataObject:any;
+  @Input() sxxqAllDate:any;
   isShow:boolean = false;
-  CRE_RATIN=[
-    {label:"评级信用等级",disabled:"disabled"},
-    {label:"AAA",value:"aaa"},
-    {label:"SSS",value:"sss"}
-  ]
-  AUTH_STS=[
-    {label:"综合授信状态",disabled:"disabled"},
-    {label:"未使用",value:"0"},
-    {label:"已使用",value:"1"},
-    {label:"冻结",value:"2"},
-    {label:"解冻",value:"3"},
-    {label:"作废",value:"4"},
-    {label:"终止",value:"9"}
-  ]
-  FINPRO_NO=[
-    {label:"金融服务产品",disabled:"disabled"},
-    {label:"保理",value:"0"},
-    {label:"代采",value:"1"},
-    {label:"小额信用贷款",value:"1"}
-  ]
-  AUTH_SPLIT_TYPT=[
-    {label:"授信额度类型",disabled:"disabled"},
-    {label:"应收类额度",value:"1"},
-    {label:"预付类额度",value:"0"},
-    {label:"存货类额度",value:"2"}
-  ]
+  CRE_RATIN=[]
+  AUTH_STS=[]
+  FINPRO_NO=[ ]
+  AUTH_SPLIT_TYPT=[]
 
   //文本框的model
     zhsx={
@@ -48,7 +27,13 @@ export class ShouxinxiangqingComponent implements OnInit {
       begDate:'',//综合授信额度起始日期
       endDate:'',//综合授信额度终止日期
       recycle:false,
-      edsfdj:false//额度是否冻结(暂时使用)
+      edsfdj:false,//额度是否冻结(暂时使用)
+      brNo:'',
+      brName:'', 
+      opName:'', 
+      upOpName:'',
+      txDate:'',//登记时间
+      upDate:''//修改时间
     }
     flywsx={
       authSplitTypt:'',
@@ -59,31 +44,65 @@ export class ShouxinxiangqingComponent implements OnInit {
       endDate:'',//分项授信终止日期
       authAppNo:'',
     }
-  
-    djxx={
-      brNo:'',
-      brName:'', 
-      opName:'', 
-      upOpName:'',
-      txDate:'',//登记时间
-      upDate:''//修改时间
-    }
-     
-      
-     
-     
-  
-  
-  
 
   zhu:string = "注 ：额度核准编号 + 金融产品号 + 分项授信额度类型 + 细分流水号";;//注释内容
   public show_fenlei:string;
-  constructor(public params:ParamsService) { }
+  constructor(public params:ParamsService) {
+    this._http=params._http;
+   }
 
+  _http:any;
+  isAjax=false;
+  reqDdListData(){
+    this.isAjax=true;
+      this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT',(e)=>{
+        let it=null;
+        for(let i=0;i<e.data.length;i++){
+          it=e.data[i];
+          if(it.myid=='CRE_RATIN'){
+            this.CRE_RATIN=it.data;
+          }else if(it.myid=='AUTH_STS'){
+            this.AUTH_STS=it.data;
+          }else if(it.myid=='FINPRO_NO'){
+            this.FINPRO_NO=it.data;
+          }else if(it.myid=='AUTH_SPLIT_TYPT'){
+            this.AUTH_SPLIT_TYPT=it.data;
+          }
+        }
+        this.isAjax=false;
+      },()=>{
+     this.isAjax=false;
+     })
+   }
+   submitAllData(){
+     let zhsx=JSON.parse(JSON.stringify(this.zhsx))
+     let flywsx=JSON.parse(JSON.stringify(this.flywsx))
+     let parjson={};
+     zhsx.begDate = new Date(this.zhsx.begDate).getTime().toString();
+     zhsx.endDate = new Date(this.zhsx.endDate).getTime().toString();
+     flywsx.begDate = new Date(this.zhsx.begDate).getTime().toString();
+     flywsx.endDate = new Date(this.zhsx.endDate).getTime().toString();
+     zhsx.upDate = new Date(this.zhsx.upDate).getTime().toString();
+     zhsx.txDate = new Date(this.zhsx.txDate).getTime().toString();
+     parjson['mBody']=zhsx;
+     parjson['isClassify']=this.show_fenlei=='0'?'否':'是';
+     parjson['cData']=flywsx;
+     console.log(parjson)
+    var item = "";
+    this.isAjax=true; 
+        this._http.post('/fina/grade/idvalidate',parjson,(e)=>{
+          item = e.data.t;
+    console.log(e)
+          this.isAjax=false;
+        },()=>{
+          this.isAjax=false;
+     })
+   }
   public myDatePickerOptions: IMyOptions = this.params.mdb_es;
 
 
   ngOnInit() {
+    this.reqDdListData();
   }
 
 }

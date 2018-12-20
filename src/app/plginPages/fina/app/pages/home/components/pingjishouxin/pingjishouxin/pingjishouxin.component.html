@@ -3,7 +3,6 @@
     <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
   <div id="body_top_div">
-      <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
       <div id="top_zi_div">
         <div class="bk_div">
           <div class="bk_div col-md-6 mx-auto mt-3">
@@ -47,14 +46,16 @@
           <div class="md-form-df">
             <div class="ui-inputgroup picker-arr">
               <div class="er_input">
-                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateBeg" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDateBeg"
+                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDate" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDate"
                   class="form-control" required></mdb-date-picker>
               </div>
               <span style="margin-top:10px;">至</span>
               <div class="er_input">
-                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateEnd" label="授信截止日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateEnd"
+                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate"
                   class="form-control" required></mdb-date-picker>
               </div>
+              <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
+              <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" (click)="requestTableData()" mdbWavesEffect>重置</button>
             </div>
           </div>
         </div>
@@ -110,9 +111,9 @@
             <td scope="row">{{data.resycle}}</td>
             <td scope="row">{{data.termMon}}</td>
             <td scope="row">{{dateFormat(data.begDate)}}</td>
-            <td scope="row">{{data.endDate}}</td>
+            <td scope="row">{{dateFormat(data.endDate)}}</td>
             <td scope="row">
-              <a (click)="dataObject.Idisabled=true;dataBinding(); demoBasic.show()">授信详情</a>
+              <a href="javaScript:;" (click)="dataObject.Idisabled=true;dataBinding(data.authId); demoBasic.show()">授信详情</a>
             </td>
           </tr>
         </ng-container>
@@ -177,7 +178,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-       <app-shouxinxiangqing [(dataObject)]="dataObject"></app-shouxinxiangqing>
+       <app-shouxinxiangqing [(dataObject)]="dataObject" [sxxqAllDate] = "sxxqAllDate"></app-shouxinxiangqing>
       </div>
     </div>
   </div>

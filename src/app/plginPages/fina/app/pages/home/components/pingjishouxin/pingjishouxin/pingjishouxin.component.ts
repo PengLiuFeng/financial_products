@@ -45,8 +45,8 @@ export class PingjishouxinComponent implements OnInit {
     authSplitType:"",
 
     //日期的model
-    begDateBeg:"",
-    begDateEnd:""
+    begDateBeg:null,
+    begDateEnd:null
   }
 
 

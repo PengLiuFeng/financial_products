@@ -23,7 +23,9 @@ export class HomeComponent implements OnInit  {
   ngOnChanges(){
   }
   treeData:Array<any>=[];
-  constructor(private routers: Router,private activer:ActivatedRoute,private _http:BaHttpInterceptorService,private params:ParamsService) {
+  _http:BaHttpInterceptorService;
+  constructor(private routers: Router,private activer:ActivatedRoute,private params:ParamsService) {
+    this._http=params._http;
     let sc=function(){
       document.getElementsByClassName('al-sidebar')[0].setAttribute('class','al-sidebar al-sidebar-fina');
       document.getElementsByClassName('al-main')[0].setAttribute('class','al-main fina-main-max');

@@ -95,6 +95,12 @@ input.rzbl{
 .fyxx /deep/ .table tbody tr td{
     padding:10px 8px 5px;
 }
+/deep/.md-form mdb-date-picker label{
+    top: 20px;
+}
+/deep/.md-form  mdb-date-picker label.active{
+    transform: translateY(-140%);
+}
 /* .btn.btn-outline-danger:hover:not(:disabled){
     color: #ccc;
 } */

@@ -3,19 +3,16 @@
     <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
   <div id="body_top_div">
-    <br>
       <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
-    <form action="">
       <div id="top_zi_div">
         <div class="bk_div">
-
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <div class="md-form">
               <input mdbInputDirective [(ngModel)]="pjsx.cuNo" name="pjsx.cuNo" type="text" id="fddbr_1input" class="form-control">
               <label for="fddbr_1input" class="">客户号:</label>
             </div>
           </div>
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <div class="md-form">
               <input mdbInputDirective [(ngModel)]="pjsx.cuName" name="pjsx.cuName" type="text" id="fddbr_input" class="form-control">
               <label for="fddbr_input" class="">客户名称:</label>
@@ -23,13 +20,13 @@
           </div>
         </div>
         <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <div class="md-form">
               <input mdbInputDirective [(ngModel)]="pjsx.authId" name="pjsx.authId" type="text" id="fddbr_input" class="form-control">
               <label for="fddbr_input" class="">授信核准编号:</label>
             </div>
           </div>
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <div class="md-form">
               <input mdbInputDirective [(ngModel)]="pjsx.authAppNo" name="pjsx.authAppNo" type="text" id="fddbr_input" class="form-control">
               <label for="fddbr_input" class="">授信协议编号:</label>
@@ -37,10 +34,10 @@
           </div>
         </div>
         <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <mdb-select [options]="FINPRO_NO" [(ngModel)]="pjsx.finproNo" placeholder="授信金融产品:" name="pjsx.finproNo"></mdb-select>
           </div>
-          <div class="bk_div col-md-6 mx-auto mt-5">
+          <div class="bk_div col-md-6 mx-auto mt-3">
             <mdb-select name="pjsx.authSplitType" [options]="AUTH_SPLI_TYPE" [(ngModel)]="pjsx.authSplitType" placeholder="分项授信类型:"></mdb-select>
           </div>
         </div>
@@ -48,31 +45,24 @@
         <!---->
         <div class="bk_div">
           <div class="md-form-df">
-            <div class="ui-inputgroup">
-              <span class="i-h">授信起始日期:</span>
-
+            <div class="ui-inputgroup picker-arr">
               <div class="er_input">
-                <div class="md-form">
-                  <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateBeg" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateBeg"
-                    class="form-control" required></mdb-date-picker>
-                </div>
+                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateBeg" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDateBeg"
+                  class="form-control" required></mdb-date-picker>
               </div>
-              <span class="ui-inputgroup-addon" class="i-h">至</span>
+              <span style="margin-top:10px;">至</span>
               <div class="er_input">
-                <div class="md-form">
-                  <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateEnd" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateEnd"
-                    class="form-control" required></mdb-date-picker>
-                </div>
+                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDateEnd" label="授信截止日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.begDateEnd"
+                  class="form-control" required></mdb-date-picker>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </form>
   </div>
   <div id="body_bottom_div">
     <div id="bottom_title_div">
-      <h3><strong>应收账款信息查询结果</strong></h3>
+      <h3><strong>评级授信查询结果</strong></h3>
       <div id="head_right_div">
         <button mdbBtn (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
         <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>

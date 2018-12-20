@@ -97,11 +97,14 @@ export class PingjishouxinComponent implements OnInit {
     this.requestTableData();
 
     this.isAjax=true;
-      this._http.get('/fina/dict/dictList?fieldName=AUTH_SPLI_TYPE',(e)=>{
+      this._http.get('/fina/dict/dictListList?ids=FINPRO_NO,AUTH_SPLIT_TYPE',(e)=>{
         console.log(e);
+        // e.forEach(i => {
+        //   console.log(i)
+        // });
+        console.log(e.data[0])
       },()=>{
      this.isAjax=false;
-   
      })
   }
   dateFormat(e):string{

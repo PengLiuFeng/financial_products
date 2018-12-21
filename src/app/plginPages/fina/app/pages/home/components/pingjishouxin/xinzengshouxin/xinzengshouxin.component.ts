@@ -11,9 +11,7 @@ export class XinzengshouxinComponent implements OnInit {
 
   @Input() newInfoDemoBasic:ModalDirective;
   @Input() newDemoBasic:ModalDirective;
-  @Input() randoms:any;
   @Input() controlIndicators:any;
-  @Output() randomsChange = new EventEmitter();
   @Output() controlIndicatorsChange = new EventEmitter();
  
   ID_TYPE = []
@@ -60,7 +58,7 @@ export class XinzengshouxinComponent implements OnInit {
             console.log(e.data)
             this.xzsx.cuName = e.data.data.cuName;
             this.cuNo = e.data.data.cuNo;
-            this.dataRes(this.randoms);
+            this.dataRes();
           }else{
             alert("校验失败")
           }
@@ -74,10 +72,9 @@ export class XinzengshouxinComponent implements OnInit {
     this.reqDdListData();
   }
   public myDatePickerOptions: IMyOptions = {};
-  dataRes(randoms){
+  dataRes(){
     this.controlIndicators.cuName = this.xzsx.cuName
     this.controlIndicators.cuNo = this.cuNo
-    randoms=Math.random();
     this.newInfoDemoBasic.show()
   }
 }

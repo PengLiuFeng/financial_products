@@ -6,19 +6,11 @@ import { ParamsService } from './../../../../../params.service'
   templateUrl: './shouxinxiangqing.component.html',
   styleUrls: ['./shouxinxiangqing.component.scss']
 })
-export class ShouxinxiangqingComponent implements OnInit/*,OnChanges */{
+export class ShouxinxiangqingComponent implements OnInit{
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() dataObject:any;
   @Input() sxxqAllDate:any;
-  @Input() randoms:any;
-  @Output() randomsChange = new EventEmitter();
   @Output() dataObjectChange = new EventEmitter();
-  // ngOnChanges(e:any){
-  //   alert(2)
-  //   console.log(e)
-  //   this.zhsx.cuNo=this.dataObject['controlIndicators'].cuNo;
-  //   this.zhsx.cuName=this.dataObject['controlIndicators'].cuName;
-  // }
   isShow:boolean = false;
   CRE_RATIN=[]
   AUTH_STS=[]
@@ -86,6 +78,8 @@ export class ShouxinxiangqingComponent implements OnInit/*,OnChanges */{
      })
    }
    submitAllData(){
+    this.zhsx.cuNo=this.dataObject['controlIndicators'].cuNo;
+    this.zhsx.cuName=this.dataObject['controlIndicators'].cuName;
      let zhsx=JSON.parse(JSON.stringify(this.zhsx))
      let flywsx=JSON.parse(JSON.stringify(this.flywsx))
      let parjson={};

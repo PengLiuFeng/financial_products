@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component,Output, OnInit, ViewChild, Input,OnChanges,EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, turnState } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../params.service'
 @Component({
@@ -6,18 +6,21 @@ import { ParamsService } from './../../../../../params.service'
   templateUrl: './shouxinxiangqing.component.html',
   styleUrls: ['./shouxinxiangqing.component.scss']
 })
-export class ShouxinxiangqingComponent implements OnInit {
+export class ShouxinxiangqingComponent implements OnInit{
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() dataObject:any;
   @Input() sxxqAllDate:any;
+  @Output() dataObjectChange = new EventEmitter();
   isShow:boolean = false;
   CRE_RATIN=[]
   AUTH_STS=[]
-  FINPRO_NO=[ ]
+  FINPRO_NO=[]
   AUTH_SPLIT_TYPT=[]
 
   //文本框的model
     zhsx={
+      cuNo:'',
+      cuName:'',
       authId:'',
       creRatin:'',
       authAmt:'',
@@ -31,12 +34,12 @@ export class ShouxinxiangqingComponent implements OnInit {
       brNo:'',
       brName:'', 
       opName:'', 
-      upOpName:'',
+      opNo:'',
       txDate:'',//登记时间
       upDate:''//修改时间
     }
     flywsx={
-      authSplitTypt:'',
+      authSplitType:'',
       finproNo:'',
       authBal:'',
       authAmt:'',
@@ -75,22 +78,24 @@ export class ShouxinxiangqingComponent implements OnInit {
      })
    }
    submitAllData(){
+    this.zhsx.cuNo=this.dataObject['controlIndicators'].cuNo;
+    this.zhsx.cuName=this.dataObject['controlIndicators'].cuName;
      let zhsx=JSON.parse(JSON.stringify(this.zhsx))
      let flywsx=JSON.parse(JSON.stringify(this.flywsx))
      let parjson={};
-     zhsx.begDate = new Date(this.zhsx.begDate).getTime().toString();
-     zhsx.endDate = new Date(this.zhsx.endDate).getTime().toString();
-     flywsx.begDate = new Date(this.zhsx.begDate).getTime().toString();
-     flywsx.endDate = new Date(this.zhsx.endDate).getTime().toString();
-     zhsx.upDate = new Date(this.zhsx.upDate).getTime().toString();
-     zhsx.txDate = new Date(this.zhsx.txDate).getTime().toString();
+     zhsx.begDate = new Date(this.zhsx.begDate).getTime();
+     zhsx.endDate = new Date(this.zhsx.endDate).getTime();
+     flywsx.begDate = new Date(this.zhsx.begDate).getTime();
+     flywsx.endDate = new Date(this.zhsx.endDate).getTime();
+     zhsx.upDate = new Date(this.zhsx.upDate).getTime();
+     zhsx.txDate = new Date(this.zhsx.txDate).getTime();
      parjson['mBody']=zhsx;
-     parjson['isClassify']=this.show_fenlei=='0'?'否':'是';
+     parjson['isClassify']=this.show_fenlei=='1'?'是':'否';
      parjson['cData']=flywsx;
      console.log(parjson)
     var item = "";
     this.isAjax=true; 
-        this._http.post('/fina/grade/idvalidate',parjson,(e)=>{
+        this._http.post('/fina/grade/detailInsert',parjson,(e)=>{
           item = e.data.t;
     console.log(e)
           this.isAjax=false;

@@ -19,10 +19,11 @@ export class XinzengshouxinComponent implements OnInit {
     this._http=params._http;
    }
   xzsx={
-  idType:"",
-  idNo:"",
+  idType:"333",
+  idNo:"444",
   cuName:""
   }
+  cuNo=''
   reSetModel(){
     this.xzsx={
       idType:"",
@@ -52,8 +53,14 @@ export class XinzengshouxinComponent implements OnInit {
     this.isAjax=true;
         this._http.post('/fina/grade/idvalidate',this.xzsx,(e)=>{
           item = e.data.t;
-          if(!item){
+          if(item){
+            console.log(e)
+            console.log(e.data)
+            this.xzsx.cuName = e.data.data.cuName;
+            this.cuNo = e.data.data.cuNo;
             this.dataRes();
+          }else{
+            alert("校验失败")
           }
           this.isAjax=false;
         },()=>{
@@ -66,8 +73,8 @@ export class XinzengshouxinComponent implements OnInit {
   }
   public myDatePickerOptions: IMyOptions = {};
   dataRes(){
-    this.controlIndicators.cuName=this.xzsx.cuName
-    this.controlIndicators.cuNo = this.xzsx.cuName
+    this.controlIndicators.cuName = this.xzsx.cuName
+    this.controlIndicators.cuNo = this.cuNo
     this.newInfoDemoBasic.show()
   }
 }

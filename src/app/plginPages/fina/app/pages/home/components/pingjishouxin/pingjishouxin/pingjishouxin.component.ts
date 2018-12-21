@@ -14,7 +14,9 @@ export class PingjishouxinComponent implements OnInit {
     Idisabled:false,
     controlIndicators:{
       cuName:'',
-      cuNo:''
+      cuNo:'',
+      authId:'',
+      authAppNo:''
     },
   }
   FINPRO_NO = []

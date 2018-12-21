@@ -59,6 +59,23 @@ module.exports = function attachHandlers(router) {
             }
             request(options, callback);
         });
+    /**
+     * 新增用户接口
+     */
+    router.post('/fina/custom/cardInsert' ,
+    function(req, res) {
+        let options =
+            {
+                url: url_baoli+'/custom/cardInsert',
+                method: 'POST',
+                json:true,
+                body: req.body
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+            request(options, callback);
+    });
     //下拉框列表
     router.post('/fina/dict/dictList',
         function(req, res) {

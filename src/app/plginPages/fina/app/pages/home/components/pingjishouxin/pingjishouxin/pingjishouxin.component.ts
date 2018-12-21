@@ -10,7 +10,7 @@ import { ParamsService } from './../../../../../params.service'
 export class PingjishouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
-
+  randoms:any;//this.randoms=Math.random();
   dataObject={
     Idisabled:false,
     controlIndicators:{
@@ -155,7 +155,6 @@ export class PingjishouxinComponent implements OnInit {
   ngOnInit() {/* 初始化动态赋值与显示 */
     this.requestTableData();
     this.reqDdListData();
-    
   }
   dateFormat(e):string{
     if(!e){

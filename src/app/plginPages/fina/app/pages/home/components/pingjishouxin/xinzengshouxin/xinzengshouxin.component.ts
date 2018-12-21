@@ -11,7 +11,9 @@ export class XinzengshouxinComponent implements OnInit {
 
   @Input() newInfoDemoBasic:ModalDirective;
   @Input() newDemoBasic:ModalDirective;
+  @Input() randoms:any;
   @Input() controlIndicators:any;
+  @Output() randomsChange = new EventEmitter();
   @Output() controlIndicatorsChange = new EventEmitter();
  
   ID_TYPE = []
@@ -19,10 +21,11 @@ export class XinzengshouxinComponent implements OnInit {
     this._http=params._http;
    }
   xzsx={
-  idType:"",
-  idNo:"",
+  idType:"333",
+  idNo:"444",
   cuName:""
   }
+  cuNo=''
   reSetModel(){
     this.xzsx={
       idType:"",
@@ -52,8 +55,14 @@ export class XinzengshouxinComponent implements OnInit {
     this.isAjax=true;
         this._http.post('/fina/grade/idvalidate',this.xzsx,(e)=>{
           item = e.data.t;
-          if(!item){
-            this.dataRes();
+          if(item){
+            console.log(e)
+            console.log(e.data)
+            this.xzsx.cuName = e.data.data.cuName;
+            this.cuNo = e.data.data.cuNo;
+            this.dataRes(this.randoms);
+          }else{
+            alert("校验失败")
           }
           this.isAjax=false;
         },()=>{
@@ -65,9 +74,10 @@ export class XinzengshouxinComponent implements OnInit {
     this.reqDdListData();
   }
   public myDatePickerOptions: IMyOptions = {};
-  dataRes(){
-    this.controlIndicators.cuName=this.xzsx.cuName
-    this.controlIndicators.cuNo = this.xzsx.cuName
+  dataRes(randoms){
+    this.controlIndicators.cuName = this.xzsx.cuName
+    this.controlIndicators.cuNo = this.cuNo
+    randoms=Math.random();
     this.newInfoDemoBasic.show()
   }
 }

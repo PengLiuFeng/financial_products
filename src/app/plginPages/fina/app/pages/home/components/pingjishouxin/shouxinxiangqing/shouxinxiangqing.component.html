@@ -20,8 +20,8 @@
             <div class="form_div">
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.authId" name="zhsx.authId" type="text"
-                            id="edhzbh_input" class="form-control">
+                        <input disabled="disabled" mdbInputDirective [(ngModel)]="zhsx.authId" name="zhsx.authId" type="text"
+                            id="edhzbh_input" class="form-control" value="{{dataObject.controlIndicators.authId}}">
                         <label for="edhzbh_input" class="">额度核准编号<span class="font_red">*</span>:</label>
                     </div>
                 </div>
@@ -45,13 +45,30 @@
                         <label for="zhsxye_input" class="">综合授信余额<span class="font_red">*</span>:</label>
                     </div>
                 </div>
-                <div class="bk_div col-md-6 mx-auto mt-5">
+                <!-- <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.termMon" name="zhsx.termMon" type="text"
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.term" name="zhsx.termMon" type="text"
                             id="qxy_input" class="form-control">
                         <label for="qxy_input" class="">期限月<span class="font_red">*</span>:</label>
                     </div>
-                </div>
+                </div> -->
+                <div class="input-group bk_div">
+                    <div id="qx_input" class="md-form">
+                      <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.term" name="zhsx.term" type="text" id="fddbr_1input" class="form-control">
+                      <label for="fddbr_1input" class="">期限<span class="font_red">*</span></label>
+                    </div>
+                    <div id="inlineb_div" class="input-group-append">
+                      <div class="btn-group" mdbDropdown>
+                        <button id="qx_btn" mdbDropdownToggle type="button" mdbBtn color="default" size="md" class="z-depth-0" mdbWavesEffect>{{button_text}}</button>
+                        <!-- <div class="dropdown-menu">
+                          <span class="dropdown-item " href="javascript:;" *ngFor="let item of TERM_TYPE; let i=index" (click)="qx_show(i)">
+                            {{item.label}}
+                          </span>
+                        </div> -->
+                      </div>
+                    </div>
+                  </div>
+
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_STS" [(ngModel)]="zhsx.authSts" name="zhsx.authSts"
                         placeholder="请选择" label="综合授信状态*:"></mdb-select>
@@ -86,7 +103,7 @@
                         <label class="custom-control-label" for="EDSYFS3">是</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts!=2" type="radio" class="custom-control-input" id="EDSYFS4" value="false"
+                        <input disabled="disabled" [checked]="zhsx.authSts!='冻结'" type="radio" class="custom-control-input" id="EDSYFS4" value="false"
                             [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS4">否</label>
                     </div>
@@ -97,7 +114,7 @@
         <div class="chang_div" id="sfflsx_div">
             <div class="check_div"><strong>是否分类授信</strong></div>
             <div class="radio_left custom-control custom-radio custom-control-inline">
-                <input [disabled]="dataObject.Idisabled" [checked]="dataObject.Idisabled" type="radio" [(ngModel)]="show_fenlei" value="1" class="custom-control-input"
+                <input [disabled]="dataObject.Idisabled" type="radio" [(ngModel)]="show_fenlei" value="1" class="custom-control-input"
                     id="EDSYFS5" name="EDSYFS" mdbInputDirective>
                 <label class="custom-control-label" for="EDSYFS5">是</label>
             </div>
@@ -107,7 +124,7 @@
                 <label class="custom-control-label" for="EDSYFS6">否</label>
             </div>
         </div>
-        <div class="body_div" *ngIf="show_fenlei=='1'||dataObject.Idisabled">
+        <div class="body_div" [hidden]="show_fenlei!='1'" >
             <div class="title_div"><strong class="title_b">分类业务授信</strong></div>
             <div class="form_div">
                 <div class="bk_div col-md-6 mx-auto mt-5">
@@ -122,14 +139,14 @@
             </div>
             <div class="bk_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.authAmt" [(ngModel)]="flywsx.authAmt" type="text"
+                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthAmt" [(ngModel)]="flywsx.sauthAmt" type="text"
                         id="fxzed_input" class="form-control">
                     <label for="fxzed_input" class="">分项子额度<span class="font_red">*</span>:</label>
                 </div>
             </div>
             <div class="bk_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.authBal" [(ngModel)]="flywsx.authBal" type="text"
+                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthBal" [(ngModel)]="flywsx.sauthBal" type="text"
                         id="fxzedye_input" class="form-control">
                     <label for="fxzedye_input" class="">分项子额度余额<span class="font_red">*</span>:</label>
                 </div>
@@ -144,8 +161,8 @@
             </div>
             <div id="sxxybh_div" class="chang_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="flywsx.authAppNo" name="flywsx.authAppNo"
-                        type="text" id="sxxybh_input" class="form-control">
+                    <input disabled="disabled" mdbInputDirective [(ngModel)]="flywsx.authAppNo" name="flywsx.authAppNo"
+                        type="text" id="sxxybh_input" class="form-control" value="{{dataObject.controlIndicators.authAppNo}}">
                     <label for="sxxybh_input" class="">授信申请编号<span class="font_red">*</span>:</label>
                 </div>
             </div>
@@ -187,11 +204,11 @@
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.djsj" [options]="myDatePickerOptions" label="登记时间"
+                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.txDate" [options]="myDatePickerOptions" label="登记时间"
                         [(ngModel)]="zhsx.txDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.xgsj" [options]="myDatePickerOptions" label="修改时间"
+                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.upDate" [options]="myDatePickerOptions" label="修改时间"
                         [(ngModel)]="zhsx.upDate" required></mdb-date-picker>
                 </div>
 

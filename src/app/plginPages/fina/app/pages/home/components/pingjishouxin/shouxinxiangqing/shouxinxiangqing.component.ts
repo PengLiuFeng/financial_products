@@ -6,58 +6,54 @@ import { ParamsService } from './../../../../../params.service'
   templateUrl: './shouxinxiangqing.component.html',
   styleUrls: ['./shouxinxiangqing.component.scss']
 })
-export class ShouxinxiangqingComponent implements OnInit,OnChanges {
+export class ShouxinxiangqingComponent implements OnInit{
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() dataObject:any;
   @Input() sxxqAllDate:any;
-  @Input() randoms:any;
-  @Output() randomsChange = new EventEmitter();
   @Output() dataObjectChange = new EventEmitter();
-  ngOnChanges(e:any){
-    alert(2)
-    console.log(e)
-    this.zhsx.cuNo=this.dataObject['controlIndicators'].cuNo;
-    this.zhsx.cuName=this.dataObject['controlIndicators'].cuName;
-  }
   isShow:boolean = false;
+
+  button_text='月'
   CRE_RATIN=[]
   AUTH_STS=[]
   FINPRO_NO=[]
   AUTH_SPLIT_TYPT=[]
+  TERM_TYPE=[]
 
   //文本框的model
     zhsx={
-      cuNo:'',
-      cuName:'',
       authId:'',
       creRatin:'',
       authAmt:'',
       authBal:'',
       termMon:'',
+      termType:'',
       authSts:'',
-      begDate:'',//综合授信额度起始日期
-      endDate:'',//综合授信额度终止日期
-      recycle:false,
-      edsfdj:false,//额度是否冻结(暂时使用)
-      brNo:'',
-      brName:'', 
-      opName:'', 
+      begDate:'',
+      endDate:'',
+      recycle:'',
+      brName:'',
+      opName:'',
       opNo:'',
-      txDate:'',//登记时间
-      upDate:''//修改时间
+      txDate:'',
+      upDate:'',
+
+      cuNo:'',
+      cuName:'',
+      edsfdj:false,
     }
     flywsx={
-      authSplitType:'',
       finproNo:'',
-      authBal:'',
-      authAmt:'',
-      begDate:'',//分项授信起始日期
-      endDate:'',//分项授信终止日期
+      authSplitType:'',
+      sauthAmt:'',
+      sauthBal:'',
+      begDate:'',
+      endDate:'',
       authAppNo:'',
     }
 
   zhu:string = "注 ：额度核准编号 + 金融产品号 + 分项授信额度类型 + 细分流水号";;//注释内容
-  public show_fenlei:string;
+  public show_fenlei:string='1';
   constructor(public params:ParamsService) {
     this._http=params._http;
    }
@@ -66,7 +62,7 @@ export class ShouxinxiangqingComponent implements OnInit,OnChanges {
   isAjax=false;
   reqDdListData(){
     this.isAjax=true;
-      this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT',(e)=>{
+      this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT,TERM_TYPE',(e)=>{
         let it=null;
         for(let i=0;i<e.data.length;i++){
           it=e.data[i];
@@ -78,6 +74,8 @@ export class ShouxinxiangqingComponent implements OnInit,OnChanges {
             this.FINPRO_NO=it.data;
           }else if(it.myid=='AUTH_SPLIT_TYPT'){
             this.AUTH_SPLIT_TYPT=it.data;
+          }else if(it.myid=='TERM_TYPE'){
+            this.TERM_TYPE = it.data;
           }
         }
         this.isAjax=false;
@@ -86,13 +84,24 @@ export class ShouxinxiangqingComponent implements OnInit,OnChanges {
      })
    }
    submitAllData(){
+      for(var i = 0; i<this.TERM_TYPE.length;i++ ){
+        if(this.TERM_TYPE[i].label=="月"){
+          this.zhsx.termType = this.TERM_TYPE[i].value;
+          break;
+        }
+      }
+  // this.zhsx.termType = this.TERM_TYPE.value;
+    this.zhsx.cuNo=this.dataObject['controlIndicators'].cuNo;
+    this.zhsx.cuName=this.dataObject['controlIndicators'].cuName;
+    this.zhsx.authId=this.dataObject['controlIndicators'].authId;
+    this.flywsx.authAppNo=this.dataObject['controlIndicators'].authAppNo;
      let zhsx=JSON.parse(JSON.stringify(this.zhsx))
      let flywsx=JSON.parse(JSON.stringify(this.flywsx))
      let parjson={};
      zhsx.begDate = new Date(this.zhsx.begDate).getTime();
      zhsx.endDate = new Date(this.zhsx.endDate).getTime();
-     flywsx.begDate = new Date(this.zhsx.begDate).getTime();
-     flywsx.endDate = new Date(this.zhsx.endDate).getTime();
+     flywsx.begDate = new Date(this.flywsx.begDate).getTime();
+     flywsx.endDate = new Date(this.flywsx.endDate).getTime();
      zhsx.upDate = new Date(this.zhsx.upDate).getTime();
      zhsx.txDate = new Date(this.zhsx.txDate).getTime();
      parjson['mBody']=zhsx;

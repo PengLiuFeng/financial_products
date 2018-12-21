@@ -10,12 +10,13 @@ import { ParamsService } from './../../../../../params.service'
 export class PingjishouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
-  randoms:any;//this.randoms=Math.random();
   dataObject={
     Idisabled:false,
     controlIndicators:{
       cuName:'',
-      cuNo:''
+      cuNo:'',
+      authId:'',
+      authAppNo:''
     },
   }
   FINPRO_NO = []

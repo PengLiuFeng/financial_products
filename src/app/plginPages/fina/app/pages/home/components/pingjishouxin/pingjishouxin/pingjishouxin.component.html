@@ -103,13 +103,13 @@
             </td>
             <td scope="row">{{data.cuNo}}</td>
             <td scope="row">{{data.cuName}}</td>
-            <td scope="row">{{data.maxhAmt}}</td>
+            <td scope="row">{{data.authAmt}}</td>
             <td scope="row">{{data.finproNo}}</td>
             <td scope="row">{{data.authSplitType}}</td>
-            <td scope="row">{{data.authAmt}}</td>
-            <td scope="row">{{data.authBal}}</td>
-            <td scope="row">{{data.resycle}}</td>
-            <td scope="row">{{data.termMon}}</td>
+            <td scope="row">{{data.sauthAmt}}</td>
+            <td scope="row">{{data.sauthBal}}</td>
+            <td scope="row">{{data.recycle}}</td>
+            <td scope="row">{{data.termType}}</td>
             <td scope="row">{{dateFormat(data.begDate)}}</td>
             <td scope="row">{{dateFormat(data.endDate)}}</td>
             <td scope="row">
@@ -164,12 +164,12 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [(randoms)]="randoms" [(controlIndicators)]="dataObject.controlIndicators" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
+      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [(controlIndicators)]="dataObject.controlIndicators" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
     </div>
   </div>
 </div>
 
-<!-- 授信详情查看页面 [(randoms)]="randoms"-->
+<!-- 授信详情查看页面-->
 <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="wins" role="document">
@@ -178,7 +178,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-       <app-shouxinxiangqing [(dataObject)]="dataObject" [sxxqAllDate] = "sxxqAllDate"></app-shouxinxiangqing>
+       <app-shouxinxiangqing [(dataObject)]="dataObject" [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
       </div>
     </div>
   </div>

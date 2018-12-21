@@ -39,7 +39,7 @@
       <h4 id="title_h4">客户信息表</h4>
       <div id="but_div" style="flex:1;text-align: right;padding: 3px 30px;">
           
-          <button type="button" (click)="newDemoBasicShow();" class="btn btn-outline-primary waves-effect btn-sm">新增</button>
+          <button type="button" (click)="newdemoBasic.show();" class="btn btn-outline-primary waves-effect btn-sm">新增</button>
           <button type="button" class="btn btn-outline-primary waves-effect btn-sm">修改</button>
           <button type="button" (click)="del()" class="btn btn-outline-primary waves-effect btn-sm">删除</button>
       </div>
@@ -118,28 +118,19 @@
   </div>
 </div>
 
-<div mdbModal #newDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+<div mdbModal #newdemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="wins" role="document">
     <div class="modal-content">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="newdemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <app-add-user></app-add-user>
+      <div id="mtk_div" class="wins-body">
+        <app-add-user  (cuNoChange)="testdataHandler($event)" [lastPage]="demoBasic" [nowPage]="newdemoBasic"></app-add-user>
+      </div>
     </div>
   </div>
 </div>
-<!-- 
-<app-right-win [(isShow)]="isShow" [position]="''" style="height: 0px">
-  <div class="wins">
-    <button type="button" class="close" aria-label="Close" (click)="isShow=false">
-        <span aria-hidden="true">×</span>
-    </button>
-    <div class="win-app">
-     
-    </div>
-  </div>
-</app-right-win> -->
 
 <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
@@ -149,7 +140,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-        <app-zonghexinxi [inputdata]="inputdata" ></app-zonghexinxi>
+        <app-zonghexinxi [cuNo]="cuNo" ></app-zonghexinxi>
       </div>
     </div>
   </div>

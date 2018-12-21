@@ -108,9 +108,8 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
       t.label = t.keyName
     })
   }
-  //请求数据并将数据转换到testarray
-  isajax = false;
-  requestData() {
+  //请求下拉框的数据
+  requestselectData(){
     this.isajax = true;
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE,COUNTRY,REG_TYPE,CU_TYPE,HOLD_TYPE,OUT_GRADE', (e) => {
       var newdata = e.data
@@ -147,17 +146,24 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     }, () => {
       this.isajax = false;
     })
+  }
+  //请求数据并将数据转换到testarray
+  isajax = false;
+  requestData() {
+    this.isajax=true
     this._http.get('/fina/custom/detail?cuNo=' + this.cuNo, (e) => {
-      this.allData = e.data.apb
-      this.testarray = this.allData;
-      //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
-      for (var p in this.allData) {
-
-        if (p.search('Date') != -1) {
-          this.testarray[p] = this.trandate(this.allData[p]);
+      if(e!=null&&e!=undefined){
+        this.allData = e.data.apb
+        this.testarray = this.allData;
+        //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
+        for (var p in this.allData) {
+  
+          if (p.search('Date') != -1) {
+            this.testarray[p] = this.trandate(this.allData[p]);
+          }
         }
-
       }
+     
       console.log(this.testarray)
     }, () => {
       this.isajax = false;
@@ -185,7 +191,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   holdTypes: Array<any>
   outGrades: Array<any>
   ngOnInit() {
-    
+    this.requestselectData();
   }
  
   go_reset() { }

@@ -67,18 +67,17 @@ export class KehuxinxiComponent implements OnInit {
    * 点击页码
    */
   changePage(event: any) {
-    this.requestTableData();
     if (event.target.text >= 1 && event.target.text <= this.numberOfPaginators) {
       this.activePage = +event.target.text;
       this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
       this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+      this.requestTableData();
     }
   }
   /**
      * 下一页
      */
   nextPage() {
-    this.requestTableData();
     if (this.pages.last.nativeElement.classList.contains('active')) {
       if ((this.numberOfPaginators - this.numberOfVisiblePaginators) >= this.lastVisiblePaginator) {
         this.firstVisiblePaginator += this.numberOfVisiblePaginators;
@@ -88,16 +87,15 @@ export class KehuxinxiComponent implements OnInit {
         this.lastVisiblePaginator = this.numberOfPaginators;
       }
     }
-
     this.activePage += 1;
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+    this.requestTableData();
   }
   /**
      * 上一页
      */
   previousPage() {
-    this.requestTableData();
     if (this.pages.first.nativeElement.classList.contains('active')) {
       if ((this.lastVisiblePaginator - this.firstVisiblePaginator) === this.numberOfVisiblePaginators) {
         this.firstVisiblePaginator -= this.numberOfVisiblePaginators;
@@ -107,18 +105,18 @@ export class KehuxinxiComponent implements OnInit {
         this.lastVisiblePaginator -= (this.numberOfPaginators % this.numberOfVisiblePaginators);
       }
     }
-
     this.activePage -= 1;
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+    this.requestTableData();
   }
 
   /**
      * 点击首页
      */
   firstPage() {
-    this.requestTableData();
     this.activePage = 1;
+    this.requestTableData();
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
     this.firstVisiblePaginator = 0;
@@ -128,10 +126,10 @@ export class KehuxinxiComponent implements OnInit {
      * 点击尾页
      */
   lastPage() {
-    this.requestTableData();
     this.activePage = this.numberOfPaginators;
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+    this.requestTableData();
 
     if (this.numberOfPaginators % this.numberOfVisiblePaginators === 0) {
       this.firstVisiblePaginator = this.numberOfPaginators - this.numberOfVisiblePaginators;

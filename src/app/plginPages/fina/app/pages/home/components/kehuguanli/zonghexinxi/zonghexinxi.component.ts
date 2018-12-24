@@ -38,6 +38,7 @@ constructor( private location:Location,private param:ParamsService) {
             // this.inputdata.cuName=e.data.apb.cuName
             // this.inputdata.cuNo=e.data.apb.cuNo
             this.inputdata=e.data.apb
+            console.log(this.inputdata)
       },()=>{
         this.isajax=false
       }
@@ -50,7 +51,6 @@ constructor( private location:Location,private param:ParamsService) {
       }
   }
   ngOnInit() {
-    console.log(this.cuNo+'111')
       if(this.cuNo==null||this.cuNo==undefined){
         this.inputdata={
           idNo:'',

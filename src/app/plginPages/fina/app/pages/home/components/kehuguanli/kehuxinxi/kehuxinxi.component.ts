@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList, ViewChild, OnChanges } from '@angular/core';
 import { ParamsService } from './../../../../../params.service'
 import { ModalDirective } from 'ng-uikit-pro-standard';
-import {Test}  from '../add-user/add-user.component';
+
 @Component({
   selector: 'app-kehuxinxi',
   templateUrl: './kehuxinxi.component.html',
@@ -11,46 +11,82 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
-  testdata:Test=new Test("");
+  
   testdataHandler(event:any){
-    this.testdata=event
-    this.cuNo=this.testdata.cuNo;
-    console.log(this.testdata)
+    this.cuNo=event
   }
 
-  newUser: any;
+ 
   cuNo: any;
   sfs: string;
   title = [//当前页面位置
     "客户管理",
     "客户信息"
   ]
-  kh = {
-    name: '',
-    hm: '',//证件号码
-    zjlx: {
-      vals: ' ',
-      selects: [
-        { value: ' ', label: '证件类型', disabled: '1' },
-        { value: '1', label: '身份证' },
-        { value: '2', label: '护照' },
-      ]
+  
+  client:any={
+    cuName:'',
+    idNo:'',
+    idType:'',
+  }
+  //查询
+  search():void{
+    this.requestSearchData()
+  }
+  requestSearchData(){
+    this.isAjax=true
+    this._http.get('/fina/custom/list?cuName='+this.client.cuName+'idNo='+this.client.idNo+'idType='+this.client.idType, (e) => {
+      this.isAjax = false;
+      //this.tableData = e.data.pb.list
+      console.log(e)
+      //console.log(this.tableData);
+      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
+      //  console.log("表数据",this.tableData)
+      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
+      } else {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
+      }
+      this.paginators = [];
+      for (let i = 1; i <= this.numberOfPaginators; i++) {
+        this.paginators.push(i);
+      }
+
+    }, () => {
+      this.isAjax = false;
+
+    })
+  }
+  //重置
+  oncz(){
+    this.client={
+      cuName:'',
+      idNo:'',
+      idType:'',
     }
   }
-  //传入到综合信息界面的数据
-  oncz(e): void {
-    console.log(e);
-    this.kh.zjlx.vals = " ";
-    this.kh.name = '';
-    this.kh.hm = '';
-    console.log(this.kh)
+  //请求下拉框数据
+  idTypes:any
+  requestselectData() {
+    this.isAjax = true
+    this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
+      this.isAjax = false
+      this.idTypes = e.data[0].data
+      for(var i=0;i<this.idTypes.length;i++){
+        this.idTypes[i].value=(i+1).toString()
+      }
+    }, () => {
+      this.isAjax = false
+    }
+    )
   }
+  
+  
   theTotalNumberOfEntries = 0;
   tableData = []
 
   ////监听addUser界面的cuNo是否改变
   ngOnChanges(it: any) {
-    console.log(it);
    
   }
   pageTable = [];
@@ -193,9 +229,11 @@ export class KehuxinxiComponent implements OnInit {
   }
   transmit(id: number) {
     this.cuNo = this.tableData[id].cuNo
+    this.demoBasic.show()
   }
   ngOnInit() {
     this.requestTableData();
+    this.requestselectData()
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();

@@ -15,48 +15,52 @@ export class AddUserComponent implements OnInit {
   @Input() cuNo: any;
   @Input() lastPage: ModalDirective;
   @Input() nowPage: ModalDirective;
-  @Output() cuNoChange:EventEmitter<Test> = new EventEmitter();
+  @Output() cuNoChange: EventEmitter<any> = new EventEmitter();
   model: any;
   modell: any;
   _http: any;
-  isajax:any;
+  isajax: any;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   client: any = {
     idType: '',
     idNo: '',
-    cifName: ''
+    cuName: ''
   }
   public myDatePickerOptions: IMyOptions = {};
   constructor(private location: Location, private param: ParamsService) {
     this._http = param._http
   }
-  testdata:any;
+  idTypes: any;
   //保存信息后向后台申请客户号
-  requestData(fu:any){
-    this.isajax=true
-    this._http.post('/fina/custom/cardInsert',this.client,(e)=>{
-      this.isajax=false
-        this.cuNo=e.data.data.cuNo;
-        fu();
-        console.log(this.cuNo)
-    },()=>{
-      this.isajax=false
+  requestData(fu: any) {
+    this.isajax = true
+    this._http.post('/fina/custom/cardInsert', this.client, (e) => {
+      this.isajax = false
+      this.cuNo = e.data.data.cuNo;
+      fu();
+      console.log(this.cuNo)
+    }, () => {
+      this.isajax = false
     }
     )
   }
   //请求得到下拉框的值
-  requestselectData(){
-    this.isajax=true
-    this._http.get('/fina/dict/dictListList?ids=ID_TYPE',(e)=>{
-        this.isajax=false
-        this.testdata=e.data[0].data
-    },()=>{
-      this.isajax=false
+  requestselectData() {
+    this.isajax = true
+    this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
+      this.isajax = false
+      this.idTypes = e.data[0].data
+      for(var i=0;i<this.idTypes.length;i++){
+        this.idTypes[i].value=(i+1).toString()
+      }
+      console.log(this.idTypes)
+    }, () => {
+      this.isajax = false
     }
     )
   }
   ngOnInit() {
-      this.requestselectData()
+    this.requestselectData()
   }
   go_back(): void {
     this.location.back();
@@ -64,24 +68,43 @@ export class AddUserComponent implements OnInit {
   go_reset(): void {
 
   }
+  checkData(): boolean {
+    var checkCuName = new RegExp("/^\w{1,30}$/")
+    console.log(this.client.idType)
+    if (this.client.idType == '1')
+      var checkidNo =new RegExp("/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/") 
+    else if (this.client.idType == '2')
+      var checkidNo = new RegExp("/[^_IOZSVa-z\W]{2}\d{6}[^_IOZSVa-z\W]{10}/g")
+    else if (this.client.idType == '9')
+      var checkidNo = new RegExp("/^\w$/")
+   console.log(checkidNo)
+    if (checkidNo.test(this.client.idNo)===false) {
+      alert("输入的证件号不正确，请确认后再次填写")
+      return false
+    }
+    if (checkCuName.test(this.client.cuName)===false) {
+      alert("姓名输入不符合规则，请输入长度在30位以内的姓名")
+      return false
+    }
+    return true
+  }
   tijiao(): void {
     //this.cuNo='20182000014'
-    this.requestData(()=>{
-      let newcuNO:Test=new Test(this.cuNo)  
-      this.cuNoChange.emit(newcuNO)
-    })
     
-    this.client={
-      idType: '',
-      idNo: '',
-      cifName: ''
-    }
-    this.lastPage.show()
-    this.nowPage.hide()
-  }
-}
-export class  Test{
-  constructor(public cuNo:any){
+    if (this.checkData()) {
+      this.requestData(() => {
+        //let newcuNO: Test = new Test(this.cuNo)
+        this.cuNoChange.emit(this.cuNo)
+      })
 
+      this.client = {
+        idType: '',
+        idNo: '',
+        cifName: ''
+      }
+      this.lastPage.show()
+      this.nowPage.hide()
+    }
   }
+
 }

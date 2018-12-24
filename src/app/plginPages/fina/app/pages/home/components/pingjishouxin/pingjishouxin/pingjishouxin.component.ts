@@ -10,6 +10,7 @@ import { ParamsService } from './../../../../../params.service'
 export class PingjishouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
+  authId="";
   dataObject={
     Idisabled:false,
     controlIndicators:{
@@ -39,8 +40,8 @@ export class PingjishouxinComponent implements OnInit {
     authSplitType:"",
 
     //日期的model
-    begDate:"",
-    endDate:""
+    begDate:'',
+    endDate:''
   }
 
 
@@ -63,8 +64,10 @@ export class PingjishouxinComponent implements OnInit {
   constructor(public params:ParamsService) {
     this._http=params._http;
    }
+   authid='';
    reSetModel(){
-    this.pjsx = {
+     this.path='';
+     this.pjsx = {
       //文本框的model
       cuName:"",
       authId:"",
@@ -80,44 +83,28 @@ export class PingjishouxinComponent implements OnInit {
       endDate:""
     }
    }
+   path="";
    queryTableDataWithConditions(){
     this.isAjax=true;
-    var path = '/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+
-    '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+'&authId='+this.pjsx.authId+
-    '&authAppNo='+this.pjsx.authAppNo+'&finproNo='+this.pjsx.finproNo+
-    '&authSplitType='+this.pjsx.authSplitType;
+    this.path = 
+      '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+
+      '&authId='+this.pjsx.authId+'&authAppNo='+this.pjsx.authAppNo+
+      '&finproNo='+this.pjsx.finproNo+'&authSplitType='+this.pjsx.authSplitType;
     
     if(!!this.pjsx.endDate){
-      path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
+      this.path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
     }
     if(this.pjsx.begDate){
-      path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
+      this.path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
     }
-
-    this._http.get(path,(e)=>{
-      this.isAjax=false;
-     this.tableData=e.data.pb.list
-      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
-      } else {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
-      }
-      this.paginators=[];
-      for (let i = 1; i <= this.numberOfPaginators; i++) {
-        this.paginators.push(i);
-      }
-      this.isAjax=false;
-     },()=>{
-       this.isAjax=false;
-     })
+    this.requestTableData();
    }
    requestTableData(){
     this.isAjax=true;
-    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage,(e)=>{
+    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
       this.isAjax=false;
      this.tableData=e.data.pb.list
-     // console.log(e)
+      console.log(e)
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
     //  console.log("表数据",this.tableData)
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
@@ -264,8 +251,28 @@ export class PingjishouxinComponent implements OnInit {
    this.isAjax=false;
    })
   }
-
+  private pickeri=2;
+  private pickerdom=null;
+  private picker_m=null;
+  pickerFocus(e){
+    if((!this.picker_m)||this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+      this.picker_m=e.target.parentNode.parentNode;
+      this.pickeri++;
+      window['e']=e.target;
+      console.log(e)
+      this.pickerdom=e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index']=this.pickeri;
+    }else{
+      setTimeout(()=>{
+        if(this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+          this.picker_m=null;
+          this.pickerdom.style['z-index']=0;
+        }
+      },200)
+    }
+  }
   dataBinding(item){
+    this.authId=item;
     this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
     this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
   }

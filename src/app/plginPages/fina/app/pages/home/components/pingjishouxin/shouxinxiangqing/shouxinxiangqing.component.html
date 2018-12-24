@@ -75,11 +75,11 @@
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.begDate" [options]="myDatePickerOptions" label="综合授信额度起始日期*"
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.begDate" [options]="myDatePickerOptions" label="综合授信额度起始日期*"
                         [(ngModel)]="zhsx.begDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.endDate" [options]="myDatePickerOptions" label="额度终止日期*"
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.endDate" [options]="myDatePickerOptions" label="额度终止日期*"
                         [(ngModel)]="zhsx.endDate" required></mdb-date-picker>
                 </div>
                 <div class="bk_div">
@@ -98,12 +98,12 @@
                 <div class="bk_div">
                     <div class="check_div">额度是否冻结<span class="font_red">*</span></div>
                     <div class="radio_left custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts=='冻结'" type="radio" class="custom-control-input" id="EDSYFS3" value="true"
+                        <input disabled="disabled" [checked]="zhsx.authSts=='冻结'" type="radio" class="custom-control-input" id="EDSYFS3" value="1"
                             [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS3">是</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts!='冻结'" type="radio" class="custom-control-input" id="EDSYFS4" value="false"
+                        <input disabled="disabled" [checked]="zhsx.authSts!='冻结'" type="radio" class="custom-control-input" id="EDSYFS4" value="0"
                             [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS4">否</label>
                     </div>
@@ -152,11 +152,11 @@
                 </div>
             </div>
             <div class="short_div">
-                <mdb-date-picker [disabled]="dataObject.Idisabled" name="flywsx.begDate" [options]="myDatePickerOptions" label="分项授信起始日期*"
+                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.begDate" [options]="myDatePickerOptions" label="分项授信起始日期*"
                     [(ngModel)]="flywsx.begDate" required></mdb-date-picker>
             </div>
             <div class="short_div">
-                <mdb-date-picker [disabled]="dataObject.Idisabled" name="flywsx.endDate" [options]="myDatePickerOptions" label="分项授信终止日期*"
+                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.endDate" [options]="myDatePickerOptions" label="分项授信终止日期*"
                     [(ngModel)]="flywsx.endDate" required></mdb-date-picker>
             </div>
             <div id="sxxybh_div" class="chang_div col-md-6 mx-auto mt-5">
@@ -204,11 +204,11 @@
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.txDate" [options]="myDatePickerOptions" label="登记时间"
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.txDate" [options]="myDatePickerOptions" label="登记时间"
                         [(ngModel)]="zhsx.txDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker [disabled]="dataObject.Idisabled" name="zhsx.upDate" [options]="myDatePickerOptions" label="修改时间"
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.upDate" [options]="myDatePickerOptions" label="修改时间"
                         [(ngModel)]="zhsx.upDate" required></mdb-date-picker>
                 </div>
 
@@ -233,7 +233,7 @@
 
         <div id="button_div">
             <button mdbBtn type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
-            <button mdbBtn type="button" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
+            <button mdbBtn type="button" (click)="closeWin()" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
             <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
     </form>

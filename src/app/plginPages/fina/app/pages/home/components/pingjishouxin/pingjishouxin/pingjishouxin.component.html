@@ -46,12 +46,12 @@
           <div class="md-form-df">
             <div class="ui-inputgroup picker-arr">
               <div class="er_input">
-                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.begDate" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDate"
+                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.begDate" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDate"
                   class="form-control" required></mdb-date-picker>
               </div>
               <span style="margin-top:10px;">至</span>
               <div class="er_input">
-                <mdb-date-picker [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate"
+                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate"
                   class="form-control" required></mdb-date-picker>
               </div>
               <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
@@ -178,7 +178,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-       <app-shouxinxiangqing [(dataObject)]="dataObject" [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
+       <app-shouxinxiangqing [(dataObject)]="dataObject" [authId]="authId" [newDemoBasic]="newDemoBasic" [demoBasic]='demoBasic' [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
       </div>
     </div>
   </div>

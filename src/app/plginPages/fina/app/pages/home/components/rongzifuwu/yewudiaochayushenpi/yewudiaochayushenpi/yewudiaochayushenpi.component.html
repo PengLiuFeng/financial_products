@@ -8,8 +8,6 @@
 
     <form action="">  
       <div id="top_zi_div">
-          <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>重置</button>
         <div class="bk_div">
           <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
@@ -58,7 +56,7 @@
             <mdb-select name="ywdcysp.authAppSta" [options]="AUTH_APP_STA" [(ngModel)]="ywdcysp.authAppSta" placeholder="申请状态:"></mdb-select>
           </div>
         </div>
-        <div class="bk_div">
+        <!-- <div class="bk_div">
           <div class="md-form-df">
             <div class="ui-inputgroup">
               <span class="i-h">融资申请日期:</span>
@@ -76,6 +74,24 @@
                     [(ngModel)]="ywdcysp.auDateEnd" class="form-control" required></mdb-date-picker>
                 </div>
               </div>
+            </div>
+          </div>
+        </div> -->
+
+        <div class="bk_div">
+          <div class="md-form-df">
+            <div class="ui-inputgroup picker-arr">
+              <div class="er_input">
+                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="ywdcysp.auDateBeg" dateFormat="yy/mm/dd"
+                    [(ngModel)]="ywdcysp.auDateBeg" [label]="'融资申请日期'" class="form-control" required></mdb-date-picker>
+              </div>
+              <span style="margin-top:10px;">至</span>
+              <div class="er_input">
+                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="ywdcysp.auDateEnd" dateFormat="yy/mm/dd"
+                    [(ngModel)]="ywdcysp.auDateEnd" [label]="'融资申请日期'" class="form-control" required></mdb-date-picker>
+              </div>
+              <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>查询</button>
+              <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>重置</button>
             </div>
           </div>
         </div>

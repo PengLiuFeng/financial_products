@@ -158,6 +158,25 @@ export class YewudiaochayushenpiComponent implements OnInit {
      }
     });
   }
-
+  private pickeri=2;
+  private pickerdom=null;
+  private picker_m=null;
+  pickerFocus(e){
+    if((!this.picker_m)||this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+      this.picker_m=e.target.parentNode.parentNode;
+      this.pickeri++;
+      window['e']=e.target;
+      console.log(e)
+      this.pickerdom=e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index']=this.pickeri;
+    }else{
+      setTimeout(()=>{
+        if(this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
+          this.picker_m=null;
+          this.pickerdom.style['z-index']=0;
+        }
+      },200)
+    }
+  }
 
 }

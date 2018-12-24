@@ -19,8 +19,8 @@ export class XinzengshouxinComponent implements OnInit {
     this._http=params._http;
    }
   xzsx={
-  idType:"333",
-  idNo:"444",
+  idType:"",
+  idNo:"",
   cuName:""
   }
   cuNo=''

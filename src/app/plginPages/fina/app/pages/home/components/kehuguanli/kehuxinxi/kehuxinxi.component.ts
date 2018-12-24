@@ -35,7 +35,7 @@ export class KehuxinxiComponent implements OnInit {
   }
   requestSearchData(){
     this.isAjax=true
-    this._http.get('/fina/custom/list?cuName='+this.client.cuName+'idNo='+this.client.idNo+'idType='+this.client.idType, (e) => {
+    this._http.get('/fina/custom/list?pageNum='+ this.activePage + '&pageSize=' + this.itemsPerPage,+'&cuName='+this.client.cuName+'&idNo='+this.client.idNo+'&idType='+this.client.idType, (e) => {
       this.isAjax = false;
       //this.tableData = e.data.pb.list
       console.log(e)

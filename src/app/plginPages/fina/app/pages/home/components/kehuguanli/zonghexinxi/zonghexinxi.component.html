@@ -86,7 +86,7 @@
                             
                             <app-jibenxinxi [bo]="bo" [cuNo]="inputdata.cuNo"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
                             <app-lianxixinxi *ngIf="apps=='lxxx'"></app-lianxixinxi>
-                            <app-gaikuangxinxi *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
+                            <app-gaikuangxinxi [cuNo]="inputdata.cuNo" *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
                             
                     </div>
             </div>

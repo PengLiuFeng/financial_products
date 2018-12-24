@@ -71,6 +71,7 @@ constructor( private location:Location,private param:ParamsService) {
       this.bo=true;
     else
       this.bo=false;
+      
   }
   
 

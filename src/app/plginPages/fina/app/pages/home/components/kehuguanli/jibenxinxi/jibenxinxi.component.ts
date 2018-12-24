@@ -154,7 +154,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this._http.get('/fina/custom/detail?cuNo=' + this.cuNo, (e) => {
       if(e!=null&&e!=undefined){
         this.allData = e.data.apb
-        alert(e)
+        
         this.testarray = this.allData;
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {

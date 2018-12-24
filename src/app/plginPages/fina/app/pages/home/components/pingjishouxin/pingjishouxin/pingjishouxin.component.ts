@@ -66,7 +66,8 @@ export class PingjishouxinComponent implements OnInit {
    }
    authid='';
    reSetModel(){
-    this.pjsx = {
+     this.path='';
+     this.pjsx = {
       //文本框的model
       cuName:"",
       authId:"",
@@ -82,41 +83,25 @@ export class PingjishouxinComponent implements OnInit {
       endDate:""
     }
    }
+   path="";
    queryTableDataWithConditions(){
     this.isAjax=true;
-    var path = '/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+
-    '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+'&authId='+this.pjsx.authId+
-    '&authAppNo='+this.pjsx.authAppNo+'&finproNo='+this.pjsx.finproNo+
-    '&authSplitType='+this.pjsx.authSplitType;
+    this.path = 
+      '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+
+      '&authId='+this.pjsx.authId+'&authAppNo='+this.pjsx.authAppNo+
+      '&finproNo='+this.pjsx.finproNo+'&authSplitType='+this.pjsx.authSplitType;
     
     if(!!this.pjsx.endDate){
-      path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
+      this.path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
     }
     if(this.pjsx.begDate){
-      path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
+      this.path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
     }
-
-    this._http.get(path,(e)=>{
-      this.isAjax=false;
-     this.tableData=e.data.pb.list
-      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
-      } else {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
-      }
-      this.paginators=[];
-      for (let i = 1; i <= this.numberOfPaginators; i++) {
-        this.paginators.push(i);
-      }
-      this.isAjax=false;
-     },()=>{
-       this.isAjax=false;
-     })
+    this.requestTableData();
    }
    requestTableData(){
     this.isAjax=true;
-    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage,(e)=>{
+    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
       this.isAjax=false;
      this.tableData=e.data.pb.list
       console.log(e)

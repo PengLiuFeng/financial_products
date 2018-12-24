@@ -46,10 +46,10 @@
             <!-- 右上侧的页面设计 -->
             <div class="right_zonghexinxi">
                 <div class="top_zonghexinxi">
-                    <div style="width: 100%;height:3%;max-height:40px;float:right">
+                    <!-- <div style="width: 100%;height:3%;max-height:40px;float:right">
                             <button mdbBtn type="button" style="float:right" (click)="gaibian()" color="warning" rounded="true" outline="true" size="sm" mdbWavesEffect>修改信息</button>
                             <button mdbBtn type="button" style="float:right" (click)="goback()" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>返回上一级</button>
-                    </div>
+                    </div> -->
                     <div style="text-align:center">
                         <div class="md-form">
                             
@@ -84,9 +84,9 @@
                 <!-- 右下侧的页面设计 -->
                     <div class="down_zonghexinxi">
                             
-                            <app-jibenxinxi [bo]="bo" [cuNo]="inputdata.cuNo" *ngIf="apps=='jbxx'"></app-jibenxinxi>
+                            <app-jibenxinxi [bo]="bo" [cuNo]="inputdata.cuNo"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
                             <app-lianxixinxi *ngIf="apps=='lxxx'"></app-lianxixinxi>
-                            <app-gaikuangxinxi *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
+                            <app-gaikuangxinxi [cuNo]="inputdata.cuNo" *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
                             
                     </div>
             </div>

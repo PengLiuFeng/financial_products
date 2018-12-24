@@ -4,7 +4,7 @@
         <div id="title_div"><strong>客户基础信息</strong></div>
         <form action="" method="POST">
           <div class="col-md-6 mx-auto mt-5">
-              <mdb-select [options]="testdata" [(ngModel)]="client.idType" name="idType" id="select1" placeholder="请选择证件类型"></mdb-select>
+              <mdb-select [options]="idTypes" [(ngModel)]="client.idType" name="idType" id="select1" placeholder="请选择证件类型"></mdb-select>
               <label for="select1">证件类型</label>
           </div>
     
@@ -18,7 +18,7 @@
     
           <div class="col-md-6 mx-auto mt-5">
               <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="client.cifName" name="cifName" type="text" id="form2" class="form-control">
+                <input mdbInputDirective [(ngModel)]="client.cuName" name="cuName" type="text" id="form2" class="form-control">
                 <label for="form2" class="">客户名称<span class="font_red">*</span></label>
               </div>
           </div>

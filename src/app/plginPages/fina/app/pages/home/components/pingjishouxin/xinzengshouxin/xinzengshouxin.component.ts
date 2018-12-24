@@ -24,6 +24,8 @@ export class XinzengshouxinComponent implements OnInit {
   cuName:""
   }
   cuNo=''
+  authId='';
+  authAppNo='';
   reSetModel(){
     this.xzsx={
       idType:"",
@@ -58,9 +60,11 @@ export class XinzengshouxinComponent implements OnInit {
             console.log(e.data)
             this.xzsx.cuName = e.data.data.cuName;
             this.cuNo = e.data.data.cuNo;
+            this.authId = e.data.data.authId;
+            this.authAppNo = e.data.data.authAppNo;
             this.dataRes();
           }else{
-            alert("校验失败")
+            this.dangerShow();
           }
           this.isAjax=false;
         },()=>{
@@ -73,8 +77,18 @@ export class XinzengshouxinComponent implements OnInit {
   }
   public myDatePickerOptions: IMyOptions = {};
   dataRes(){
-    this.controlIndicators.cuName = this.xzsx.cuName
-    this.controlIndicators.cuNo = this.cuNo
-    this.newInfoDemoBasic.show()
+    this.controlIndicators.cuName = this.xzsx.cuName;
+    this.controlIndicators.cuNo = this.cuNo;
+    this.controlIndicators.authId = this.authId;
+    this.controlIndicators.authAppNo = this.authAppNo;
+    this.newInfoDemoBasic.show();
+  }
+  danger_hid=true;
+
+  dangerShow(){
+    this.danger_hid=false;
+    setTimeout(() => {
+      this.danger_hid=true
+    }, 3000);
   }
 }

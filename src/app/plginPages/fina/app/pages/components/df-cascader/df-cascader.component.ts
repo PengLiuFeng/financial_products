@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 import { Button } from 'primeng/button';
 
 @Component({
@@ -7,12 +7,63 @@ import { Button } from 'primeng/button';
   styleUrls: ['./df-cascader.component.scss']
 })
 export class DfCascaderComponent implements OnInit {
+  @Input() showAllLevels:boolean;//是否显示完整路径
+  @Input() options:Array<any>;//数据
+  @Input() values:any;
+  @Output() valuesChange = new EventEmitter();
    isTap:boolean=false;
   private bodydom:any;
-  constructor() { }
+  
+ /*  optionst=[
+    
+    {
+      value: 'zhinan',
+      label: '指南',
+      children: [
+                  {
+                  value: 'shejiyuanze',
+                  label: '设计原则',
+                  children: [{
+                    value: 'yizhi',
+                    label: '一致'
+                  }, {
+                    value: 'fankui',
+                    label: '反馈'
+                  }, {
+                    value: 'xiaolv',
+                    label: '效率'
+                  }, {
+                    value: 'kekong',
+                    label: '可控'
+                  }]
+                }, 
+                {
+                  value: 'daohang',
+                  label: '导航',
+                  children: [{
+                    value: 'cexiangdaohang',
+                    label: '侧向导航'
+                  }, {
+                    value: 'dingbudaohang',
+                    label: '顶部导航'
+                  }]
+                }
+              ]
+    }
+  ] */
 
+  constructor() { }
+dqli={
+  ul1:{},
+  ul2:{},
+  ul3:{},
+}
   ngOnInit() {
+    this.values=666;
     this.bodydom=document.querySelector('body');
+    if(!(this.options&&this.options.length>0)){
+      console.error('三级联动数据不能为Null');
+    }
   }
   private removeEve(){
     //console.log('注销事件');
@@ -20,6 +71,8 @@ export class DfCascaderComponent implements OnInit {
     let dom=document.querySelector('body');
     dom['i']=2;
     dom.removeEventListener('click',window['fu']);
+    this.dqli.ul2={};
+    this.dqli.ul1={};
   }
   // 事件定义
   onTap():void{
@@ -41,6 +94,19 @@ export class DfCascaderComponent implements OnInit {
   onEls(e):void{
     e.preventDefault();
     e.stopPropagation();//阻止事件冒泡
-    console.log(e)
+  }
+  myval="";
+  onIt(i,it){
+    if(it.children&&it.children.length>0){
+    }else{
+      let dqli=this.dqli;
+      if(this.showAllLevels){
+        this.myval=dqli.ul3['label']?(dqli.ul1['label']?(dqli.ul1['label']+(dqli.ul2['label']?('/'+dqli.ul2['label']+(dqli.ul3['label']?('/'+dqli.ul3['label']):'')):'')):''):'';
+      }else{
+        this.myval=dqli.ul3['label']?dqli.ul3['label']:'';
+      }
+      this.valuesChange.emit(this.myval);
+      this.removeEve();
+    }
   }
 }

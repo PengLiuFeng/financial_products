@@ -1,4 +1,4 @@
-import { Component,ViewChild, OnInit } from '@angular/core';
+import { Component,ViewChild, OnInit, Input } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 @Component({
   selector: 'app-gaikuangxinxi',
@@ -8,6 +8,7 @@ import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 export class GaikuangxinxiComponent implements OnInit {
 
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
+  @Input() cuNo:any;
   CUR_NO=[
     {label:"币种",disabled:"disabled"},
     {label:"人民币",value:"rmb"},
@@ -26,11 +27,12 @@ export class GaikuangxinxiComponent implements OnInit {
     assTot:"",
     saleTot:"",
     runRange:"",
-
+    cuNo:"",
     //下拉菜单model
     curNo:"",
     mainBus:""
   }
+  
   constructor() { }
 
   ngOnInit() {
@@ -38,4 +40,18 @@ export class GaikuangxinxiComponent implements OnInit {
 
   public myDatePickerOptions: IMyOptions = {};
 
+  // submitData(){
+  //   var item = "";
+  //   this.isAjax=true; 
+  //       this._http.post('/fina/grade/detailInsert',parjson,(e)=>{
+  //         item = e.data.t;
+  //         console.log(e)
+  //         if(e.data.t){
+  //           this.closeWin();
+  //         }
+  //         this.isAjax=false;
+  //       },()=>{
+  //         this.isAjax=false;
+  //    })
+  //  }
 }

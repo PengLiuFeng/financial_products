@@ -66,7 +66,8 @@ export class PingjishouxinComponent implements OnInit {
    }
    authid='';
    reSetModel(){
-    this.pjsx = {
+     this.path='';
+     this.pjsx = {
       //文本框的model
       cuName:"",
       authId:"",
@@ -82,44 +83,28 @@ export class PingjishouxinComponent implements OnInit {
       endDate:""
     }
    }
+
+   path="";
    queryTableDataWithConditions(){
-    this.isAjax=true;
-    var path = '/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+
-    '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+'&authId='+this.pjsx.authId+
-    '&authAppNo='+this.pjsx.authAppNo+'&finproNo='+this.pjsx.finproNo+
-    '&authSplitType='+this.pjsx.authSplitType;
+    this.path = 
+      '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+
+      '&authId='+this.pjsx.authId+'&authAppNo='+this.pjsx.authAppNo+
+      '&finproNo='+this.pjsx.finproNo+'&authSplitType='+this.pjsx.authSplitType;
     
     if(!!this.pjsx.endDate){
-      path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
+      this.path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
     }
     if(this.pjsx.begDate){
-      path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
+      this.path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
     }
-
-    this._http.get(path,(e)=>{
-      this.isAjax=false;
-     this.tableData=e.data.pb.list
-      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
-      } else {
-        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
-      }
-      this.paginators=[];
-      for (let i = 1; i <= this.numberOfPaginators; i++) {
-        this.paginators.push(i);
-      }
-      this.isAjax=false;
-     },()=>{
-       this.isAjax=false;
-     })
+    this.activePage = 1;
+    this.requestTableData();
    }
    requestTableData(){
     this.isAjax=true;
-    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage,(e)=>{
+    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
       this.isAjax=false;
-     this.tableData=e.data.pb.list
-      console.log(e)
+     this.tableData=e.data.pb.list;
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
     //  console.log("表数据",this.tableData)
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
@@ -131,7 +116,9 @@ export class PingjishouxinComponent implements OnInit {
       for (let i = 1; i <= this.numberOfPaginators; i++) {
         this.paginators.push(i);
       }
-      this.reSetModel();
+      if(e.data.pb.totalRecord>0){
+       this. whetherTheCycle();
+      }
       this.isAjax=false;
      },()=>{
      this.isAjax=false;
@@ -274,7 +261,6 @@ export class PingjishouxinComponent implements OnInit {
       this.picker_m=e.target.parentNode.parentNode;
       this.pickeri++;
       window['e']=e.target;
-      console.log(e)
       this.pickerdom=e.target.parentNode.parentNode.parentNode;
       this.pickerdom.style['z-index']=this.pickeri;
     }else{
@@ -286,9 +272,26 @@ export class PingjishouxinComponent implements OnInit {
       },200)
     }
   }
+
+  whetherTheCycle(){
+    for(var i = 0;i < this.tableData.length; i++){
+      var oData = this.tableData[i]['recycle']
+      if(oData=='true'||oData=='是'){
+        this.tableData[i]['recycle']='循环';
+      }else{
+        this.tableData[i]['recycle']='非循环';
+      }
+    }
+    
+  }
+  
   dataBinding(item){
     this.authId=item;
     this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
     this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
+  }
+  reSetAndReqTD(){
+    this.reSetModel();
+    this.requestTableData();
   }
 }

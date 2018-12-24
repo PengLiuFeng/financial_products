@@ -54,8 +54,8 @@
                 <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate"
                   class="form-control" required></mdb-date-picker>
               </div>
-              <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
-              <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" (click)="requestTableData()" mdbWavesEffect>重置</button>
+              <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
+              <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="reSetAndReqTD()" mdbWavesEffect>重置</button>
             </div>
           </div>
         </div>
@@ -65,11 +65,11 @@
     <div id="bottom_title_div">
       <h3><strong>评级授信查询结果</strong></h3>
       <div id="head_right_div">
-        <button mdbBtn (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
-        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
-        <button mdbBtn type="button" (click)="del()" color="success" class="waves-light" mdbWavesEffect>删除</button>
-        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>导出</button>
-        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>提交</button>
+        <button mdbBtn [disabled]='isAjax' (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
+        <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
+        <button mdbBtn disabled='disabled' type="button" (click)="del()" color="success" class="waves-light" mdbWavesEffect>删除</button>
+        <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>导出</button>
+        <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>提交</button>
       </div>
     </div>
     <table class="table table-hover table-responsive-md mb-0 table-bordered">
@@ -109,11 +109,12 @@
             <td scope="row">{{data.sauthAmt}}</td>
             <td scope="row">{{data.sauthBal}}</td>
             <td scope="row">{{data.recycle}}</td>
-            <td scope="row">{{data.termType}}</td>
+            <td scope="row">{{data.term}}{{data.termType}}</td>
             <td scope="row">{{dateFormat(data.begDate)}}</td>
             <td scope="row">{{dateFormat(data.endDate)}}</td>
             <td scope="row">
-              <a href="javaScript:;" (click)="dataObject.Idisabled=true;dataBinding(data.authId); demoBasic.show()">授信详情</a>
+              <a *ngIf="!isAjax" href="javaScript:;" (click)="dataObject.Idisabled=true;dataBinding(data.authId); demoBasic.show()">授信详情</a>
+              <a href="javaScript:;" *ngIf="isAjax">授信详情</a>
             </td>
           </tr>
         </ng-container>

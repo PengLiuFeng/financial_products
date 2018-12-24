@@ -55,6 +55,7 @@ export class XinzengshouxinComponent implements OnInit {
     this.isAjax=true;
         this._http.post('/fina/grade/idvalidate',this.xzsx,(e)=>{
           item = e.data.t;
+          console.log(e)
           if(item){
             console.log(e)
             console.log(e.data)

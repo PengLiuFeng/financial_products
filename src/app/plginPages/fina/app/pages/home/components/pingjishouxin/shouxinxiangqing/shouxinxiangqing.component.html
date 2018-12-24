@@ -232,8 +232,8 @@
         
 
         <div id="button_div">
-            <button mdbBtn type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
-            <button mdbBtn type="button" (click)="closeWin()" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
+            <button mdbBtn [disabled]='isAjax' type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
+            <button mdbBtn [disabled]='isAjax' type="button" (click)="closeWin()" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
             <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
     </form>

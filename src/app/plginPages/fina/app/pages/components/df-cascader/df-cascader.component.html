@@ -1,17 +1,32 @@
 
-<span class="el-cascader">
-  <div class="el-input el-input--suffix">
-    <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner"
-    [value]="myval">
-    <span class="el-input__suffix">
-        <span class="el-input__suffix-inner">
-          <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
-        </span>
+<span class="el-cascader" [class.df-mdb-cascader]="isMDBstyle">
+  <ng-container *ngIf="isMDBstyle">
+    <div class="el-input el-input--suffix df-mdb" (click)="onTap()">
+      <input type="text" readonly="readonly" autocomplete="off" [value]="myval" [name]="myval">
+      <span class="el-input__suffix">
+          <span class="el-input__suffix-inner">
+            <i class="el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+          </span>
+      </span>
+    </div>
+    <span class="df-mdb-label" [class.df-mdb-label-active]="!!myval" (click)="onTap()" >
+      {{label?label:myval?'':'请选择'}}
     </span>
-  </div>
-  <span class="el-cascader__label" (click)="onTap()" style="opacity:0">
-    {{myval}}
-  </span>
+  </ng-container>
+  <ng-container *ngIf="!isMDBstyle">
+      <div class="el-input el-input--suffix">
+        <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+        [value]="myval">
+        <span class="el-input__suffix">
+            <span class="el-input__suffix-inner">
+              <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+            </span>
+        </span>
+      </div>
+      <span class="el-cascader__label" (click)="onTap()">
+        {{myval}}
+      </span>
+    </ng-container>
   <div  *ngIf="isTap" (click)="onEls($event)" class="el-cascader-menus el-popper" style="z-index:33; position: absolute; left:18px;">
       <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
       <ul role="menu" class="el-cascader-menu">

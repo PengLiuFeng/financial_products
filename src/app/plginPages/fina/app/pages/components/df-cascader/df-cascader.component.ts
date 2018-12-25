@@ -9,11 +9,17 @@ import { Button } from 'primeng/button';
 export class DfCascaderComponent implements OnInit {
   @Input() showAllLevels:boolean;//是否显示完整路径
   @Input() options:Array<any>;//数据
+  @Input()isMDBstyle:boolean;//是否采用MDB样式
   @Input() values:any;
+  @Input() label:any;
   @Output() valuesChange = new EventEmitter();
+  @Output() labelChange = new EventEmitter();
    isTap:boolean=false;
+   isSet=true;//是否
   private bodydom:any;
-  
+/*   ngOnChanges(e){
+    this.inits();
+  } */
  /*  optionst=[
     
     {
@@ -51,7 +57,42 @@ export class DfCascaderComponent implements OnInit {
               ]
     }
   ] */
+  forarr(arr:Array<any>,val,lab?:any):any{
+    for(let i=0;i<arr.length;i++){
+      if(arr[i].children&&arr[i].children.length>0){
+        if(this.showAllLevels){
+          lab+=arr[i].label+'/';
+          return this.forarr(arr[i].children,val,lab);
+        }else{
+          return this.forarr(arr[i].children,val);
+        }
+      }else{
+        if(arr[i].value==val){
+          if(this.showAllLevels){
+            lab+=arr[i].label;
+            return lab;
+          }
+          return arr[i].label;
+        }
+      }
+    }
+  }
+inits(){
+if(this.values){
+  console.log('初始化')
+  this.myval=this.values;
+  this.myval=this.forarr(this.options,this.values,'');
+  // let it=null;
+  // for(let i=0;i<this.options.length;i++){
+  //   it=this.options[i];
+  //   if(it.children&&it.children.length>0){
 
+  //   }else{
+
+  //   }
+  // }
+}
+}
   constructor() { }
 dqli={
   ul1:{},
@@ -59,10 +100,11 @@ dqli={
   ul3:{},
 }
   ngOnInit() {
-    this.values=666;
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
       console.error('三级联动数据不能为Null');
+    }else{
+      this.inits();
     }
   }
   private removeEve(){
@@ -105,7 +147,9 @@ dqli={
       }else{
         this.myval=dqli.ul3['label']?dqli.ul3['label']:'';
       }
-      this.valuesChange.emit(this.myval);
+      if(this.myval){
+        this.valuesChange.emit(dqli.ul3['value']);
+      }
       this.removeEve();
     }
   }

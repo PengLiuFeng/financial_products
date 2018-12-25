@@ -244,6 +244,35 @@ module.exports = function attachHandlers(router) {
              }
              request(options, callback);
      });
+     //拦截所有POST请求
+     router.post(/^\/(fina)\/(.+)/,
+        function(req, res) {
+            let options =
+                {
+                    url: url_baoli+req.url.slice(5,255),
+                    method: 'POST',
+                    json:true,
+                    body: req.body
+                };
+                function callback(error, response, data) {
+                    res.send(handleRes.handleRes(error, response, data));
+                }
+                request(options, callback);
+        });
+     //拦截所有get请求
+        router.get(/^\/(fina)\/(.+)/,
+        function(req, res) {
+            let options =
+            {
+                url: url_baoli+req.url.slice(5,1255),
+                method: 'GET'
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+    
+            request(options, callback);
+        });
     //获取所有aggregators
     router.get('/v1/aggregators',
         function(req, res) {

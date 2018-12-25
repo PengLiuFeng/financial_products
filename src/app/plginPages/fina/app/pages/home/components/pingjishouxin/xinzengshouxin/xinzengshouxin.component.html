@@ -23,12 +23,12 @@
           </div>
       </div>
       <div id="button_div">
-          <button mdbBtn type="button" (click)="submitAJump();" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+          <button mdbBtn type="button" [disabled]='isAjax' (click)="submitAJump();" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
           <button mdbBtn type="button" color="danger" (click)="reSetModel();newDemoBasic.hide()" class="waves-light form_button" mdbWavesEffect>取消</button>
       </div>
   </form>
   </div>
-  <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
-    <strong>校验失败<span>&nbsp;&nbsp;</span>请确认后重试</strong>
- </div>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+         <strong>校验失败<span>&nbsp;&nbsp;</span>请确认后重试</strong>
+    </div>
 </div>

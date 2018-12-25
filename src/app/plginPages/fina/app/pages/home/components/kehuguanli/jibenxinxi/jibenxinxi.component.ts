@@ -10,21 +10,20 @@ import { checkAndUpdateBinding } from '@angular/core/src/render3/instructions';
   styleUrls: ['./jibenxinxi.component.scss']
 })
 export class JibenxinxiComponent implements OnInit, OnChanges {
-  @Input() bo: boolean;
-  // @Input() inputdata:any;
+  bo: boolean;
   @Input() cuNo: any;
-  model: any;
-  modell: any;
+  @Input() personPage:any;
   testarray: any = {
     cuNo: '',
     cuName: '',
     engName: ' ',
     idType: '',
+    idNo:'',
     country: '',
     cifArea: '',
     areaName: '',
     wayNo: '',
-    watName: '',
+    //watName: '',
     license: '',
     regAddr: '',
     regType: '',
@@ -102,12 +101,12 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     return newData
   }
   //为下拉框添加value和label值
-  addselectvaule(data1: any) {
-    data1.forEach(function (t) {
-      t.value = t.keyValue
-      t.label = t.keyName
-    })
-  }
+  // addselectvaule(data1: any) {
+  //   data1.forEach(function (t) {
+  //     t.value = t.keyValue
+  //     t.label = t.keyName
+  //   })
+  // }
   //请求下拉框的数据
   requestselectData(){
     this.isajax = true;
@@ -119,27 +118,27 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
 
         if (newdata[i].data[0].fieldName == 'ID_TYPE') {
           this.idTypes = newdata[i].data
-          this.addselectvaule(this.idTypes)
+          //this.addselectvaule(this.idTypes)
         }
         if (newdata[i].data[0].fieldName == 'COUNTRY') {
           this.countrys = newdata[i].data
-          this.addselectvaule(this.countrys)
+          //this.addselectvaule(this.countrys)
         }
         if (newdata[i].data[0].fieldName == 'REG_TYPE') {
           this.regTypes = newdata[i].data
-          this.addselectvaule(this.regTypes)
+          //this.addselectvaule(this.regTypes)
         }
         if (newdata[i].data[0].fieldName == 'HOLD_TYPE') {
           this.holdTypes = newdata[i].data
-          this.addselectvaule(this.holdTypes)
+          //this.addselectvaule(this.holdTypes)
         }
         if (newdata[i].data[0].fieldName == 'OUT_GRADE') {
           this.outGrades = newdata[i].data
-          this.addselectvaule(this.outGrades)
+          //this.addselectvaule(this.outGrades)
         }
         if (newdata[i].data[0].fieldName == 'CU_TYPE') {
           this.cuTypes = newdata[i].data
-          this.addselectvaule(this.cuTypes)
+          //this.addselectvaule(this.cuTypes)
         }
       }
      
@@ -153,13 +152,13 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax=true
     this._http.get('/fina/custom/detail?cuNo=' + this.cuNo, (e) => {
       if(e!=null&&e!=undefined){
-        this.allData = e.data.apb
         
+        this.allData = e.data.apb
         this.testarray = this.allData;
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {
   
-          if (p.search('Date') != -1) {
+          if (p.search('Date') != -1||p.search('Time') != -1) {
             this.testarray[p] = this.trandate(this.allData[p]);
           }
         }
@@ -172,7 +171,22 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     })
 
   }
+//向后台提交数据
+  saveData(){
+    this.isajax=true
+    this._http.post('/fina/custom/corpInsert',this.testarray,(e)=>{
+      this.isajax=false
+      console.log(e)
+    },()=>{
+      this.isajax=false
+    })
+  }
+
   ngOnChanges(it: any) {        //监视事件，it监视全局变量的改变
+    if(this.personPage=='newUser')
+        this.bo=false
+    else
+        this.bo=true
 
     if (!!this.cuNo) {
       this.requestData();
@@ -185,7 +199,42 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //下拉框的数据
   idTypes: Array<any>
   countrys: Array<any>
-  cifAreas: Array<any>
+  cifAreas: any=[
+    {
+      value: 'zhinan',
+      label: '指南',
+      children: [
+                  {
+                  value: 'shejiyuanze',
+                  label: '设计原则',
+                  children: [{
+                    value: 'yizhi',
+                    label: '一致'
+                  }, {
+                    value: 'fankui',
+                    label: '反馈'
+                  }, {
+                    value: 'xiaolv',
+                    label: '效率'
+                  }, {
+                    value: 'kekong',
+                    label: '可控'
+                  }]
+                }, 
+                {
+                  value: 'daohang',
+                  label: '导航',
+                  children: [{
+                    value: 'cexiangdaohang',
+                    label: '侧向导航'
+                  }, {
+                    value: 'dingbudaohang',
+                    label: '顶部导航'
+                  }]
+                }
+              ]
+    }
+  ]
   wayNos: Array<any>
   regTypes: Array<any>
   cuTypes: Array<any>
@@ -197,11 +246,20 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
  
   go_reset() { }
   tijiao(){
+    console.log(this.testarray)
     for(var p in this.testarray){
       if(p.search('Date')!=-1||p.search('Time')!=-1){
         this.testarray[p]=Date.parse(this.testarray[p]);
       }
     }
-    console.log(this.testarray)
+    this.saveData()
+    //console.log(this.testarray)
+  }
+  gaibian() {
+    if(this.bo==false)
+      this.bo=true;
+    else
+      this.bo=false;
+      
   }
 }

@@ -14,12 +14,8 @@ export class ZonghexinxiComponent implements OnInit {
   @Input() id:any ;
   @Input() cuNo:any ;   //调用本界面的时候必须传入的值
   inputdata:any;
- //@Input() newUser:any;
-  // cuNo:any=this.inputdata.cuNo;
- // cuNo:any=111;
+  @Input() personPage:any;   //客户信息界面传入的值，判断是新增还是客户信息界面进入
   apps:any='jbxx';
-  model: any;
-  modell: any;
   bo:boolean =false;
   _http:any;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
@@ -66,13 +62,7 @@ constructor( private location:Location,private param:ParamsService) {
   opens(t:any):void{
     this.apps=t;
   }
-  gaibian() {
-    if(this.bo==false)
-      this.bo=true;
-    else
-      this.bo=false;
-      
-  }
+  
   
 
 }

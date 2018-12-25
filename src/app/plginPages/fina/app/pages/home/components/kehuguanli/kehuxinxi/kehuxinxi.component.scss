@@ -47,3 +47,11 @@
     padding: 16px;
     overflow: auto;
 }
+/deep/ mdb-select > div > div.single{
+    position: relativ;
+    bottom:5px;
+}
+/deep/ mdb-select label{
+    position: relative;
+    top:10px;
+}

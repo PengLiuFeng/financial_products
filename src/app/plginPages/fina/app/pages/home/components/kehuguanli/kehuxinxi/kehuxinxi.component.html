@@ -26,8 +26,8 @@
                   <label for="form2">证件号码</label> -->
                 </div>
             </div>
-            <div class="inputd" style="padding-top: 15px">
-              <mdb-select [options]="idTypes" placeholder="证件类型" class="placeholder"  [(ngModel)]="client.idType"></mdb-select>
+            <div class="inputd" >
+              <mdb-select [options]="idTypes" placeholder="证件类型" class="placeholder" label="证件类型"  [(ngModel)]="client.idType"></mdb-select>
             </div>
             <div style="padding: 10px;">
               <button class="btn-sm" mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect (click)="oncz()">重置</button>
@@ -140,7 +140,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-        <app-zonghexinxi [cuNo]="cuNo" ></app-zonghexinxi>
+        <app-zonghexinxi [cuNo]="cuNo" [personPage]="personPage"></app-zonghexinxi>
       </div>
     </div>
   </div>

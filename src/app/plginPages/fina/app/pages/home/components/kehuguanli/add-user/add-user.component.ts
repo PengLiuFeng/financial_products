@@ -12,7 +12,10 @@ import { KehuxinxiComponent } from '../kehuxinxi/kehuxinxi.component';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  @Input() cuNo: any;
+  InputData:any={
+    cuNo:'',
+    personPage:'newUser'
+  }
   @Input() lastPage: ModalDirective;
   @Input() nowPage: ModalDirective;
   @Output() cuNoChange: EventEmitter<any> = new EventEmitter();
@@ -26,6 +29,7 @@ export class AddUserComponent implements OnInit {
     idNo: '',
     cuName: ''
   }
+ 
   public myDatePickerOptions: IMyOptions = {};
   constructor(private location: Location, private param: ParamsService) {
     this._http = param._http
@@ -36,9 +40,10 @@ export class AddUserComponent implements OnInit {
     this.isajax = true
     this._http.post('/fina/custom/cardInsert', this.client, (e) => {
       this.isajax = false
-      this.cuNo = e.data.data.cuNo;
+      console.log(e)
+      this.InputData.cuNo = e.data.data.cuNo;
       fu();
-      console.log(this.cuNo)
+     
     }, () => {
       this.isajax = false
     }
@@ -50,10 +55,6 @@ export class AddUserComponent implements OnInit {
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
       this.isajax = false
       this.idTypes = e.data[0].data
-      for(var i=0;i<this.idTypes.length;i++){
-        this.idTypes[i].value=(i+1).toString()
-      }
-      console.log(this.idTypes)
     }, () => {
       this.isajax = false
     }
@@ -62,11 +63,13 @@ export class AddUserComponent implements OnInit {
   ngOnInit() {
     this.requestselectData()
   }
-  go_back(): void {
-    this.location.back();
-  }
-  go_reset(): void {
-
+  //重置
+  go_reset() {
+    this.client={
+      idType: '',
+      idNo: '',
+      cuName: ''
+    }
   }
   checkData(): boolean {
     var checkCuName = new RegExp("/^\w{1,30}$/")
@@ -88,15 +91,12 @@ export class AddUserComponent implements OnInit {
     }
     return true
   }
-  tijiao(): void {
-    //this.cuNo='20182000014'
-    
-    if (this.checkData()) {
+  
+  tijiao(): void { 
       this.requestData(() => {
         //let newcuNO: Test = new Test(this.cuNo)
-        this.cuNoChange.emit(this.cuNo)
+        this.cuNoChange.emit(this.InputData)
       })
-
       this.client = {
         idType: '',
         idNo: '',
@@ -104,7 +104,7 @@ export class AddUserComponent implements OnInit {
       }
       this.lastPage.show()
       this.nowPage.hide()
-    }
+    
   }
 
 }

@@ -1,9 +1,4 @@
-.el-cascader {
-    display: inline-block;
-    position: relative;
-    font-size: 14px;
-    line-height: 40px;
-}
+
 .el-cascader .el-input, .el-cascader .el-input__inner {
     cursor: pointer;
 }
@@ -36,6 +31,8 @@
 }
 .el-input--suffix .el-input__inner {
     padding-right: 30px;
+    box-sizing: inherit;
+    border: 1px solid #dcdfe6;
 }
 .el-cascader {
     display: inline-block;
@@ -58,6 +55,7 @@
     cursor: pointer;
     text-align: left;
     font-size: inherit;
+    transition: 0.2s ease-out;
 }
 .el-select-dropdown {
     position: absolute;
@@ -220,4 +218,42 @@
 .el-input__icon {
     width: 25px;
     line-height: 40px;
+}
+$lineheight:31px;
+.df-mdb-cascader{
+    line-height:$lineheight;
+    & .el-input__inner{
+        line-height:$lineheight;
+        height: $lineheight;
+    }
+    & .el-select-dropdown__item span{
+        line-height:$lineheight;
+    }
+    & .el-input__icon{
+        line-height:$lineheight;
+    }
+}
+.df-mdb-label{
+    position: absolute;
+    // top: 0.65rem;
+    left: 0;
+    transition: 0.2s ease-out;
+    cursor: text;
+    color: #757575;
+    font-size: 1rem;
+}
+.df-mdb-label-active{
+    transform: translateY(-60%);
+    line-height:1;
+    font-size: 0.8rem;
+}
+.df-mdb input{
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-bottom: 1px solid #ced4da;
+    border-radius: 0;
+    box-sizing: content-box;
+    background-color: transparent;
 }

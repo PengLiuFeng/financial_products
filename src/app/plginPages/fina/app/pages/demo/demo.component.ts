@@ -14,7 +14,7 @@ export class DemoComponent implements OnInit {
 
   public myDatePickerOptions: IMyOptions = {};
   constructor() { }
-  mval=123;
+  mval='yizhi';
   options=[
     {
       value: 'zhinan',
@@ -46,7 +46,8 @@ export class DemoComponent implements OnInit {
                   }, {
                     value: 'dingbudaohang',
                     label: '顶部导航'
-                  }]
+                  }
+                ]
                 }
               ]
     }
@@ -56,5 +57,7 @@ export class DemoComponent implements OnInit {
       this.isShow=true;
     },3000)
   }
-
+oncl(){
+  this.mval=Math.random()+'';
+}
 }

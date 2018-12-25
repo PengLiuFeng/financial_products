@@ -176,8 +176,16 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax=true
     this._http.post('/fina/custom/corpInsert',this.testarray,(e)=>{
       this.isajax=false
-      console.log(e)
+      console.log(e.data.msg)
+      if(e.data.t=='1'){
+        alert("您的基本信息提交成功")
+        this.bo=true;
+      }
+      else{
+        alert("您的基本信息提交失败，请您重新提交，如果多次提交失败请及时联系管理员")
+      }
     },()=>{
+      
       this.isajax=false
     })
   }

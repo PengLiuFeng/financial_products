@@ -93,6 +93,21 @@ module.exports = function attachHandlers(router) {
             }
             request(options, callback);
     });
+/*客户概括信息 */
+    router.post('/fina/custom/generalInsert' ,
+    function(req, res) {
+        let options =
+            {
+                url: url_baoli+'/custom/generalInsert',
+                method: 'POST',
+                json:true,
+                body: req.body
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+            request(options, callback);
+    });
     //下拉框列表
     router.post('/fina/dict/dictList',
         function(req, res) {

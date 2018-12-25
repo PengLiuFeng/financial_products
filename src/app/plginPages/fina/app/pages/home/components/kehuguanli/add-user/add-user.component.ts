@@ -88,10 +88,7 @@ export class AddUserComponent implements OnInit {
     }
     return true
   }
-  tijiao(): void {
-    //this.cuNo='20182000014'
-    
-    if (this.checkData()) {
+  tijiao(): void { 
       this.requestData(() => {
         //let newcuNO: Test = new Test(this.cuNo)
         this.cuNoChange.emit(this.cuNo)
@@ -104,7 +101,7 @@ export class AddUserComponent implements OnInit {
       }
       this.lastPage.show()
       this.nowPage.hide()
-    }
+    
   }
 
 }

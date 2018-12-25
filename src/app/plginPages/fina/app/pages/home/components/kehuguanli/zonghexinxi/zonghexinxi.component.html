@@ -84,9 +84,9 @@
                 <!-- 右下侧的页面设计 -->
                     <div class="down_zonghexinxi">
                             
-                            <app-jibenxinxi [bo]="bo" [cuNo]="inputdata.cuNo"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
-                            <app-lianxixinxi *ngIf="apps=='lxxx'"></app-lianxixinxi>
-                            <app-gaikuangxinxi [cuNo]="inputdata.cuNo" *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
+                            <app-jibenxinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
+                            <app-lianxixinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='lxxx'"></app-lianxixinxi>
+                            <app-gaikuangxinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
                             
                     </div>
             </div>

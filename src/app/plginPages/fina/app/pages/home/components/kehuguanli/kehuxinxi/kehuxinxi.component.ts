@@ -13,23 +13,24 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
   
   testdataHandler(event:any){
-    this.cuNo=event
+    this.cuNo=event.cuNo
+    this.personPage=event.personPage
   }
-
- 
-  cuNo: any;
+  cuNo:any
+  personPage:any
   sfs: string;
   title = [//当前页面位置
     "客户管理",
     "客户信息"
   ]
-  
+  //查询条件值绑定
   client:any={
     cuName:'',
     idNo:'',
     idType:'',
   }
-  //查询
+  //查询地址和条件的拼接
+  paths="";
   search():void{
     try {
       
@@ -38,34 +39,9 @@ export class KehuxinxiComponent implements OnInit {
       
       console.log(error)
     }
-    console.log(this.paths)
-
     this.requestTableData();
   }
-  paths="";
-  // requestSearchData(){
-  //   console.log(3333,this.paths)
-  //   this.isAjax=true
-  //   this._http.get('/fina/custom/list?pageNum='+ this.activePage + '&pageSize=' + this.itemsPerPage+this.paths, (e) => {
-  //     this.isAjax = false;
-  //     this.tableData = e.data.pb.list
-  //     this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-  //     //  console.log("表数据",this.tableData)
-  //     if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
-  //       this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
-  //     } else {
-  //       this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
-  //     }
-  //     this.paginators = [];
-  //     for (let i = 1; i <= this.numberOfPaginators; i++) {
-  //       this.paginators.push(i);
-  //     }
-
-  //   }, () => {
-  //     this.isAjax = false;
-
-  //   })
-  // }
+  
   //重置
   oncz(){
     this.client={
@@ -236,6 +212,7 @@ export class KehuxinxiComponent implements OnInit {
   }
   transmit(id: number) {
     this.cuNo = this.tableData[id].cuNo
+    this.personPage='oldUser'
     this.demoBasic.show()
   }
   ngOnInit() {

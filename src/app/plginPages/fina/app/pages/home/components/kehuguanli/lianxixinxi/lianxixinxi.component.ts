@@ -1,4 +1,4 @@
-import { Component,ViewChild, OnInit } from '@angular/core';
+import { Component,ViewChild, OnInit,Input } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 
 @Component({
@@ -8,6 +8,8 @@ import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 })
 export class LianxixinxiComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
+  @Input() cuNo:any
+  @Input() personPage:any
 lxxx={
   apPer:"",
   apIdNo:"",

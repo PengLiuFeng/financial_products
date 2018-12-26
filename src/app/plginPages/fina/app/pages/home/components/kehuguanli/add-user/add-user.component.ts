@@ -3,8 +3,6 @@ import { MDBDatePickerComponent, IMyOptions, ModalDirective } from 'ng-uikit-pro
 import { Location } from '@angular/common';
 import { ParamsService } from './../../../../../params.service'
 import { KehuxinxiComponent } from '../kehuxinxi/kehuxinxi.component';
-// import { routes } from 'src/app/app.routing';
-// import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-add-user',
@@ -12,9 +10,9 @@ import { KehuxinxiComponent } from '../kehuxinxi/kehuxinxi.component';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-  InputData:any={
-    cuNo:'',
-    personPage:'newUser'
+  InputData: any = {
+    cuNo: '',
+    personPage: 'newUser'
   }
   @Input() lastPage: ModalDirective;
   @Input() nowPage: ModalDirective;
@@ -29,7 +27,7 @@ export class AddUserComponent implements OnInit {
     idNo: '',
     cuName: ''
   }
- 
+
   public myDatePickerOptions: IMyOptions = {};
   constructor(private location: Location, private param: ParamsService) {
     this._http = param._http
@@ -40,14 +38,16 @@ export class AddUserComponent implements OnInit {
     this.isajax = true
     this._http.post('/fina/custom/cardInsert', this.client, (e) => {
       this.isajax = false
-      if(e.data.t==1){
+      console.log(e)
+      if (e.data.t == 1) {
         this.InputData.cuNo = e.data.data.cuNo;
+        fu();
       }
-      else{
-        alert("新增用户失败，请从新添加，如果多次失败请刷新页面或即使联系管理员")
+      else if (e.data.msg = "该用户已存在！") {
+        alert("该用户已存在，不可重复添加")
       }
-      fu();
-     
+
+
     }, () => {
       this.isajax = false
     }
@@ -69,46 +69,62 @@ export class AddUserComponent implements OnInit {
   }
   //重置
   go_reset() {
-    this.client={
+    this.client = {
       idType: '',
       idNo: '',
       cuName: ''
     }
   }
   checkData(): boolean {
-    var checkCuName = new RegExp("/^\w{1,30}$/")
-    console.log(this.client.idType)
-    if (this.client.idType == '1')
-      var checkidNo =new RegExp("/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/") 
-    else if (this.client.idType == '2')
-      var checkidNo = new RegExp("/[^_IOZSVa-z\W]{2}\d{6}[^_IOZSVa-z\W]{10}/g")
-    else if (this.client.idType == '9')
-      var checkidNo = new RegExp("/^\w$/")
-   console.log(checkidNo)
-    if (checkidNo.test(this.client.idNo)===false) {
-      alert("输入的证件号不正确，请确认后再次填写")
+
+    if (this.client.idType != null && this.client.idType != '') {
+      if (this.client.idNo != null && this.client.idNo != '') {
+        if (this.client.cuName != null && this.client.cuName != '') {
+          var checkCuName = new RegExp(/^\w{1,30}$/)
+          console.log(this.client.idType)
+          if (this.client.idType == '1')
+            var checkidNo = new RegExp(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/)
+          else if (this.client.idType == '2')
+            var checkidNo = new RegExp(/[^_IOZSVa-z\W]{2}\d{6}[^_IOZSVa-z\W]{10}/g)
+          else if (this.client.idType == '9')
+            var checkidNo = new RegExp(/^\w$/)
+          if (checkidNo.test(this.client.idNo) === false) {
+            alert("输入的证件号不正确，请确认后再次填写")
+            return false
+          }
+          if (checkCuName.test(this.client.cuName) === false) {
+            alert("姓名输入不符合规则，请输入长度在30位以内的姓名")
+            return false
+          }
+          return true
+        } else {
+          alert("您必须向我们提供您的Name，这样我们才能知道您是谁！")
+          return false
+        }
+      } else {
+        alert("您忘了填写正确的证件号码，这样我们将无法准确的为您提供服务！")
+        return false
+      }
+    } else {
+      alert("请先选择证件类型！")
       return false
     }
-    if (checkCuName.test(this.client.cuName)===false) {
-      alert("姓名输入不符合规则，请输入长度在30位以内的姓名")
-      return false
-    }
-    return true
   }
-  
-  tijiao(): void { 
+
+  tijiao(): void {
+    if (this.checkData()) {
       this.requestData(() => {
         //let newcuNO: Test = new Test(this.cuNo)
         this.cuNoChange.emit(this.InputData)
+        this.lastPage.show()
+        this.nowPage.hide()
       })
       this.client = {
         idType: '',
         idNo: '',
         cifName: ''
       }
-      this.lastPage.show()
-      this.nowPage.hide()
-    
+    }
   }
 
 }

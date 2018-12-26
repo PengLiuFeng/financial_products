@@ -11,9 +11,7 @@
                         class="form-control">
                   <label for="form1" class="">客户号</label>
             </div>
-            <!-- <div class="md-form">
-                        <mdb-select [options]="testarray" [disabled]="bo" name="idType"  id="form2"  label="证件类型"></mdb-select><br/>
-                  </div> -->
+           
             <div class="md-form">
 
                   <input mdbInputDirective type="text" [disabled]="bo" name="cuName" [(ngModel)]="testarray.cuName" id="form3"
@@ -26,9 +24,14 @@
                         id="form4" class="form-control">
                   <label for="form4">英文名称 ： </label>
             </div>
-            <div class="col-md-6" style="position:relative;top:-30px;">
+            <div class="col-md-6" style="position:relative;top:-20px;">
                   <mdb-select [options]="idTypes" [disabled]="bo" name="idType" [(ngModel)]="testarray.idType"
                         placeholder="请选择" label="证件类型"></mdb-select>
+            </div>
+            <div class="md-form">
+                  <input mdbInputDirective type="text" [disabled]="bo" name="idNo" [(ngModel)]="testarray.idNo" id="form4"
+                        class="form-control">
+                  <label for="form4">证件号码 ： </label>
             </div>
 
       </div>
@@ -38,40 +41,31 @@
             企业类别信息
       </diV>
       <div class="company_type_inform">
-            <!-- <div class="type-form">
-                                    
-                                    <input mdbInputDirective type="text" [(ngModel)]="Client.Client_name" id="form2" class="form-control">
-                                    <label for="form2">客户名称 ： </label>
-                              </div> -->
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top:10px;">
 
                   <mdb-select id="form5" name="country" [disabled]="bo" [(ngModel)]="testarray.country" [options]="countrys"
                         placeholder="请选择" label="国别"></mdb-select>
             </div>
-            <!-- <div class="col-md-6">
-
-                  <mdb-select id="form6" name="cifArea" [disabled]="bo" [(ngModel)]="testarray.cifArea" [options]="cifAreas"
-                        placeholder="请选择" label="行政区代码"></mdb-select><br />
-            </div> -->
-            <div class="col-md-6">
-                  <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.cifArea" [isMDBstyle]="true" [showAllLevels]="false"></app-df-cascader>
-                        <span>{{testarray.cifArea}}</span>
-                
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top:10px;">
 
                   <mdb-select id="form6" name="cuType" [disabled]="bo" [(ngModel)]="testarray.cuType" [options]="cuTypes"
                         placeholder="请选择" label="客户类型"></mdb-select><br />
-            </div>
-            <div class="col-md-6">
-                  <app-df-cascader [options]="cifAreas"  [(values)]="testarray.cifArea" [showAllLevels]="true"></app-df-cascader>
-                  <!-- <mdb-select id="form8" name="wayNo" [disabled]="bo" [(ngModel)]="wayNo" placeholder="请选择" [options]="testarray.wayNos"
-                        label="行业分类"></mdb-select><br /> -->
             </div>
             <div class="md-form">
                   <mdb-date-picker name="setupDate" id="form9" (click)="pickerFocus($event);" [disabled]="bo" [options]="myDatePickerOptions"
                         label=" 成立时间" [(ngModel)]="testarray.setupDate" required></mdb-date-picker>
             </div>
+            <div style="min-height:80px;width:46%;float: left;margin:2% 2% 2% 2%;">
+                  <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.cifArea" [isMDBstyle]="true"
+                        label="行政区划选择" [showAllLevels]="true"></app-df-cascader>行政区划代码：{{testarray.cifArea}}
+            </div>
+            <div style="min-height:80px;width:46%;float: left;margin:2% 2% 2% 2%;">
+                  <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.wayNo" [isMDBstyle]="true" label="行业分类"
+                        [showAllLevels]="true"></app-df-cascader>行业分类编号：{{testarray.wayNo}}
+                  <!-- <mdb-select id="form8" name="wayNo" [disabled]="bo" [(ngModel)]="wayNo" placeholder="请选择" [options]="testarray.wayNos"
+                        label="行业分类"></mdb-select><br /> -->
+            </div>
+
             <!-- <div class="md-form" style="padding-top:30px;">
                   <input mdbInputDirective type="text" name="areaName" [disabled]="bo" [(ngModel)]="testarray.areaName"
                         id="form7" class="form-control">
@@ -118,23 +112,23 @@
                         placeholder="请选择" label="控股类型"></mdb-select><br />
 
             </div>
-            <div class="md-form" style="width:20%;">
+            <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
 
                   <mdb-date-picker name="licBegDate" id="form13" (click)="pickerFocus($event);" [disabled]="bo" label=" 注册登记时间"
                         [options]="myDatePickerOptions" [(ngModel)]="testarray.licBegDate" required></mdb-date-picker>
             </div>
-            <div class="md-form" style="width:20%;">
+            <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
 
                   <mdb-date-picker name="licEndDate" id="form14" (click)="pickerFocus($event);" [disabled]="bo" label=" 到期时间"
                         [options]="myDatePickerOptions" [(ngModel)]="testarray.licEndDate" required></mdb-date-picker>
             </div>
 
-            <div class="md-form" style="width:20%;">
+            <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
 
                   <mdb-date-picker name="licChkDate" id="form16" (click)="pickerFocus($event);" label="营业执照年检时间"
                         [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.licChkDate" required></mdb-date-picker>
             </div>
-            <div class="md-form" style="width:20%;">
+            <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
 
                   <mdb-date-picker name="idChkDate" id="form17" (click)="pickerFocus($event);" label=" 组织机构代码年检时间"
                         [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.idChkDate" required></mdb-date-picker>
@@ -148,7 +142,7 @@
             评级信息
       </diV>
       <div class="credit_inform">
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-top:8px;">
                   <mdb-select id="form18" name="outGrade" placeholder="请选择" [disabled]="bo" [(ngModel)]="testarray.outGrade"
                         [options]="outGrades" label="外部信用等级"></mdb-select><br />
             </div>
@@ -211,8 +205,10 @@
       <div style="text-align: center;">
             <button mdbBtn color="primary" class="waves-light" (click)="tijiao()" size="sm" mdbWavesEffect>保存</button>
             <button mdbBtn color="info" (click)="go_reset();" style="margin-left:3%;" size="sm" mdbWavesEffect>取消</button>
-            <button mdbBtn color="info" *ngIf="bo==false" (click)="gaibian();" style="margin-left:3%;" size="sm" mdbWavesEffect>不可修改</button> 
-            <button mdbBtn color="info" *ngIf="bo==true" (click)="gaibian();" style="margin-left:3%;" size="sm" mdbWavesEffect>可修改</button>
+            <button mdbBtn color="info" *ngIf="bo==false" (click)="gaibian();" style="margin-left:3%;" size="sm"
+                  mdbWavesEffect>不可修改</button>
+            <button mdbBtn color="info" *ngIf="bo==true" (click)="gaibian();" style="margin-left:3%;" size="sm"
+                  mdbWavesEffect>可修改</button>
       </div>
 
 

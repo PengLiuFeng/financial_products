@@ -17,6 +17,7 @@ export class ZonghexinxiComponent implements OnInit {
   @Input() personPage:any;   //客户信息界面传入的值，判断是新增还是客户信息界面进入
   apps:any='jbxx';
   bo:boolean =false;
+  idTypes:any;
   _http:any;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   public myDatePickerOptions: IMyOptions = {};
@@ -34,19 +35,49 @@ constructor( private location:Location,private param:ParamsService) {
             // this.inputdata.cuName=e.data.apb.cuName
             // this.inputdata.cuNo=e.data.apb.cuNo
             this.inputdata=e.data.apb
-            console.log(this.inputdata)
+              if(typeof(Number( this.inputdata.idType))=='number'){
+                this.inputdata.idType=this.getLabel(this.inputdata.idType,this.idTypes)
+              }
       },()=>{
         this.isajax=false
       }
       )
 
   }
+  //请求下拉框的数据
+  requestselectData(){
+    this.isajax = true;
+    this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
+      var newdata = e.data
+      console.log(newdata)
+      for (var i = 0; i < newdata.length; i++) {
+
+        if (newdata[i].data[0].fieldName == 'ID_TYPE') {
+          this.idTypes = newdata[i].data
+          //this.addselectvaule(this.idTypes)
+        }
+      }
+     
+    }, () => {
+      this.isajax = false;
+    })
+  }
+  //将下拉框的值转换为lable
+  getLabel(value:any,select:Array<any>):any{
+    for(var i=0;i<select.length;i++){
+      if(select[i].value==value){
+        return select[i].label
+      }
+    }
+}
+
   ngOnChanges(it:any){
       if(this.cuNo!=null&&this.cuNo!=undefined){
         this.requestData()
       }
   }
   ngOnInit() {
+    this.requestselectData()
       if(this.cuNo==null||this.cuNo==undefined){
         this.inputdata={
           idNo:'',
@@ -55,9 +86,6 @@ constructor( private location:Location,private param:ParamsService) {
           cuNo:'',
         }
       }
-  }
-  goback():void{
-    this.location.back();
   }
   opens(t:any):void{
     this.apps=t;

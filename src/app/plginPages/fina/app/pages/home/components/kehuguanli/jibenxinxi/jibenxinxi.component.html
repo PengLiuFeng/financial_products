@@ -54,7 +54,7 @@
                         placeholder="请选择" label="行政区代码"></mdb-select><br />
             </div> -->
             <div class="col-md-6">
-                  <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.cifArea" [showAllLevels]="true"></app-df-cascader>
+                  <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.cifArea" [isMDBstyle]="true" [showAllLevels]="false"></app-df-cascader>
                         <span>{{testarray.cifArea}}</span>
                 
             </div>
@@ -150,7 +150,7 @@
       <div class="credit_inform">
             <div class="col-md-6">
                   <mdb-select id="form18" name="outGrade" placeholder="请选择" [disabled]="bo" [(ngModel)]="testarray.outGrade"
-                        [options]="testarray.outGrades" label="外部信用等级"></mdb-select><br />
+                        [options]="outGrades" label="外部信用等级"></mdb-select><br />
             </div>
             <div class="md-form" style="padding-bottom:10px;">
                   <mdb-date-picker name="outGradeEndDate" id="form19" (click)="pickerFocus($event);" [disabled]="bo"

@@ -40,8 +40,12 @@ export class AddUserComponent implements OnInit {
     this.isajax = true
     this._http.post('/fina/custom/cardInsert', this.client, (e) => {
       this.isajax = false
-      console.log(e)
-      this.InputData.cuNo = e.data.data.cuNo;
+      if(e.data.t==1){
+        this.InputData.cuNo = e.data.data.cuNo;
+      }
+      else{
+        alert("新增用户失败，请从新添加，如果多次失败请刷新页面或即使联系管理员")
+      }
       fu();
      
     }, () => {

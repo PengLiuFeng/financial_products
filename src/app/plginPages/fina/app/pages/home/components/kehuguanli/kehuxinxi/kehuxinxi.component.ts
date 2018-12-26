@@ -51,6 +51,14 @@ export class KehuxinxiComponent implements OnInit {
     }
     this.search();
   }
+  //通过下拉框的值判断下拉框的Label
+  getLabel(value:any,select:any):any{
+      for(var p in select){
+        if(p['value']==value){
+           return p['label']
+        }
+      }
+  }
   //请求下拉框数据
   idTypes:any
   requestselectData() {
@@ -196,6 +204,9 @@ export class KehuxinxiComponent implements OnInit {
         for(var p in this.tableData[i]){
           if(p.search('Date')!=-1||p.search('Time')!=-1){
             this.tableData[i][p]=new Date(this.tableData[i][p])['Format']('yyyy-MM-dd')
+          }
+          if(p=='idType'){
+            this.getLabel(p['value'],'this.'+p+'s')
           }
         }
       }

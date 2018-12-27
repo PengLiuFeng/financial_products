@@ -93,6 +93,7 @@ import { BreadcrumbsComponent } from './pages/components/breadcrumbs/breadcrumbs
 import { MaifanghuikuanComponent } from './pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
 import { HuikuanyemianComponent } from './pages/home/components/zijinguanli/maifanghuikuan/huikuanyemian/huikuanyemian.component';
 import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.component';
+import { ZiliaoshangchuanComponent } from './pages/home/components/rongzifuwu/yewudiaochayushenpi/ziliaoshangchuan/ziliaoshangchuan.component';
 
 @NgModule({
   declarations: [
@@ -174,7 +175,8 @@ import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.
     YonghuguanliComponent,
     YonghuzhuceComponent,
     BreadcrumbsComponent,
-    DfCascaderComponent
+    DfCascaderComponent,
+    ZiliaoshangchuanComponent
 
   ],
   imports: [

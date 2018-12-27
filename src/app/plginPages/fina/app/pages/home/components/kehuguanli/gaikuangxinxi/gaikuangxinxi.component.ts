@@ -85,7 +85,7 @@ export class GaikuangxinxiComponent implements OnInit {
   reqData(){
     this.isAjax=true;
       this._http.get('/fina/custom/generalDetail?cuNo='+this.cuNo,(e)=>{
-        //console.log(e)
+        console.log(e)
         if(e.data.data!=''&&e.data.data!=null){
           if(e.data.t){
             this.gkxx=e.data.data;
@@ -93,7 +93,7 @@ export class GaikuangxinxiComponent implements OnInit {
             this.gkxx.factFund = (parseInt(this.gkxx.factFund) / 10000).toString();
             this.gkxx.assTot = (parseInt(this.gkxx.assTot) / 10000).toString();
             this.gkxx.saleTot = (parseInt(this.gkxx.saleTot) / 10000).toString();
-          }
+          } 
         }
         
         this.isAjax=false;
@@ -137,12 +137,14 @@ export class GaikuangxinxiComponent implements OnInit {
       })
 
   }
-  verify(e){
+  verify(e,k){
     var txt = e.target.value;
 
     if (!/^\d+(\.\d+)?$/.test(txt)){
       this.dangerShow('输入有误');
-      e.target.value='';
+      setTimeout(()=>{
+        this.gkxx[k]="";
+      })
     }
   }
 
@@ -164,9 +166,14 @@ export class GaikuangxinxiComponent implements OnInit {
   modification(){ //开始修改
     this.btnFlag = false;//切换为保存按钮
     this.Idisabled = false;
+    window['reqData']= JSON.parse(JSON.stringify(this.gkxx));
   }
   confirmModification(){//取消修改
-    this.reqData();//数据回滚
+    let data=window['reqData'];
+    for(let it in data){
+      this.gkxx[it]=data[it];
+    }
+    //this.reqData();//数据回滚
     this.Idisabled = true;//全局禁用
     this.btnFlag = true;//切换回修改按钮
   }

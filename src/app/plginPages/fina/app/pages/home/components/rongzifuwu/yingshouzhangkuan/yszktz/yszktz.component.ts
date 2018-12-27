@@ -1,26 +1,31 @@
 //应收账款通知
 import { Component,ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, turnState } from 'ng-uikit-pro-standard';
+import { ParamsService } from './../../../../../../params.service'
+
 @Component({
   selector: 'app-yszktz',
   templateUrl: './yszktz.component.html',
   styleUrls: ['./yszktz.component.scss']
 })
 export class YszktzComponent implements OnInit {
+  
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
+
+  adviceNote ={
+    cuNo:"",
+    cuName:"",
+    authAppNo:"",
+    
+  }
 
   isShow:boolean;
   isShow_add:boolean;
 
   radioModel:any;
 
-  REC_STA=[
-    {label:"应收账款状态",disabled:"disabled"},
-    {label:"待转让",value:"0"},
-    {label:"转让生效",value:"1"},
-    {label:"失效",value:"2"}
-  ]
+  REC_STA=[]
   yszk={
     cuNo:"",
     cuName:"",
@@ -35,8 +40,10 @@ export class YszktzComponent implements OnInit {
     "应收账款管理",
     "应收账款转让通知" 
   ]
+ 
 
   /* 分页显示使用的数据 */
+  theTotalNumberOfEntries = 0;
   activePage = 1;
   itemsPerPage = 6;//每页显示条数
   paginators: Array<any> = [];
@@ -47,18 +54,74 @@ export class YszktzComponent implements OnInit {
   firstVisiblePaginator = 0;
   lastVisiblePaginator = this.numberOfVisiblePaginators;
 
-  tableData = [/* 表数据 */
-    { id:1, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:2, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:3, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:4, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:5, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:6, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:7, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"},
-    { id:8, busName:"北京名品汽车轮胎生产商", busCoun:"JC20181001-01", busType:"商业发票", busNo:"FP2018001", billAmt:"CNY300,000,000.00", busRecei:"CNY280,000,000.00", billDate:"2018-09-29", endDate:"2019-01-11", recSta:"待转让", traInfAgr:"待通知"}
-  ];
+  tableData = [/* 表数据 */];
   
-  constructor() { }
+  _http:any;
+  isAjax=false;
+  constructor(public params:ParamsService) {
+    this._http=params._http;
+   }
+
+   path="";
+   queryTableDataWithConditions(){
+    this.path = 
+      '&cuNo='+this.yszk.cuNo+'&cuName='+this.yszk.cuName+
+      '&recSta='+this.yszk.recSta+'&authAppNo='+this.yszk.authAppNo;
+    this.activePage = 1;
+    this.requestTableData();
+   }
+   requestTableData(){
+    this.isAjax=true;
+    this._http.get('/fina/receive/traList?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
+      this.isAjax=false;
+      //console.log(e)
+      this.tableData=e.data.pb.list;
+      console.log(this.tableData)
+      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
+      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
+      } else {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
+      }
+      this.paginators=[];
+      for (let i = 1; i <= this.numberOfPaginators; i++) {
+        this.paginators.push(i);
+      }
+      this.isAjax=false;
+     },()=>{
+     this.isAjax=false;
+   
+     })
+   }
+   reSetModel(){
+    this.path='';
+     this. yszk={
+      cuNo:"",
+      cuName:"",
+      authAppNo:"",
+      recSta:"",
+    }
+   }
+   reSetAndReqTD(){
+    this.reSetModel();
+    this.requestTableData();
+  }
+
+   reqDdListData(){
+    this.isAjax=true;
+      this._http.get('/fina/dict/dictListList?ids=REC_STA',(e)=>{
+        let it=null;
+        for(let i=0;i<e.data.length;i++){
+          it=e.data[i];
+          if(it.myid=='REC_STA'){
+            this.REC_STA=it.data;
+          }
+        }
+        this.isAjax=false;
+      },()=>{
+     this.isAjax=false;
+     })
+   }
 
   ngOnInit() {/* 初始化动态赋值与显示 */
     if (this.tableData.length % this.itemsPerPage === 0) {
@@ -69,6 +132,8 @@ export class YszktzComponent implements OnInit {
     for (let i = 1; i <= this.numberOfPaginators; i++) {
       this.paginators.push(i);
     }
+    this.requestTableData();
+    this.reqDdListData();
   }
 
   changePage(event: any) {/* 更改页面 */
@@ -76,6 +141,7 @@ export class YszktzComponent implements OnInit {
       this.activePage = +event.target.text;
       this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
       this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+      this.requestTableData();
     }
   }
   previousPage() {/* 上一页 */
@@ -87,6 +153,7 @@ export class YszktzComponent implements OnInit {
         this.firstVisiblePaginator -= this.numberOfVisiblePaginators;
         this.lastVisiblePaginator -= (this.numberOfPaginators % this.numberOfVisiblePaginators);
       }
+      this.requestTableData();
     }
   
     this.activePage -= 1;
@@ -102,6 +169,7 @@ export class YszktzComponent implements OnInit {
         this.firstVisiblePaginator += this.numberOfVisiblePaginators;
       this.lastVisiblePaginator = this.numberOfPaginators;
       }
+      this.requestTableData();
     }
     this.activePage += 1;
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
@@ -113,6 +181,7 @@ export class YszktzComponent implements OnInit {
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
     this.firstVisiblePaginator = 0;
     this.lastVisiblePaginator = this.numberOfVisiblePaginators;
+    this.requestTableData();
   }
   lastPage() {/* 尾页 */
     this.activePage = this.numberOfPaginators;
@@ -126,6 +195,7 @@ export class YszktzComponent implements OnInit {
       this.lastVisiblePaginator = this.numberOfPaginators;
       this.firstVisiblePaginator = this.lastVisiblePaginator - (this.numberOfPaginators % this.numberOfVisiblePaginators);
     }
+    this.requestTableData();
   }
   public myDatePickerOptions: IMyOptions = {};
   tongzhi(t):void{

@@ -11,7 +11,8 @@
         </div>
     </div>
     <div id="head_div">
-        <button mdbBtn type="button" color="primary" (click)="demoBasic2.show();isShow=true" class="waves-light" mdbWavesEffect>客户综合信息</button>
+        <button mdbBtn type="button" color="primary" (click)="demoBasic2.show();isShow=true" class="waves-light"
+            mdbWavesEffect>客户综合信息</button>
     </div>
 
     <form action="" method="">
@@ -26,22 +27,24 @@
                     </div>
                 </div>
                 <div class="bk_div col-md-6 mx-auto mt-5">
-                    <mdb-select [disabled]="dataObject.Idisabled" [options]="CRE_RATIN" [(ngModel)]="zhsx.creRatin" name="zhsx.creRatin"
-                        placeholder="请选择" label="评级信用等级*:"></mdb-select>
+                    <div class='md-form'>
+                        <mdb-select [disabled]="dataObject.Idisabled" [options]="CRE_RATIN" [(ngModel)]="zhsx.creRatin"
+                            name="zhsx.creRatin" placeholder="请选择" label="评级信用等级*:"></mdb-select>
+                    </div>
                 </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.authAmt" [(ngModel)]="zhsx.authAmt" type="text"
-                            id="zhsxed_input" class="form-control">
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.authAmt" [(ngModel)]="zhsx.authAmt"
+                            type="text" id="zhsxed_input" class="form-control">
                         <label for="zhsxed_input" class="">综合授信额度<span class="font_red">*</span>:</label>
                     </div>
                 </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.authBal" name="zhsx.authBal" type="text"
-                            id="zhsxye_input" class="form-control">
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.authBal" name="zhsx.authBal"
+                            type="text" id="zhsxye_input" class="form-control">
                         <label for="zhsxye_input" class="">综合授信余额<span class="font_red">*</span>:</label>
                     </div>
                 </div>
@@ -54,57 +57,61 @@
                 </div> -->
                 <div class="input-group bk_div">
                     <div id="qx_input" class="md-form">
-                      <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.term" name="zhsx.term" type="text" id="fddbr_1input" class="form-control">
-                      <label for="fddbr_1input" class="">期限<span class="font_red">*</span></label>
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.term" name="zhsx.term"
+                            type="text" id="fddbr_1input" class="form-control">
+                        <label for="fddbr_1input" class="">期限<span class="font_red">*</span></label>
                     </div>
                     <div id="inlineb_div" class="input-group-append">
-                      <div class="btn-group" mdbDropdown>
-                        <button id="qx_btn" mdbDropdownToggle type="button" mdbBtn color="default" size="md" class="z-depth-0" mdbWavesEffect>{{button_text}}</button>
-                        <!-- <div class="dropdown-menu">
+                        <div class="btn-group" mdbDropdown>
+                            <button id="qx_btn" mdbDropdownToggle type="button" mdbBtn color="default" size="md" class="z-depth-0"
+                                mdbWavesEffect>{{button_text}}</button>
+                            <!-- <div class="dropdown-menu">
                           <span class="dropdown-item " href="javascript:;" *ngFor="let item of TERM_TYPE; let i=index" (click)="qx_show(i)">
                             {{item.label}}
                           </span>
                         </div> -->
-                      </div>
+                        </div>
                     </div>
-                  </div>
+                </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
-                    <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_STS" [(ngModel)]="zhsx.authSts" name="zhsx.authSts"
-                        placeholder="请选择" label="综合授信状态*:"></mdb-select>
+                    <div class='md-form'>
+                        <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_STS" [(ngModel)]="zhsx.authSts"
+                            name="zhsx.authSts" placeholder="请选择" label="综合授信状态*:"></mdb-select>
+                    </div>
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.begDate" [options]="myDatePickerOptions" label="综合授信额度起始日期*"
-                        [(ngModel)]="zhsx.begDate" required></mdb-date-picker>
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.begDate"
+                        [options]="myDatePickerOptions" label="综合授信额度起始日期*" [(ngModel)]="zhsx.begDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.endDate" [options]="myDatePickerOptions" label="额度终止日期*"
-                        [(ngModel)]="zhsx.endDate" required></mdb-date-picker>
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.endDate"
+                        [options]="myDatePickerOptions" label="额度终止日期*" [(ngModel)]="zhsx.endDate" required></mdb-date-picker>
                 </div>
                 <div class="bk_div">
                     <div class="check_div">额度使用方式<span class="font_red">*</span></div>
                     <div class="radio_left custom-control custom-radio custom-control-inline">
-                        <input [disabled]="dataObject.Idisabled" type="radio" class="custom-control-input" id="EDSYFS1" value="true"
-                            [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
+                        <input [disabled]="dataObject.Idisabled" type="radio" class="custom-control-input" id="EDSYFS1"
+                            value="true" [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS1">循环</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input [disabled]="dataObject.Idisabled" type="radio" class="custom-control-input" id="EDSYFS2" value="false"
-                            [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
+                        <input [disabled]="dataObject.Idisabled" type="radio" class="custom-control-input" id="EDSYFS2"
+                            value="false" [(ngModel)]="zhsx.recycle" name="zhsx.recycle" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS2">非循环</label>
                     </div>
                 </div>
                 <div class="bk_div">
                     <div class="check_div">额度是否冻结<span class="font_red">*</span></div>
                     <div class="radio_left custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts=='冻结'" type="radio" class="custom-control-input" id="EDSYFS3" value="1"
-                            [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
+                        <input disabled="disabled" [checked]="zhsx.authSts=='冻结'" type="radio" class="custom-control-input"
+                            id="EDSYFS3" value="1" [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS3">是</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input disabled="disabled" [checked]="zhsx.authSts!='冻结'" type="radio" class="custom-control-input" id="EDSYFS4" value="0"
-                            [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
+                        <input disabled="disabled" [checked]="zhsx.authSts!='冻结'" type="radio" class="custom-control-input"
+                            id="EDSYFS4" value="0" [(ngModel)]="zhsx.edsfdj" name="edsfdj" mdbInputDirective>
                         <label class="custom-control-label" for="EDSYFS4">否</label>
                     </div>
                 </div>
@@ -124,40 +131,44 @@
                 <label class="custom-control-label" for="EDSYFS6">否</label>
             </div>
         </div>
-        <div class="body_div" [hidden]="show_fenlei!='1'" >
+        <div class="body_div" [hidden]="show_fenlei!='1'">
             <div class="title_div"><strong class="title_b">分类业务授信</strong></div>
             <div class="form_div">
                 <div class="bk_div col-md-6 mx-auto mt-5">
-                    <mdb-select [disabled]="dataObject.Idisabled" [options]="FINPRO_NO" [(ngModel)]="flywsx.finproNo" name="flywsx.finproNo"
-                        placeholder="请选择" label="金融服务产品*:"></mdb-select>
+                    <div class='md-form'>
+                        <mdb-select [disabled]="dataObject.Idisabled" [options]="FINPRO_NO" [(ngModel)]="flywsx.finproNo"
+                            name="flywsx.finproNo" placeholder="请选择" label="金融服务产品*:"></mdb-select>
+                    </div>
                 </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
-                    <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_SPLIT_TYPT" [(ngModel)]="flywsx.authSplitType" name="flywsx.authSplitType"
-                        placeholder="请选择" label="授信额度类型*:"></mdb-select>
+                    <div class='md-form'>
+                        <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_SPLIT_TYPT" [(ngModel)]="flywsx.authSplitType"
+                            name="flywsx.authSplitType" placeholder="请选择" label="授信额度类型*:"></mdb-select>
+                    </div>
                 </div>
             </div>
             <div class="bk_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthAmt" [(ngModel)]="flywsx.sauthAmt" type="text"
-                        id="fxzed_input" class="form-control">
+                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthAmt" [(ngModel)]="flywsx.sauthAmt"
+                        type="text" id="fxzed_input" class="form-control">
                     <label for="fxzed_input" class="">分项子额度<span class="font_red">*</span>:</label>
                 </div>
             </div>
             <div class="bk_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthBal" [(ngModel)]="flywsx.sauthBal" type="text"
-                        id="fxzedye_input" class="form-control">
+                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthBal" [(ngModel)]="flywsx.sauthBal"
+                        type="text" id="fxzedye_input" class="form-control">
                     <label for="fxzedye_input" class="">分项子额度余额<span class="font_red">*</span>:</label>
                 </div>
             </div>
             <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.begDate" [options]="myDatePickerOptions" label="分项授信起始日期*"
-                    [(ngModel)]="flywsx.begDate" required></mdb-date-picker>
+                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.begDate"
+                    [options]="myDatePickerOptions" label="分项授信起始日期*" [(ngModel)]="flywsx.begDate" required></mdb-date-picker>
             </div>
             <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.endDate" [options]="myDatePickerOptions" label="分项授信终止日期*"
-                    [(ngModel)]="flywsx.endDate" required></mdb-date-picker>
+                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.endDate"
+                    [options]="myDatePickerOptions" label="分项授信终止日期*" [(ngModel)]="flywsx.endDate" required></mdb-date-picker>
             </div>
             <div id="sxxybh_div" class="chang_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
@@ -166,7 +177,7 @@
                     <label for="sxxybh_input" class="">授信申请编号<span class="font_red">*</span>:</label>
                 </div>
             </div>
-            <span class="font_red" [hidden]="dataObject.Idisabled" >{{zhu}}</span>
+            <span class="font_red" [hidden]="dataObject.Idisabled">{{zhu}}</span>
             <br><br>
         </div>
         <div class="body_div">
@@ -174,24 +185,24 @@
             <div class="form_div">
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.brNo" [(ngModel)]="zhsx.brNo" type="text"
-                            id="djdw_input" class="form-control">
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective name="zhsx.brNo" [(ngModel)]="zhsx.brNo"
+                            type="text" id="djdw_input" class="form-control">
                         <label for="djdw_input" class="">登记单位:</label>
                     </div>
                 </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.brName" name="zhsx.brName" type="text"
-                            id="djdwmc_input" class="form-control">
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.brName" name="zhsx.brName"
+                            type="text" id="djdwmc_input" class="form-control">
                         <label for="djdwmc_input" class="">登记单位名称:</label>
                     </div>
                 </div>
 
                 <div class="bk_div col-md-6 mx-auto mt-5">
                     <div class="md-form">
-                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.opName" name="zhsx.opName" type="text"
-                            id="djrmc_input" class="form-control">
+                        <input [disabled]="dataObject.Idisabled" mdbInputDirective [(ngModel)]="zhsx.opName" name="zhsx.opName"
+                            type="text" id="djrmc_input" class="form-control">
                         <label for="djrmc_input" class="">登记人名称:</label>
                     </div>
                 </div>
@@ -204,36 +215,38 @@
                 </div>
 
                 <div class="short_div">
-                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.txDate" [options]="myDatePickerOptions" label="登记时间"
-                        [(ngModel)]="zhsx.txDate" required></mdb-date-picker>
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.txDate"
+                        [options]="myDatePickerOptions" label="登记时间" [(ngModel)]="zhsx.txDate" required></mdb-date-picker>
                 </div>
                 <div class="short_div">
-                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.upDate" [options]="myDatePickerOptions" label="修改时间"
-                        [(ngModel)]="zhsx.upDate" required></mdb-date-picker>
+                    <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.upDate"
+                        [options]="myDatePickerOptions" label="修改时间" [(ngModel)]="zhsx.upDate" required></mdb-date-picker>
                 </div>
-
                 <br><br>
             </div>
         </div>
         <br>
 
-        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="myBasicModalLabel" aria-hidden="true">
             <div class="wins" role="document">
                 <div class="modal-content">
                     <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic2.hide()">
                         <span aria-hidden="true" (click)="isShow=false">×</span>
                     </button>
                     <div id="mtk_div" *ngIf="isShow">
-                        <app-zonghexinxi></app-zonghexinxi>
+                        <app-zonghexinxi [cuNo]='zhsx.cuNo' ></app-zonghexinxi>
                     </div>
                 </div>
             </div>
         </div>
-        
+
 
         <div id="button_div">
-            <button mdbBtn [disabled]='isAjax' type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
-            <button mdbBtn [disabled]='isAjax' type="button" (click)="closeWin()" [hidden]="dataObject.Idisabled" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
+            <button mdbBtn [disabled]='isAjax' type="button" (click)="submitAllData()" [hidden]="dataObject.Idisabled"
+                color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
+            <button mdbBtn [disabled]='isAjax' type="button" (click)="closeWin()" [hidden]="dataObject.Idisabled" color="danger"
+                class="waves-light form_button" mdbWavesEffect>取消</button>
             <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
     </form>

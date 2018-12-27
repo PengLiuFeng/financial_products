@@ -1,6 +1,8 @@
 .Rbtn{
-    float: right;
-    margin-right: 3%;
+    position: relative;
+    left: 86%;
+    bottom: 0%;
+    margin: 10px;
 }
 #head_right_div button,.Rbtn{
     padding: 0px;
@@ -68,8 +70,9 @@ td{
     min-width: 100px;
 }
 #top_zi_div{
-    width: 70%;
+    width: 85%;
     margin: 10px auto;
+    //border: 1px solid red;
 }
 #body_bottom_div{
     overflow:scroll;
@@ -79,7 +82,7 @@ td{
 }
 .bk_div{
     display: inline-block;
-    width: 50%;
+    width: 25%;
 }
 th{
     text-align: center;

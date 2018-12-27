@@ -254,6 +254,9 @@ module.exports = function attachHandlers(router) {
                 json: true,
                 body: req.body
             }
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
         request(options, callback);
     });
      //保存授信详情

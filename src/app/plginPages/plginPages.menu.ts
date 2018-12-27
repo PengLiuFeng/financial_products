@@ -61,15 +61,16 @@ export const PAGES_MENU =
           title: '融资管理',
           tabs:[
             {
+              "name":"应收账款管理",
+              "path":"/yszkgl/yszkmx"
+            },
+            {
               "name":"融资申请",
               "path":"/rz/rzsq"
             },
             {
               "name":"业务调查与审批",
               "path":"/ywdc"
-            },{
-              "name":"应收账款管理",
-              "path":"/yszkgl/yszkmx"
             },{
               "name":"合同签署",
               "path":"/htqs/htqsList"

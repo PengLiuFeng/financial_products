@@ -10,88 +10,118 @@
     <form id="LXXX_form" action="" method="POST">
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.apPer" name="lxxx.apPer" type="text" id="apPer" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.apPer" name="lxxx.apPer" type="text" id="apPer" class="form-control">
                 <label for="fddbr_input" class="">法定代表人<span class="font_red">*</span>:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
-                <mdb-select name="lxxx.apSex" label="法定代表人性别:" placeholder="请选择" [options]="AP_SEX" [(ngModel)]="lxxx.apSex" ></mdb-select>
+            <div class='md-form'>
+                <mdb-select name="lxxx.apSex" label="法定代表人性别:" placeholder="请选择" [options]="AP_SEX" [disabled] = Idisabled [(ngModel)]="lxxx.apSex" ></mdb-select>
+            </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
-            <mdb-select name="lxxx.apIdType" label="法定代表人证件类型*:" placeholder="请选择" [options]="AP_ID_TYPE" [(ngModel)]="lxxx.apIdType"></mdb-select>
+            <div class='md-form'>
+                <mdb-select name="lxxx.apIdType" label="法定代表人证件类型*:" placeholder="请选择" [options]="AP_ID_TYPE" [disabled] = Idisabled [(ngModel)]="lxxx.apIdType"></mdb-select>
+            </div> 
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective type="text" [(ngModel)]="lxxx.apIdNo" name="lxxx.apIdNo" id="dbrzjh_input" class="form-control">
+                <input mdbInputDirective type="text" [disabled] = Idisabled [(ngModel)]="lxxx.apIdNo" name="lxxx.apIdNo" id="dbrzjh_input" class="form-control">
                 <label for="dbrzjh_input" class="">法定代表人证件号<span class="font_red">*</span>:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective name="lxxx.apHoldNo"  [(ngModel)]="lxxx.apHoldNo" type="text" id="dbrzgz_input" class="form-control">
+                <input mdbInputDirective name="lxxx.apHoldNo"  [disabled] = Idisabled [(ngModel)]="lxxx.apHoldNo" type="text" id="dbrzgz_input" class="form-control">
                 <label for="dbrzgz_input" class="">法定代表人任职资格证:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input mdbInputDirective [(ngModel)]="lxxx.apPhone" name="lxxx.apPhone" type="text" id="dbrdh_input" class="form-control">
+                    <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.apPhone" name="lxxx.apPhone" type="text" id="dbrdh_input" class="form-control">
                     <label for="dbrdh_input" class="">法定代表人联系电话<span class="font_red">*</span>:</label>
                 </div>
         </div>
         <div class="chang_div col-md-9  mx-auto mt-5">
                 <div class="md-form">
-                    <input mdbInputDirective [(ngModel)]="lxxx.apAddr" name="lxxx.apAddr" type="text" id="dbrdz_input" class="form-control">
+                    <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.apAddr" name="lxxx.apAddr" type="text" id="dbrdz_input" class="form-control">
                     <label for="dbrdz_input" class="">法定代表人居住地址:</label>
                 </div>
         </div>
         <div class="chang_div col-md-6 mx-auto mt-5">
                 <div class="md-form">
-                    <input mdbInputDirective [(ngModel)]="lxxx.apMate" name="lxxx.apMate" type="text" id="dbrpl_input" class="form-control">
+                    <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.apMate" name="lxxx.apMate" type="text" id="dbrpl_input" class="form-control">
                     <label for="dbrpl_input" class="">法定代表人配偶姓名:</label>
                 </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
-                <mdb-select label="法定代表人配偶证件类型:" placeholder="请选择" name="lxxx.apMateIdType" [options]="AP_MATE_ID_TYPE" [(ngModel)]="lxxx.apMateIdType"></mdb-select>
+            <div class='md-form'>
+                <mdb-select label="法定代表人配偶证件类型:" placeholder="请选择" name="lxxx.apMateIdType" [options]="AP_MATE_ID_TYPE" [disabled] = Idisabled [(ngModel)]="lxxx.apMateIdType"></mdb-select>
+            </div>   
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.apMateIdNo" name="lxxx.apMateIdNo" type="text" id="plzjh_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.apMateIdNo" name="lxxx.apMateIdNo" type="text" id="plzjh_input" class="form-control">
                 <label for="plzjh_input" class="">法定代表人配偶证件号码:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.commPer" name="lxxx.commPer" type="text" id="cwlxr_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.commPer" name="lxxx.commPer" type="text" id="cwlxr_input" class="form-control">
                 <label for="cwlxr_input" class="">财务部联系人<span class="font_red">*</span>:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.commTel" name="lxxx.commTel" type="text" id="cwdh_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.commTel" name="lxxx.commTel" type="text" id="cwdh_input" class="form-control">
                 <label for="cwdh_input" class="">财务部联系电话<span class="font_red">*</span>:</label>
             </div>
         </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.foreLicNo" name="lxxx.foreLicNo" type="text" id="cwlxr_input" class="form-control">
+                <label for="cwlxr_input" class="">业务负责人<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+            <div class="md-form">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.foreAcNo" name="lxxx.foreAcNo" type="text" id="cwdh_input" class="form-control">
+                <label for="cwdh_input" class="">业务负责人电话<span class="font_red">*</span>:</label>
+            </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-5">
+                <div class="md-form">
+                    <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.postCode" name="lxxx.postCode" type="text" id="cwlxr_input" class="form-control">
+                    <label for="cwlxr_input" class="">邮政编码<span class="font_red">*</span>:</label>
+                </div>
+            </div>
+            <div class="bk_div col-md-6 mx-auto mt-5">
+                <div class="md-form">
+                    <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.cifTel" name="lxxx.cifTel" type="text" id="cwdh_input" class="form-control">
+                    <label for="cwdh_input" class="">联系电话<span class="font_red">*</span>:</label>
+                </div>
+            </div>
         <div class="chang_div col-md-9  mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.cifFax" name="lxxx.cifFax" type="text" id="cz_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.cifFax" name="lxxx.cifFax" type="text" id="cz_input" class="form-control">
                 <label for="cz_input" class="">传真:</label>
             </div>
         </div>
         <div class="chang_div col-md-9  mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.comAddr" type="text" name="lxxx.comAddr" id="dwdz_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.comAddr" type="text" name="lxxx.comAddr" id="dwdz_input" class="form-control">
                 <label for="dwdz_input" class="">单位地址<span class="font_red">*</span>:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.webUrl" name="lxxx.webUrl" type="text" id="wldz_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.webUrl" name="lxxx.webUrl" type="text" id="wldz_input" class="form-control">
                 <label for="wldz_input" class="">网络地址:</label>
             </div>
         </div>
         <div class="bk_div col-md-6 mx-auto mt-5">
             <div class="md-form">
-                <input mdbInputDirective [(ngModel)]="lxxx.email" name="lxxx.email" type="text" id="dzyx_input" class="form-control">
+                <input mdbInputDirective [disabled] = Idisabled [(ngModel)]="lxxx.email" name="lxxx.email" type="text" id="dzyx_input" class="form-control">
                 <label for="dzyx_input" class="">电子邮箱地址:</label>
             </div>
         </div>
@@ -100,8 +130,16 @@
   </div>
   <br>
 </div>
-  <div id="button_div">
-        <button mdbBtn type="button" color="success" form="LXXX_form" class="waves-light" mdbWavesEffect>保存</button>
-        <button mdbBtn type="button" color="danger" form="LXXX_form" class="waves-light" mdbWavesEffect>取消</button>
-  </div>
+<div *ngIf="flag" id="button_div">
+        <button [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitData()" class="waves-light" mdbWavesEffect>保存</button>
+        <button [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="reSetModel()" class="waves-light" mdbWavesEffect>取消</button>
+</div>
+<div *ngIf="!flag" id="button_div">
+        <button *ngIf="btnFlag" [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="modification()" class="waves-light" mdbWavesEffect>修改</button>
+        <button *ngIf="!btnFlag" [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitUp()" class="waves-light" mdbWavesEffect>保存</button>
+        <button  [disabled]="isAjax" [hidden]="Idisabled" mdbBtn type="button" color="danger" (click)="confirmModification()" class="waves-light" mdbWavesEffect>取消</button>
+</div>
+<div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+    <strong>{{alertTxt}}</strong>
+</div>
  

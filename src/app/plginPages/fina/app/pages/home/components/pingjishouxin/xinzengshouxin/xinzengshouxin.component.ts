@@ -57,16 +57,15 @@ export class XinzengshouxinComponent implements OnInit {
           item = e.data.t;
           console.log(e)
           if(item){
-            console.log(e)
-            console.log(e.data)
+            // console.log(e)
+            // console.log(e.data)
             this.xzsx.cuName = e.data.data.cuName;
             this.cuNo = e.data.data.cuNo;
             this.authId = e.data.data.authId;
             this.authAppNo = e.data.data.authAppNo;
             this.dataRes();
-          }else{
-            this.dangerShow();
           }
+          this.dangerShow(e.data.msg);
           this.isAjax=false;
         },()=>{
           this.isAjax=false;
@@ -85,8 +84,9 @@ export class XinzengshouxinComponent implements OnInit {
     this.newInfoDemoBasic.show();
   }
   danger_hid=true;
-
-  dangerShow(){
+  alertTxt='';
+  dangerShow(str){
+    this.alertTxt = str;
     this.danger_hid=false;
     setTimeout(() => {
       this.danger_hid=true

@@ -196,7 +196,21 @@
           <span aria-hidden="true">×</span>
         </button>
         <div id="mtk_div">
-            <app-ywdcysp-header [radioModel]="radioModel"></app-ywdcysp-header>
+            <app-ywdcysp-header [ZHXXdemoBasic]="ZHXXdemoBasic" [radioModel]="radioModel"></app-ywdcysp-header>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div mdbModal #ZHXXdemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="wins" role="document">     
+      <div class="modal-content">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="ZHXXdemoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="mtk_div">
+          <app-zonghexinxi ></app-zonghexinxi>
         </div>
       </div>
     </div>

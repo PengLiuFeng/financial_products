@@ -7,12 +7,15 @@
 <div class="body_div">
   <div class="title_div"><strong class="title_b">企业资本信息</strong></div>
     <div class="form_div">
-        <div class="chang_div col-md-6 mx-auto mt-5">
-                <mdb-select [disabled]='Idisabled' name="gkxx.curNo" placeholder="请选择" [options]="CUR_NO" [(ngModel)]="gkxx.curNo" label="币种*:" ></mdb-select>
+        <div class="bk_div">
+            <div class="md-form">
+                <mdb-select [disabled]='Idisabled' name="gkxx.curType" placeholder="请选择" [options]="CUR_NO" [(ngModel)]="gkxx.curType" label="币种*:" ></mdb-select>
+            </div>
         </div>
         <div class="bk_div">
             <div class="md-form input-group">
-                <input [disabled]='Idisabled' type="text" [(ngModel)]="gkxx.regFund" class="form-control" name="gkxx.regFund" placeholder="注册资本*" aria-describedby="basic-addon1">
+                <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"regFund")' type="number" [(ngModel)]="gkxx.regFund" class="form-control" name="gkxx.regFund" aria-describedby="basic-addon1">
+                <label for="fddbr_input" >注册资本<span class="font_red">*</span>:</label>
                 <div class="input-group-prepend" id="basic-addon1">
                     <span class="input-group-text" id="basic-addon1">万</span>
                 </div>
@@ -20,7 +23,8 @@
         </div>
        <div class="bk_div">
             <div class="md-form input-group" >
-                <input [disabled]='Idisabled' type="text" [(ngModel)]="gkxx.factFund" class="form-control" name="gkxx.factFund" placeholder="实收资本" aria-describedby="basic-addon2">
+                <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"factFund")' type="number" [(ngModel)]="gkxx.factFund" class="form-control" name="gkxx.factFund" aria-describedby="basic-addon2">
+                <label for="fddbr_input" >实收资本<span class="font_red">*</span>:</label>
                 <div class="input-group-prepend" id="basic-addon2">
                     <span class="input-group-text" id="basic-addon2">万</span>
                 </div>
@@ -32,33 +36,37 @@
 <div class="body_div">
     <div class="title_div"><strong class="title_b">企业经营信息</strong></div>
     <div class="form_div">
-        <div class=".chang_div  mt-5">
+        <div class="chang_div  mt-5">
             <div class="md-form">
                 <textarea [disabled]='Idisabled' [(ngModel)]="gkxx.runRange" name="gkxx.runRange" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
                 <label for="JYFW_text">经营范围<span class="font_red">*</span></label>
             </div>
         </div>
-        <div class="chang_div col-md-6 mx-auto mt-5">
+        <div class="bk_div">
+            <div class="md-form">
                 <mdb-select [disabled]='Idisabled' placeholder="请选择" name="gkxx.mainBus" [options]="MAIN_BUS" [(ngModel)]="gkxx.mainBus" label="主营业务:" ></mdb-select>
+            </div>
         </div>
         <div class="bk_div">
-                <div class="md-form input-group">
-                    <input [disabled]='Idisabled' type="text" [(ngModel)]="gkxx.assTot" class="form-control" name="gkxx.assTot" placeholder="资产总额" aria-describedby="basic-addon3">
-                    <div class="input-group-prepend" id="basic-addon3">
-                        <span class="input-group-text" id="basic-addon3">万</span>
-                    </div>
+            <div class="md-form input-group">
+                <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"assTot")' type="number" [(ngModel)]="gkxx.assTot" class="form-control" name="gkxx.assTot" aria-describedby="basic-addon3">
+                <label for="fddbr_input" >资产总额<span class="font_red">*</span>:</label>
+                <div class="input-group-prepend" id="basic-addon3">
+                    <span class="input-group-text" id="basic-addon3">万</span>
                 </div>
             </div>
-           <div class="bk_div">
-                <div class="md-form input-group" >
-                    <input [disabled]='Idisabled' type="text" [(ngModel)]="gkxx.saleTot" class="form-control" name="gkxx.saleTot" placeholder="年销售额" aria-describedby="basic-addon4">
-                    <div class="input-group-prepend" id="basic-addon4">
-                        <span class="input-group-text" id="basic-addon4">万</span>
-                    </div>
+        </div>
+        <div class="bk_div">
+            <div class="md-form input-group" >
+                <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"saleTot")' type="number" [(ngModel)]="gkxx.saleTot" class="form-control" name="gkxx.saleTot" aria-describedby="basic-addon4">
+                <label for="fddbr_input" >年销售额<span class="font_red">*</span>:</label>                    
+                <div class="input-group-prepend" id="basic-addon4">
+                    <span class="input-group-text" id="basic-addon4">万</span>
                 </div>
-           </div>
+            </div>
+        </div>
 
-      </div>
+    </div>
 </div>
 <br>
 <div *ngIf="flag" id="button_div">

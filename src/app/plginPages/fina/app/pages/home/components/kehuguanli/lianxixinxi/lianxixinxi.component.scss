@@ -7,6 +7,11 @@
  #head_div, */#button_div{
     background: #dedeff;
 }
+#alert_div{
+    position: absolute;
+    top: 30px;
+    left: 30%;
+}
 .bk_div{
     display: inline-block;
     width: 50%;
@@ -45,9 +50,6 @@
 #button_div{
     width: 100%;
     text-align: center;
-}
-mdb-select{
-    text-align: left !important;
 }
 #button_div button{
     padding: 0px;

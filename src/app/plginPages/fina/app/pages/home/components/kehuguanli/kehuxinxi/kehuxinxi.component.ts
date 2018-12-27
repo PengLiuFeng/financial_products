@@ -43,12 +43,26 @@ export class KehuxinxiComponent implements OnInit {
   }
   
   //重置
-  oncz(){
+  oncz():void{
     this.client={
       cuName:'',
       idNo:'',
       idType:'',
     }
+    this.search();
+  }
+  //通过下拉框的值判断下拉框的Label
+  getLabel(value:any,select:Array<any>):any{
+      // for(var i=0;i<select.length;i++){
+      //   if(select[i].value==value){
+      //     return select[i].label
+      //   }
+      // }
+      for(var p in select){
+        if(select[p]['value']==value){
+          return select[p]['label']
+        }
+      }
   }
   //请求下拉框数据
   idTypes:any
@@ -57,9 +71,9 @@ export class KehuxinxiComponent implements OnInit {
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
       this.isAjax = false
       this.idTypes = e.data[0].data
-      for(var i=0;i<this.idTypes.length;i++){
-        this.idTypes[i].value=(i+1).toString()
-      }
+      // for(var i=0;i<this.idTypes.length;i++){
+      //   this.idTypes[i].value=(i+1).toString()
+      // }
     }, () => {
       this.isAjax = false
     }
@@ -191,8 +205,17 @@ export class KehuxinxiComponent implements OnInit {
     this._http.get('/fina/custom/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage+this.paths, (e) => {
       this.isAjax = false;
       this.tableData = e.data.pb.list
-      console.log(e)
-      console.log(this.tableData);
+      for(var i=0;i<this.tableData.length;i++){
+        for(var p in this.tableData[i]){
+          if(p.search('Date')!=-1||p.search('Time')!=-1){
+            this.tableData[i][p]=new Date(this.tableData[i][p])['Format']('yyyy-MM-dd')
+          }
+          if(p=='idType'){
+            this.tableData[i].idType=this.getLabel(this.tableData[i][p],this.idTypes)
+          }
+        }
+      }
+      console.log(this.tableData)
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
       //  console.log("表数据",this.tableData)
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {

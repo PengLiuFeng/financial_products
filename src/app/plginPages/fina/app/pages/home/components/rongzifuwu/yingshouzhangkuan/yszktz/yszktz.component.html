@@ -4,8 +4,6 @@
   </div>
 
   <div id="body_top_div">
-    <br>
-      <button mdbBtn  type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
     <form action="">
       <div id="top_zi_div">
           <div class="bk_div col-md-6 mx-auto mt-5">
@@ -27,9 +25,13 @@
             </div>
           </div>
           <div class="bk_div col-md-6 mx-auto mt-5">
+              <!-- <div class='md-form'></div> -->
             <mdb-select name="yszk.recSta" [(ngModel)]="yszk.recSta" [options]="REC_STA" placeholder="应收账款状态:" ></mdb-select>
-          </div>
+          </div>    
       </div>
+      <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
+      <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="reSetAndReqTD()" mdbWavesEffect>重置</button>
+
     </form>
   </div>
 
@@ -64,7 +66,7 @@
       </thead>
       <tbody>
           <ng-container *ngFor="let data of tableData; let i = index">
-              <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+              <tr>
                   <td scope="row" class="index_td">{{i+1}}</td>
                   <td scope="row" >
                       <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>

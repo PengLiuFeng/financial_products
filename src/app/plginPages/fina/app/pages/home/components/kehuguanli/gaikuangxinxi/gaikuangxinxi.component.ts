@@ -13,8 +13,12 @@ export class GaikuangxinxiComponent implements OnInit {
   @Input() personPage:any;
 
   ngOnChanges(changes: SimpleChanges): void {
-    alert(this.cuNo)
+    this.flag = true;
+    this.btnFlag = true;
+    this.Idisabled = false;
+    this.reSetModel();
     if(this.personPage=='oldUser'){//查询修改
+      this.reqData();
       this.flag = false;
       this. Idisabled = true;
     }else if(this.personPage=='newUser'){//新增
@@ -33,7 +37,7 @@ export class GaikuangxinxiComponent implements OnInit {
     runRange: "",
     cuNo: "",
     //下拉菜单model
-    curNo: "",
+    curType: "",
     mainBus: ""
   }
 
@@ -48,7 +52,7 @@ export class GaikuangxinxiComponent implements OnInit {
     this.isAjax = true;
     this._http.get('/fina/dict/dictListList?ids=CUR_NO,MAIN_BUS', (e) => {
       let it = null;
-      console.log(e)
+      //console.log(e)
       for (let i = 0; i < e.data.length; i++) {
         it = e.data[i];
         if (it.myid == 'CUR_NO') {
@@ -74,20 +78,37 @@ export class GaikuangxinxiComponent implements OnInit {
       saleTot: "",
       runRange: "",
       cuNo: "",
-      curNo: "",
+      curType: "",
       mainBus: ""
     }
   }
+  reqData(){
+    this.isAjax=true;
+      this._http.get('/fina/custom/generalDetail?cuNo='+this.cuNo,(e)=>{
+        console.log(e)
+        if(e.data.data!=''&&e.data.data!=null){
+          if(e.data.t){
+            this.gkxx=e.data.data;
+            this.gkxx.regFund = (parseInt(this.gkxx.regFund) / 10000).toString();
+            this.gkxx.factFund = (parseInt(this.gkxx.factFund) / 10000).toString();
+            this.gkxx.assTot = (parseInt(this.gkxx.assTot) / 10000).toString();
+            this.gkxx.saleTot = (parseInt(this.gkxx.saleTot) / 10000).toString();
+          } 
+        }
+        
+        this.isAjax=false;
+      },()=>{
+     this.isAjax=false;
+     })
+  }
+
   submitData() {
     if(this.isAjax){
+      alert("占用")
       return;
     }
     this.isAjax = true;
 
-    if (//使用正则表达式判断指定文本框传入的是否为数字
-      /^\d+(\.\d+)?$/.test(this.gkxx.regFund) && /^\d+(\.\d+)?$/.test(this.gkxx.factFund) &&
-      /^\d+(\.\d+)?$/.test(this.gkxx.assTot) && /^\d+(\.\d+)?$/.test(this.gkxx.saleTot)
-    ) {
       this.gkxx.cuNo = this.cuNo;//把接收到的数据赋值到当前页面对象
 
       var reqData = JSON.parse(JSON.stringify(this.gkxx));//复制对象
@@ -103,19 +124,27 @@ export class GaikuangxinxiComponent implements OnInit {
         item = e.data.t;//是否成功标识
         //console.log(e)
         if (e.data.t) {//请求成功
-          this.dangerShow("保存成功");//弹窗
+          //this.dangerShow("保存成功");//弹窗
           this.Idisabled = true;//全局禁用
           this.flag = false;//切换按钮组为修改
         }
+          this.dangerShow(e.data.msg);//弹窗
+        
         this.isAjax = false;
       }, () => {/*出现错误 弹窗提示*/
         this.dangerShow("失败 请重试");
         this.isAjax = false;
       })
-    } else {/*如果输入不合法 弹窗提示*/
-      this.dangerShow("输入有误 请校验后重试");
-      this.reSetModel();
-      this.isAjax = false;
+
+  }
+  verify(e,k){
+    var txt = e.target.value;
+
+    if (!/^\d+(\.\d+)?$/.test(txt)){
+      this.dangerShow('输入有误');
+      setTimeout(()=>{
+        this.gkxx[k]="";
+      })
     }
   }
 
@@ -137,16 +166,21 @@ export class GaikuangxinxiComponent implements OnInit {
   modification(){ //开始修改
     this.btnFlag = false;//切换为保存按钮
     this.Idisabled = false;
+    window['reqData']= JSON.parse(JSON.stringify(this.gkxx));
   }
   confirmModification(){//取消修改
-//数据回滚
+    let data=window['reqData'];
+    for(let it in data){
+      this.gkxx[it]=data[it];
+    }
+    //this.reqData();//数据回滚
     this.Idisabled = true;//全局禁用
     this.btnFlag = true;//切换回修改按钮
   }
 
   submitUp(){//保存修改
     //提交数据
-
+    this.submitData();
     this.Idisabled = true;
     this.btnFlag = true;
   }

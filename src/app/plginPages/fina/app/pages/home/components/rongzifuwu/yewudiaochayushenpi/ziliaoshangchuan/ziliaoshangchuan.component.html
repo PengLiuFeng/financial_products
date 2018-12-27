@@ -1,53 +1,51 @@
 <div id="dom_div">
   <div id="body_div">
-    <form>
-      <table>
-        <thead>
-          <tr>
-            <th>序号</th>
-            <th>全选</th>
-            <th>选择文件</th>
-            <th>文件名</th>
-            <th>文件描述</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of items; let i=index">
-            <td>{{i}}</td>
-            <td>复选框</td>
-            <td>
-              <div class="file-field md-form">
-                <div mdbBtn color="primary" size="sm" class="waves-light" mdbWavesEffect>
-                  <span>选择文件</span>
-                  <input type="file" mdbFileSelect >
-                </div>
+    <table>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>全选</th>
+          <th>选择文件</th>
+          <th>文件名</th>
+          <th>文件描述</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i=index">
+          <td>{{i+1}}</td>
+          <td>复选框</td>
+          <td>
+            <div class="file-field md-form">
+              <div mdbBtn color="primary" size="sm" class="waves-light">
+                <span>选择文件</span>
+                <input type="file" (input)="getFileName(item)" id="{{item.id}}" >
               </div>
-            </td>
-            <td>
-              <div class="md-form">
-                <div class="file-path-wrapper">
-                  <input class="file-path" type="text" placeholder="已选择的文件" [value]="showFiles()">
-                </div>
+            </div>
+          </td>
+          <td>
+            <div class="md-form">
+              <div class="file-path-wrapper">
+                <input class="file-path" name="{{item.model}}" type="text" [(ngModel)]="item.model" placeholder="已选择的文件">
               </div>
-            </td>
-            <td>文件描述</td>
-          </tr>
-        </tbody>
-      </table>
-      <button type="button" mdbBtn color="info" (click)="createFileInput()" mdbWavesEffect>添加一条</button>
-      <button type="button" mdbBtn color="info" (click)="deleteFileInput()" mdbWavesEffect>删除一条</button>
+            </div>
+          </td>
+          <td>文件描述</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="button" mdbBtn color="info" (click)="createFileInput()" mdbWavesEffect>添加一条</button>
+    <button type="button" mdbBtn color="info" (click)="deleteFileInput()" mdbWavesEffect>删除一条</button>
 
-      <!-- <div class="file-field md-form" *ngFor="let item of items; let i=index">
-        <div mdbBtn color="primary" size="sm" class="waves-light" mdbWavesEffect>
-          <span>选择文件</span>
-          <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
-        </div>
-        <div class="file-path-wrapper">
-          <input class="file-path" type="text" placeholder="已选择的文件" [value]="showFiles()">
-        </div>
-      </div> -->
-      <button class="btn btn-md btn-primary" (click)="startUpload()">提交</button>
-    </form>
+    <!-- <div class="file-field md-form" *ngFor="let item of items; let i=index">
+      <div mdbBtn color="primary" size="sm" class="waves-light" mdbWavesEffect>
+        <span>选择文件</span>
+        <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path" type="text" placeholder="已选择的文件" [value]="showFiles()">
+      </div>
+    </div> -->
+    <button class="btn btn-md btn-primary" (click)="startUpload()">提交</button>
   </div>
   <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
     <strong>{{alertTxt}}</strong>

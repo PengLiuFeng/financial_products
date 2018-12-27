@@ -1,5 +1,8 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
-import { UploadFile, UploadInput, UploadOutput } from 'ng-uikit-pro-standard';
+import { Component, OnInit } from '@angular/core';
+import { UploadInput } from 'ng-uikit-pro-standard';
+//import { ParamsService } from './../../../../../../params.service'
+import { HttpHeaders } from '@angular/common/http';
+import { BaHttpInterceptorService } from './../../../../../../../../../theme/services/index'
 @Component({
   selector: 'app-ziliaoshangchuan',
   templateUrl: './ziliaoshangchuan.component.html',
@@ -7,17 +10,34 @@ import { UploadFile, UploadInput, UploadOutput } from 'ng-uikit-pro-standard';
 })
 export class ZiliaoshangchuanComponent implements OnInit {
 
-  formData: FormData;
-  files: UploadFile[];
-  uploadInput: EventEmitter<UploadInput>;
-  dragOver: boolean;
-
+  httpHeaders:HttpHeaders=new HttpHeaders();
   index = 0;
-  items = [this.index];
-  constructor() {
-    this.files = [];
-    this.uploadInput = new EventEmitter<UploadInput>();
+  items = [{ id: "oFInput", model: "" }];
+
+  isAjax=false;
+
+  constructor(private _http:BaHttpInterceptorService) {
+    this.httpHeaders.set('Content-Type',undefined);
+   }
+   
+  getFileName(it) {
+    var fileName = document.querySelector("#" + it.id)['files'][0].name;
+    it.model=fileName;
   }
+
+  
+  onup(oId){
+    var uploadFile=document.querySelector("#"+oId)['files'][0];
+    var formData = new FormData();
+    formData.append('file', uploadFile);//文件
+    this._http.post('/fina/uploadFile',formData,(e)=>{
+      console.log(e)
+    },()=>{
+
+    },this.httpHeaders)
+  }
+
+
 
   //启动上传
   startUpload(): void {
@@ -27,13 +47,12 @@ export class ZiliaoshangchuanComponent implements OnInit {
       method: 'POST',
       data: { foo: 'bar' },
     };
-    this.files = [];
-    this.uploadInput.emit(AJAX);
   }
 
-  createFileInput() {
-    this.items.push(++this.index);
-    console.log(this.items)
+  createFileInput() {//添加一个文件框
+    var val = Math.round(Math.random() * 1000000)
+    this.items.push({id:"oFInput" + val,model:""});
+    this.index++;
   }
   deleteFileInput() {//删除一个文件框
     if (this.index) {

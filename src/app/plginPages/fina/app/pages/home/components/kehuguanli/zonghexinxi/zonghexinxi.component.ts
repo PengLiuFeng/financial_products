@@ -34,12 +34,15 @@ constructor( private location:Location,private param:ParamsService) {
             // this.inputdata.idType=e.data.apb.idType
             // this.inputdata.cuName=e.data.apb.cuName
             // this.inputdata.cuNo=e.data.apb.cuNo
-            console.log(e.data.t)
-            if(e.data.t){
+            console.log(e.data.apb)
+            if(e.data.apb!=null&&e.data.apb!=undefined){
+
               this.inputdata=e.data.apb
               if(typeof(Number( this.inputdata.idType))=='number'){
                 this.inputdata.idType=this.getLabel(this.inputdata.idType,this.idTypes)
               }
+            }else{
+              alert("该用户已经不存在，请再次确认！！！")
             }
            
       },()=>{

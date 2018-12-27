@@ -8,28 +8,25 @@
 }
 .rzsq_body{
     min-width: 620px;
-    background-color: rgb(200, 214, 224);
+    background-color: rgb(224, 235, 243);
     width: 95%;
     border:1px solid black;
     & .rzsq_body_head{
         margin: 1% 2% 0 2%;
         
-         min-height: 250px;
+        min-height: 250px;
         background-color: white;
         border:1px solid black;
     & .md-form{
-         width: 15%;
+         width: 20%;
          float: left;
-         margin: 2% 2% 2% 2%;
-        //  min-height: 80px;
+         margin-left:2%;
 
     }
     & .col-md-6{
-        width: 15%;
+        width: 20%;
         float: left;
-        //margin-left: 2%;
-        min-height: 80px;
-        margin: 2% 2% 2% 2%;
+        margin-left:2%;
     }
     }   
 

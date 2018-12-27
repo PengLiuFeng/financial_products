@@ -34,12 +34,17 @@ constructor( private location:Location,private param:ParamsService) {
             // this.inputdata.idType=e.data.apb.idType
             // this.inputdata.cuName=e.data.apb.cuName
             // this.inputdata.cuNo=e.data.apb.cuNo
-            this.inputdata=e.data.apb
+            console.log(e.data.t)
+            if(e.data.t){
+              this.inputdata=e.data.apb
               if(typeof(Number( this.inputdata.idType))=='number'){
                 this.inputdata.idType=this.getLabel(this.inputdata.idType,this.idTypes)
               }
+            }
+           
       },()=>{
         this.isajax=false
+
       }
       )
 

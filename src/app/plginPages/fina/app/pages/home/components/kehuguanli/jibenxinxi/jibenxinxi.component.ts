@@ -23,7 +23,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     cifArea: '',
     areaName: '',
     wayNo: '',
-    //watName: '',
+    watName: '',
     license: '',
     regAddr: '',
     regType: '',
@@ -100,13 +100,6 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     var newData = new Date(data)['Format']('yyyy-MM-dd')
     return newData
   }
-  //为下拉框添加value和label值
-  // addselectvaule(data1: any) {
-  //   data1.forEach(function (t) {
-  //     t.value = t.keyValue
-  //     t.label = t.keyName
-  //   })
-  // }
   //请求下拉框的数据
   requestselectData(){
     this.isajax = true;
@@ -152,9 +145,10 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax=true
     this._http.get('/fina/custom/detail?cuNo=' + this.cuNo, (e) => {
       if(e!=null&&e!=undefined){
-        
+        console.log(e)
         this.allData = e.data.apb
         this.testarray = this.allData;
+        console.log(this.testarray)
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {
   
@@ -176,8 +170,16 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax=true
     this._http.post('/fina/custom/corpInsert',this.testarray,(e)=>{
       this.isajax=false
-      console.log(e)
+      console.log(e.data.msg)
+      if(e.data.t=='1'){
+        alert("您的基本信息提交成功")
+        this.bo=true;
+      }
+      else{
+        alert("您的基本信息提交失败，请您重新提交，如果多次提交失败请及时联系管理员")
+      }
     },()=>{
+      
       this.isajax=false
     })
   }

@@ -1,60 +1,61 @@
 <div class="">
   <div class="rzsqpage">
     <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
-        <div style="background-color:white;min-width:190px; width:30%;padding: 1% 0 0% 0;margin: 1% 0 0 2%; float: left;">
-            <app-breadcrumbs [title]="title"></app-breadcrumbs>
-          </div>
-          
+      <div style="background-color:white;min-width:190px; width:30%;padding: 1% 0 0% 0;margin: 1% 0 0 2%; float: left;">
+        <app-breadcrumbs [title]="title"></app-breadcrumbs>
+      </div>
+
+    </div>
+    <!-- 以下是搜索框内容 -->
+    <div class="rzsq_body">
+      <div class="rzsq_body_head row">
+        <div class="col-md-6">
+          <mdb-select [options]="testarray.idType" name="idType" placeholder="证件类型"></mdb-select>
         </div>
-        <!-- 以下是搜索框内容 -->
-        <div  class="rzsq_body">
-          <div class="rzsq_body_head row">
-                <div class="col-md-6"  >
-                  <mdb-select [options]="testarray.idType" name="idType"  placeholder="证件类型" ></mdb-select>
-                </div>
-                <div class="md-form" style="padding-top:13px;">
-                    <input mdbInputDirective placeholder="Placeholder" name="idNo" type="text" id="form1" [(ngModel)]="testarray.idNo" class="form-control">
-                    <label for="form58">证件号码</label>
-                  </div>
-                  <div class="md-form" style="padding-top:13px;">
-                      <input mdbInputDirective placeholder="Placeholder" name="cifName" type="text" [(ngModel)]="testarray.cifName" id="form2" class="form-control">
-                          <label for="form58">客户名称</label>
-                        </div>
-                  <div class="col-md-6" >
-                    <mdb-select [options]="testarray.finproNo" name="finproNo"  placeholder="金融产品" ></mdb-select>
-                  </div>
-                    <div class="col-md-6" >
-                            <mdb-select [options]="testarray.busType" name="busType"  placeholder="业务类型" ></mdb-select>
-                    </div>
-                          <div class="col-md-6" style="padding-top:23px;">
-                              <mdb-select [options]="testarray.suSta" name="suSta"  placeholder="申请状态" ></mdb-select>
-                    </div>
-                    <div class="md-form"  >
-                      <mdb-date-picker name="begDate" [options]="myDatePickerOptions" label="融资开始日期" [(ngModel)]="testarray.begDate"
-                                required></mdb-date-picker>
-                    </div>
-                    <div class="md-form"  >
-                        <mdb-date-picker name="endDate" [options]="myDatePickerOptions" label="融资结束日期" [(ngModel)]="testarray.endDate"
-                        required></mdb-date-picker>
-                    </div>
-            </div>
-            <div class="rzsq_body_table">
-              <div class="row">
-                <div class="col-md-3">
-                    融资申请查询列表
-                </div>
-                <div class="col-sm" style="text-align: right;">
-                    <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm" mdbWavesEffect>查询</button>
-                    <a routerLink="/finas/home/xzrzsq">
-                      <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>新增</button>
-                    </a>
-                    
-                    <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>删除</button>
-                    <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>修改</button>
-                    <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
-                </div>
-              </div>
-                    <!-- <div style="float: right;margin: 2% 1% 0 1% ; width: 65%;">
+        <div class="md-form" style="padding-top:13px;">
+          <input mdbInputDirective placeholder="Placeholder" name="idNo" type="text" id="form1" [(ngModel)]="testarray.idNo"
+            class="form-control">
+          <label for="form58">证件号码</label>
+        </div>
+        <div class="md-form" style="padding-top:13px;">
+          <input mdbInputDirective placeholder="Placeholder" name="cifName" type="text" [(ngModel)]="testarray.cifName"
+            id="form2" class="form-control">
+          <label for="form58">客户名称</label>
+        </div>
+        <div class="col-md-6">
+          <mdb-select [options]="testarray.finproNo" name="finproNo" placeholder="金融产品"></mdb-select>
+        </div>
+        <div class="col-md-6">
+          <mdb-select [options]="testarray.busType" name="busType" placeholder="业务类型"></mdb-select>
+        </div>
+        <div class="col-md-6" style="padding-top:23px;">
+          <mdb-select [options]="testarray.suSta" name="suSta" placeholder="申请状态"></mdb-select>
+        </div>
+        <div class="md-form">
+          <mdb-date-picker name="begDate" [options]="myDatePickerOptions" label="融资开始日期" [(ngModel)]="testarray.begDate"
+            required></mdb-date-picker>
+        </div>
+        <div class="md-form">
+          <mdb-date-picker name="endDate" [options]="myDatePickerOptions" label="融资结束日期" [(ngModel)]="testarray.endDate"
+            required></mdb-date-picker>
+        </div>
+      </div>
+      <div class="rzsq_body_table">
+        <div class="row">
+          <div class="col-md-3">
+            融资申请查询列表
+          </div>
+          <div class="col-sm" style="text-align: right;">
+            <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm"
+              mdbWavesEffect>查询</button>
+            
+            <button mdbBtn type="button" color="info" rounded="true" outline="true" (clieck)="newdemoBasic.show()" size="sm" mdbWavesEffect>新增</button>
+            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>删除</button>
+            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>修改</button>
+            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
+          </div>
+        </div>
+        <!-- <div style="float: right;margin: 2% 1% 0 1% ; width: 65%;">
                         <div style="float:right;overflow: hidden;min-width: 450px;">
                             <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm" mdbWavesEffect>查询</button>
                             <a routerLink="/finas/home/xzrzsq">
@@ -66,91 +67,119 @@
                             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
                         </div>   
                     </div> -->
-                    <div class="px-4">
-                        <table class="table table-hover table-responsive-md mb-0 table-bordered">
-                          <thead class="lighten-2">
-                            <tr>
-                              <th *ngFor="let head of table_head">
-                                  <span *ngIf="head=='checklabel'">
-                                        <input class="mybox" type="checkbox" [(ngModel)]="check" name="checkall" (click)="allCheck()">
-                                  </span>
-                                  <span *ngIf="head!='checklabel'">
-                                        {{head}}
-                                    </span>
-                                  
-                                </th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                              <ng-container *ngFor="let el of table_body; let i = index">
-                                  <tr  *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
-                                        <td scope="row">{{i+1}}</td>
-                                        <td>
-                                          <span *ngIf="check==false">
-                                             <input type="checkbox" class="mybox"> 
-                                          </span>
-                                          <span *ngIf="check==true">
-                                              <input type="checkbox" class="mybox" checked> 
-                                           </span>
-                                        </td>
-                                        <td>{{el.CIF_NAME}}</td>
-                                        <td>{{el.BUS_TYPE}}</td>
-                                        <td>{{el.AUTH_ID}}</td>
-                                        <td>{{el.AU_AMT}}</td>
-                                        <td>{{el.BEG_DATE}}</td>
-                                        <td>{{el.END_DATE}}</td>
-                                        <td>{{el.NUM_TYPE}}</td>
-                                        <td>{{el.TERM}}</td>
-                                        <td>{{el.AU_STA}}</td>
-                                       <!-- <a routerLink="/finas/home/zhxx">
+        <div class="px-4">
+          <table class="table table-hover table-responsive-md mb-0 table-bordered">
+            <thead class="lighten-2">
+              <tr>
+                <th *ngFor="let head of table_head">
+                  <span *ngIf="head=='checklabel'">
+                    <input class="mybox" type="checkbox" [(ngModel)]="check" name="checkall" (click)="allCheck()">
+                  </span>
+                  <span *ngIf="head!='checklabel'">
+                    {{head}}
+                  </span>
+
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let el of table_body; let i = index">
+                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                  <td scope="row">{{i+1}}</td>
+                  <td>
+                    <span *ngIf="check==false">
+                      <input type="checkbox" class="mybox">
+                    </span>
+                    <span *ngIf="check==true">
+                      <input type="checkbox" class="mybox" checked>
+                    </span>
+                  </td>
+                  <td>{{el.CIF_NAME}}</td>
+                  <td>{{el.BUS_TYPE}}</td>
+                  <td>{{el.AUTH_ID}}</td>
+                  <td>{{el.AU_AMT}}</td>
+                  <td>{{el.BEG_DATE}}</td>
+                  <td>{{el.END_DATE}}</td>
+                  <td>{{el.NUM_TYPE}}</td>
+                  <td>{{el.TERM}}</td>
+                  <td>{{el.AU_STA}}</td>
+                  <!-- <a routerLink="/finas/home/zhxx">
                                         <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
                                       </a>
                                       
                                       </td> -->
-                                      <td>
-                                        
-                                        <a routerLink="/finas/home/rqsqxq">
-                                        <button mdbBtn type="button" color="info" rounded="true" (click)="shenqingxiangqing(el.AUTH_ID)" outline="true" size="sm" mdbWavesEffect>申请详情</button>
-                                        </a> 
-                                      
-                                    </td>
-                                  </tr>
-                                </ng-container>
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="d-flex justify-content-center">
-                        <nav class="my-4 pt-2">
-                          <ul class="pagination pagination-circle pg-purple mb-0">
-                            <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                                <a class="page-link">首页</a>
-                              </li>
-                            <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-                              <a class="page-link" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                              </a>
-                            </li>
-                            <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
-                              [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-                              <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-                            </li>
-                            <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                              <a class="page-link" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                              </a>
-                            </li>
-                            <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                              <a class="page-link">尾页</a>
-                            </li>
-                            <li class="page-item clearfix d-none d-md-block disabled">
-                               <span class="page-link">{{itemsPerPage}}条/页</span>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div>
-            </div>
+                  <td>
+
+                    
+                      <button mdbBtn type="button"  color="info" rounded="true" (click)="shenqingxiangqing(el.AUTH_ID);demoBasic.show()"
+                        outline="true" size="sm" mdbWavesEffect>申请详情</button>
+                   
+
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
         </div>
+        <div class="d-flex justify-content-center">
+          <nav class="my-4 pt-2">
+            <ul class="pagination pagination-circle pg-purple mb-0">
+              <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                <a class="page-link">首页</a>
+              </li>
+              <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+                <a class="page-link" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+              </li>
+              <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                <a class="page-link" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+              <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                <a class="page-link">尾页</a>
+              </li>
+              <li class="page-item clearfix d-none d-md-block disabled">
+                <span class="page-link">{{itemsPerPage}}条/页</span>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+<div mdbModal #newdemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="newdemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div" class="wins-body">
+       <app-xinzengrongzishenqing></app-xinzengrongzishenqing>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div" class="wins-body">
+        
+      </div>
+    </div>
+  </div>
 </div>

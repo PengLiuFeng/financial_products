@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { IMyOptions, MDBDatePickerComponent } from 'ng-uikit-pro-standard';
 import { Location} from '@angular/common';
+import { ParamsService } from '../../../../../../params.service';
 
 
 
@@ -32,29 +33,77 @@ export class XinzengyingshouzhangkuanmingxiComponent implements OnInit {
     };
   constructor(
     private location:Location,
-  ) { }
+    public params: ParamsService
+  ) { 
+    this._http = params._http;
+  }
   ngOnInit() { 
       let today = new Date();
       let invalidDate = new Date();
       invalidDate.setDate(today.getDate() - 1);
+      this.requestTableData();
   }
   editField: string;
+  client:any={
+    cuName:'',
+    idType:'',
+    idNo: '',
+    BuReceiNo:  '',
+    BrNo:  '',
+    BrName:  '',
+    TxDate: '',
+    UpDate: '',
+    list:[
+      {
+        busName: '',
+        busCouna: '',
+        busCoun: '',
+        busType: '',
+        busNo: '',
+        billAmt: '',
+        billDate:'',
+        busRecei: '',
+        endDate:''
+      }
+    ]
+  }
+    
+  
   personList: Array<any> = [
-    { id: 1, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''}
+    { busName: '', busCouna: '', busCoun: '', busType: '', busNo: '', billAmt: '', billDate: '', busRecei: '', endDate: ''}
    ];
   awaitingPersonList: Array<any> = [
-    { id: 2, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''},
-    { id: 3, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''},
-    { id: 4, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''},
-    { id: 5, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''},
-    { id: 6, name: '', age: 30, companyName: '', country: '', city: '', city0: '', city1: '', city2: '', city3: ''},
+    { busName: '', busCouna: '', busCoun: '', busType: '', busNo: '', billAmt: '', billDate: '', busRecei: '', endDate: ''}
   ];
 
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.personList[id][property] = editField;
+  _http: any;
+  isAjax = false;
+  tableData=[];
+
+  requestTableData() {
+    this.isAjax = true;
+    this._http.post('/fina/receive/insert', (e) => {
+      this.isAjax = false;
+      this.tableData = e.data.pb.list
+      console.log(e)
+      console.log(this.tableData);
+
+    }, () => {
+      this.isAjax = false;
+  
+    })
   }
 
+  saveTableData() {
+    this.isAjax = true;
+    this._http.post('/fina/receive/insert',this.client, (e) => {
+      this.isAjax = false;
+      console.log(e)
+    }, () => {
+      this.isAjax = false;
+  
+    })
+  }
   remove(id: any) {
     this.awaitingPersonList.push(this.personList[id]);
     this.personList.splice(id, 1);
@@ -65,12 +114,15 @@ export class XinzengyingshouzhangkuanmingxiComponent implements OnInit {
   }
   add() {
     if (this.awaitingPersonList.length > 0) {
-      const person = this.awaitingPersonList[0];
+      const person = JSON.parse(JSON.stringify(this.awaitingPersonList[0]));
       this.personList.push(person);
-      this.awaitingPersonList.splice(0, 1);
+      
     }
   }
 
+  save(){
+    this.saveTableData();
+  }
   changeValue(id: number, property: string, event: any) {
     this.editField = event.target.textContent;
   }

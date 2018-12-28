@@ -19,6 +19,7 @@ export class HtqsListComponent implements OnInit {
   rcwin:any=!false;
   rangeDates:any;
   kh={
+    khNum:'',
     name:'',
     hm:'',//证件号码
     zjlx:{
@@ -83,26 +84,7 @@ export class HtqsListComponent implements OnInit {
   pageTable=[];
   tableThead=["客户号", "客户名称", "业务类型", "授信协议编号", "合同编号", "实际融资金额", "利率（%）", "期限类型", "期限", "合同起始日期", "合同到期日", "合同状态", "操作"]
   tableData = []
-    tableData2 = [
-    { id: 1, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
-  { id: 2, firstName: 'John', lastName: 'Doe', username: '@john' },
-  { id: 3, firstName: 'Lessie', lastName: 'Moe', username: '@lessie' },
-  { id: 4, firstName: 'Otton', lastName: 'Otto', username: '@otton' },
-  { id: 5, firstName: 'Krauze', lastName: 'John', username: '@krauze' },
-  { id: 6, firstName: 'Lex', lastName: 'Lucky', username: '@lex' },
-  { id: 7, firstName: 'Allie', lastName: 'Bill', username: '@allie' },
-  { id: 8, firstName: 'Anna', lastName: 'Frost', username: '@anna' },
-  { id: 9, firstName: 'Bob', lastName: 'One', username: '@bob' },
-  { id: 10, firstName: 'Carl', lastName: 'Johnson', username: '@cj' },
-  { id: 11, firstName: 'Mia', lastName: 'Marx', username: '@mia' },
-  { id: 12, firstName: 'Cia', lastName: 'Fbi', username: '@cia' },
-  { id: 13, firstName: 'John', lastName: 'Doe', username: '@johny' },
-  { id: 14, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
-  { id: 14, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
-  { id: 14, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
-  { id: 14, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
-  { id: 15, firstName: 'Lessie', lastName: 'Moe', username: '@lessie'}
-];
+    tableData2 = [];
 onCkhtxq(it){
   this.rcwin=true;
    this.demoBasic.show();
@@ -111,7 +93,7 @@ isAjax=false;//是否正在请求
 /* 获取数据 */
 getData(activePage:number,back?){
   this.isAjax=true;
-  this._http.get('/fina/custom/list?pageNum='+activePage+'&pageSize='+this.itemsPerPage,(e)=>{
+  this._http.get('/fina/contract/list?pageNum='+activePage+'&pageSize='+this.itemsPerPage,(e)=>{
     // this.settableData(activePage,this.tableData2.length,data);
     if(e.statusCode==200&&e.data){
       if(e.data.pb){
@@ -130,7 +112,7 @@ getData(activePage:number,back?){
    
 }
 activePage = 1;
-  itemsPerPage = 6;//每页显示条数
+  itemsPerPage = 10;//每页显示条数
   paginators: Array<any> = [];
   numberOfPaginators: number;//总页数
   lastVisibleIndex: number = this.itemsPerPage;
@@ -239,6 +221,8 @@ lastPage() {
   }
   this.getData(this.activePage);
 }
-
+onIsVal(v):any{
+  return v?v:'<span class="text-disabled">暂无数据</span>';
+}
 
 }

@@ -31,6 +31,8 @@
     </div>
 </div>
   </div>
+<input type="file" id="uploadFile"> <button (click)="onup()">上传</button>
+
   <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>
 <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="model"
   required></mdb-date-picker>

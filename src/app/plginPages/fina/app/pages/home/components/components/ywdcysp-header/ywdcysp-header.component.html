@@ -13,7 +13,7 @@
             <label mdbBtn color="primary" class="lb_button"  mdbWavesEffect>
                 <a (click)="showZHXXdemoBasic()">客户综合信息</a>
             </label>
-            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="qrhz" mdbWavesEffect>
+            <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="zlsc" mdbWavesEffect>
                 <a (click)="radioModel='zlsc'">资料上传</a>
             </label>
             <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="pjsx" mdbWavesEffect>
@@ -29,6 +29,9 @@
       </div>
       <div *ngIf="radioModel=='pjsx'">
         <app-ywdcysp-pjsx></app-ywdcysp-pjsx>
+      </div>
+      <div *ngIf="radioModel=='zlsc'">
+        <app-ziliaoshangchuan></app-ziliaoshangchuan>
       </div>
       <div *ngIf="radioModel=='spxq'">
         <app-shenpixiangqing></app-shenpixiangqing>

@@ -1,12 +1,36 @@
-var request = require('../../../../util/requestHandle.js');
-var baseConfig = require('../../../../config/baseConfig.json');
-var handleRes = require('../../../../util/temp/v1/handleResUtil.js');
-var tool = require('./../../../../util/temp/baoli/tool.js');
-var uri = baseConfig.aggregator;
-var url_baoli = baseConfig.baoli;
+var request=require('../../../../util/requestHandle.js');
+var baseConfig=require('../../../../config/baseConfig.json');
+var handleRes=require('../../../../util/temp/v1/handleResUtil.js');
+var tool=require('./../../../../util/temp/baoli/tool.js');
+var fs = require('fs');
+var uri=baseConfig.aggregator;
+
+var multer = require('multer');//引入multer
+var upload = multer({dest: 'uploads/'});//设置上传文件存储地址
+var url_baoli=baseConfig.baoli;
 
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+
+    /**
+    *  上传文件
+    */
+    router.post('/fina/uploadFile', upload.single('file'), (req, res, next) => {
+        let ret = {};
+        ret['code'] = 20000;
+        var file = req.file;
+        if (file) {
+                var fileNameArr = file.originalname.split('.');
+                var suffix = fileNameArr[fileNameArr.length - 1];
+                //文件重命名
+                fs.renameSync('./uploads/' + file.filename, `./uploads/${file.filename}.${suffix}`);
+                file['newfilename'] = `${file.filename}.${suffix}`;
+            }else{
+                ret['error']="请选择文件";
+            }
+            ret['file'] = file;
+            res.send(handleRes.handleRes(false, {statusCode:200}, ret));
+        })
     router.get('/fina/custom/list',
         function (req, res) {
             let par = tool.jsonget(1, req.query);//json转get参数

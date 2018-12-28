@@ -1,6 +1,7 @@
 import { Component,ViewChild, OnInit } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
-
+import { BaHttpInterceptorService } from './../../../../../theme/services/index'
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -13,8 +14,22 @@ export class DemoComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
 
   public myDatePickerOptions: IMyOptions = {};
-  constructor() { }
+  httpHeaders:HttpHeaders=new HttpHeaders();
+  constructor(private _http:BaHttpInterceptorService) {
+    this.httpHeaders.set('Content-Type',undefined);
+  }
   mval='yizhi';
+  onup(uploadFile?:any,back?:any){
+    uploadFile=document.getElementById("uploadFile")['files'][0];
+    var formData = new FormData();
+    formData.append('file', uploadFile);//文件
+    this._http.post('/fina/uploadFile',formData,(e)=>{
+      // back(true,e)
+    },()=>{
+      // back(false)
+
+    },this.httpHeaders)
+  }
   options=[
     {
       value: 'zhinan',

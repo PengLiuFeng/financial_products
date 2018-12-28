@@ -227,7 +227,7 @@
         </div>
         <br>
 
-        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;" class="modal fade" tabindex="-1" role="dialog"
+        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;bottom: -10%;" class="modal fade" tabindex="-1" role="dialog"
             aria-labelledby="myBasicModalLabel" aria-hidden="true">
             <div class="wins" role="document">
                 <div class="modal-content">
@@ -235,7 +235,7 @@
                         <span aria-hidden="true" (click)="isShow=false">×</span>
                     </button>
                     <div id="mtk_div" *ngIf="isShow">
-                        <app-zonghexinxi [cuNo]='zhsx.cuNo' ></app-zonghexinxi>
+                        <app-zonghexinxi [cuNo]='zhsx.cuNo' [personPage]='personPage'></app-zonghexinxi>
                     </div>
                 </div>
             </div>
@@ -250,4 +250,7 @@
             <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
     </form>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+        <strong>{{alertTxt}}</strong>
+    </div>
 </div>

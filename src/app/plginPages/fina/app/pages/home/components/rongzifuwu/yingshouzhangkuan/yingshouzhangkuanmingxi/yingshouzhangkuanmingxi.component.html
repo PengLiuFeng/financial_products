@@ -1,46 +1,46 @@
-<div class="yszkmx" *ngIf="!isChildRouteLoaded">
+<div class="yszkmx"  >
     <div class="body">
       <div class="right">
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >查询</button>
-        <button mdbBtn routerLink="../xzyszkmx" type="button" color="primary"   size="sm"  >新增</button>
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >修改</button>
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >删除</button>
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >导出excle</button>
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >导入excle</button>
-        <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >提交</button>
+        <button mdbBtn  (click)="search()" color="primary" rounded="true"  size="sm" mdbWavesEffect >查询</button>
+        <button mdbBtn  (click)="basicModal.show()" type="button" color="primary"   size="sm"  >新增</button>
+        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >修改</button>
+        <button mdbBtn  (click)="del()" color="primary" rounded="true"  size="sm" mdbWavesEffect >删除</button>
+        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >导出excle</button>
+        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >导入excle</button>
+        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >提交</button>
       </div>
     </div>
   </div>
-<div class="yszkmx" *ngIf="!isChildRouteLoaded">
+<div class="yszkmx"  >
   <div></div>
   <div class="body">
      
     <div class="setdiv">
         <div class="row">
           <div class="inputd" style="padding-top: 11px;">
-              <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder"  [(ngModel)]="kh.zjlx.vals"></mdb-select>
+              <mdb-select [options]="idTypes" placeholder="证件类型" class="placeholder"  [(ngModel)]="client.idType"></mdb-select>
           </div>
             <div class="inputd">
               <div class="md-form">
-                <input mdbInputDirective type="text" [(ngModel)]="kh.hm" id="form2" class="form-control">
+                <input mdbInputDirective type="text" [(ngModel)]="client.idNo" id="form2" class="form-control">
                 <label for="form2">证件号码</label>
               </div>
             </div>
             <div class="inputd">
               <div class="md-form">
-                <input mdbInputDirective type="text" [(ngModel)]="kh.name" id="form1" class="form-control">
+                <input mdbInputDirective type="text" [(ngModel)]="client.cuName" id="form1" class="form-control">
                 <label for="form1" class="">客户名称</label>
               </div>
             </div>                
             <div class="inputd">
                 <div class="md-form">
-                  <input mdbInputDirective type="text" [(ngModel)]="kh.number" id="form3" class="form-control">
+                  <input mdbInputDirective type="text" [(ngModel)]="client.authAppNo" id="form3" class="form-control">
                   <label for="form3">授信协议编号</label>
                 </div>              
             </div> 
             <div class="inputd">
               <div  style="padding-top: 11px;" >
-                  <mdb-select [options]="kh.yskzt.selects" placeholder="应收账款状态" class="placeholder"  [(ngModel)]="kh.yskzt.vals"></mdb-select>
+                  <mdb-select [options]="recStas" placeholder="应收账款状态" class="placeholder"  [(ngModel)]="client.recSta"></mdb-select>
               </div>
             </div>
             <div style="padding: 10px;">
@@ -56,7 +56,7 @@
             <tr>
               <th scope="row"> 
                 <div class="custom-control custom-checkbox">
-                  <mdb-checkbox>&nbsp;</mdb-checkbox>
+                  <mdb-checkbox (click)="quanXuan()" >&nbsp;</mdb-checkbox>
                 </div>
               </th>
               <th scope="row">序号</th>
@@ -80,28 +80,28 @@
           </thead>
           <tbody>
               <ng-container *ngFor="let data of tableData; let i = index">
-                  <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+                  <tr  >
                     <td scope="row"  >
                       <div class="custom-control custom-checkbox">
-                        <mdb-checkbox>&nbsp;</mdb-checkbox>
+                        <mdb-checkbox [(ngModel)]="check_arr[i]">&nbsp;</mdb-checkbox>
                       </div>
                     </td>
                     <td scope="row">{{i+1}}</td>
-                    <td scope="row">{{data.firstName}}</td>
-                    <td scope="row">{{data.lastName}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
-                    <td scope="row">{{data.username}}</td>
+                    <td scope="row">{{data.idNo}}</td>
+                    <td scope="row">{{data.cuNo}}</td>
+                    <td scope="row">{{data.cuName}}</td>
+                    <td scope="row">{{data.busName}}</td>
+                    <td scope="row">{{data.busCoun}}</td>
+                    <td scope="row">{{data.busCouna}}</td>
+                    <td scope="row">{{data.busNo}}</td>
+                    <td scope="row">{{data.billAmt}}</td>
+                    <td scope="row">{{data.busRecei}}</td>
+                    <td scope="row">{{data.billDate}}</td>
+                    <td scope="row">{{data.endDate}}</td>
+                    <td scope="row">{{data.authAppNo}}</td>
+                    <td scope="row">{{data.loaAmt}}</td>
+                    <td scope="row">{{data.resAmt}}</td>
+                    <td scope="row">{{data.recSta}}</td>
                   </tr>
                 </ng-container>
           </tbody>
@@ -141,7 +141,24 @@
     </div>
   </div>
 </div>
-<router-outlet *ngIf="isChildRouteLoaded"></router-outlet>
+
+<div mdbModal #basicModal="mdbModal"  class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h6 class="modal-title w-100" id="myModalLabel">新增应收账款明细</h6>
+      </div>
+      <div id="mtk_div" class="wins-body">
+        <app-xinzengyingshouzhangkuanmingxi></app-xinzengyingshouzhangkuanmingxi>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
 <style>
 .table{
   background: #fff;

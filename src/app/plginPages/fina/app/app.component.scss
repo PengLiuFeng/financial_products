@@ -106,10 +106,19 @@
     left: 50%;
     transform: translateX(10px)
 }
+/deep/.inputd-mdb-select{
+//input和mdb下拉框在一行
+padding-top: 17px;
+}
+/deep/.md-form {
+    position: relative;
+    margin: 1rem 0 1rem 0;
+}
+/* 
 /deep/ .ui-inputgroup .ui-inputtext:not(:last-child){
     border-right: 1px #c0c0c0 solid;
 }
-
+ */
 //禁用样式
 /deep/.disabled{
     opacity: 0.5;
@@ -260,5 +269,8 @@
     }
 }
 /deep/.wins-body{
-    height: calc(100vh - 100px);
+    max-height: calc(100vh - 100px);
+}
+/deep/ .text-disabled{
+    color: #ccc;
 }

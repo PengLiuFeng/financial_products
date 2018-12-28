@@ -32,7 +32,7 @@ createServer = function createServer() {
     server.use(express.static(__dirname + '/web'));
     server.use('/r',express.static(__dirname + '/web_'));
     server.use('/work',express.static(__dirname + '/web2'));
-    server.use(log4js.connectLogger(logger, {level: log4js.levels.INFO}));
+    // server.use(log4js.connectLogger(logger, {level: log4js.levels.INFO}));
     server.use(cookieParser());
     server.use(expressSession({
         name: 'qloudsession',

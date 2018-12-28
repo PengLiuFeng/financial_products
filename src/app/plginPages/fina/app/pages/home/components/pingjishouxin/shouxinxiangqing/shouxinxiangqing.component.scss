@@ -6,6 +6,15 @@
     left: 50px;
     top: -15px;
 }
+#alert_div{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+#mtk_div{
+    height: 550px;
+    overflow-y: scroll;
+}
 #qx_btn{
     background-color: #fff !important;
     color: black !important;

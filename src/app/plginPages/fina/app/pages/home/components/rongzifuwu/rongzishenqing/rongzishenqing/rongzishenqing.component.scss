@@ -13,7 +13,7 @@
     border:1px solid black;
     & .rzsq_body_head{
         margin: 1% 2% 0 2%;
-        
+        padding-top: 2%;
         min-height: 250px;
         background-color: white;
         border:1px solid black;
@@ -21,12 +21,21 @@
          width: 20%;
          float: left;
          margin-left:2%;
+         & /deep/ input[type=text]{
+             top:7px;
+         }
 
     }
     & .col-md-6{
         width: 20%;
         float: left;
         margin-left:2%;
+        margin-bottom:3%;
+    }
+    & /deep/ .mydp{
+        width: 20% !important;
+        float: left;
+        margin-left: 2%;
     }
     }   
 

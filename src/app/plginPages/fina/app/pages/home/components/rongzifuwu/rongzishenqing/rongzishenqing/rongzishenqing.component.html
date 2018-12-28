@@ -10,32 +10,32 @@
     <div class="rzsq_body">
       <div class="rzsq_body_head">
         <div class="col-md-6">
-          <mdb-select [options]="testarray.idType" label="证件类型" name="idType" placeholder="证件类型"></mdb-select>
+          <mdb-select [options]="idTypes" label="证件类型" name="idType" [(ngModel)]="testarray.idType" placeholder="证件类型"></mdb-select>
         </div>
-        <div class="md-form" style="padding-top:13px;">
-          <input mdbInputDirective placeholder="Placeholder" name="idNo" type="text" id="form1" [(ngModel)]="testarray.idNo"
+        <div class="md-form" >
+          <input mdbInputDirective placeholder="证件号码" name="idNo" type="text" id="form1" [(ngModel)]="testarray.idNo"
             class="form-control">
           <label for="form58">证件号码</label>
         </div>
-        <div class="md-form" style="padding-top:13px;">
-          <input mdbInputDirective placeholder="Placeholder" name="cifName" type="text" [(ngModel)]="testarray.cifName"
+        <div class="md-form" >
+          <input mdbInputDirective placeholder="客户名称" name="cifName" type="text" [(ngModel)]="testarray.cifName"
             id="form2" class="form-control">
           <label for="form58">客户名称</label>
         </div>
         <div class="col-md-6">
-          <mdb-select [options]="testarray.finproNo" label="金融产品" name="finproNo" placeholder="金融产品"></mdb-select>
+          <mdb-select [options]="finproNos" label="金融产品" [(ngModel)]="testarray.finproNo" name="finproNo" placeholder="金融产品"></mdb-select>
         </div>
         <div class="col-md-6">
-          <mdb-select [options]="testarray.busType" label="业务类型" name="busType" placeholder="业务类型"></mdb-select>
+          <mdb-select [options]="busTypes" label="业务类型"  [(ngModel)]="testarray.busType" name="busType" placeholder="业务类型"></mdb-select>
         </div>
-        <div class="col-md-6" style="padding-top:23px;">
-          <mdb-select [options]="testarray.suSta" label="申请状态" name="suSta" placeholder="申请状态"></mdb-select>
+        <div class="col-md-6" >
+          <mdb-select [options]="suStas" label="申请状态"  [(ngModel)]="testarray.suSta" name="suSta" placeholder="申请状态"></mdb-select>
         </div>
        
-          <mdb-date-picker name="begDate" [options]="myDatePickerOptions" label="融资开始日期" [(ngModel)]="testarray.begDate"
+          <mdb-date-picker name="begDate"  (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资开始日期" [(ngModel)]="testarray.begDate"
             required></mdb-date-picker>
 
-          <mdb-date-picker name="endDate" [options]="myDatePickerOptions" label="融资结束日期" [(ngModel)]="testarray.endDate"
+          <mdb-date-picker name="endDate"   (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资结束日期" [(ngModel)]="testarray.endDate"
             required></mdb-date-picker>
         
       </div>
@@ -55,18 +55,6 @@
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
           </div>
         </div>
-        <!-- <div style="float: right;margin: 2% 1% 0 1% ; width: 65%;">
-                        <div style="float:right;overflow: hidden;min-width: 450px;">
-                            <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm" mdbWavesEffect>查询</button>
-                            <a routerLink="/finas/home/xzrzsq">
-                              <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>新增</button>
-                            </a>
-                            
-                            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>删除</button>
-                            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>修改</button>
-                            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
-                        </div>   
-                    </div> -->
         <div class="px-4">
           <table class="table table-hover table-responsive-md mb-0 table-bordered">
             <thead class="lighten-2">
@@ -83,8 +71,8 @@
               </tr>
             </thead>
             <tbody>
-              <ng-container *ngFor="let el of table_body; let i = index">
-                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+              <ng-container *ngFor="let el of tableData; let i = index">
+               <tr>
                   <td scope="row">{{i+1}}</td>
                   <td>
                     <span *ngIf="check==false">
@@ -94,16 +82,16 @@
                       <input type="checkbox" class="mybox" checked>
                     </span>
                   </td>
-                  <td>{{el.CIF_NAME}}</td>
-                  <td>{{el.BUS_TYPE}}</td>
-                  <td>{{el.AUTH_ID}}</td>
-                  <td>{{el.AU_AMT}}</td>
-                  <td>{{el.BEG_DATE}}</td>
-                  <td>{{el.END_DATE}}</td>
-                  <td>{{el.NUM_TYPE}}</td>
-                  <td>{{el.TERM}}</td>
-                  <td>{{el.AU_STA}}</td>
-                  <td> <button mdbBtn type="button" color="info" rounded="true" (click)="shenqingxiangqing(el.AUTH_ID);demoBasic.show()"
+                  <td>{{el.cifName}}</td>
+                  <td>{{el.busType}}</td>
+                  <td>{{el.authId}}</td>
+                  <td>{{el.auAmt}}</td>
+                  <td>{{el.begDate}}</td>
+                  <td>{{el.endDate}}</td>
+                  <td>{{el.termType}}</td>
+                  <td>{{el.term}}</td>
+                  <td>{{el.suSta}}</td>
+                  <td> <button mdbBtn type="button" color="info" rounded="true" (click)="shenqingxiangqing(i);demoBasic.show()"
                       outline="true" size="sm" mdbWavesEffect>申请详情</button>
                   </td>
                 </tr>
@@ -167,7 +155,7 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body">
+      <div id="mtk_div" class="wins-body" style="overflow:auto;">
         <app-sq-xx></app-sq-xx>
       </div>
     </div>

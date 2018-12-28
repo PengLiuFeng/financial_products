@@ -7,8 +7,6 @@
               <mdb-select [options]="idTypes" [(ngModel)]="client.idType" name="idType" id="select1" placeholder="请选择证件类型"></mdb-select>
               <label for="select1">证件类型</label>
           </div>
-    
-          
           <div class="col-md-6 mx-auto mt-5">
               <div class="md-form">
                 <input mdbInputDirective [(ngModel)]="client.idNo" name="idNo" type="text" id="form1" class="form-control">
@@ -23,9 +21,7 @@
               </div>
           </div>
           <div id="button_div">
-           
               <button mdbBtn type="button" (click)="tijiao()" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
-           
               <button mdbBtn type="button" (click)="go_reset()" color="danger" (click)="newDemoBasic.hide()" class="waves-light form_button" mdbWavesEffect>重置</button>
           </div>
       </form>

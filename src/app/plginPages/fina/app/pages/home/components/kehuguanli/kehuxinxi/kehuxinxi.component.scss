@@ -41,7 +41,7 @@
   }
 .inputd{
   min-width:130px;
-//   margin-left: 20px;
+  margin-left: 20px;
 }
 .khxxb{
     padding: 16px;
@@ -49,7 +49,7 @@
 }
 /deep/ mdb-select > div > div.single{
     position: relativ;
-    bottom:5px;
+    bottom:15px;
 }
 /deep/ mdb-select label{
     position: relative;

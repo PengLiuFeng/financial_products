@@ -12,32 +12,39 @@
         <div class="col-md-6">
           <mdb-select [options]="idTypes" label="证件类型" name="idType" [(ngModel)]="testarray.idType" placeholder="证件类型"></mdb-select>
         </div>
-        <div class="md-form" >
+        <div class="md-form">
           <input mdbInputDirective placeholder="证件号码" name="idNo" type="text" id="form1" [(ngModel)]="testarray.idNo"
             class="form-control">
           <label for="form58">证件号码</label>
         </div>
-        <div class="md-form" >
-          <input mdbInputDirective placeholder="客户名称" name="cifName" type="text" [(ngModel)]="testarray.cifName"
-            id="form2" class="form-control">
+        <div class="md-form">
+          <input mdbInputDirective placeholder="客户名称" name="cifName" type="text" [(ngModel)]="testarray.cifName" id="form2"
+            class="form-control">
           <label for="form58">客户名称</label>
         </div>
         <div class="col-md-6">
           <mdb-select [options]="finproNos" label="金融产品" [(ngModel)]="testarray.finproNo" name="finproNo" placeholder="金融产品"></mdb-select>
         </div>
         <div class="col-md-6">
-          <mdb-select [options]="busTypes" label="业务类型"  [(ngModel)]="testarray.busType" name="busType" placeholder="业务类型"></mdb-select>
+          <mdb-select [options]="busTypes" label="业务类型" [(ngModel)]="testarray.busType" name="busType" placeholder="业务类型"></mdb-select>
         </div>
-        <div class="col-md-6" >
-          <mdb-select [options]="suStas" label="申请状态"  [(ngModel)]="testarray.suSta" name="suSta" placeholder="申请状态"></mdb-select>
+        <div class="col-md-6">
+          <mdb-select [options]="suStas" label="申请状态" [(ngModel)]="testarray.suSta" name="suSta" placeholder="申请状态"></mdb-select>
         </div>
-       
-          <mdb-date-picker name="begDate"  (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资开始日期" [(ngModel)]="testarray.begDate"
-            required></mdb-date-picker>
 
-          <mdb-date-picker name="endDate"   (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资结束日期" [(ngModel)]="testarray.endDate"
-            required></mdb-date-picker>
-        
+        <mdb-date-picker name="begDate" (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资开始日期"
+          [(ngModel)]="testarray.begDate" required></mdb-date-picker>
+
+        <mdb-date-picker name="endDate" (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资结束日期"
+          [(ngModel)]="testarray.endDate" required></mdb-date-picker>
+        <div style="width:20%;float:left;margin-left: 2%;padding-top: 20px;">
+          <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm"
+            mdbWavesEffect>查询</button>
+          <button mdbBtn type="button" color="info" rounded="true" (click)="reset()" outline="true" size="sm"
+            mdbWavesEffect>重置</button>
+        </div>
+
+
       </div>
       <div class="rzsq_body_table">
         <div class="row">
@@ -45,8 +52,7 @@
             融资申请查询列表
           </div>
           <div class="col-sm" style="text-align: right;">
-            <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm"
-              mdbWavesEffect>查询</button>
+
 
             <button mdbBtn type="button" color="info" rounded="true" outline="true" (click)="newdemoBasic.show()" size="sm"
               mdbWavesEffect>新增</button>
@@ -72,7 +78,7 @@
             </thead>
             <tbody>
               <ng-container *ngFor="let el of tableData; let i = index">
-               <tr>
+                <tr>
                   <td scope="row">{{i+1}}</td>
                   <td>
                     <span *ngIf="check==false">
@@ -91,8 +97,8 @@
                   <td>{{el.termType}}</td>
                   <td>{{el.term}}</td>
                   <td>{{el.suSta}}</td>
-                  <td> <button mdbBtn type="button" color="info" rounded="true" (click)="shenqingxiangqing(i);demoBasic.show()"
-                      outline="true" size="sm" mdbWavesEffect>申请详情</button>
+                  <td> 
+                      <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm"outline="true" mdbWavesEffect (click)="shenqingxiangqing(i);demoBasic.show()">申请详情</button>
                   </td>
                 </tr>
               </ng-container>
@@ -142,7 +148,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-        <app-xinzengrongzishenqing></app-xinzengrongzishenqing>
+        <app-xinzengrongzishenqing [nowPage]="newdemoBasic" [lastPage]="demoBasic"></app-xinzengrongzishenqing>
       </div>
     </div>
   </div>

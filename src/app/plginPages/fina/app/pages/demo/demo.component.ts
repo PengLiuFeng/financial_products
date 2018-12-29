@@ -23,7 +23,8 @@ export class DemoComponent implements OnInit {
     uploadFile=document.getElementById("uploadFile")['files'][0];
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
-    this._http.post('/fina/uploadFile',formData,(e)=>{
+    let ms="这是描述"
+    this._http.post('/fina/uploadFile?ms='+ms,formData,(e)=>{
       // back(true,e)
     },()=>{
       // back(false)

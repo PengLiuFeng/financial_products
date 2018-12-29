@@ -119,6 +119,8 @@ export class PingjishouxinComponent implements OnInit {
       if(e.data.pb.totalRecord>0){
        this. whetherTheCycle();
       }
+      this.check_arr = new Array(this.tableData.length);
+      this.qx_btn=false;
       this.isAjax=false;
      },()=>{
      this.isAjax=false;

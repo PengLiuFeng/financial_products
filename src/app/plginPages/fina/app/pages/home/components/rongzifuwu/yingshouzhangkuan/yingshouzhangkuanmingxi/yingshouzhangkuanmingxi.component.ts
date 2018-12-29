@@ -22,6 +22,16 @@ export class YingshouzhangkuanmingxiComponent implements OnInit {
     idType:'',
     recSta:''
   }
+
+/*当前页面位置 */
+
+title = [
+  "融资管理",
+  "应收账款管理",
+  "应收账款明细维护" 
+]
+
+
 //   查询
   paths="";
   search():void{

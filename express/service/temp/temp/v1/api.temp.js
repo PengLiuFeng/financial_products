@@ -19,6 +19,7 @@ module.exports = function attachHandlers(router) {
         let ret = {};
         ret['code'] = 20000;
         var file = req.file;
+        //console.log(req.query.ms)
         if (file) {
                 var fileNameArr = file.originalname.split('.');
                 var suffix = fileNameArr[fileNameArr.length - 1];
@@ -135,7 +136,7 @@ module.exports = function attachHandlers(router) {
     //下拉框列表
     router.post('/fina/dict/dictList',
         function (req, res) {
-            // console.log(req.body)//请求参数
+            //console.log(req.body)//请求参数
             var options =
             {
                 url: url_baoli + '/dict/dictList',
@@ -149,10 +150,10 @@ module.exports = function attachHandlers(router) {
 
             request(options, callback);
         });
-    ////下拉框列表
+    //下拉框列表
     router.get('/fina/dict/dictList',
         function (req, res) {
-            // console.log(req.body)//请求参数
+            //console.log(req.body)//请求参数
             var options =
             {
                 url: url_baoli + '/dict/dictList',
@@ -183,7 +184,7 @@ module.exports = function attachHandlers(router) {
         });
     
     /*---------------------------------------------- */
-    ////下拉框列表
+    //下拉框列表
     function xlk(back, arr, arr2, responses, errors) {
         let id = arr.shift();
         if (id) {
@@ -230,7 +231,7 @@ module.exports = function attachHandlers(router) {
                 method: 'GET'
             };
             function callback(error, response, data) {
-                console.log(data)
+                //console.log(data)
                 data = data.replace('cifName', 'cuName');
                 data = data.replace('cifNo', 'cuNo');
                 res.send(handleRes.handleRes(error, response, data));
@@ -350,7 +351,7 @@ module.exports = function attachHandlers(router) {
                 url: uri + '/aggregators',
                 method: 'GET'
             };
-            console.log(options)
+            //console.log(options)
             function callback(error, response, data) {
                 res.send(handleRes.handleRes(error, response, data));
 

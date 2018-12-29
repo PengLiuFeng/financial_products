@@ -14,6 +14,7 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
   models:any;
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
+  @Input() InputData:any;
   bo:boolean=false;
   testarray:any;
   headElements=[
@@ -29,6 +30,25 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
     { BUS_NAME:'江苏恒生集团',BUS_COUNA:'购买原材料',BUS_COUN:'5FS6GSD49',BUS_TYPE:'采购订单',BUS_NO:'FD4W363',BUS_RECEI:'12.000.000',END_DATE:'2019-11-6'},
     { BUS_NAME:'江苏恒生集团',BUS_COUNA:'购买原材料',BUS_COUN:'5FS6GSD44',BUS_TYPE:'采购订单',BUS_NO:'FD4W544',BUS_RECEI:'76.000.000',END_DATE:'2019-12-27'},
   ]
+  private pickeri = 2;
+  private pickerdom = null;
+  private picker_m = null;
+  pickerFocus(e) {
+    if ((!this.picker_m) || this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+      this.picker_m = e.target.parentNode.parentNode;
+      this.pickeri++;
+      window['e'] = e.target;
+      this.pickerdom = e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index'] = this.pickeri;
+    } else {
+      setTimeout(() => {
+        if (this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+          this.picker_m = null;
+          this.pickerdom.style['z-index'] = 0;
+        }
+      }, 200)
+    }
+  }
   public myDatePickerOptions: IMyOptions = { 
     dayLabels: {su: '日', mo: '一', tu: '二', we: '三', th: '四', fr: '五', sa: '六'},
     dayLabelsFull: {su: "周日", mo: "周一", tu: "周二", we: "周三", th: "周四", fr: "周五",

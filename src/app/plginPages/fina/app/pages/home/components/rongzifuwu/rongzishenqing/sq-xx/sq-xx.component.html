@@ -1,6 +1,6 @@
 <div class="sqxqpage" style="background-color:rgb(221, 221, 241);">
     <div class="head">
-        <app-shenqingxiangqing-head></app-shenqingxiangqing-head>
+        <app-shenqingxiangqing-head [InputData]="InputData"></app-shenqingxiangqing-head>
     </div>
     <div class="buttonpage">
             <button mdbBtn type="button" color="primary" size="sm" (click)="opens('khjbxx')" mdbWavesEffect>客户信息</button>
@@ -10,10 +10,10 @@
     </div>
     <div class="body">
         <span *ngIf="apppage=='rqsqxq'">
-            <app-shenqingxiangqing-body></app-shenqingxiangqing-body>
+            <app-shenqingxiangqing-body [InputData]="InputData"></app-shenqingxiangqing-body>
         </span>
         <span *ngIf="apppage=='khjbxx'">
-            <app-jibenxinxi ></app-jibenxinxi>
+            <app-jibenxinxi [cuNo]="InputData.cuNo" ></app-jibenxinxi>
         </span>
         <span *ngIf="apppage=='myxx'">
             

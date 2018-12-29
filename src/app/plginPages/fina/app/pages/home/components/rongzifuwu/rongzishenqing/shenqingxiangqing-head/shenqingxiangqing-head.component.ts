@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ParamsService } from './../../../../../../params.service';
 
 @Component({
   selector: 'app-shenqingxiangqing-head',
@@ -6,21 +7,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shenqingxiangqing-head.component.scss']
 })
 export class ShenqingxiangqingHeadComponent implements OnInit {
-  Client={
-    name:'腾讯科技股份有限公司广州总公司',
-    ID_type:'统一社会信用代码',
-    ID_NO: '46DS6G1Z3DA',
+
+  testarray: any = {
+    idType: '',
+    idNo: '',
+    cuName: '',
+  };
+  @Input() InputData: any;
+  _http: any;
+  idTypes: Array<any>;
+
+  constructor(private param: ParamsService) {
+    this._http = param._http
   }
-  testarray:any;
+  //请求下拉框的数据
+  requestSelectData() {
+    this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
+        this.idTypes=e.data[0].data
+    }, () => {
 
-  constructor() { }
-
+     })
+  }
   ngOnInit() {
-    this.testarray={
-      idType:'',
-      idNo:'',
-      cifName:'',
-    }
+    this.requestSelectData() ;
   }
 
 

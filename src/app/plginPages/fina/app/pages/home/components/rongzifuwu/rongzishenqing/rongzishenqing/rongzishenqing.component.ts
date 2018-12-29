@@ -9,6 +9,14 @@ import { ParamsService } from './../../../../../../params.service';
 })
 export class RongzishenqingComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
+  trangetData(event:any){
+      this.InputData=event;
+  }
+  InputData:any={
+    authId:'',
+    personPage:'',
+    cuNo:''
+  }
   check: boolean = false;
   alldata: any;
   paths: any;       //请求路径，请求时拼接请求条件

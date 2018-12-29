@@ -15,6 +15,10 @@ export class XinzengrongzishenqingComponent implements OnInit {
   constructor(private location : Location,private params:ParamsService) { 
     this._http=params._http
   }
+  InputData:any={
+    authId:'',
+    personPage:'',
+  }
   idTypes:Array<any>;
   _http:any;
   testarray:any={
@@ -31,9 +35,10 @@ export class XinzengrongzishenqingComponent implements OnInit {
     )
   }
   //发送融资申请用户注册请求
-  requestData(){
+  requestData(fu:any){
     this._http.post('/fina/fa/idValidate',this.testarray,(e)=>{
       console.log(e)
+      fu();
     },()=>{})
   }
   ngOnInit() {
@@ -43,7 +48,11 @@ export class XinzengrongzishenqingComponent implements OnInit {
     this.location.back();
   }
   tijiao(){
-    this.requestData();
+    this.requestData(()=>{
+        this.OutputData.emit(this.InputData)
+        this.nowPage.hide();
+        this.lastPage.show();
+    });
 
   }
 }

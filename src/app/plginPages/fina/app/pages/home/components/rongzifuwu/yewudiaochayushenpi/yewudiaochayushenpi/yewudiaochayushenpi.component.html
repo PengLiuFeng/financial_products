@@ -90,7 +90,7 @@
                 <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="ywdcysp.auDateEnd" dateFormat="yy/mm/dd"
                     [(ngModel)]="ywdcysp.auDateEnd" [label]="'融资申请日期'" class="form-control" required></mdb-date-picker>
               </div>
-              <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>查询</button>
+              <button mdbBtn type="button" (click)="queryTableDataWithConditions()" color="secondary" class="Rbtn waves-light" mdbWavesEffect>查询</button>
               <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>重置</button>
             </div>
           </div>
@@ -131,7 +131,7 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let data of tableData; let i = index">
-          <tr *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+          <tr>
             <td scope="row" class="index_td">{{i+1}}</td>
             <td scope="row">
               <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>

@@ -1,12 +1,14 @@
 #zhen_div{
     margin: 20px auto;
-    border-left: 45px solid #bdcaff;
-    border-right: 45px solid #bdcaff;
-    border-top: 50px solid #bdcaff;
-    border-bottom: 50px solid #bdcaff;
+    border-left: 45px solid #e6ecf7;
+    border-right: 45px solid #e6ecf7;
+    border-top: 50px solid #e6ecf7;
+    border-bottom: 50px solid #e6ecf7;
+    
     width: 90%;
     position: relative;
     text-align: center;
+    
 }
 mdb-select{
     text-align: left;
@@ -23,6 +25,14 @@ mdb-select{
     width: 60px;
     margin: 30px;
     background-color: #454a6a !important;
+}
+// /deep/ mdb-select > div > div.single{
+//     position: relative;
+//     bottom: 0 !important;
+// }
+#select1{
+    position: relative;
+    bottom: -25px !important;
 }
 .font_red{
     color: red

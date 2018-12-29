@@ -5,7 +5,29 @@
     position: relative;
     background-color: #ffffff;
     width: 95%;
-    padding-bottom: 5%;
+}
+label{
+    font-size: 15px;
+}
+td{
+    border-bottom: 1px solid gainsboro;;
+}
+.min_width_th{
+    width: 12%;
+}
+.th_btn{
+    margin: 0 5px;
+}
+.md-form{
+    margin: 0%;
+}
+.fa-check{
+    font-size: 45px;
+    color: green;
+}
+.fa-close{
+    font-size: 45px;
+    color: red;
 }
 #alert_div{
     position: absolute;

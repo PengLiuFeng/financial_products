@@ -20,6 +20,7 @@ module.exports = function attachHandlers(router) {
         ret['code'] = 20000;
         var file = req.file;
         //console.log(req.query.ms)
+        var fileInfo = req.query.fileInfo;
         if (file) {
                 var fileNameArr = file.originalname.split('.');
                 var suffix = fileNameArr[fileNameArr.length - 1];
@@ -30,6 +31,7 @@ module.exports = function attachHandlers(router) {
                 ret['error']="请选择文件";
             }
             ret['file'] = file;
+            ret['fileInfo'] = fileInfo;
             res.send(handleRes.handleRes(false, {statusCode:200}, ret));
         })
     router.get('/fina/custom/list',

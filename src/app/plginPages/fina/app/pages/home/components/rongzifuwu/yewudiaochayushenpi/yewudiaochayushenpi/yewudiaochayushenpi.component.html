@@ -136,15 +136,26 @@
             <td scope="row">
               <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
             </td>
+            <!-- c.`CU_NO`,
+            c.`CU_NAME`,
+            c.`BUS_TYPE`,
+            b.`AUTH_APP_NO`,
+            c.`AU_AMT`,
+            c.`CREATE_TIME`,
+            c.`END_DATE`,
+            c.`TERM_TYPE`,
+            c.`TERM`,
+            c.`AU_STA` -->
+
             <td scope="row">{{data.cuNo}}</td>
             <td scope="row">{{data.cuName}}</td>
             <td scope="row">{{data.busType}}</td>
             <td scope="row">{{data.authAppNo}}</td>
             <td scope="row">{{data.auAmt}}</td>
-            <td scope="row">{{data.auDate}}</td>
+            <td scope="row">{{data.createTime}}</td>
             <td scope="row">{{data.termType}}</td>
             <td scope="row">{{data.term}}</td>
-            <td scope="row">{{data.authAppSta}}</td>
+            <td scope="row">{{data.auSta}}</td>
             <td scope="row">
               <a (click)="demoBasic.show()">审批详情</a>
             </td>

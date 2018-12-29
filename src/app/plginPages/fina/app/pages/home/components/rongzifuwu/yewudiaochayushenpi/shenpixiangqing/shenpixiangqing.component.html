@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="bk_div col-md-6 mx-auto mt-5">
-      <mdb-select name="spxq.finproNm" label="金融服务产品*:" placeholder="请选择" [options]="FINPRO_NM" [(ngModel)]="spxq.finproNm"></mdb-select>
+      <mdb-select name="spxq.finproNm" label="金融服务产品*:" placeholder="请选择" [options]="FINPRO_NO" [(ngModel)]="spxq.finproNm"></mdb-select>
     </div>
 
     <div class="bk_div col-md-6 mx-auto mt-5">
@@ -115,10 +115,10 @@
       <!-- ------------------------------------------------------------------------------------------ --> 
 
     <div class="bk_div">
-      <mdb-date-picker  name="spxq.begDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资申请审批日期*" [(ngModel)]="spxq.begDate" required></mdb-date-picker>
+      <mdb-date-picker  (click)="pickerFocus($event)" name="spxq.begDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资申请审批日期*" [(ngModel)]="spxq.begDate" required></mdb-date-picker>
     </div>
     <div class="bk_div">
-      <mdb-date-picker  name="spxq.endDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资到期日期*" [(ngModel)]="spxq.endDate" required></mdb-date-picker>
+      <mdb-date-picker  (click)="pickerFocus($event)" name="spxq.endDate" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="融资到期日期*" [(ngModel)]="spxq.endDate" required></mdb-date-picker>
     </div>
 
     <div class="bk_div col-md-6 mx-auto mt-5">
@@ -170,10 +170,10 @@
     </div>
 
     <div class="bk_div">
-      <mdb-date-picker  name="spxq.createTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="登记时间" [(ngModel)]="spxq.createTime" required></mdb-date-picker>
+      <mdb-date-picker  (click)="pickerFocus($event)" name="spxq.createTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="登记时间" [(ngModel)]="spxq.createTime" required></mdb-date-picker>
     </div>
     <div class="bk_div">
-      <mdb-date-picker  name="spxq.updateTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="修改时间*" [(ngModel)]="spxq.updateTime" required></mdb-date-picker>
+      <mdb-date-picker  (click)="pickerFocus($event)" name="spxq.updateTime" [options]="myDatePickerOptions" dateFormat="yy/mm/dd" label="修改时间*" [(ngModel)]="spxq.updateTime" required></mdb-date-picker>
     </div>
 
   </div>

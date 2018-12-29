@@ -23,30 +23,41 @@ export class YewudiaochayushenpiComponent implements OnInit {
     auDateBeg:"", //融资申请日期(起始)
     auDateEnd:""  //融资申请日期(结束)
   }
+  reSetModel(){
+    this.path='';
+    this.ywdcysp={
+      cuNo:"",  //客户号
+      cuName:"",  //客户名称
+      authAppNoBeg:"", //授信协议编号(起始)
+      authAppNoEnd:"",  //授信协议编号(结束)
+      busType:"", //业务类型
+      authAppSta:"",  //申请状态
+      auDateBeg:"", //融资申请日期(起始)
+      auDateEnd:""  //融资申请日期(结束)
+    }
+  }
 
-  BUS_TYPE=[
-    {label:"授信金融产品",disabled:"disabled"}
-  ]
-  AUTH_APP_STA=[
-    {label:"分项授信类型",disabled:"disabled"}
-  ]
+
+  BUS_TYPE=[]
+  AUTH_APP_STA=[]
   isShow:boolean;
-
+  path='';
   //文本框的model
-  cifName:any;
-  authId:any;
-  authAppNo:any;
+  // cifName:any;
+  // authId:any;
+  // authAppNo:any;
 
-  //下拉菜单的model
-  cifNo:any;
-  finproNo:any;
-  authSplitType:any;
+  // //下拉菜单的model
+  // cifNo:any;
+  // finproNo:any;
+  // authSplitType:any;
 
-  //日期的model
-  begDate:any;
-  endDate:any;
+  // //日期的model
+  // begDate:any;
+  // endDate:any;
 
   /* 分页显示使用的数据 */
+  theTotalNumberOfEntries = 0;
   activePage = 1;
   itemsPerPage = 6;//每页显示条数
   paginators: Array<any> = [];
@@ -57,37 +68,81 @@ export class YewudiaochayushenpiComponent implements OnInit {
   firstVisiblePaginator = 0;
   lastVisiblePaginator = this.numberOfVisiblePaginators;
 
-  tableData = [/* 表数据 */
-    { id: 1,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 2,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 3,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 4,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 5,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 6,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 7,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 8,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 9,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 10,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
-    { id: 11,cuNo:"20071001-091", cuName:"鸿雁轮胎原材料销售商", busType:"有追索公开保理", authAppNo:"BL20180101-001", auAmt:"800,000,000.00", auDate:"2018-10-20", termType:"月", term:"6", authAppSta:"审批中"},
+  tableData = [/* 表数据 */];
+  queryTableDataWithConditions(){
+    this.path = 
+      '&cuNo='+this.ywdcysp.cuNo+'&cuName='+this.ywdcysp.cuName+
+      '&authAppNoBeg='+this.ywdcysp.authAppNoBeg+'&authAppNoEnd='+this.ywdcysp.authAppNoEnd+
+      '&busType='+this.ywdcysp.busType+'&authAppSta='+this.ywdcysp.authAppSta+
+      '&auDateBeg='+this.ywdcysp.auDateBeg+'&auDateEnd'+this.ywdcysp.auDateEnd;
+    
+    if(!!this.ywdcysp.auDateBeg){
+      this.path+='&auDateBeg='+(new Date(this.ywdcysp.auDateBeg).getTime());
+    }
+    if(this.ywdcysp.auDateEnd){
+      this.path+='&auDateEnd='+(new Date(this.ywdcysp.auDateEnd).getTime())
+    }
+    this.activePage = 1;
+    this.requestTableData();
+   }
 
-  ];
-  
-  constructor(public params:ParamsService) { }
+  requestTableData(){
+    this.isAjax=true;
+    this._http.get('/fina/approve/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
+      this.isAjax=false;
+     this.tableData=e.data.pb.list;
+     console.log(e)
+      this.theTotalNumberOfEntries = e.data.pb.totalRecord;
+    //  console.log("表数据",this.tableData)
+      if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
+      } else {
+        this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
+      }
+      this.paginators=[];
+      for (let i = 1; i <= this.numberOfPaginators; i++) {
+        this.paginators.push(i);
+      }
+      this.check_arr = new Array(this.tableData.length);
+      this.qx_btn=false;
+      this.isAjax=false;
+     },()=>{
+     this.isAjax=false;
+   
+     })
+   }
 
+  reqDdListData(){
+    this.isAjax=true; 
+      this._http.get('/fina/dict/dictListList?ids=BUS_TYPE,AUTH_APP_STA',(e)=>{
+        let it=null;
+        for(let i=0;i<e.data.length;i++){
+          it=e.data[i];
+          if(it.myid=='BUS_TYPE'){
+            this.BUS_TYPE=it.data;
+          }else if(it.myid=='AUTH_APP_STA'){
+            this.AUTH_APP_STA=it.data;
+          }
+        }
+        this.isAjax=false;
+      },()=>{
+     this.isAjax=false;
+     })
+   }
+
+  _http:any;
+  isAjax=false;
+  constructor(public params:ParamsService) {
+    this._http=params._http;
+   }
   title = [
     "融资管理",
     "业务调查与审批" 
   ]
 
   ngOnInit() {/* 初始化动态赋值与显示 */
-    if (this.tableData.length % this.itemsPerPage === 0) {
-      this.numberOfPaginators = Math.floor(this.tableData.length / this.itemsPerPage);
-    } else {
-      this.numberOfPaginators = Math.floor(this.tableData.length / this.itemsPerPage + 1);
-    }
-    for (let i = 1; i <= this.numberOfPaginators; i++) {
-      this.paginators.push(i);
-    }
+    this.requestTableData();
+    this.reqDdListData();
   }
 
   changePage(event: any) {/* 更改页面 */
@@ -96,6 +151,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
       this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
       this.lastVisibleIndex = this.activePage * this.itemsPerPage;
     }
+    this.requestTableData();
   }
   previousPage() {/* 上一页 */
     if (this.pages.first.nativeElement.classList.contains('active')) {
@@ -106,6 +162,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
         this.firstVisiblePaginator -= this.numberOfVisiblePaginators;
         this.lastVisiblePaginator -= (this.numberOfPaginators % this.numberOfVisiblePaginators);
       }
+      this.requestTableData();
     }
   
     this.activePage -= 1;
@@ -125,6 +182,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
     this.activePage += 1;
     this.firstVisibleIndex = this.activePage * this.itemsPerPage - this.itemsPerPage + 1;
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
+    this.requestTableData();
   }
   firstPage() {/* 首页 */
     this.activePage = 1;
@@ -132,6 +190,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
     this.lastVisibleIndex = this.activePage * this.itemsPerPage;
     this.firstVisiblePaginator = 0;
     this.lastVisiblePaginator = this.numberOfVisiblePaginators;
+    this.requestTableData();
   }
   lastPage() {/* 尾页 */
     this.activePage = this.numberOfPaginators;
@@ -145,6 +204,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
       this.lastVisiblePaginator = this.numberOfPaginators;
       this.firstVisiblePaginator = this.lastVisiblePaginator - (this.numberOfPaginators % this.numberOfVisiblePaginators);
     }
+    this.requestTableData();
   }
 
   /*全选的操作 */

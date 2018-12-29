@@ -72,9 +72,9 @@ constructor( private location:Location,private param:ParamsService) {
   }
   //将下拉框的值转换为lable
   getLabel(value:any,select:Array<any>):any{
-    for(var i=0;i<select.length;i++){
-      if(select[i].value==value){
-        return select[i].label
+    for(var p in select){
+      if(select[p]['value']==value){
+        return select[p]['label']
       }
     }
 }

@@ -95,7 +95,7 @@ const routes: Routes = [
           { path: 'yszkhg', component: YszkhgComponent },     //应收账款回购
           { path: 'yszkhgxx', component: YszkhgXxComponent },     //应收账款回款信息
           { path: 'yszktz', component: YszktzComponent },       //应收账款通知
-          { path: 'yszktzzr', component: YszktzZrComponent },   //应收账款回款转让通知
+          // { path: 'yszktzzr', component: YszktzZrComponent },   //应收账款回款转让通知
           { path: 'htqsList', component: HtqsListComponent },    //合同签署列表
           { path: 'htqsIndex', component: HtqsIndexComponent },    //合同签署首页
           { path: 'htqs', component: HetongqianshuComponent },//合同签署
@@ -104,7 +104,7 @@ const routes: Routes = [
           { path: 'htdbxq', component: HetongDbxqComponent },     //合同担保详情
           { path: 'rzsq', component: RongzishenqingComponent },//融资申请
           { path: 'rqsqxq', component: SqXxComponent },          //融资申请详情
-          { path: 'yszkzrdj', component: YszkzrdjComponent },    //
+          // { path: 'yszkzrdj', component: YszkzrdjComponent },    //
           { path: 'yszkzrqrhz', component: YszkzrqrhzComponent }, //应收账款确认回执
           { path: 'demo', component: DemoComponent },          //Demo
           { path: 'sqxq_head' ,component: ShenqingxiangqingHeadComponent} ,//融资申请详情的头部分
@@ -198,21 +198,21 @@ const routes: Routes = [
                   {
                     path: 'yszkgl',
                     children:[
-                      { path: 'yszkmx', component: YingshouzhangkuanmingxiComponent,
-                      children:[
-                        { path: 'xzyszkmx', component: XinzengyingshouzhangkuanmingxiComponent },//新增应收账款明细
-                        { path: 'yszkzltj', component: YszkzltjComponent },   //应收账款资料提交
-                        { path: 'yszkzlsc', component: YszkzlscComponent },   //应收账款资料上传
-                        { path: 'yszkhk', component: YszkhkComponent },       //应收账款回款
-                        { path: 'yszkhg', component: YszkhgComponent },       //应收账款回购
-                        { path: 'yszkhgxx', component: YszkhgXxComponent },   //应收账款回款信息
-                        { path: 'yszktz', component: YszktzComponent },       //应收账款通知
-                        { path: 'yszktzzr', component: YszktzZrComponent },   //应收账款回款转让通知
-                        { path: 'yszkzrqrhz', component: YszkzrqrhzComponent },//应收账款确认回执
-                        { path: 'yszkdqtx',component:YszkdqtxComponent},      //应收账款到期提醒
-                        { path: 'yszkzrdj', component: YszkzrdjComponent },   //应收账款转让登记
-                      ]
-                    },//应收账款明细
+                      {
+                        path: 'yszkmx', component: YingshouzhangkuanmingxiComponent,
+                        children:[]
+                      },//应收账款明细
+                      { path: 'xzyszkmx', component: XinzengyingshouzhangkuanmingxiComponent },//新增应收账款明细
+                      { path: 'yszkzltj', component: YszkzltjComponent },   //应收账款资料提交
+                      { path: 'yszkzlsc', component: YszkzlscComponent },   //应收账款资料上传
+                      { path: 'yszkhk', component: YszkhkComponent },       //应收账款回款
+                      { path: 'yszkhg', component: YszkhgComponent },       //应收账款回购
+                      { path: 'yszkhgxx', component: YszkhgXxComponent },   //应收账款回款信息
+                      { path: 'yszktz', component: YszktzComponent },       //应收账款通知
+                      { path: 'yszktzzr', component: YszktzZrComponent },   //应收账款回款转让通知
+                      { path: 'yszkzrqrhz', component: YszkzrqrhzComponent },//应收账款确认回执
+                      { path: 'yszkdqtx',component:YszkdqtxComponent},      //应收账款到期提醒
+                      { path: 'yszkzrdj', component: YszkzrdjComponent },   //应收账款转让登记
                     ]
                   },
               //合同签署

@@ -19,13 +19,14 @@ export class DemoComponent implements OnInit {
     this.httpHeaders.set('Content-Type',undefined);
   }
   mval='yizhi';
-  onup(){
-    var uploadFile=document.querySelector("#uploadFile")['files'][0];
+  onup(uploadFile?:any,back?:any){
+    uploadFile=document.getElementById("uploadFile")['files'][0];
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
     this._http.post('/fina/uploadFile',formData,(e)=>{
-      console.log(e)
+      // back(true,e)
     },()=>{
+      // back(false)
 
     },this.httpHeaders)
   }

@@ -18,7 +18,7 @@ export class DemoComponent implements OnInit {
   constructor(private _http:BaHttpInterceptorService) {
     this.httpHeaders.set('Content-Type',undefined);
   }
-  mval='yizhi';
+  mval='';
   onup(uploadFile?:any,back?:any){
     uploadFile=document.getElementById("uploadFile")['files'][0];
     var formData = new FormData();

@@ -18,10 +18,8 @@
             <input mdbInputDirective type="text" [(ngModel)]="kh.khNum" id="khxx2" class="form-control">
             <label for="khxx2">客户名称</label>
           </div>
-        </div>
-        <div class="inputd col-md-2">
-          <div class="md-form">
-            <input type="text" [(ngModel)]="kh.hm" placeholder="授信协议编号" class="form-control">
+          <div class="inputd inputd-mdb-select col-md-1" style="min-width:120px">
+            <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder" label="证件类型" [(ngModel)]="kh.zjlx.vals"></mdb-select>
           </div>
         </div>
         <div class="inputd col-md-2">

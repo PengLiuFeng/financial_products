@@ -33,9 +33,9 @@
             <div class="col-md-6">
                   <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="outputdata.feeType" placeholder="请选择" label="费用类型"></mdb-select>
             </div>
-            <button mdbBtn type="button" color="primary" outline="true" size="sm" mdbWavesEffect>查询</button>
-            <button mdbBtn type="button" color="info" outline="true" size="sm" mdbWavesEffect>重置</button>
-            
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+
           
           </form> 
           
@@ -77,10 +77,10 @@
                                     </td> -->
                                     <td scope="row">
                                       
-                                      <a (click)="basicModal.show();">
+                                      <a (click)="basicModal.show();" style="color:blue;">
                                           收取
                                       </a> 
-                                      <a  (click)="basicModal.show();">
+                                      <a  (click)="basicModal.show();" style="color:blue;">
                                         调整
                                       </a>
 

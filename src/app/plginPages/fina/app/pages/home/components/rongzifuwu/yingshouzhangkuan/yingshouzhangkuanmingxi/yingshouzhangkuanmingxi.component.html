@@ -33,10 +33,14 @@
             <mdb-select [options]="recStas" placeholder="应收账款状态" class="placeholder" [(ngModel)]="client.recSta"></mdb-select>
           </div>
         </div>
-        <div style="padding: 10px;">
+        <!-- <div style="padding: 10px;">
           <button mdbBtn (click)="search()" color="primary" rounded="true" mdbWavesEffect size="sm">查询</button>
           <button mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect (click)="oncz()" size="sm">重置</button>
           
+        </div> -->
+        <div style="padding-top: 17px;">
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect mdbWavesEffect >重置</button>
         </div>
       </div>
     </div>

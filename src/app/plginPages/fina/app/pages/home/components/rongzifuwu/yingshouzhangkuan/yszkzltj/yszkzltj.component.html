@@ -41,10 +41,14 @@
         <div class="inputd" style="padding-top: 11px">
           <mdb-select [options]="kh.zjzt.selects" placeholder="资料提交状态" class="placeholder"  [(ngModel)]="kh.zjzt.vals"></mdb-select>
         </div>
-            <div style="padding: 10px;">
+            <!-- <div style="padding: 10px;">
               <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>查询</button>
               <button mdbWavesEffect mdbWavesEffect mdbBtn type="button" color="primary" class="waves-light btn-sm"(click)="oncz($event)">重置</button>
               
+            </div> -->
+            <div style="padding-top: 17px;">
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>查询</button>
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect (click)="oncz($event)">重置</button>
             </div>
           </div>
     </div>

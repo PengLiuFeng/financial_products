@@ -28,9 +28,13 @@
               <!-- <div class='md-form'></div> -->
             <mdb-select name="yszk.recSta" [(ngModel)]="yszk.recSta" [options]="REC_STA" placeholder="应收账款状态:" ></mdb-select>
           </div>    
+          <div style="padding-top: 17px;">
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="reSetAndReqTD()" mdbWavesEffect mdbWavesEffect >重置</button>
+          </div>
       </div>
-      <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
-      <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="reSetAndReqTD()" mdbWavesEffect>重置</button>
+      <!-- <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn"  mdbWavesEffect>查询</button>
+      <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn"  mdbWavesEffect>重置</button> -->
 
     </form>
   </div>

@@ -239,4 +239,8 @@ export class YewudiaochayushenpiComponent implements OnInit {
     }
   }
 
+  reSetAndReqTD(){
+    this.reSetModel();
+    this.requestTableData();
+  }
 }

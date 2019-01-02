@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input,Output,EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { Location } from '@angular/common';
 import { ParamsService } from './../../../../../../params.service';
@@ -9,22 +9,22 @@ import { ParamsService } from './../../../../../../params.service';
   styleUrls: ['./xinzengrongzishenqing.component.scss']
 })
 export class XinzengrongzishenqingComponent implements OnInit {
-  @Input() nowPage:ModalDirective;
-  @Input() lastPage:ModalDirective;
-  @Output() OutputData:EventEmitter<any> =new EventEmitter();
-  constructor(private location : Location,private params:ParamsService) { 
-    this._http=params._http
+  @Input() nowPage: ModalDirective;
+  @Input() lastPage: ModalDirective;
+  @Output() OutputData: EventEmitter<any> = new EventEmitter();
+  constructor(private location: Location, private params: ParamsService) {
+    this._http = params._http
   }
-  InputData:any={
-    authId:'',
-    personPage:'',
+  InputData: any = {
+    authId: '',
+    personPage: '',
   }
-  idTypes:Array<any>;
-  _http:any;
-  testarray:any={
-    idType:'',
-    idNo:'',
-    cifNmae:'',
+  idTypes: Array<any>;
+  _http: any;
+  testarray: any = {
+    idType: '',
+    idNo: '',
+    cifNmae: '',
   }
   //请求下拉框的数据
   requestselectData() {
@@ -35,23 +35,44 @@ export class XinzengrongzishenqingComponent implements OnInit {
     )
   }
   //发送融资申请用户注册请求
-  requestData(fu:any){
-    this._http.post('/fina/fa/idValidate',this.testarray,(e)=>{
+  requestData(fu: any) {
+    this._http.post('/fina/fa/idValidate', this.testarray, (e) => {
       console.log(e)
-      fu();
-    },()=>{})
+      if (e.data.t==0){
+        this.dangerShow('请求失败，请重新添加融资申请');
+      }
+      if(e.data.t==1){
+        if(e.data.msg=="接口异常！"){
+          this.dangerShow('对不起，接口出现异常，请及时联系管理员');
+
+        }if(e.data.msg==""){
+          this.dangerShow('该用户不存在，请再次确认后提交申请');
+        }
+      }
+        fu();
+    }, () => { })
   }
   ngOnInit() {
     this.requestselectData()
   }
-  go_back() : void{
+  go_back(): void {
     this.location.back();
   }
-  tijiao(){
-    this.requestData(()=>{
-        this.OutputData.emit(this.InputData)
-        this.nowPage.hide();
-        this.lastPage.show();
+  //当注册出现异常时提示
+  danger_hid = true;
+  alertText = '';
+  dangerShow(str) {
+    this.alertText = str;
+    this.danger_hid = false;
+    setTimeout(() => {
+      this.danger_hid = true
+    }, 3000);
+  }
+  tijiao() {
+    this.requestData(() => {
+      this.OutputData.emit(this.InputData)
+      this.nowPage.hide();
+      this.lastPage.show();
     });
 
   }

@@ -94,7 +94,7 @@ import { MaifanghuikuanComponent } from './pages/home/components/zijinguanli/mai
 import { HuikuanyemianComponent } from './pages/home/components/zijinguanli/maifanghuikuan/huikuanyemian/huikuanyemian.component';
 import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.component';
 import { ZiliaoshangchuanComponent } from './pages/home/components/rongzifuwu/yewudiaochayushenpi/ziliaoshangchuan/ziliaoshangchuan.component';
-import { DaikuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuankuan/daikuanhuankuan.component';
+import { DaikuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
 import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
 
 @NgModule({

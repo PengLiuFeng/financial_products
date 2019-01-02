@@ -106,8 +106,8 @@ export class HomeComponent implements OnInit  {
           },
           
           {
-            label: '贷款还款(开发中)',
-            url:'',
+            label: '贷款还款',
+            url:'/finas/home/rzgl/zjgl/dkhk',
             treeid:'2'
           },
           {

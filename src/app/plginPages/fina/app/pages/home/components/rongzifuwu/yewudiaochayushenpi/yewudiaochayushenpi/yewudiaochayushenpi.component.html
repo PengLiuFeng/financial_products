@@ -91,7 +91,7 @@
                     [(ngModel)]="ywdcysp.auDateEnd" [label]="'融资申请日期'" class="form-control" required></mdb-date-picker>
               </div>
               <button mdbBtn type="button" (click)="queryTableDataWithConditions()" color="secondary" class="Rbtn waves-light" mdbWavesEffect>查询</button>
-              <button mdbBtn type="button" color="secondary" class="Rbtn waves-light" mdbWavesEffect>重置</button>
+              <button mdbBtn type="button" (click)="reSetAndReqTD()" color="secondary" class="Rbtn waves-light" mdbWavesEffect>重置</button>
             </div>
           </div>
         </div>
@@ -157,7 +157,7 @@
             <td scope="row">{{data.term}}</td>
             <td scope="row">{{data.auSta}}</td>
             <td scope="row">
-              <a (click)="demoBasic.show()">审批详情</a>
+              <a (click)="authId = data.authId; demoBasic.show()">审批详情</a>
             </td>
           </tr>
         </ng-container>
@@ -207,7 +207,7 @@
           <span aria-hidden="true">×</span>
         </button>
         <div id="mtk_div">
-            <app-ywdcysp-header [ZHXXdemoBasic]="ZHXXdemoBasic" [radioModel]="radioModel"></app-ywdcysp-header>
+            <app-ywdcysp-header [ZHXXdemoBasic]="ZHXXdemoBasic" [authId] = 'authId' [radioModel]="radioModel"></app-ywdcysp-header>
         </div>
       </div>
     </div>

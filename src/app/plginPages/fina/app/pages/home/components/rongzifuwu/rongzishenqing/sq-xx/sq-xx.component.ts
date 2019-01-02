@@ -1,5 +1,5 @@
 //融资申请详情
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 //import {Location} from '@angular/common';
 @Component({
   selector: 'app-sq-xx',
@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class SqXxComponent implements OnInit {
   bo:boolean=false;
   apppage:any='rqsqxq';
+  @Input() InputData:any;
   constructor() { }
 
   ngOnInit() {

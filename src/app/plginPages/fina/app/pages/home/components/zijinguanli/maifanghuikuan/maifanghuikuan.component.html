@@ -69,8 +69,9 @@
             <div class="col-md-6">
                   <mdb-select [options]="optionsSelect" placeholder="" label="费用"></mdb-select>
             </div> -->
-          <button mdbBtn type="button" color="primary" outline="true" size="sm" mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="info" outline="true" size="sm" mdbWavesEffect>取消</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+  
 
 
         </form>
@@ -122,9 +123,9 @@
                                     </td> -->
                   <td scope="row">
 
-                    <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" (click)="basicModal.show();"
-                      mdbWavesEffect>回款</button>
-
+                    <!-- <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" (click)="basicModal.show();"
+                      mdbWavesEffect>回款</button> -->
+                    <a  (click)="basicModal.show();" style="color:blue;">回款</a>
 
                   </td>
                 </tr>

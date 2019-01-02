@@ -1,6 +1,7 @@
 import { Component, ViewChild, ViewChildren, QueryList, OnInit } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../../params.service';
+import { ModalDirective } from 'ng-uikit-pro-standard';
 //融资申请
 @Component({
   selector: 'app-rongzishenqing',
@@ -9,6 +10,15 @@ import { ParamsService } from './../../../../../../params.service';
 })
 export class RongzishenqingComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
+  demoBasic:ModalDirective;
+  trangetData(event:any){
+      this.InputData=event;
+  }
+  InputData:any={
+    authId:'',
+    personPage:'',
+    cuNo:''
+  }
   check: boolean = false;
   alldata: any;
   paths: any;       //请求路径，请求时拼接请求条件
@@ -265,7 +275,7 @@ export class RongzishenqingComponent implements OnInit {
     "融资申请"
   ]
   shenqingxiangqing(date: any): void {
-
+    
   }
 
 }

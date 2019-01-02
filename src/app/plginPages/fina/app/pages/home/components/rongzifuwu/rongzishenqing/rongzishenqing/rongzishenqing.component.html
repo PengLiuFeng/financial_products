@@ -38,9 +38,12 @@
         <mdb-date-picker name="endDate" (click)="pickerFocus($event);" [options]="myDatePickerOptions" label="融资结束日期"
           [(ngModel)]="testarray.endDate" required></mdb-date-picker>
         <div style="width:20%;float:left;margin-left: 2%;padding-top: 20px;">
-          <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm"
+          <!-- <button mdbBtn type="button" color="info" rounded="true" (click)="search()" outline="true" size="sm"
             mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="info" rounded="true" (click)="reset()" outline="true" size="sm"
+          <button mdbBtn type="button" color="info" rounded="true"  outline="true" size="sm"
+            mdbWavesEffect>重置</button> -->
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="reset()" mdbWavesEffect
             mdbWavesEffect>重置</button>
         </div>
 
@@ -54,11 +57,17 @@
           <div class="col-sm" style="text-align: right;">
 
 
-            <button mdbBtn type="button" color="info" rounded="true" outline="true" (click)="newdemoBasic.show()" size="sm"
+            <!-- <button mdbBtn type="button" color="info" rounded="true" outline="true" (click)="newdemoBasic.show()" size="sm"
               mdbWavesEffect>新增</button>
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>删除</button>
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>修改</button>
-            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button>
+            <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button> -->
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="newdemoBasic.show()"
+              mdbWavesEffect>新增</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>删除</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>修改</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>导出</button>
+
           </div>
         </div>
         <div class="px-4">
@@ -97,8 +106,10 @@
                   <td>{{el.termType}}</td>
                   <td>{{el.term}}</td>
                   <td>{{el.suSta}}</td>
-                  <td> 
-                      <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm"outline="true" mdbWavesEffect (click)="shenqingxiangqing(i);demoBasic.show()">申请详情</button>
+                  <td>
+                    <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
+                     >申请详情</button> -->
+                      <a  (click)="shenqingxiangqing(i);demoBasic.show();">申请详情 </a>
                   </td>
                 </tr>
               </ng-container>
@@ -148,7 +159,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-        <app-xinzengrongzishenqing [nowPage]="newdemoBasic" [lastPage]="demoBasic"></app-xinzengrongzishenqing>
+        <app-xinzengrongzishenqing (OutputData)="trangetData($event)" [nowPage]="newdemoBasic" [lastPage]="demoBasic"></app-xinzengrongzishenqing>
       </div>
     </div>
   </div>
@@ -162,7 +173,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body" style="overflow:auto;">
-        <app-sq-xx></app-sq-xx>
+        <app-sq-xx [InputData]="InputData"></app-sq-xx>
       </div>
     </div>
   </div>

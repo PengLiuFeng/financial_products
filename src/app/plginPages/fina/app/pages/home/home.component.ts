@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Router,ActivatedRoute,NavigationStart } from '@angular/router'
 import { BaHttpInterceptorService } from './../../../../../theme/services/index'
 import { ParamsService } from './../../params.service'
+import { GradeService } from './../../grade.service'
 
 
 @Component({
@@ -18,13 +19,14 @@ import { ParamsService } from './../../params.service'
     FormsModule,
   ],
 })
-
 export class HomeComponent implements OnInit  {
   ngOnChanges(){
   }
+  isLogin=false;//是否登录
   treeData:Array<any>=[];
   _http:BaHttpInterceptorService;
-  constructor(private routers: Router,private activer:ActivatedRoute,private params:ParamsService) {
+  constructor(private routers: Router,private activer:ActivatedRoute,private params:ParamsService,public grade:GradeService) {
+    grade.isLogin=!!sessionStorage.isLogin;
     this._http=params._http;
     let sc=function(){
       document.getElementsByClassName('al-sidebar')[0].setAttribute('class','al-sidebar al-sidebar-fina');
@@ -34,7 +36,23 @@ export class HomeComponent implements OnInit  {
       sc();
     },1000)
   }
-
+  //登录
+  Login(v){
+    sessionStorage.isLogin=v;
+    this.grade.isLogin=!!sessionStorage.isLogin;
+    if(v==1){//前台人员
+      this.grade.loginName="前台人员";
+    }else if(v==2){//中台人员
+      this.grade.loginName="中台人员";
+    }else if(v==3){//后台人员
+      this.grade.loginName="后台人员";
+    }else if(v==4){//操作员
+      this.grade.loginName="操作员";
+    }else if(v==5){//操作员
+      this.grade.loginName="客户";
+    }
+    this.grade.vals=v;
+  }
 
   itactive=1;
   ismenu:boolean=false;
@@ -47,6 +65,7 @@ export class HomeComponent implements OnInit  {
   }
   menuId=0;
   init(url):void{
+    this.Login(sessionStorage.isLogin);
     //应收账款管理
     if(url.indexOf('/finas/home/rzgl/yszkgl/')==0){
       if(this.menuId!=1){

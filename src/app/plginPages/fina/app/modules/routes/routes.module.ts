@@ -69,6 +69,9 @@ import { YewuxianpeizhiComponent } from './../../pages/home/components/chanpingo
 import { ChanpinxianpeizhiComponent } from './../../pages/home/components/chanpingongchang/chanpinxianpeizhi/chanpinxianpeizhi.component';
 import { XinzengchanpinxianComponent } from './../../pages/home/components/chanpingongchang/xinzengchanpinxian/xinzengchanpinxian.component';
 import { MaifanghuikuanComponent } from './../../pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
+import { DaikuanhuankuanComponent } from './../../pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
+//import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -248,6 +251,7 @@ const routes: Routes = [
                       { path: 'fygl' ,component: FeiyongguanliComponent},   //费用管理
                       { path: 'rzff' ,component: RongzifafangComponent},   //融资发放界面
                       { path: 'mfhk' ,component: MaifanghuikuanComponent},   //买方回款
+                      { path: 'dkhk' ,component: DaikuanhuankuanComponent},   //贷款还款
                     ]
                   },
                   //贷后管理

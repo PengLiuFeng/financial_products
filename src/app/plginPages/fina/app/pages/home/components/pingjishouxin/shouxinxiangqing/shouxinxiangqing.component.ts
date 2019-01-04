@@ -24,7 +24,7 @@ export class ShouxinxiangqingComponent implements OnInit {
       //alert(this.authId)
       this.isAjax = true;
       this._http.get('/fina/grade/detail?authId=' + this.authId, (e) => {
-        console.log(e)
+        //console.log(e)
         this.zhsx = e.data.mBody;
         if (this.zhsx.authSts == '冻结') {
           this.zhsx.edsfdj = '1';

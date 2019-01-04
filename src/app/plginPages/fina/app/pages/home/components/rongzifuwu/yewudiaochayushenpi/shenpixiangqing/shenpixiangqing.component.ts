@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, SimpleChanges } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../../params.service'
 @Component({
@@ -8,6 +8,22 @@ import { ParamsService } from './../../../../../../params.service'
 })
 export class ShenpixiangqingComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
+  @Input() authId:any;
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.reSetModel();
+    if (this.authId) {
+      alert(this.authId)
+      this.isAjax = true;
+      this._http.get('/fina/fa/detail?authId=' + this.authId, (e) => {
+        console.log(e)
+       // this.zhsx = e.data.mBody;
+        this.isAjax = false;
+      }, () => {
+        this.isAjax = false;
+      })
+    }
+  }
   spxq = {
     authId: "",  //授信核准编号
     authAppNo: "", //授信协议编号
@@ -32,6 +48,34 @@ export class ShenpixiangqingComponent implements OnInit {
     upOpName: "",  //修改人名称
     createTime: "",  //登记时间
     updateTime: ""  //修改时间
+  }
+
+  reSetModel(){
+    this.spxq = {
+      authId: "",  //授信核准编号
+      authAppNo: "", //授信协议编号
+      finproNm: "",  //服务金融产品
+      busType: "", //业务类型
+      payType: "", //付款方式
+      singBus: "",  //是否单笔业务
+      busUse: "",  //融资用途
+      mayAmt: "",  //单据对应可融资金额
+      auAmt: "", //本次融资申请金额
+      auRate: "",  //利率
+      term: "",  //期限
+      termType: "",  //期限类型
+      begDate: "", //融资申请审批日期
+      endDate: "", //融资申请到期日期
+      vouFlt: "",  //担保比例
+      vouAmt: "",  //担保金额
+      filler: "",  //其他事项(备注)
+      brNo: "",  //登记单位
+      brName: "",  //登记单位名称
+      opName: "",  //登记人名称
+      upOpName: "",  //修改人名称
+      createTime: "",  //登记时间
+      updateTime: ""  //修改时间
+    }
   }
   FINPRO_NO = []
   BUS_TYPE = []

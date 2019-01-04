@@ -12,6 +12,7 @@ export class YwdcyspHeaderComponent implements OnInit {
     this.ZHXXdemoBasic.show();
   }
   @Input() radioModel=''
+  @Input() authId:any;
   constructor() { }
   khh="20070801-091";//假数据
   khmc= "739835608-X";

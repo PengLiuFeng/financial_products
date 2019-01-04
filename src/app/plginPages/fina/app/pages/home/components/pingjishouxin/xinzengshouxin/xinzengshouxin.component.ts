@@ -34,6 +34,7 @@ export class XinzengshouxinComponent implements OnInit {
     }
   }
   _http:any;
+  debug=true;
   isAjax=false;
   reqDdListData(){
     this.isAjax=true;
@@ -63,6 +64,9 @@ export class XinzengshouxinComponent implements OnInit {
             this.cuNo = e.data.data.cuNo;
             this.authId = e.data.data.authId;
             this.authAppNo = e.data.data.authAppNo;
+            this.dataRes();
+          }
+          if(this.debug){
             this.dataRes();
           }
           this.dangerShow(e.data.msg);

@@ -28,13 +28,13 @@
         </div>
       </div>
       <div *ngIf="radioModel=='pjsx'">
-        <app-ywdcysp-pjsx></app-ywdcysp-pjsx>
+        <app-ywdcysp-pjsx ></app-ywdcysp-pjsx>
       </div>
       <div *ngIf="radioModel=='zlsc'">
         <app-ziliaoshangchuan></app-ziliaoshangchuan>
       </div>
       <div *ngIf="radioModel=='spxq'">
-        <app-shenpixiangqing></app-shenpixiangqing>
+        <app-shenpixiangqing [authId]='authId'></app-shenpixiangqing>
       </div>
       <div *ngIf="radioModel=='dqjd'">
         <app-daiqianjindiaobaogao></app-daiqianjindiaobaogao>

@@ -1,0 +1,145 @@
+#mtk_div{
+    height: 550px;
+    overflow-y: scroll;
+}
+#fu_div{
+    width: 95%;
+    border: 1px solid #AABCF9;
+    text-align: center;
+    margin: 0 auto;
+    background-color: #ffffff;
+}
+#body_div{
+    width: 100%;
+    background-color: #e6ecf7;
+    min-width: 850px;
+}
+span{
+    margin: 25px;
+}
+a{
+color: #ffffff;
+}
+#zi_div{
+    margin: 20px auto;
+    width: 80%;
+    border-bottom: 1px dashed #999999;
+}
+#back_button{
+    float: right;
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    background-color: #4285f4 !important;
+    margin-right: 0%;
+    margin-top: 0%;
+}
+.lb_button{
+    padding: 8px;
+    height: 30px;
+ //   width: 80px;
+}
+#title_div{
+    margin: 10px 10px;
+    padding-top: 10px !important;
+    padding-bottom: 5px;
+}
+/*-----------------------------------------------------------------------*/
+.title_div{
+    color: blue;
+    padding: 7px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 50px;
+    top: -12px;
+}
+// #qx_btn{
+//     background-color: #fff !important;
+//     color: black !important;
+// }
+.body_div{
+    border: 1px solid #615a5a;
+    margin: 0 auto;
+    margin-top: 30px !important;
+    position: relative;
+    background-color: #ffffff;
+    width: 95%;
+    padding-bottom: 5%;
+}
+.font_red{
+    color: red;
+}
+// #qx_input{
+//     display: inline-block;
+//     width: 83% !important;
+//     margin-left: 3%;
+// }
+// #inlineb_div{
+//     display: inline-block;
+// }
+
+#yszkmx_table_div{
+    width:95%;
+    height:300px;
+    border:1px solid #999999;
+    box-shadow: 0px -1px 0px #787878;
+    overflow: scroll; 
+    margin: 30px auto;
+    margin-bottom: 0px ;
+    background-color: #ffffff;
+}
+#yszkmx_table{
+    width: 95%;
+    margin: 0 auto;
+}
+#table_title{
+    color: blue;
+    position: absolute;
+    left: 5%;
+    top: 104%;
+    background-color: #ffffff;
+    padding: 5px;
+}
+.bk_div{
+    display: inline-block;
+    width: 50%;
+}
+#kuai_div{
+    display: block;
+    margin-left: 0% !important;
+}
+mdb-select{
+    text-align: left;
+}
+#foot_div{
+    width: 100%;
+    text-align: center;
+    background-color: #dedeff;
+}
+th{
+    background-color: #f2f2f2;
+    text-align: center;
+}
+td{ 
+    line-height: 100%;
+    background-color: #ffffff;
+    text-align: center;
+}
+#foot_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+    background-color: #454a6a !important;
+}
+.sf_div{
+    width: 30%;
+    display: inline-block;
+}
+.check_div{
+    margin-left: 4% !important;
+    display: inline-block;
+}
+.radio_left{
+    margin-left: 10%;
+}

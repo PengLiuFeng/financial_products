@@ -12,7 +12,7 @@ export class YewudiaochayushenpiComponent implements OnInit {
   public myDatePickerOptions: IMyOptions =this.params.mdb_es;
   /*初始加载审批详情页面 */
   radioModel="spxq"
-
+  authId='';
   ywdcysp={
     cuNo:"",  //客户号
     cuName:"",  //客户名称

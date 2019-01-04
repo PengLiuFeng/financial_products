@@ -12,7 +12,7 @@
   <div class="body">
     <div class="setdiv">
       <div class="row">
-          <div class="inputd">
+          <!-- <div class="inputd">
               <div class="md-form">
                 <input mdbInputDirective type="text" [(ngModel)]="client.cuNO" class="form-control">
                 <label for="form2">客户号</label>
@@ -31,10 +31,10 @@
           </div>
         </div>
         <div class="inputd">
-          <mdb-select [options]="busTypes" class="busType" label="业务类型" placeholder="业务类型" [(ngModel)]="client.busType"></mdb-select>
+          <mdb-select [options]="busTypes" name="idType" label="业务类型" placeholder="业务类型" [(ngModel)]="client.busType"></mdb-select>
         </div>
         <div class="inputd">
-            <mdb-select  class="loanSta" label="合同状态" placeholder="合同状态" ></mdb-select>
+            <mdb-select [options]="loanStas" name="idType" label="合同状态" placeholder="合同状态" [(ngModel)]="client.loanSta"></mdb-select>
           </div>
         <div class="inputd" style="z-index:1;padding:10px;">
           <div class="md-form">
@@ -51,7 +51,7 @@
           <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect
             mdbWavesEffect>重置</button>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="khxxb">
       <h4 id="title_h4">合同列表信息</h4>

@@ -64,7 +64,11 @@ color: #ffffff;
     position: relative;
     background-color: #ffffff;
     width: 95%;
-    padding-bottom: 5%;
+   // padding-bottom: 5%;
+}
+#m_table_title_div{
+    width: 92%;
+    margin: 0 auto;
 }
 .font_red{
     color: red;
@@ -96,7 +100,7 @@ color: #ffffff;
     color: blue;
     position: absolute;
     left: 5%;
-    top: 104%;
+    top: 102%;
     background-color: #ffffff;
     padding: 5px;
 }
@@ -107,9 +111,6 @@ color: #ffffff;
 #kuai_div{
     display: block;
     margin-left: 0% !important;
-}
-mdb-select{
-    text-align: left;
 }
 #foot_div{
     width: 100%;
@@ -132,8 +133,25 @@ td{
     margin: 30px;
     background-color: #454a6a !important;
 }
+.ckxq_a{
+    color:blue !important;
+}
+#ts_button{
+    padding: 1px 5px;;
+    background-color: blue;
+}
+#t_zi_table_div{
+    width: 90%;
+    border:1px solid #999999;
+    margin: 0 auto;
+    //margin-top: 0%;
+}
 .sf_div{
     width: 30%;
+    display: inline-block;
+}
+.lf_div{
+    width: 60%;
     display: inline-block;
 }
 .check_div{
@@ -142,4 +160,7 @@ td{
 }
 .radio_left{
     margin-left: 10%;
+}
+.radio_left_bo{
+    margin-left: 2%;
 }

@@ -3,71 +3,81 @@
     <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
   <div id="body_top_div">
-      <div id="top_zi_div">
-        <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="pjsx.cuNo" name="pjsx.cuNo" type="text" id="fddbr_1input" class="form-control">
-              <label for="fddbr_1input" class="">客户号:</label>
-            </div>
-          </div>
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="pjsx.cuName" name="pjsx.cuName" type="text" id="fddbr_input" class="form-control">
-              <label for="fddbr_input" class="">客户名称:</label>
-            </div>
+    <div id="top_zi_div">
+      <div class="bk_div">
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="pjsx.cuNo" name="pjsx.cuNo" type="text" id="fddbr_1input" class="form-control">
+            <label for="fddbr_1input" class="">客户号:</label>
           </div>
         </div>
-        <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="pjsx.authId" name="pjsx.authId" type="text" id="fddbr_input" class="form-control">
-              <label for="fddbr_input" class="">授信核准编号:</label>
-            </div>
-          </div>
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="pjsx.authAppNo" name="pjsx.authAppNo" type="text" id="fddbr_input" class="form-control">
-              <label for="fddbr_input" class="">授信协议编号:</label>
-            </div>
-          </div>
-        </div>
-        <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <mdb-select [options]="FINPRO_NO" [(ngModel)]="pjsx.finproNo" placeholder="授信金融产品:" name="pjsx.finproNo"></mdb-select>
-          </div>
-          <div class="bk_div col-md-6 mx-auto mt-3">
-            <mdb-select name="pjsx.authSplitType" [options]="AUTH_SPLI_TYPE" [(ngModel)]="pjsx.authSplitType" placeholder="分项授信类型:"></mdb-select>
-          </div>
-        </div>
-
-        <!---->
-        <div class="bk_div">
-          <div class="md-form-df">
-            <div class="ui-inputgroup picker-arr">
-              <div class="er_input">
-                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.begDate" dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDate"
-                  class="form-control" required></mdb-date-picker>
-              </div>
-              <span style="margin-top:10px;">至</span>
-              <div class="er_input">
-                <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期" dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate"
-                  class="form-control" required></mdb-date-picker>
-              </div>
-              <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()" mdbWavesEffect>查询</button>
-              <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="reSetAndReqTD()" mdbWavesEffect>重置</button>
-            </div>
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="pjsx.cuName" name="pjsx.cuName" type="text" id="fddbr_input" class="form-control">
+            <label for="fddbr_input" class="">客户名称:</label>
           </div>
         </div>
       </div>
+      <div class="bk_div">
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="pjsx.authId" name="pjsx.authId" type="text" id="fddbr_input" class="form-control">
+            <label for="fddbr_input" class="">授信核准编号:</label>
+          </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <input mdbInputDirective [(ngModel)]="pjsx.authAppNo" name="pjsx.authAppNo" type="text" id="fddbr_input"
+              class="form-control">
+            <label for="fddbr_input" class="">授信协议编号:</label>
+          </div>
+        </div>
+      </div>
+      <div class="bk_div">
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <mdb-select [options]="FINPRO_NO" [(ngModel)]="pjsx.finproNo" placeholder="授信金融产品:" name="pjsx.finproNo"></mdb-select>
+          </div>
+        </div>
+        <div class="bk_div col-md-6 mx-auto mt-3">
+          <div class="md-form">
+            <mdb-select name="pjsx.authSplitType" [options]="AUTH_SPLI_TYPE" [(ngModel)]="pjsx.authSplitType"
+              placeholder="分项授信类型:"></mdb-select>
+          </div>
+        </div>
+      </div>
+
+      <!---->
+      <div class="bk_div">
+        <div class="md-form-df">
+          <div class="ui-inputgroup picker-arr">
+            <div class="er_input">
+              <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.begDate"
+                dateFormat="yy/mm/dd" [label]="'授信起始日期'" [(ngModel)]="pjsx.begDate" class="form-control" required></mdb-date-picker>
+            </div>
+            <span style="margin-top:10px;">至</span>
+            <div class="er_input">
+              <mdb-date-picker (click)="pickerFocus($event)" [options]="myDatePickerOptions" name="pjsx.endDate" label="授信起始日期"
+                dateFormat="yy/mm/dd" [(ngModel)]="pjsx.endDate" class="form-control" required></mdb-date-picker>
+            </div>
+            <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="queryTableDataWithConditions()"
+              mdbWavesEffect>查询</button>
+            <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn" (click)="reSetAndReqTD()"
+              mdbWavesEffect>重置</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div id="body_bottom_div">
     <div id="bottom_title_div">
       <h3><strong>评级授信查询结果</strong></h3>
       <div id="head_right_div">
-        <button mdbBtn [disabled]='isAjax' (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button" color="success" class="waves-light" mdbWavesEffect>新增</button>
+        <button mdbBtn [disabled]='isAjax' (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button"
+          color="success" class="waves-light" mdbWavesEffect>新增</button>
         <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
-        <button mdbBtn disabled='disabled' type="button" (click)="del()" color="success" class="waves-light" mdbWavesEffect>删除</button>
+        <button mdbBtn disabled='disabled' type="button" (click)="del()" color="success" class="waves-light"
+          mdbWavesEffect>删除</button>
         <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>导出</button>
         <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>提交</button>
       </div>
@@ -156,32 +166,34 @@
     </div>
   </div>
 
-  
+
   <!-- 新增授信模态框 -->
   <div mdbModal #newDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
-  aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="wins" role="document">
-    <div class="modal-content">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
-        <span aria-hidden="true">×</span>
-      </button>
-      <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [(controlIndicators)]="dataObject.controlIndicators" [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
-    </div>
-  </div>
-</div>
-
-<!-- 授信详情查看页面-->
-<div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
-  aria-labelledby="myBasicModalLabel" aria-hidden="true">
-  <div class="wins" role="document">
-    <div class="modal-content">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
-        <span aria-hidden="true">×</span>
-      </button>
-      <div id="mtk_div" class="wins-body">
-       <app-shouxinxiangqing [(dataObject)]="dataObject" [authId]="authId" [newDemoBasic]="newDemoBasic" [demoBasic]='demoBasic' [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="wins" role="document">
+      <div class="modal-content">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="newDemoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <app-xinzengshouxin [newInfoDemoBasic]="demoBasic" [(controlIndicators)]="dataObject.controlIndicators"
+          [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- 授信详情查看页面-->
+  <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="wins" role="document">
+      <div class="modal-content">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="mtk_div" class="wins-body">
+          <app-shouxinxiangqing [(dataObject)]="dataObject" [authId]="authId" [newDemoBasic]="newDemoBasic" [demoBasic]='demoBasic'
+            [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

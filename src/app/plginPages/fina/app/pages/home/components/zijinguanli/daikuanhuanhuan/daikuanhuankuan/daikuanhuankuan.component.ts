@@ -1,5 +1,7 @@
-import { Component, OnInit ,ViewChildren,QueryList } from '@angular/core';
-
+import { Component, OnInit, ViewChildren,ViewChild, QueryList } from '@angular/core';
+import { ParamsService } from './../../../../../../params.service'
+import { ModalDirective } from 'ng-uikit-pro-standard';
+import { IMyOptions } from 'ng-uikit-pro-standard';
 @Component({
   selector: 'app-daikuanhuankuan',
   templateUrl: './daikuanhuankuan.component.html',
@@ -7,30 +9,62 @@ import { Component, OnInit ,ViewChildren,QueryList } from '@angular/core';
 })
 export class DaikuanhuankuanComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
-  constructor() { }
-//查询条件值绑定
-client: any = {
-  cuName: '',
-  cuNo:'',
-  busType:'',       //业务类型
-  contNo:'',        //合同编号
-  loanSta:'',       //合同状态
-  startTimestamp: '',   //合同其实日期
-  dueTimestamp: '',         //合同到期日
-}
-//下拉框
-busTypes=[];      //业务类型
-loanStas=[];      //合同状态
-title = [//当前页面位置
-  "融资管理",
-  "资金管理",
-  "贷款还款"
-]
-theTotalNumberOfEntries = 0;
-  tableData = []
+  @ViewChild('demoBasic') demoBasic: ModalDirective;
+ 
+  _http: any;
+  constructor(public params: ParamsService) {
+    this._http = params._http;
+  }
+  //查询条件值绑定
+  client = {
+    cuName: '',
+    cuNo: '',
+    busType: '',       //业务类型
+    contNo: '',        //合同编号
+    loanSta: '',       //合同状态
+    startTimestamp: '',   //合同其实日期
+    dueTimestamp: '',         //合同到期日
+  }
+  //下拉框
+  busTypes = [];      //业务类型
+  loanStas = [];      //合同状态
+  title = [//当前页面位置
+    "融资管理",
+    "资金管理",
+    "贷款还款"
+  ]
+  theTotalNumberOfEntries = 0;
+  tableData = [1,2,3,4];
   ngOnInit() {
   }
-  requestTableData(){};           //请求新的数据
+  requestTableData() { };           //请求新的数据
+  //查询路径
+  paths: any;
+  getPaths() {
+    this.paths = '&cuName=' + this.client.cuName + '&cuNo' + this.client.cuNo + '&busType=' + this.client.busType + '&contNo' + this.client.contNo
+      + '&loanSta' + this.client.loanSta + '&startTimestamp=' + this.client.startTimestamp + '&dueTimestamp=' + this.client.dueTimestamp;
+    this.activePage = 1;
+  }
+  //查询提交
+  search() {
+
+  }
+  oncz() {
+    this.client = {
+      cuName: '',
+      cuNo: '',
+      busType: '',       //业务类型
+      contNo: '',        //合同编号
+      loanSta: '',       //合同状态
+      startTimestamp: '',   //合同其实日期
+      dueTimestamp: '',         //合同到期日
+    }
+  }
+  //还款详情界面
+  
+  transmit(id:number){
+      this.demoBasic.show();
+  }
   //分页数据
   pageTable = [];
   activePage = 1;

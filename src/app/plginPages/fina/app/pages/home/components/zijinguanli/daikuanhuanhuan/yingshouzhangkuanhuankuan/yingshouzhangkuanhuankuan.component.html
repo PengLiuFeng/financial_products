@@ -47,41 +47,112 @@
       <div class="sf_div col-md-6 mx-auto mt-5">
         <div class="md-form">
           <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-          <label for="fddbr_1input" class="">融资金额:</label>
+          <label for="fddbr_1input" class="">贷款余额:</label>
         </div>
       </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <mdb-select [options]="hkfs" placeholder="请选择" label="还款方式:"></mdb-select>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <div class="bk_div">
+            <mdb-select [options]="paDype" placeholder="请选择" label="还本付息日:"></mdb-select>
+          </div>
+          <div class="bk_div">
+            <mdb-select [options]="paDay" placeholder="请选择"></mdb-select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
       <div class="sf_div col-md-6 mx-auto mt-5">
         <div class="md-form">
           <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-          <label for="fddbr_1input" class="">利率:</label>
+          <label for="fddbr_1input" class="">还款金额:</label>
         </div>
       </div>
       <div class="sf_div col-md-6 mx-auto mt-5">
-        <div class="md-form">
-            <mdb-select [options]="timeType" placeholder="请选择" label="授信额度类型*:"></mdb-select>
-            <mdb-select [options]="AUTH_SPLIT_TYPT" placeholder="请选择" label="授信额度类型*:"></mdb-select>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="check_div">是否提前还款:</div>
+        <div class="radio_left custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS3" value="true" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">是</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS4" value="false" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">否</label>
         </div>
       </div>
     </div>
-    <hr>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">授信协议编号:</label>
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">指定还款账号:</label>
+        </div>
+      </div>
+      <div class="lf_div">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">户名:</label>
+        </div>
       </div>
     </div>
-    <div class="bk_div">
-      <div class="check_div">是否单笔业务<span class="font_red">*</span></div>
-      <div class="radio_left custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" id="EDSYFS3" value="true" mdbInputDirective>
-        <label class="custom-control-label" for="EDSYFS3">是</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" id="EDSYFS4" value="false" mdbInputDirective>
-        <label class="custom-control-label" for="EDSYFS4">否</label>
+    <br>
+    <div id="m_table_title_div">
+      <strong class="title_b">账户信息:</strong>
+      <button mdbBtn id="ts_button" type="button" color="secondary" class="waves-light" mdbWavesEffect>导入回款账户交易明细</button>
+    </div>
+    <div style="text-align: center;">
+      <div id="t_zi_table_div">
+        <table class="table table-hover table-responsive-md mb-0 table-bordered">
+          <thead class="lighten-2">
+            <tr>
+              <th>账号</th>
+              <th>账号类型</th>
+              <th>交易总金额</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let data of tableData; let i = index">
+              <tr>
+                <td>{{data.busNo}}</td>
+                <td>{{data.busNo}}</td>
+                <td>{{data.busNo}}</td>
+                <td><a href="javaScript:;" class="ckxq_a">查看详情</a></td>
+              </tr>
+            </ng-container>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div id="table_title"><strong>应收账款明细</strong></div>
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">本次回款总额<span class="font_red">*</span>:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="check_div">是否释放额度:</div>
+        <div class="radio_left custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS3" value="true" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">是</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS4" value="false" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">否</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+      </div>
+    </div>
+
+    <div id="table_title"><strong>指定回款应收账款明细</strong></div>
   </div>
   <div id="yszkmx_table_div">
     <br>
@@ -127,115 +198,118 @@
     </table>
   </div>
   <div class="body_div">
-    <div class="title_div"><strong class="title_b">融资信息</strong></div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">单据对应可融资金额<span class="font_red">*</span></label>
-      </div>
-    </div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">本次融资申请金额<span class="font_red">*</span></label>
-      </div>
-    </div>
+    <div class="title_div"><strong class="title_b">还款交易信息</strong></div>
 
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">利率<span class="font_red">*</span></label>
-      </div>
-    </div>
-
-    <!-- <div class="input-group bk_div">
-      <div id="qx_input" class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">期限<span class="font_red">*</span></label>
-      </div>
-      <div id="inlineb_div" class="input-group-append">
-        <div class="btn-group" mdbDropdown>
-          <button id="qx_btn" mdbDropdownToggle type="button" mdbBtn color="default" size="md" class="dropdown-toggle z-depth-0"
-            mdbWavesEffect>{{button_text}}</button>
-          <div class="dropdown-menu">
-            <span class="dropdown-item " href="javascript:;" *ngFor="let item of TERM_TYPE; let i=index" (click)="qx_show(i)">
-              {{item.label}}
-            </span>
-          </div>
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">贷款余额:</label>
         </div>
       </div>
-    </div> -->
-    <!-- ------------------------------------------------------------------------------------------ -->
-
-    <div class="bk_div">
-      <mdb-date-picker [(ngModel)]="aaa" (click)="pickerFocus($event)" [options]="myDatePickerOptions" dateFormat="yy/mm/dd"
-        label="融资申请审批日期*" required></mdb-date-picker>
-    </div>
-    <div class="bk_div">
-      <mdb-date-picker [(ngModel)]="aaa" (click)="pickerFocus($event)" [options]="myDatePickerOptions" dateFormat="yy/mm/dd"
-        label="融资到期日期*" required></mdb-date-picker>
-    </div>
-
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">担保比例 (%)</label>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">应收利息:</label>
+        </div>
       </div>
-    </div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">担保金额:</label>
+      <div class="sf_div col-md-6 mx-auto mt-5">
       </div>
     </div>
 
-    <div class=" mt-5">
-      <div class="md-form">
-        <textarea type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
-        <label for="JYFW_text">其他事项:</label>
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">当前还款期数:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">当期应还本金<span class="font_red">*</span>:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">当期应还利息<span class="font_red">*</span>:</label>
+        </div>
       </div>
     </div>
+
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">本次还款金额<span class="font_red">*</span>:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">其中还本金额<span class="font_red">*</span>:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">其中还息金额<span class="font_red">*</span>:</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">已使用额度:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">剩余额度:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">释放额度:</label>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align: center;">
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">本次释放后额度余额:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="md-form">
+          <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
+          <label for="fddbr_1input" class="">本次回款余额:</label>
+        </div>
+      </div>
+      <div class="sf_div col-md-6 mx-auto mt-5">
+        <div class="check_div">回款余额是否自动划给借款人:</div>
+        <div class="radio_left_bo custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS3" value="true" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS3">是</label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          <input type="radio" class="custom-control-input" id="EDSYFS4" value="false" mdbInputDirective>
+          <label class="custom-control-label" for="EDSYFS4">否</label>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="body_div">
-    <div class="title_div"><strong class="title_b">登记信息</strong></div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirectiv type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">登记单位:</label>
-      </div>
-    </div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">登记单位名称:</label>
-      </div>
-    </div>
 
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">登记人名称:</label>
-      </div>
-    </div>
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <div class="md-form">
-        <input mdbInputDirective type="text" id="fddbr_1input" class="form-control">
-        <label for="fddbr_1input" class="">修改人名称:</label>
-      </div>
-    </div>
-
-    <div class="bk_div">
-      <mdb-date-picker [(ngModel)]="aaa" (click)="pickerFocus($event)" [options]="myDatePickerOptions" dateFormat="yy/mm/dd"
-        label="登记时间" required></mdb-date-picker>
-    </div>
-    <div class="bk_div">
-      <mdb-date-picker [(ngModel)]="aaa" (click)="pickerFocus($event)" [options]="myDatePickerOptions" dateFormat="yy/mm/dd"
-        label="修改时间*" required></mdb-date-picker>
-    </div>
-
-  </div>
   <div id="foot_div">
     <button mdbBtn type="button" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
-    <button mdbBtn type="button" color="danger" class="waves-light form_button" mdbWavesEffect>提交</button>
+    <button mdbBtn type="button" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
   </div>
 </div>

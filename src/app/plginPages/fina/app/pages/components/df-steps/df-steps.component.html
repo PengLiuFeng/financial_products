@@ -1,4 +1,26 @@
 <div class="el-steps el-steps--horizontal">
+    <ng-container *ngFor="let it of options;let i=index;">
+      <div class="el-step is-horizontal is-center" style="margin-right: 0px;"[ngStyle]="{'flex-basis':flexbasis}">
+          <div class="el-step__head" [class.is-finish]="active>i" [class.is-process]="active==i">
+            <div class="el-step__line" style="margin-right: 0px;">
+              <i class="el-step__line-inner" style="transition-delay: 0ms; border-width: 1px;" [ngStyle]="{'width':active>(i+1)?'100%':'0'}"></i></div>
+            <div class="el-step__icon is-text">
+              <div class="el-step__icon-inner">{{i+1}}</div>
+            </div>
+          </div>
+          <div class="el-step__main">
+            <div class="el-step__title" [class.is-finish]="active>i" [class.is-process]="active==i">{{it.title}}</div>
+            <div class="el-step__description" [class.is-finish]="active>i" [class.is-process]="active==i">{{it.name}}</div>
+          </div>
+        </div>
+    </ng-container>
+</div>
+
+<!-- 
+
+<div class="el-steps el-steps--horizontal">
+
+  
     <div class="el-step is-horizontal is-center" style="flex-basis: 25%; margin-right: 0px;">
       <div class="el-step__head is-finish">
         <div class="el-step__line" style="margin-right: 0px;"><i class="el-step__line-inner" style="transition-delay: 0ms; border-width: 1px; width: 100%;"></i></div>
@@ -59,4 +81,4 @@
           <div class="el-step__description is-wait">授信合同签署</div>
         </div>
       </div>
-  </div>
+  </div> -->

@@ -57,7 +57,6 @@ export class PlginPages implements  AfterViewInit{
     this.params.dq.url=url;
     if(url=='/finas/home/wdsy'){
       this.routers.navigate(['/finas/home/wdsy/mygzt']);
-      return;
     }else if(url=='/finas/home/khgl'){
       this.routers.navigate(['/finas/home/khgl/khxx']);
     }else if(url=='/finas/home/rzgl'){

@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit  {
       this.grade.loginName="后台人员";
     }else if(v==4){//操作员
       this.grade.loginName="操作员";
-    }else if(v==5){//操作员
+    }else if(v==5){//客户
       this.grade.loginName="客户";
     }
     sessionStorage.loginName_v=v;

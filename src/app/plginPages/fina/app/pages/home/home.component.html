@@ -3,7 +3,7 @@
     <h4 style="margin-bottom: 0;">金融服务平台
     </h4>
   </div> -->
-  <div class="backs-body">
+  <div *ngIf="grade.isLogin" class="backs-body">
     <div class="left-menu" *ngIf="treeData&&(treeData.length>0)" [class.left-menu-active]="ismenu">
       <div class="menu">
         <df-tree [(data)]="treeData" [(itactive)]='itactive' [nodeClick]="nodeClick"></df-tree>
@@ -16,6 +16,18 @@
     <div class="flex1 router r-body">
       <div class="r-body-z">
         <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!grade.isLogin" class="backs-body">
+    <div style="position: absolute;width: 400px;left: 50%;margin-left: -200px;text-align: center;padding-top:60px">
+      <h3>登录</h3>
+      <div>
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(5)">已操客户身份登录</button><br/>
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(4)">已操作员身份登录</button><br/>
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(1)">已前台人员身份登录</button><br/>
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(2)">已中台人员身份登录</button><br/>
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(3)">已后台人员身份登录</button><br/>
       </div>
     </div>
   </div>

@@ -1,8 +1,6 @@
 <div class="htqs">
-  <div>
-    <div class="row" style="background:#fff">
-      <app-breadcrumbs [title]="title"></app-breadcrumbs>
-    </div>
+  <div style="background:#fff">
+    <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
   <div class="body">
     <div class="setdiv">
@@ -18,9 +16,9 @@
             <input mdbInputDirective type="text" [(ngModel)]="kh.khNum" id="khxx2" class="form-control">
             <label for="khxx2">客户名称</label>
           </div>
-          <div class="inputd inputd-mdb-select col-md-1" style="min-width:120px">
+          <!-- <div class="inputd inputd-mdb-select col-md-1" style="min-width:120px">
             <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder" label="证件类型" [(ngModel)]="kh.zjlx.vals"></mdb-select>
-          </div>
+          </div> -->
         </div>
         <div class="inputd col-md-2">
           <div class="md-form">
@@ -52,9 +50,6 @@
           <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>查询</button>
           <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect (click)="oncz($event)">重置</button>
         </div>
-      </div>
-      <div class="row">
-
       </div>
     </div>
     <div class="htqs">

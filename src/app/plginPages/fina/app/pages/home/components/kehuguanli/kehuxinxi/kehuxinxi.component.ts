@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren, QueryList, ViewChild, OnChanges } from '@angular/core';
 import { ParamsService } from './../../../../../params.service'
 import { ModalDirective } from 'ng-uikit-pro-standard';
+import { GradeService } from './../../../../../grade.service'
 
 @Component({
   selector: 'app-kehuxinxi',
@@ -198,7 +199,7 @@ export class KehuxinxiComponent implements OnInit {
   }
   _http: any;
   isAjax = false;
-  constructor(public params: ParamsService) {
+  constructor(public params: ParamsService,public grande:GradeService) {
     this._http = params._http;
   }
   requestTableData() {

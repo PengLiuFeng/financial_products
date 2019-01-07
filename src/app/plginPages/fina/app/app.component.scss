@@ -275,3 +275,18 @@ padding-top: 17px;
 /deep/ .text-disabled{
     color: #ccc;
 }
+/deep/.al-content {
+    padding: 8px 32px 0 40px;
+  }
+  /deep/body a,/deep/body table.table a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #007bff;
+    transition: all 0.2s ease-in-out;
+}
+/deep/.backColor{
+    background-color: #e6ecf7;
+}
+/deep/.backColor-it{
+    background-color: #fff;
+}

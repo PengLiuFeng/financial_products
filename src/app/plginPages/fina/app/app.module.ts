@@ -96,6 +96,7 @@ import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.
 import { ZiliaoshangchuanComponent } from './pages/home/components/rongzifuwu/yewudiaochayushenpi/ziliaoshangchuan/ziliaoshangchuan.component';
 import { DaikuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
 import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
+import { DfStepsComponent } from './pages/components/df-steps/df-steps.component';
 
 @NgModule({
   declarations: [
@@ -180,7 +181,8 @@ import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/ziji
     DfCascaderComponent,
     ZiliaoshangchuanComponent,
     DaikuanhuankuanComponent,
-    YingshouzhangkuanhuankuanComponent
+    YingshouzhangkuanhuankuanComponent,
+    DfStepsComponent
 
   ],
   imports: [

@@ -9,11 +9,10 @@ import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 export class KehuxinxiHeaderComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
 
-  @Input() cuNo:any;
-  @Input() personPage:any;
-  @Input() radioModel: any;//准备接收数据(父组件传过来的值,用于判断切换按钮的状态)
-  @Output() radioModelChange = new EventEmitter();
 
+  @Input() cuNo: any;  
+  @Input() personPage: any;
+  @Input() radioModel: any;//准备接收数据(父组件传过来的值,用于判断切换按钮的状态)
   constructor() { }
   ngOnInit() {
   }

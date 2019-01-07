@@ -24,7 +24,6 @@ export class KhziliaoshangchuanComponent implements OnInit {
     var fileName = document.querySelector("#" + it.id)['files'][0].name;
     it.model = fileName;
   }
-
   onup(oId, i) {
     this.isAjax = true;
     var uploadFile = document.querySelector("#" + oId)['files'][0];
@@ -76,7 +75,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
         this.dangerShow("无文件");
       }
       this.isAjax = false;
-    }, 3000);
+    }, 2000);
   }
 
   createFileInput() {//添加一个文件框

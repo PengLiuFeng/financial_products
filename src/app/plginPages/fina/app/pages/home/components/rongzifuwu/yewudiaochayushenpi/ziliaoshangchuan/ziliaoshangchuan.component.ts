@@ -76,7 +76,7 @@ export class ZiliaoshangchuanComponent implements OnInit {
         this.dangerShow("无文件");
       }
       this.isAjax = false;
-    }, 3000);
+    }, 2000);
   }
 
   createFileInput() {//添加一个文件框

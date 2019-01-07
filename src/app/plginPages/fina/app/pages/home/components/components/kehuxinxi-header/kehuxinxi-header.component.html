@@ -1,0 +1,21 @@
+<div id="body_div">
+  <div class="col-md-6 col-xs-12">
+    <div class="py-3 px-3">
+      <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="zhxx" mdbWavesEffect>
+        <a (click)="radioModel='zhxx'">综合信息</a>
+      </label>
+      <label mdbBtn color="primary" class="lb_button" [(ngModel)]="radioModel" mdbRadio="zlsc" mdbWavesEffect>
+        <a (click)="radioModel='zlsc'">资料上传</a>
+      </label>
+    </div>
+  </div>
+
+  <div *ngIf="radioModel=='zhxx'">
+    <app-zonghexinxi [cuNo]="cuNo" [personPage]="personPage"></app-zonghexinxi>
+  </div>
+  <div *ngIf="radioModel=='zlsc'">
+    <app-khziliaoshangchuan></app-khziliaoshangchuan>
+  </div>
+
+
+</div>

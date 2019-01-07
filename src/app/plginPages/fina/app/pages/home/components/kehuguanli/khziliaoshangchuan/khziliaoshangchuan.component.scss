@@ -1,0 +1,36 @@
+#body_div{
+    border: 1px solid #615a5a;
+    margin: 0 auto;
+    margin-top: 30px !important;
+    position: relative;
+    background-color: #ffffff;
+    width: 95%;
+}
+label{
+    font-size: 15px;
+}
+td{
+    border-bottom: 1px solid gainsboro;;
+}
+.min_width_th{
+    width: 12%;
+}
+.th_btn{
+    margin: 0 5px;
+}
+.md-form{
+    margin: 0%;
+}
+.fa-check{
+    font-size: 45px;
+    color: green;
+}
+.fa-close{
+    font-size: 45px;
+    color: red;
+}
+#alert_div{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}

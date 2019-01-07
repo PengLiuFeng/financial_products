@@ -11,7 +11,14 @@ var url_baoli=baseConfig.baoli;
 
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
+    let num=0;
+    /* 数据挡板 */
+    router.get('/fina/user',
+    function (req, res) {
+        num++;
+        res.send(handleRes.handleRes(false, {statusCode:200}, num));
+    });
+    /* 数据挡板 ----END*/
     /**
     *  上传文件
     */

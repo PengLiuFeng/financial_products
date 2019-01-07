@@ -12,7 +12,9 @@
       <div class="col-md-6 mx-auto mt-5">
           <div class="md-form">
             <input mdbInputDirective [(ngModel)]="xzsx.idNo" name="xzsx.idNo" type="text" id="form1" class="form-control">
-            <label for="form1" class="">证件号码<span class="font_red">*</span></label>
+            <label for="form1" class="">证件号码<span class="font_red">*</span>
+                <span style="margin-left:20px">{{!!xzsx.idNo?'（'+xzsx.idNo.length+'位）':''}}</span>
+            </label>
           </div>
       </div>
 

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { GradeService } from './../../../grade.service'
+
 @Component({
   selector: 'app-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
@@ -7,7 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BreadcrumbsComponent implements OnInit {
 
   @Input() title:any;
-  constructor() { }
+  constructor(public grade:GradeService) { }
   ngOnInit() {
   }
 

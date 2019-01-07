@@ -1,10 +1,18 @@
-<ol class="breadcrumb  lighten-4">
-    <li class="breadcrumb-item">
-        <span class=" fa fa-th"></span>
-    </li>
-    <li class="breadcrumb-item">
-      <a class="" href="javacsript:;">当前位置</a></li>
-    <li class="breadcrumb-item" *ngFor="let item of title">
-      <a class="" href="javacsript:;">{{item}}</a>
-    </li>
-</ol>
+<div style="position: relative;">
+  <ol class="breadcrumb  lighten-4">
+      <li class="breadcrumb-item">
+          <span class=" fa fa-th"></span>
+      </li>
+      <li class="breadcrumb-item">
+        <a class="" href="javacsript:;">当前位置</a></li>
+      <li class="breadcrumb-item" *ngFor="let item of title">
+        <a class="" href="javacsript:;">{{item}}</a>
+      </li>
+  </ol>
+  <div style="position: absolute;right:32px;top: 10px;">
+    <span>
+      当前登录人：{{grade.loginName}}
+    </span>
+    <a href="javascript:;" (click)="grade.isLogin=false" style="margin-left: 20px">切换用户</a>
+  </div>
+</div>

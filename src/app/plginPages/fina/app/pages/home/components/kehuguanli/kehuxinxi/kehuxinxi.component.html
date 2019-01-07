@@ -1,15 +1,21 @@
 <div class="khxx">
-  <div>
-    <div class="row" style="background:#fff">
-      <div style="padding: 0 32px;">
-        <div class="el-breadcrumb">
-          <app-breadcrumbs [title]="title"></app-breadcrumbs>
-        </div>
+  <div style="background:#fff">
+    <div style="padding: 0 32px;">
+      <div class="el-breadcrumb">
+        <app-breadcrumbs [title]="title"></app-breadcrumbs>
       </div>
-
     </div>
   </div>
-  <div class="body">
+  <div class="body backColor" *ngIf="grande.vals==5">
+    <div style="padding: 20px">
+      <div class="backColor-it">
+        <div style="padding: 24px;">
+            <app-df-steps></app-df-steps>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="body backColor" *ngIf="grande.vals!=5">
     <div class="setdiv">
       <div class="row">
         <div class="inputd">

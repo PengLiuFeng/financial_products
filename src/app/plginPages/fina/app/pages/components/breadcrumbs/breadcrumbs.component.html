@@ -10,8 +10,9 @@
       </li>
   </ol>
   <div style="position: absolute;right:32px;top: 10px;">
-    <span (click)="grade.isLogin=false">
+    <span>
       当前登录人：{{grade.loginName}}
     </span>
+    <a href="javascript:;" (click)="grade.isLogin=false" style="margin-left: 20px">切换用户</a>
   </div>
 </div>

@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit  {
     }else if(v==5){//操作员
       this.grade.loginName="客户";
     }
+    sessionStorage.loginName_v=v;
     this.grade.vals=v;
   }
 
@@ -65,7 +66,9 @@ export class HomeComponent implements OnInit  {
   }
   menuId=0;
   init(url):void{
-    this.Login(sessionStorage.isLogin);
+    if(sessionStorage.loginName_v){
+      this.Login(sessionStorage.loginName_v);
+    }
     //应收账款管理
     if(url.indexOf('/finas/home/rzgl/yszkgl/')==0){
       if(this.menuId!=1){

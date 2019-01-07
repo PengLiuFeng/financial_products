@@ -7,7 +7,7 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class DfStepsComponent implements OnInit {
   @Input() active:any
-  @Input() options:any
+  @Input() options:Array<any>
   flexbasis="";
  /*  active=1;
   options=[
@@ -37,6 +37,9 @@ export class DfStepsComponent implements OnInit {
     }
   ] */
   constructor() {
+  }
+
+  ngOnInit() {
     if(this.options){
       let size=this.options.length;
       if(size>0){
@@ -46,12 +49,7 @@ export class DfStepsComponent implements OnInit {
           this.flexbasis=(100/size)+"%";
         }
       }
-
     }
-  }
-
-  ngOnInit() {
-
   }
 
 }

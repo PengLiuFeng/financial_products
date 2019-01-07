@@ -12,7 +12,35 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
-
+  dfSteps={
+    active:1,
+    options:[
+      {
+        title:"步骤1",
+        name:"填写客户信息"
+      },
+      {
+        title:"步骤2",
+        name:"尽调资料上传"
+      },
+      {
+        title:"步骤3",
+        name:"资料审核"
+      },
+      {
+        title:"步骤4",
+        name:"线下尽调"
+      },
+      {
+        title:"步骤5",
+        name:"审贷会"
+      },
+      {
+        title:"步骤6",
+        name:"授信合同签署"
+      }
+    ]
+  }
   testdataHandler(event: any) {
     this.cuNo = event.cuNo
     this.personPage = event.personPage

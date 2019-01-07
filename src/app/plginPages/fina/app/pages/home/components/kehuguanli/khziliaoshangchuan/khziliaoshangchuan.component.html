@@ -1,0 +1,60 @@
+<div id="dom_div">
+  <div id="body_div">
+    <!-- //<table class=" table table-hover"> -->
+    <table  class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
+      <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
+        <tr>
+          <th scope="row">序号</th>
+          <th scope="row">
+            <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
+          </th>
+          <th scope="row">选择文件</th>
+          <th scope="row">文件名</th>
+          <th scope="row">文件描述</th>
+          <th class="min_width_th" scope="row">
+            <button class="th_btn" type="button" size="sm" mdbBtn color="info" (click)="createFileInput()"mdbWavesEffect>添加</button>
+            <button class="th_btn" type="button" size="sm" mdbBtn color="info" (click)="deleteFileInput()" mdbWavesEffect>删除</button>
+            <button [disabled]="isAjax" size="sm" mdbBtn class="btn btn-md btn-primary th_btn" (click)="startUpload()">提交</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td scope="row">
+            <mdb-checkbox [(ngModel)]="item.checked"></mdb-checkbox>
+          </td>
+          <td class="min_width_th"  scope="row">
+            <div class="file-field md-form" mdbWavesEffect>
+              <div mdbBtn color="primary" size="sm" class="waves-light">
+                <span>选择文件</span>
+                <input type="file" (input)="getFileName(item)" id="{{item.id}}" >
+              </div>
+            </div>
+          </td>
+          <td scope="row">
+            <div class="md-form">
+              <div class="file-path-wrapper">
+                <input disabled="disabled" class="file-path" name="{{item.model}}" type="text" [(ngModel)]="item.model"
+                  placeholder="已选择的文件">
+              </div>
+            </div>
+          </td>
+          <td scope="row">
+            <div class="md-form">
+              <input mdbInputDirective [(ngModel)]="item.fileInfo" name="{{item.fileInfo}}" type="text" class="form-control">
+            </div>
+          </td>
+          <td scope="row">
+            <i class="fa fa-check" *ngIf="item.flag=='1'"></i>
+            <i class="fa fa-close" *ngIf="item.flag=='0'"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br><br>
+  <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+    <strong>{{alertTxt}}</strong>
+  </div>
+</div>

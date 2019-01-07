@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { UploadInput } from 'ng-uikit-pro-standard';
 //import { ParamsService } from './../../../../../../params.service'
 import { HttpHeaders } from '@angular/common/http';
-import { BaHttpInterceptorService } from './../../../../../../../../../theme/services/index'
+import { BaHttpInterceptorService } from './../../../../../../../../theme/services/index'
 @Component({
-  selector: 'app-ziliaoshangchuan',
-  templateUrl: './ziliaoshangchuan.component.html',
-  styleUrls: ['./ziliaoshangchuan.component.scss']
+  selector: 'app-khziliaoshangchuan',
+  templateUrl: './khziliaoshangchuan.component.html',
+  styleUrls: ['./khziliaoshangchuan.component.scss']
 })
-export class ZiliaoshangchuanComponent implements OnInit {
+export class KhziliaoshangchuanComponent implements OnInit {
 
   httpHeaders: HttpHeaders = new HttpHeaders();
   //index = 0;
@@ -24,7 +24,6 @@ export class ZiliaoshangchuanComponent implements OnInit {
     var fileName = document.querySelector("#" + it.id)['files'][0].name;
     it.model = fileName;
   }
-
   onup(oId, i) {
     this.isAjax = true;
     var uploadFile = document.querySelector("#" + oId)['files'][0];
@@ -86,7 +85,7 @@ export class ZiliaoshangchuanComponent implements OnInit {
     this.qx_btn = false;
   }
   deleteFileInput() {//删除文件框
-    for (let i = this.items.length-1; i >= 0; i--) {
+    for (let i = this.items.length - 1; i >= 0; i--) {
       if (this.items[i].checked) {
         if (i) {
           this.items.splice(i, 1);

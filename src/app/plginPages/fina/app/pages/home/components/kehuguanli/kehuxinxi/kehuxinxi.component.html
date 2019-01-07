@@ -15,6 +15,12 @@
       </div>
     </div>
   </div>
+
+  <!-------------------------------------------------------------------------------------->
+  <div *ngIf="grande.vals==5">
+    <app-kehuxinxi-header [radioModel]='radioModel' [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
+  </div>
+
   <div class="body backColor" *ngIf="grande.vals!=5">
     <div class="setdiv">
       <div class="row">

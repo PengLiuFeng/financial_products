@@ -24,6 +24,7 @@ export class KehuxinxiComponent implements OnInit {
     "客户管理",
     "客户信息"
   ]
+  radioModel='zhxx'
   //查询条件值绑定
   client: any = {
     cuName: '',

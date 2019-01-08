@@ -7,7 +7,8 @@
 }
 #mtk_div{
   //  max-height: calc(100vh - 100px);
-    // overflow-y: scroll;
+    max-height: calc(100vh - 100px);
+    overflow-y: scroll;
 }
 .table_a{
     color:blue !important;

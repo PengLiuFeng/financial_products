@@ -6,8 +6,8 @@
     margin-right: 0%;
 }
 #mtk_div{
-    // height: 550px;
-    // overflow-y: scroll;
+    overflow-y: scroll;
+    max-height: calc(100vh - 100px);
 }
 .index_td,th{
     background-color: #f2f2f2;

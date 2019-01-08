@@ -12,8 +12,8 @@
     left: 130px;
 }
 #mtk_div{
-    // height: 550px;
-    // overflow-y: scroll;
+    overflow-y: scroll;
+    max-height: calc(100vh - 100px);
 }
 #qx_btn{
     background-color: #fff !important;

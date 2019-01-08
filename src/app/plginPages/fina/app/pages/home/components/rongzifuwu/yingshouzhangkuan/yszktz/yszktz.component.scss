@@ -19,24 +19,24 @@ h3{
     float: right;
     margin-right: 0%;
     overflow: hidden;
-    background-color: #e6ecf7;
+    // background-color: #e6ecf7;
 }
 #mtk_div{
-    // height: 550px;
-    // overflow-y: scroll;
+    overflow-y: scroll;
+    max-height:calc(100vh - 100px);
 }
 #head_div{
-    background-color: #dedeff;
+    // background-color: #dedeff;
     padding: 10px ;
 }
-#dqwz_button{
-    background-color: #ffffff !important;
-    color: black !important;
-    padding: 0px;
-    height: 25px;
-    width: 60px;
-    margin:10px
-}
+// #dqwz_button{
+//     background-color: #ffffff !important;
+//     color: black !important;
+//     padding: 0px;
+//     height: 25px;
+//     width: 60px;
+//     margin:10px
+// }
 a{
     color: #4285f4 !important;
     margin-left: 8%;
@@ -44,20 +44,20 @@ a{
 #head_left_div{
     padding: 12px;
     display: inline-block;
-    background-color: #ffffff;
+    // background-color: #ffffff;
 }
 #body_top_div{
-    width: 100%;
-    border: 10px solid #e6ecf7;
-    border-top: 20px solid #e6ecf7;
-    border-bottom: 20px solid #e6ecf7;
+    // width: 100%;
+    // border: 10px solid #e6ecf7;
+    // border-top: 20px solid #e6ecf7;
+    // border-bottom: 20px solid #e6ecf7;
 }
 thead td,.index_td,th{
-    background-color: #f2f2f2;
+    // background-color: #f2f2f2;
 }
 td{ 
     line-height: 100%;
-    background-color: #ffffff;
+    // background-color: #ffffff;
     text-align: center;
 }
 .dc_td{
@@ -76,9 +76,13 @@ td{
 }
 #body_bottom_div{
     overflow:scroll;
+    padding-left: 1%;
 }
-#bottom_title_div,#foot_div,#body_bottom_div{
-    background-color: #e6ecf7;
+#foot_div,#body_bottom_div,#body_top_div{
+//    background-color: #e6ecf7;
+   width:98%;
+   margin: 0 auto;
+   border: 1px solid #e6ecf7;
 }
 .bk_div{
     display: inline-block;

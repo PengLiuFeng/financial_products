@@ -1,0 +1,28 @@
+#body_div{
+    border: 1px solid #dcdcdc;
+    margin: 0 auto;
+    margin-top: 30px !important;
+    position: relative;
+    background-color: #ffffff;
+    width: 95%;
+}
+label{
+    font-size: 15px;
+}
+td{
+    border-bottom: 1px solid gainsboro;
+    line-height: 300%;
+}
+// #button_div{
+//     background: #dedeff;
+// }
+#button_div{
+    width: 100%;
+    text-align: center;
+}
+#button_div button{
+    padding: 0px;
+    height: 25px;
+    width: 60px;
+    margin: 30px;
+}

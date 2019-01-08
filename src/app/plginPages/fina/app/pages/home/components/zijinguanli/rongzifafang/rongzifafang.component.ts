@@ -1,4 +1,4 @@
-import { Component,ViewChild,ViewChildren,QueryList, OnInit } from '@angular/core';
+import { Component,ViewChild,ViewChildren,QueryList, OnInit,EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uikit-pro-standard';
 
 @Component({
@@ -14,7 +14,11 @@ export class RongzifafangComponent implements OnInit {
   modell: any;
   allcheck:boolean=false;
   check:boolean=false;
+  hidFlag:boolean=false;
+  hidFlagChange=new EventEmitter();
+  yszktzLeftChange=new EventEmitter();
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
+
   public myDatePickerOptions: IMyOptions = { 
     dayLabels: {su: '日', mo: '一', tu: '二', we: '三', th: '四', fr: '五', sa: '六'},
     dayLabelsFull: {su: "周日", mo: "周一", tu: "周二", we: "周三", th: "周四", fr: "周五",
@@ -191,5 +195,8 @@ pageTable=[];
   shenqingxiangqing(date:any):void{
       
   }
-
+  yszktzLeft="200%"
+  showZrtz(){
+    this.yszktzLeft="0%"
+  }
 }

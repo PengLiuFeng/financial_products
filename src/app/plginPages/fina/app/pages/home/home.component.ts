@@ -185,6 +185,17 @@ export class HomeComponent implements OnInit  {
       if (event instanceof NavigationStart) {
         console.log(event.url)
         this.init(event.url);
+        //判断当前登录身份
+        let v=sessionStorage.loginName_v;
+        if(v==1){//前台人员
+        }else if(v==2){//中台人员
+        }else if(v==3){//后台人员
+        }else if(v==4){//操作员
+        }else if(v==5){//客户
+
+        }else{//未登录
+
+        }
       }
     })
     this.onGetDate();

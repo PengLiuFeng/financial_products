@@ -37,7 +37,15 @@
 
   <br/>
   <br/>
-  <app-df-input [(values)]="inputVal"></app-df-input><br/>
+  <app-df-input [(values)]="inputVal"></app-df-input>
+  <div>
+      标题：
+    <app-df-input [(values)]="inputVal"  [width]="'200px'"></app-df-input>
+  </div>
+  <span style="width:180px">
+    <app-df-input></app-df-input>
+  </span>
+  <br/>
   {{inputVal}}
   <br/>
   <app-df-dialog [isShow]="true"></app-df-dialog>

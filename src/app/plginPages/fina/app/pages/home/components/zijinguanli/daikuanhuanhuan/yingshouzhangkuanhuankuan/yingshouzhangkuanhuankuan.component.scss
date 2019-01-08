@@ -1,6 +1,6 @@
 #mtk_div{
-    height: 550px;
     overflow-y: scroll;
+    max-height: calc(100vh - 100px);
 }
 #fu_div{
     width: 95%;

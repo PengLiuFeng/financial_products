@@ -25,8 +25,8 @@ mdb-date-picker{
     padding-top: 0% !important;
 }
 #mtk_div{
-    height: 550px;
     overflow-y: scroll;
+    max-height: calc(100vh - 100px);
 }
 #head_div{
     background-color: #dedeff;

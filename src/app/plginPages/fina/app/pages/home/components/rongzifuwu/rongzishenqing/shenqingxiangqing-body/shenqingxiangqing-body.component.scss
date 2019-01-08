@@ -52,6 +52,7 @@
         margin: 2% 2% 2% 2% ;
         padding: 2% 2% 2% 2% ;
         width: 96%;
+        max-width: 1200px;
         border: 1px solid black;
     }
     & .rongzixinxi{
@@ -103,4 +104,8 @@
             min-height: 60px;
             float: left;
             margin-left: 3%;
+}
+th , td{
+    white-space: normal;   
+    min-width: 100px; 
 }

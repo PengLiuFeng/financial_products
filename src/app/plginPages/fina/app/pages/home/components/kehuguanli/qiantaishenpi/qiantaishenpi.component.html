@@ -1,0 +1,34 @@
+<div id="dom_div">
+  <div id="body_div">
+    <!-- //<table class=" table table-hover"> -->
+    <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
+      <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
+        <tr>
+          <th scope="row">序号</th>
+          <th scope="row">文件名</th>
+          <th scope="row">文件描述</th>
+          <th scope="row">操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td scope="row">
+              {{item.fileName}}
+          </td>
+          <td scope="row">
+              {{item.fileInfo}}
+          </td>
+          <td>
+            <button class="th_btn" type="button" size="sm" mdbBtn color="info" mdbWavesEffect> 下载 </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="button_div">
+      <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>通过</button>
+      <button mdbBtn type="button" color="info"  class="waves-light form_button" mdbWavesEffect>驳回</button>      
+      <button mdbBtn type="button" color="info" (click)="closeShenPi()" class="waves-light form_button" mdbWavesEffect>取消</button>
+  </div>
+</div>

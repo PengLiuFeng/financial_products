@@ -12,5 +12,9 @@ export class BreadcrumbsComponent implements OnInit {
   constructor(public grade:GradeService) { }
   ngOnInit() {
   }
+  qhuser(){
+    this.grade.isLogin=false;
+    sessionStorage.removeItem('loginName_v');
+  }
 
 }

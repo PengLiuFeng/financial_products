@@ -50,7 +50,8 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
     billAmt: '',
     billDate: '',
     busRecei: '',
-    endDate: ''
+    endDate: '',
+    fileName:''
   }
   addTableData() {
     this.client.list.push(JSON.parse(JSON.stringify(this.childArray)));
@@ -206,5 +207,32 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
     }
     this.showFiles();
   }
+  doc:any;
+  fileUpdata(filebutton: any) {
+    if(filebutton.path[1].nextSibling!=null&&filebutton.path[1].nextSibling!=undefined){
+      this.doc=filebutton.path[1].nextSibling;
+      this.doc.click(); 
+    }
+  }
+  fileName:any;
+  uploadFile(file:any,id:number){
+    if(file){
+      let uploadFile=this.doc['files'][0];
+      this.client.list[id].fileName=uploadFile.name;
+    var formData = new FormData();
+    formData.append('file', uploadFile);//文件
+    let ms="这是描述"
+    // this._http.post('/fina/uploadFile?ms='+ms,formData,(e)=>{
+    //   // back(true,e)
+    // },()=>{
+    //   // back(false)
 
+    // },this.httpHeaders)
+    console.log(uploadFile)
+    }
+    else{
+      console.log(file)
+    }
+
+  }
 }

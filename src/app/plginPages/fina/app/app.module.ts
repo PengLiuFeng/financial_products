@@ -97,6 +97,9 @@ import { ZiliaoshangchuanComponent } from './pages/home/components/rongzifuwu/ye
 import { DaikuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
 import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
 import { DfStepsComponent } from './pages/components/df-steps/df-steps.component';
+import { KehuxinxiHeaderComponent } from './pages/home/components/components/kehuxinxi-header/kehuxinxi-header.component';
+import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/khziliaoshangchuan/khziliaoshangchuan.component';
+import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiantaishenpi/qiantaishenpi.component';
 
 @NgModule({
   declarations: [
@@ -182,8 +185,10 @@ import { DfStepsComponent } from './pages/components/df-steps/df-steps.component
     ZiliaoshangchuanComponent,
     DaikuanhuankuanComponent,
     YingshouzhangkuanhuankuanComponent,
-    DfStepsComponent
-
+    DfStepsComponent,
+    KehuxinxiHeaderComponent,
+    KhziliaoshangchuanComponent,
+    QiantaishenpiComponent
   ],
   imports: [
     FormsModule,

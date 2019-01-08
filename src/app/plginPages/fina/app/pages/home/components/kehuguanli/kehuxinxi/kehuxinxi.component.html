@@ -10,11 +10,17 @@
     <div style="padding: 20px">
       <div class="backColor-it">
         <div style="padding: 24px;">
-            <app-df-steps></app-df-steps>
+            <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active"></app-df-steps>
         </div>
       </div>
     </div>
   </div>
+
+  <!-------------------------------------------------------------------------------------->
+  <div *ngIf="grande.vals==5">
+    <app-kehuxinxi-header [radioModel]='radioModel' [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
+  </div>
+
   <div class="body backColor" *ngIf="grande.vals!=5">
     <div class="setdiv">
       <div class="row">
@@ -88,6 +94,7 @@
                 <td scope="row">{{data.opName}}</td>
                 <td scope="row">
                   <a (click)="transmit(i)" style="color:blue;">综合信息</a>
+                  <a class="table_a" *ngIf="grande.vals==1" (click)="shenPiDemoBasic.show()">前台审批</a>
                   <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                     (click)="transmit(i)">综合信息</button> -->
                   <!-- <button type="button" (click)="transmit(i)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button> -->
@@ -160,19 +167,19 @@
   </div>
 </div>
 
-<div mdbModal #filedemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+<div mdbModal #shenPiDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="wins" role="document">
     <div class="modal-content">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="filedemoBasic.hide()">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="shenPiDemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body" style="overflow:auto;">
-          <app-ziliaoshangchuan></app-ziliaoshangchuan>
+      <div id="mtk_div" class="wins-body">
+        <app-qiantaishenpi [shenPiDemoBasic]="shenPiDemoBasic"></app-qiantaishenpi>
       </div>
     </div>
   </div>
-</div> 
+</div>
 
 <style>
   .win-app {

@@ -1,5 +1,5 @@
 //应收账款通知
-import { Component,ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component,ViewChild, OnInit, ViewChildren, QueryList, Input, Output,EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, turnState } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../../params.service'
 
@@ -10,8 +10,13 @@ import { ParamsService } from './../../../../../../params.service'
 })
 export class YszktzComponent implements OnInit {
   
+  // [(hidFlag)]='hidFlag' [(yszktz_left)]="yszktz_left"
+  @Input() hidFlag:any;
+  @Input() yszktzLeft:any;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
+  @Output() yszktzLeftChange=new EventEmitter();
+  @Output() hidFlagChange = new EventEmitter();
 
   adviceNote ={
     cuNo:"",
@@ -213,5 +218,12 @@ export class YszktzComponent implements OnInit {
      }
     });
   }
+  hidSelf(){
 
+    this.hidFlag=false;
+    this.yszktzLeft="200%";
+    this.yszktzLeftChange.emit(this.yszktzLeft);
+    this.hidFlagChange.emit(this.hidFlag);
+    
+  }
 }

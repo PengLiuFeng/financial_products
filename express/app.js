@@ -55,6 +55,7 @@ createServer = function createServer() {
         if(req.url){
             for(var i=0;i<filterPaths.length;i++){
                 if((req.url).indexOf(filterPaths[i])>-1){
+                    console.log('user=',req.session.user)
                     if(req.session.user){
                         // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象
                         //通过这种方式取代了express的next()传递,将express()和express.Router()相关联起来

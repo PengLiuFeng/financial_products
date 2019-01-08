@@ -101,6 +101,7 @@ import { KehuxinxiHeaderComponent } from './pages/home/components/components/keh
 import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/khziliaoshangchuan/khziliaoshangchuan.component';
 import { DfDialogComponent } from './pages/components/df-dialog/df-dialog.component';
 import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiantaishenpi/qiantaishenpi.component';
+import { DfInputComponent } from './pages/components/df-input/df-input.component';
 
 @NgModule({
   declarations: [
@@ -191,7 +192,9 @@ import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiant
     KhziliaoshangchuanComponent,
     DfDialogComponent,
 
-    QiantaishenpiComponent
+    QiantaishenpiComponent,
+
+    DfInputComponent
   ],
   imports: [
     FormsModule,

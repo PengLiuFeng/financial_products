@@ -10,6 +10,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 export class DemoComponent implements OnInit {
   model: any;
   modell: any;
+  inputVal="华软"
   isShow=false;
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
 

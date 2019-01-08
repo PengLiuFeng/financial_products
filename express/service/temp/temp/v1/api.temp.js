@@ -19,6 +19,22 @@ module.exports = function attachHandlers(router) {
         res.send(handleRes.handleRes(false, {statusCode:200}, num));
     });
     /* 数据挡板 ----END*/
+    //登录
+    router.post('/fina/loginpage',
+        function (req, res) {
+            // let options =
+            // {
+            //     url: url_baoli + '/custom/cardInsert',
+            //     method: 'POST',
+            //     json: true,
+            //     body: req.body
+            // };
+            // function callback(error, response, data) {
+            //     res.send(handleRes.handleRes(error, response, data));
+            // }
+            // request(options, callback);
+            res.send(handleRes.handleRes(false, {statusCode:200}, {'':""}));
+        });
     /**
     *  上传文件
     */

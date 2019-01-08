@@ -99,6 +99,7 @@ import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/ziji
 import { DfStepsComponent } from './pages/components/df-steps/df-steps.component';
 import { KehuxinxiHeaderComponent } from './pages/home/components/components/kehuxinxi-header/kehuxinxi-header.component';
 import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/khziliaoshangchuan/khziliaoshangchuan.component';
+import { DfDialogComponent } from './pages/components/df-dialog/df-dialog.component';
 
 @NgModule({
   declarations: [
@@ -186,7 +187,8 @@ import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/
     YingshouzhangkuanhuankuanComponent,
     DfStepsComponent,
     KehuxinxiHeaderComponent,
-    KhziliaoshangchuanComponent
+    KhziliaoshangchuanComponent,
+    DfDialogComponent
 
   ],
   imports: [

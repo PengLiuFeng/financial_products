@@ -31,6 +31,15 @@
     </div>
 </div>
   </div>
+  <div tabindex="0" class="el-upload el-upload--text"><button type="button" class="el-button el-button--primary el-button--small">
+    <span>点击上传</span></button><input type="file" name="file" multiple="multiple" class="el-upload__input">
+  </div>
+
+  <br/>
+  <br/>
+  <br/>
+  <app-df-dialog></app-df-dialog>
+  <br/>
 <input type="file" id="uploadFile"> <button (click)="onup()">上传</button>
 
   <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>

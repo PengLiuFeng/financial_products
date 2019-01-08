@@ -47,7 +47,7 @@
       <div id="but_div" style="flex:1;text-align: right;padding: 3px 30px;">
         <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="newdemoBasic.show();"
           mdbWavesEffect>新增</button>
-        <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>修改</button>
+        <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="filedemoBasic.show();" mdbWavesEffect mdbWavesEffect>修改</button>
         <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>删除</button>
 
         <!-- <button type="button" (click)="newdemoBasic.show();" class="btn btn-outline-primary waves-effect btn-sm">新增</button>
@@ -159,6 +159,20 @@
     </div>
   </div>
 </div>
+
+<div mdbModal #filedemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="filedemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div" class="wins-body" style="overflow:auto;">
+          <app-ziliaoshangchuan></app-ziliaoshangchuan>
+      </div>
+    </div>
+  </div>
+</div> 
 
 <style>
   .win-app {

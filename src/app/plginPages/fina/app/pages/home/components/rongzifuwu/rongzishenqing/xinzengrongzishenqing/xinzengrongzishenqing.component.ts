@@ -17,7 +17,7 @@ export class XinzengrongzishenqingComponent implements OnInit {
   }
   InputData: any = {
     authId: '',
-    personPage: '',
+    personPage: 'newPage',
   }
   idTypes: Array<any>;
   _http: any;
@@ -70,6 +70,7 @@ export class XinzengrongzishenqingComponent implements OnInit {
   }
   tijiao() {
     this.requestData(() => {
+      this.InputData.personPage="newPage";
       this.OutputData.emit(this.InputData)
       this.nowPage.hide();
       this.lastPage.show();

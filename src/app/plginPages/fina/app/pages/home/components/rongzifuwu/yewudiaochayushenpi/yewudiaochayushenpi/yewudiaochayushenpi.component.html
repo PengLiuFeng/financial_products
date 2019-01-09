@@ -9,21 +9,20 @@
     <form action="">  
       <div id="top_zi_div">
         <div class="bk_div">
-          <div class="bk_div col-md-6 mx-auto mt-5">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="ywdcysp.cuNo" name="ywdcysp.cuNo" type="text" id="fddbr_1input"
-                class="form-control">
-              <label for="fddbr_1input" class="">客户号:</label>
+            <div class="md-form-df">
+              <div class="ui-inputgroup">
+                <span class="i-h">客户号:</span>
+                <div class="er_input">
+                    <app-df-input [(values)]="ywdcysp.cuNo"></app-df-input>
+                </div>
+                <span class="i-h">客户名称:</span>
+                <div class="er_input">
+                    <app-df-input [(values)]="ywdcysp.cuName"></app-df-input>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="bk_div col-md-6 mx-auto mt-5">
-            <div class="md-form">
-              <input mdbInputDirective [(ngModel)]="ywdcysp.cuName" name="ywdcysp.cuName" type="text" id="fddbr_input"
-                class="form-control">
-              <label for="fddbr_input" class="">客户名称:</label>
-            </div>
-          </div>
-        </div>
+
         <div class="bk_div">
 
           <!------------------------------------------>
@@ -31,17 +30,11 @@
             <div class="ui-inputgroup">
               <span class="i-h">授信协议编号:</span>
               <div class="er_input">
-                <div class="md-form">
-                  <input mdbInputDirective [(ngModel)]="ywdcysp.authAppNoBeg" name="ywdcysp.authAppNoBeg" type="text"
-                    class="form-control">
-                </div>
+                    <app-df-input [(values)]="ywdcysp.authAppNoBeg"></app-df-input>
               </div>
               <span class="ui-inputgroup-addon" class="i-h">至</span>
               <div class="er_input">
-                <div class="md-form">
-                  <input mdbInputDirective [(ngModel)]="ywdcysp.authAppNoEnd" name="ywdcysp.authAppNoEnd" type="text"
-                    class="form-control">
-                </div>
+                    <app-df-input [(values)]="ywdcysp.authAppNoEnd"></app-df-input>
               </div>
             </div>
           </div>

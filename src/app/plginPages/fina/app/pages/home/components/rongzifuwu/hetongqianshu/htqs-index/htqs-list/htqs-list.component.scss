@@ -54,3 +54,23 @@ thead tr{
         font-weight: 600;
     }
   }
+.er_input{
+   // width: 78% !important;
+    width: 38% !important;
+    display: inline-block;
+}
+.bk_div{
+    display: inline-block;
+    width: 50%;
+    margin: 1% 0;
+    text-align: center;
+}
+.i-h{
+   // margin: 3% 0%;
+    /* vertical-align: inherit;
+    padding: 0.554rem 0.2rem;
+    display: inline-block; */
+    vertical-align: inherit !important;
+    padding:0.554rem 0.2rem;
+    display: inline-block !important;
+}

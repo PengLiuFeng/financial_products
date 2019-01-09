@@ -104,6 +104,7 @@ import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiant
 import { DfInputComponent } from './pages/components/df-input/df-input.component';
 import { DfButtonComponent } from './pages/components/df-button/df-button.component';
 import { DfButtonGroupComponent } from './pages/components/df-button-group/df-button-group.component';
+import { DfSelectComponent } from './pages/components/df-select/df-select.component';
 
 @NgModule({
   declarations: [
@@ -200,7 +201,9 @@ import { DfButtonGroupComponent } from './pages/components/df-button-group/df-bu
 
     DfButtonComponent,
 
-    DfButtonGroupComponent
+    DfButtonGroupComponent,
+
+    DfSelectComponent
   ],
   imports: [
     FormsModule,

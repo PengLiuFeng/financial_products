@@ -7,8 +7,19 @@
   </div>
 
   <div id="body_top_div">
-    <form action="">
-      <div id="top_zi_div">
+    <div class="myselfInput">
+      客户号：
+      <app-df-input [(values)]="yszk.cuNo" ></app-df-input>
+    </div>
+    <div class="myselfInput">
+      客户名称：
+      <app-df-input [(values)]="yszk.cuName"></app-df-input>
+    </div>
+    <div class="myselfInput">
+      授信协议编号：
+      <app-df-input [(values)]="yszk.authAppNo"></app-df-input>
+    </div>
+    <!-- <div id="top_zi_div">
         <div class="bk_div col-md-6 mx-auto mt-5">
           <div class="md-form">
             <input mdbInputDirective [(ngModel)]="yszk.cuNo" name="yszk.cuNo" type="text" id="fddbr_input" class="form-control">
@@ -27,129 +38,129 @@
               class="form-control">
             <label for="fddbr_input" class="">授信协议编号:</label>
           </div>
-        </div>
-        <div class="bk_div col-md-6 mx-auto mt-5">
-          <!-- <div class='md-form'></div> -->
-          <mdb-select name="yszk.recSta" [(ngModel)]="yszk.recSta" [options]="REC_STA" placeholder="应收账款状态:"></mdb-select>
-        </div>
-        <div style="padding-top: 17px;">
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="queryTableDataWithConditions()"
-            mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="reSetAndReqTD()"
-            mdbWavesEffect mdbWavesEffect>重置</button>
-        </div>
-      </div>
-      <!-- <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn"  mdbWavesEffect>查询</button>
+        </div> -->
+    <div class="bk_div col-md-6 mx-auto mt-5">
+      <!-- <div class='md-form'></div> -->
+      <mdb-select name="yszk.recSta" [(ngModel)]="yszk.recSta" [options]="REC_STA" placeholder="应收账款状态:"></mdb-select>
+    </div>
+    <div style="padding-top: 17px;">
+      <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="queryTableDataWithConditions()"
+        mdbWavesEffect>查询</button>
+      <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="reSetAndReqTD()" mdbWavesEffect
+        mdbWavesEffect>重置</button>
+    </div>
+  </div>
+  <!-- <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn"  mdbWavesEffect>查询</button>
       <button mdbBtn [disabled]='isAjax' type="button" color="secondary" class="waves-light Rbtn"  mdbWavesEffect>重置</button> -->
 
-    </form>
-  </div>
-<br><br>
-  <div id="body_bottom_div">
-    <div id="bottom_title_div">
-      <br>
-      <h3><strong>应收账款信息查询结果</strong></h3>
-      <div id="head_right_div">
-        <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>转让通知</button>
-        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>确认回执</button>
-        <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>导出</button>
-        <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>打印</button>
-      </div>
-    </div>
-    <table class="table table-hover table-responsive-md mb-0 table-bordered">
-      <thead class="lighten-2">
 
-        <tr>
-          <th scope="row"></th>
-          <th scope="row">
-            <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
-          </th>
-          <th scope="row" class="dc_td1">买方</th>
-          <th scope="row">基础交易合同编号</th>
-          <th scope="row">单据类型</th>
-          <th scope="row">单据号码</th>
-          <th scope="row">单据票面金额</th>
-          <th scope="row">应收账款金额</th>
-          <th scope="row" class="dc_td2">票据日期</th>
-          <th scope="row">应收账款到期日</th>
-          <th scope="row">应收账款状态</th>
-          <th scope="row">通知状态</th>
-          <th scope="row" class="dc_td">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngFor="let data of tableData; let i = index">
-          <tr>
-            <td scope="row" class="index_td">{{i+1}}</td>
-            <td scope="row">
-              <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
-            </td>
-            <td scope="row">{{data.busName}}</td>
-            <td scope="row">{{data.busCoun}}</td>
-            <td scope="row">{{data.busType}}</td>
-            <td scope="row">{{data.busNo}}</td>
-            <td scope="row">{{data.billAmt}}</td>
-            <td scope="row">{{data.busRecei}}</td>
-            <td scope="row">{{data.billDate}}</td>
-            <td scope="row">{{data.endDate}}</td>
-            <td scope="row">{{data.recSta}}</td>
-            <td scope="row">{{data.traInfAgr}}</td>
-            <td scope="row" class="dc_td">
-              <a (click)="tongzhi('zrtz');demoBasic.show()">转让通知</a>
-              <a (click)="tongzhi('qrhz');demoBasic.show()">确认回执</a>
-            </td>
-          </tr>
-        </ng-container>
-      </tbody>
-    </table>
+</div>
+<br><br>
+<div id="body_bottom_div">
+  <div id="bottom_title_div">
     <br>
-  </div>
-<br>
-  <div id="foot_div">
-    <div class="d-flex justify-content-center">
-      <nav class="my-4 pt-2 ">
-        <ul class="pagination pagination-circle pg-purple mb-0">
-          <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-            <a class="page-link">首页</a>
-          </li>
-          <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-            <a class="page-link" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-            </a>
-          </li>
-          <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
-            class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-            <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-          </li>
-          <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-            <a class="page-link" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-            </a>
-          </li>
-          <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-            <a class="page-link">尾页</a>
-          </li>
-          <li class="page-item clearfix d-none d-md-block disabled">
-            <span class="page-link">{{itemsPerPage}}条/页</span>
-          </li>
-        </ul>
-      </nav>
+    <h3><strong>应收账款信息查询结果</strong></h3>
+    <div id="head_right_div">
+      <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>转让通知</button>
+      <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>确认回执</button>
+      <button mdbBtn type="button" color="success" class="waves-light" mdbWavesEffect>导出</button>
+      <button mdbBtn type="button" color="danger" class="waves-light" mdbWavesEffect>打印</button>
     </div>
   </div>
-  <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
-    aria-labelledby="myBasicModalLabel" aria-hidden="true">
-    <div class="wins" role="document">
-      <div class="modal-content">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-        <div id="mtk_div">
-          <app-zrtzs-header [radioModel]="radioModel"></app-zrtzs-header>
-        </div>
+  <table class="table table-hover table-responsive-md mb-0 table-bordered">
+    <thead class="lighten-2">
+
+      <tr>
+        <th scope="row"></th>
+        <th scope="row">
+          <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
+        </th>
+        <th scope="row" class="dc_td1">买方</th>
+        <th scope="row">基础交易合同编号</th>
+        <th scope="row">单据类型</th>
+        <th scope="row">单据号码</th>
+        <th scope="row">单据票面金额</th>
+        <th scope="row">应收账款金额</th>
+        <th scope="row" class="dc_td2">票据日期</th>
+        <th scope="row">应收账款到期日</th>
+        <th scope="row">应收账款状态</th>
+        <th scope="row">通知状态</th>
+        <th scope="row" class="dc_td">操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let data of tableData; let i = index">
+        <tr>
+          <td scope="row" class="index_td">{{i+1}}</td>
+          <td scope="row">
+            <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
+          </td>
+          <td scope="row">{{data.busName}}</td>
+          <td scope="row">{{data.busCoun}}</td>
+          <td scope="row">{{data.busType}}</td>
+          <td scope="row">{{data.busNo}}</td>
+          <td scope="row">{{data.billAmt}}</td>
+          <td scope="row">{{data.busRecei}}</td>
+          <td scope="row">{{data.billDate}}</td>
+          <td scope="row">{{data.endDate}}</td>
+          <td scope="row">{{data.recSta}}</td>
+          <td scope="row">{{data.traInfAgr}}</td>
+          <td scope="row" class="dc_td">
+            <a (click)="tongzhi('zrtz');demoBasic.show()">转让通知</a>
+            <a (click)="tongzhi('qrhz');demoBasic.show()">确认回执</a>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+  <br>
+</div>
+<br>
+<div id="foot_div">
+  <div class="d-flex justify-content-center">
+    <nav class="my-4 pt-2 ">
+      <ul class="pagination pagination-circle pg-purple mb-0">
+        <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+          <a class="page-link">首页</a>
+        </li>
+        <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+          class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+          <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+        </li>
+        <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+          <a class="page-link">尾页</a>
+        </li>
+        <li class="page-item clearfix d-none d-md-block disabled">
+          <span class="page-link">{{itemsPerPage}}条/页</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+<div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div">
+        <app-zrtzs-header [radioModel]="radioModel"></app-zrtzs-header>
       </div>
     </div>
   </div>
-<br><br>
+
+  <br><br>
 </div>

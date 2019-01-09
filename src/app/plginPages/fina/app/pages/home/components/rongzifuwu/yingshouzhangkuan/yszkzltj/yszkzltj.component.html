@@ -1,32 +1,45 @@
 <div class="khxx">
   <div>
-      <div class="row" style="background:#fff">
-        <div style="padding: 16px 32px;">
-            <div class="el-breadcrumb">
-                <app-breadcrumbs [title]="title"></app-breadcrumbs>
-            </div>
-        </div>
+      <div style="background:white;">
+          <app-breadcrumbs [title]="title"></app-breadcrumbs>
       </div>
   </div>
   <div class="body">
     <div class="setdiv">
         <div class="row">
-            <div class="inputd">
+            <div class="myselfInput">
+                客户名称：
+              <app-df-input [(values)]="kh.name"  ></app-df-input>
+            </div>
+            <div class="myselfInput">
+                证件号码：
+              <app-df-input [(values)]="kh.hm"  ></app-df-input>
+            </div>
+            <div class="myselfInput">
+                授信协议编号：
+              <app-df-input [(values)]="kh.hm" ></app-df-input>
+            </div>
+            <div class="myselfInput">
+                合同编号：
+              <app-df-input [(values)]="kh.hm"></app-df-input>
+            </div>
+            <!-- <div class="inputd">
               <div class="md-form">
                 <input mdbInputDirective type="text" [(ngModel)]="kh.name" id="form1" class="form-control">
                 <label for="form1" class="">客户名称</label>
               </div>
             </div>
+
             <div class="inputd">
                 <div class="md-form">
                   <input mdbInputDirective type="text" [(ngModel)]="kh.hm" id="form2" class="form-control">
                   <label for="form2">证件号码</label>
                 </div>
-            </div>
+            </div> -->
             <div class="inputd" style="padding-top: 11px">
               <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder"  [(ngModel)]="kh.zjlx.vals"></mdb-select>
             </div>
-            <div class="inputd">
+            <!-- <div class="inputd">
               <div class="md-form">
                 <input mdbInputDirective type="text" [(ngModel)]="kh.hm" id="form2" class="form-control">
                 <label for="form2">授信协议编号</label>
@@ -37,7 +50,7 @@
               <input mdbInputDirective type="text" [(ngModel)]="kh.hm" id="form2" class="form-control">
               <label for="form2">合同编号</label>
             </div>
-        </div>
+        </div> -->
         <div class="inputd" style="padding-top: 11px">
           <mdb-select [options]="kh.zjzt.selects" placeholder="资料提交状态" class="placeholder"  [(ngModel)]="kh.zjzt.vals"></mdb-select>
         </div>

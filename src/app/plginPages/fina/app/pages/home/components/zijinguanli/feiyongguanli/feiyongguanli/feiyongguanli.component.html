@@ -1,134 +1,140 @@
 <div class="row">
   <div class="fyglpage">
-      <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
-          <div style="background-color:white;min-width:190px;padding: 1% 0 0% 0;margin: 1% 0 0 0%; float: left;">
-              <app-breadcrumbs [title]="title"></app-breadcrumbs>
-          </div>
-
+    <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
+      <div style="background-color:white;min-width:190px;padding: 1% 0 0% 0;margin: 1% 0 0 0%; float: left;">
+        <app-breadcrumbs [title]="title"></app-breadcrumbs>
       </div>
-      <!-- 以下是搜索框内容 -->
-      <div  class="fygl_body">
-          <div class="fygl_body_head">
-          <form action="" method="" id="formsearch">
-            
-            <div class="col-md-6" >
-                    <mdb-select [options]="idTypes" name="idType" [(ngModel)]="outputdata.idType" placeholder="请选择" label="证件类型"></mdb-select>
-            </div>
-            
-            <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" name="idNo" [(ngModel)]="outputdata.idNo" id="form1" class="form-control">
-              <label for="form1" class="">证件号码</label>
-            </div>
-            <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" name="cuName" [(ngModel)]="outputdata.cuName" id="form1" class="form-control">
-              <label for="form1" class="">客户名称</label>
-            </div>
-            <div class="md-form" style="padding-top:20px;">
-              <input mdbInputDirective type="text" name="cuNo" [(ngModel)]="outputdata.cuNo" id="form1" class="form-control">
-              <label for="form1" class="">客户号</label>
-            </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="busTypes" name="busType" [(ngModel)]="outputdata.busType" placeholder="请选择" label="业务类型"></mdb-select>
-            </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="outputdata.feeType" placeholder="请选择" label="费用类型"></mdb-select>
-            </div>
-            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
 
-          
-          </form> 
-          
-                     
+    </div>
+    <!-- 以下是搜索框内容 -->
+    <div class="fygl_body">
+      <div class="fygl_body_head">
+        <div>
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="idTypes" name="idType" [(ngModel)]="outputdata.idType" placeholder="请选择" label="证件类型"></mdb-select>
           </div>
-          <div class="fygl_body_table">
-                  <span>查询列表信息</span>
-                  
-                  <div class="px-4">
-                      <table class="table table-hover table-responsive-md mb-0 table-bordered">
-                        <thead class="lighten-2">
-                          <tr>
-                            <th *ngFor="let head of table_head" scope="row">
-                                {{head}}
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                            <ng-container *ngFor="let el of table_body; let i = index">
-                                <tr  *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
-                                      <td scope="row">{{i+1}}</td>
-                                      <td scope="row">{{el.idType}}</td>
-                                      <td scope="row">{{el.idNo}}</td>
-                                      <td scope="row">{{el.cifNo}}</td>
-                                      <td scope="row">{{el.cifName}}</td>
-                                      <td scope="row">{{el.contNo}}</td>
-                                      <td scope="row">{{el.busType}}</td>
-                                      <td scope="row">{{el.appAmt}}</td>
-                                      <td scope="row">{{el.feeType}}</td>
-                                      <td scope="row">{{el.feeFlg}}</td>
-                                      <td scope="row">{{el.feeTerm}}</td>
-                                      <td scope="row">{{el.feeAmt}}</td>
-                                      <td scope="row">{{el.payCd}}</td>
-                                      <td scope="row">{{el.signTimestamp}}</td>
-                                     <!-- <a routerLink="/finas/home/zhxx">
+          <div class="marg_div bk_div">
+            <span class="font_cen">证件号码:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="outputdata.idNo"></app-df-input>
+            </div>
+          </div>
+
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户名称:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="outputdata.cuName"></app-df-input>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户号:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="outputdata.cuNo"></app-df-input>
+            </div>
+          </div>
+
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="busTypes" name="busType" [(ngModel)]="outputdata.busType" placeholder="请选择" label="业务类型"></mdb-select>
+          </div>
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="outputdata.feeType" placeholder="请选择" label="费用类型"></mdb-select>
+          </div>
+
+          <div class="bk_div marg_div">
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+          </div>
+
+        </div>
+        <div class="fygl_body_table">
+          <span>查询列表信息</span>
+
+          <div class="px-4">
+            <table class="table table-hover table-responsive-md mb-0 table-bordered">
+              <thead class="lighten-2">
+                <tr>
+                  <th *ngFor="let head of table_head" scope="row">
+                    {{head}}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let el of table_body; let i = index">
+                  <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                    <td scope="row">{{i+1}}</td>
+                    <td scope="row">{{el.idType}}</td>
+                    <td scope="row">{{el.idNo}}</td>
+                    <td scope="row">{{el.cifNo}}</td>
+                    <td scope="row">{{el.cifName}}</td>
+                    <td scope="row">{{el.contNo}}</td>
+                    <td scope="row">{{el.busType}}</td>
+                    <td scope="row">{{el.appAmt}}</td>
+                    <td scope="row">{{el.feeType}}</td>
+                    <td scope="row">{{el.feeFlg}}</td>
+                    <td scope="row">{{el.feeTerm}}</td>
+                    <td scope="row">{{el.feeAmt}}</td>
+                    <td scope="row">{{el.payCd}}</td>
+                    <td scope="row">{{el.signTimestamp}}</td>
+                    <!-- <a routerLink="/finas/home/zhxx">
                                       <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
                                     </a>
                                     
                                     </td> -->
-                                    <td scope="row">
-                                      
-                                      <a (click)="basicModal.show();" style="color:blue;">
-                                          收取
-                                      </a> 
-                                      <a  (click)="basicModal.show();" style="color:blue;">
-                                        调整
-                                      </a>
+                    <td scope="row">
 
-                                    
-                                  </td>
-                                </tr>
-                              </ng-container>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                      <nav class="my-4 pt-2">
-                        <ul class="pagination pagination-circle pg-purple mb-0">
-                          <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                              <a class="page-link">首页</a>
-                            </li>
-                          <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-                            <a class="page-link" aria-label="Previous">
-                              <span aria-hidden="true">&laquo;</span>
-                              <span class="sr-only">Previous</span>
-                            </a>
-                          </li>
-                          <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
-                            [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-                            <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-                          </li>
-                          <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                            <a class="page-link" aria-label="Next">
-                              <span aria-hidden="true">&raquo;</span>
-                              <span class="sr-only">Next</span>
-                            </a>
-                          </li>
-                          <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                            <a class="page-link">尾页</a>
-                          </li>
-                          <li class="page-item clearfix d-none d-md-block disabled">
-                             <span class="page-link">{{itemsPerPage}}条/页</span>
-                          </li>
-                        </ul>
-                      </nav>
-                    </div>
+                      <a (click)="basicModal.show();" style="color:blue;">
+                        收取
+                      </a>
+                      <a (click)="basicModal.show();" style="color:blue;">
+                        调整
+                      </a>
+
+
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
           </div>
+          <div class="d-flex justify-content-center">
+            <nav class="my-4 pt-2">
+              <ul class="pagination pagination-circle pg-purple mb-0">
+                <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link">首页</a>
+                </li>
+                <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                  class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                  <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+                </li>
+                <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link">尾页</a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block disabled">
+                  <span class="page-link">{{itemsPerPage}}条/页</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
-</div>
 
-<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg"   role="document">
+  <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
@@ -136,11 +142,12 @@
           </button>
           <h4 class="modal-title w-100" id="myModalLabel">&nbsp;</h4>
         </div>
-        <div class="modal-body"  style="overflow:auto;height: 600px;">
-              <app-feiyongshouqu [inputdata]="inputdata"></app-feiyongshouqu>
+        <div class="modal-body" style="overflow:auto;height: 600px;">
+          <app-feiyongshouqu [inputdata]="inputdata"></app-feiyongshouqu>
         </div>
         <div class="modal-footer">
-          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+          <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()"
+            mdbWavesEffect>Close</button>
           <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save changes</button>
         </div>
       </div>

@@ -12,41 +12,49 @@
   <div class="body">
     <div class="setdiv">
       <div class="row">
-       
-        <div class="md-form" style="margin-left:2%;">
-          <input mdbInputDirective type="text" [(ngModel)]="client.cuNo" id="form1" class="form-control">
-          <label for="form1" class="">客户号</label>
-        </div>
-        <div class="md-form" style="margin-left:2%;">
-          <input mdbInputDirective type="text" [(ngModel)]="client.cuName" id="form1" class="form-control">
-          <label for="form1" class="">客户名称</label>
-        </div>
-        <div class="md-form" style="margin-left:2%;">
-          <input mdbInputDirective type="text" [(ngModel)]="client.contNo" id="form1" class="form-control">
-          <label for="form1" class="">合同编号</label>
-        </div>
-
-        <div class="col-md-6" >
-          <mdb-select [options]="busTypes" placeholder="请选择" label="业务类型" [(ngModel)]="client.busType"></mdb-select>
-        </div>
-
-
-        <div class="col-md-6">
-          <mdb-select [options]="loanStas" placeholder="请选择"  label="合同状态" [(ngModel)]="client.loanSta"></mdb-select>
-        </div>
-        <div class="md-form" style="margin-left:2%;">
-          <div class="ui-inputgroup">
-            <span class="i-h">合同签署日期：</span>
-            <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" [(ngModel)]="client.startTimestamp" dateFormat="yy/mm/dd"></p-calendar>
-            <span class="ui-inputgroup-addon" class="i-h">至</span>
-            <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" [(ngModel)]="client.dueTimestamp" dateFormat="yy/mm/dd"></p-calendar>
+        <!-- .................................................... -->
+        <div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户号:</span>
+            <div class="er_input">
+              <app-df-input [values]='client.cuNo'></app-df-input>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户名称:</span>
+            <div class="er_input">
+              <app-df-input [values]='client.cuName'></app-df-input>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">合同编号:</span>
+            <div class="er_input">
+              <app-df-input [values]='client.contNo'></app-df-input>
+            </div>
+          </div>
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="busTypes" [(ngModel)]="client.busType" placeholder="请选择" label="业务类型"></mdb-select>
+          </div>
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="loanStas" placeholder="请选择" label="合同状态" [(ngModel)]="client.loanSta"></mdb-select>
+          </div>
+          <div class="md-form" style="margin-left:2%;display: inline-block">
+            <div class="ui-inputgroup">
+              <span class="i-h">合同签署日期：</span>
+              <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" [(ngModel)]="client.startTimestamp"
+                dateFormat="yy/mm/dd"></p-calendar>
+              <span class="ui-inputgroup-addon" class="i-h">至</span>
+              <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" [(ngModel)]="client.dueTimestamp"
+                dateFormat="yy/mm/dd"></p-calendar>
+            </div>
+          </div>
+          <div class="bk_div marg_div">
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect
+              mdbWavesEffect>重置</button>
           </div>
         </div>
-        <div >
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect
-            mdbWavesEffect>重置</button>
-        </div>
+        <!-- --------------------------------- -->
       </div>
       <div class="khxxb">
         <h4 id="title_h4">合同列表信息</h4>
@@ -87,21 +95,23 @@
               <ng-container *ngFor="let data of tableData; let i = index">
                 <tr>
                   <td scope="row" class="index_td">{{i+1}}</td>
-                  <td> <mdb-checkbox ></mdb-checkbox></td>
+                  <td>
+                    <mdb-checkbox></mdb-checkbox>
+                  </td>
                   <td scope="row">{{data.cuNo}}</td>
                   <td scope="row">{{data.cuName}}</td>
                   <td scope="row">{{data.contNo}}</td>
-                  <td scope="row">{{data.busType}}</td>  
+                  <td scope="row">{{data.busType}}</td>
                   <td scope="row">{{data.actualAmt}}</td>
                   <td scope="row">{{data.bal}}</td>
                   <td scope="row">{{data.termType}}</td>
-                  <td scope="row">{{data.sterm}}</td>  
+                  <td scope="row">{{data.sterm}}</td>
                   <td scope="row">{{data.auRate}}</td>
                   <td scope="row">{{data.dueTimestamp}}</td>
                   <td scope="row">{{data.loanSta}}</td>
                   <td scope="row">
                     <a (click)="transmit(i)" style="color:blue;">综合信息</a>
-                   
+
                   </td>
                 </tr>
               </ng-container>

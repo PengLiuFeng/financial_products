@@ -16,37 +16,37 @@
     // background-color: rgb(200, 214, 224);
     width: 95%;
     border:1px solid #e6ecf7;
-    & .fygl_body_head{
-        margin: 1% 2% 0 2%;
-        min-height: 180px;
-        // background-color: white;
-        border:1px solid #e6ecf7;
-        & .md-form{           
-            width: 20%;
-            float: left;
-            margin-left: 2%;
-            margin-bottom: 0 !important;
-        }
-        & .col-md-6{
-            width: 20%;
-            float: left;
-            margin-left: 2%;
-            margin-bottom: 1%;
-            & /deep/ mdb-select > label{
-                position: relative;
-                top: -3px;
-            }
-            & /deep/ mdb-select > div > div.single{
-                position: relative;
-                bottom: 7px;
-            }
+    // & .fygl_body_head{
+    //     margin: 1% 2% 0 2%;
+    //     min-height: 180px;
+    //     // background-color: white;
+    //     border:1px solid #e6ecf7;
+    //     & .md-form{           
+    //         width: 20%;
+    //         float: left;
+    //         margin-left: 2%;
+    //         margin-bottom: 0 !important;
+    //     }
+    //     & .col-md-6{
+    //         width: 20%;
+    //         float: left;
+    //         margin-left: 2%;
+    //         margin-bottom: 1%;
+    //         & /deep/ mdb-select > label{
+    //             position: relative;
+    //             top: -3px;
+    //         }
+    //         & /deep/ mdb-select > div > div.single{
+    //             position: relative;
+    //             bottom: 7px;
+    //         }
           
-        }
-        & button{
-            margin: 3% 3% 3% 3%;
-            float: left;
-        }
-    }
+    //     }
+    //     & button{
+    //         margin: 3% 3% 3% 3%;
+    //         float: left;
+    //     }
+    // }
 
     & .fygl_body_table{
         
@@ -73,10 +73,10 @@ td,th {
 .page-link{
     font-size: 10px;
 } 
-/deep/  mdb-select label{
-    position: relative;
-    top:20px ;
-}
+// /deep/  mdb-select label{
+//     position: relative;
+//     top:20px ;
+// }
 /deep/ .modal-lg{
     min-width: 1200px;
 }
@@ -88,4 +88,24 @@ td,th {
     height: 100% !important;
     // z-index: 1;
     transition: left .6s;
+}
+.er_input{
+    // width: 78% !important;
+     width: 74%;
+     display: inline-block;
+ }
+ .bk_div{
+     display: inline-block;
+     width: 25%;
+    // margin: 1% 0;
+     text-align: center;
+     max-width: 280px;
+     min-width: 150px;
+ }
+ .marg_div{
+    display: inline-block;
+    margin: 1% auto;
+ }
+ .md-form{
+    padding: 0 1rem;
 }

@@ -157,13 +157,13 @@ export class HetongDbComponent implements OnInit {
     // }
     // this.danbaorens.push(this.danbaoren)
     if(data=='danbaorenxinxi'){
-        this.danbaorens.push(this.danbaoren);
+        this.danbaorens.push(JSON.parse(JSON.stringify(this.danbaoren)));
     }
     if(data=='diyawuxinxi'){
-        this.diyawus.push(this.diyawu);
+        this.diyawus.push(JSON.parse(JSON.stringify(this.diyawu)));
     }
     if(data=='zhiyawuxinxi'){
-        this.zhiyawus.push(this.zhiyawu);
+        this.zhiyawus.push(JSON.parse(JSON.stringify(this.zhiyawu)));
     }
        
   }
@@ -180,7 +180,9 @@ export class HetongDbComponent implements OnInit {
         this.zhiyawus.splice(id,1);
     }
   }
-  tijiao(){}
+  tijiao(){
+      console.log(this.danbaorens);
+  }
   quxiao(){}
   value:any;
   selectcheck(data : any,databo:string){

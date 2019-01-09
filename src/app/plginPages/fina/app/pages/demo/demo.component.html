@@ -1,36 +1,36 @@
 <div>
-    <div class="col-md-12 mx-auto d-flex justify-content-center flex-wrap">
-        <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect (click)="oncl()">Primary</button>
-      </div>
+  <div class="col-md-12 mx-auto d-flex justify-content-center flex-wrap">
+    <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect (click)="oncl()">Primary</button>
+  </div>
 </div>
 {{mval}}
-<br/>
+<br />
 
 <div class="row" style="margin-left: 50px">
-    <div class="inputd">
-      <div class="md-form">
-        <input mdbInputDirective type="text" ngModel="kh.name" id="form1" class="form-control">
-        <label for="form1" class="">客户名称</label>
-      </div>
+  <div class="inputd">
+    <div class="md-form">
+      <input mdbInputDirective type="text" ngModel="kh.name" id="form1" class="form-control">
+      <label for="form1" class="">客户名称</label>
     </div>
-    <div class="inputd">
-        <div class="md-form">
-          <input mdbInputDirective type="text" ngModel="kh.hm" id="form2" class="form-control">
-          <label for="form2">证件号码</label>
-        </div>
+  </div>
+  <div class="inputd">
+    <div class="md-form">
+      <input mdbInputDirective type="text" ngModel="kh.hm" id="form2" class="form-control">
+      <label for="form2">证件号码</label>
     </div>
-    <div class="inputd">
-      <div class="md-form">
-          <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动" [isMDBstyle]="true"></app-df-cascader>
-      </div>
+  </div>
+  <div class="inputd">
+    <div class="md-form">
+      <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动" [isMDBstyle]="true"></app-df-cascader>
+    </div>
   </div>
   <div class="inputd">
     <div class="md-form">
       <input mdbInputDirective type="text" ngModel="kh.hm" id="form2" class="form-control">
       <label for="form2">合同编号</label>
     </div>
-</div>
   </div>
+</div>
   <div tabindex="0" class="el-upload el-upload--text"><button type="button" class="el-button el-button--primary el-button--small">
     <span>点击上传</span></button><input type="file" name="file" multiple="multiple" class="el-upload__input">
   </div>
@@ -52,8 +52,8 @@
   <br/>
 <input type="file" id="uploadFile"> <button (click)="onup()">上传</button>
 
-  <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>
+<app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>
 <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="model"
   required></mdb-date-picker>
-  <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="model"
+<mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'Selected date'" [(ngModel)]="model"
   required></mdb-date-picker>

@@ -5,31 +5,35 @@
   <div class="body">
     <div class="setdiv">
       <div class="row">
-        <div class="inputd col-md-2">
-          <div class="md-form">
-            <input mdbInputDirective type="text" [(ngModel)]="kh.name" id="khxx1" class="form-control">
-            <label for="khxx1">客户号</label>
+        <div class="bk_div">
+          <div class="md-form-df">
+            <div class="ui-inputgroup">
+              <span class="i-h">客户号:</span>
+              <div class="er_input">
+                <app-df-input [(values)]="kh.name"></app-df-input>
+              </div>
+              <span class="i-h">客户名称:</span>
+              <div class="er_input">
+                <app-df-input [(values)]="kh.khNum"></app-df-input>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="inputd col-md-2">
-          <div class="md-form">
-            <input mdbInputDirective type="text" [(ngModel)]="kh.khNum" id="khxx2" class="form-control">
-            <label for="khxx2">客户名称</label>
+        <div class="bk_div">
+            <div class="md-form-df">
+              <div class="ui-inputgroup">
+                <span class="i-h">合同编号:</span>
+                <div class="er_input">
+                  <app-df-input [(values)]="kh.hm"></app-df-input>
+                </div>
+                <span class="i-h">证件号码:</span>
+                <div class="er_input">
+                  <app-df-input [(values)]="kh.hm"></app-df-input>
+                </div>
+              </div>
+            </div>
           </div>
-          <!-- <div class="inputd inputd-mdb-select col-md-1" style="min-width:120px">
-            <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder" label="证件类型" [(ngModel)]="kh.zjlx.vals"></mdb-select>
-          </div> -->
-        </div>
-        <div class="inputd col-md-2">
-          <div class="md-form">
-            <input type="text" [(ngModel)]="kh.hm" placeholder="合同编号" class="form-control">
-          </div>
-        </div>
-        <div class="inputd col-md-2">
-          <div class="md-form">
-            <input type="text" [(ngModel)]="kh.hm" placeholder="证件号码" class="form-control">
-          </div>
-        </div>
+
         <div class="inputd inputd-mdb-select col-md-1" style="min-width:120px">
           <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder" [(ngModel)]="kh.zjlx.vals"></mdb-select>
         </div>
@@ -37,13 +41,11 @@
           <mdb-select [options]="kh.zjzt.selects" placeholder="资料提交状态" class="placeholder" [(ngModel)]="kh.zjzt.vals"></mdb-select>
         </div>
         <div class="inputd" style="z-index:1;padding-top: 3px;">
-          <div class="md-form">
-            <div class="ui-inputgroup">
-              <span class="i-h">合同签署日期：</span>
-              <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
-              <span class="ui-inputgroup-addon" class="i-h">至</span>
-              <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
-            </div>
+          <div class="ui-inputgroup">
+            <span class="i-h">合同签署日期：</span>
+            <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+            <span class="ui-inputgroup-addon" class="i-h">至</span>
+            <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
           </div>
         </div>
         <div style="padding-top: 17px;">

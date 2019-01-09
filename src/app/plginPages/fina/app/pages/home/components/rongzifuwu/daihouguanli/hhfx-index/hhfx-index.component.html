@@ -1,116 +1,121 @@
 <div *ngIf="!ishidden">
 
-  
-  <div class="hhfx-index" >
+
+  <div class="hhfx-index">
     <div class="body">
       <form>
-      <div class="right">
-          <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >查询</button>
-        <button mdbBtn type="reset" color="primary" rounded="true"  size="sm" mdbWavesEffect >重置</button>
-      </div>
-    <div class="setdiv">
-      <div class="row">
-        <div class="inputd" style="padding-top: 11px;">
-          <div class="md-form">
-            <input mdbInputDirective type="text" name="khhm" [(ngModel)]="yszk.khhm" id="form2" class="form-control">
-            <label for="form2">客户号</label>
-          </div>
+        <div class="right">
+          <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
+          <button mdbBtn type="reset" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
         </div>
-        <div class="inputd" style="padding-top: 11px;">
-          <div class="md-form">
-            <input mdbInputDirective type="text" name="name" [(ngModel)]="yszk.name" id="form1" class="form-control">
-            <label for="form1">客户名称</label>
-          </div>
-        </div>                
-        <div class="inputd" >
-            <div style="padding-top: 0px; padding-bottom: 11px;">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'"
-                required></mdb-date-picker>
+        <div class="setdiv">
+          <div class="row">
+            <div class="bk_div">
+              <div class="md-form-df">
+                <div class="ui-inputgroup">
+                  <span class="i-h">客户号:</span>
+                  <div class="er_input">
+                    <app-df-input [(values)]="yszk.khhm"></app-df-input>
+                  </div>
+                  <span class="i-h">客户名称:</span>
+                  <div class="er_input">
+                    <app-df-input [(values)]="yszk.name"></app-df-input>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
-        <div class="inputd" >
-            <div style="padding-top: 0px; padding-bottom: 11px;">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'"
-                required></mdb-date-picker>
+
+            <div class="inputd">
+              <div style="padding-top: 0px; padding-bottom: 11px;">
+                <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'" required></mdb-date-picker>
+              </div>
             </div>
-        </div>
-        
-        <div class="inputd" style="padding-top: 11px;">
-          <div class="md-form">
-            <input mdbInputDirective type="text" name="htbh" [(ngModel)]="yszk.htbh" id="form3" class="form-control">
-            <label for="form3">合同编号</label>
-          </div>              
-        </div>
-        <div class="inputd"  style="padding-top: 11px;">
-          <div style="padding-top: 11px; padding-bottom: 11px;">
-            <mdb-select [options]="yszk.ywlx.selects" placeholder="业务类型" class="placeholder" name="ywlx.vals" [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+            <div class="inputd">
+              <div style="padding-top: 0px; padding-bottom: 11px;">
+                <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'" required></mdb-date-picker>
+              </div>
+            </div>
+
+            <div class="inputd" style="padding-top: 11px;">
+              <input mdbInputDirective type="text" name="htbh" [(ngModel)]="yszk.htbh" id="form3" class="form-control">
+              <label for="form3"></label>
+              <!--<span class="i-h">合同编号:</span>
+              <div class="er_input">-->
+              <app-df-input [(values)]="yszk.htbh"></app-df-input>
+            </div>
+          </div>
+          <div class="inputd" style="padding-top: 11px;">
+            <div style="padding-top: 11px; padding-bottom: 11px;">
+              <mdb-select [options]="yszk.ywlx.selects" placeholder="业务类型" class="placeholder" name="ywlx.vals"
+                [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+            </div>
+          </div>
+          <div class="inputd" style="padding-top: 11px;">
+            <div style="padding-top: 11px; padding-bottom: 11px;">
+              <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder" name="ywlx.vals"
+                [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+            </div>
           </div>
         </div>
-        <div class="inputd" style="padding-top: 11px;">
-          <div style="padding-top: 11px; padding-bottom: 11px;">
-            <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder" name="ywlx.vals" [(ngModel)]="yszk.ywlx.vals"></mdb-select>
-          </div>
-        </div>
-      </div>
+      </form>
     </div>
-    </form>
     <h4>合同列表信息</h4>
-    <div class="white px-3 mt-0" > 
-    <div class="hhfx-indexb">
-      <div class="card">
-        <table mdbTable bordered="true" class="mb-0">
-          <thead class="grey lighten-3 black-text">
-            <tr>
-              <th scope="col">序号</th>
-              <th scope="col">客户号</th>
-              <th scope="col">客户名称</th>
-              <th scope="col">合同编号</th>
-              <th scope="col">业务类型</th>
-              <th scope="col">贷款余额</th>
-              <th scope="col">期限类型</th>
-              <th scope="col">期限</th>
-              <th scope="col">利率（%）</th>
-              <th scope="col">合同到期日</th>
-              <th scope="col">合同状态</th>
-              <th scope="col">操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngFor="let data of tableData; let i = index">
-              <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
-                <td scope="col">{{i+1}}</td>
-                <td scope="col">{{data.firstName}}</td>
-                <td scope="col">{{data.lastName}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">
-                  <a class="text-default" (click)="changeishidden()"><u>详情</u></a>
-                </td>
+    <div class="white px-3 mt-0">
+      <div class="hhfx-indexb">
+        <div class="card">
+          <table mdbTable bordered="true" class="mb-0">
+            <thead class="grey lighten-3 black-text">
+              <tr>
+                <th scope="col">序号</th>
+                <th scope="col">客户号</th>
+                <th scope="col">客户名称</th>
+                <th scope="col">合同编号</th>
+                <th scope="col">业务类型</th>
+                <th scope="col">贷款余额</th>
+                <th scope="col">期限类型</th>
+                <th scope="col">期限</th>
+                <th scope="col">利率（%）</th>
+                <th scope="col">合同到期日</th>
+                <th scope="col">合同状态</th>
+                <th scope="col">操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
               </tr>
-            </ng-container>
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              <ng-container *ngFor="let data of tableData; let i = index">
+                <tr *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+                  <td scope="col">{{i+1}}</td>
+                  <td scope="col">{{data.firstName}}</td>
+                  <td scope="col">{{data.lastName}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">{{data.username}}</td>
+                  <td scope="col">
+                    <a class="text-default" (click)="changeishidden()"><u>详情</u></a>
+                  </td>
+                </tr>
+              </ng-container>
+            </tbody>
+          </table>
+        </div>
         <div class="d-flex justify-content-center">
           <nav class="my-4 pt-2">
             <ul class="pagination pagination-circle pg-purple mb-0">
               <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                  <a class="page-link">首页</a>
-                </li>
+                <a class="page-link">首页</a>
+              </li>
               <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
                 <a class="page-link" aria-label="Previous">
                   <span aria-hidden="true">&laquo;</span>
                   <span class="sr-only">Previous</span>
                 </a>
               </li>
-              <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
-                [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+              <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
                 <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
               </li>
               <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
@@ -123,23 +128,23 @@
                 <a class="page-link">尾页</a>
               </li>
               <li class="page-item clearfix d-none d-md-block disabled">
-                 <span class="page-link">{{itemsPerPage}}条/页</span>
+                <span class="page-link">{{itemsPerPage}}条/页</span>
               </li>
             </ul>
           </nav>
         </div>
-      
-    </div>
+
+      </div>
     </div>
   </div>
-</div>         
-  <style>
-  .table{
+</div>
+<style>
+  .table {
     background: #fff;
   }
-  .right{
+
+  .right {
     text-align: right;
   }
-  </style>
-</div>
+</style>
 <app-hkqkfx *ngIf="ishidden"></app-hkqkfx>

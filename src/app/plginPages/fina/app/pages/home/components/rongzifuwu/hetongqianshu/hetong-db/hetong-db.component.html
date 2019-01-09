@@ -1,142 +1,169 @@
 <div class="htdbpage">
-      <!-- 以下是公共信息的头文件 -->
-      <form>
-       <div class="publichead">
-            <div class="md-form" style="padding-top:34px;" >
-              <input mdbInputDirective type="text" id="form1" name="grtContNo " [(ngModel)]= "head.grtContNo" [disabled]="add" class="form-control">
-              <label for="form1" class="">担保合同</label>
+    <!-- 以下是公共信息的头文件 -->
+    <form>
+        <div class="publichead">
+            <div class="md-form" style="padding-top:34px;">
+                <input mdbInputDirective type="text" id="form1" name="grtContNo " [(ngModel)]="head.grtContNo"
+                    [disabled]="add" class="form-control">
+                <label for="form1" class="">担保合同</label>
             </div>
-            <div class="md-form" style="padding-top:34px;" >
-                <input mdbInputDirective type="text" id="form1" name="vouFlt"  [(ngModel)]="head.vouFlt" [disabled]="add"  class="form-control">
+            <div class="md-form" style="padding-top:34px;">
+                <input mdbInputDirective type="text" id="form1" name="vouFlt" [(ngModel)]="head.vouFlt" [disabled]="add"
+                    class="form-control">
                 <label for="form1" class="">担保比例（%）</label>
             </div>
-            <div class="md-form" style="padding-top:34px;" >
-                <input mdbInputDirective type="text" id="form1"  name="vouAmt" [(ngModel)]="head.vouAmt" [disabled]="add"  class="form-control">
+            <div class="md-form" style="padding-top:34px;">
+                <input mdbInputDirective type="text" id="form1" name="vouAmt" [(ngModel)]="head.vouAmt" [disabled]="add"
+                    class="form-control">
                 <label for="form1" class="">担保金额</label>
             </div>
-            <div class="md-form"  >
-                <mdb-date-picker name="mydate"  [options]="myDatePickerOptions" name="head.endDate"   [disabled]="add" label="担保合同到期日" [(ngModel)]="head.endDate"
-                    required></mdb-date-picker>
+            <div class="md-form">
+                <mdb-date-picker name="mydate" [options]="myDatePickerOptions" name="head.endDate" [disabled]="add"
+                    label="担保合同到期日" [(ngModel)]="head.endDate" required></mdb-date-picker>
             </div>
-       </div>
-       <!-- 以下是担保方式 -->
-       <div style="text-align: left">担保方式</div>
-       <div class="danbaofangshi">  
+        </div>
+        <!-- 以下是担保方式 -->
+        <div style="text-align: left">担保方式</div>
+        <div class="danbaofangshi">
             <div>
                 <div class="md-form">
-                    <mdb-checkbox [checked]="xyblbo" [disabled]="xinyongbili" (click)="weiyi()"  [(ngModel)]="xyblbo" name="test1" [default]="true"></mdb-checkbox>
-                    <input mdbInputDirective type="text" [disabled]="xinyongbili"  (click)="weiyi()" (blur)="selectcheck(xybl,'xyblbo')" name="xybl"  [(ngModel)]="xybl" id="form1" class="form-control">
+                    <mdb-checkbox [checked]="xyblbo" [disabled]="xinyongbili" (click)="weiyi()" [(ngModel)]="xyblbo"
+                        name="test1" [default]="true"></mdb-checkbox>
+                    <input mdbInputDirective type="text" [disabled]="xinyongbili" (click)="weiyi()" (blur)="selectcheck(xybl,'xyblbo')"
+                        name="xybl" [(ngModel)]="xybl" id="form1" class="form-control">
                     <label for="form1" class="">信用比例（%）</label>
                 </div>
                 <div class="md-form">
-                    <mdb-checkbox [checked]="bzblbo" [disabled]="qitabili" (click)="weiyi()" [(ngModel)]="bzblbo"  name="test2"  [default]="true"></mdb-checkbox>
-                    <input mdbInputDirective type="text"  [disabled]="qitabili" (click)="weiyi()" [disabled]="qitabili" (blur)="selectcheck(bzbl,'bzblbo')" name="bzbl" [(ngModel)]="bzbl" id="form1" class="form-control">
+                    <mdb-checkbox [checked]="bzblbo" [disabled]="qitabili" (click)="weiyi()" [(ngModel)]="bzblbo" name="test2"
+                        [default]="true"></mdb-checkbox>
+                    <input mdbInputDirective type="text" [disabled]="qitabili" (click)="weiyi()" [disabled]="qitabili"
+                        (blur)="selectcheck(bzbl,'bzblbo')" name="bzbl" [(ngModel)]="bzbl" id="form1" class="form-control">
                     <label for="form1" class="">保证比例（%）</label>
                 </div>
                 <div class="md-form">
-                    <mdb-checkbox [checked]="dyblbo" [disabled]="qitabili" (click)="weiyi()"  [(ngModel)]="dyblbo"  name="test3" [default]="true"></mdb-checkbox>
-                    <input mdbInputDirective type="text" [disabled]="qitabili" (click)="weiyi()" (blur)="selectcheck(dybl,'dyblbo')" name="dybl" [(ngModel)]="dybl"  id="form1" class="form-control">
+                    <mdb-checkbox [checked]="dyblbo" [disabled]="qitabili" (click)="weiyi()" [(ngModel)]="dyblbo" name="test3"
+                        [default]="true"></mdb-checkbox>
+                    <input mdbInputDirective type="text" [disabled]="qitabili" (click)="weiyi()" (blur)="selectcheck(dybl,'dyblbo')"
+                        name="dybl" [(ngModel)]="dybl" id="form1" class="form-control">
                     <label for="form1" class="">抵押比例（%）</label>
                 </div>
                 <div class="md-form">
-                    <mdb-checkbox [checked]="zyblbo" [disabled]="qitabili" (click)="weiyi()" [(ngModel)]="zyblbo"  name="test4" [default]="true"></mdb-checkbox>
-                    <input mdbInputDirective type="text"  [disabled]="qitabili" (click)="weiyi()" (blur)="selectcheck(zybl,'zyblbo')" name="zybl" [(ngModel)]="zybl"  id="form1" class="form-control">
+                    <mdb-checkbox [checked]="zyblbo" [disabled]="qitabili" (click)="weiyi()" [(ngModel)]="zyblbo" name="test4"
+                        [default]="true"></mdb-checkbox>
+                    <input mdbInputDirective type="text" [disabled]="qitabili" (click)="weiyi()" (blur)="selectcheck(zybl,'zyblbo')"
+                        name="zybl" [(ngModel)]="zybl" id="form1" class="form-control">
                     <label for="form1" class="">质押比例（%）</label>
                 </div>
-                
 
-            </div>
-       </div>
-       <!-- 以下担保人明细 -->
-       <div  *ngIf="xyblbo==true"> 
-       <div style="text-align: left">担保人明细</div>
-       <div class="danbaorenmingxi" >
-                <div class ="md-form" style="margin:0 !important;" > 
-                        <div class="card-body" >
-                                <div id="table" class="table-editable">
-                                    <span class="table-add float-right mb-3 mr-2">
-                                        <a class="text-success"   (click)="addperson('danbaorenxinxi')">
-                                            <i class="fa fa-plus-square "></i>
-                                        </a>
-                                    </span>
-                                </div>
-                                <table class="table table-bordered table-responsive-md table-striped text-center">
-                                    <tr >
-                                    
-                                    <th class="text-center">序号</th>
-                                    <th class="text-center">保证人客户号</th>
-                                    <th class="text-center">保证人名称</th>
-                                    <th class="text-center">保证人证件类型</th>
-                                    <th class="text-center">保证人证件号码</th>
-                                    <th class="text-center">担保金额</th>
-                                    <th class="text-center">保证担保形式</th>
-                                    <th class="text-center">保证方式</th>
-                                    <th class="text-center">与借款人关系</th>
-                                    <th class="text-center">保证人状态</th>
-                                    <th class="text-center">删除</th>
-                                    </tr>
-                                    
-                                    <tr *ngFor="let danbaoren of danbaorens; let id = index">
-                                    <td>{{id+1}}</td>
-                                    <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]="danbaoren.cifNo" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="danbaoren.cifName" [disabled]="add"  class="form-control"></td>
-                                   
-
-                                    <td>
-                                            <!-- <p-dropdown [options]="testarray.cerTypes" *ngIf="add==false" name="cerType" [(ngModel)]="testarray.cerType" [style]="{'width':'150px','height':'30px'}" editable="true" placeholder="test"></p-dropdown> -->
-                                            <p-dropdown [options]="cerTypes"  name="cerType" *ngIf="add==false" [(ngModel)]="danbaoren.cerType" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-
-                                                <!-- <p-dropdown *ngIf="add==false"  [style]="{'min-width':'200px','height':'60px','font-size':'5px'}" [options]="testarray.cerTypes" [(ngModel)]="testarray.cerType" name="cerType"  ></p-dropdown> -->
-                                            <input mdbInputDirective type="text" name="cerType" *ngIf="add==true" [(ngModel)]="danbaoren.cerType" [disabled]="add"  class="form-control">
-                                    </td>    
-                                       
-                                    
-                                    <td><input mdbInputDirective type="text" name="cerNo" [(ngModel)]="danbaoren.cerNo" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="guaranteeAmt" [(ngModel)]="danbaoren.guaranteeAmt" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                        <p-dropdown [options]="guarantyTypes"  name="guarantyType" *ngIf="add==false" [(ngModel)]="danbaoren.guarantyType" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" *ngIf="add==true" name="guarantyType" [(ngModel)]="danbaoren.guarantyType" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td> 
-                                        <p-dropdown [options]="guaranteeTypes"  name="guaranteeType" *ngIf="add==false" [(ngModel)]="danbaoren.guaranteeType" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="guaranteeType" *ngIf="add==true" [(ngModel)]="danbaoren.guaranteeType" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td> 
-                                        <p-dropdown [options]="relationLenders"  name="relationLender" *ngIf="add==false" [(ngModel)]="danbaoren.relationLender" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="relationLender"  *ngIf="add==true" [(ngModel)]="danbaoren.relationLender" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="danbaoren.statusCode" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                            <span class="table-add float-right mb-3 mr-2"  >
-                                                    <a class="text-default"   (click)="remove(id,'danbaorenxinxi')">
-                                                        <i class="fa fa-minus-square fa-3x"></i>
-                                                    </a>
-                                            </span>   
-                                    </td>
-                                    </tr>
-                                </table>
-                        </div>
 
             </div>
         </div>
-    </div>
-        <!-- 以下是抵押物担保明细 -->
-    <div *ngIf="dyblbo==true">
-       <div style="text-align: left">抵押物担保明细</div>
-       <div class="diyawudanbaomingxi"  disabled="true" >
-            <div class ="md-form" style="margin:0 !important;" > 
+        <!-- 以下担保人明细 -->
+        <div *ngIf="xyblbo==true">
+            <div style="text-align: left">担保人明细</div>
+            <div class="danbaorenmingxi">
+                <div class="md-form" style="margin:0 !important;">
                     <div class="card-body">
-                            <div id="table" class="table-editable">
+                        <div id="table" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2">
+                                <a class="text-success" (click)="addperson('danbaorenxinxi')">
+                                    <i class="fa fa-plus-square "></i>
+                                </a>
+                            </span>
+                        </div>
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                            <tr>
+
+                                <th class="text-center">序号</th>
+                                <th class="text-center">保证人客户号</th>
+                                <th class="text-center">保证人名称</th>
+                                <th class="text-center">保证人证件类型</th>
+                                <th class="text-center">保证人证件号码</th>
+                                <th class="text-center">担保金额</th>
+                                <th class="text-center">保证担保形式</th>
+                                <th class="text-center">保证方式</th>
+                                <th class="text-center">与借款人关系</th>
+                                <th class="text-center">保证人状态</th>
+                                <th class="text-center">删除</th>
+                            </tr>
+
+                            <tr *ngFor="let danbaoren of danbaorens; let id = index">
+                                <td>{{id+1}}</td>
+                                <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]="danbaoren.cifNo"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="danbaoren.cifName"
+                                        [disabled]="add" class="form-control"></td>
+
+
+                                <td>
+                                    <!-- <p-dropdown [options]="testarray.cerTypes" *ngIf="add==false" name="cerType" [(ngModel)]="testarray.cerType" [style]="{'width':'150px','height':'30px'}" editable="true" placeholder="test"></p-dropdown> -->
+                                    <p-dropdown [options]="cerTypes" name="cerType" *ngIf="add==false" [(ngModel)]="danbaoren.cerType"
+                                        [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
+
+                                    <!-- <p-dropdown *ngIf="add==false"  [style]="{'min-width':'200px','height':'60px','font-size':'5px'}" [options]="testarray.cerTypes" [(ngModel)]="testarray.cerType" name="cerType"  ></p-dropdown> -->
+                                    <input mdbInputDirective type="text" name="cerType" *ngIf="add==true" [(ngModel)]="danbaoren.cerType"
+                                        [disabled]="add" class="form-control">
+                                </td>
+
+
+                                <td><input mdbInputDirective type="text" name="cerNo" [(ngModel)]="danbaoren.cerNo"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="guaranteeAmt" [(ngModel)]="danbaoren.guaranteeAmt"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
+                                    <p-dropdown [options]="guarantyTypes" name="guarantyType" *ngIf="add==false"
+                                        [(ngModel)]="danbaoren.guarantyType" [style]="{'width':'100px','height':'35px'}"
+                                        [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" *ngIf="add==true" name="guarantyType"
+                                        [(ngModel)]="danbaoren.guarantyType" [disabled]="add" class="form-control">
+                                </td>
+                                <td>
+                                    <p-dropdown [options]="guaranteeTypes" name="guaranteeType" *ngIf="add==false"
+                                        [(ngModel)]="danbaoren.guaranteeType" [style]="{'width':'100px','height':'35px'}"
+                                        [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="guaranteeType" *ngIf="add==true"
+                                        [(ngModel)]="danbaoren.guaranteeType" [disabled]="add" class="form-control">
+                                </td>
+                                <td>
+                                    <p-dropdown [options]="relationLenders" name="relationLender" *ngIf="add==false"
+                                        [(ngModel)]="danbaoren.relationLender" [style]="{'width':'100px','height':'35px'}"
+                                        [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="relationLender" *ngIf="add==true"
+                                        [(ngModel)]="danbaoren.relationLender" [disabled]="add" class="form-control">
+                                </td>
+                                <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="danbaoren.statusCode"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
                                     <span class="table-add float-right mb-3 mr-2">
-                                        <a class="text-success" (click)="addperson('diyawuxinxi')">
-                                            <i class="fa fa-plus-square "></i>
+                                        <a class="text-default" (click)="remove(id,'danbaorenxinxi')">
+                                            <i class="fa fa-minus-square fa-3x"></i>
                                         </a>
                                     </span>
-                                
-                            </div>
-                            <table class="table table-bordered table-responsive-md table-striped text-center">
-                                <tr >
-                                
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 以下是抵押物担保明细 -->
+        <div *ngIf="dyblbo==true">
+            <div style="text-align: left">抵押物担保明细</div>
+            <div class="diyawudanbaomingxi" disabled="true">
+                <div class="md-form" style="margin:0 !important;">
+                    <div class="card-body">
+                        <div id="table" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2">
+                                <a class="text-success" (click)="addperson('diyawuxinxi')">
+                                    <i class="fa fa-plus-square "></i>
+                                </a>
+                            </span>
+
+                        </div>
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                            <tr>
+
                                 <th class="text-center">序号</th>
                                 <th class="text-center">抵押人客户号</th>
                                 <th class="text-center">抵押人名称</th>
@@ -149,61 +176,73 @@
                                 <th class="text-center">登记日期</th>
                                 <th class="text-center">登记机构</th>
                                 <th class="text-center">删除</th>
-                                </tr>
-                                
-                                <tr *ngFor="let diyawu of diyawus; let id = index">
-                                    <td>{{id+1}}</td>
-                                    <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]="diyawu.cifNo" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="diyawu.cifName" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="coreGuarantyId" [(ngModel)]="diyawu.coreGuarantyId" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="gageName" [(ngModel)]="diyawu.gageName" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                        <p-dropdown [options]="gageTypes"  name="gageType" *ngIf="add==false" [(ngModel)]="diyawu.gageType" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="gageType" *ngIf="add==true" [(ngModel)]="diyawu.gageType" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td><input mdbInputDirective type="text" name="maxMortagageAmt" [(ngModel)]="diyawu.maxMortagageAmt" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="diyawu.statusCode" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                        <p-dropdown [options]="InOutStss"  name="InOutSts" *ngIf="add==false" [(ngModel)]="diyawu.InOutSts" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="InOutSts"  *ngIf="add==true" [(ngModel)]="diyawu.InOutSts"  [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td><input mdbInputDirective type="text" name="inputDate" [(ngModel)]="diyawu.inputDate" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="inputBrId" [(ngModel)]="diyawu.inputBrId" [disabled]="add"  class="form-control"></td>
+                            </tr>
+
+                            <tr *ngFor="let diyawu of diyawus; let id = index">
+                                <td>{{id+1}}</td>
+                                <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]="diyawu.cifNo"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="diyawu.cifName"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="coreGuarantyId" [(ngModel)]="diyawu.coreGuarantyId"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="gageName" [(ngModel)]="diyawu.gageName"
+                                        [disabled]="add" class="form-control"></td>
                                 <td>
-                                        <span class="table-add float-right mb-3 mr-2">
-                                                <a class="text-default" (click)="remove(id,'diyawuxinxi')">
-                                                    <i class="fa fa-minus-square fa-3x"></i>
-                                                </a>
-                                        </span> 
-                                       
+                                    <p-dropdown [options]="gageTypes" name="gageType" *ngIf="add==false" [(ngModel)]="diyawu.gageType"
+                                        [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="gageType" *ngIf="add==true" [(ngModel)]="diyawu.gageType"
+                                        [disabled]="add" class="form-control">
                                 </td>
-                                </tr>
-                            </table>
+                                <td><input mdbInputDirective type="text" name="maxMortagageAmt" [(ngModel)]="diyawu.maxMortagageAmt"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="diyawu.statusCode"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
+                                    <p-dropdown [options]="InOutStss" name="InOutSts" *ngIf="add==false" [(ngModel)]="diyawu.InOutSts"
+                                        [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="InOutSts" *ngIf="add==true" [(ngModel)]="diyawu.InOutSts"
+                                        [disabled]="add" class="form-control">
+                                </td>
+                                <td><input mdbInputDirective type="text" name="inputDate" [(ngModel)]="diyawu.inputDate"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="inputBrId" [(ngModel)]="diyawu.inputBrId"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
+                                    <span class="table-add float-right mb-3 mr-2">
+                                        <a class="text-default" (click)="remove(id,'diyawuxinxi')">
+                                            <i class="fa fa-minus-square fa-3x"></i>
+                                        </a>
+                                    </span>
+
+                                </td>
+                            </tr>
+                        </table>
                     </div>
 
+                </div>
+
+            </div>
         </div>
+        <!-- 以下是质押物担保明细 -->
+        <div *ngIf="zyblbo==true">
 
-       </div>
-    </div>
-          <!-- 以下是质押物担保明细 -->
-    <div *ngIf="zyblbo==true">
 
-    
-       <div style="text-align: left">质押物担保明细</div>
-       <div class="zhiyawudanbaomingxi">
-            <div class ="md-form" style="margin:0 !important;"> 
+            <div style="text-align: left">质押物担保明细</div>
+            <div class="zhiyawudanbaomingxi">
+                <div class="md-form" style="margin:0 !important;">
                     <div class="card-body">
-                            <div id="table" class="table-editable">
-                                <span class="table-add float-right mb-3 mr-2">
-                                    <a class="text-success" (click)="addperson('zhiyawuxinxi')">
-                                        <i class="fa fa-plus-square"></i>
-                                    </a>
-                                </span>
-                            
-                            </div>
-                            <table class="table table-bordered table-responsive-md table-striped text-center">
-                                <tr >
-                                
+                        <div id="table" class="table-editable">
+                            <span class="table-add float-right mb-3 mr-2">
+                                <a class="text-success" (click)="addperson('zhiyawuxinxi')">
+                                    <i class="fa fa-plus-square"></i>
+                                </a>
+                            </span>
+
+                        </div>
+                        <table class="table table-bordered table-responsive-md table-striped text-center">
+                            <tr>
+
                                 <th class="text-center">序号</th>
                                 <th class="text-center">质押人客户号</th>
                                 <th class="text-center">质押人名称</th>
@@ -216,45 +255,57 @@
                                 <th class="text-center">登记日期</th>
                                 <th class="text-center">登记机构</th>
                                 <th class="text-center">删除</th>
-                                </tr>
-                                
-                                <tr *ngFor="let zhiyawu of zhiyawus; let id = index">
-                                    <td>{{id+1}}</td>
-                                    <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]=" diyawus.cifNo" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="diyawus.cifName" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="coreGuarantyId" [(ngModel)]="diyawus.coreGuarantyId" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="gageName" [(ngModel)]="diyawus.gageName" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                        <p-dropdown [options]="gageTypes"  name="gageType" *ngIf="add==false" [(ngModel)]="diyawus.gageType" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="gageType" *ngIf="add==true" [(ngModel)]="diyawus.gageType" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td><input mdbInputDirective type="text" name="maxMortagageAmt" [(ngModel)]="diyawus.maxMortagageAmt" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="diyawus.statusCode" [disabled]="add"  class="form-control"></td>
-                                    <td>
-                                        <p-dropdown [options]="InOutStss"  name="InOutSts" *ngIf="add==false" [(ngModel)]="diyawus.InOutSts" [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
-                                        <input mdbInputDirective type="text" name="InOutSts" *ngIf="add==true" [(ngModel)]="diyawus.InOutSts" [disabled]="add"  class="form-control">
-                                    </td>
-                                    <td><input mdbInputDirective type="text" name="inputDate" [(ngModel)]="diyawus.inputDate" [disabled]="add"  class="form-control"></td>
-                                    <td><input mdbInputDirective type="text" name="inputBrId" [(ngModel)]="diyawus.inputBrId" [disabled]="add"  class="form-control"></td>
+                            </tr>
+
+                            <tr *ngFor="let zhiyawu of zhiyawus; let id = index">
+                                <td>{{id+1}}</td>
+                                <td><input mdbInputDirective type="text" name="cifNo" [(ngModel)]=" diyawus.cifNo"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="cifName" [(ngModel)]="diyawus.cifName"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="coreGuarantyId" [(ngModel)]="diyawus.coreGuarantyId"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="gageName" [(ngModel)]="diyawus.gageName"
+                                        [disabled]="add" class="form-control"></td>
                                 <td>
-                                        <span class="table-add float-right mb-3 mr-2">
-                                                <a class="text-default" (click)="remove(id,'zhiyawuxinxi')">
-                                                    <i class="fa fa-minus-square fa-3x"></i>
-                                                </a>
-                                        </span>   
+                                    <p-dropdown [options]="gageTypes" name="gageType" *ngIf="add==false" [(ngModel)]="diyawus.gageType"
+                                        [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="gageType" *ngIf="add==true" [(ngModel)]="diyawus.gageType"
+                                        [disabled]="add" class="form-control">
                                 </td>
-                                </tr>
-                            </table>
+                                <td><input mdbInputDirective type="text" name="maxMortagageAmt" [(ngModel)]="diyawus.maxMortagageAmt"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="statusCode" [(ngModel)]="diyawus.statusCode"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
+                                    <p-dropdown [options]="InOutStss" name="InOutSts" *ngIf="add==false" [(ngModel)]="diyawus.InOutSts"
+                                        [style]="{'width':'100px','height':'35px'}" [showClear]="true"></p-dropdown>
+                                    <input mdbInputDirective type="text" name="InOutSts" *ngIf="add==true" [(ngModel)]="diyawus.InOutSts"
+                                        [disabled]="add" class="form-control">
+                                </td>
+                                <td><input mdbInputDirective type="text" name="inputDate" [(ngModel)]="diyawus.inputDate"
+                                        [disabled]="add" class="form-control"></td>
+                                <td><input mdbInputDirective type="text" name="inputBrId" [(ngModel)]="diyawus.inputBrId"
+                                        [disabled]="add" class="form-control"></td>
+                                <td>
+                                    <span class="table-add float-right mb-3 mr-2">
+                                        <a class="text-default" (click)="remove(id,'zhiyawuxinxi')">
+                                            <i class="fa fa-minus-square fa-3x"></i>
+                                        </a>
+                                    </span>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
 
-        </div>
+                </div>
 
-       </div>
-    </div>
-       <div style="text-align:center"> 
+            </div>
+        </div>
+        <div style="text-align:center">
             <button mdbBtn type="button" style="margin-right:10%;" color="primary" (click)="tijiao()" mdbWavesEffect>保存</button>
             <button mdbBtn type="button" color="info" outline="true" (click)="quxiao()" mdbWavesEffect>取消</button>
-       </div>
+        </div>
     </form>
 
 </div>

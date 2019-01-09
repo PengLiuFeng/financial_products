@@ -55,26 +55,31 @@ export class XinzengyingshouzhangkuanmingxiComponent implements OnInit {
     UpDate: '',
     list:[
       {
-        busName: '',
-        busCouna: '',
-        busCoun: '',
-        busType: '',
-        busNo: '',
-        billAmt: '',
-        billDate:'',
-        busRecei: '',
-        endDate:''
-      }
+      busName: '',
+      busCouna: '',
+      busCoun: '',
+      busType: '',
+      busNo: '',
+      billAmt: '',
+      billDate:'',
+      busRecei: '',
+      endDate:''
+    }  
     ]
   }
-    
+  childArray:any={
+    busName: '',
+    busCouna: '',
+    busCoun: '',
+    busType: '',
+    busNo: '',
+    billAmt: '',
+    billDate:'',
+    busRecei: '',
+    endDate:''
+  }  
   
-  personList: Array<any> = [
-    { busName: '', busCouna: '', busCoun: '', busType: '', busNo: '', billAmt: '', billDate: '', busRecei: '', endDate: ''}
-   ];
-  awaitingPersonList: Array<any> = [
-    { busName: '', busCouna: '', busCoun: '', busType: '', busNo: '', billAmt: '', billDate: '', busRecei: '', endDate: ''}
-  ];
+  
 
   _http: any;
   isAjax = false;
@@ -105,23 +110,26 @@ export class XinzengyingshouzhangkuanmingxiComponent implements OnInit {
     })
   }
   remove(id: any) {
-    this.awaitingPersonList.push(this.personList[id]);
-    this.personList.splice(id, 1);
+    // this.awaitingPersonList.push(this.personList[id]);
+    // this.personList.splice(id, 1);
+    this.client.list.splice(id,1);
   }
 
   goback():void{
     this.location.back();
   }
   add() {
-    if (this.awaitingPersonList.length > 0) {
-      const person = JSON.parse(JSON.stringify(this.awaitingPersonList[0]));
-      this.personList.push(person);
+    // if (this.awaitingPersonList.length > 0) {
+    //   const person = JSON.parse(JSON.stringify(this.awaitingPersonList[0]));
+    //   this.personList.push(person);
       
-    }
+    // }
+    this.client.list.push(JSON.parse(JSON.stringify(this.childArray)));
   }
 
   save(){
     this.saveTableData();
+    console.log(this.client.list);
   }
   changeValue(id: number, property: string, event: any) {
     this.editField = event.target.textContent;

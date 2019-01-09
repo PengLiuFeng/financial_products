@@ -275,7 +275,7 @@ export class RongzishenqingComponent implements OnInit {
     "融资申请"
   ]
   shenqingxiangqing(date: any): void {
-    
+    this.InputData.personPage='oldPage';
   }
 
 }

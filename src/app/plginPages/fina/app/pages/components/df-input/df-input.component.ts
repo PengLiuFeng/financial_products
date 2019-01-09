@@ -7,6 +7,7 @@ import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 })
 export class DfInputComponent implements OnInit {
   @Input() values:any;
+  @Input() width:any;
   @Output() valuesChange=new EventEmitter();
 
   constructor() { }
@@ -14,6 +15,6 @@ export class DfInputComponent implements OnInit {
   ngOnInit() {
   }
   oninput(v){
-    this.valuesChange.emit(v);
+   this.valuesChange.emit(v.target.value);
   }
 }

@@ -370,7 +370,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
-
+.df-input-lab{
+    margin-right: 5px;
+}
 .el-pagination .el-input__inner {
     text-align: center;
     -moz-appearance: textfield;

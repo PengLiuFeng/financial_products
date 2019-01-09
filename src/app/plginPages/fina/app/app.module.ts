@@ -102,6 +102,7 @@ import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/
 import { DfDialogComponent } from './pages/components/df-dialog/df-dialog.component';
 import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiantaishenpi/qiantaishenpi.component';
 import { DfInputComponent } from './pages/components/df-input/df-input.component';
+import { DfButtonComponent } from './pages/components/df-button/df-button.component';
 
 @NgModule({
   declarations: [
@@ -194,7 +195,9 @@ import { DfInputComponent } from './pages/components/df-input/df-input.component
 
     QiantaishenpiComponent,
 
-    DfInputComponent
+    DfInputComponent,
+
+    DfButtonComponent
   ],
   imports: [
     FormsModule,

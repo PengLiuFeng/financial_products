@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { InputGroupsComponent } from 'src/app/plginPages/template/MDB/components/forms/input-groups/input-groups.component';
 
 @Component({
   selector: 'app-df-button',

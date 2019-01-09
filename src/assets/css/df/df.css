@@ -18,7 +18,7 @@
 }
  */
 [class*=" el-icon-"],[class^=el-icon-] {
-    font-family: element-icons!important;
+    font-family: FontAwesome!important;
     speak: none;
     font-style: normal;
     font-weight: 400;
@@ -30,285 +30,281 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale
 }
-
 .el-icon-info:before {
-    content: "\e61a"
+    content: "\f61a"
 }
 
 .el-icon-error:before {
-    content: "\e62c"
+    content: "\f62c"
 }
 
 .el-icon-success:before {
-    content: "\e62d"
+    content: "\f62d"
 }
 
 .el-icon-warning:before {
-    content: "\e62e"
+    content: "\f62e"
 }
 
 .el-icon-question:before {
-    content: "\e634"
+    content: "\f634"
 }
 
 .el-icon-back:before {
-    content: "\e606"
+    content: "\f606"
 }
 
 .el-icon-arrow-left:before {
-    content: "\e600"
+    content: "\f600"
 }
 
-.el-icon-arrow-down:before {
-    content: "\e603"
-}
 
 .el-icon-arrow-right:before {
-    content: "\e604"
+    content: "\f604"
 }
 
 .el-icon-arrow-up:before {
-    content: "\e605"
+    content: "\f605"
 }
 
 .el-icon-caret-left:before {
-    content: "\e60a"
+    content: "\f60a"
 }
 
 .el-icon-caret-bottom:before {
-    content: "\e60b"
+    content: "\f60b"
 }
 
 .el-icon-caret-top:before {
-    content: "\e60c"
+    content: "\f60c"
 }
 
 .el-icon-caret-right:before {
-    content: "\e60e"
+    content: "\f60e"
 }
 
 .el-icon-d-arrow-left:before {
-    content: "\e610"
+    content: "\f610"
 }
 
 .el-icon-d-arrow-right:before {
-    content: "\e613"
+    content: "\f613"
 }
 
 .el-icon-minus:before {
-    content: "\e621"
+    content: "\f621"
 }
 
 .el-icon-plus:before {
-    content: "\e62b"
+    content: "\f62b"
 }
 
 .el-icon-remove:before {
-    content: "\e635"
+    content: "\f635"
 }
 
 .el-icon-circle-plus:before {
-    content: "\e601"
+    content: "\f601"
 }
 
 .el-icon-remove-outline:before {
-    content: "\e63c"
+    content: "\f63c"
 }
 
 .el-icon-circle-plus-outline:before {
-    content: "\e602"
+    content: "\f602"
 }
 
 .el-icon-close:before {
-    content: "\e60f"
+    content: "×"
 }
 
 .el-icon-check:before {
-    content: "\e611"
+    content: "\f611"
 }
 
 .el-icon-circle-close:before {
-    content: "\e607"
+    content: "\f607"
 }
 
 .el-icon-circle-check:before {
-    content: "\e639"
+    content: "\f639"
 }
 
 .el-icon-circle-close-outline:before {
-    content: "\e609"
+    content: "\f609"
 }
 
 .el-icon-circle-check-outline:before {
-    content: "\e63e"
+    content: "\f63e"
 }
 
 .el-icon-zoom-out:before {
-    content: "\e645"
+    content: "\f645"
 }
 
 .el-icon-zoom-in:before {
-    content: "\e641"
+    content: "\f641"
 }
 
 .el-icon-d-caret:before {
-    content: "\e615"
+    content: "\f615"
 }
 
 .el-icon-sort:before {
-    content: "\e640"
+    content: "\f640"
 }
 
 .el-icon-sort-down:before {
-    content: "\e630"
+    content: "\f630"
 }
 
 .el-icon-sort-up:before {
-    content: "\e631"
+    content: "\f631"
 }
 
 .el-icon-tickets:before {
-    content: "\e63f"
+    content: "\f63f"
 }
 
 .el-icon-document:before {
-    content: "\e614"
+    content: "\f614"
 }
 
 .el-icon-goods:before {
-    content: "\e618"
+    content: "\f618"
 }
 
 .el-icon-sold-out:before {
-    content: "\e63b"
+    content: "\f63b"
 }
 
 .el-icon-news:before {
-    content: "\e625"
+    content: "\f625"
 }
 
 .el-icon-message:before {
-    content: "\e61b"
+    content: "\f61b"
 }
 
 .el-icon-date:before {
-    content: "\e608"
+    content: "\f608"
 }
 
 .el-icon-printer:before {
-    content: "\e62f"
+    content: "\f62f"
 }
 
 .el-icon-time:before {
-    content: "\e642"
+    content: "\f642"
 }
 
 .el-icon-bell:before {
-    content: "\e622"
+    content: "\f622"
 }
 
 .el-icon-mobile-phone:before {
-    content: "\e624"
+    content: "\f624"
 }
 
 .el-icon-service:before {
-    content: "\e63a"
+    content: "\f63a"
 }
 
 .el-icon-view:before {
-    content: "\e643"
+    content: "\f643"
 }
 
 .el-icon-menu:before {
-    content: "\e620"
+    content: "\f620"
 }
 
 .el-icon-more:before {
-    content: "\e646"
+    content: "\f646"
 }
 
 .el-icon-more-outline:before {
-    content: "\e626"
+    content: "\f626"
 }
 
 .el-icon-star-on:before {
-    content: "\e637"
+    content: "\f637"
 }
 
 .el-icon-star-off:before {
-    content: "\e63d"
+    content: "\f63d"
 }
 
 .el-icon-location:before {
-    content: "\e61d"
+    content: "\f61d"
 }
 
 .el-icon-location-outline:before {
-    content: "\e61f"
+    content: "\f61f"
 }
 
 .el-icon-phone:before {
-    content: "\e627"
+    content: "\f627"
 }
 
 .el-icon-phone-outline:before {
-    content: "\e628"
+    content: "\f628"
 }
 
 .el-icon-picture:before {
-    content: "\e629"
+    content: "\f629"
 }
 
 .el-icon-picture-outline:before {
-    content: "\e62a"
+    content: "\f62a"
 }
 
 .el-icon-delete:before {
-    content: "\e612"
+    content: "\f612"
 }
 
 .el-icon-search:before {
-    content: "\e619"
+    content: "\f619"
 }
 
 .el-icon-edit:before {
-    content: "\e61c"
+    content: "\f61c"
 }
 
 .el-icon-edit-outline:before {
-    content: "\e616"
+    content: "\f616"
 }
 
 .el-icon-rank:before {
-    content: "\e632"
+    content: "\f632"
 }
 
 .el-icon-refresh:before {
-    content: "\e633"
+    content: "\f633"
 }
 
 .el-icon-share:before {
-    content: "\e636"
+    content: "\f636"
 }
 
 .el-icon-setting:before {
-    content: "\e638"
+    content: "\f638"
 }
 
 .el-icon-upload:before {
-    content: "\e60d"
+    content: "\f60d"
 }
 
 .el-icon-upload2:before {
-    content: "\e644"
+    content: "\f644"
 }
 
 .el-icon-download:before {
-    content: "\e617"
+    content: "\f617"
 }
 
 .el-icon-loading:before {
-    content: "\e61e"
+    content: "\f61e"
 }
 
 .el-icon-loading {
@@ -374,7 +370,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box
 }
-
+.df-input-lab{
+    margin-right: 5px;
+}
 .el-pagination .el-input__inner {
     text-align: center;
     -moz-appearance: textfield;
@@ -1800,7 +1798,7 @@
     position: absolute;
     right: 20px;
     font-family: element-icons;
-    content: "\E611";
+    content: "\f611";
     font-size: 12px;
     font-weight: 700;
     -webkit-font-smoothing: antialiased;
@@ -10770,7 +10768,7 @@
 
 .el-cascader-menu__item--extensible:after {
     font-family: element-icons;
-    content: "\e604";
+    content: "\f604";
     font-size: 14px;
     color: #bfcbd9;
     position: absolute;

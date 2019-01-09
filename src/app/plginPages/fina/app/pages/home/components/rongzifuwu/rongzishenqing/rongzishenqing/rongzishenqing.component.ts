@@ -28,7 +28,7 @@ export class RongzishenqingComponent implements OnInit {
   testarray = {
     idType: '',
     idNo: '',
-    cifName: '',
+    cuName: '',
     finproNo: '',
     busType: '',
     suSta: '',
@@ -78,7 +78,7 @@ export class RongzishenqingComponent implements OnInit {
       this.testarray.begDate = new Date(this.testarray.begDate)['Format']('yyyy-MM-dd')
     if (this.testarray.endDate != null && this.testarray.endDate != undefined&& this.testarray.endDate != '')
       this.testarray.endDate = new Date(this.testarray.endDate)['Format']('yyyy-MM-dd')
-    this.paths = '&idType='+this.testarray.idType+'&idNo='+this.testarray.idNo+'&cifName='+this.testarray.cifName+'&finproNo='+this.testarray.finproNo
+    this.paths = '&idType='+this.testarray.idType+'&idNo='+this.testarray.idNo+'&cuName='+this.testarray.cuName+'&finproNo='+this.testarray.finproNo
     +'&busType='+this.testarray.busType+'&suSta='+this.testarray.suSta;
   }
   //请求得到总数据

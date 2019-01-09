@@ -1,0 +1,8 @@
+
+
+<button type="button" class="el-button"
+ [class.el-button--medium]="size=='medium'" [class.el-button--small]="size=='small'" [class.el-button--mini]="size=='mini'"
+ [class.el-button--default]="!type" [class.el-button--primary]="type=='primary'" 
+ >
+  <span><ng-content></ng-content></span>
+</button>

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-df-button',
+  selector: 'df-button',
   templateUrl: './df-button.component.html',
   styleUrls: ['./df-button.component.scss']
 })

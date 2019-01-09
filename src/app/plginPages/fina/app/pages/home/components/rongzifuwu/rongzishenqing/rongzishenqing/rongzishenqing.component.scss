@@ -19,7 +19,7 @@
         border:1px solid black;
     & .md-form{
          width: 16%;
-         float: left;
+         display: inline-block;
          //margin-left:2%;
          margin:2% 2% 0 0;
          & /deep/ input[type=text]{
@@ -29,7 +29,7 @@
     }
     & .col-md-6{
         width: 16%;
-        float: left;
+        display: inline-block;
         //margin-left:2%;
         //margin-bottom:3%;
         & /deep/ mdb-select label{

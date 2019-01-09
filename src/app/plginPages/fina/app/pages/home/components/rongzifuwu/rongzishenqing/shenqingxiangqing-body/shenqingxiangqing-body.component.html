@@ -201,19 +201,6 @@
     <mdb-date-picker name="mydate" (click)="pickerFocus($event);" [options]="myDatePickerOptions" name="endDate"
       [placeholder]="'融资到期日'" label="融资到期日" [(ngModel)]="testarray.endDate" required [disabled]="bo"></mdb-date-picker>
 
-    <!-- <div class="md-form input-group" id="inputandselect">
-      <input type="text" style="width:60%;" class="form-control" name="term" [(ngModel)]="testarray.term" placeholder="期限"
-        label="期限" aria-describedby="basic-addon2" [disabled]="bo">
-      <div class="input-group-prepend" id="basic-addon2">
-        <span class="input-group-text" id="basic-addon2">
-
-          <mdb-select style="height: 15%;width: 20% ;min-width: 35px;min-height:15px;border: 1px bisque ;text-align: center;appearance: none;"
-            name="numType" [disabled]="bo" [options]="numType"></mdb-select>
-
-        </span>
-      </div>
-
-    </div> -->
     <div class="md-form input-group input-group-lg" style="width:24%;float:left;">
       <div style="position:relative;top:20px;">融资期限</div>
       <input type="text" class="form-control" [(ngModel)]="testarray.term" [disabled]="bo" style="outline:medium;"

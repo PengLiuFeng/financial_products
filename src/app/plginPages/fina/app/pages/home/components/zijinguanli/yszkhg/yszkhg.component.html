@@ -90,7 +90,7 @@
                 <td scope="col">{{data.username}}</td>
                 <td scope="col">{{data.username}}</td>
                 <td scope="col">
-                  <a routerLink="yszkhgxx" class="text-default" ><u>回购</u></a>
+                  <a (click)="demoBasic.show()" class="text-default" ><u>回购</u></a>
                 </td>
               </tr>
             </ng-container>
@@ -132,6 +132,20 @@
     <!-- </div> -->
   
 </div>
+
+<div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="wins" role="document">
+      <div class="modal-content">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="mtk_div" class="wins-body">
+          <app-yszkhg-xx ></app-yszkhg-xx>
+        </div>
+      </div>
+    </div>
+  </div>
         
 <style>
 .table{

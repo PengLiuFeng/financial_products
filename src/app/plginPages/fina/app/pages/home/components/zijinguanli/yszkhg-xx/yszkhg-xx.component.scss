@@ -9,8 +9,11 @@
         color: #8c8c8c;
     }
     & .body{
+        width: 95%;
+        margin: 2% auto;
         background: #e6ecf7;
     }
+    width: 100%
 }
 
 /deep/.btn.btn-outline-primary.active, .btn.btn-outline-primary.focus, .btn.btn-outline-primary:focus, .btn.btn-outline-primary:hover:not(:disabled){

@@ -1,33 +1,32 @@
 <div id="body_div">
   <div id="head_div">
-      <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    <app-breadcrumbs [title]="title"></app-breadcrumbs>
   </div>
 
   <div id="body_top_div">
-    <form action="">
-      <div id="top_zi_div">
-        <div class="bk_div col-md-6 mx-auto mt-5">
-          <div class="md-form">
-            <input mdbInputDirective name="cifName" type="text" id="fddbr_input" class="form-control">
-            <label for="fddbr_input" class="">客户名称:</label>
+    <div id="top_zi_div">
+      <div>
+        <div class="marg_div bk_div">
+          <span class="font_cen">客户名称:</span>
+          <div class="er_input">
+            <app-df-input></app-df-input>
           </div>
         </div>
-
-        <div class="bk_div col-md-6 mx-auto mt-5">
-          <mdb-select name="idType" [(ngModel)]="idType" [options]="zjlx" placeholder="证件类型:"></mdb-select>
+        <div class="md-form bk_div marg_div">
+          <mdb-select name="idType" [(ngModel)]="idType" label="证件类型:" [options]="zjlx" placeholder="证件类型:"></mdb-select>
         </div>
-
-        <div class="bk_div col-md-6 mx-auto mt-5">
-          <div class="md-form">
-            <input mdbInputDirective name="idNo" type="text" id="fddbr_input" class="form-control">
-            <label for="fddbr_input" class="">证件号码:</label>
+        <div class="marg_div bk_div">
+          <span class="font_cen">证件号码:</span>
+          <div class="er_input">
+            <app-df-input></app-df-input>
           </div>
         </div>
-        <div class="bk_div col-md-6 mx-auto mt-5">
-            <button mdbBtn type="button" color="secondary" class="waves-light Rbtn" mdbWavesEffect>查询</button>
-          </div>
+        <div class="bk_div marg_div">
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 
   <div id="body_bottom_div">

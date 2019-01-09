@@ -1,190 +1,147 @@
 <div class="row">
-  <div class="fyglpage">
-    <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
-      <div style="background-color:white;min-width:200px; width:30%;padding: 1% 0 1% 0;margin: 2% 0 0 2%; float: left;">
-        <a routerLink="/finas/home/rzsq"><i class="fa fa-th fa-1g"></i></a>&nbsp;&nbsp;
-        当前位置>融资管理>资金管理>贷款还款
-      </div>
-      <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" mdbWavesEffect>导出</button>
-
-    </div>
-    <!-- 以下是搜索框内容 -->
-    <div class="fygl_body">
-      <div class="fygl_body_head">
-        <form action="" method="" id="formsearch">
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">转让通知书编号</label>
-          </div>
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">卖方名称</label>
-          </div>
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">合同编号</label>
-          </div>
-          <div class="col-md-6">
-            <mdb-select [options]="optionsSelect" placeholder="请选择" label="业务类型"></mdb-select>
-          </div>
-          <div style="width:20%;float:left;margin-left: 2%;">
-            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
-          </div>
-          <div style="width:20%;float:left;margin-left: 2%;">
-            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
-          </div>
-
-          <!-- <div>
-          
-            <ul class="list-group">
-              <li >Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-              <li class="list-group-item">Porta ac consectetur ac</li>
-              <li class="list-group-item">Vestibulum at eros</li>
-            </ul>
-
-          </div> -->
-          
-          
-          <!-- <div class="col-md-6" style="padding-top: 11px;">
-                    <mdb-select [options]="optionsSelect" placeholder="" label="证件类型"></mdb-select>
-            </div>
-            
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">证件号码</label>
-            </div>
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">客户名称</label>
-            </div>
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">客户号</label>
-            </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="" label="业务类型"></mdb-select>
-            </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="" label="费用"></mdb-select>
-            </div> -->
-            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
-            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+    <div class="fyglpage">
+      <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
+        <div style="background-color:white;min-width:200px; width:30%;padding: 1% 0 1% 0;margin: 2% 0 0 2%; float: left;">
+          <a routerLink="/finas/home/rzsq"><i class="fa fa-th fa-1g"></i></a>&nbsp;&nbsp;
+          当前位置>融资管理>资金管理>贷款还款
+        </div>
+        <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" mdbWavesEffect>导出</button>
   
-
-
-        </form>
-        <!-- <div class="btn-group" mdbDropdown>
-            <button mdbDropdownToggle type="button" mdbBtn color="primary" class="dropdown-toggle waves-light"
-              mdbWavesEffect>
-              Basic dropdown
-            </button>
-        <div class="dropdown-menu dropdown-primary">
-
-                <a class="dropdown-item" href="" (click)="changedata(id)" *ngFor="let data of options;let id=index;" >
-                    {{data.label}}     
-                </a>
-                <ul class="list-group" *ngIf="floot==id;" style="position:relative;right:100px;" > 
-                    <li *ngFor="let twofloot of data.children;let twoid=index;" >{{twofloot.label}}</li>   
-                </ul> 
-        </div>
-        </div> -->
-
       </div>
-      <div class="fygl_body_table">
-        <span>合同列表信息</span>
-
-        <div class="px-4">
-          <table class="table table-hover table-responsive-md mb-0 table-bordered">
-            <thead class="lighten-2">
-              <tr>
-                <th *ngFor="let head of table_head" scope="row">
-                  {{head}}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <ng-container *ngFor="let el of table_body; let i = index">
-                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
-                  <td scope="row">{{i+1}}</td>
-                  <td scope="row">{{el.idType}}</td>
-                  <td scope="row">{{el.idType}}</td>
-                  <td scope="row">{{el.feeTerm}}</td>
-                  <td scope="row">{{el.feeAmt}}</td>
-                  <td scope="row">{{el.payCd}}</td>
-                  <td scope="row">{{el.repayAmt}}</td>
-                  <td scope="row">{{el.ordNm}}</td>
-
-                  <!-- <a routerLink="/finas/home/zhxx">
-                                      <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
-                                    </a>
-                                    
-                                    </td> -->
-                  <td scope="row">
-
-                    <!-- <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" (click)="basicModal.show();"
-                      mdbWavesEffect>回款</button> -->
-                    <a  (click)="basicModal.show();" style="color:blue;">回款</a>
-
-                  </td>
+      <!-- 以下是搜索框内容 -->
+      <div class="fygl_body">
+        <div class="fygl_body_head">
+          <div class="row">
+            <div class="marg_div bk_div">
+              <span class="font_cen">转让通知书编号:</span>
+              <div class="er_input">
+                <app-df-input></app-df-input>
+              </div>
+            </div>
+            <div class="marg_div bk_div">
+              <span class="font_cen">卖方名称:</span>
+              <div class="er_input">
+                <app-df-input></app-df-input>
+              </div>
+            </div>
+  
+            <div class="marg_div bk_div">
+              <span class="font_cen">合同编号:</span>
+              <div class="er_input">
+                <app-df-input></app-df-input>
+              </div>
+            </div>
+            <div class="md-form bk_div marg_div">
+              <mdb-select [options]="optionsSelect" label="业务类型:" placeholder="业务类型" class="placeholder"></mdb-select>
+            </div>
+  
+            <div class="md-form bk_div marg_div">
+              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
+            </div>
+            <div class="md-form bk_div marg_div">
+              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
+            </div>
+            <div class="md-form bk_div marg_div">
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
+            </div>
+            <div class="bk_div marg_div"></div>
+          </div>
+  
+        </div>
+        <div class="fygl_body_table">
+          <span>合同列表信息</span>
+  
+          <div class="px-4">
+            <table class="table table-hover table-responsive-md mb-0 table-bordered">
+              <thead class="lighten-2">
+                <tr>
+                  <th *ngFor="let head of table_head" scope="row">
+                    {{head}}
+                  </th>
                 </tr>
-              </ng-container>
-            </tbody>
-          </table>
-        </div>
-        <div class="d-flex justify-content-center">
-          <nav class="my-4 pt-2">
-            <ul class="pagination pagination-circle pg-purple mb-0">
-              <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                <a class="page-link">首页</a>
-              </li>
-              <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-                <a class="page-link" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
-                class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-                <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-              </li>
-              <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                <a class="page-link" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-              <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                <a class="page-link">尾页</a>
-              </li>
-              <li class="page-item clearfix d-none d-md-block disabled">
-                <span class="page-link">{{itemsPerPage}}条/页</span>
-              </li>
-            </ul>
-          </nav>
+              </thead>
+              <tbody>
+                <ng-container *ngFor="let el of table_body; let i = index">
+                  <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                    <td scope="row">{{i+1}}</td>
+                    <td scope="row">{{el.idType}}</td>
+                    <td scope="row">{{el.idType}}</td>
+                    <td scope="row">{{el.feeTerm}}</td>
+                    <td scope="row">{{el.feeAmt}}</td>
+                    <td scope="row">{{el.payCd}}</td>
+                    <td scope="row">{{el.repayAmt}}</td>
+                    <td scope="row">{{el.ordNm}}</td>
+  
+                    <!-- <a routerLink="/finas/home/zhxx">
+                                        <button type="button" (click)="zonghexinxi(date.id)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button>
+                                      </a>
+                                      
+                                      </td> -->
+                    <td scope="row">
+  
+                      <!-- <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" (click)="basicModal.show();"
+                        mdbWavesEffect>回款</button> -->
+                      <a (click)="basicModal.show();" style="color:blue;">回款</a>
+  
+                    </td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex justify-content-center">
+            <nav class="my-4 pt-2">
+              <ul class="pagination pagination-circle pg-purple mb-0">
+                <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link">首页</a>
+                </li>
+                <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+                  <a class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+                  class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+                  <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+                </li>
+                <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+                  <a class="page-link">尾页</a>
+                </li>
+                <li class="page-item clearfix d-none d-md-block disabled">
+                  <span class="page-link">{{itemsPerPage}}条/页</span>
+                </li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div mdbModal #basicModal="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-        <h4 class="modal-title w-100" id="myModalLabel">&nbsp;
-        </h4>
-      </div>
-
-      <div class="modal-body" style="overflow-y:auto;height:600px;">
-        
+  <div mdbModal #basicModal="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <h4 class="modal-title w-100" id="myModalLabel">&nbsp;
+          </h4>
+        </div>
+  
+        <div class="modal-body" style="overflow-y:auto;height:600px;">
+  
           <app-huikuanyemian></app-huikuanyemian>
-       
+  
+        </div>
       </div>
     </div>
   </div>
-</div>

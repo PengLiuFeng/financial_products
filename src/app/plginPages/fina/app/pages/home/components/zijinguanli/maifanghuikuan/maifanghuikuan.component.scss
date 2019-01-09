@@ -6,6 +6,9 @@
     background-color: rgb(232, 239, 247);
     
 }
+.btn{
+    padding: 0.5rem 1.5rem
+}
 .fygl_body{
     min-width: 620px;
     background-color: rgb(200, 214, 224);
@@ -74,4 +77,24 @@ td , th {
 }
 /deep/ .modal-lg{
     min-width: 1200px;
+}
+.er_input{
+    // width: 78% !important;
+     width: 74%;
+     display: inline-block;
+ }
+ .bk_div{
+     display: inline-block;
+     width: 25%;
+    // margin: 1% 0;
+     text-align: center;
+     max-width: 280px;
+     min-width: 150px;
+ }
+ .marg_div{
+    display: inline-block;
+    margin: 1% auto;
+ }
+ .md-form{
+    padding: 0 1rem;
 }

@@ -1,66 +1,66 @@
 <div>
   <div class="fyglpage" [hidden]="hidFlag">
     <div style="width:100%;height:10%;">
-        <app-breadcrumbs [title]="title"></app-breadcrumbs>
-      <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" mdbWavesEffect>导出</button>
+      <app-breadcrumbs [title]="title"></app-breadcrumbs>
+      <button type="button" style="float:right;margin:-3% 2% 0 0;" size="sm" mdbBtn color="light" mdbWavesEffect>导出</button>
 
     </div>
     <!-- 以下是搜索框内容 -->
     <div class="fygl_body">
       <div class="fygl_body_head">
-        <form action="" method="" id="formsearch">
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">客户号</label>
+        <div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户号:</span>
+            <div class="er_input">
+              <app-df-input></app-df-input>
+            </div>
           </div>
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">客户名称</label>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户名称:</span>
+            <div class="er_input">
+              <app-df-input></app-df-input>
+            </div>
           </div>
-          <div class="md-form">
-            <input mdbInputDirective type="text" id="form1" class="form-control">
-            <label for="form1" class="">合同编号</label>
+
+          <div class="marg_div bk_div">
+            <span class="font_cen">合同编号:</span>
+            <div class="er_input">
+              <app-df-input></app-df-input>
+            </div>
           </div>
-          <div class="col-md-6">
+          <div class="md-form bk_div marg_div">
             <mdb-select [options]="optionsSelect" placeholder="请选择" label="业务类型"></mdb-select>
           </div>
-          <div style="width:20%;float:left;margin-left: 2%;">
+
+          <div class="md-form bk_div marg_div">
             <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
           </div>
-          <div style="width:20%;float:left;margin-left: 2%;">
+          <div class="md-form bk_div marg_div">
             <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
           </div>
-
-
-
-          <!-- <div class="col-md-6" style="padding-top: 11px;">
-                    <mdb-select [options]="optionsSelect" placeholder="" label="证件类型"></mdb-select>
+          <div class="bk_div marg_div"></div>
+          <div class="bk_div marg_div">
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>      
+          </div>
+        </div>
+        <!--             
+            <div class="marg_div bk_div">
+              <span class="font_cen">合同编号:</span>
+              <div class="er_input">
+                <app-df-input></app-df-input>
+              </div>
             </div>
-            
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">证件号码</label>
+            <div class="md-form bk_div marg_div">
+              <mdb-select [options]="optionsSelect" placeholder="请选择" label="业务类型"></mdb-select>
             </div>
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">客户名称</label>
+            <div class="md-form bk_div marg_div">
+              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
             </div>
-            <div class="md-form">
-              <input mdbInputDirective type="text" id="form1" class="form-control">
-              <label for="form1" class="">客户号</label>
+            <div class="md-form bk_div marg_div">
+              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
             </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="" label="业务类型"></mdb-select>
-            </div>
-            <div class="col-md-6">
-                  <mdb-select [options]="optionsSelect" placeholder="" label="费用"></mdb-select>
-            </div> -->
-          <!-- <button mdbBtn type="button" color="primary" outline="true" size="sm" mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="info" outline="true" size="sm" mdbWavesEffect>取消</button> -->
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
-          <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
-
-        </form>
+   -->
 
 
       </div>
@@ -104,7 +104,7 @@
                   <td scope="row">
 
                     <!-- <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" 
-                      mdbWavesEffect>发放</button> -->
+                        mdbWavesEffect>发放</button> -->
 
                     <a (click)="basicModal.show();" style="color:blue;">发放</a>
                     <a class="table_a" href="https://www.zhongdengwang.org.cn/zhongdeng/index.shtml" target="_blank">转让登记</a>

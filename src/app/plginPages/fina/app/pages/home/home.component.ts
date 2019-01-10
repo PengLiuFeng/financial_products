@@ -22,6 +22,11 @@ import { GradeService } from './../../grade.service'
 export class HomeComponent implements OnInit  {
   ngOnChanges(){
   }
+  LSShow=false;
+  login={
+    loginId : "",
+    loginPass : ""
+  }
   isLogin=false;//是否登录
   treeData:Array<any>=[];
   _http:BaHttpInterceptorService;

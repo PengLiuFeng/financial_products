@@ -8,19 +8,41 @@ var uri=baseConfig.aggregator;
 var multer = require('multer');//引入multer
 var upload = multer({dest: 'uploads/'});//设置上传文件存储地址
 var url_baoli=baseConfig.baoli;
+    //1=前台、2=中台、3=后台、4=操作员、5=客户
+let userList={
+    user:{
+        id:1,
+        pwd:1111,//客户
+        grade:[5],
+        data:{
+        }
+    },
+    admin:{
+        id:2,
+        pwd:1111,//客户
+        grade:[4],
+        data:{
 
+        }
+    },
+    
+}
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
     let num=0;
     /* 数据挡板 */
-    router.get('/fina/user',
+    router.get('/fina/orders/getUser',
     function (req, res) {
-        num++;
-        res.send(handleRes.handleRes(false, {statusCode:200}, num));
+        res.send(handleRes.handleRes(false, {statusCode:200}, req.session.user));
+    });
+    router.get('/fina/init',
+    function (req, res) {
+        res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功'}));
     });
     /* 数据挡板 ----END*/
+
     //登录
-    router.post('/fina/loginpage',
+    router.post('/fina/login',
         function (req, res) {
             // let options =
             // {
@@ -33,7 +55,16 @@ module.exports = function attachHandlers(router) {
             //     res.send(handleRes.handleRes(error, response, data));
             // }
             // request(options, callback);
-            res.send(handleRes.handleRes(false, {statusCode:200}, {'':""}));
+            let userName=req.body.userName;
+            let pwd=req.body.pwd;
+            if(userList[userName]&&pwd==userList[userName].pwd){
+                let user=JSON.parse(JSON.stringify(userList[userName]));
+                delete user.pwd;
+                req.session.user=user;
+                res.send(handleRes.handleRes(false, {statusCode:200}, {message:"登录成功！",user:user}));
+            }else{
+                res.send(handleRes.handleRes(false, {statusCode:200}, {message:"登陆失败，请检查账号输入是否正确"}));
+            }
         });
     /**
     *  上传文件
@@ -114,6 +145,10 @@ module.exports = function attachHandlers(router) {
      */
     router.post('/fina/custom/cardInsert',
         function (req, res) {
+            if(req.session.user.data.cardInsert){
+                res.send(handleRes.handleRes(true, response, {msg:'您已新增用户信息'}));
+                return;
+            }
             let options =
             {
                 url: url_baoli + '/custom/cardInsert',
@@ -122,6 +157,9 @@ module.exports = function attachHandlers(router) {
                 body: req.body
             };
             function callback(error, response, data) {
+                if(data.t==1){
+                    req.session.user.data.cardInsert=data;
+                }
                 res.send(handleRes.handleRes(error, response, data));
             }
             request(options, callback);

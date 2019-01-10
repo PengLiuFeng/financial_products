@@ -85,6 +85,7 @@ export class PlginPages implements  AfterViewInit{
   }
   pushTab(){
     this.tabs=new Array();
+    console.log(PAGES_MENU)
     PAGES_MENU.plugins.forEach(item=>{
       if( this.router.url.indexOf(item.path)>-1){
         item.menu.tabs.forEach(item1=>{

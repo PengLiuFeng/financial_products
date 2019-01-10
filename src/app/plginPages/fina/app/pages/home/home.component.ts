@@ -238,6 +238,9 @@ export class HomeComponent implements OnInit {
     this.isAjax=true;  
     this._http.post('/fina/login', this.loginUser, (e) => {
       console.log(e);
+      if(e.data.t){
+        this.Login(e.data.user.grade)
+      }
     }, () => {
       this.isAjax = false;
     })

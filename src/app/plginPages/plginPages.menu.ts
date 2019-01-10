@@ -21,6 +21,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-bookmark',
           title: '我的首页',
+          grade:[1,2],
           tabs:[
             {
               "name":"我的工作台",

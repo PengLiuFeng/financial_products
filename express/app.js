@@ -53,20 +53,23 @@ createServer = function createServer() {
         //对指定的路劲进行登录验证
         var filterPaths=['orders','custom'];
         if(req.url){
+            let isgd=false;
             for(var i=0;i<filterPaths.length;i++){
-                if((req.url).indexOf(filterPaths[i])>-1){
-                    console.log('user=',req.session.user)
-                    if(req.session.user){
-                        // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象
-                        //通过这种方式取代了express的next()传递,将express()和express.Router()相关联起来
-                        router(req, res, next);
-                    }else{
-                        res.send({"statusCode":200,"code":"unlogin",message:"未登录,请先登录"});
-                    }
-                }else{
-                    // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象
-                    router(req, res, next);
+                if((req.url).indexOf(filterPaths[i])>-1){//判断路径
+                    isgd=true;
                 }
+            }
+            if(isgd){//判断路径
+                if(req.session.user){
+                    // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象
+                    //通过这种方式取代了express的next()传递,将express()和express.Router()相关联起来
+                    router(req, res, next);
+                }else{
+                    res.send({"statusCode":200,"code":"unlogin",message:"未登录,请先登录"});
+                }
+            }else{
+                // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象
+                router(req, res, next);
             }
         }else{
             // 利用闭包的特性获取最新的router对象，避免app.use缓存router对象

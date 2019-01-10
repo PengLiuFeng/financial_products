@@ -24,7 +24,7 @@ let userList={
         data:{
 
         }
-    },
+    }
     
 }
 module.exports = function attachHandlers(router) {
@@ -55,16 +55,19 @@ module.exports = function attachHandlers(router) {
             //     res.send(handleRes.handleRes(error, response, data));
             // }
             // request(options, callback);
-            let userName=req.body.userName;
-            let pwd=req.body.pwd;
-            if(userList[userName]&&pwd==userList[userName].pwd){
+
+            let userName=req.body.userName.replace(/\s+/g,'');
+            let pwd=req.body.pwd.replace(/\s+/g,'');
+            let datas=null;
+            if(userName&&pwd&&userList[userName]&&pwd==userList[userName].pwd){
                 let user=JSON.parse(JSON.stringify(userList[userName]));
                 delete user.pwd;
                 req.session.user=user;
-                res.send(handleRes.handleRes(false, {statusCode:200}, {message:"登录成功！",user:user}));
+                datas={message:"登录成功！",user:user,t:1};
             }else{
-                res.send(handleRes.handleRes(false, {statusCode:200}, {message:"登陆失败，请检查账号输入是否正确"}));
+                datas= {message:"登陆失败，请检查账号输入是否正确",t:0}
             }
+            res.send(handleRes.handleRes(false, {statusCode:200},datas));
         });
     /**
     *  上传文件

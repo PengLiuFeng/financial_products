@@ -51,7 +51,7 @@ createServer = function createServer() {
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header('Access-Control-Allow-Headers', 'Content-Type');
         //对指定的路劲进行登录验证
-        var filterPaths=['orders'];
+        var filterPaths=['orders','custom'];
         if(req.url){
             for(var i=0;i<filterPaths.length;i++){
                 if((req.url).indexOf(filterPaths[i])>-1){

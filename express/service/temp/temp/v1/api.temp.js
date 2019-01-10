@@ -24,7 +24,7 @@ let userList={
         data:{
 
         }
-    },
+    }
     
 }
 module.exports = function attachHandlers(router) {
@@ -55,8 +55,11 @@ module.exports = function attachHandlers(router) {
             //     res.send(handleRes.handleRes(error, response, data));
             // }
             // request(options, callback);
+
             let userName=req.body.userName;
             let pwd=req.body.pwd;
+
+
             if(userList[userName]&&pwd==userList[userName].pwd){
                 let user=JSON.parse(JSON.stringify(userList[userName]));
                 delete user.pwd;

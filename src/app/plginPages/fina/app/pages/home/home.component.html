@@ -20,17 +20,17 @@
     </div>
   </div>
   <div *ngIf="!grade.isLogin" class="backs-body">
-    <div style="margin-top: 3%;border:1px solid #dcdfe6;position: absolute;width: 400px;left: 50%;margin-left: -200px;text-align: center;padding-top:60px">
+    <div class="win_div">
       <h1 class="font_fff">金融服务平台</h1>
       <!--background-color:#336799;-->
       <div class="marg_div">
-        <span class="font_cen" class="font_fff">账号：</span>
+        <span class="font_cen font_fff">账号：</span>
         <div class="er_input">
           <app-df-input [values]='login.loginId'></app-df-input>
         </div>
       </div>
       <div class="marg_div">
-        <span class="font_cen" class="font_fff">密码：</span>
+        <span class="font_cen font_fff">密码：</span>
         <div class="er_input">
           <app-df-input [values]='login.loginPass'></app-df-input>
         </div>

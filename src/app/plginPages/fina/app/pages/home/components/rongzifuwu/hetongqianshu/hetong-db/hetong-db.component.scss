@@ -7,55 +7,45 @@
 .publichead{
     text-align: center;
     margin: 2% 2% 1% 2%;
-    width: 92%;
+    width: 96%;
     min-width: 600px;
     height: 15%;
     min-height: 120px;
-    & .md-form{
-        width: 20%;
-        margin: 0 2% 0 2%;
-        float: left;
-    }
+    // & .md-form{
+    //     width: 20%;
+    //     margin: 0 2% 0 2%;
+    //     float: left;
+    // }
 }
 .danbaofangshi{
     padding-left: 2%;
     margin: 2% 2% 2% 2%;
-    width: 92%;
-    min-width: 600px;
-    height: 15%;
-    min-height: 150px;
+    width: 96%;
+    max-width: 1200px;
+   
+   
     border: 1px solid black;
-    & .md-form{
-        width: 15%;
-        margin: 2% 2% 2% 2%;
-        float: left;
-    }
+    
 }
 .danbaorenmingxi{
     margin: 2% 2% 2% 2%;
-    width: 92%;
+    width: 96%;
     overflow: auto;
-    min-width: 600px;
-    height: 15%;
-    min-height:320px;
+    max-width: 1200px;
     border: 1px solid black;
 }
 .diyawudanbaomingxi{
     margin: 2% 2% 2% 2%;
-    width: 92%;
+    width: 96%;
     overflow: auto;
-    min-width: 600px;
-    height: 15%;
-    min-height: 320px;
+    max-width: 1200px;
     border: 1px solid black;
 }
 .zhiyawudanbaomingxi{
     margin: 2% 2% 2% 2%;
-    width: 92%;
+    width: 96%;
     overflow: auto;
-    min-width: 600px;
-    height: 15%;
-    min-height: 320px;
+    max-width: 1200px;
     border: 1px solid black;
 }
 

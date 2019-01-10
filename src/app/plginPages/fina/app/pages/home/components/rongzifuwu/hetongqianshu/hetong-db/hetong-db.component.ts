@@ -42,6 +42,15 @@ export class HetongDbComponent implements OnInit {
     
   }
   //用于控制比例选择的变量
+  zijindanbao:any=false;  //资金担保
+  zijinbili:any;      //资金比例
+  danbaorendanbao:any=false;  //担保人担保
+  danbaobili:any;       //担保人比例
+  diyawudanbao:any=false;     //抵押物担保
+  diyawubili:any;        //抵押物比例
+  zhiyawudanbao:any=false;      //质押物担保
+  zhiyawubili:any;       //质押物比例
+
   xybl:any;
   bzbl:any;
   dybl:any;
@@ -182,6 +191,7 @@ export class HetongDbComponent implements OnInit {
   }
   tijiao(){
       console.log(this.danbaorens);
+      console.log(this.diyawudanbao);
   }
   quxiao(){}
   value:any;

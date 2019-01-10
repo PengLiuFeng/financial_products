@@ -26,18 +26,18 @@
       <div class="marg_div">
         <span class="font_cen font_fff">账号：</span>
         <div class="er_input">
-          <app-df-input [values]='login.loginId'></app-df-input>
+          <app-df-input [values]='loginUser.userName'></app-df-input>
         </div>
       </div>
       <div class="marg_div">
         <span class="font_cen font_fff">密码：</span>
         <div class="er_input">
-          <app-df-input [values]='login.loginPass'></app-df-input>
+          <app-df-input [values]='loginUser.pwd'></app-df-input>
         </div>
       </div>
       <div class="marg_div">
-        <button mdbBtn type="button" color="primary" (click)="LSShow=true" outline="true" mdbWavesEffect>登录</button>
-        <button mdbBtn type="button" color="primary" (click)="LSShow=false" outline="true" mdbWavesEffect>取消</button>
+        <button mdbBtn type="button" color="primary" (click)="loginSub()" outline="true" mdbWavesEffect>登录</button>
+        <button mdbBtn type="button" color="primary" (click)="LSShow=true" outline="true" mdbWavesEffect>取消</button>
       </div>
       <div *ngIf="LSShow">
         <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(5)">客户登录</button><br />

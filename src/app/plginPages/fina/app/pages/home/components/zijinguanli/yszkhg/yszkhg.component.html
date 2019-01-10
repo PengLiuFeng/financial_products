@@ -1,13 +1,13 @@
 <div class="yszkhg">
   <div class="body">
     <div class="right">
-        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect >查询</button>
-      <button mdbBtn (click)="goback()" color="primary" rounded="true"  size="sm" mdbWavesEffect >返回</button>
+      <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
+      <button mdbBtn (click)="goback()" color="primary" rounded="true" size="sm" mdbWavesEffect>返回</button>
 
     </div>
   </div>
 </div>
-<div class="yszkhg"  *ngIf="!isChildRouteLoaded">
+<div class="yszkhg" *ngIf="!isChildRouteLoaded">
   <div class="body">
     <div class="setdiv">
       <div class="row">
@@ -22,137 +22,149 @@
             <input mdbInputDirective type="text" [(ngModel)]="yszk.name" id="form1" class="form-control">
             <label for="form1">客户名称</label>
           </div>
-        </div>                
-        <div class="inputd" >
-            <div style="padding-top: 0px; padding-bottom: 11px;">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'"
-                required></mdb-date-picker>
-            </div>
         </div>
-        <div class="inputd" >
-            <div style="padding-top: 0px; padding-bottom: 11px;">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'"
-                required></mdb-date-picker>
-            </div>
+        <div class="inputd">
+          <div style="padding-top: 0px; padding-bottom: 11px;">
+            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'" required></mdb-date-picker>
+          </div>
         </div>
-        
+        <div class="inputd">
+          <div style="padding-top: 0px; padding-bottom: 11px;">
+            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'" required></mdb-date-picker>
+          </div>
+        </div>
+
         <div class="inputd" style="padding-top: 11px;">
           <div class="md-form">
             <input mdbInputDirective type="text" [(ngModel)]="yszk.htbh" id="form3" class="form-control">
             <label for="form3">合同编号</label>
-          </div>              
-        </div>
-        <div class="inputd"  style="padding-top: 11px;">
-          <div style="padding-top: 11px; padding-bottom: 11px;">
-            <mdb-select [options]="yszk.ywlx.selects" placeholder="业务类型" class="placeholder"  [(ngModel)]="yszk.ywlx.vals"></mdb-select>
           </div>
         </div>
         <div class="inputd" style="padding-top: 11px;">
           <div style="padding-top: 11px; padding-bottom: 11px;">
-            <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder"  [(ngModel)]="yszk.htzt.vals"></mdb-select>
+            <mdb-select [options]="yszk.ywlx.selects" placeholder="业务类型" class="placeholder" [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+          </div>
+        </div>
+        <div class="inputd" style="padding-top: 11px;">
+          <div style="padding-top: 11px; padding-bottom: 11px;">
+            <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder" [(ngModel)]="yszk.htzt.vals"></mdb-select>
           </div>
         </div>
       </div>
     </div>
     <h4>合同列表信息</h4>
   </div>
-    <!-- <div class="yszkhgb"> -->
-      <div class="main-table">
-        <table class="mb-0" mdbTable bordered="true">
-          <thead class="grey lighten-3 black-text">
-            <tr>
-              <th scope="col">序号</th>
-              <th scope="col">客户号</th>
-              <th scope="col">客户名称</th>
-              <th scope="col">合同编号</th>
-              <th scope="col">业务类型</th>
-              <th scope="col">融资金额</th>
-              <th scope="col">融资期限（天）</th>
-              <th scope="col">融资利率（%）</th>
-              <th scope="col">合同起始日期</th>
-              <th scope="col">应收账款到期日</th>
-              <th scope="col">合同状态</th>
-              <th scope="col">操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ng-container *ngFor="let data of tableData; let i = index">
-              <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
-                <td scope="col">{{i+1}}</td>
-                <td scope="col">{{data.firstName}}</td>
-                <td scope="col">{{data.lastName}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">{{data.username}}</td>
-                <td scope="col">
-                  <a (click)="demoBasic.show()" class="text-default" ><u>回购</u></a>
-                </td>
-              </tr>
-            </ng-container>
-          </tbody>
-        </table>
-       
-      </div>
-      <div class="d-flex justify-content-center">
-        <nav class="my-4 pt-2">
-          <ul class="pagination pagination-circle pg-purple mb-0">
-            <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                <a class="page-link">首页</a>
-              </li>
-            <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-              <a class="page-link" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-                <span class="sr-only">Previous</span>
-              </a>
-            </li>
-            <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
-              [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-              <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-            </li>
-            <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-              <a class="page-link" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-                <span class="sr-only">Next</span>
-              </a>
-            </li>
-            <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-              <a class="page-link">尾页</a>
-            </li>
-            <li class="page-item clearfix d-none d-md-block disabled">
-               <span class="page-link">{{itemsPerPage}}条/页</span>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    <!-- </div> -->
-  
+  <!-- <div class="yszkhgb"> -->
+  <div class="main-table">
+    <table class="mb-0" mdbTable bordered="true">
+      <thead class="grey lighten-3 black-text">
+        <tr>
+          <th scope="col">序号</th>
+          <th scope="col">客户号</th>
+          <th scope="col">客户名称</th>
+          <th scope="col">合同编号</th>
+          <th scope="col">业务类型</th>
+          <th scope="col">融资金额</th>
+          <th scope="col">融资期限（天）</th>
+          <th scope="col">融资利率（%）</th>
+          <th scope="col">合同起始日期</th>
+          <th scope="col">应收账款到期日</th>
+          <th scope="col">合同状态</th>
+          <th scope="col">操&nbsp;&nbsp;&nbsp;&nbsp;作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let data of tableData; let i = index">
+          <tr *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+            <td scope="col">{{i+1}}</td>
+            <td scope="col">{{data.firstName}}</td>
+            <td scope="col">{{data.lastName}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">{{data.username}}</td>
+            <td scope="col">
+              <a (click)="demoBasic.show()" class="text-default"><u>回购</u></a>
+              <a (click)="shenhedemoBasic.show()" class="text-default"><u>审核</u></a>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="d-flex justify-content-center">
+    <nav class="my-4 pt-2">
+      <ul class="pagination pagination-circle pg-purple mb-0">
+        <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+          <a class="page-link">首页</a>
+        </li>
+        <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+          <a class="page-link" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+          class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+          <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+        </li>
+        <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+          <a class="page-link" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+        <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+          <a class="page-link">尾页</a>
+        </li>
+        <li class="page-item clearfix d-none d-md-block disabled">
+          <span class="page-link">{{itemsPerPage}}条/页</span>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- </div> -->
+
 </div>
 
 <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
-    aria-labelledby="myBasicModalLabel" aria-hidden="true">
-    <div class="wins" role="document">
-      <div class="modal-content">
-        <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
-          <span aria-hidden="true">×</span>
-        </button>
-        <div id="mtk_div" class="wins-body">
-          <app-yszkhg-xx ></app-yszkhg-xx>
-        </div>
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div" class="wins-body">
+        <app-yszkhg-xx></app-yszkhg-xx>
       </div>
     </div>
   </div>
-        
+</div>
+<div mdbModal #shenhedemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="shenhedemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div id="mtk_div" class="wins-body">
+        <shenpi-page></shenpi-page>
+      </div>
+    </div>
+  </div>
+</div>
 <style>
-.table{
-  background: #fff;
-}
-.right{
-  text-align: right;
-}
+  .table {
+    background: #fff;
+  }
+
+  .right {
+    text-align: right;
+  }
 </style>
- <router-outlet *ngIf="isChildRouteLoaded"></router-outlet>
+<router-outlet *ngIf="isChildRouteLoaded"></router-outlet>

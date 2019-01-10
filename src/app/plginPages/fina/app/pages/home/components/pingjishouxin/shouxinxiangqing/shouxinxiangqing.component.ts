@@ -160,6 +160,9 @@ export class ShouxinxiangqingComponent implements OnInit {
 
   ngOnInit() {
     this.reqDdListData();
+    this.onZhAdd(this.fkxx.zhTable.hkData);
+    this.onZhAdd(this.fkxx.zhTable.skData);
+    this.onZhAdd(this.fkxx.zhTable.ggData);
   }
   closeWin() {
     this.reSetModel()
@@ -240,5 +243,22 @@ export class ShouxinxiangqingComponent implements OnInit {
     setTimeout(() => {
       this.danger_hid = true
     }, 3000);
+  }
+  //账户信息
+  fkxx={
+    zhTable:{
+      thead:['序号','账号','账户开户行','账户名称','操作'],
+      defaultData:{zh:'',khh:'',name:''},
+      skData:[],
+      hkData:[],
+      ggData:[],
+    }
+  }
+  onZhAdd(tTable:Array<any>):void{//添加账户
+    tTable.push(JSON.parse(JSON.stringify(this.fkxx.zhTable.defaultData)));
+    console.log(this.fkxx.zhTable);
+  }
+  onRemove(tTable:Array<any>,i):void{//删除账户
+    tTable.splice(i,1);
   }
 }

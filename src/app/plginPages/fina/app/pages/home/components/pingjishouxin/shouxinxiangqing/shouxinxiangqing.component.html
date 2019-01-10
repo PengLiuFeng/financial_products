@@ -15,7 +15,7 @@
             mdbWavesEffect>客户综合信息</button>
     </div>
 
-    <form action="" method="">
+    
         <div class="body_div">
             <div class="title_div"><strong class="title_b">综合授信额度</strong></div>
             <div class="form_div">
@@ -118,68 +118,158 @@
                 <br><br>
             </div>
         </div>
-        <div class="chang_div" id="sfflsx_div">
-            <div class="check_div"><strong>是否分类授信</strong></div>
-            <div class="radio_left custom-control custom-radio custom-control-inline">
-                <input [disabled]="dataObject.Idisabled" type="radio" [(ngModel)]="show_fenlei" value="1" class="custom-control-input"
-                    id="EDSYFS5" name="EDSYFS" mdbInputDirective>
-                <label class="custom-control-label" for="EDSYFS5">是</label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-                <input [disabled]="dataObject.Idisabled" type="radio" [(ngModel)]="show_fenlei" value="0" class="custom-control-input"
-                    id="EDSYFS6" name="EDSYFS" mdbInputDirective>
-                <label class="custom-control-label" for="EDSYFS6">否</label>
-            </div>
-        </div>
-        <div class="body_div" [hidden]="show_fenlei!='1'">
-            <div class="title_div"><strong class="title_b">分类业务授信</strong></div>
-            <div class="form_div">
-                <div class="bk_div col-md-6 mx-auto mt-5">
-                    <div class='md-form'>
-                        <mdb-select [disabled]="dataObject.Idisabled" [options]="FINPRO_NO" [(ngModel)]="flywsx.finproNo"
-                            name="flywsx.finproNo" placeholder="请选择" label="金融服务产品*:"></mdb-select>
+        <!-- 账户信息 -->
+        账户信息
+        <div class="zhanghu">
+           
+            <fieldset>
+                <div class="container fyxx">
+                    
+                    <div class="row">
+                        <div class="col-sm txtleft">
+                            <span class="btx" style="padding-top: 0.98rem;">收款账户</span>
+                        </div>
+                        <div class="col-sm txtright">
+                            <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                                outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.skData)">
+                                <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable
+                                mdbTableScroll>
+                                <thead class="lighten-2">
+                                    <tr>
+                                        <ng-container *ngFor="let data of fkxx.zhTable.thead; let i = index">
+                                            <th scope="row">{{data}}</th>
+                                        </ng-container>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let data of fkxx.zhTable.skData; let i = index">
+                                        <tr>
+                                            <td scope="row">{{i+1}}</td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
+                                                    outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.skData,i)">
+                                                    <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 14px;">
+                        <div class="col-sm txtleft">
+                            <span class="btx" style="padding-top: 0.98rem;">还款账户</span>
+                        </div>
+                        <div class="col-sm txtright">
+                            <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                                outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.hkData)">
+                                <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable
+                                mdbTableScroll>
+                                <thead class="lighten-2">
+                                    <tr>
+                                        <ng-container *ngFor="let data of fkxx.zhTable.thead; let i = index">
+                                            <th scope="row">{{data}}</th>
+                                        </ng-container>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let data of fkxx.zhTable.hkData; let i = index">
+                                        <tr>
+                                            <td scope="row">{{i+1}}</td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
+                                                    outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.hkData,i)">
+                                                    <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 14px;">
+                        <div class="col-sm txtleft">
+                            <span class="btx" style="padding-top: 0.98rem;">共管账户</span>
+                        </div>
+                        <div class="col-sm txtright">
+                            <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                                outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.ggData)">
+                                <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm">
+                            <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable
+                                mdbTableScroll>
+                                <thead class="lighten-2">
+                                    <tr>
+                                        <ng-container *ngFor="let data of fkxx.zhTable.thead; let i = index">
+                                            <th scope="row">{{data}}</th>
+                                        </ng-container>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <ng-container *ngFor="let data of fkxx.zhTable.ggData; let i = index">
+                                        <tr>
+                                            <td scope="row">{{i+1}}</td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            </td>
+                                            <td scope="row">
+                                                <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
+                                                    outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.ggData,i)">
+                                                    <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+            </fieldset>
+        </div>
 
-                <div class="bk_div col-md-6 mx-auto mt-5">
-                    <div class='md-form'>
-                        <mdb-select [disabled]="dataObject.Idisabled" [options]="AUTH_SPLIT_TYPT" [(ngModel)]="flywsx.authSplitType"
-                            name="flywsx.authSplitType" placeholder="请选择" label="授信额度类型*:"></mdb-select>
-                    </div>
-                </div>
-            </div>
-            <div class="bk_div col-md-6 mx-auto mt-5">
-                <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthAmt" [(ngModel)]="flywsx.sauthAmt"
-                        type="text" id="fxzed_input" class="form-control">
-                    <label for="fxzed_input" class="">分项子额度<span class="font_red">*</span>:</label>
-                </div>
-            </div>
-            <div class="bk_div col-md-6 mx-auto mt-5">
-                <div class="md-form">
-                    <input [disabled]="dataObject.Idisabled" mdbInputDirective name="flywsx.sauthBal" [(ngModel)]="flywsx.sauthBal"
-                        type="text" id="fxzedye_input" class="form-control">
-                    <label for="fxzedye_input" class="">分项子额度余额<span class="font_red">*</span>:</label>
-                </div>
-            </div>
-            <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.begDate"
-                    [options]="myDatePickerOptions" label="分项授信起始日期*" [(ngModel)]="flywsx.begDate" required></mdb-date-picker>
-            </div>
-            <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="flywsx.endDate"
-                    [options]="myDatePickerOptions" label="分项授信终止日期*" [(ngModel)]="flywsx.endDate" required></mdb-date-picker>
-            </div>
-            <div id="sxxybh_div" class="chang_div col-md-6 mx-auto mt-5">
-                <div class="md-form">
-                    <input disabled="disabled" mdbInputDirective [(ngModel)]="flywsx.authAppNo" name="flywsx.authAppNo"
-                        type="text" id="sxxybh_input" class="form-control" value="{{dataObject.controlIndicators.authAppNo}}">
-                    <label for="sxxybh_input" class="">授信申请编号<span class="font_red">*</span>:</label>
-                </div>
-            </div>
-            <span class="font_red" [hidden]="dataObject.Idisabled">{{zhu}}</span>
-            <br><br>
-        </div>
         <div class="body_div">
             <div class="title_div"><strong class="title_b">登记信息</strong></div>
             <div class="form_div">
@@ -227,8 +317,8 @@
         </div>
         <br>
 
-        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;bottom: -10%;" class="modal fade" tabindex="-1" role="dialog"
-            aria-labelledby="myBasicModalLabel" aria-hidden="true">
+        <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;bottom: -10%;" class="modal fade" tabindex="-1"
+            role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
             <div class="wins" role="document">
                 <div class="modal-content">
                     <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic2.hide()">
@@ -249,7 +339,7 @@
                 class="waves-light form_button" mdbWavesEffect>取消</button>
             <div [hidden]="!dataObject.Idisabled"><br><br></div>
         </div>
-    </form>
+   
     <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
         <strong>{{alertTxt}}</strong>
     </div>

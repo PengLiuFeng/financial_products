@@ -12113,6 +12113,11 @@
     border-right-color: rgba(255,255,255,.5)
 }
 
+.el-button-group .el-button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .el-checkbox {
     color: #606266;
     font-weight: 500;

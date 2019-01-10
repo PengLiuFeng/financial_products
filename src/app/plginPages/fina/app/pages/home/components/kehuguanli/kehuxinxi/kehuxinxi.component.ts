@@ -84,11 +84,6 @@ export class KehuxinxiComponent implements OnInit {
   }
   //通过下拉框的值判断下拉框的Label
   getLabel(value: any, select: Array<any>): any {
-    // for(var i=0;i<select.length;i++){
-    //   if(select[i].value==value){
-    //     return select[i].label
-    //   }
-    // }
     for (var p in select) {
       if (select[p]['value'] == value) {
         return select[p]['label']

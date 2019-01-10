@@ -70,3 +70,28 @@
     overflow:hidden auto;
     position: relative;
   }
+/*****************************************************************************/
+.er_input{
+  // width: 78% !important;
+   width: 74%;
+   display: inline-block;
+}
+.marg_div{
+  margin: 10% auto;
+}
+.md-form{
+  padding: 0 1rem;
+}
+.font_fff{
+  color:#336799;
+}
+.win_div{
+  margin-top: 2%;
+  border:1px solid #dcdfe6;
+  position: absolute;
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+  text-align: center;
+  padding-top:60px;
+}

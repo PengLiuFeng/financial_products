@@ -1,8 +1,6 @@
 import { Component, ViewChild, ViewChildren, EventEmitter, QueryList, Input, OnInit } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uikit-pro-standard';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
-import { UploadFile, UploadInput, UploadOutput } from 'ng-uikit-pro-standard';
-import { humanizeBytes } from 'ng-uikit-pro-standard';
+import {GradeService} from './../../../../../../grade.service';
 
 
 @Component({
@@ -19,24 +17,13 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
   bo: boolean = false;
   testarray: any;
   headElements = [
-    '序号', '买方', '基础交易合同名称', '基础交易合同编号', '单据类型', '单据号', '应收账款金额', '应收账款到期日',
+    '序号', '买方', '基础交易合同名称', '基础交易合同编号', '单据类型', '单据号', '应收账款金额', '应收账款到期日','单笔融资金额','单笔融资金额到期日','利率'
   ]
   elements: any = [
     { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD45', BUS_TYPE: '采购订单', BUS_NO: 'FD4W523', BUS_RECEI: '200.000.000', END_DATE: '2019-3-6' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD48', BUS_TYPE: '采购订单', BUS_NO: 'FD4W237', BUS_RECEI: '5.000.000', END_DATE: '2019-9-2' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD49', BUS_TYPE: '采购订单', BUS_NO: 'FD4W363', BUS_RECEI: '12.000.000', END_DATE: '2019-11-6' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD44', BUS_TYPE: '采购订单', BUS_NO: 'FD4W544', BUS_RECEI: '76.000.000', END_DATE: '2019-12-27' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD45', BUS_TYPE: '采购订单', BUS_NO: 'FD4W523', BUS_RECEI: '200.000.000', END_DATE: '2019-3-6' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD48', BUS_TYPE: '采购订单', BUS_NO: 'FD4W237', BUS_RECEI: '5.000.000', END_DATE: '2019-9-2' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD49', BUS_TYPE: '采购订单', BUS_NO: 'FD4W363', BUS_RECEI: '12.000.000', END_DATE: '2019-11-6' },
-    { BUS_NAME: '江苏恒生集团', BUS_COUNA: '购买原材料', BUS_COUN: '5FS6GSD44', BUS_TYPE: '采购订单', BUS_NO: 'FD4W544', BUS_RECEI: '76.000.000', END_DATE: '2019-12-27' },
+    
   ]
-  //上传资料界面数据
-  formData: FormData;
-  files: UploadFile[];
-  uploadInput: EventEmitter<UploadInput>;
-  humanizeBytes: Function;
-  dragOver: boolean;
+  
   //新增应收账款的数据
   client: any = {
     list: []
@@ -108,10 +95,8 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
     { value: '1', label: '保理' },
     { value: '2', label: '信托' },
   ];
-  constructor() {
-    this.files = [];
-    this.uploadInput = new EventEmitter<UploadInput>();
-    this.humanizeBytes = humanizeBytes;
+  constructor(public grade:GradeService) {
+    
   }
 
   ngOnInit() {
@@ -160,53 +145,7 @@ export class ShenqingxiangqingBodyComponent implements OnInit {
       this.bo = false;
   }
   tijiao() { }
-  //上传文件界面
-  showFiles() {
-    let files = '';
-    for (let i = 0; i < this.files.length; i++) {
-      files += this.files[i].name;
-      if (!(this.files.length - 1 === i)) {
-        files += ',';
-      }
-    }
-    return files;
-  }
-
-  startUpload(): void {
-    const event: UploadInput = {
-      type: 'uploadAll',
-      url: 'your-path-to-backend-endpoint',
-      method: 'POST',
-      data: { foo: 'bar' },
-    };
-    this.files = [];
-    this.uploadInput.emit(event);
-  }
-
-  cancelUpload(id: string): void {
-    this.uploadInput.emit({ type: 'cancel', id: id });
-  }
-
-  onUploadOutput(output: UploadOutput | any): void {
-
-    if (output.type === 'allAddedToQueue') {
-    } else if (output.type === 'addedToQueue') {
-      this.files.push(output.file); // add file to array when added
-    } else if (output.type === 'uploading') {
-      // update current data in files array for uploading file
-      const index = this.files.findIndex(file => file.id === output.file.id);
-      this.files[index] = output.file;
-    } else if (output.type === 'removed') {
-      // remove file from array when removed
-      this.files = this.files.filter((file: UploadFile) => file !== output.file);
-    } else if (output.type === 'dragOver') {
-      this.dragOver = true;
-    } else if (output.type === 'dragOut') {
-    } else if (output.type === 'drop') {
-      this.dragOver = false;
-    }
-    this.showFiles();
-  }
+  //文件上传对象定义
   doc:any;
   fileUpdata(filebutton: any) {
     if(filebutton.path[1].nextSibling!=null&&filebutton.path[1].nextSibling!=undefined){

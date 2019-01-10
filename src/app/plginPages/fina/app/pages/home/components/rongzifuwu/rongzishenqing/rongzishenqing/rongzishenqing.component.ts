@@ -2,6 +2,7 @@ import { Component, ViewChild, ViewChildren, QueryList, OnInit } from '@angular/
 import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../../params.service';
 import { ModalDirective } from 'ng-uikit-pro-standard';
+import { GradeService } from './../../../../../../grade.service';
 //融资申请
 @Component({
   selector: 'app-rongzishenqing',
@@ -252,8 +253,9 @@ export class RongzishenqingComponent implements OnInit {
     }
   }
   pageTable = [];
-  constructor(public param: ParamsService) {
+  constructor(public param: ParamsService,public grade:GradeService) {
     this._http = param._http
+    console.log(grade)
   }
 
   ngOnInit() {

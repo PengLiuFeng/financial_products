@@ -67,8 +67,7 @@ module.exports = function attachHandlers(router) {
             }else{
                 datas= {message:"登陆失败，请检查账号输入是否正确",t:0}
             }
-            res.send("33");
-            // res.send(handleRes.handleRes(false, {statusCode:200},datas));
+            res.send(handleRes.handleRes(false, {statusCode:200},datas));
         });
     /**
     *  上传文件

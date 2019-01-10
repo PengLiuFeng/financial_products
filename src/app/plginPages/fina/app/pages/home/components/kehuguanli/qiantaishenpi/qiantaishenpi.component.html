@@ -1,4 +1,5 @@
 <div id="dom_div">
+  <h4 class="title_h">尽调资料审批</h4>
   <div id="body_div">
     <!-- //<table class=" table table-hover"> -->
     <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
@@ -14,10 +15,10 @@
         <tr *ngFor="let item of items; let i=index">
           <td scope="row">{{i+1}}</td>
           <td scope="row">
-              {{item.fileName}}
+            {{item.fileName}}
           </td>
           <td scope="row">
-              {{item.fileInfo}}
+            {{item.fileInfo}}
           </td>
           <td>
             <button class="th_btn" type="button" size="sm" mdbBtn color="info" mdbWavesEffect> 下载 </button>
@@ -27,8 +28,8 @@
     </table>
   </div>
   <div id="button_div">
-      <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>通过</button>
-      <button mdbBtn type="button" color="info"  class="waves-light form_button" mdbWavesEffect>驳回</button>      
-      <button mdbBtn type="button" color="info" (click)="closeShenPi()" class="waves-light form_button" mdbWavesEffect>取消</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>通过</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>驳回</button>
+    <button mdbBtn type="button" color="info" (click)="closeShenPi()" class="waves-light form_button" mdbWavesEffect>取消</button>
   </div>
 </div>

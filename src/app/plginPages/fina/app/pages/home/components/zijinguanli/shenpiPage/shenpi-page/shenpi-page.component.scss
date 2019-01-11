@@ -1,0 +1,15 @@
+.shenpiPage{
+    width: 96%;
+    margin: 2% 2% 2% 2%;
+    max-width: 1200px;
+    text-align: center;
+}
+th,td{
+    white-space: nowrap;
+}
+.headPage{
+    & span{
+        width: 20% ;
+        margin-right: 2%;
+    }
+}

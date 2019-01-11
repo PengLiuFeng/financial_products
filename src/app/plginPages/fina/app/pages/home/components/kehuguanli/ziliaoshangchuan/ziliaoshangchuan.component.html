@@ -1,0 +1,17 @@
+<div>
+      this is head       
+</div>
+<div>
+  <form>
+    <div class="file-field md-form">
+        <div mdbBtn rounded="true" outline="true" color="secondary" size="md" mdbWavesEffect>
+          <span class="pt-1">Choose file</span>
+          <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+        </div>
+      <div class="file-path-wrapper mt-2">
+        <input class="file-path" type="text" placeholder="Upload your file" [value]="showFiles()">
+      </div>
+    </div>
+    <button mdbBtn type="button" rounded="true" outline="true" color="secondary" (click)="startUpload()" mdbWavesEffect>Start uploading</button>
+</form>
+</div>

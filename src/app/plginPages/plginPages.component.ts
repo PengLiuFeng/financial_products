@@ -1,5 +1,5 @@
 import { filter } from 'rxjs/operators';
-import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input} from '@angular/core';
 import { GradeService } from './fina/app/grade.service'
 import {
   ActivatedRoute, NavigationCancel,
@@ -17,7 +17,6 @@ import {BaHttpInterceptorService} from "../theme";
 import {LoadingBarService} from "@ngx-loading-bar/core";
 
 import { ParamsService } from './fina/app/params.service'
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'plgin-pages',
@@ -104,10 +103,19 @@ export class PlginPages implements  AfterViewInit{
       }
     })
   }
+  @Input() inits:any;
   ngOnInit() {
-    this.grades.user.subscribe((event=>{//监听用户切换
-
-    }));
+    this.grades.sub.subscribe(res => {
+      console.log(res)
+     if( res.type==1){
+       //登录
+       console.log('登录成功')
+     }
+    })
+    // this.grades.get().subscribe(isLogin=>{//订阅
+    //   console.log(isLogin)
+    //   alert('登录了')
+    // });
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // set page progress bar loading to start on NavigationStart event router

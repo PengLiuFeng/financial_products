@@ -231,6 +231,7 @@ export class KehuxinxiComponent implements OnInit {
     this.isAjax = true;
     this._http.get('/fina/custom/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.paths, (e) => {
       this.isAjax = false;
+      console.log(e)
       this.tableData = e.data.pb.list
       if (!!this.tableData) {
         for (var i = 0; i < this.tableData.length; i++) {
@@ -280,7 +281,7 @@ export class KehuxinxiComponent implements OnInit {
         this.dfSteps.active = step;
         }
     }
-
+    
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();

@@ -25,7 +25,7 @@
           </div>
       </div>
       <div id="button_div">
-          <button mdbBtn type="button" [disabled]='isAjax' (click)="submitAJump();" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
+          <button mdbBtn type="button" [disabled]='isAjax' (click)="submitAJump();newDemoBasic.hide()" color="success" class="waves-light form_button" mdbWavesEffect>保存</button>
           <button mdbBtn type="button" color="danger" (click)="reSetModel();newDemoBasic.hide()" class="waves-light form_button" mdbWavesEffect>取消</button>
       </div>
   </form>

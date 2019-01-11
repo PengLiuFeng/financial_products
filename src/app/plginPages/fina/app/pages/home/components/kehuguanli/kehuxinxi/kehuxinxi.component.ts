@@ -12,32 +12,32 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
-  dfSteps={
-    active:1,
-    options:[
+  dfSteps = {
+    active: 0,
+    options: [
       {
-        title:"步骤1",
-        name:"填写客户信息"
+        title: "步骤1",
+        name: "填写客户信息"
       },
       {
-        title:"步骤2",
-        name:"尽调资料上传"
+        title: "步骤2",
+        name: "尽调资料上传"
       },
       {
-        title:"步骤3",
-        name:"资料审核"
+        title: "步骤3",
+        name: "资料审核"
       },
       {
-        title:"步骤4",
-        name:"线下尽调"
+        title: "步骤4",
+        name: "线下尽调"
       },
       {
-        title:"步骤5",
-        name:"审贷会"
+        title: "步骤5",
+        name: "审贷会"
       },
       {
-        title:"步骤6",
-        name:"授信合同签署"
+        title: "步骤6",
+        name: "授信合同签署"
       }
     ]
   }
@@ -52,7 +52,7 @@ export class KehuxinxiComponent implements OnInit {
     "客户管理",
     "客户信息"
   ]
-  radioModel='zhxx'
+  radioModel = 'zhxx'
   //查询条件值绑定
   client: any = {
     cuName: '',
@@ -69,7 +69,7 @@ export class KehuxinxiComponent implements OnInit {
 
       console.log(error)
     }
-    this.activePage=1;
+    this.activePage = 1;
     this.requestTableData();
   }
 
@@ -223,9 +223,10 @@ export class KehuxinxiComponent implements OnInit {
   }
   _http: any;
   isAjax = false;
-  constructor(public params: ParamsService,public grande:GradeService) {
+  constructor(public params: ParamsService, public grande: GradeService) {
     this._http = params._http;
   }
+
   requestTableData() {
     this.isAjax = true;
     this._http.get('/fina/custom/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.paths, (e) => {
@@ -269,7 +270,17 @@ export class KehuxinxiComponent implements OnInit {
   }
   ngOnInit() {
     this.requestTableData();
-    this.requestselectData()
+    this.requestselectData();
+    alert(1111)
+    alert(this.grande.user.data.steps)
+    alert(2222)
+    // var step = this.grande.user.data.steps;
+    // if(step){
+    //   alert(step)
+    // }
+    // alert(step)
+
+    //  this.dfSteps.active = step;
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();

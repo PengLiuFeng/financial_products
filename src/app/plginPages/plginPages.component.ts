@@ -1,5 +1,6 @@
 import { filter } from 'rxjs/operators';
-import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener,OnChanges,SimpleChanges} from '@angular/core';
+import { GradeService } from './fina/app/grade.service'
 import {
   ActivatedRoute, NavigationCancel,
   NavigationEnd,
@@ -47,10 +48,23 @@ import { ParamsService } from './fina/app/params.service'
     <mat-progress-bar class="m-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async"></mat-progress-bar>
   `
 })
-export class PlginPages implements  AfterViewInit{
+export class PlginPages implements  AfterViewInit,OnChanges{
+  gradess:any;
   tabs;
-  constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService) {
+  constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService,private grades:GradeService) {
     this.pushTab();
+    this.gradess=grades;
+    
+    setInterval(()=>{
+      this.gradess=Math.random();
+    },3000)
+  }
+  ngOnChanges(changes:SimpleChanges){
+    console.log(this.gradess)
+    console.log('ngOnChanges中inputVal变更前值为：'+ changes['grades']);
+    console.log('ngOnChanges中inputVal变更后值为：'+ changes['grades']);
+    console.log('ngOnChanges中inputVal是否是一次改变：'+ changes['grades']);
+
   }
   //监听路由
   topage(url:string):void{

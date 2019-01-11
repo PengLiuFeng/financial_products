@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   treeData: Array<any> = [];
   _http: BaHttpInterceptorService;
   constructor(private routers: Router, private activer: ActivatedRoute, private params: ParamsService, public grade: GradeService) {
-    grade.isLogin = !!sessionStorage.isLogin;
+    //grade.isLogin = !!sessionStorage.isLogin;
     this._http = params._http;
     let sc = function () {
       document.getElementsByClassName('al-sidebar')[0].setAttribute('class', 'al-sidebar al-sidebar-fina');

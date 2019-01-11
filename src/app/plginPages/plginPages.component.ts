@@ -1,5 +1,6 @@
 import { filter } from 'rxjs/operators';
-import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, Input} from '@angular/core';
+import { GradeService } from './fina/app/grade.service'
 import {
   ActivatedRoute, NavigationCancel,
   NavigationEnd,
@@ -49,7 +50,7 @@ import { ParamsService } from './fina/app/params.service'
 })
 export class PlginPages implements  AfterViewInit{
   tabs;
-  constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService) {
+  constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService,private grades:GradeService) {
     this.pushTab();
   }
   //监听路由
@@ -102,7 +103,19 @@ export class PlginPages implements  AfterViewInit{
       }
     })
   }
+  @Input() inits:any;
   ngOnInit() {
+    this.grades.sub.subscribe(res => {
+      console.log(res)
+     if( res.type==1){
+       //登录
+       console.log('登录成功')
+     }
+    })
+    // this.grades.get().subscribe(isLogin=>{//订阅
+    //   console.log(isLogin)
+    //   alert('登录了')
+    // });
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // set page progress bar loading to start on NavigationStart event router

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,11 +27,12 @@ export class HomeComponent implements OnInit {
     userName: "",
     pwd: "1111"
   }
+  gradeCenter=new EventEmitter();
   isLogin = false;//是否登录
   treeData: Array<any> = [];
   _http: BaHttpInterceptorService;
   constructor(private routers: Router, private activer: ActivatedRoute, private params: ParamsService, public grade: GradeService) {
-    grade.isLogin = !!sessionStorage.isLogin;
+    //grade.isLogin = !!sessionStorage.isLogin;
     this._http = params._http;
     let sc = function () {
       document.getElementsByClassName('al-sidebar')[0].setAttribute('class', 'al-sidebar al-sidebar-fina');
@@ -240,6 +241,8 @@ export class HomeComponent implements OnInit {
      // console.log(e);
       if(e.data.t){
         this.grade.user=e.data.user;
+        this.grade.sub.next({type:1});
+        // this.grade.user.emit(e.data.user);
         this.Login(e.data.user.grade)
       //  this.cuNo = e.data.user.data.cardInsert//客户号
       }

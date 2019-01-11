@@ -143,10 +143,10 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   isajax = false;
   requestData() {
     this.isajax=true
-    this._http.get('/fina/custom/detail?cuNo=' + this.cuNo, (e) => {
+    this._http.get('/fina/custom/corpDetail?cuNo=' + this.cuNo, (e) => {
       if(e!=null&&e!=undefined){
         console.log(e)
-        this.allData = e.data.apb
+        this.allData = e.data
         this.testarray = this.allData;
         console.log(this.testarray)
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      

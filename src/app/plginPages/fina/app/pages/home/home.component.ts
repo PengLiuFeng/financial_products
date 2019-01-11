@@ -247,6 +247,11 @@ export class HomeComponent implements OnInit {
     })
     
   }
+  keyInser(ev){
+    if(ev.keyCode==13){
+      this.loginSub();
+    }
+  }
 }
   /* treeData=[
      {label: '系统首页',

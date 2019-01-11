@@ -60,10 +60,10 @@ export class XinzengshouxinComponent implements OnInit {
           if(item){
             // console.log(e)
             // console.log(e.data)
-            this.xzsx.cuName = e.data.data.cuName;
-            this.cuNo = e.data.data.cuNo;
-            this.authId = e.data.data.authId;
-            this.authAppNo = e.data.data.authAppNo;
+            this.xzsx.cuName = e.data.cuName;
+            this.cuNo = e.data.cuNo;
+            this.authId = e.data.authId;
+            this.authAppNo = e.data.authAppNo;
             this.dataRes();
           }
           if(this.debug){

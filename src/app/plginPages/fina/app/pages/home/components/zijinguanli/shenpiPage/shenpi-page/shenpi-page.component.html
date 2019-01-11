@@ -1,0 +1,68 @@
+<div class="shenpiPage">
+  <div class="headPage">
+        公司名称:<span>12121212</span>
+        证件号码:<span>123123123123</span>
+        融资合同编号:<span>312312312312311</span>
+        还款账款:<span>42312341432423425324</span>
+  </div>
+  <div class="tablestyle">
+    <div id="yszkmx_table_div">
+      <br>
+      <table class="table table-hover table-responsive-md mb-0 table-bordered">
+        <thead class="lighten-2">
+          <tr>
+            <th scope="row"></th>
+            <!-- <th scope="row">
+                  <mdb-checkbox (click)="quanXuan()" [(ngModel)]="qx_btn"></mdb-checkbox>
+                </th> -->
+            <th scope="row">买方</th>
+            <th scope="row">基础交易合同名称</th>
+            <th scope="row">基础交易合同编号</th>
+            <th scope="row">单据类型</th>
+            <th scope="row">单据号码</th>
+            <th scope="row">应收账款到期日</th>
+            <th scope="row">应收账款金额</th>
+            <th scope="row">融资比例(%)</th>
+            <th scope="row">融资款金额</th>
+            <th scope="row">指定收款金额</th>
+            <th scope="row">是否还款</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let data of tableData; let i = index">
+            <tr>
+              <td scope="row" class="index_td">{{i+1}}</td>
+              <!-- <td scope="row">
+                    <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
+                  </td> -->
+              <td scope="row">{{data.busName}}</td>
+              <td scope="row">{{data.busCouna}}</td>
+              <td scope="row">{{data.busCoun}}</td>
+              <td scope="row">{{data.busType}}</td>
+              <td scope="row">{{data.busNo}}</td>
+              <td scope="row">{{data.endDate}}</td>
+              <td scope="row">{{data.busRecei}}</td>
+              <td scope="row">{{data.downPaymentFlt}}</td>
+              <td scope="row">{{data.loaAmt}}</td>
+              <td scope="row">{{data.resAmt}}</td>
+              <td>
+                  <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="materialInline1" name="inlineMaterialRadiosExample" mdbInputDirective>
+                      <label class="form-check-label" for="materialInline1">是</label>
+                    </div>
+                    
+                    <!-- Material inline 2 -->
+                    <div class="form-check form-check-inline">
+                      <input type="radio" class="form-check-input" id="materialInline2" name="inlineMaterialRadiosExample" mdbInputDirective>
+                      <label class="form-check-label" for="materialInline2">否</label>
+                    </div>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <button mdbBtn type="button" color="primary" size="sm" mdbWavesEffect>完成审核</button>
+
+</div>

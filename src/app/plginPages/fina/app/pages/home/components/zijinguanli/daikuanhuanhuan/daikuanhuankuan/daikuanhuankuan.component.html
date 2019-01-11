@@ -110,7 +110,8 @@
                   <td scope="row">{{data.dueTimestamp}}</td>
                   <td scope="row">{{data.loanSta}}</td>
                   <td scope="row">
-                    <a (click)="transmit(i)" style="color:blue;">综合信息</a>
+                    <a (click)="transmit(i)" style="color:blue;">综合信息</a>/
+                    <a (click)="shenpidemoBasic.show();" style="color:blue;">审批</a>
 
                   </td>
                 </tr>
@@ -174,6 +175,19 @@
         </button>
         <div id="mtk_div" class="wins-body">
           <app-htqs-index [(isedit)]="isedit"></app-htqs-index>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div mdbModal #shenpidemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true">
+    <div class="wins" role="document">
+      <div class="modal-content">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="shenpidemoBasic.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <div id="mtk_div" class="wins-body">
+         <shenpi-page></shenpi-page>
         </div>
       </div>
     </div>

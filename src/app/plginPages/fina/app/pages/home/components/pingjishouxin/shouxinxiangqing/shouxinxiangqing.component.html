@@ -80,7 +80,11 @@
                             name="zhsx.authSts" placeholder="请选择" label="综合授信状态*:"></mdb-select>
                     </div>
                 </div>
-
+                <div class="sf_div col-md-6 mx-auto mt-5">
+                        <div class="md-form">
+                          <mdb-select [options]="CRE_RATIN" placeholder="请选择" label="还款方式:"></mdb-select>
+                        </div>
+                </div>
                 <div class="short_div">
                     <mdb-date-picker (click)="pickerFocus($event)" [disabled]="dataObject.Idisabled" name="zhsx.begDate"
                         [options]="myDatePickerOptions" label="综合授信额度起始日期*" [(ngModel)]="zhsx.begDate" required></mdb-date-picker>

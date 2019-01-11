@@ -71,7 +71,7 @@ import { XinzengchanpinxianComponent } from './../../pages/home/components/chanp
 import { MaifanghuikuanComponent } from './../../pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
 import { DaikuanhuankuanComponent } from './../../pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
 //import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
-
+import { ShenpiPageComponent } from './../../pages/home/components/zijinguanli/shenpiPage/shenpi-page/shenpi-page.component';
 const routes: Routes = [
   {
     path: '',

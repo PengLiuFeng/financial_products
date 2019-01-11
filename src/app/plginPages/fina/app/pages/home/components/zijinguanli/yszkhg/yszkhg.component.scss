@@ -12,6 +12,10 @@
         background: #e6ecf7;
     }
 }
+.main-table{
+    max-width: 1600px;
+    overflow: scroll;
+}
 #mtk_div{
     overflow-y: scroll;
     max-height: calc(100vh - 100px);

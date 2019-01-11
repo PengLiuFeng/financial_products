@@ -43,8 +43,8 @@ export class HomeComponent implements OnInit {
   }
   //登录
   Login(v) {
-    sessionStorage.isLogin = v;
-    this.grade.isLogin = !!sessionStorage.isLogin;
+    //sessionStorage.isLogin = v;
+    this.grade.isLogin = v;
     if (v == 1) {//前台人员
       this.grade.loginName = "前台人员";
     } else if (v == 2) {//中台人员
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
     } else if (v == 5) {//客户
       this.grade.loginName = "客户";
     }
-    sessionStorage.loginName_v = v;
+    //sessionStorage.loginName_v = v;
     this.grade.vals = v;
   }
 
@@ -71,9 +71,9 @@ export class HomeComponent implements OnInit {
   }
   menuId = 0;
   init(url): void {
-    if (sessionStorage.loginName_v) {
-      this.Login(sessionStorage.loginName_v);
-    }
+    // if (sessionStorage.loginName_v) {
+    //   this.Login(sessionStorage.loginName_v);
+    // }
     //应收账款管理
     if (url.indexOf('/finas/home/rzgl/yszkgl/') == 0) {
       if (this.menuId != 1) {
@@ -237,14 +237,21 @@ export class HomeComponent implements OnInit {
   loginSub() {
     this.isAjax=true;  
     this._http.post('/fina/login', this.loginUser, (e) => {
-      console.log(e);
+     // console.log(e);
       if(e.data.t){
+        this.grade.user=e.data.user;
         this.Login(e.data.user.grade)
+      //  this.cuNo = e.data.user.data.cardInsert//客户号
       }
     }, () => {
       this.isAjax = false;
     })
     
+  }
+  keyInser(ev){
+    if(ev.keyCode==13){
+      this.loginSub();
+    }
   }
 }
   /* treeData=[

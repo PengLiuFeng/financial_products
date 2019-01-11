@@ -15,12 +15,13 @@ let userList={
         pwd:1111,//客户
         grade:[5],
         data:{
+            steps:0
         }
     },
     admin:{
         id:2,
-        pwd:1111,//客户
-        grade:[4],
+        pwd:1111,
+        grade:[4],//管理员
         data:{
 
         }
@@ -39,6 +40,7 @@ module.exports = function attachHandlers(router) {
     function (req, res) {
         res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功'}));
     });
+
     /* 数据挡板 ----END*/
 
     //登录
@@ -180,6 +182,13 @@ module.exports = function attachHandlers(router) {
                 body: req.body
             };
             function callback(error, response, data) {
+                if(!error){
+                    if(req.session.user.grade[0]==5){
+                        if(req.session.user.data.steps==0){
+                            req.session.user.data.steps=1;
+                        }
+                    }
+                }
                 res.send(handleRes.handleRes(error, response, data));
             }
             request(options, callback);

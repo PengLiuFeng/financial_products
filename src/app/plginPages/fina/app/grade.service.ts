@@ -7,5 +7,6 @@ export class GradeService {
   isLogin=false;
   loginName="";
   vals:any=0;
+  user:any;
   constructor() { }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, QueryList, ViewChild, OnChanges } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ViewChild, SimpleChanges, EventEmitter } from '@angular/core';
 import { ParamsService } from './../../../../../params.service'
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { GradeService } from './../../../../../grade.service'
@@ -8,10 +8,13 @@ import { GradeService } from './../../../../../grade.service'
   templateUrl: './kehuxinxi.component.html',
   styleUrls: ['./kehuxinxi.component.scss']
 })
-export class KehuxinxiComponent implements OnInit {
+export class KehuxinxiComponent implements OnInit{
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
+  flag=0;
+  flagChange=new EventEmitter();
+
   dfSteps = {
     active: 0,
     options: [
@@ -109,10 +112,11 @@ export class KehuxinxiComponent implements OnInit {
 
   theTotalNumberOfEntries = 0;
   tableData = []
-
   ////监听addUser界面的cuNo是否改变
-  ngOnChanges(it: any) {
-
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(1111);
+    alert(this.flag)
+  
   }
   pageTable = [];
   activePage = 1;

@@ -17,6 +17,8 @@ export class AddUserComponent implements OnInit {
   @Input() lastPage: ModalDirective;
   @Input() nowPage: ModalDirective;
   @Output() cuNoChange: EventEmitter<any> = new EventEmitter();
+  @Input() flag: any;
+  @Output() flagChange = new EventEmitter();
   model: any;
   modell: any;
   _http: any;
@@ -80,7 +82,7 @@ export class AddUserComponent implements OnInit {
     if (this.client.idType != null && this.client.idType != '') {
       if (this.client.idNo != null && this.client.idNo != '') {
         if (this.client.cuName != null && this.client.cuName != '') {
-          
+
           console.log(this.client.idType)
           if (this.client.idType == '1')
             var checkidNo = new RegExp(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/)
@@ -88,16 +90,16 @@ export class AddUserComponent implements OnInit {
             var checkidNo = new RegExp(/[^_IOZSVa-z\W]{2}\d{6}[^_IOZSVa-z\W]{10}/g)
           else if (this.client.idType == '9')
             var checkidNo = new RegExp(/^\w$/)
-            // var checkidNo=new RegExp(/^[\u4e00-\u9fa5]{2,4}/)
+          // var checkidNo=new RegExp(/^[\u4e00-\u9fa5]{2,4}/)
           if (checkidNo.test(this.client.idNo) === false) {
             alert("输入的证件号不正确，请确认后再次填写")
             return false
           }
-          if (this.client.cuName.length<1||this.client.cuName>30) {
+          if (this.client.cuName.length < 1 || this.client.cuName > 30) {
             alert("姓名输入不符合规则，请输入长度在30位以内的姓名")
             return false
           }
-          
+
           return true
         } else {
           alert("您必须向我们提供您的Name，这样我们才能知道您是谁！")
@@ -114,19 +116,25 @@ export class AddUserComponent implements OnInit {
   }
 
   tijiao(): void {
-    if (this.checkData()) {
-      this.requestData(() => {
-        //let newcuNO: Test = new Test(this.cuNo)
-        this.cuNoChange.emit(this.InputData)
-        this.lastPage.show()
-        this.nowPage.hide()
-      })
-      this.client = {
-        idType: '',
-        idNo: '',
-        cifName: ''
-      }
-    }
+    //  this.active=2;
+    this.flagChange.emit(2);
+    setTimeout(()=>{
+      console.log(this.flag)
+    })
+    
+    // if (this.checkData()) {
+    //   this.requestData(() => {
+    //     //let newcuNO: Test = new Test(this.cuNo)
+    //     this.cuNoChange.emit(this.InputData)
+    //     this.lastPage.show()
+    //     this.nowPage.hide()
+    //   })
+    //   this.client = {
+    //     idType: '',
+    //     idNo: '',
+    //     cifName: ''
+    //   }
+    // }
   }
 
 }

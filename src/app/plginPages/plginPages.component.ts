@@ -1,5 +1,5 @@
 import { filter } from 'rxjs/operators';
-import {AfterViewInit, Component, ElementRef, HostListener,OnChanges,SimpleChanges} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener} from '@angular/core';
 import { GradeService } from './fina/app/grade.service'
 import {
   ActivatedRoute, NavigationCancel,
@@ -17,6 +17,7 @@ import {BaHttpInterceptorService} from "../theme";
 import {LoadingBarService} from "@ngx-loading-bar/core";
 
 import { ParamsService } from './fina/app/params.service'
+import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'plgin-pages',
@@ -48,23 +49,10 @@ import { ParamsService } from './fina/app/params.service'
     <mat-progress-bar class="m-loading-bar" *ngIf="(loader.progress$|async) > 0" [value]="loader.progress$|async"></mat-progress-bar>
   `
 })
-export class PlginPages implements  AfterViewInit,OnChanges{
-  gradess:any;
+export class PlginPages implements  AfterViewInit{
   tabs;
   constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService,private grades:GradeService) {
     this.pushTab();
-    this.gradess=grades;
-    
-    setInterval(()=>{
-      this.gradess=Math.random();
-    },3000)
-  }
-  ngOnChanges(changes:SimpleChanges){
-    console.log(this.gradess)
-    console.log('ngOnChanges中inputVal变更前值为：'+ changes['grades']);
-    console.log('ngOnChanges中inputVal变更后值为：'+ changes['grades']);
-    console.log('ngOnChanges中inputVal是否是一次改变：'+ changes['grades']);
-
   }
   //监听路由
   topage(url:string):void{
@@ -117,6 +105,9 @@ export class PlginPages implements  AfterViewInit,OnChanges{
     })
   }
   ngOnInit() {
+    this.grades.user.subscribe((event=>{//监听用户切换
+
+    }));
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // set page progress bar loading to start on NavigationStart event router

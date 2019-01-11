@@ -32,19 +32,12 @@
       <div class="marg_div">
         <span class="font_cen font_fff">密码：</span>
         <div class="er_input">
-          <app-df-input [(values)]='loginUser.pwd'></app-df-input>
+          <app-df-input disabled="disabled" [(values)]='loginUser.pwd'></app-df-input>
         </div>
       </div>
       <div class="marg_div">
         <button mdbBtn type="button" color="primary" (click)="loginSub()" outline="true" mdbWavesEffect>登录</button>
-        <button mdbBtn type="button" color="primary" (click)="LSShow=true" outline="true" mdbWavesEffect>取消</button>
-      </div>
-      <div *ngIf="LSShow">
-        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(5)">客户登录</button><br />
-        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(4)">操作员登录</button><br />
-        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(1)">前台人员登录</button><br />
-        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(2)">中台人员登录</button><br />
-        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect (click)="Login(3)">后台人员登录</button><br />
+        <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>取消</button>
       </div>
     </div>
   </div>

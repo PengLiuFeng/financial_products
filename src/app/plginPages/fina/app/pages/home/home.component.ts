@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   LSShow = false;
   loginUser = {
     userName: "",
-    pwd: ""
+    pwd: "1111"
   }
   isLogin = false;//是否登录
   treeData: Array<any> = [];

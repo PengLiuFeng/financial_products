@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList, ViewChild, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, ViewChildren, QueryList, ViewChild, SimpleChanges, EventEmitter } from '@angular/core';
 import { ParamsService } from './../../../../../params.service'
-import { ModalDirective } from 'ng-uikit-pro-standard';
+import { ModalDirective, flyInOut } from 'ng-uikit-pro-standard';
 import { GradeService } from './../../../../../grade.service'
 
 @Component({
@@ -12,6 +12,9 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
+  @Input() flag = 0;
+  flagChange = new EventEmitter();
+
   dfSteps = {
     active: 0,
     options: [
@@ -109,11 +112,6 @@ export class KehuxinxiComponent implements OnInit {
 
   theTotalNumberOfEntries = 0;
   tableData = []
-
-  ////监听addUser界面的cuNo是否改变
-  ngOnChanges(it: any) {
-
-  }
   pageTable = [];
   activePage = 1;
   itemsPerPage = 10;//每页显示条数
@@ -270,18 +268,24 @@ export class KehuxinxiComponent implements OnInit {
     this.demoBasic.show()
   }
   ngOnInit() {
+    this.grande.sub.subscribe(res => {
+      // console.log(res)
+      if (res.type == "add_user") {
+        this.dfSteps.active = this.flag;
+      }
+    })
     this.requestTableData();
     this.requestselectData();
-    if(this.grande.user.data.cardInsert){
+    if (this.grande.user.data.cardInsert) {
       this.cuNo = this.grande.user.data.cardInsert;
     }
-    if(this.grande.vals==5){
+    if (this.grande.vals == 5) {
       var step = this.grande.user.data.steps;
-      if(step){
+      if (step) {
         this.dfSteps.active = step;
-        }
+      }
     }
-    
+
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();

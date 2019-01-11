@@ -21,7 +21,7 @@
     <app-kehuxinxi-header [radioModel]='radioModel' [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
   </div>
   <div *ngIf="grande.vals == 5 && dfSteps.active == 0" id="xzkh_div">
-    <app-add-user (cuNoChange)="testdataHandler($event)"></app-add-user>
+    <app-add-user (cuNoChange)="testdataHandler($event)" [(flag)]="flag"></app-add-user>
   </div>
 
   <div class="body backColor" *ngIf="grande.vals!=5">

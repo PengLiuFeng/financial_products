@@ -3,6 +3,7 @@ import { MDBDatePickerComponent, IMyOptions, ModalDirective } from 'ng-uikit-pro
 import { Location } from '@angular/common';
 import { ParamsService } from './../../../../../params.service'
 import { KehuxinxiComponent } from '../kehuxinxi/kehuxinxi.component';
+import { GradeService } from './../../../../../grade.service'
 
 @Component({
   selector: 'app-add-user',
@@ -31,7 +32,7 @@ export class AddUserComponent implements OnInit {
   }
 
   public myDatePickerOptions: IMyOptions = {};
-  constructor(private location: Location, private param: ParamsService) {
+  constructor(private location: Location, private param: ParamsService, public grande: GradeService) {
     this._http = param._http
   }
   idTypes: any;
@@ -118,23 +119,21 @@ export class AddUserComponent implements OnInit {
   tijiao(): void {
     //  this.active=2;
     this.flagChange.emit(2);
-    setTimeout(()=>{
-      console.log(this.flag)
-    })
-    
-    // if (this.checkData()) {
-    //   this.requestData(() => {
-    //     //let newcuNO: Test = new Test(this.cuNo)
-    //     this.cuNoChange.emit(this.InputData)
-    //     this.lastPage.show()
-    //     this.nowPage.hide()
-    //   })
-    //   this.client = {
-    //     idType: '',
-    //     idNo: '',
-    //     cifName: ''
-    //   }
-    // }
+    this.grande.sub.next({ type: "add_user" });
+
+    if (this.checkData()) {
+      this.requestData(() => {
+        //let newcuNO: Test = new Test(this.cuNo)
+        this.cuNoChange.emit(this.InputData)
+        this.lastPage.show()
+        this.nowPage.hide()
+      })
+      this.client = {
+        idType: '',
+        idNo: '',
+        cifName: ''
+      }
+    }
   }
 
 }

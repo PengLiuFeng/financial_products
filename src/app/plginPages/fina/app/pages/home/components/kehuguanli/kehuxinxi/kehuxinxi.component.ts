@@ -271,6 +271,10 @@ export class KehuxinxiComponent implements OnInit {
   ngOnInit() {
     this.requestTableData();
     this.requestselectData();
+    alert(this.grande.user.data.cardInsert)
+    if(this.grande.user.data.cardInsert){
+      this.cuNo = this.grande.user.data.cardInsert;
+    }
     if(this.grande.vals==5){
       var step = this.grande.user.data.steps;
       if(step){

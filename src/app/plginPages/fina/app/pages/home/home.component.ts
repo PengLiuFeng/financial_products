@@ -241,7 +241,7 @@ export class HomeComponent implements OnInit {
       if(e.data.t){
         this.grade.user=e.data.user;
         this.Login(e.data.user.grade)
-       // this.cuNo = e.data.user.data.cardInsert//客户号
+      //  this.cuNo = e.data.user.data.cardInsert//客户号
       }
     }, () => {
       this.isAjax = false;

@@ -237,10 +237,11 @@ export class HomeComponent implements OnInit {
   loginSub() {
     this.isAjax=true;  
     this._http.post('/fina/login', this.loginUser, (e) => {
-      console.log(e);
+     // console.log(e);
       if(e.data.t){
         this.grade.user=e.data.user;
         this.Login(e.data.user.grade)
+       // this.cuNo = e.data.user.data.cardInsert//客户号
       }
     }, () => {
       this.isAjax = false;

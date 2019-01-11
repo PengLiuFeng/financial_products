@@ -28,8 +28,9 @@ constructor( private location:Location,private param:ParamsService) {
   isajax=false;    //用于判断是否请求被占用
   requestData(){
       this.isajax=true
-      this._http.get('/fina/custom/detail?cuNo='+this.cuNo, (e)=>{
+      this._http.get('/fina/custom/corpDetail?cuNo='+this.cuNo, (e)=>{
         this.isajax=false
+        console.log(e)
             // this.inputdata.idNo=e.data.apb.idNo
             // this.inputdata.idType=e.data.apb.idType
             // this.inputdata.cuName=e.data.apb.cuName

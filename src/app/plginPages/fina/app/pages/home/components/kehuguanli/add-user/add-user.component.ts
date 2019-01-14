@@ -17,9 +17,11 @@ export class AddUserComponent implements OnInit {
   }
   @Input() lastPage: ModalDirective;
   @Input() nowPage: ModalDirective;
+  @Input() cuNo: any;
+  @Input() personPage: any;
+  @Output() personPageChange: EventEmitter<any> = new EventEmitter();
   @Output() cuNoChange: EventEmitter<any> = new EventEmitter();
-  @Input() flag: any;
-  @Output() flagChange = new EventEmitter();
+  @Input() khFlag: any;
   model: any;
   modell: any;
   _http: any;
@@ -27,7 +29,7 @@ export class AddUserComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   client: any = {
     idType: '',
-    idNo: '',
+    idNo: ' 91310000775785552L',
     cuName: ''
   }
 
@@ -44,6 +46,7 @@ export class AddUserComponent implements OnInit {
       console.log(e)
       if (e.data.t == 1) {
         this.InputData.cuNo = e.data.data.cuNo;
+        this.grande.sub.next({ type: "add_user", flag: e.data.steps });
         fu();
       }
       else if (e.data.msg = "该用户已存在！") {
@@ -118,15 +121,19 @@ export class AddUserComponent implements OnInit {
 
   tijiao(): void {
     //  this.active=2;
-    this.flagChange.emit(2);
-    this.grande.sub.next({ type: "add_user" });
+    // this.flagChange.emit(2);
+    // this.grande.sub.next({ type: "add_user" });
 
     if (this.checkData()) {
       this.requestData(() => {
         //let newcuNO: Test = new Test(this.cuNo)
-        this.cuNoChange.emit(this.InputData)
-        this.lastPage.show()
-        this.nowPage.hide()
+        this.cuNoChange.emit(this.InputData.cuNo)
+        this.personPageChange.emit(this.InputData.personPage)
+        //console.log(this.InputData)
+        if (!this.khFlag) {
+          this.lastPage.show()
+          this.nowPage.hide()
+        }
       })
       this.client = {
         idType: '',

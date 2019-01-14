@@ -114,11 +114,12 @@ padding-top: 17px;
     position: relative;
     margin: 1rem 0 1rem 0;
 }
-/* 
+
 /deep/ .ui-inputgroup .ui-inputtext:not(:last-child){
+    //日期组件输入框
     border-right: 1px #c0c0c0 solid;
+    box-shadow: none;
 }
- */
 //禁用样式
 /deep/.disabled{
     opacity: 0.5;

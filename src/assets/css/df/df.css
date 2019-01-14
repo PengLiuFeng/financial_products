@@ -12180,7 +12180,9 @@
     height: 12px;
     width: 12px
 }
-
+.el-icon-arrow-down.is-reverse {
+    transform: rotate(180deg);
+}
 .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__inner::after {
     height: 6px;
     width: 2px

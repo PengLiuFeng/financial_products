@@ -7,6 +7,8 @@ import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 })
 export class DfInputComponent implements OnInit {
   @Input() values:any;
+  @Input() placeholder:any;
+  @Input() type:any;
   @Input() width:any;
   @Output() valuesChange=new EventEmitter();
 

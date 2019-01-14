@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   }
   LSShow = false;
   loginUser = {
-    userName: "",
+    userName: "user",
     pwd: "1111"
   }
   gradeCenter=new EventEmitter();

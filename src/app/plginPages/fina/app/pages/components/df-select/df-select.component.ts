@@ -7,10 +7,11 @@ import { Component, OnInit,Input,EventEmitter,Output } from '@angular/core';
 })
 export class DfSelectComponent implements OnInit {
 
-  @Input() showAllLevels:boolean;//是否显示完整路径
+ showAllLevels:boolean=false;//是否显示完整路径
   @Input() options:Array<any>;//数据
   @Input()isMDBstyle:boolean;//是否采用MDB样式
   @Input() values:any;
+  @Input() disabled:any;
   @Input() label:any;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();
@@ -20,38 +21,16 @@ export class DfSelectComponent implements OnInit {
 
   forarr(arr:Array<any>,val,lab?:any):any{
     for(let i=0;i<arr.length;i++){
-      if(arr[i].children&&arr[i].children.length>0){
-        if(this.showAllLevels){
-          lab+=arr[i].label+'/';
-          return this.forarr(arr[i].children,val,lab);
-        }else{
-          return this.forarr(arr[i].children,val);
-        }
-      }else{
-        if(arr[i].value==val){
-          if(this.showAllLevels){
-            lab+=arr[i].label;
-            return lab;
-          }
-          return arr[i].label;
-        }
+      if(arr[i].value==val){
+        return arr[i].label;
       }
     }
   }
 inits(){
-if(this.values){
-  this.myval=this.values;
-  this.myval=this.forarr(this.options,this.values,'');
-  // let it=null;
-  // for(let i=0;i<this.options.length;i++){
-  //   it=this.options[i];
-  //   if(it.children&&it.children.length>0){
-
-  //   }else{
-
-  //   }
-  // }
-}
+  if(this.values){
+    this.myval=this.values;
+    this.myval=this.forarr(this.options,this.values,'');
+  }
 }
 
 /* 
@@ -73,22 +52,21 @@ dqli={
     if(!(this.options&&this.options.length>0)){
       console.error('下拉数据不能为Null');
       this.options=[
-        {
-          value: '0',
-          label: '无数据',
-          disabled:true
-        }
+          {
+            value: '0',
+            label: '无数据',
+            disabled:true
+          }
         ]
-    }else{
-      this.inits();
     }
+    this.inits();
   }
   private removeEve(){
     //console.log('注销事件');
     this.isTap=false;
     let dom=document.querySelector('body');
     dom['i']=2;
-    dom.removeEventListener('click',window['fu']);
+    dom.removeEventListener('click',window['fuSelect']);
     this.dqli.ul2={};
     this.dqli.ul1={};
   }
@@ -96,7 +74,7 @@ dqli={
   onTap():void{
     if(!this.isTap){
       let _this=this;
-      window['fu']=function fu(e){
+      window['fuSelect']=function fu(e){
         e.preventDefault();//阻止事件目标的默认动作
         if(this.i==1){
           _this.removeEve();
@@ -104,7 +82,7 @@ dqli={
       }
       this.isTap=true;
       // console.log('注册事件')
-      document.querySelector('body').addEventListener('click',window['fu']);
+      document.querySelector('body').addEventListener('click',window['fuSelect']);
     }else{
       this.removeEve();
     }
@@ -115,17 +93,10 @@ dqli={
   }
   myval="";
   onIt(i,it){
-    if(it.children&&it.children.length>0){
-    }else{
-      let dqli=this.dqli;
-      if(this.showAllLevels){
-        this.myval=dqli.ul3['label']?(dqli.ul1['label']?(dqli.ul1['label']+(dqli.ul2['label']?('/'+dqli.ul2['label']+(dqli.ul3['label']?('/'+dqli.ul3['label']):'')):'')):''):'';
-      }else{
-        this.myval=dqli.ul3['label']?dqli.ul3['label']:'';
-      }
-      if(this.myval){
-        this.valuesChange.emit(dqli.ul3['value']);
-      }
+    if(!it.disabled){
+      this.dqli.ul1=it;
+      this.myval=it['label'];
+      this.valuesChange.emit(it['value']);
       this.removeEve();
     }
   }

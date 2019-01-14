@@ -13,7 +13,7 @@ export const PAGES_MENU =
     //   }
     // ]
 
-
+//1=前台、2=中台、3=后台、4=操作员、5=客户
     path: '',
     plugins: [
       {
@@ -21,13 +21,15 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-bookmark',
           title: '我的首页',
-          grade:[1,2],
+          "grade":[],
           tabs:[
             {
+              "grade":[],
               "name":"我的工作台",
               "path":"/mygzt"
             },
             {
+              "grade":[],
               "name":"风险预警",
               "path":"/fxyj"
             },
@@ -43,14 +45,17 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-bookmark',
           title: '客户管理',
+          "grade":[4,5],
           tabs:[
             {
-              "name":"客户信息",
+                "grade":[4,5],
+                "name":"客户信息",
               "path":"/khxx"
             },
             {
               "name":"评级授信",
-              "path":"/pjsx"
+                "grade":[4,5],
+                "path":"/pjsx"
             },
           ]
         }
@@ -60,30 +65,38 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-bookmark',
           title: '融资管理',
+          "grade":[4,5],
           tabs:[
             {
               "name":"应收账款管理",
-              "path":"/yszkgl/yszkmx"
+              "path":"/yszkgl/yszkmx",
+              "grade":[4,5]
             },
             {
+              "grade":[4,5],
               "name":"融资申请",
               "path":"/rz/rzsq"
             },
             {
+              "grade":[4,5],
               "name":"业务调查与审批",
               "path":"/ywdc"
             },{
+              "grade":[4,5],
               "name":"合同签署",
               "path":"/htqs/htqsList"
             },{
+              "grade":[],
               "name":"电子合同",
               "path":"/dzht/htqsList"
             },
             {
+              "grade":[4],
               "name":"资金管理",
               "path":"/zjgl"
             },
             {
+              "grade":[4],
               "name":"贷后管理",
               "path":"/dhgl/dhfx"
             },
@@ -95,13 +108,16 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-bookmark',
           title: '产品工厂',
+          "grade":[],
           tabs:[
             {
-              "name":"业务线配置",
+          "grade":[],
+          "name":"业务线配置",
               "path":"/ywxpz"
             },
             {
-              "name":"产品线配置",
+          "grade":[],
+          "name":"产品线配置",
               "path":"/cpxpz"
             },
           ]
@@ -132,13 +148,16 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '合作方管理',
+          "grade":[],
           tabs:[
             {
-              "name":"平台方管理",
+            "grade":[],
+            "name":"平台方管理",
               "path":"/"
             },
             {
-              "name":"资金方管理",
+            "grade":[],
+            "name":"资金方管理",
               "path":"/"
             },{
               "name":"资产方管理",
@@ -153,6 +172,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '统计分析',
+          "grade":[],
           tabs:[
             {
               "name":"资金方统计",
@@ -173,6 +193,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '异常处理',
+          "grade":[],
           tabs:[
             {
               "name":"商业纠纷",
@@ -190,6 +211,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '参数管理',
+          "grade":[],
           tabs:[
             {
               "name":"业务参数",
@@ -208,6 +230,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '模型配置',
+          "grade":[],
           tabs:[
             {
               "name":"评级模型",
@@ -248,6 +271,7 @@ export const PAGES_MENU =
         menu:{
           icon: 'fa fa fa-send',
           title: '系统管理',
+          "grade":[],
           tabs:[
             {
               "name":"用户管理",

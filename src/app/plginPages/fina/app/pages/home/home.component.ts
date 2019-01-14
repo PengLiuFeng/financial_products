@@ -241,7 +241,7 @@ export class HomeComponent implements OnInit {
      // console.log(e);
       if(e.data.t){
         this.grade.user=e.data.user;
-        this.grade.sub.next({type:1});
+        this.grade.sub.next({type:1,gradesVals:e.data.user.grade});
         // this.grade.user.emit(e.data.user);
         this.Login(e.data.user.grade)
       //  this.cuNo = e.data.user.data.cardInsert//客户号

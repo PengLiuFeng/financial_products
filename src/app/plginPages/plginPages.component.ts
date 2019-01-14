@@ -50,8 +50,9 @@ import { ParamsService } from './fina/app/params.service'
 })
 export class PlginPages implements  AfterViewInit{
   tabs;
+  gradesVals=0;
   constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService,private grades:GradeService) {
-    this.pushTab();
+    
   }
   //监听路由
   topage(url:string):void{
@@ -84,12 +85,27 @@ export class PlginPages implements  AfterViewInit{
         this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+'px';
     }
   }
+  //初始化二级菜单
   pushTab(){
     this.tabs=new Array();
-    console.log(PAGES_MENU)
     PAGES_MENU.plugins.forEach(item=>{
       if( this.router.url.indexOf(item.path)>-1){
-        item.menu.tabs.forEach(item1=>{
+        let tabsArr=item.menu.tabs;
+        for(let i=0;i<tabsArr.length;i++){
+          let item1=tabsArr[i];
+          if(!!item1["grade"]&&item1["grade"].indexOf(this.gradesVals[0])!=-1){
+            let tab={
+              name:"",
+              path:""
+            };
+            tab.name=item1.name;
+            if(item1.path!=""&&item1.path!=undefined){
+              tab.path="/"+item.path+item1.path
+            }
+            this.tabs.push(tab);
+          }
+        }
+       /*  item.menu.tabs.forEach(item1=>{
           let tab={
             name:"",
             path:""
@@ -99,23 +115,31 @@ export class PlginPages implements  AfterViewInit{
             tab.path="/"+item.path+item1.path
           }
           this.tabs.push(tab);
-        })
+          if(!!item1.grade){
+            if(item1["grade"].indexOf(2)!=-1){
+              
+            }
+          }
+        }) */
       }
     })
   }
-  @Input() inits:any;
+  tabInit(){
+    this.pushTab();
+    let height= this._elementRef.nativeElement.childNodes[0].querySelector('aside').clientHeight-99;
+    if(this.tabs==undefined||this.tabs.length==0){
+      this._elementRef.nativeElement.childNodes[0].querySelector('aside').style.top  = '66px';
+      this._elementRef.nativeElement.childNodes[0].querySelector('aside').style['z-index']  = '1023';
+      this._elementRef.nativeElement.childNodes[2].style.visibility  = 'hidden';
+      this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+35+'px';
+    }else {
+      this._elementRef.nativeElement.childNodes[0].querySelector('aside').style.top  = '101px';
+      this._elementRef.nativeElement.childNodes[0].querySelector('aside').style['z-index']  = '1022';
+      this._elementRef.nativeElement.childNodes[2].style.visibility  = 'unset';
+      this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+'px';
+    }
+  }
   ngOnInit() {
-    this.grades.sub.subscribe(res => {
-      console.log(res)
-     if( res.type==1){
-       //登录
-       console.log('登录成功')
-     }
-    })
-    // this.grades.get().subscribe(isLogin=>{//订阅
-    //   console.log(isLogin)
-    //   alert('登录了')
-    // });
     this.router.events.subscribe(event => {
       if (event instanceof NavigationStart) {
         // set page progress bar loading to start on NavigationStart event router
@@ -139,19 +163,7 @@ export class PlginPages implements  AfterViewInit{
         filter((event)=>event instanceof NavigationEnd)
       )
       .subscribe((event) => {
-        this.pushTab();
-          let height= this._elementRef.nativeElement.childNodes[0].querySelector('aside').clientHeight-99;
-          if(this.tabs==undefined||this.tabs.length==0){
-          this._elementRef.nativeElement.childNodes[0].querySelector('aside').style.top  = '66px';
-          this._elementRef.nativeElement.childNodes[0].querySelector('aside').style['z-index']  = '1023';
-          this._elementRef.nativeElement.childNodes[2].style.visibility  = 'hidden';
-          this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+35+'px';
-        }else {
-          this._elementRef.nativeElement.childNodes[0].querySelector('aside').style.top  = '101px';
-          this._elementRef.nativeElement.childNodes[0].querySelector('aside').style['z-index']  = '1022';
-          this._elementRef.nativeElement.childNodes[2].style.visibility  = 'unset';
-          this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+'px';
-        }
+        this.tabInit();
       });
       let plugins=[
         {
@@ -160,23 +172,80 @@ export class PlginPages implements  AfterViewInit{
         }
       ];
     //this.routers.push({ path: 'qloudAlgoModel', loadChildren: './plugins/DAP/dap.module#DapModule' });
-    PAGES_MENU.plugins.forEach((item,index)=>{
-      plugins[0].children.push(
-        {
-          path: item.path,
-          data: {
-            menu: {
-              title: item.menu.title,
-              icon: item.menu.icon,
-              selected: false,
-              expanded: false,
-              order: index,
+    
+    this.grades.sub.subscribe(res => {
+      if( res.type==1){
+        plugins=[
+          {
+            path:PAGES_MENU.path,
+            children:[]
+          }
+        ];
+        //登录
+        
+        this.gradesVals=res.gradesVals?res.gradesVals:[0];
+        this.tabInit();
+        //初始化菜单
+        for(let index=0;index<PAGES_MENU.plugins.length;index++){
+          let item=PAGES_MENU.plugins[index];
+          if(item["menu"]["grade"]){
+            let arr:Array<any>=item["menu"]["grade"];
+            if(arr.indexOf(res.gradesVals[0])){
+              plugins[0].children.push(
+                {
+                  path: item.path,
+                  data: {
+                    menu: {
+                      title: item.menu.title,
+                      icon: item.menu.icon,
+                      selected: false,
+                      expanded: false,
+                      order: index,
+                    }
+                  }
+                }
+              )
             }
           }
+          /* if(!!item["menu"]["grade"]&&item["menu"]["grade"].indexOf(parseInt(res.gradesVals))!=-1){
+            plugins[0].children.push(
+              {
+                path: item.path,
+                data: {
+                  menu: {
+                    title: item.menu.title,
+                    icon: item.menu.icon,
+                    selected: false,
+                    expanded: false,
+                    order: index,
+                  }
+                }
+              }
+            )
+          } */
         }
-      )
-    });
-    this._menuService.updateMenuByRoutes(<Routes>plugins);
+       /*  PAGES_MENU.plugins.forEach((item,index)=>{
+          if(!!item.menu["grade"]&&item.menu["grade"].indexOf(parseInt(res.gradesVals))!=-1){
+            plugins[0].children.push(
+              {
+                path: item.path,
+                data: {
+                  menu: {
+                    title: item.menu.title,
+                    icon: item.menu.icon,
+                    selected: false,
+                    expanded: false,
+                    order: index,
+                  }
+                }
+              }
+            )
+          }
+        }); */
+        this._menuService.updateMenuByRoutes(<Routes>plugins);
+      
+     }
+    })
     //更新左侧菜单
     // setTimeout(()=>{
     //   let plugins=[

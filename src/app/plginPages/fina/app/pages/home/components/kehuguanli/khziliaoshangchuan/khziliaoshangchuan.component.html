@@ -14,7 +14,8 @@
           <th class="min_width_th" scope="row">
             <button class="th_btn" type="button" size="sm" mdbBtn color="info" (click)="createFileInput()"mdbWavesEffect>添加</button>
             <button class="th_btn" type="button" size="sm" mdbBtn color="info" (click)="deleteFileInput()" mdbWavesEffect>删除</button>
-            <button [disabled]="isAjax" size="sm" mdbBtn class="btn btn-md btn-primary th_btn" (click)="startUpload()">提交</button>
+            <button [disabled]="isAjax" size="sm" mdbBtn class="btn btn-md btn-primary th_btn" (click)="startUpload()">上传</button>
+            <button [disabled]="isAjax" size="sm" mdbBtn class="btn btn-md btn-primary th_btn" (click)="CustDataSub()">提交</button>
           </th>
         </tr>
       </thead>

@@ -12,8 +12,6 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
-  @Input() flag = 0;
-  flagChange = new EventEmitter();
 
   dfSteps = {
     active: 0,
@@ -48,6 +46,8 @@ export class KehuxinxiComponent implements OnInit {
     this.cuNo = event.cuNo
     this.personPage = event.personPage
   }
+  khFlagTrue = true;
+  khFlagFalse = false;
   cuNo: any
   personPage: any
   sfs: string;
@@ -271,7 +271,11 @@ export class KehuxinxiComponent implements OnInit {
     this.grande.sub.subscribe(res => {
       // console.log(res)
       if (res.type == "add_user") {
-        this.dfSteps.active = this.flag;
+        this.dfSteps.active = res.flag;
+      }else if(res.type == "jbxx"){
+        this.dfSteps.active = res.jbFlag;
+      }else if(res.type == "zltj"){
+        this.dfSteps.active = res.zltjFlag;
       }
     })
     this.requestTableData();

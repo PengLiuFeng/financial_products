@@ -4,6 +4,8 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { ParamsService } from './../../../../../params.service'
 import { Data } from '@agm/core/services/google-maps-types';
 import { checkAndUpdateBinding } from '@angular/core/src/render3/instructions';
+import { GradeService } from './../../../../../grade.service'
+
 @Component({
   selector: 'app-jibenxinxi',
   templateUrl: './jibenxinxi.component.html',
@@ -12,13 +14,13 @@ import { checkAndUpdateBinding } from '@angular/core/src/render3/instructions';
 export class JibenxinxiComponent implements OnInit, OnChanges {
   bo: boolean;
   @Input() cuNo: any;
-  @Input() personPage:any;
+  @Input() personPage: any;
   testarray: any = {
     cuNo: '',
     cuName: '',
     engName: ' ',
     idType: '',
-    idNo:'',
+    idNo: '',
     country: '',
     cifArea: '',
     areaName: '',
@@ -90,7 +92,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //定义请求对象
   _http: any;
 
-  constructor(public param: ParamsService) {
+  constructor(public param: ParamsService, public grande: GradeService) {
     this._http = param._http;
 
   }
@@ -101,7 +103,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     return newData
   }
   //请求下拉框的数据
-  requestselectData(){
+  requestselectData() {
     this.isajax = true;
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE,COUNTRY,REG_TYPE,CU_TYPE,HOLD_TYPE,OUT_GRADE', (e) => {
       var newdata = e.data
@@ -134,7 +136,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
           //this.addselectvaule(this.cuTypes)
         }
       }
-     
+
     }, () => {
       this.isajax = false;
     })
@@ -142,22 +144,22 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //请求数据并将数据转换到testarray
   isajax = false;
   requestData() {
-    this.isajax=true
+    this.isajax = true
     this._http.get('/fina/custom/corpDetail?cuNo=' + this.cuNo, (e) => {
-      if(e!=null&&e!=undefined){
+      if (e != null && e != undefined) {
         console.log(e)
         this.allData = e.data
         this.testarray = this.allData;
         console.log(this.testarray)
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {
-  
-          if (p.search('Date') != -1||p.search('Time') != -1) {
+
+          if (p.search('Date') != -1 || p.search('Time') != -1) {
             this.testarray[p] = this.trandate(this.allData[p]);
           }
         }
       }
-     
+
       console.log(this.testarray)
     }, () => {
       this.isajax = false;
@@ -165,30 +167,31 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     })
 
   }
-//向后台提交数据
-  saveData(){
-    this.isajax=true
-    this._http.post('/fina/custom/corpInsert',this.testarray,(e)=>{
-      this.isajax=false
-      console.log(e.data.msg)
-      if(e.data.t=='1'){
+  //向后台提交数据
+  saveData() {
+    this.isajax = true
+    this._http.post('/fina/custom/corpInsert', this.testarray, (e) => {
+      this.isajax = false
+      //   console.log(e)
+      this.grande.sub.next({ type: "jbxx", jbFlag: e.data.steps });
+      if (e.data.t == '1') {
         alert("您的基本信息提交成功")
-        this.bo=true;
+        this.bo = true;
       }
-      else{
+      else {
         alert("您的基本信息提交失败，请您重新提交，如果多次提交失败请及时联系管理员")
       }
-    },()=>{
-      
-      this.isajax=false
+    }, () => {
+
+      this.isajax = false
     })
   }
 
   ngOnChanges(it: any) {        //监视事件，it监视全局变量的改变
-    if(this.personPage=='newUser')
-        this.bo=false
+    if (this.personPage == 'newUser')
+      this.bo = false
     else
-        this.bo=true
+      this.bo = true
 
     if (!!this.cuNo) {
       this.requestData();
@@ -210,23 +213,23 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.requestselectData();
   }
- 
+
   go_reset() { }
-  tijiao(){
+  tijiao() {
     console.log(this.testarray)
-    for(var p in this.testarray){
-      if(p.search('Date')!=-1||p.search('Time')!=-1){
-        this.testarray[p]=Date.parse(this.testarray[p]);
+    for (var p in this.testarray) {
+      if (p.search('Date') != -1 || p.search('Time') != -1) {
+        this.testarray[p] = Date.parse(this.testarray[p]);
       }
     }
     this.saveData()
     //console.log(this.testarray)
   }
   gaibian() {
-    if(this.bo==false)
-      this.bo=true;
+    if (this.bo == false)
+      this.bo = true;
     else
-      this.bo=false;
-      
+      this.bo = false;
+
   }
 }

@@ -54,7 +54,7 @@ export const PAGES_MENU =
             },
             {
               "name":"评级授信",
-                "grade":[4,5],
+                "grade":[4],
                 "path":"/pjsx"
             },
           ]
@@ -70,7 +70,7 @@ export const PAGES_MENU =
             {
               "name":"应收账款管理",
               "path":"/yszkgl/yszkmx",
-              "grade":[4,5]
+              "grade":[4,5],
             },
             {
               "grade":[4,5],
@@ -78,7 +78,7 @@ export const PAGES_MENU =
               "path":"/rz/rzsq"
             },
             {
-              "grade":[4,5],
+              "grade":[4],
               "name":"业务调查与审批",
               "path":"/ywdc"
             },{
@@ -91,7 +91,7 @@ export const PAGES_MENU =
               "path":"/dzht/htqsList"
             },
             {
-              "grade":[4],
+              "grade":[4,5],
               "name":"资金管理",
               "path":"/zjgl"
             },

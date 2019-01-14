@@ -40,7 +40,6 @@ export class DfSelectComponent implements OnInit {
   }
 inits(){
 if(this.values){
-  console.log('初始化')
   this.myval=this.values;
   this.myval=this.forarr(this.options,this.values,'');
   // let it=null;
@@ -54,6 +53,15 @@ if(this.values){
   // }
 }
 }
+
+/* 
+options=[
+    {
+      value: 'zhinan',
+      label: '指南'
+    }
+    ]
+*/
   constructor() { }
 dqli={
   ul1:{},
@@ -63,7 +71,14 @@ dqli={
   ngOnInit() {
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
-      console.error('三级联动数据不能为Null');
+      console.error('下拉数据不能为Null');
+      this.options=[
+        {
+          value: '0',
+          label: '无数据',
+          disabled:true
+        }
+        ]
     }else{
       this.inits();
     }

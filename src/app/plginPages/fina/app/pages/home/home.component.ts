@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router'
 import { BaHttpInterceptorService } from './../../../../../theme/services/index'
 import { ParamsService } from './../../params.service'
 import { GradeService } from './../../grade.service'
+import { v } from '@angular/core/src/render3';
 
 
 @Component({
@@ -59,6 +60,16 @@ export class HomeComponent implements OnInit {
     }
     //sessionStorage.loginName_v = v;
     this.grade.vals = v;
+ 
+    var urladdress=location.href;
+    if(urladdress.split("/#").length==2){
+        urladdress=urladdress.split("/#")[1]
+
+        this.menuId = 0;
+        this.init(urladdress);
+     
+    }
+   
   }
 
   itactive = 1;
@@ -72,36 +83,55 @@ export class HomeComponent implements OnInit {
   }
   menuId = 0;
   init(url): void {
+    
     // if (sessionStorage.loginName_v) {
     //   this.Login(sessionStorage.loginName_v);
     // }
     //应收账款管理
-    if (url.indexOf('/finas/home/rzgl/yszkgl/') == 0) {
+    if (url.indexOf('/finas/home/rzgl/yszkgl') == 0) {
+      
       if (this.menuId != 1) {
         this.itactive = 1;
         this.menuId = 1;
-        this.treeData = [
-          {
-            label: '应收账款明细维护',
-            url: '/finas/home/rzgl/yszkgl/yszkmx',
-            treeid: '1'
-          },
-          {
-            label: '应收账款资料提交',
-            url: '/finas/home/rzgl/yszkgl/yszkzltj',
-            treeid: '2'
-          },
-          {
-            label: '应收账款转让通知',
-            url: '/finas/home/rzgl/yszkgl/yszktz',
-            treeid: '3'
-          },
-          {
-            label: '应收账款转让登记',
-            url: '/finas/home/rzgl/yszkgl/yszkzrdj',
-            treeid: '4'
-          },
-        ]
+        if(this.grade.vals[0]==5){
+          this.treeData = [
+            {
+              label: '应收账款明细维护',
+              url: '/finas/home/rzgl/yszkgl/yszkmx',
+              treeid: '1'
+            },
+            {
+              label: '应收账款资料提交',
+              url: '/finas/home/rzgl/yszkgl/yszkzltj',
+              treeid: '2'
+            },
+          ]
+        }
+        if(this.grade.vals[0]==4){
+          this.treeData = [
+            {
+              label: '应收账款明细维护',
+              url: '/finas/home/rzgl/yszkgl/yszkmx',
+              treeid: '1'
+            },
+            {
+              label: '应收账款资料提交',
+              url: '/finas/home/rzgl/yszkgl/yszkzltj',
+              treeid: '2'
+            },
+            {
+              label: '应收账款转让通知',
+              url: '/finas/home/rzgl/yszkgl/yszktz',
+              treeid: '3'
+            },
+            {
+              label: '应收账款转让登记',
+              url: '/finas/home/rzgl/yszkgl/yszkzrdj',
+              treeid: '4'
+            },
+          ]
+        }
+        
       }
       //电子合同
     } else if (url.indexOf('/finas/home/rzgl/dzht/') == 0) {
@@ -126,39 +156,57 @@ export class HomeComponent implements OnInit {
       if (this.menuId != 3) {
         this.itactive = 3;
         this.menuId = 3;
-        this.treeData = [
-          {
-            label: '融资发放',
-            url: '/finas/home/rzgl/zjgl/rzff',
-            treeid: '1'
-          },
-
-          {
-            label: '贷款还款',
-            url: '/finas/home/rzgl/zjgl/dkhk',
-            treeid: '2'
-          },
-          {
-            label: '应收账款回购',
-            url: '/finas/home/rzgl/zjgl/yszkhg',
-            treeid: '3'
-          },
-          {
-            label: '费用管理',
-            url: '/finas/home/rzgl/zjgl/fygl',
-            treeid: '4'
-          },
-          {
-            label: '资金账户',
-            url: '/finas/home/rzgl/zjgl/zjzh',
-            treeid: '5'
-          },
-          {
-            label: '买方回款',
-            url: '/finas/home/rzgl/zjgl/mfhk',
-            treeid: '6'
-          },
-        ]
+        if(this.grade.vals[0]==5){
+          this.treeData = [
+           
+            {
+              label: '贷款还款',
+              url: '/finas/home/rzgl/zjgl/dkhk',
+              treeid: '2'
+            },
+            {
+              label: '应收账款回购',
+              url: '/finas/home/rzgl/zjgl/yszkhg',
+              treeid: '3'
+            },
+          ]
+        }
+        if(this.grade.vals[0]==4){
+          this.treeData = [
+            {
+              label: '融资发放',
+              url: '/finas/home/rzgl/zjgl/rzff',
+              treeid: '1'
+            },
+  
+            {
+              label: '贷款还款',
+              url: '/finas/home/rzgl/zjgl/dkhk',
+              treeid: '2'
+            },
+            {
+              label: '应收账款回购',
+              url: '/finas/home/rzgl/zjgl/yszkhg',
+              treeid: '3'
+            },
+            {
+              label: '费用管理',
+              url: '/finas/home/rzgl/zjgl/fygl',
+              treeid: '4'
+            },
+            {
+              label: '资金账户',
+              url: '/finas/home/rzgl/zjgl/zjzh',
+              treeid: '5'
+            },
+            {
+              label: '买方回款',
+              url: '/finas/home/rzgl/zjgl/mfhk',
+              treeid: '6'
+            },
+          ]
+        }
+        
       }
     } else {
       if (this.menuId != 0) {
@@ -166,6 +214,8 @@ export class HomeComponent implements OnInit {
         this.treeData = []
       }
     }
+    
+
   }
   ngOnInit() {
     let _href = location.href;
@@ -189,7 +239,7 @@ export class HomeComponent implements OnInit {
     //监听路由
     this.routers.events.subscribe(event => {
       if (event instanceof NavigationStart) {
-        console.log(event.url)
+      
         this.init(event.url);
         //1=前台、2=中台、3=后台、4=操作员、5=客户
         //判断当前登录身份
@@ -238,7 +288,7 @@ export class HomeComponent implements OnInit {
   loginSub() {
     this.isAjax=true;  
     this._http.post('/fina/login', this.loginUser, (e) => {
-     // console.log(e);
+   
       if(e.data.t){
         this.grade.user=e.data.user;
         this.grade.sub.next({type:1,gradesVals:e.data.user.grade});

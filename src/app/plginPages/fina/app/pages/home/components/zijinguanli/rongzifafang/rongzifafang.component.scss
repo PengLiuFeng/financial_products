@@ -3,7 +3,7 @@
     border:1px solid #e6ecf7;
     width: 100%;
     height: 100%;
-    // background-color: rgb(232, 239, 247);
+     background-color: rgb(232, 239, 247);
     
 }
 .table_a{
@@ -11,46 +11,18 @@
     margin-left: 8%;
 }
 .fygl_body{
-    margin: 2% auto;
+    margin: 2% 2% 0 0;
     min-width: 620px;
     // background-color: rgb(200, 214, 224);
-    width: 95%;
+    width: 98%;
     border:1px solid #e6ecf7;
-    // & .fygl_body_head{
-    //     margin: 1% 2% 0 2%;
-    //     min-height: 180px;
-    //     // background-color: white;
-    //     border:1px solid #e6ecf7;
-    //     & .md-form{           
-    //         width: 20%;
-    //         float: left;
-    //         margin-left: 2%;
-    //         margin-bottom: 0 !important;
-    //     }
-    //     & .col-md-6{
-    //         width: 20%;
-    //         float: left;
-    //         margin-left: 2%;
-    //         margin-bottom: 1%;
-    //         & /deep/ mdb-select > label{
-    //             position: relative;
-    //             top: -3px;
-    //         }
-    //         & /deep/ mdb-select > div > div.single{
-    //             position: relative;
-    //             bottom: 7px;
-    //         }
-          
-    //     }
-    //     & button{
-    //         margin: 3% 3% 3% 3%;
-    //         float: left;
-    //     }
-    // }
-
+    background-color: rgb(232, 239, 247);
+    & .fygl_body_head{
+        background-color: white;
+    }
     & .fygl_body_table{
-        
-        margin: 1% 2% 2% 2%;
+        background-color: white;
+       margin-top: 2%;
         & .px-4{
             // background-color: white;
              width: 100%;

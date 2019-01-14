@@ -38,7 +38,18 @@ module.exports = function attachHandlers(router) {
     });
     router.get('/fina/init',
     function (req, res) {
-        res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功'}));
+        res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功',t:1}));
+    });
+    router.post('/fina/orders/steps',
+    function (req, res) {
+        if(req.body.arr){
+            if(req.session.user.data.steps==2){
+                req.session.user.data.steps=3;
+            }
+            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存成功',t:1}));
+        }else{
+            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存失败',t:0}));
+        }
     });
 
     /* 数据挡板 ----END*/

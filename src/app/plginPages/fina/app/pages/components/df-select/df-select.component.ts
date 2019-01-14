@@ -11,7 +11,7 @@ export class DfSelectComponent implements OnInit {
   @Input() options:Array<any>;//数据
   @Input()isMDBstyle:boolean;//是否采用MDB样式
   @Input() values:any;
-  @Input() disabled:any;
+  @Input() disabled:Boolean;
   @Input() label:any;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();

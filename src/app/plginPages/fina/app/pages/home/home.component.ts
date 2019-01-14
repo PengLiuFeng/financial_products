@@ -88,11 +88,12 @@ export class HomeComponent implements OnInit {
     //   this.Login(sessionStorage.loginName_v);
     // }
     //应收账款管理
-    if (url.indexOf('/finas/home/rzgl/yszkgl') == 0) {
+    if (url.indexOf('/finas/home/rzgl/yszkgl') == 0&&this.grade.vals!=null) {
       
       if (this.menuId != 1) {
         this.itactive = 1;
         this.menuId = 1;
+        console.log(this.grade.vals)
         if(this.grade.vals[0]==5){
           this.treeData = [
             {

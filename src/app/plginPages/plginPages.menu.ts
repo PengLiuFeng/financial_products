@@ -21,15 +21,15 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-bookmark',
         title: '我的首页',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
-            "grade": [],
+            "grade": [4],
             "name": "我的工作台",
             "path": "/mygzt"
           },
           {
-            "grade": [],
+            "grade": [4],
             "name": "风险预警",
             "path": "/fxyj"
           },
@@ -108,15 +108,15 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-bookmark',
         title: '产品工厂',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
-            "grade": [],
+            "grade": [4],
             "name": "业务线配置",
             "path": "/ywxpz"
           },
           {
-            "grade": [],
+            "grade": [4],
             "name": "产品线配置",
             "path": "/cpxpz"
           },
@@ -148,15 +148,15 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '合作方管理',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
-            "grade": [],
+            "grade": [4],
             "name": "平台方管理",
             "path": "/"
           },
           {
-            "grade": [],
+            "grade": [4],
             "name": "资金方管理",
             "path": "/"
           }, {
@@ -172,7 +172,7 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '统计分析',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
             "name": "资金方统计",
@@ -193,7 +193,7 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '异常处理',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
             "name": "商业纠纷",
@@ -211,7 +211,7 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '参数管理',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
             "name": "业务参数",
@@ -230,7 +230,7 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '模型配置',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
             "name": "评级模型",
@@ -271,7 +271,7 @@ export const PAGES_MENU =
       menu: {
         icon: 'fa fa fa-send',
         title: '系统管理',
-        "grade": [],
+        "grade": [4],
         tabs: [
           {
             "name": "用户管理",

@@ -35,10 +35,10 @@ constructor( private location:Location,private param:ParamsService) {
             // this.inputdata.idType=e.data.apb.idType
             // this.inputdata.cuName=e.data.apb.cuName
             // this.inputdata.cuNo=e.data.apb.cuNo
-            console.log(e.data.apb)
-            if(e.data.apb!=null&&e.data.apb!=undefined){
+            console.log(e.data)
+            if(e.data!=null&&e.data!=undefined){
 
-              this.inputdata=e.data.apb
+              this.inputdata=e.data
               if(typeof(Number( this.inputdata.idType))=='number'){
                 this.inputdata.idType=this.getLabel(this.inputdata.idType,this.idTypes)
               }
@@ -81,6 +81,7 @@ constructor( private location:Location,private param:ParamsService) {
 }
 
   ngOnChanges(it:any){
+      console.log(it,this.cuNo)
       if(this.cuNo!=null&&this.cuNo!=undefined){
         this.requestData()
       }

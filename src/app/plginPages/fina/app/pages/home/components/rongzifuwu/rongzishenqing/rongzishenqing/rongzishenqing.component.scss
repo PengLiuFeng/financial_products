@@ -1,22 +1,20 @@
 .rzsqpage{
     min-width: 660px;
-    border:1px solid black;
     width: 100%;
     height: 100%;
     background-color: rgb(232, 239, 247);
-    
 }
 .rzsq_body{
     min-width: 620px;
-    background-color: rgb(224, 235, 243);
-    width: 95%;
-    border:1px solid black;
+    background-color: rgb(232, 239, 247);
+    width: 98%;
+   
     & .rzsq_body_head{
-        margin: 1% 2% 0 2%;
+        margin: 2% 0 1% 2px;
         //padding-top: 2%;
-        min-height: 150px;
+        //min-height: 150px;
         background-color: white;
-        border:1px solid black;
+        //border:1px solid black;
     & .md-form{
          width: 16%;
          display: inline-block;
@@ -46,7 +44,7 @@
 
     & .rzsq_body_table{
         
-        margin: 1% 2% 2% 2%;
+        margin: 2% 0 0 2px;
         & .px-4{
             background-color: white;
              width: 100%;

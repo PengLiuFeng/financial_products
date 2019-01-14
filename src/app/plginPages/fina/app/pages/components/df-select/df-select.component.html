@@ -1,47 +1,30 @@
-
 <span class="el-select">
-    <ng-container>
-        <div class="el-input el-input--suffix">
-          <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
-          [value]="myval">
-          <span class="el-input__suffix">
-              <span class="el-input__suffix-inner">
-                <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
-              </span>
-          </span>
-        </div>
-        <span class="el-select__label" (click)="onTap()">
-          {{myval}}
+    <div class="el-input el-input--suffix"[class.is-disabled]="disabled">
+        <input *ngIf="!disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+        [value]="myval">
+        <input *ngIf="disabled" disabled="disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+        [value]="myval">
+        <span class="el-input__suffix">
+            <span class="el-input__suffix-inner">
+              <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+            </span>
         </span>
-      </ng-container>
-    <div  *ngIf="isTap" (click)="onEls($event)" class="el-select-menus el-popper" style="z-index:33; position: absolute; left:18px;">
-        <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
-        <ul role="menu" class="el-select-menu">
-          <ng-container *ngFor="let it of options;let i=index;">
-            <li class="el-select-menu__item" [class.el-select-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul1.label==it.label" (click)="dqli.ul1=it;dqli.ul2=dqli.ul3='';onIt(1,it)" aria-expanded="true">
-              <span>{{it.label}}</span>
-            </li>
-          </ng-container>
-        </ul>
-        <ul *ngIf="dqli.ul1.children&&dqli.ul1.children.length>0" role="menu" class="el-select-menu" style="position: relative;">
-            <ng-container *ngFor="let it of dqli.ul1.children;let i=index;">
-              <li tabindex="-1" role="menuitem" class="el-select-menu__item" [class.el-select-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul2.label==it.label" (click)="dqli.ul2=it;onIt(1,it)">
-                <span>{{it.label}}</span>
-              </li>
-            </ng-container>
-          <svg style="position: absolute; top: 0px; height: 100%; width: 100%; left: 0px; pointer-events: none;"></svg>
-        </ul>
-        <ul *ngIf="dqli.ul2.children&&dqli.ul2.children.length>0" role="menu" class="el-select-menu" style="position: relative;">
-            <ng-container *ngFor="let it of dqli.ul2.children;let i=index;">
-                <li tabindex="-1" role="menuitem" class="el-select-menu__item" [class.el-select-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul3.label==it.label" (click)="dqli.ul3=it;onIt(1,it)">
+      </div>
+      <span *ngIf="!disabled" class="el-cascader__label" (click)="onTap()">
+      </span>
+      <div  *ngIf="isTap" (click)="onEls($event)" class="el-cascader-menus el-popper" style="z-index:33; position: absolute; left:18px;">
+          <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
+          <ul role="menu" class="el-cascader-menu">
+            <ng-container *ngFor="let it of options;let i=index;">
+              <li class="el-cascader-menu__item" [class.is-disabled]="it.disabled" [class.is-active]="dqli.ul1.label==it.label" (click)="onIt(1,it)">
                   <span>{{it.label}}</span>
                 </li>
-              </ng-container>
-        </ul>
+            </ng-container>
+          </ul>
       </div>
   </span>
   <style>
-  .demo-select .el-select {
-      width: 222px;
+  .el-select-menus {
+      min-width: 240px;
   }
   </style>

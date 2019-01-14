@@ -3,6 +3,8 @@ import {Component} from '@angular/core';
 import {GlobalState} from '../../../global.state';
 import {OnInit} from "@angular/core";
 import {ChangeDetectorRef} from "@angular/core";
+import { GradeService } from './../../../plginPages/fina/app/grade.service'
+
 
 @Component({
   selector: 'ba-page-top',
@@ -16,7 +18,7 @@ export class BaPageTop implements OnInit{
     this.isScrolled=false;
     this.isMenuCollapsed=false;
   }
-  constructor(private _state:GlobalState,private cd: ChangeDetectorRef) {
+  constructor(private _state:GlobalState,private cd: ChangeDetectorRef,public grades:GradeService) {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });

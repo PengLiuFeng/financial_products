@@ -1,6 +1,6 @@
 .fyglpage{
     min-width: 660px;
-    border:1px solid black;
+  
     width: 100%;
     height: 100%;
     background-color: rgb(232, 239, 247);
@@ -8,9 +8,9 @@
 }
 .fygl_body{
     min-width: 620px;
-    background-color: rgb(200, 214, 224);
-    width: 95%;
-    border:1px solid black;
+    background-color: rgb(232, 239, 247);
+    width: 98%;
+   
     & .fygl_body_head{
         margin: 1% 2% 0 2%;
         min-height: 60px;

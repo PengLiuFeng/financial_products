@@ -12,7 +12,7 @@ export class GradeService {
   sub = new Subject<any>();
   public isLogin:any=false;
   loginName="";
-  vals:any=0;
+  vals:any;
   user:any;
   constructor() { }
 }

@@ -8,12 +8,12 @@
 }
 .fygl_body{
     min-width: 620px;
-    background-color: rgb(200, 214, 224);
-    width: 95%;
-    border:1px solid black;
+    //background-color: rgb(200, 214, 224);
+    width: 98%;
+    margin: 2% 2% 0 0;
+    
     & .fygl_body_head{
         margin: 1% 2% 0 2%;
-        min-height: 180px;
         background-color: white;
         border:1px solid black;
         & .md-form{

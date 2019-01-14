@@ -1,17 +1,17 @@
 <div class="row">
   <div class="fyglpage">
-    <div style="width:100%;min-width:660px;height:10%;min-height: 90px;">
-      <div style="background-color:white;min-width:190px;padding: 1% 0 0% 0;margin: 1% 0 0 0%; float: left;">
-          <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    <div style="width:100%;">
+      <div style="width:100%;background-color: white;">
+        <app-breadcrumbs [title]="title"></app-breadcrumbs>
+
       </div>
-      <div style=" width:60%;margin: 2% 0 0 2%;float: left;">
+      <div style="margin: 2% 0 0 2%;float: left;">
         <button mdbBtn type="button" color="primary" outline="true" style="float:right;" size="sm" (click)="gaibianpage('zichanfang')"
           mdbWavesEffect>资产方</button>
         <button mdbBtn type="button" color="primary" outline="true" style="float:right;" size="sm" (click)="gaibianpage('zijinfang')"
           mdbWavesEffect>资金方</button>
       </div>
     </div>
-
     <!--   以下是资产方的界面  -->
     <div class="zichanfang" *ngIf="newpage=='zichanfang'">
       <!-- 以下是搜索框内容 -->

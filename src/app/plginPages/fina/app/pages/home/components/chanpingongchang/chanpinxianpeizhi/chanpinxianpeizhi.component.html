@@ -1,22 +1,22 @@
-<div id="body_div">
+<div class="body_div">
   <div>
-    <div id="head_left_div">
-        <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    <div style="background-color:white;width:100%;">
+      <app-breadcrumbs [title]="title"></app-breadcrumbs>
     </div>
   </div>
-  <div style="margin:0em 0em 0em 2em;">
+  <div style="margin:2% 2% 2% 3%;background-color: white;padding:2% 2% 2% 2%;">
     <div style="display: inline-block;width:15%">
-        <mdb-select [options]="gs.name" placeholder="选择公司" class="placeholder"  [(ngModel)]="gs.vals" ></mdb-select>
+      <mdb-select [options]="gs.name" placeholder="请选择" label="公司" class="placeholder" [(ngModel)]="gs.vals"></mdb-select>
     </div>
     <div style="float: right">
-        <button mdbBtn  color="primary" rounded="true"  size="sm" mdbWavesEffect (click)="basicModal.show()">新增产品线</button>
+      <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect (click)="basicModal.show()">新增产品线</button>
     </div>
   </div>
-  <div style="margin:2em 0em 0em 2em">
+  <div style="margin:2% 2% 2% 2px;">
     <hr>
     <h5>华软科技产融平台-金融服务平台</h5>
   </div>
-  <div class="white px-3 mt-0" > 
+  <div class="white px-3 mt-0">
     <div class="tableb">
       <div class="card">
         <table mdbTable bordered="true" class="mb-0">
@@ -41,9 +41,9 @@
           </thead>
           <tbody>
             <ng-container *ngFor="let data of tableData; let i = index">
-              <tr  *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
+              <tr *ngIf="data.id >= firstVisibleIndex && data.id <= lastVisibleIndex">
                 <td scope="col">{{i+1}}</td>
-               
+
                 <td scope="col">{{data.finproNo}}</td>
                 <td scope="col">{{data.finproNm}}</td>
                 <td scope="col">{{data.curType}}</td>
@@ -66,44 +66,45 @@
           </tbody>
         </table>
       </div>
-        <div class="d-flex justify-content-center">
-          <nav class="my-4 pt-2">
-            <ul class="pagination pagination-circle pg-purple mb-0">
-              <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
-                  <a class="page-link">首页</a>
-                </li>
-              <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
-                <a class="page-link" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index" class="page-item"
-                [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
-                <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
-              </li>
-              <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                <a class="page-link" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
-              <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
-                <a class="page-link">尾页</a>
-              </li>
-              <li class="page-item clearfix d-none d-md-block disabled">
-                 <span class="page-link">{{itemsPerPage}}条/页</span>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      
+      <div class="d-flex justify-content-center">
+        <nav class="my-4 pt-2">
+          <ul class="pagination pagination-circle pg-purple mb-0">
+            <li class="page-item clearfix d-none d-md-block" (click)="firstPage()" [ngClass]="{disabled: activePage == 1}">
+              <a class="page-link">首页</a>
+            </li>
+            <li class="page-item" (click)="previousPage()" [ngClass]="{disabled: activePage == 1}">
+              <a class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+                <span class="sr-only">Previous</span>
+              </a>
+            </li>
+            <li #pages *ngFor="let page of paginators | slice:firstVisiblePaginator:lastVisiblePaginator; let i = index"
+              class="page-item" [ngClass]="{active: i + firstVisiblePaginator + 1 == activePage}">
+              <a class="page-link waves-light" (click)="changePage($event)" mdbWavesEffect>{{page}}</a>
+            </li>
+            <li class="page-item" (click)="nextPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+              <a class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                <span class="sr-only">Next</span>
+              </a>
+            </li>
+            <li class="page-item clearfix d-none d-md-block" (click)="lastPage()" [ngClass]="{disabled: activePage == numberOfPaginators}">
+              <a class="page-link">尾页</a>
+            </li>
+            <li class="page-item clearfix d-none d-md-block disabled">
+              <span class="page-link">{{itemsPerPage}}条/页</span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
     </div>
-    </div>
-          
+  </div>
+
 
 </div>
-<div mdbModal #basicModal="mdbModal"  class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+<div mdbModal #basicModal="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
   <div class="modal-dialog modal-fluid " role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -113,9 +114,9 @@
         <h6 class="modal-title w-100" id="myModalLabel">产品线</h6>
       </div>
       <div class="modal-body">
-        <app-xinzengchanpinxian ></app-xinzengchanpinxian>
+        <app-xinzengchanpinxian></app-xinzengchanpinxian>
       </div>
-      
+
     </div>
   </div>
 </div>

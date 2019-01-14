@@ -32,6 +32,28 @@ export class DemoComponent implements OnInit {
 
     },this.httpHeaders)
   }
+  selectData={
+    val:"",
+    options:[
+      {
+        value: '1',
+        label: '选项1'
+      },
+      {
+        value: '2',
+        label: '选项2'
+      },
+      {
+        value: '3',
+        label: '选项3',
+        disabled:true
+      },
+      {
+        value: '4',
+        label: '选项4'
+      }
+    ]
+  }
   options=[
     {
       value: 'zhinan',

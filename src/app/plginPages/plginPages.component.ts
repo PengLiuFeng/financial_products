@@ -52,7 +52,6 @@ export class PlginPages implements  AfterViewInit{
   tabs;
   gradesVals=0;
   constructor(private params:ParamsService,private routers: Router,public loader: LoadingBarService, private _elementRef:ElementRef,private router: Router,private _menuService: BaMenuService,private http: BaHttpInterceptorService,private grades:GradeService) {
-    
   }
   //监听路由
   topage(url:string):void{
@@ -190,7 +189,7 @@ export class PlginPages implements  AfterViewInit{
           let item=PAGES_MENU.plugins[index];
           if(item["menu"]["grade"]){
             let arr:Array<any>=item["menu"]["grade"];
-            if(arr.indexOf(res.gradesVals[0])){
+            if(arr.indexOf(res.gradesVals[0])!=-1){
               plugins[0].children.push(
                 {
                   path: item.path,

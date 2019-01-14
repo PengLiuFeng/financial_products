@@ -1,24 +1,22 @@
 .fyglpage{
     min-width: 660px;
-    border:1px solid black;
     width: 100%;
     height: 100%;
-    background-color: rgb(232, 239, 247);
-    
 }
 .btn{
     padding: 0.5rem 1.5rem
 }
 .fygl_body{
     min-width: 620px;
-    background-color: rgb(200, 214, 224);
-    width: 95%;
+    background-color: rgb(232, 239, 247);
+    width: 100%;
+    padding:  2% 2% 0 0;
     border:1px solid black;
     & .fygl_body_head{
         margin: 1% 2% 0 2%;
-        min-height: 180px;
+        //min-height: 180px;
         background-color: white;
-        border:1px solid black;
+       
         & .md-form{           
             width: 20%;
             float: left;

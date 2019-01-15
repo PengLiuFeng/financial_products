@@ -1,4 +1,5 @@
 import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
+import { Button } from 'primeng/button';
 
 @Component({
   selector: 'app-df-input',
@@ -8,6 +9,8 @@ import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
 export class DfInputComponent implements OnInit {
   @Input() values:any;
   @Input() placeholder:any;
+  @Input() disabled:boolean;
+  @Input() size:any;
   @Input() type:any;
   @Input() width:any;
   @Output() valuesChange=new EventEmitter();
@@ -18,5 +21,12 @@ export class DfInputComponent implements OnInit {
   }
   oninput(v){
    this.valuesChange.emit(v.target.value);
+  }
+  jsclass(size):any{
+    if(size){
+      let jsons={};
+      jsons['qloud-input--'+size]=true;
+      return jsons;
+    }
   }
 }

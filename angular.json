@@ -43,7 +43,7 @@
               "src/styles.scss",
               "./node_modules/ng-uikit-pro-standard/assets/scss/mdb.scss",
               "src/assets/css/admin/style.bundle.css",
-              "src/assets/css/df/df.css"
+              "src/assets/css/df/qloud-ui.css"
             ]
           },
           "configurations": {

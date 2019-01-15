@@ -32,8 +32,8 @@
           </div>
         </div>
       </div>
-        <div tabindex="0" class="el-upload el-upload--text"><button type="button" class="el-button el-button--primary el-button--small">
-          <span>点击上传</span></button><input type="file" name="file" multiple="multiple" class="el-upload__input">
+        <div tabindex="0" class="qloud-upload qloud-upload--text"><button type="button" class="qloud-button qloud-button--primary qloud-button--small">
+          <span>点击上传</span></button><input type="file" name="file" multiple="multiple" class="qloud-upload__input">
         </div>
       
         <br/>
@@ -42,6 +42,19 @@
         <div>
             标题：
           <app-df-input [(values)]="inputVal"  [width]="'200px'"></app-df-input>
+        </div>
+        <div>
+            禁用：
+          <app-df-input [(values)]="inputVal"  width="200px" disabled="true"></app-df-input>
+          <div>
+              <h3 id="chi-cun"><a href="http://element-cn.eleme.io/#/zh-CN/component/input#chi-cun" aria-hidden="true" class="header-anchor">¶</a> 尺寸</h3>
+              <div>
+          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="medium"></app-df-input>
+          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="small"></app-df-input>
+          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="mini"></app-df-input>
+
+              </div>
+          </div>
         </div>
         <span style="width:180px">
           <app-df-input></app-df-input>

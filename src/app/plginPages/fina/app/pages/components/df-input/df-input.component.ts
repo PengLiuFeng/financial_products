@@ -25,7 +25,7 @@ export class DfInputComponent implements OnInit {
   jsclass(size):any{
     if(size){
       let jsons={};
-      jsons['.qloud-input--'+size]=true;
+      jsons['qloud-input--'+size]=true;
       return jsons;
     }
   }

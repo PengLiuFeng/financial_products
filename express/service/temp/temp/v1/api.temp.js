@@ -69,6 +69,7 @@ module.exports = function attachHandlers(router) {
         if(Array.isArray(req.body.arr)&&req.body.arr.length>0){
             if(req.session.user.data.steps==2){
                 req.session.user.data.steps=3;
+                userList.user.data.steps=3;
             }
             res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存成功',t:1,steps:req.session.user.data.steps}));
         }else{
@@ -200,6 +201,7 @@ module.exports = function attachHandlers(router) {
                 if(data.t==1){
                     if(req.session.user.data.steps==0){
                         req.session.user.data.steps=1;
+                        userList.user.data.steps=1;
                     }
                     req.session.user.data.cardInsert=data;
                     data.steps=req.session.user.data.steps;
@@ -225,6 +227,7 @@ module.exports = function attachHandlers(router) {
                     if(req.session.user.grade[0]==5){
                         if(req.session.user.data.steps==1){
                             req.session.user.data.steps=2;
+                            userList.user.data.steps=2;
                         }
                     }
                 }

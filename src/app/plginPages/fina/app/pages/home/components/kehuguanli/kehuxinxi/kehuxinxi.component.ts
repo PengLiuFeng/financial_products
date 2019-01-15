@@ -268,6 +268,11 @@ export class KehuxinxiComponent implements OnInit {
     this.demoBasic.show()
   }
   ngOnInit() {
+    setTimeout(()=>{
+      if(this.grande.isLogin&&this.grande.user.data.steps){
+        this.dfSteps.active=this.grande.user.data.steps;
+      }
+    })
     this.grande.sub.subscribe(res => {
       // console.log(res)
       if (res.type == "add_user") {
@@ -276,6 +281,8 @@ export class KehuxinxiComponent implements OnInit {
         this.dfSteps.active = res.jbFlag;
       }else if(res.type == "zltj"){
         this.dfSteps.active = res.zltjFlag;
+      }else if(res.type == "home"){
+        this.dfSteps.active = res.homeFlag;
       }
     })
     this.requestTableData();

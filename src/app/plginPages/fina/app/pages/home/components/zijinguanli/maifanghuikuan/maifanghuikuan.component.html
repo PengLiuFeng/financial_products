@@ -6,42 +6,55 @@
       <!-- 以下是搜索框内容 -->
       <div class="fygl_body">
         <div class="fygl_body_head">
-          <div class="row">
+         
             <div class="marg_div bk_div">
               <span class="font_cen">转让通知书编号:</span>
               <div class="er_input">
-                <app-df-input></app-df-input>
+                <app-df-input size="small"></app-df-input>
               </div>
             </div>
             <div class="marg_div bk_div">
               <span class="font_cen">卖方名称:</span>
               <div class="er_input">
-                <app-df-input></app-df-input>
+                <app-df-input size="small"></app-df-input>
               </div>
             </div>
   
             <div class="marg_div bk_div">
               <span class="font_cen">合同编号:</span>
               <div class="er_input">
-                <app-df-input></app-df-input>
+                <app-df-input size="small" ></app-df-input>
               </div>
             </div>
-            <div class="md-form bk_div marg_div">
+            <div class="marg_div bk_div">
+                <span class="font_cen">业务类型:</span>
+                <div class="er_input">
+                    <df-select size="small" [options]="optionsSelect" [disabled]="false"></df-select>
+                </div>
+              </div>
+            <!-- <div class="md-form bk_div marg_div">
               <mdb-select [options]="optionsSelect" label="业务类型:" placeholder="业务类型" class="placeholder"></mdb-select>
-            </div>
-  
-            <div class="md-form bk_div marg_div">
+            </div> -->
+            <div class="inputd" style="margin-left: 1%; display: inline-block;">
+                <div class="ui-inputgroup">
+                  <span class="i-h">融资开始日期：</span>
+                  <p-calendar [showTime]="true" placeholder="开始时间"   [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+                  <span class="ui-inputgroup-addon" class="i-h">至</span>
+                  <p-calendar [showTime]="true" placeholder="结束时间"  [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+                </div>
+              </div>
+            <!-- <div class="md-form bk_div marg_div">
               <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
             </div>
             <div class="md-form bk_div marg_div">
               <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
-            </div>
-            <div class="md-form bk_div marg_div">
+            </div> -->
+            <div style="width:20%;display:inline-block;margin-left:1%;">
               <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
               <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
             </div>
             <div class="bk_div marg_div"></div>
-          </div>
+         
   
         </div>
         <div class="fygl_body_table">

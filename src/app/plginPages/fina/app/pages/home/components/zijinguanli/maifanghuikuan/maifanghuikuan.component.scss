@@ -14,30 +14,10 @@
     border:1px solid black;
     & .fygl_body_head{
         margin: 1% 2% 0 2%;
-        //min-height: 180px;
+        min-height: 180px;
         background-color: white;
        
-        & .md-form{           
-            width: 20%;
-            float: left;
-            margin-left: 2%;
-            margin-bottom: 0 !important;
-        }
-        & .col-md-6{
-            width: 20%;
-            float: left;
-            margin-left: 2%;
-            margin-bottom: 1%;
-            & /deep/ mdb-select > label{
-                position: relative;
-                top: -3px;
-            }
-            & /deep/ mdb-select > div > div.single{
-                position: relative;
-                bottom: 6px;
-            }
-            
-        }
+       
         & button{
             margin: 3% 3% 3% 3%;
             float: left;

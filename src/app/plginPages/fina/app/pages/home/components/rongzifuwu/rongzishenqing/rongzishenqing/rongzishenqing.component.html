@@ -13,24 +13,24 @@
           <mdb-select [options]="idTypes" label="证件类型" name="idType" [(ngModel)]="testarray.idType" placeholder="证件类型"></mdb-select>
         </div> -->
         <div class="myselfInput">
-          证件类型： <df-select [(values)]="testarray.idType" [options]="idTypes" [disabled]="false"></df-select>
+          证件类型： <df-select [(values)]="testarray.idType" size="small " [options]="idTypes" [disabled]="false"></df-select>
         </div>
         <div class="myselfInput">
           证件号码：
-          <app-df-input [(values)]="testarray.idNo"></app-df-input>
+          <app-df-input [(values)]="testarray.idNo" size="small "></app-df-input>
         </div>
         <div class="myselfInput">
           客户名称：
-          <app-df-input [(values)]="testarray.cuName"></app-df-input>
+          <app-df-input [(values)]="testarray.cuName" size="small "></app-df-input>
         </div>
         <div class="myselfInput">
-          金融产品: <df-select [(values)]="testarray.finproNo" [options]="finproNos" [disabled]="false"></df-select>
+          金融产品: <df-select [(values)]="testarray.finproNo" size="small " [options]="finproNos" [disabled]="false"></df-select>
         </div>
         <div class="myselfInput">
-          业务类型： <df-select [(values)]="testarray.busType" [options]="busTypes" [disabled]="false"></df-select>
+          业务类型： <df-select [(values)]="testarray.busType" size="small " [options]="busTypes" [disabled]="false"></df-select>
         </div>
         <div class="myselfInput">
-          申请状态： <df-select [(values)]="testarray.suSta" [options]="suStas" [disabled]="false"></df-select>
+          申请状态： <df-select [(values)]="testarray.suSta" size="small " [options]="suStas" [disabled]="false"></df-select>
         </div>
         <!-- <div class="col-md-6">
           <mdb-select [options]="finproNos" label="金融产品" [(ngModel)]="testarray.finproNo" name="finproNo" placeholder="金融产品"></mdb-select>

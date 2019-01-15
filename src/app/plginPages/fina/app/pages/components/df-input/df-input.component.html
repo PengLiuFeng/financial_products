@@ -1,4 +1,7 @@
-<div class="el-input" [ngStyle]="{width:width}">
-	<input autocomplete="off" [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" rows="2" validateevent="true" class="el-input__inner" [(ngModel)]="values" (input)="oninput($event)">
 
+
+<div class=".qloud-input" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size)">
+	<input [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
+	[disabled]="disabled" rows="2" validateevent="true" class=".qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
+	>
 </div>

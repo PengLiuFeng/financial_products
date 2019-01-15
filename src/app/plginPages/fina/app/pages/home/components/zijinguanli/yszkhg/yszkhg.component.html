@@ -1,10 +1,6 @@
 <div class="yszkhg">
   <div class="body">
-    <div class="right">
-      <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
-      <button mdbBtn (click)="goback()" color="primary" rounded="true" size="sm" mdbWavesEffect>返回</button>
-
-    </div>
+    
   </div>
 </div>
 <div class="yszkhg" *ngIf="!isChildRouteLoaded">
@@ -50,6 +46,11 @@
             <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder" [(ngModel)]="yszk.htzt.vals"></mdb-select>
           </div>
         </div>
+        <div class="right">
+            <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
+            <button mdbBtn (click)="goback()" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
+      
+          </div>
       </div>
     </div>
     <h4>合同列表信息</h4>

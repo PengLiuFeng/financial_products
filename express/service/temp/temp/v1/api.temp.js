@@ -1,45 +1,56 @@
-var request=require('../../../../util/requestHandle.js');
-var baseConfig=require('../../../../config/baseConfig.json');
-var handleRes=require('../../../../util/temp/v1/handleResUtil.js');
-var tool=require('./../../../../util/temp/baoli/tool.js');
+var request = require('../../../../util/requestHandle.js');
+var baseConfig = require('../../../../config/baseConfig.json');
+var handleRes = require('../../../../util/temp/v1/handleResUtil.js');
+var tool = require('./../../../../util/temp/baoli/tool.js');
 var fs = require('fs');
-var uri=baseConfig.aggregator;
+var uri = baseConfig.aggregator;
 
 var multer = require('multer');//引入multer
-var upload = multer({dest: 'uploads/'});//设置上传文件存储地址
-var url_baoli=baseConfig.baoli;
-    //1=前台、2=中台、3=后台、4=操作员、5=客户
-let userList={
-    user:{
-        id:1,
-        pwd:1111,//客户
-        grade:[5],
-        data:{
-            steps:0
+var upload = multer({ dest: 'uploads/' });//设置上传文件存储地址
+var url_baoli = baseConfig.baoli;
+//1=前台、2=中台、3=后台、4=操作员、5=客户
+let userList = {
+    user: {
+        id: 1,
+        pwd: 1111,//客户
+        grade: [5],
+        data: {
+            steps: 0
         }
     },
-    admin:{
-        id:2,
-        pwd:1111,
-        grade:[4],//管理员
-        data:{
+    admin: {
+        id: 2,
+        pwd: 1111,
+        grade: [4],//管理员
+        data: {
 
         }
     }
-    
+
 }
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-    let num=0;
+    let num = 0;
     /* 数据挡板 */
     router.get('/fina/orders/getUser',
-    function (req, res) {
-        res.send(handleRes.handleRes(false, {statusCode:200}, req.session.user));
-    });
+        function (req, res) {
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, req.session.user));
+        });
     router.get('/fina/init',
-    function (req, res) {
-        res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功',t:1}));
-    });
+        function (req, res) {
+            userList.user = {
+                id: 1,
+                pwd: 1111,//客户
+                grade: [5],
+                data: {
+                    steps: 0
+                }
+            }
+            if (req.session.user) {
+                req.session.user = userList.user;
+            }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: '用户信息重置成功', t: 1 }));
+        });
 
     /*********************************************************/
 
@@ -64,18 +75,18 @@ module.exports = function attachHandlers(router) {
     //     })
 
     router.post('/fina/orders/CustDataSub',
-    function (req, res) {
-        //console.log(req.body)
-        if(Array.isArray(req.body.arr)&&req.body.arr.length>0){
-            if(req.session.user.data.steps==2){
-                req.session.user.data.steps=3;
-                userList.user.data.steps=3;
+        function (req, res) {
+            //console.log(req.body)
+            if (Array.isArray(req.body.arr) && req.body.arr.length > 0) {
+                if (req.session.user.data.steps == 2) {
+                    req.session.user.data.steps = 3;
+                    userList.user.data.steps = 3;
+                }
+                res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: '文件保存成功', t: 1, steps: req.session.user.data.steps }));
+            } else {
+                res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: '文件保存失败', t: 0 }));
             }
-            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存成功',t:1,steps:req.session.user.data.steps}));
-        }else{
-            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存失败',t:0}));
-        }
-    });
+        });
 
     /* 数据挡板 ----END*/
 
@@ -94,18 +105,18 @@ module.exports = function attachHandlers(router) {
             // }
             // request(options, callback);
 
-            let userName=req.body.userName.replace(/\s+/g,'');
-            let pwd=req.body.pwd.replace(/\s+/g,'');
-            let datas=null;
-            if(userName&&pwd&&userList[userName]&&pwd==userList[userName].pwd){
-                let user=JSON.parse(JSON.stringify(userList[userName]));
+            let userName = req.body.userName.replace(/\s+/g, '');
+            let pwd = req.body.pwd.replace(/\s+/g, '');
+            let datas = null;
+            if (userName && pwd && userList[userName] && pwd == userList[userName].pwd) {
+                let user = JSON.parse(JSON.stringify(userList[userName]));
                 delete user.pwd;
-                req.session.user=user;
-                datas={message:"登录成功！",user:user,t:1};
-            }else{
-                datas= {message:"登陆失败，请检查账号输入是否正确",t:0}
+                req.session.user = user;
+                datas = { message: "登录成功！", user: user, t: 1 };
+            } else {
+                datas = { message: "登陆失败，请检查账号输入是否正确", t: 0 }
             }
-            res.send(handleRes.handleRes(false, {statusCode:200},datas));
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, datas));
         });
     /**
     *  上传文件
@@ -117,18 +128,18 @@ module.exports = function attachHandlers(router) {
         //console.log(req.query.ms)
         var fileInfo = req.query.fileInfo;
         if (file) {
-                var fileNameArr = file.originalname.split('.');
-                var suffix = fileNameArr[fileNameArr.length - 1];
-                //文件重命名
-                fs.renameSync('./uploads/' + file.filename, `./uploads/${file.filename}.${suffix}`);
-                file['newfilename'] = `${file.filename}.${suffix}`;
-            }else{
-                ret['error']="请选择文件";
-            }
-            ret['file'] = file;
-            ret['fileInfo'] = fileInfo;
-            res.send(handleRes.handleRes(false, {statusCode:200}, ret));
-        })
+            var fileNameArr = file.originalname.split('.');
+            var suffix = fileNameArr[fileNameArr.length - 1];
+            //文件重命名
+            fs.renameSync('./uploads/' + file.filename, `./uploads/${file.filename}.${suffix}`);
+            file['newfilename'] = `${file.filename}.${suffix}`;
+        } else {
+            ret['error'] = "请选择文件";
+        }
+        ret['file'] = file;
+        ret['fileInfo'] = fileInfo;
+        res.send(handleRes.handleRes(false, { statusCode: 200 }, ret));
+    })
     router.get('/fina/custom/list',
         function (req, res) {
             let par = tool.jsonget(1, req.query);//json转get参数
@@ -186,8 +197,8 @@ module.exports = function attachHandlers(router) {
      */
     router.post('/fina/custom/cardInsert',
         function (req, res) {
-            if(req.session.user.data.cardInsert){
-                res.send(handleRes.handleRes(true,{statusCode:200}, {msg:'您已新增用户信息',user:req.session.user}));
+            if (req.session.user.data.cardInsert) {
+                res.send(handleRes.handleRes(true, { statusCode: 200 }, { msg: '您已新增用户信息', user: req.session.user }));
                 return;
             }
             let options =
@@ -198,13 +209,13 @@ module.exports = function attachHandlers(router) {
                 body: req.body
             };
             function callback(error, response, data) {
-                if(data.t==1){
-                    if(req.session.user.data.steps==0){
-                        req.session.user.data.steps=1;
-                        userList.user.data.steps=1;
+                if (data.t == 1) {
+                    if (req.session.user.data.steps == 0) {
+                        req.session.user.data.steps = 1;
+                        userList.user.data.steps = 1;
                     }
-                    req.session.user.data.cardInsert=data;
-                    data.steps=req.session.user.data.steps;
+                    req.session.user.data.cardInsert = data;
+                    data.steps = req.session.user.data.steps;
                 }
                 res.send(handleRes.handleRes(error, response, data));
             }
@@ -223,15 +234,15 @@ module.exports = function attachHandlers(router) {
                 body: req.body
             };
             function callback(error, response, data) {
-                if(!error){
-                    if(req.session.user.grade[0]==5){
-                        if(req.session.user.data.steps==1){
-                            req.session.user.data.steps=2;
-                            userList.user.data.steps=2;
+                if (!error) {
+                    if (req.session.user.grade[0] == 5) {
+                        if (req.session.user.data.steps == 1) {
+                            req.session.user.data.steps = 2;
+                            userList.user.data.steps = 2;
                         }
                     }
                 }
-                data.steps=req.session.user.data.steps;
+                data.steps = req.session.user.data.steps;
                 res.send(handleRes.handleRes(error, response, data));
             }
             request(options, callback);
@@ -300,7 +311,7 @@ module.exports = function attachHandlers(router) {
 
             request(options, callback);
         });
-    
+
     /*---------------------------------------------- */
     //下拉框列表
     function xlk(back, arr, arr2, responses, errors) {
@@ -400,65 +411,65 @@ module.exports = function attachHandlers(router) {
             function callback(error, response, data) {
                 res.send(handleRes.handleRes(error, response, data));
             }
-        request(options, callback);
-    });
-     //保存授信详情
-     router.post('/fina/grade/detailInsert',
-     function(req, res) {
-         let options =
-             {
-                 url: url_baoli+'/grade/detailInsert',
-                 method: 'POST',
-                 json:true,
-                 body: req.body
-             };
-             function callback(error, response, data) {
-                 res.send(handleRes.handleRes(error, response, data));
-             }
-             request(options, callback);
-     });
-     //新增授信
-     router.post('/fina/grade/idvalidate',
-     function(req, res) {
-         let options =
-             {
-                 url: url_baoli+'/grade/idvalidate',
-                 method: 'POST',
-                 json:true,
-                 body: req.body
-             };
-             function callback(error, response, data) {
-                 res.send(handleRes.handleRes(error, response, data));
-             }
-             request(options, callback);
-     });
-     //拦截所有POST请求
-     router.post(/^\/(fina)\/(.+)/,
-        function(req, res) {
-            let options =
-                {
-                    url: url_baoli+req.url.slice(5,255),
-                    method: 'POST',
-                    json:true,
-                    body: req.body
-                };
-                function callback(error, response, data) {
-                    res.send(handleRes.handleRes(error, response, data));
-                }
-                request(options, callback);
+            request(options, callback);
         });
-     //拦截所有get请求
-        router.get(/^\/(fina)\/(.+)/,
-        function(req, res) {
+    //保存授信详情
+    router.post('/fina/grade/detailInsert',
+        function (req, res) {
             let options =
             {
-                url: url_baoli+req.url.slice(5,1255),
+                url: url_baoli + '/grade/detailInsert',
+                method: 'POST',
+                json: true,
+                body: req.body
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+            request(options, callback);
+        });
+    //新增授信
+    router.post('/fina/grade/idvalidate',
+        function (req, res) {
+            let options =
+            {
+                url: url_baoli + '/grade/idvalidate',
+                method: 'POST',
+                json: true,
+                body: req.body
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+            request(options, callback);
+        });
+    //拦截所有POST请求
+    router.post(/^\/(fina)\/(.+)/,
+        function (req, res) {
+            let options =
+            {
+                url: url_baoli + req.url.slice(5, 255),
+                method: 'POST',
+                json: true,
+                body: req.body
+            };
+            function callback(error, response, data) {
+                res.send(handleRes.handleRes(error, response, data));
+            }
+            request(options, callback);
+        });
+    //拦截所有get请求
+    router.get(/^\/(fina)\/(.+)/,
+        function (req, res) {
+            let options =
+            {
+                url: url_baoli + req.url.slice(5, 1255),
                 method: 'GET'
             };
             function callback(error, response, data) {
                 res.send(handleRes.handleRes(error, response, data));
             }
-    
+
             request(options, callback);
         });
     //获取所有aggregators

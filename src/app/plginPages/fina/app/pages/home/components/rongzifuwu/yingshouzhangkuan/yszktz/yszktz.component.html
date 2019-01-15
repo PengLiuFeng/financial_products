@@ -39,11 +39,14 @@
             <label for="fddbr_input" class="">授信协议编号:</label>
           </div>
         </div> -->
-    <div class="bk_div col-md-6 mx-auto mt-5">
-      <!-- <div class='md-form'></div> -->
+    <!-- <div class="bk_div col-md-6 mx-auto mt-5">
+      <div class='md-form'></div>
       <mdb-select name="yszk.recSta" [(ngModel)]="yszk.recSta" [options]="REC_STA" placeholder="应收账款状态:"></mdb-select>
-    </div>
-    <div style="padding-top: 17px;">
+    </div> -->
+    <div class="myselfInput">
+        证件类型: <df-select [(values)]="yszk.recSta" [options]="REC_STA"></df-select>
+      </div>
+    <div  class="myselfInput" style="width: 20%;">
       <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="queryTableDataWithConditions()"
         mdbWavesEffect>查询</button>
       <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="reSetAndReqTD()" mdbWavesEffect

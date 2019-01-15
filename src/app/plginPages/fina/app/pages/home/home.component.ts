@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   isLogin = false;//是否登录
   treeData: Array<any> = [];
   _http: BaHttpInterceptorService;
-  constructor(private routers: Router, private activer: ActivatedRoute, private params: ParamsService, public grade: GradeService) {
+  constructor(private routers: Router, private activer: ActivatedRoute, private params: ParamsService, public grande: GradeService) {
     //grade.isLogin = !!sessionStorage.isLogin;
     this._http = params._http;
     let sc = function () {
@@ -46,20 +46,20 @@ export class HomeComponent implements OnInit {
   //登录
   Login(v) {
     //sessionStorage.isLogin = v;
-    this.grade.isLogin = v;
+    this.grande.isLogin = v;
     if (v == 1) {//前台人员
-      this.grade.loginName = "前台人员";
+      this.grande.loginName = "前台人员";
     } else if (v == 2) {//中台人员
-      this.grade.loginName = "中台人员";
+      this.grande.loginName = "中台人员";
     } else if (v == 3) {//后台人员
-      this.grade.loginName = "后台人员";
+      this.grande.loginName = "后台人员";
     } else if (v == 4) {//操作员
-      this.grade.loginName = "操作员";
+      this.grande.loginName = "操作员";
     } else if (v == 5) {//客户
-      this.grade.loginName = "客户";
+      this.grande.loginName = "客户";
     }
     //sessionStorage.loginName_v = v;
-    this.grade.vals = v;
+    this.grande.vals = v;
  
     var urladdress=location.href;
     if(urladdress.split("/#").length==2){
@@ -88,13 +88,13 @@ export class HomeComponent implements OnInit {
     //   this.Login(sessionStorage.loginName_v);
     // }
     //应收账款管理
-    if (url.indexOf('/finas/home/rzgl/yszkgl') == 0&&this.grade.vals!=null) {
+    if (url.indexOf('/finas/home/rzgl/yszkgl') == 0&&this.grande.vals!=null) {
       
       if (this.menuId != 1) {
         this.itactive = 1;
         this.menuId = 1;
-        console.log(this.grade.vals)
-        if(this.grade.vals[0]==5){
+        // console.log(this.grande.vals)
+        if(this.grande.vals[0]==5){
           this.treeData = [
             {
               label: '应收账款明细维护',
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
             },
           ]
         }
-        if(this.grade.vals[0]==4){
+        if(this.grande.vals[0]==4){
           this.treeData = [
             {
               label: '应收账款明细维护',
@@ -157,7 +157,7 @@ export class HomeComponent implements OnInit {
       if (this.menuId != 3) {
         this.itactive = 3;
         this.menuId = 3;
-        if(this.grade.vals[0]==5){
+        if(this.grande.vals[0]==5){
           this.treeData = [
            
             {
@@ -172,7 +172,7 @@ export class HomeComponent implements OnInit {
             },
           ]
         }
-        if(this.grade.vals[0]==4){
+        if(this.grande.vals[0]==4){
           this.treeData = [
             {
               label: '融资发放',
@@ -289,12 +289,16 @@ export class HomeComponent implements OnInit {
   loginSub() {
     this.isAjax=true;  
     this._http.post('/fina/login', this.loginUser, (e) => {
-   
+      // console.log(e)
       if(e.data.t){
-        this.grade.user=e.data.user;
-        this.grade.sub.next({type:1,gradesVals:e.data.user.grade});
+        this.grande.user=e.data.user;
+        this.grande.sub.next({type:1,gradesVals:e.data.user.grade});
         // this.grade.user.emit(e.data.user);
         this.Login(e.data.user.grade)
+        // console.log(e.data.user.steps)
+        setTimeout(()=>{
+          this.grande.sub.next({ type: "home", homeFlag: e.data.user.data.steps });
+        })
       //  this.cuNo = e.data.user.data.cardInsert//客户号
       }
     }, () => {

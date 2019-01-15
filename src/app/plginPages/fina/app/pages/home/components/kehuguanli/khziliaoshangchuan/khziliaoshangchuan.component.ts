@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadInput } from 'ng-uikit-pro-standard';
 //import { ParamsService } from './../../../../../../params.service'
 import { HttpHeaders } from '@angular/common/http';
 import { BaHttpInterceptorService } from './../../../../../../../../theme/services/index'
+import { GradeService } from './../../../../../grade.service';
+
 @Component({
   selector: 'app-khziliaoshangchuan',
   templateUrl: './khziliaoshangchuan.component.html',
@@ -16,7 +17,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
 
   isAjax = false;
 
-  constructor(private _http: BaHttpInterceptorService) {
+  constructor(private _http: BaHttpInterceptorService, public grande: GradeService) {
     this.httpHeaders.set('Content-Type', undefined);
   }
 
@@ -32,12 +33,20 @@ export class KhziliaoshangchuanComponent implements OnInit {
     formData.append('file', uploadFile);//文件
     // formData.append('fileInfo',fileInfo);//文件描述
     this._http.post('/fina/uploadFile?fileInfo=' + fileInfo, formData, (e) => {
-      console.log(e)
+     // console.log(e)
       if (!e.data.file) {
         this.dangerShow(this.items[i].model + "上传失败");
         this.items[i].flag = "0";
       } else {
         this.items[i].flag = "1";
+
+        var filePath = e.data.file.destination + e.data.file.newfilename;
+        var oldFileName = e.data.file.originalname;
+        var fileInfo = e.data.fileInfo;
+        this.infoArr.push({"filePath":filePath,"oldFileName":oldFileName,"fileInfo":fileInfo});
+        // console.log(filePath);
+        // console.log(oldFileName);
+        // console.log(fileInfo);
       }
       if (this.items[i].flag == "1") {
         this.flag += 1;
@@ -49,7 +58,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
   flag = 0;
   nullFlag = false;
   //启动上传
+  infoArr = [];
   startUpload(): void {
+    this.infoArr = [];
+
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].model != "") {
         this.onup(this.items[i].id, i);
@@ -60,14 +72,8 @@ export class KhziliaoshangchuanComponent implements OnInit {
     }
     setTimeout(() => {
       this.nullFlag = false;
-      for (var i = 0; i < this.items.length; i++) {
-        if (this.items[i].flag == '1') {
-          document.getElementById(this.items[i].id)['value'] = "";
-          this.items[i].flag = "";
-          this.items[i].model = "";
-          this.items[i].fileInfo = "";
-        }
-      }
+      // this.closeItem();
+
       if (this.flag > 0) {
         this.dangerShow(this.flag + "个文件上传成功");
         this.flag = 0;
@@ -118,6 +124,33 @@ export class KhziliaoshangchuanComponent implements OnInit {
         this.items[i].checked = this.qx_btn;
       }
     });
+  }
+  closeItem(){
+    for (var i = 0; i < this.items.length; i++) {
+      if (this.items[i].flag == '1') {
+        document.getElementById(this.items[i].id)['value'] = "";
+        this.items[i].flag = "";
+        this.items[i].model = "";
+        this.items[i].fileInfo = "";
+      }
+    }
+  }
+  CustDataSub() {
+
+
+    this._http.post('/fina/orders/CustDataSub', {arr:this.infoArr}, (e) => {
+      // console.log(e)
+       if(e.data.t){
+        this.closeItem();
+        this.infoArr = [];
+        this.grande.sub.next({ type: "zltj", zltjFlag: e.data.steps });
+       }else{
+       }
+       console.log(e)
+      this.dangerShow(e.data.msg);
+     }, () => {
+       this.dangerShow("错误,请检查后重试");
+     })
   }
   ngOnInit() {
   }

@@ -3,7 +3,7 @@
     <h4 style="margin-bottom: 0;">金融服务平台
     </h4>
   </div> -->
-  <div *ngIf="grade.isLogin" class="backs-body">
+  <div *ngIf="grande.isLogin" class="backs-body">
     <div class="left-menu" *ngIf="treeData&&(treeData.length>0)" [class.left-menu-active]="ismenu">
       <div class="menu">
         <df-tree [(data)]="treeData" [(itactive)]='itactive' [nodeClick]="nodeClick"></df-tree>
@@ -19,7 +19,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="!grade.isLogin" class="backs-body">
+  <div *ngIf="!grande.isLogin" class="backs-body">
     <div class="win_div">
       <h1 class="font_fff">金融服务平台</h1>
       <!--background-color:#336799;-->

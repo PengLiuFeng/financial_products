@@ -40,13 +40,38 @@ module.exports = function attachHandlers(router) {
     function (req, res) {
         res.send(handleRes.handleRes(false, {statusCode:200},{msg:'用户信息重置成功',t:1}));
     });
-    router.post('/fina/orders/steps',
+
+    /*********************************************************/
+
+    // router.post('/fina/orders/CustDataSub',upload.single('file'), (req, res, next) => {//客户资料上传接口 
+    //     let ret = {};
+    //     ret['code'] = 20000;
+    //     var file = req.file;
+    //     //console.log(req.query.ms)
+    //     var fileInfo = req.query.fileInfo;
+    //     if (file) {
+    //             var fileNameArr = file.originalname.split('.');
+    //             var suffix = fileNameArr[fileNameArr.length - 1];
+    //             //文件重命名
+    //             fs.renameSync('./uploads/' + file.filename, `./uploads/${file.filename}.${suffix}`);
+    //             file['newfilename'] = `${file.filename}.${suffix}`;
+    //         }else{
+    //             ret['error']="请选择文件";
+    //         }
+    //         ret['file'] = file;
+    //         ret['fileInfo'] = fileInfo;
+    //         res.send(handleRes.handleRes(false, {statusCode:200}, ret));
+    //     })
+
+    router.post('/fina/orders/CustDataSub',
     function (req, res) {
-        if(req.body.arr){
+        //console.log(req.body)
+        if(Array.isArray(req.body.arr)&&req.body.arr.length>0){
             if(req.session.user.data.steps==2){
                 req.session.user.data.steps=3;
+                userList.user.data.steps=3;
             }
-            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存成功',t:1}));
+            res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存成功',t:1,steps:req.session.user.data.steps}));
         }else{
             res.send(handleRes.handleRes(false, {statusCode:200},{msg:'文件保存失败',t:0}));
         }
@@ -162,7 +187,7 @@ module.exports = function attachHandlers(router) {
     router.post('/fina/custom/cardInsert',
         function (req, res) {
             if(req.session.user.data.cardInsert){
-                res.send(handleRes.handleRes(true, response, {msg:'您已新增用户信息'}));
+                res.send(handleRes.handleRes(true,{statusCode:200}, {msg:'您已新增用户信息',user:req.session.user}));
                 return;
             }
             let options =
@@ -174,7 +199,12 @@ module.exports = function attachHandlers(router) {
             };
             function callback(error, response, data) {
                 if(data.t==1){
+                    if(req.session.user.data.steps==0){
+                        req.session.user.data.steps=1;
+                        userList.user.data.steps=1;
+                    }
                     req.session.user.data.cardInsert=data;
+                    data.steps=req.session.user.data.steps;
                 }
                 res.send(handleRes.handleRes(error, response, data));
             }
@@ -195,11 +225,13 @@ module.exports = function attachHandlers(router) {
             function callback(error, response, data) {
                 if(!error){
                     if(req.session.user.grade[0]==5){
-                        if(req.session.user.data.steps==0){
-                            req.session.user.data.steps=1;
+                        if(req.session.user.data.steps==1){
+                            req.session.user.data.steps=2;
+                            userList.user.data.steps=2;
                         }
                     }
                 }
+                data.steps=req.session.user.data.steps;
                 res.send(handleRes.handleRes(error, response, data));
             }
             request(options, callback);

@@ -18,10 +18,10 @@
 
   <!-------------------------------------------------------------------------------------->
   <div *ngIf="grande.vals == 5 && dfSteps.active != 0">
-    <app-kehuxinxi-header [radioModel]='radioModel' [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
+    <app-kehuxinxi-header [radioModel]='radioModel'  [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
   </div>
   <div *ngIf="grande.vals == 5 && dfSteps.active == 0" id="xzkh_div">
-    <app-add-user (cuNoChange)="testdataHandler($event)" [(flag)]="flag"></app-add-user>
+    <app-add-user (cuNoChange)="testdataHandler($event)" [khFlag]="khFlagTrue" [nowPage]="newdemoBasic" [lastPage]="demoBasic" [(cuNo)]="cuNo" [(personPage)]="personPage"></app-add-user>
   </div>
 
   <div class="body backColor" *ngIf="grande.vals!=5">
@@ -150,7 +150,7 @@
         <span aria-hidden="true">×</span>
       </button>
       <div id="mtk_div" class="wins-body">
-        <app-add-user (cuNoChange)="testdataHandler($event)" [lastPage]="demoBasic" [nowPage]="newdemoBasic"></app-add-user>
+        <app-add-user (cuNoChange)="testdataHandler($event)" [khFlag]="khFlagFalse" [lastPage]="demoBasic" [nowPage]="newdemoBasic"></app-add-user>
       </div>
     </div>
   </div>

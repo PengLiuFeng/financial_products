@@ -32,7 +32,7 @@ export class RongzishenqingComponent implements OnInit {
     cuName: '',
     finproNo: '',
     busType: '',
-    suSta: '',
+    auSta: '',
     begDate: '',
     endDate: '',
   }
@@ -46,10 +46,11 @@ export class RongzishenqingComponent implements OnInit {
   idTypes: Array<any>        //证件类型
   finproNos: Array<any>      //金融产品
   busTypes: Array<any>       //业务类型
-  suStas: Array<any>         //申请状态
+  auStas: Array<any>         //申请状态
+  termTypes:Array<any>       //期限类型
   //请求下拉框得数据
   requestSelectData() {
-    this._http.get('/fina/dict/dictListList?ids=AU_STA,BUS_TYPE,FINPRO_NO,ID_TYPE', (e) => {
+    this._http.get('/fina/dict/dictListList?ids=AU_STA,BUS_TYPE,FINPRO_NO,ID_TYPE,TERM_TYPE', (e) => {
       var newdata = e.data
       for (var i = 0; i < newdata.length; i++) {
 
@@ -58,18 +59,25 @@ export class RongzishenqingComponent implements OnInit {
          
         }
         if (newdata[i].data[0].fieldName == 'AU_STA') {
-          this.suStas = newdata[i].data
+          this.auStas = newdata[i].data
+         
 
         }
         if (newdata[i].data[0].fieldName == 'BUS_TYPE') {
           this.busTypes = newdata[i].data
-
+          console.log(new Date().getTime())
+        
         }
         if (newdata[i].data[0].fieldName == 'FINPRO_NO') {
           this.finproNos = newdata[i].data
 
         }
+        if (newdata[i].data[0].fieldName == 'TERM_TYPE') {
+          this.termTypes = newdata[i].data
+
+        }
       }
+      
     }, () => { })
   }
   // 得到请求的凭借条件
@@ -80,13 +88,17 @@ export class RongzishenqingComponent implements OnInit {
     if (this.testarray.endDate != null && this.testarray.endDate != undefined&& this.testarray.endDate != '')
       this.testarray.endDate = new Date(this.testarray.endDate)['Format']('yyyy-MM-dd')
     this.paths = '&idType='+this.testarray.idType+'&idNo='+this.testarray.idNo+'&cuName='+this.testarray.cuName+'&finproNo='+this.testarray.finproNo
-    +'&busType='+this.testarray.busType+'&suSta='+this.testarray.suSta;
+    +'&busType='+this.testarray.busType+'&auSta='+this.testarray.auSta;
   }
   //请求得到总数据
   requestTableData() {
     this.getPath();
     this._http.get('/fina/fa/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.paths, (e) => {
       console.log(e)
+      if(this.grade.vals[0]==5)
+        this.tableData=new Array( e.data.pb.list[0])
+      
+      if(this.grade.vals[0]==4)
       this.tableData = e.data.pb.list
       for (var i = 0; i < this.tableData.length; i++) {
         for (var p in this.tableData[i]) {
@@ -95,6 +107,18 @@ export class RongzishenqingComponent implements OnInit {
           }
           if (p == 'idType') {
             this.tableData[i].idType = this.getLabel(this.tableData[i][p], this.idTypes)
+          }
+          if(p=='createTime'){
+            this.tableData[i].begDate=this.tableData[i].createTime;
+          }
+          
+          if(p=='busType'){
+           this.tableData[i].busType=this.getLabel(this.tableData[i][p],this.busTypes)
+        
+          }
+          if(p=='auSta'){
+           this.tableData[i].auSta=this.getLabel(this.tableData[i][p],this.auStas)
+           
           }
         }
       }
@@ -117,9 +141,10 @@ export class RongzishenqingComponent implements OnInit {
   }
   //通过下拉框的vaule的到label
   getLabel(value: any, select: Array<any>): any {
-    
+    console.log(value,select)
     for (var p in select) {
       if (select[p]['value'] == value) {
+        console.log(select[p]['label'])
         return select[p]['label']
       }
     }
@@ -255,12 +280,17 @@ export class RongzishenqingComponent implements OnInit {
   pageTable = [];
   constructor(public param: ParamsService,public grade:GradeService) {
     this._http = param._http
-    console.log(grade)
+    
   }
 
   ngOnInit() {
     this.requestSelectData();
-    this.requestTableData()
+    setTimeout(() => {
+      this.requestTableData()
+    }, 1000);
+    
+    
+    
   }
 
   search(): void {

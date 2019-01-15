@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChildren,ViewChild, QueryList } from '@angular/core';
 import { ParamsService } from './../../../../../../params.service'
 import { ModalDirective } from 'ng-uikit-pro-standard';
+import { GradeService } from './../../../../../../grade.service';
 import { IMyOptions } from 'ng-uikit-pro-standard';
 @Component({
   selector: 'app-daikuanhuankuan',
@@ -12,8 +13,9 @@ export class DaikuanhuankuanComponent implements OnInit {
   @ViewChild('demoBasic') demoBasic: ModalDirective;
  
   _http: any;
-  constructor(public params: ParamsService) {
+  constructor(public params: ParamsService,public grades:GradeService) {
     this._http = params._http;
+    
   }
   //查询条件值绑定
   client = {

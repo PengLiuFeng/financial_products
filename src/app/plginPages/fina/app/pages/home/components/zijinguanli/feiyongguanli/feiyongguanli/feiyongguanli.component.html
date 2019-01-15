@@ -10,40 +10,52 @@
     <div class="fygl_body">
       <div class="fygl_body_head">
         <div>
-          <div class="md-form bk_div marg_div">
+          <!-- <div class="md-form bk_div marg_div">
             <mdb-select [options]="idTypes" name="idType" [(ngModel)]="outputdata.idType" placeholder="请选择" label="证件类型"></mdb-select>
+          </div> -->
+          <div class="marg_div bk_div">
+            <span class="font_cen">证件类型:</span>
+            <div class="er_input">
+              <df-select [(values)]="outputdata.idType" size="small" [options]="idTypes" [disabled]="false"></df-select>
+            </div>
           </div>
           <div class="marg_div bk_div">
             <span class="font_cen">证件号码:</span>
             <div class="er_input">
-              <app-df-input [(values)]="outputdata.idNo"></app-df-input>
+              <app-df-input [(values)]="outputdata.idNo" size="small"></app-df-input>
             </div>
           </div>
 
           <div class="marg_div bk_div">
             <span class="font_cen">客户名称:</span>
             <div class="er_input">
-              <app-df-input [(values)]="outputdata.cuName"></app-df-input>
+              <app-df-input [(values)]="outputdata.cuName" size="small"></app-df-input>
             </div>
           </div>
           <div class="marg_div bk_div">
             <span class="font_cen">客户号:</span>
             <div class="er_input">
-              <app-df-input [(values)]="outputdata.cuNo"></app-df-input>
+              <app-df-input [(values)]="outputdata.cuNo" size="small"></app-df-input>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">业务类型:</span>
+            <div class="er_input">
+              <df-select [(values)]="outputdata.busType" size="small" [options]="busTypes" [disabled]="false"></df-select>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">费用类型:</span>
+            <div class="er_input">
+              <df-select [(values)]="outputdata.feeType" size="small" [options]="feeTypes" [disabled]="false"></df-select>
             </div>
           </div>
 
-          <div class="md-form bk_div marg_div">
-            <mdb-select [options]="busTypes" name="busType" [(ngModel)]="outputdata.busType" placeholder="请选择" label="业务类型"></mdb-select>
-          </div>
-          <div class="md-form bk_div marg_div">
-            <mdb-select [options]="feeTypes" name="feeType" [(ngModel)]="outputdata.feeType" placeholder="请选择" label="费用类型"></mdb-select>
-          </div>
-
-          <div class="bk_div marg_div">
+         <div style="display:inline-block;width:20%;margin-left: 1%;">
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
-          </div>
+         </div>
+            
         </div>
       </div>
       <div class="fygl_body_table">

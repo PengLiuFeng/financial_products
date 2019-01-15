@@ -3,6 +3,8 @@ import { IMyOptions } from 'ng-uikit-pro-standard';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
+import { ParamsService } from './../../../../../../params.service';
+
 @Component({
   selector: 'app-hhfx-index',
   templateUrl: './hhfx-index.component.html',
@@ -73,6 +75,7 @@ constructor(
   private route: ActivatedRoute,
   private router: Router,
   private location:Location,
+  private params:ParamsService,
   
 ) {
   this.ishidden=false;

@@ -160,7 +160,7 @@
                 <td><input type="text" class="form-control" [(ngModel)]="person.busRecei" name="busRecei" placeholder="应收账款金额"></td>
                 <td><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate " placeholder="应收账款到期日"></td>
                 <td *ngIf='grade.vals!=5'>
-                    <button class="el-button el-button--primary el-button--small" id="test111" (click)="fileUpdata($event);" type="button">
+                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);" type="button">
                         <span>点击下载</span>
                       </button>
                 </td>
@@ -169,11 +169,11 @@
                 <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate " placeholder="利率"></td>
                 
                 <td *ngIf='grade.vals==5'>
-                  <div tabindex="0" class="el-upload el-upload--text">
-                    <button class="el-button el-button--primary el-button--small" id="test111" (click)="fileUpdata($event);" type="button">
+                  <div tabindex="0" class="qloud-upload qloud-upload--text">
+                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);" type="button">
                       <span>点击上传</span>
                     </button>
-                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="el-upload__input" type="file">
+                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input" type="file">
                   </div>
                 </td>
                 <td>{{person.fileName}}</td>

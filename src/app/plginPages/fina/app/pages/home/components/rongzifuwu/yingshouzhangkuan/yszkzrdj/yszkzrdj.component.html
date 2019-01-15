@@ -6,21 +6,21 @@
   <div id="body_top_div">
      <div class="myselfInput">
           客户号：
-          <app-df-input [(values)]="zrdj.cuNo" ></app-df-input>
+          <app-df-input [(values)]="zrdj.cuNo" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           客户名称:
-          <app-df-input [(values)]="zrdj.cuName" ></app-df-input>
+          <app-df-input [(values)]="zrdj.cuName" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           授信协议编号:
-          <app-df-input [(values)]="zrdj.authAppNo" ></app-df-input>
+          <app-df-input [(values)]="zrdj.authAppNo" size="small" ></app-df-input>
         </div>
         <!-- <div  style="width:20%;">
           <mdb-select name="zrdj.recSta" [(ngModel)]="zrdj.recSta" [options]="REC_STA" placeholder="应收账款状态:"></mdb-select>
         </div> -->
         <div class="myselfInput">
-          应收账款状态: <df-select [(values)]="zrdj.recSta" [options]="REC_STA"></df-select>
+          应收账款状态: <df-select [(values)]="zrdj.recSta" size="small" [options]="REC_STA"></df-select>
         </div>
       <div  class="myselfInput" style="width:20%;">
         <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>查询</button>

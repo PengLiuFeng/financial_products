@@ -6,6 +6,7 @@
       </div>
       {{mval}}
       <br />
+      <app-df-steps [options]="dataSteps.options" active="3" activeError="3"></app-df-steps>
       
       <div class="row" style="margin-left: 50px">
         <div class="inputd">
@@ -49,10 +50,33 @@
           <div>
               <h3 id="chi-cun"><a aria-hidden="true" class="header-anchor">¶</a> 尺寸</h3>
               <div>
-          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="medium"></app-df-input>
-          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="small"></app-df-input>
-          <app-df-input [(values)]="inputVal"  width="200px" disabled="true" size="mini"></app-df-input>
+          <app-df-input [(values)]="inputVal"  width="200px" size="medium"></app-df-input>
+          <app-df-input [(values)]="inputVal"  width="200px" size="small"></app-df-input>
+          <app-df-input [(values)]="inputVal"  width="200px" size="mini">
+          </app-df-input>
+              </div>
+              <div class="mg">
+                  <h3 id="chi-cun"><a aria-hidden="true" class="header-anchor">¶</a>复合型输入框</h3>
+                  <div class="mg">
+                      <app-df-input [(values)]="inputVal"  width="300px" size="small" slot="prepend">
+                          <span #content slot="prepend">http://</span>
+                        </app-df-input>
 
+                        <br/>
+                        <app-df-input [(values)]="inputVal"  width="300px" size="small" slot="prepend">
+                            <span #content slot="prepend">http://</span>
+                          </app-df-input>
+  
+                          <br/>
+                        <app-df-input [(values)]="inputVal"  width="300px" size="small" slot="append">
+                            <span #content slot="append">.com</span>
+                        </app-df-input>
+                        <br/>
+                        input下拉菜单：
+                        <app-df-input [(values)]="inputVal"  width="300px" size="small" slot="append">
+                            <df-select #content [(values)]="selectData.val" [options]="selectData.options" [disabled]="false" slot="append-select"></df-select>
+                        </app-df-input>
+                  </div>
               </div>
           </div>
         </div>
@@ -80,3 +104,8 @@
        </div>
       </div>
 </div>
+<style>
+.mg{
+  margin: 5px
+}
+</style>

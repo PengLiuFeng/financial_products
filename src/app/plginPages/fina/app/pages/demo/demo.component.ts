@@ -32,6 +32,36 @@ export class DemoComponent implements OnInit {
 
     },this.httpHeaders)
   }
+  dataSteps={
+    options:[
+      
+    {
+      title:"步骤1",
+      name:"填写客户信息"
+    },
+    {
+      title:"步骤2",
+      name:"尽调资料上传"
+    },
+    {
+      title:"步骤3",
+      name:"资料审核"
+    },
+    {
+      title:"步骤4",
+      name:"线下尽调"
+    },
+    {
+      title:"步骤5",
+      name:"审贷会"
+    },
+    {
+      title:"步骤6",
+      name:"授信合同签署"
+    }
+ 
+    ]
+  }
   selectData={
     val:"",
     options:[

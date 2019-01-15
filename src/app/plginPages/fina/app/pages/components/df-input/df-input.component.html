@@ -1,7 +1,27 @@
 
-
-<div class="qloud-input" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size)">
-	<input [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
-	[disabled]="disabled" rows="2" validateevent="true" class="qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
-	>
-</div>
+<ng-container *ngIf="ref">
+	<div class="qloud-input qloud-input-group" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size,slot)">
+			<ng-container *ngIf="slot=='prepend'">
+				<div class="qloud-input-group__prepend">
+					<ng-content select="[slot='prepend']"></ng-content>
+				</div>
+			</ng-container>
+			<input [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
+			[disabled]="disabled" rows="2" validateevent="true" class="qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
+			>
+			<ng-container *ngIf="slot=='append'">
+				<div class="qloud-input-group__append" >
+					<ng-content select="[slot='append']"></ng-content>
+					<ng-content  select="[slot='append-select']"></ng-content>
+				</div>
+			</ng-container>
+		</div>
+</ng-container>
+<ng-container *ngIf="!ref">
+	
+	<div class="qloud-input" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size)">
+		<input [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
+		[disabled]="disabled" rows="2" validateevent="true" class="qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
+		>
+	</div>
+</ng-container>

@@ -28,8 +28,11 @@
     </table>
   </div>
   <div id="button_div">
-    <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>通过</button>
-    <button mdbBtn type="button" color="info" class="waves-light form_button" mdbWavesEffect>驳回</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=true;inforApproval()" mdbWavesEffect>通过</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=false;inforApproval()" mdbWavesEffect>驳回</button>
     <button mdbBtn type="button" color="info" (click)="closeShenPi()" class="waves-light form_button" mdbWavesEffect>取消</button>
+  </div>
+  <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+      <strong>{{alertTxt}}</strong>
   </div>
 </div>

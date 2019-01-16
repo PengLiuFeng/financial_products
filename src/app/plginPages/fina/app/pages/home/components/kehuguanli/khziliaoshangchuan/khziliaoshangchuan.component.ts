@@ -136,8 +136,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
     }
   }
   CustDataSub() {
-
-
+    this.isAjax = true;
+    if(this.infoArr){
+      this.dangerShow("请先上传文件");
+    }
     this._http.post('/fina/orders/CustDataSub', {arr:this.infoArr}, (e) => {
       // console.log(e)
        if(e.data.t){
@@ -148,8 +150,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
        }
        console.log(e)
       this.dangerShow(e.data.msg);
+      this.isAjax = false;
      }, () => {
        this.dangerShow("错误,请检查后重试");
+       this.isAjax = false;
      })
   }
   ngOnInit() {

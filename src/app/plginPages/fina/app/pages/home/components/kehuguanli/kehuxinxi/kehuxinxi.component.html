@@ -10,7 +10,13 @@
     <div style="padding: 20px">
       <div class="backColor-it">
         <div style="padding: 24px;">
-            <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active"></app-df-steps>
+          <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active"></app-df-steps>
+        </div>
+        <div *ngIf="BHBlock" id="bhblock">
+          <h4>当前尽调资料已被驳回,请
+            <!-- <a>重新上传</a> -->
+           <button mdbBtn (click)="rollbackjd()" type="button" size="sm" color="info" class="waves-light form_button" mdbWavesEffect>重新上传</button>
+          </h4>
         </div>
       </div>
     </div>
@@ -18,10 +24,11 @@
 
   <!-------------------------------------------------------------------------------------->
   <div *ngIf="grande.vals == 5 && dfSteps.active != 0">
-    <app-kehuxinxi-header [radioModel]='radioModel'  [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
+    <app-kehuxinxi-header [radioModel]='radioModel' [cuNo]="cuNo" [personPage]="personPage"></app-kehuxinxi-header>
   </div>
   <div *ngIf="grande.vals == 5 && dfSteps.active == 0" id="xzkh_div">
-    <app-add-user (cuNoChange)="testdataHandler($event)" [khFlag]="khFlagTrue" [nowPage]="newdemoBasic" [lastPage]="demoBasic" [(cuNo)]="cuNo" [(personPage)]="personPage"></app-add-user>
+    <app-add-user (cuNoChange)="testdataHandler($event)" [khFlag]="khFlagTrue" [nowPage]="newdemoBasic" [lastPage]="demoBasic"
+      [(cuNo)]="cuNo" [(personPage)]="personPage"></app-add-user>
   </div>
 
   <div class="body backColor" *ngIf="grande.vals!=5">
@@ -56,7 +63,8 @@
       <div id="but_div" style="flex:1;text-align: right;padding: 3px 30px;">
         <button mdbBtn type="button" hidden color="primary" class="waves-light btn-sm" (click)="newdemoBasic.show();"
           mdbWavesEffect>新增</button>
-        <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="filedemoBasic.show();" mdbWavesEffect mdbWavesEffect>修改</button>
+        <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="filedemoBasic.show();"
+          mdbWavesEffect mdbWavesEffect>修改</button>
         <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>删除</button>
 
         <!-- <button type="button" (click)="newdemoBasic.show();" class="btn btn-outline-primary waves-effect btn-sm">新增</button>
@@ -97,7 +105,7 @@
                 <td scope="row">{{data.opName}}</td>
                 <td scope="row">
                   <a (click)="transmit(i)" style="color:blue;">综合信息</a>
-                  <a class="table_a" *ngIf="grande.vals==4" (click)="shenPiDemoBasic.show()">前台审批</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">前台审批</a>
                   <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                     (click)="transmit(i)">综合信息</button> -->
                   <!-- <button type="button" (click)="transmit(i)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button> -->

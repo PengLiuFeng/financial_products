@@ -12,6 +12,7 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
+  @ViewChild('shenPiDemoBasic') shenPiDemoBasic: ModalDirective;
 
   dfSteps = {
     active: 0,
@@ -267,40 +268,62 @@ export class KehuxinxiComponent implements OnInit {
     this.personPage = 'oldUser'
     this.demoBasic.show()
   }
+
+  BHBlock = false;
+  activeError: number;
   ngOnInit() {
-    setTimeout(()=>{
-      if(this.grande.isLogin&&this.grande.user.data.steps){
-        this.dfSteps.active=this.grande.user.data.steps;
+    setTimeout(() => {
+      if (this.grande.isLogin && this.grande.user.data.steps) {
+        if (this.grande.vals == 5) {
+          var step = this.grande.user.data.steps;
+          if (step&&this.dfSteps.active==0) {
+              this.dfSteps.active = Math.abs(step);
+          }
+        }
       }
     })
     this.grande.sub.subscribe(res => {
       // console.log(res)
       if (res.type == "add_user") {
         this.dfSteps.active = res.flag;
-      }else if(res.type == "jbxx"){
+      } else if (res.type == "jbxx") {
         this.dfSteps.active = res.jbFlag;
-      }else if(res.type == "zltj"){
+      } else if (res.type == "zltj") {
         this.dfSteps.active = res.zltjFlag;
-      }else if(res.type == "home"){
-        this.dfSteps.active = res.homeFlag;
+      } else if (res.type == "home") {
+        if (res.homeFlag >= 0) {
+          this.dfSteps.active = res.homeFlag;
+          this.BHBlock = false;
+          this.activeError = -3;
+        } else {
+          this.dfSteps.active = Math.abs(res.homeFlag);
+          this.BHBlock = true;
+          this.activeError = 3;
+        }
       }
+      // Math.abs(8)
     })
     this.requestTableData();
     this.requestselectData();
     if (this.grande.user.data.cardInsert) {
       this.cuNo = this.grande.user.data.cardInsert;
     }
-    if (this.grande.vals == 5) {
-      var step = this.grande.user.data.steps;
-      if (step) {
-        this.dfSteps.active = step;
-      }
-    }
-
+    
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();
   }
-
-
+  showShenPi(e) {
+    // alert(e)<a href="/fina/rollbackjd">
+    this.shenPiDemoBasic.show()
+  }
+  rollbackjd() {
+    this.isAjax = true;
+    this._http.get('/fina/orders/rollbackjd', (e) => {
+      console.log(e);
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
+  }
 }

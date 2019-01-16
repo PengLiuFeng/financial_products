@@ -10,7 +10,7 @@
 			[disabled]="disabled" rows="2" validateevent="true" class="qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
 			>
 			<ng-container *ngIf="slot=='append'">
-				<div class="qloud-input-group__append" >
+				<div class="qloud-input-group__append" style="background: #fff;">
 					<ng-content select="[slot='append']"></ng-content>
 					<ng-content  select="[slot='append-select']"></ng-content>
 				</div>

@@ -10749,7 +10749,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 6px 0;
-    min-width: 160px
+    min-width: 60px
 }
 
 .qloud-cascader-menu:last-child {
@@ -11537,9 +11537,6 @@
     color: inherit;
     border-top: 0;
     border-bottom: 0
-}
-.qloud-input-group__prepend{
-background-color: #fff;
 }
 .qloud-input-group__append .qloud-button,.qloud-input-group__append .qloud-input,.qloud-input-group__prepend .qloud-button,.qloud-input-group__prepend .qloud-input {
     font-size: inherit

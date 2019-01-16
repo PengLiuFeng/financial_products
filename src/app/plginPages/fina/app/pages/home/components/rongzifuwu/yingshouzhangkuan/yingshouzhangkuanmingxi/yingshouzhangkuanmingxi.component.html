@@ -10,7 +10,7 @@
           <mdb-select [options]="idTypes" placeholder="证件类型" class="placeholder" [(ngModel)]="client.idType"></mdb-select>
         </div> -->
         <div class="myselfInput">
-          证件类型: <df-select [(values)]="client.idType" [options]="idTypes"></df-select>
+          证件类型: <df-select [(values)]="client.idType" size="small" [options]="idTypes"></df-select>
         </div>
         <!-- <div class="inputd">
           <div class="md-form">
@@ -20,15 +20,15 @@
         </div> -->
         <div class="myselfInput">
           证件号码
-          <app-df-input [(values)]="client.idNo"></app-df-input>
+          <app-df-input [(values)]="client.idNo" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           客户名称
-          <app-df-input [(values)]="client.cuName"></app-df-input>
+          <app-df-input [(values)]="client.cuName" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           授信协议编号
-          <app-df-input [(values)]="client.authAppNo"></app-df-input>
+          <app-df-input [(values)]="client.authAppNo" size="small"></app-df-input>
         </div>
 
         <!-- <div class="inputd">

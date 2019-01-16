@@ -1,22 +1,22 @@
-<span class="el-select">
-    <div class="el-input el-input--suffix"[class.is-disabled]="disabled">
-        <input *ngIf="!disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+<span class="qloud-select"  [ngClass]="jsclass(size)">
+    <div class="qloud-input qloud-input--suffix"[class.is-disabled]="disabled">
+        <input *ngIf="!disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="qloud-input__inner" style="box-sizing: inherit;"
         [value]="myval">
-        <input *ngIf="disabled" disabled="disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+        <input *ngIf="disabled" disabled="disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="qloud-input__inner" style="box-sizing: inherit;"
         [value]="myval">
-        <span class="el-input__suffix">
-            <span class="el-input__suffix-inner">
-              <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+        <span class="qloud-input__suffix">
+            <span class="qloud-input__suffix-inner">
+              <i class="qloud-input__icon qloud-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
             </span>
         </span>
       </div>
-      <span *ngIf="!disabled" class="el-cascader__label" (click)="onTap()">
+      <span *ngIf="!disabled" class="qloud-cascader__label" (click)="onTap()">
       </span>
-      <div  *ngIf="isTap" (click)="onEls($event)" class="el-cascader-menus el-popper" style="z-index:33; position: absolute; left:18px;">
-          <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
-          <ul role="menu" class="el-cascader-menu">
+      <div  *ngIf="isTap" (click)="onEls($event)" class="qloud-cascader-menus qloud-popper">
+          <div x-arrow="true" class="popper__arrow"></div>
+          <ul role="menu" class="qloud-cascader-menu">
             <ng-container *ngFor="let it of options;let i=index;">
-              <li class="el-cascader-menu__item" [class.is-disabled]="it.disabled" [class.is-active]="dqli.ul1.label==it.label" (click)="onIt(1,it)">
+              <li class="qloud-cascader-menu__item" [class.is-disabled]="it.disabled" [class.is-active]="dqli.ul1.label==it.label" (click)="onIt(1,it)">
                   <span>{{it.label}}</span>
                 </li>
             </ng-container>

@@ -12,9 +12,15 @@
             <app-df-input></app-df-input>
           </div>
         </div>
-        <div class="md-form bk_div marg_div">
-          <mdb-select name="idType" [(ngModel)]="idType" label="证件类型:" [options]="zjlx" placeholder="证件类型:"></mdb-select>
+        <div class="marg_div bk_div">
+          <span class="font_cen">证件类型:</span>
+          <div class="er_input">
+            <df-select [(values)]="idType" size="small" [options]="zjlx" [disabled]="false"></df-select>
+          </div>
         </div>
+        <!-- <div class="md-form bk_div marg_div">
+          <mdb-select name="idType" [(ngModel)]="idType" label="证件类型:" [options]="zjlx" placeholder="证件类型:"></mdb-select>
+        </div> -->
         <div class="marg_div bk_div">
           <span class="font_cen">证件号码:</span>
           <div class="er_input">

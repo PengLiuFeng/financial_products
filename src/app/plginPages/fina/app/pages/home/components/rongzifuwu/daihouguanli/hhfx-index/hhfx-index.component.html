@@ -3,49 +3,68 @@
 
   <div class="hhfx-index">
     <div class="body">
-      <div class="right">
-        <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
-        <button mdbBtn type="reset" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
-      </div>
+      
       <div class="setdiv">
-        <div class="row">
-            <div class="marg_div bk_div">
-              <span class="font_cen">客户号:</span>
-              <div class="er_input">
-                <app-df-input [(values)]="yszk.khhm"></app-df-input>
+        <div class="head">
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户号:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="yszk.khhm"></app-df-input>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">客户名称:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="yszk.name"></app-df-input>
+            </div>
+          </div>
+
+          <!-- <div class="md-form bk_div marg_div">
+            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'" required></mdb-date-picker>
+          </div>
+          <div class="md-form bk_div marg_div">
+            <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'" required></mdb-date-picker>
+          </div> -->
+          <div class="inputd" style="margin-left: 1%; display: inline-block;">
+              <div class="ui-inputgroup">
+                <span class="i-h">融资开始日期：</span>
+                <p-calendar [showTime]="true" placeholder="开始时间"   [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+                <span class="ui-inputgroup-addon" class="i-h">至</span>
+                <p-calendar [showTime]="true" placeholder="结束时间"  [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
               </div>
             </div>
-            <div class="marg_div bk_div">
-              <span class="font_cen">客户名称:</span>
-              <div class="er_input">
-                <app-df-input [(values)]="yszk.name"></app-df-input>
-              </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">合同编号:</span>
+            <div class="er_input">
+              <app-df-input [(values)]="yszk.htbh"></app-df-input>
             </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">业务类型:</span>
+            <div class="er_input">
+              <df-select [(values)]="yszk.ywlx.vals" [options]="yszk.ywlx.selects" [disabled]="false"></df-select>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">合同状态:</span>
+            <div class="er_input">
+              <df-select [(values)]="yszk.ywlx.vals" [options]="yszk.htzt.selects" [disabled]="false"></df-select>
+            </div>
+          </div>
+          <!-- <div class="md-form bk_div marg_div">
+            <mdb-select [options]="yszk.ywlx.selects" label="业务类型:" placeholder="业务类型" class="placeholder" name="ywlx.vals"
+              [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+          </div>
 
-            <div class="md-form bk_div marg_div">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同开始日期'" required></mdb-date-picker>
+          <div class="md-form bk_div marg_div">
+            <mdb-select [options]="yszk.htzt.selects" label="合同状态:" placeholder="合同状态" class="placeholder" name="ywlx.vals"
+              [(ngModel)]="yszk.ywlx.vals"></mdb-select>
+          </div>
+          <div class="bk_div marg_div"></div> -->
+          <div style="width:20%;display:inline-block;margin-left:1%;">
+              <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
+              <button mdbBtn type="reset" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
             </div>
-            <div class="md-form bk_div marg_div">
-              <mdb-date-picker name="mydate" [options]="myDatePickerOptions" [placeholder]="'合同结束日期'" required></mdb-date-picker>
-            </div>
-
-            <div class="marg_div bk_div">
-              <span class="font_cen">合同编号:</span>
-              <div class="er_input">
-                <app-df-input [(values)]="yszk.htbh"></app-df-input>
-              </div>
-            </div>
-
-            <div class="md-form bk_div marg_div">
-              <mdb-select [options]="yszk.ywlx.selects" label="业务类型:" placeholder="业务类型" class="placeholder" name="ywlx.vals"
-                [(ngModel)]="yszk.ywlx.vals"></mdb-select>
-            </div>
-
-            <div class="md-form bk_div marg_div">
-              <mdb-select [options]="yszk.htzt.selects" label="合同状态:" placeholder="合同状态" class="placeholder" name="ywlx.vals"
-                [(ngModel)]="yszk.ywlx.vals"></mdb-select>
-            </div>
-            <div class="bk_div marg_div"></div>
         </div>
       </div>
       <h4>合同列表信息</h4>

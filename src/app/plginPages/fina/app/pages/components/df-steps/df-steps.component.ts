@@ -6,7 +6,8 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./df-steps.component.scss']
 })
 export class DfStepsComponent implements OnInit {
-  @Input() active:any
+  @Input() active:any;
+  @Input() activeError:any;
   @Input() options:Array<any>
   flexbasis="";
  /*  active=1;

@@ -1,13 +1,15 @@
 <div class="yszkhg">
   <div class="body">
-    
+    <div style="width:100%;height:10%;background-color: white;">
+      <app-breadcrumbs [title]="title"></app-breadcrumbs>
+    </div>
   </div>
 </div>
 <div class="yszkhg" *ngIf="!isChildRouteLoaded">
   <div class="body">
     <div class="setdiv">
-      <div class="row">
-        <div class="inputd" style="padding-top: 11px;">
+      <div class="head">
+        <!-- <div class="inputd" style="padding-top: 11px;">
           <div class="md-form">
             <input mdbInputDirective type="text" [(ngModel)]="yszk.khhm" id="form2" class="form-control">
             <label for="form2">客户号</label>
@@ -45,12 +47,39 @@
           <div style="padding-top: 11px; padding-bottom: 11px;">
             <mdb-select [options]="yszk.htzt.selects" placeholder="合同状态" class="placeholder" [(ngModel)]="yszk.htzt.vals"></mdb-select>
           </div>
+        </div> -->
+
+        <div class="myselfInput">
+          客户号
+          <app-df-input [(values)]="yszk.khhm" size="small"></app-df-input>
         </div>
-        <div class="right">
-            <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
-            <button mdbBtn (click)="goback()" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
-      
+        <div class="myselfInput">
+          客户名称
+          <app-df-input [(values)]="yszk.name" size="small"></app-df-input>
+        </div>
+        <div class="myselfInput">
+          合同编号
+          <app-df-input [(values)]="yszk.htbh" size="small"></app-df-input>
+        </div>
+        <div class="inputd" style="margin-left: 1%; display: inline-block;">
+          <div class="ui-inputgroup">
+            <span class="i-h">融资开始日期：</span>
+            <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+            <span class="ui-inputgroup-addon" class="i-h">至</span>
+            <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
           </div>
+        </div>
+        <div class="myselfInput">
+          业务类型 <df-select [(values)]="yszk.ywlx.vals" [options]="yszk.ywlx.selects" [disabled]="false"></df-select>
+        </div>
+        <div class="myselfInput">
+          合同状态 <df-select [(values)]="yszk.htzt.vals" [options]="yszk.htzt.selects" [disabled]="false"></df-select>
+        </div>
+        <div class="myselfInput" style="width:20%;">
+          <button mdbBtn color="primary" rounded="true" size="sm" mdbWavesEffect>查询</button>
+          <button mdbBtn (click)="goback()" color="primary" rounded="true" size="sm" mdbWavesEffect>重置</button>
+
+        </div>
       </div>
     </div>
     <h4>合同列表信息</h4>
@@ -90,7 +119,7 @@
             <td scope="col">{{data.username}}</td>
             <td scope="col">
               <a (click)="demoBasic.show()" class="text-default"><u>回购</u></a>
-              <a (click)="shenhedemoBasic.show()" class="text-default"><u>审核</u></a>
+              <a (click)="shenhedemoBasic.show()" *ngIf='grades[0]==4' class="text-default"><u>审核</u></a>
             </td>
           </tr>
         </ng-container>

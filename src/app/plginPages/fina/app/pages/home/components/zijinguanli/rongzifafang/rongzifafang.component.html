@@ -2,7 +2,7 @@
   <div class="fyglpage" [hidden]="hidFlag">
     <div style="width:100%;height:10%;background-color: white;">
       <app-breadcrumbs [title]="title"></app-breadcrumbs>
-      
+
 
     </div>
     <!-- 以下是搜索框内容 -->
@@ -12,36 +12,47 @@
           <div class="marg_div bk_div">
             <span class="font_cen">客户号:</span>
             <div class="er_input">
-              <app-df-input></app-df-input>
+              <app-df-input size="small"></app-df-input>
             </div>
           </div>
           <div class="marg_div bk_div">
             <span class="font_cen">客户名称:</span>
             <div class="er_input">
-              <app-df-input></app-df-input>
+              <app-df-input size="small"></app-df-input>
             </div>
           </div>
 
           <div class="marg_div bk_div">
             <span class="font_cen">合同编号:</span>
             <div class="er_input">
-              <app-df-input></app-df-input>
+              <app-df-input size="small"></app-df-input>
             </div>
           </div>
-          <div class="md-form bk_div marg_div">
-            <mdb-select [options]="optionsSelect" placeholder="请选择" label="业务类型"></mdb-select>
+          <div class="marg_div bk_div">
+            <span class="font_cen"> 业务类型:</span>
+            <div class="er_input">
+              <df-select [options]="optionsSelect" size="small" [disabled]="false"></df-select>
+            </div>
           </div>
 
-          <div class="md-form bk_div marg_div">
+          <!-- <div class="md-form bk_div marg_div">
             <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同签署日期" [(ngModel)]="model" required></mdb-date-picker>
           </div>
           <div class="md-form bk_div marg_div">
             <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
+          </div> -->
+          <div class="inputd" style="margin-left: 1%; display: inline-block;">
+              <div class="ui-inputgroup">
+                <span class="i-h">融资开始日期：</span>
+                <p-calendar [showTime]="true" placeholder="开始时间"   [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+                <span class="ui-inputgroup-addon" class="i-h">至</span>
+                <p-calendar [showTime]="true" placeholder="结束时间"  [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+              </div>
           </div>
-          <div class="bk_div marg_div"></div>
+         
           <div class="bk_div marg_div">
-              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
-              <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>      
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
+            <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
           </div>
         </div>
         <!--             

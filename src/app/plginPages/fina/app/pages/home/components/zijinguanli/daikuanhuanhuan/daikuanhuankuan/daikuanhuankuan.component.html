@@ -17,37 +17,47 @@
           <div class="marg_div bk_div">
             <span class="font_cen">客户号:</span>
             <div class="er_input">
-              <app-df-input [values]='client.cuNo'></app-df-input>
+              <app-df-input [values]='client.cuNo' size="small"></app-df-input>
             </div>
           </div>
           <div class="marg_div bk_div">
             <span class="font_cen">客户名称:</span>
             <div class="er_input">
-              <app-df-input [values]='client.cuName'></app-df-input>
+              <app-df-input [values]='client.cuName' size="small"></app-df-input>
             </div>
           </div>
           <div class="marg_div bk_div">
             <span class="font_cen">合同编号:</span>
             <div class="er_input">
-              <app-df-input [values]='client.contNo'></app-df-input>
+              <app-df-input [values]='client.contNo' size="small"></app-df-input>
             </div>
           </div>
-          <div class="md-form bk_div marg_div">
+          <div class="marg_div bk_div">
+            <span class="font_cen">业务类型:</span>
+            <div class="er_input">
+                <df-select [(values)]="client.busType" size="small" [options]="busTypes" [disabled]="false"></df-select>
+            </div>
+          </div>
+          <div class="marg_div bk_div">
+            <span class="font_cen">合同状态:</span>
+            <div class="er_input">
+                <df-select [(values)]="client.loanSta" size="small" [options]="loanStas" [disabled]="false"></df-select>
+            </div>
+          </div>
+          <!-- <div class="md-form bk_div marg_div">
             <mdb-select [options]="busTypes" [(ngModel)]="client.busType" placeholder="请选择" label="业务类型"></mdb-select>
           </div>
           <div class="md-form bk_div marg_div">
             <mdb-select [options]="loanStas" placeholder="请选择" label="合同状态" [(ngModel)]="client.loanSta"></mdb-select>
-          </div>
-          <div class="md-form" style="margin-left:2%;display: inline-block">
-            <div class="ui-inputgroup">
-              <span class="i-h">合同签署日期：</span>
-              <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" [(ngModel)]="client.startTimestamp"
-                dateFormat="yy/mm/dd"></p-calendar>
-              <span class="ui-inputgroup-addon" class="i-h">至</span>
-              <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" [(ngModel)]="client.dueTimestamp"
-                dateFormat="yy/mm/dd"></p-calendar>
+          </div> -->
+          <div class="inputd" style="margin-left: 1%; display: inline-block;">
+              <div class="ui-inputgroup">
+                <span class="i-h">融资开始日期：</span>
+                <p-calendar [showTime]="true" placeholder="开始时间"   [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+                <span class="ui-inputgroup-addon" class="i-h">至</span>
+                <p-calendar [showTime]="true" placeholder="结束时间"  [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+              </div>
             </div>
-          </div>
           <div class="bk_div marg_div">
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect
@@ -110,8 +120,8 @@
                   <td scope="row">{{data.dueTimestamp}}</td>
                   <td scope="row">{{data.loanSta}}</td>
                   <td scope="row">
-                    <a (click)="transmit(i)" style="color:blue;">综合信息</a>/
-                    <a (click)="shenpidemoBasic.show();" style="color:blue;">审批</a>
+                    <a (click)="transmit(i)" style="color:blue;">综合信息</a>
+                    <a (click)="shenpidemoBasic.show();" *ngIf="grades.vals[0]==4" style="color:blue;">/ 审批</a>
 
                   </td>
                 </tr>
@@ -187,7 +197,7 @@
           <span aria-hidden="true">×</span>
         </button>
         <div id="mtk_div" class="wins-body">
-         <shenpi-page></shenpi-page>
+          <shenpi-page></shenpi-page>
         </div>
       </div>
     </div>

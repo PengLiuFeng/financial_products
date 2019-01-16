@@ -9,19 +9,19 @@
       <div class="row">
         <div class="myselfInput">
           客户名称：
-          <app-df-input [(values)]="kh.name"></app-df-input>
+          <app-df-input [(values)]="kh.name" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           证件号码：
-          <app-df-input [(values)]="kh.hm"></app-df-input>
+          <app-df-input [(values)]="kh.hm" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           授信协议编号：
-          <app-df-input [(values)]="kh.hm"></app-df-input>
+          <app-df-input [(values)]="kh.hm" size="small"></app-df-input>
         </div>
         <div class="myselfInput">
           合同编号：
-          <app-df-input [(values)]="kh.hm"></app-df-input>
+          <app-df-input [(values)]="kh.hm" size="small"></app-df-input>
         </div>
         <!-- <div class="inputd">
               <div class="md-form">
@@ -40,7 +40,7 @@
               <mdb-select [options]="kh.zjlx.selects" placeholder="证件类型" class="placeholder"  [(ngModel)]="kh.zjlx.vals"></mdb-select>
             </div> -->
         <div class="myselfInput">
-          证件类型: <df-select [(values)]="kh.zjlx.vals" [options]="kh.zjlx.selects" [disabled]="false"></df-select>
+          证件类型: <df-select [(values)]="kh.zjlx.vals" size="small" [options]="kh.zjlx.selects" [disabled]="false"></df-select>
         </div>
             <!-- <div class="inputd">
               <div class="md-form">
@@ -58,7 +58,7 @@
           <mdb-select [options]="kh.zjzt.selects" placeholder="资料提交状态" class="placeholder"  [(ngModel)]="kh.zjzt.vals"></mdb-select>
         </div> -->
             <div class="myselfInput">
-              资料提交状态: <df-select [(values)]="kh.zjzt.vals" [options]="kh.zjzt.selects" [disabled]="false"></df-select>
+              资料提交状态: <df-select [(values)]="kh.zjzt.vals" size="small" [options]="kh.zjzt.selects" [disabled]="false"></df-select>
             </div>
                 <!-- <div style="padding: 10px;">
               <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>查询</button>

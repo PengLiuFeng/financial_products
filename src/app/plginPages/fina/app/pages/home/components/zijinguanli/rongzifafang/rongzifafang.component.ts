@@ -1,6 +1,6 @@
 import { Component,ViewChild,ViewChildren,QueryList, OnInit,EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uikit-pro-standard';
-
+import { ParamsService} from './../../../../../params.service';
 @Component({
   selector: 'app-rongzifafang',
   templateUrl: './rongzifafang.component.html',
@@ -170,7 +170,7 @@ lastPage() {
   }
 }
 pageTable=[];
-  constructor() { }
+  constructor(private params:ParamsService) { }
 
   ngOnInit() {
     if (this.table_body.length % this.itemsPerPage === 0) {

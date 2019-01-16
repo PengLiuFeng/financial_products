@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
         
       }
       //电子合同
-    } else if (url.indexOf('/finas/home/rzgl/dzht/') == 0) {
+    } else if (url.indexOf('/finas/home/rzgl/dzht/') == 0&&this.grande.vals!=null) {
       if (this.menuId != 2) {
         this.itactive = 1;
         this.menuId = 2;
@@ -153,7 +153,7 @@ export class HomeComponent implements OnInit {
         ]
       }
       //资金管理
-    } else if (url.indexOf('/finas/home/rzgl/zjgl') == 0) {
+    } else if (url.indexOf('/finas/home/rzgl/zjgl') == 0&&this.grande.vals!=null) {
       if (this.menuId != 3) {
         this.itactive = 3;
         this.menuId = 3;

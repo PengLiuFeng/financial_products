@@ -10,7 +10,7 @@
     <div style="padding: 20px">
       <div class="backColor-it">
         <div style="padding: 24px;">
-          <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active"></app-df-steps>
+          <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active" [activeError]="activeError" ></app-df-steps>
         </div>
         <div *ngIf="BHBlock" id="bhblock">
           <h4>当前尽调资料已被驳回,请

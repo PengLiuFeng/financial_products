@@ -276,8 +276,8 @@ export class KehuxinxiComponent implements OnInit {
       if (this.grande.isLogin && this.grande.user.data.steps) {
         if (this.grande.vals == 5) {
           var step = this.grande.user.data.steps;
-          if (step&&this.dfSteps.active==0) {
-              this.dfSteps.active = Math.abs(step);
+          if (step && this.dfSteps.active == 0) {
+            this.dfSteps.active = Math.abs(step);
           }
         }
       }
@@ -308,7 +308,7 @@ export class KehuxinxiComponent implements OnInit {
     if (this.grande.user.data.cardInsert) {
       this.cuNo = this.grande.user.data.cardInsert;
     }
-    
+
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();
@@ -320,7 +320,12 @@ export class KehuxinxiComponent implements OnInit {
   rollbackjd() {
     this.isAjax = true;
     this._http.get('/fina/orders/rollbackjd', (e) => {
-      console.log(e);
+      // console.log(e);
+      if (e.data.t) {
+        this.dfSteps.active = e.data.steps;
+        this.BHBlock = false;
+        this.activeError = -3
+      }
       this.isAjax = false;
     }, () => {
       this.isAjax = false;

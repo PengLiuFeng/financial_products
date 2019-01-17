@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 //import { ParamsService } from './../../../../../../params.service'
 import { HttpHeaders } from '@angular/common/http';
 import { BaHttpInterceptorService } from './../../../../../../../../theme/services/index'
 import { GradeService } from './../../../../../grade.service';
+import { MatExpansionPanelActionRow } from '@angular/material';
+import { iterateListLike } from '@angular/core/src/change_detection/change_detection_util';
 
 @Component({
   selector: 'app-khziliaoshangchuan',
@@ -13,7 +15,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
 
   httpHeaders: HttpHeaders = new HttpHeaders();
   //index = 0;
-  items = [{ id: "oFInput", model: "", flag: "", fileInfo: "", checked: false }];
+  @Input() minRow:number ;
+  beginNumber:number=3;
+  items = []
+  item={ id: "oFInput", model: "", flag: "", fileInfo: "", checked: false }
 
   isAjax = false;
 
@@ -22,10 +27,11 @@ export class KhziliaoshangchuanComponent implements OnInit {
   }
 
   getFileName(it) {
+    console.log(it)
     var fileName = document.querySelector("#" + it.id)['files'][0].name;
     it.model = fileName;
   }
-  onup(oId, i) {
+  onup(oId:any, i:any) {
     this.isAjax = true;
     var uploadFile = document.querySelector("#" + oId)['files'][0];
     var fileInfo = this.items[i].fileInfo;
@@ -33,7 +39,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
     formData.append('file', uploadFile);//文件
     // formData.append('fileInfo',fileInfo);//文件描述
     this._http.post('/fina/uploadFile?fileInfo=' + fileInfo, formData, (e) => {
-     // console.log(e)
+      // console.log(e)
       if (!e.data.file) {
         this.dangerShow(this.items[i].model + "上传失败");
         this.items[i].flag = "0";
@@ -43,7 +49,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
         var filePath = e.data.file.destination + e.data.file.newfilename;
         var oldFileName = e.data.file.originalname;
         var fileInfo = e.data.fileInfo;
-        this.infoArr.push({"filePath":filePath,"oldFileName":oldFileName,"fileInfo":fileInfo});
+        this.infoArr.push({ "filePath": filePath, "oldFileName": oldFileName, "fileInfo": fileInfo });
         // console.log(filePath);
         // console.log(oldFileName);
         // console.log(fileInfo);
@@ -86,26 +92,40 @@ export class KhziliaoshangchuanComponent implements OnInit {
 
   createFileInput() {//添加一个文件框
     var val = Math.round(Math.random() * 1000000)
-    this.items.push({ id: "oFInput" + val, model: "", flag: "", fileInfo: "", checked: false });
-    //this.index++;
+    this.item.id="oFInput"+val;
+    this.items.push(JSON.parse(JSON.stringify(this.item)));
     this.qx_btn = false;
   }
   deleteFileInput() {//删除文件框
-    for (let i = this.items.length - 1; i >= 0; i--) {
-      if (this.items[i].checked) {
-        if (i) {
-          this.items.splice(i, 1);
-          //this.index--;
-        } else {
-          this.dangerShow("不能删除默认选项");
-          document.getElementById(this.items[i].id)['value'] = "";
-          this.items[i].flag = "";
-          this.items[i].model = "";
-          this.items[i].fileInfo = "";
-          this.items[0].checked = false;
-        }
+    var sum=0;
+    this.items.forEach(explent=>{
+      if(explent.checked)
+        sum++
+    })
+    if(!!sum){
+      var exitdo=confirm("您确定要删除这些文件吗？")
+      if(!exitdo)
+        return
+    }else{
+      alert("如果您需要删除文件，请先选择需要删除的文件")
+      return
+    }
+      
+    for(let i=this.items.length-1;i>=0;i--){
+      if(this.items[i].checked){
+          this.items.splice(i,1);
       }
     }
+    console.log(this.items.length,this.beginNumber)
+    if(this.items.length<=this.beginNumber){
+      var cycs=this.beginNumber-this.items.length;
+      for(var i=0;i<cycs;i++){
+        this.createFileInput();
+       
+      }
+      this.dangerShow("前"+this.beginNumber+"个文件为默认文件，"+"不能删除默认选项");  
+    }
+    
     this.qx_btn = false;
   }
   danger_hid = true;
@@ -125,7 +145,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
       }
     });
   }
-  closeItem(){
+  closeItem() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].flag == '1') {
         document.getElementById(this.items[i].id)['value'] = "";
@@ -138,21 +158,27 @@ export class KhziliaoshangchuanComponent implements OnInit {
   CustDataSub() {
 
 
-    this._http.post('/fina/orders/CustDataSub', {arr:this.infoArr}, (e) => {
+    this._http.post('/fina/orders/CustDataSub', { arr: this.infoArr }, (e) => {
       // console.log(e)
-       if(e.data.t){
+      if (e.data.t) {
         this.closeItem();
         this.infoArr = [];
         this.grande.sub.next({ type: "zltj", zltjFlag: e.data.steps });
-       }else{
-       }
-       console.log(e)
+      } else {
+      }
+      console.log(e)
       this.dangerShow(e.data.msg);
-     }, () => {
-       this.dangerShow("错误,请检查后重试");
-     })
+    }, () => {
+      this.dangerShow("错误,请检查后重试");
+    })
   }
   ngOnInit() {
+    if(this.minRow!=null){
+      this.beginNumber=this.minRow;
+    }
+    for(var i=0;i<this.beginNumber;i++){
+      this.createFileInput();
+    }
   }
 
 }

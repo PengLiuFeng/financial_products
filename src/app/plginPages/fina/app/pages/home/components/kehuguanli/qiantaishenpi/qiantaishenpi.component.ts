@@ -13,11 +13,7 @@ export class QiantaishenpiComponent implements OnInit {
   constructor() { }
 
   items=[
-    {fileName:'文件名',fileInfo:"文件描述"},
-    {fileName:'文件名',fileInfo:"文件描述"},
-    {fileName:'文件名',fileInfo:"文件描述"},
-    {fileName:'文件名',fileInfo:"文件描述"},
-    {fileName:'文件名',fileInfo:"文件描述"},
+    {fileName:'文件名',fileInfo:"文件描述",fileAddress:"",fileReason:""},
   ]
 
   ngOnInit() {

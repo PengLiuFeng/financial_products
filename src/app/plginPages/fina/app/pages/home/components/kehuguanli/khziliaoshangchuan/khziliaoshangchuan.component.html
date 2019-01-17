@@ -29,14 +29,14 @@
             <div class="file-field md-form" mdbWavesEffect>
               <div mdbBtn color="primary" size="sm" class="waves-light">
                 <span>选择文件</span>
-                <input type="file" (input)="getFileName(item)" id="{{item.id}}" >
+                <input type="file" (change)="getFileName(item)" id="{{item.id}}" >
               </div>
             </div>
           </td>
           <td scope="row">
             <div class="md-form">
               <div class="file-path-wrapper">
-                <input disabled="disabled" class="file-path" name="{{item.model}}" type="text" [(ngModel)]="item.model"
+                <input disabled="disabled" class="file-path"  type="text" [(ngModel)]="item.model"
                   placeholder="已选择的文件">
               </div>
             </div>

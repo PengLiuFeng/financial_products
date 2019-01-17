@@ -315,7 +315,6 @@ export class KehuxinxiComponent implements OnInit {
     this._http.get('/fina/orders/rollbackjd?id=1', (e) => {
       // console.log(e);
       if (e.data.t) {
-        this.dfSteps.active = e.data.steps;
         this.BHBlock = false;
         this.activeError = this.activeError * -1;
       }
@@ -324,6 +323,7 @@ export class KehuxinxiComponent implements OnInit {
       this.isAjax = false;
     })
   }
+  disDesction=""
   rejectedStatus() {
     this.isAjax = true;
     this._http.get("/fina/orders/rejectedStatus?id=1", (e) => {
@@ -331,6 +331,7 @@ export class KehuxinxiComponent implements OnInit {
       if (e.data.t) {
         this.BHBlock = true;
         this.activeError = e.data.data.procedure;
+        this.disDesction = e.data.data.disDesction;
       }
       // this.dangerShow(e.data.msg);
       this.isAjax = false;

@@ -33,22 +33,35 @@ export class QiantaishenpiComponent implements OnInit {
     // alert(this.approvalStatus)
     // alert(this.grande.user.data.steps);
     // console.log(this.grande.user);
-    this._http.get('/fina/orders/inforApproval?approvalStatus=' + this.approvalStatus + '&id='+1, (e) => {
-      console.log(e);
-      if(e.data.t){
-      }
-      this.dangerShow(e.data.msg);
-      this.isAjax = false;
-    }, () => {
-      this.isAjax = false;
-      this.dangerShow("错误,请检查后重试");
-    })
+    if (this.approvalStatus) {
+      this._http.get('/fina/orders/inforApproval?&id=' + 1, (e) => {
+        console.log(e);
+        if (e.data.t) {
+        }
+        this.dangerShow(e.data.msg);
+        this.isAjax = false;
+      }, () => {
+        this.isAjax = false;
+        this.dangerShow("错误,请检查后重试");
+      })
+    } else {
+      this._http.post('/fina/orders/noticeDismissal', this.rejectData, (e) => {
+         console.log(e)
+        // console.log(typeof(e.data.data.rejectFlag)) //Boolean
+        this.dangerShow(e.data.msg);//弹窗
+        this.isAjax = false;
+      }, () => {/*出现错误 弹窗提示*/
+        this.dangerShow("失败 请重试");
+        this.isAjax = false;
+      })
+    }
+
   }
   danger_hid = true;//弹窗状态标识
   alertTxt: string;//弹窗内容
 
   dangerShow(str) {//弹窗
-    this.alertTxt=str;
+    this.alertTxt = str;
     this.danger_hid = false;//显示
     setTimeout(() => {//三秒后隐藏
       this.danger_hid = true
@@ -59,4 +72,10 @@ export class QiantaishenpiComponent implements OnInit {
     this.shenPiDemoBasic.hide();
   }
 
+  rejectData = {
+    disDesction: "驳回描述信息",
+    procedure: 3,
+    rejectFlag: true,
+    id:1
+  }
 }

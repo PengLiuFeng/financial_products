@@ -9,31 +9,34 @@ var multer = require('multer');//引入multer
 var upload = multer({ dest: 'uploads/' });//设置上传文件存储地址
 var url_baoli = baseConfig.baoli;
 //1=前台、2=中台、3=后台、4=操作员、5=客户
-let userListId={
-    "id1":"user",
-    "id2":"user2"
+let userListId = {
+    "id1": "user",
+    "id2": "user2"
 }
 let userList = {
     user: {
-        name:"user",
+        name: "user",
         id: 1,
         pwd: 1111,//客户
         grade: [5],
         data: {
-            steps: 0
+            steps: 0,
+            rejectDatas: []
         }
     },
     user2: {
-        name:"user2",
+        name: "user2",
         id: 2,
         pwd: 1111,//客户
         grade: [5],
         data: {
-            steps: 0
+            steps: 0,
+            rejectDatas: []
+
         }
     },
     admin: {
-        name:"admin",
+        name: "admin",
         id: 2,
         pwd: 1111,
         grade: [4],//管理员
@@ -43,6 +46,7 @@ let userList = {
     }
 
 }
+
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
     let num = 0;
@@ -69,28 +73,72 @@ module.exports = function attachHandlers(router) {
 
     /*********************************************************/
 
+    router.get('/fina/orders/rejectedStatus',
+        function (req, res) {//得到被驳回的数据
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            var data;
+            var tNum = 0;
+            if (id) {
+                let user = userList[userid];
+                if (user.data.rejectDatas) {
+                    var message = "无驳回数据"
+                    for (var i = 0; i < user.data.rejectDatas.length; i++) {
+                        if (user.data.rejectDatas[i].rejectFlag) {
+                            data = user.data.rejectDatas[i];
+                            // console.log(rejectDatas[i].rejectFlag)
+                            message = "请求成功";
+                            tNum = 1;
+                        }
+                    }
+                }
+            }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: message, t: tNum, data }));
+        });
+
+    router.post('/fina/orders/noticeDismissal',
+        function (req, res) {//驳回
+            // console.log(req.query.disDesction)//驳回描述信息
+            // console.log(req.query.procedure)//驳回的步骤
+            // req.body.rejectFlag // 这是Boolean
+
+            let id = req.body.id;
+            let userid = userListId["id" + id];
+            if (id) {
+                let user = userList[userid];
+                if (req.body) {
+                    if (req.body.disDesction && req.body.procedure) {
+                        user.data.rejectDatas.push(req.body);
+                        message = { msg: "请求成功", t: 1, data: req.body }; //打印回去的信息
+                    } else {
+                        message = { msg: "数据缺失", t: 0 }; //打印回去的信息
+                    }
+                } else {
+                    message = { msg: "请求错误", t: 0 }; //打印回去的信息
+                }
+            }
+            // console.log(rejectDatas)
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, message));
+        });
+
+
     router.get('/fina/orders/inforApproval',
         function (req, res) {
             // console.log(req.query.approvalStatus)
             //查询用户当前步骤
-            let id=req.query.id;
-            let userid=userListId["id"+id];
-            if(userid){
-               let user= userList[userid];
-               var msgInfo = "";
-               if(req.query.approvalStatus=="true"){
-                    if (user.data.steps == 3) {
-                        user.data.steps = 4;
-                        msgInfo="审批通过";
-                    }else{
-                        msgInfo="当前进度错误";
-                    }
-               }else{
-                   userList.user.data.steps = -3;
-                   msgInfo="审批已驳回";
-               }
-            }else{
-                msgInfo="错误"
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            if (id) {
+                let user = userList[userid];
+                var msgInfo = "";
+                if (user.data.steps == 3) {
+                    user.data.steps = 4;
+                    msgInfo = "审批通过";
+                } else {
+                    msgInfo = "当前进度错误";
+                }
+            } else {
+                msgInfo = "错误"
             }
             res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: msgInfo, t: 1 }));
         });
@@ -116,20 +164,24 @@ module.exports = function attachHandlers(router) {
     //     })
 
     router.get('/fina/orders/rollbackjd',
-    function (req, res) {
-        if (req.session.user.data.steps == -3) {
-            req.session.user.data.steps = 2;
-            userList.user.data.steps = 2;
-        }
-        // let  steps=null;
-        // try {
-        //     steps= userList.user.data.steps;
-        // } catch (error) {
-        //     console.error('错误',userList.user)
-        // }
-        res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: "进度回退",steps:userList.user.data.steps, t: 1 }));
-    });
-////////////////////////////////////////////////////
+        function (req, res) {
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            if (id) {
+                let user = userList[userid];
+                for (var i = 0; i < user.data.rejectDatas.length; i++) {
+                    user.data.rejectDatas[i].rejectFlag = false;
+                }
+            }
+            // let  steps=null;
+            // try {
+            //     steps= userList.user.data.steps;
+            // } catch (error) {
+            //     console.error('错误',userList.user)
+            // }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: "请求成功", t: 1 }));
+        });
+    ////////////////////////////////////////////////////
     router.post('/fina/orders/CustDataSub',
         function (req, res) {
             //console.log(req.body)
@@ -205,10 +257,10 @@ module.exports = function attachHandlers(router) {
                 method: 'GET'
             };
             function callback(error, response, data) {
-                data=JSON.parse(data)
-                if(data.pb&&data.pb.list){
+                data = JSON.parse(data)
+                if (data.pb && data.pb.list) {
                     for (var i = 0; i < data.pb.list.length; i++) {
-                        data.pb.list[i].steps=3;
+                        data.pb.list[i].steps = 3;
                     }
                 }
                 res.send(handleRes.handleRes(error, response, data));

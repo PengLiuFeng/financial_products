@@ -1,6 +1,6 @@
 <div class="qloud-steps qloud-steps--horizontal">
     <ng-container *ngFor="let it of options;let i=index;">
-      <div class="qloud-step is-horizontal is-center" style="margin-right: 0px;"[ngStyle]="{'flex-basis':flexbasis}">
+      <div class="qloud-step is-horizontal is-center" style="margin-right: 0px;"[ngStyle]="{'flex-basis':flexbasis}" [class.qloud-step-error]="activeError==(i+1)">
           <div class="qloud-step__head" [class.is-finish]="active>i" [class.is-process]="active==i">
             <div class="qloud-step__line" style="margin-right: 0px;">
               <i class="qloud-step__line-inner" style="transition-delay: 0ms; border-width: 1px;" [ngStyle]="{'width':active>(i+1)?'100%':'0'}"></i></div>

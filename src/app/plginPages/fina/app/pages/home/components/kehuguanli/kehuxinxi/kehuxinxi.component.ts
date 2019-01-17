@@ -12,6 +12,7 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
+  @ViewChild('shenPiDemoBasic') shenPiDemoBasic: ModalDirective;
 
   dfSteps = {
     active: 0,
@@ -267,40 +268,75 @@ export class KehuxinxiComponent implements OnInit {
     this.personPage = 'oldUser'
     this.demoBasic.show()
   }
+
+  BHBlock = false;
+  activeError: number;
   ngOnInit() {
-    setTimeout(()=>{
-      if(this.grande.isLogin&&this.grande.user.data.steps){
-        this.dfSteps.active=this.grande.user.data.steps;
+    setTimeout(() => {
+      if (this.grande.isLogin && this.grande.user.data.steps) {
+        if (this.grande.vals == 5) {
+          var step = this.grande.user.data.steps;
+          if (step && this.dfSteps.active == 0) {
+            this.dfSteps.active = Math.abs(step);
+          }
+        }
       }
     })
     this.grande.sub.subscribe(res => {
       // console.log(res)
       if (res.type == "add_user") {
         this.dfSteps.active = res.flag;
-      }else if(res.type == "jbxx"){
+      } else if (res.type == "jbxx") {
         this.dfSteps.active = res.jbFlag;
-      }else if(res.type == "zltj"){
+      } else if (res.type == "zltj") {
         this.dfSteps.active = res.zltjFlag;
-      }else if(res.type == "home"){
+      } else if (res.type == "home") {
         this.dfSteps.active = res.homeFlag;
       }
+      // Math.abs(8)
+      this.rejectedStatus();
     })
     this.requestTableData();
     this.requestselectData();
     if (this.grande.user.data.cardInsert) {
       this.cuNo = this.grande.user.data.cardInsert;
     }
-    if (this.grande.vals == 5) {
-      var step = this.grande.user.data.steps;
-      if (step) {
-        this.dfSteps.active = step;
-      }
-    }
 
   }
   newDemoBasicShow() {
     this.newDemoBasic.show();
   }
-
-
+  showShenPi(e) {
+    // alert(e)<a href="/fina/rollbackjd">
+    this.shenPiDemoBasic.show()
+  }
+  rollbackjd() {
+    this.isAjax = true;
+    this._http.get('/fina/orders/rollbackjd?id=1', (e) => {
+      // console.log(e);
+      if (e.data.t) {
+        this.BHBlock = false;
+        this.activeError = this.activeError * -1;
+      }
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
+  }
+  disDesction=""
+  rejectedStatus() {
+    this.isAjax = true;
+    this._http.get("/fina/orders/rejectedStatus?id=1", (e) => {
+      console.log(e);
+      if (e.data.t) {
+        this.BHBlock = true;
+        this.activeError = e.data.data.procedure;
+        this.disDesction = e.data.data.disDesction;
+      }
+      // this.dangerShow(e.data.msg);
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
+  }
 }

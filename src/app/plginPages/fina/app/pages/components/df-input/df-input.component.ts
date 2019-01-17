@@ -1,5 +1,4 @@
-import { Component, OnInit, Input,Output, EventEmitter } from '@angular/core';
-import { Button } from 'primeng/button';
+import { Component, OnInit, Input,Output, EventEmitter,ContentChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-df-input',
@@ -7,6 +6,7 @@ import { Button } from 'primeng/button';
   styleUrls: ['./df-input.component.scss']
 })
 export class DfInputComponent implements OnInit {
+  @ContentChild('content') ref: ElementRef;
   @Input() values:any;
   @Input() placeholder:any;
   @Input() disabled:boolean;
@@ -14,7 +14,8 @@ export class DfInputComponent implements OnInit {
   @Input() type:any;
   @Input() width:any;
   @Output() valuesChange=new EventEmitter();
-
+  @Input() slot:any;
+  @Input() slotType:any;
   constructor() { }
 
   ngOnInit() {
@@ -22,11 +23,22 @@ export class DfInputComponent implements OnInit {
   oninput(v){
    this.valuesChange.emit(v.target.value);
   }
-  jsclass(size):any{
+  jsclass(size,slot):any{
+    let jsons={};
     if(size){
-      let jsons={};
       jsons['qloud-input--'+size]=true;
-      return jsons;
+    }
+    if(slot){
+      slot=slot.split(',')
+      for(let i=0;i<slot.length;i++){
+        jsons['qloud-input-group--'+slot]=true;
+      }
+    }
+    return jsons;
+  }
+  kk(e){
+    if(e){
+      this.slot=e.nativeElement.getAttribute('slot')
     }
   }
 }

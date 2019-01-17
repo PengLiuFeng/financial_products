@@ -1902,7 +1902,8 @@
 
 .qloud-select {
     display: inline-block;
-    position: relative
+    position: relative;
+    min-width: 60px;
 }
 
 .qloud-select .qloud-select__tags>span {
@@ -9836,7 +9837,12 @@
     border: 2px solid;
     border-color: inherit
 }
-
+.qloud-step-error .qloud-step__icon.is-text,.qloud-step-error .qloud-step__title.is-finish,.qloud-step-error .qloud-step__description,
+.qloud-step-error .qloud-step__description.is-finish
+{
+    border-color: #f48282;
+    color: #f66565;
+}
 .qloud-step__icon.is-icon {
     width: 40px
 }
@@ -10743,7 +10749,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 6px 0;
-    min-width: 160px
+    min-width: 60px
 }
 
 .qloud-cascader-menu:last-child {
@@ -11523,15 +11529,15 @@
     display: inline-block;
     margin: -10px -20px
 }
-
-.qloud-input-group__append button.qloud-button,.qloud-input-group__append div.qloud-select .qloud-input__inner,.qloud-input-group__append div.qloud-select:hover .qloud-input__inner,.qloud-input-group__prepend button.qloud-button,.qloud-input-group__prepend div.qloud-select .qloud-input__inner,.qloud-input-group__prepend div.qloud-select:hover .qloud-input__inner {
+.qloud-input-group__append button.qloud-button, .qloud-input-group__append div.qloud-select .qloud-input__inner, .qloud-input-group__append div.qloud-select:hover .qloud-input__inner, .qloud-input-group__prepend button.qloud-button, .qloud-input-group__prepend div.qloud-select .qloud-input__inner, .qloud-input-group__prepend div.qloud-select:hover .qloud-input__inner
+,.qloud-input-group__append .qloud-select .qloud-input.qloud-input--suffix input
+{
     border-color: transparent;
     background-color: transparent;
     color: inherit;
     border-top: 0;
     border-bottom: 0
 }
-
 .qloud-input-group__append .qloud-button,.qloud-input-group__append .qloud-input,.qloud-input-group__prepend .qloud-button,.qloud-input-group__prepend .qloud-input {
     font-size: inherit
 }

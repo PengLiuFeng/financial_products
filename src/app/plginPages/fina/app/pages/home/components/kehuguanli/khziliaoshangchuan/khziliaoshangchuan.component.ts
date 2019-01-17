@@ -15,10 +15,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
 
   httpHeaders: HttpHeaders = new HttpHeaders();
   //index = 0;
-  @Input() minRow:number ;
-  beginNumber:number=3;
+  @Input() minRow: number;
+  beginNumber: number = 3;
   items = []
-  item={ id: "oFInput", model: "", flag: "", fileInfo: "", checked: false }
+  item = { id: "oFInput", model: "", flag: "", fileInfo: "", checked: false }
 
   isAjax = false;
 
@@ -31,7 +31,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
     var fileName = document.querySelector("#" + it.id)['files'][0].name;
     it.model = fileName;
   }
-  onup(oId:any, i:any) {
+  onup(oId: any, i: any) {
     this.isAjax = true;
     var uploadFile = document.querySelector("#" + oId)['files'][0];
     var fileInfo = this.items[i].fileInfo;
@@ -92,40 +92,40 @@ export class KhziliaoshangchuanComponent implements OnInit {
 
   createFileInput() {//添加一个文件框
     var val = Math.round(Math.random() * 1000000)
-    this.item.id="oFInput"+val;
+    this.item.id = "oFInput" + val;
     this.items.push(JSON.parse(JSON.stringify(this.item)));
     this.qx_btn = false;
   }
   deleteFileInput() {//删除文件框
-    var sum=0;
-    this.items.forEach(explent=>{
-      if(explent.checked)
+    var sum = 0;
+    this.items.forEach(explent => {
+      if (explent.checked)
         sum++
     })
-    if(!!sum){
-      var exitdo=confirm("您确定要删除这些文件吗？")
-      if(!exitdo)
+    if (!!sum) {
+      var exitdo = confirm("您确定要删除这些文件吗？")
+      if (!exitdo)
         return
-    }else{
+    } else {
       alert("如果您需要删除文件，请先选择需要删除的文件")
       return
     }
-      
-    for(let i=this.items.length-1;i>=0;i--){
-      if(this.items[i].checked){
-          this.items.splice(i,1);
+
+    for (let i = this.items.length - 1; i >= 0; i--) {
+      if (this.items[i].checked) {
+        this.items.splice(i, 1);
       }
     }
-    console.log(this.items.length,this.beginNumber)
-    if(this.items.length<=this.beginNumber){
-      var cycs=this.beginNumber-this.items.length;
-      for(var i=0;i<cycs;i++){
+    console.log(this.items.length, this.beginNumber)
+    if (this.items.length <= this.beginNumber) {
+      var cycs = this.beginNumber - this.items.length;
+      for (var i = 0; i < cycs; i++) {
         this.createFileInput();
-       
+
       }
-      this.dangerShow("前"+this.beginNumber+"个文件为默认文件，"+"不能删除默认选项");  
+      this.dangerShow("前" + this.beginNumber + "个文件为默认文件，" + "不能删除默认选项");
     }
-    
+
     this.qx_btn = false;
   }
   danger_hid = true;
@@ -156,9 +156,12 @@ export class KhziliaoshangchuanComponent implements OnInit {
     }
   }
   CustDataSub() {
-
-
     this._http.post('/fina/orders/CustDataSub', { arr: this.infoArr }, (e) => {
+      this.isAjax = true;
+      if (this.infoArr) {
+        this.dangerShow("请先上传文件");
+      }
+
       // console.log(e)
       if (e.data.t) {
         this.closeItem();
@@ -168,17 +171,20 @@ export class KhziliaoshangchuanComponent implements OnInit {
       }
       console.log(e)
       this.dangerShow(e.data.msg);
+      this.isAjax = false;
     }, () => {
       this.dangerShow("错误,请检查后重试");
+      this.isAjax = false;
     })
   }
-  ngOnInit() {
-    if(this.minRow!=null){
-      this.beginNumber=this.minRow;
-    }
-    for(var i=0;i<this.beginNumber;i++){
-      this.createFileInput();
-    }
+
+ngOnInit() {
+  if (this.minRow != null) {
+    this.beginNumber = this.minRow;
   }
+  for (var i = 0; i < this.beginNumber; i++) {
+    this.createFileInput();
+  }
+}
 
 }

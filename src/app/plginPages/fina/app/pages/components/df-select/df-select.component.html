@@ -1,4 +1,4 @@
-<span class="qloud-select">
+<span class="qloud-select"  [ngClass]="jsclass(size)">
     <div class="qloud-input qloud-input--suffix"[class.is-disabled]="disabled">
         <input *ngIf="!disabled" type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="qloud-input__inner" style="box-sizing: inherit;"
         [value]="myval">
@@ -12,8 +12,8 @@
       </div>
       <span *ngIf="!disabled" class="qloud-cascader__label" (click)="onTap()">
       </span>
-      <div  *ngIf="isTap" (click)="onEls($event)" class="qloud-cascader-menus qloud-popper" style="z-index:33; position: absolute; left:18px;">
-          <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
+      <div  *ngIf="isTap" (click)="onEls($event)" class="qloud-cascader-menus qloud-popper">
+          <div x-arrow="true" class="popper__arrow"></div>
           <ul role="menu" class="qloud-cascader-menu">
             <ng-container *ngFor="let it of options;let i=index;">
               <li class="qloud-cascader-menu__item" [class.is-disabled]="it.disabled" [class.is-active]="dqli.ul1.label==it.label" (click)="onIt(1,it)">

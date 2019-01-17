@@ -100,5 +100,11 @@ dqli={
       this.removeEve();
     }
   }
-
+  jsclass(size):any{
+    if(size){
+      let jsons={};
+      jsons['qloud-input--'+size]=true;
+      return jsons;
+    }
+  }
 }

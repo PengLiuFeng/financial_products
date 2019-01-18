@@ -109,6 +109,7 @@ module.exports = function attachHandlers(router) {
                 if (req.body) {
                     if (req.body.disDesction && req.body.procedure) {
                         user.data.rejectDatas.push(req.body);
+                        user.data.steps = 2;
                         message = { msg: "已驳回", t: 1, data: req.body }; //打印回去的信息
                     } else {
                         message = { msg: "数据缺失", t: 0 }; //打印回去的信息

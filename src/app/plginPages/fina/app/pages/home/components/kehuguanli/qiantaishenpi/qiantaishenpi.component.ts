@@ -18,7 +18,11 @@ export class QiantaishenpiComponent implements OnInit {
 
   items=[
     {fileName:'文件名',fileInfo:"文件描述",fileAddress:"",fileReason:""},
+    {fileName:'文件名',fileInfo:"文件描述",fileAddress:"",fileReason:""},
+    {fileName:'文件名',fileInfo:"文件描述",fileAddress:"",fileReason:""},
+    {fileName:'文件名',fileInfo:"文件描述",fileAddress:"",fileReason:""},
   ]
+  itemslength:number=this.items.length;
 
   ngOnInit() {
   }

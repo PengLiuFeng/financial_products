@@ -6,35 +6,9 @@
       <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
         <tr>
           <th scope="row">序号</th>
-          <th scope="row">文件名</th>
-          <th scope="row">文件描述</th>
-          <th scope="row">操作</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items; let i=index">
-          <td scope="row">{{i+1}}</td>
-          <td scope="row">
-            {{item.fileName}}
-          </td>
-          <td scope="row">
-            {{item.fileInfo}}
-          </td>
-          <td>
-            <button class="th_btn" type="button" size="sm" mdbBtn color="info" mdbWavesEffect> 下载 </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <h4 class="title_h">营业执照审批</h4>
-  <div id="body_div">
-    <!-- //<table class=" table table-hover"> -->
-    <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
-      <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
-        <tr>
-          <th scope="row">序号</th>
-          <th scope="row">文件类别</th>
+          <th scope="row">
+            <mdb-checkbox></mdb-checkbox>
+          </th>
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
           <th scope="row">操作</th>
@@ -44,7 +18,9 @@
       <tbody>
         <tr *ngFor="let item of items; let i=index">
           <td scope="row">{{i+1}}</td>
-          <td scope="row"></td>
+          <td scope="row">
+            <mdb-checkbox></mdb-checkbox> 
+          </td>
           <td scope="row">
             {{item.fileName}}
           </td>
@@ -53,38 +29,41 @@
           </td>
           <td>
             <df-button type="text" size="mini">查看附件</df-button>
-            <df-button type="text" size="mini">通过</df-button>
-            <df-button type="text" size="mini">驳回</df-button>
-
           </td>
-          <td>
-            <!-- <div class="md-form">
-              <textarea type="text" id="form7" class="md-textarea form-control" [(ngModel)]="item.fileReason"
-                mdbInputDirective></textarea>
-            </div> -->
+          <td *ngIf="i==0" rowspan="4" style="background-color:white !important;">
             <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
                 rows="2" autocomplete="off"></textarea></div>
-
           </td>
         </tr>
       </tbody>
     </table>
+    <div style="text-align: center;">
+      <df-button type="text" size="mini">通过</df-button>
+      <df-button type="text" size="mini">驳回</df-button>
+    </div>
   </div>
-  <h4 class="title_h">其它资料审批</h4>
+  <h4 class="title_h">营业执照审批</h4>
   <div id="body_div">
     <!-- //<table class=" table table-hover"> -->
     <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
       <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
         <tr>
           <th scope="row">序号</th>
+          <th scope="row">
+            <mdb-checkbox></mdb-checkbox>
+          </th>
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
           <th scope="row">操作</th>
+          <th scope="row">审批意见（驳回必填）</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items; let i=index">
           <td scope="row">{{i+1}}</td>
+          <td scope="row">
+            <mdb-checkbox></mdb-checkbox> 
+          </td>
           <td scope="row">
             {{item.fileName}}
           </td>
@@ -92,11 +71,65 @@
             {{item.fileInfo}}
           </td>
           <td>
-            <button class="th_btn" type="button" size="sm" mdbBtn color="info" mdbWavesEffect> 下载 </button>
+            <df-button type="text" size="mini">查看附件</df-button>
+          </td>
+          <td *ngIf="i==0" rowspan="4" style="background-color:white !important;">
+            <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
+                rows="2" autocomplete="off"></textarea></div>
           </td>
         </tr>
+        
       </tbody>
     </table>
+    <div style="text-align: center;">
+      <df-button type="text" size="mini">通过</df-button>
+      <df-button type="text" size="mini">驳回</df-button>
+    </div>
+    
+  </div>
+  <h4 class="title_h">其它资料审批</h4>
+  <div id="body_div">
+    <!-- //<table class=" table table-hover"> -->
+      <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
+        <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
+          <tr>
+            <th scope="row">序号</th>
+            <th scope="row">
+              <mdb-checkbox></mdb-checkbox>
+            </th>
+            <th scope="row">文件名</th>
+            <th scope="row">文件描述</th>
+            <th scope="row">操作</th>
+            <th scope="row">审批意见（驳回必填）</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items; let i=index">
+            <td scope="row">{{i+1}}</td>
+            <td scope="row">
+              <mdb-checkbox></mdb-checkbox> 
+            </td>
+            <td scope="row">
+              {{item.fileName}}
+            </td>
+            <td scope="row">
+              {{item.fileInfo}}
+            </td>
+            <td>
+              <df-button type="text" size="mini">查看附件</df-button>
+            </td>
+            <td *ngIf="i==0" rowspan=4 style="background-color:white !important;">
+              <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
+                  rows="2" autocomplete="off"></textarea></div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <div style="text-align: center;">
+        <df-button type="text" size="mini">通过</df-button>
+        <df-button type="text" size="mini">驳回</df-button>
+      </div>
   </div>
   <div id="button_div">
     <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=true;inforApproval()" mdbWavesEffect>通过</button>

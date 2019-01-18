@@ -1,13 +1,13 @@
 <div id="dom_div">
   <h4 class="title_h">财务报表审批</h4>
-  <div id="body_div">
+  <div class="body_div">
     <!-- //<table class=" table table-hover"> -->
     <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
       <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
         <tr>
           <th scope="row">序号</th>
           <th scope="row">
-            <mdb-checkbox></mdb-checkbox>
+            <mdb-checkbox (click)="quanXuan('cwbb')" [(ngModel)]="cwbb_btn"></mdb-checkbox>
           </th>
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
@@ -19,7 +19,7 @@
         <tr *ngFor="let item of items; let i=index">
           <td scope="row">{{i+1}}</td>
           <td scope="row">
-            <mdb-checkbox></mdb-checkbox> 
+            <mdb-checkbox [(ngModel)]="cwbb_arr[i]" (click)="addition('cwbb',i)"></mdb-checkbox>
           </td>
           <td scope="row">
             {{item.fileName}}
@@ -31,26 +31,28 @@
             <df-button type="text" size="mini">查看附件</df-button>
           </td>
           <td *ngIf="i==0" rowspan="4" style="background-color:white !important;">
-            <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
-                rows="2" autocomplete="off"></textarea></div>
+            <div class="el-textarea">
+              <textarea [(ngModel)]="addData.cwbbInfo" class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
+                rows="2" autocomplete="off"></textarea>
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
-    <div style="text-align: center;">
-      <df-button type="text" size="mini">通过</df-button>
-      <df-button type="text" size="mini">驳回</df-button>
-    </div>
+    <!-- <div style="text-align: center;">
+      <df-button type="text" (click)="approvalStatus=true;inforApproval()" size="mini">通过</df-button>
+      <df-button type="text" (click)="approvalStatus=false;inforApproval()" size="mini">驳回</df-button>
+    </div> -->
   </div>
   <h4 class="title_h">营业执照审批</h4>
-  <div id="body_div">
+  <div class="body_div">
     <!-- //<table class=" table table-hover"> -->
     <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
       <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
         <tr>
           <th scope="row">序号</th>
           <th scope="row">
-            <mdb-checkbox></mdb-checkbox>
+            <mdb-checkbox (click)="quanXuan('yyzz')" [(ngModel)]="yyzz_btn"></mdb-checkbox>
           </th>
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
@@ -62,7 +64,7 @@
         <tr *ngFor="let item of items; let i=index">
           <td scope="row">{{i+1}}</td>
           <td scope="row">
-            <mdb-checkbox></mdb-checkbox> 
+            <mdb-checkbox [(ngModel)]="yyzz_arr[i]" (click)="addition('yyzz',i)"></mdb-checkbox>
           </td>
           <td scope="row">
             {{item.fileName}}
@@ -74,70 +76,75 @@
             <df-button type="text" size="mini">查看附件</df-button>
           </td>
           <td *ngIf="i==0" rowspan="4" style="background-color:white !important;">
-            <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
-                rows="2" autocomplete="off"></textarea></div>
+            <div class="el-textarea">
+              <textarea [(ngModel)]="addData.yyzzInfo" class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
+                rows="2" autocomplete="off"></textarea>
+            </div>
           </td>
         </tr>
-        
+
       </tbody>
     </table>
-    <div style="text-align: center;">
-      <df-button type="text" size="mini">通过</df-button>
-      <df-button type="text" size="mini">驳回</df-button>
-    </div>
-    
+    <!-- <div style="text-align: center;">
+      <df-button type="text" (click)="approvalStatus=true;inforApproval()" size="mini">通过</df-button>
+      <df-button type="text" (click)="approvalStatus=false;inforApproval()" size="mini">驳回</df-button>
+    </div> -->
+
   </div>
   <h4 class="title_h">其它资料审批</h4>
-  <div id="body_div">
+  <div class="body_div">
     <!-- //<table class=" table table-hover"> -->
-      <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
-        <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
-          <tr>
-            <th scope="row">序号</th>
-            <th scope="row">
-              <mdb-checkbox></mdb-checkbox>
-            </th>
-            <th scope="row">文件名</th>
-            <th scope="row">文件描述</th>
-            <th scope="row">操作</th>
-            <th scope="row">审批意见（驳回必填）</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let item of items; let i=index">
-            <td scope="row">{{i+1}}</td>
-            <td scope="row">
-              <mdb-checkbox></mdb-checkbox> 
-            </td>
-            <td scope="row">
-              {{item.fileName}}
-            </td>
-            <td scope="row">
-              {{item.fileInfo}}
-            </td>
-            <td>
-              <df-button type="text" size="mini">查看附件</df-button>
-            </td>
-            <td *ngIf="i==0" rowspan=4 style="background-color:white !important;">
-              <div class="el-textarea"><textarea class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
-                  rows="2" autocomplete="off"></textarea></div>
-            </td>
-          </tr>
-          
-        </tbody>
-      </table>
-      <div style="text-align: center;">
-        <df-button type="text" size="mini">通过</df-button>
-        <df-button type="text" size="mini">驳回</df-button>
-      </div>
+    <table class=" table table-hover" hover="true" mdbtable stickyheader="true" striped="true">
+      <thead style="background-color: rgb(242, 242, 242); color: rgb(0, 0, 0);">
+        <tr>
+          <th scope="row">序号</th>
+          <th scope="row">
+            <mdb-checkbox (click)="quanXuan('qtzl')" [(ngModel)]="qtzl_btn"></mdb-checkbox>
+          </th>
+          <th scope="row">文件名</th>
+          <th scope="row">文件描述</th>
+          <th scope="row">操作</th>
+          <th scope="row">审批意见（驳回必填）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i=index">
+          <td scope="row">{{i+1}}</td>
+          <td scope="row">
+            <mdb-checkbox [(ngModel)]="qtzl_arr[i]" (click)="addition('qtzl',i)"></mdb-checkbox>
+          </td>
+          <td scope="row">
+            {{item.fileName}}
+          </td>
+          <td scope="row">
+            {{item.fileInfo}}
+          </td>
+          <td>
+            <df-button type="text" size="mini">查看附件</df-button>
+          </td>
+          <td *ngIf="i==0" rowspan=4 style="background-color:white !important;">
+            <div class="el-textarea">
+              <textarea [(ngModel)]="addData.qtzlInfo" class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
+                rows="2" autocomplete="off"></textarea>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    <!-- <div style="text-align: center;">
+        <df-button type="text" (click)="approvalStatus=true;inforApproval()" size="mini">通过</df-button>
+        <df-button type="text" (click)="approvalStatus=false;inforApproval()" size="mini">驳回</df-button>
+      </div> -->
   </div>
   <div id="button_div">
-    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=true;inforApproval()" mdbWavesEffect>通过</button>
-    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=false;inforApproval()" mdbWavesEffect>驳回</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=true;inforApproval()"
+      mdbWavesEffect>通过</button>
+    <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=false;inforApproval()"
+      mdbWavesEffect>驳回</button>
     <button mdbBtn type="button" color="info" (click)="closeShenPi()" class="waves-light form_button" mdbWavesEffect>取消</button>
-    <!-- <button mdbBtn type="button" color="info" (click)="noticeDismissal()" class="waves-light form_button" mdbWavesEffect>测试驳回button</button> -->
   </div>
   <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
-      <strong>{{alertTxt}}</strong>
+    <strong>{{alertTxt}}</strong>
   </div>
 </div>

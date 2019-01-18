@@ -107,7 +107,30 @@ module.exports = function attachHandlers(router) {
             if (id) {
                 let user = userList[userid];
                 if (req.body) {
-                    if (req.body.disDesction && req.body.procedure) {
+                    if (req.body.disDesction) {
+                        let arr=['cwbb','yyzz','qtzl'];
+                        for(let j=0;j<arr.length;j++){
+                            if (req.body.disDesction[arr[j]].length > 0) {//判断cwbb的长度
+                                for (var i = req.body.disDesction[arr[j]].length - 1; i > -1; i--) {
+                                    if (!req.body.disDesction[arr[j]][i]) {
+                                        req.body.disDesction[arr[j]].splice(i, 1);
+                                        // console.log(req.body.disDesction[arr[j]][i])
+                                    }else{
+                                         
+                                        if(!req.body.disDesction[arr[j]][i].fileName){
+                                            req.body.disDesction[arr[j]].splice(i, 1);
+                                            //  console.log(req.body.disDesction[arr[j]][i])
+                                        }
+                                    }
+                                }
+                            } 
+                        }
+                        for(let j=0;j<arr.length;j++){
+                            if (req.body.disDesction[arr[j]].length < 1) {
+                                delete req.body.disDesction[arr[j]];
+                                delete req.body.disDesction[arr[j]+'Info'];
+                            }
+                        }
                         user.data.rejectDatas.push(req.body);
                         user.data.steps = 2;
                         message = { msg: "已驳回", t: 1, data: req.body }; //打印回去的信息

@@ -3,6 +3,9 @@ import { MDBDatePickerComponent, IMyOptions, TabHeadingDirective } from 'ng-uiki
 import { ParamsService } from './../../../../../../params.service';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { GradeService } from './../../../../../../grade.service';
+
+
+
 //融资申请
 @Component({
   selector: 'app-rongzishenqing',
@@ -25,6 +28,7 @@ export class RongzishenqingComponent implements OnInit {
   paths: any;       //请求路径，请求时拼接请求条件
   theTotalNumberOfEntries = 0
   _http: any;     //请求对象
+
   //以下是搜索框的内容
   testarray = {
     idType: '',
@@ -49,35 +53,38 @@ export class RongzishenqingComponent implements OnInit {
   auStas: Array<any>         //申请状态
   termTypes:Array<any>       //期限类型
   //请求下拉框得数据
-  requestSelectData() {
+  requestSelectData(fu:any) {
     this._http.get('/fina/dict/dictListList?ids=AU_STA,BUS_TYPE,FINPRO_NO,ID_TYPE,TERM_TYPE', (e) => {
       var newdata = e.data
-      for (var i = 0; i < newdata.length; i++) {
+     
+        for (var i = 0; i < newdata.length; i++) {
 
-        if (newdata[i].data[0].fieldName == 'ID_TYPE') {
-          this.idTypes = newdata[i].data
-         
+          if (newdata[i].data[0].fieldName == 'ID_TYPE') {
+            this.idTypes = newdata[i].data
+           
+          }
+          if (newdata[i].data[0].fieldName == 'AU_STA') {
+            this.auStas = newdata[i].data
+           
+  
+          }
+          if (newdata[i].data[0].fieldName == 'BUS_TYPE') {
+            this.busTypes = newdata[i].data
+            console.log(new Date().getTime())
+          
+          }
+          if (newdata[i].data[0].fieldName == 'FINPRO_NO') {
+            this.finproNos = newdata[i].data
+  
+          }
+          if (newdata[i].data[0].fieldName == 'TERM_TYPE') {
+            this.termTypes = newdata[i].data
+  
+          }
         }
-        if (newdata[i].data[0].fieldName == 'AU_STA') {
-          this.auStas = newdata[i].data
-         
-
-        }
-        if (newdata[i].data[0].fieldName == 'BUS_TYPE') {
-          this.busTypes = newdata[i].data
-          console.log(new Date().getTime())
-        
-        }
-        if (newdata[i].data[0].fieldName == 'FINPRO_NO') {
-          this.finproNos = newdata[i].data
-
-        }
-        if (newdata[i].data[0].fieldName == 'TERM_TYPE') {
-          this.termTypes = newdata[i].data
-
-        }
-      }
+     
       
+     fu();
     }, () => { })
   }
   // 得到请求的凭借条件
@@ -97,8 +104,8 @@ export class RongzishenqingComponent implements OnInit {
       console.log(e)
       if(this.grade.vals[0]==5)
         this.tableData=new Array( e.data.pb.list[0])
-      
-      if(this.grade.vals[0]==4)
+        if(this.grade.vals[0]==4)
+       
       this.tableData = e.data.pb.list
       for (var i = 0; i < this.tableData.length; i++) {
         for (var p in this.tableData[i]) {
@@ -106,21 +113,26 @@ export class RongzishenqingComponent implements OnInit {
             this.tableData[i][p] = new Date(this.tableData[i][p])['Format']('yyyy-MM-dd')
           }
           if (p == 'idType') {
+           
             this.tableData[i].idType = this.getLabel(this.tableData[i][p], this.idTypes)
           }
           if(p=='createTime'){
+         
             this.tableData[i].begDate=this.tableData[i].createTime;
           }
           
           if(p=='busType'){
+          
            this.tableData[i].busType=this.getLabel(this.tableData[i][p],this.busTypes)
         
           }
           if(p=='auSta'){
+         
            this.tableData[i].auSta=this.getLabel(this.tableData[i][p],this.auStas)
            
           }
         }
+        
       }
       console.log(typeof(this.tableData))
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
@@ -284,13 +296,10 @@ export class RongzishenqingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.requestSelectData();
-    setTimeout(() => {
+    this.requestSelectData(()=>{
       this.requestTableData()
-    }, 1000);
-    
-    
-    
+    });
+  
   }
 
   search(): void {

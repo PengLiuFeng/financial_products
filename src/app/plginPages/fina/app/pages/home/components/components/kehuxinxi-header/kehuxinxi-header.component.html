@@ -14,7 +14,15 @@
     <app-zonghexinxi [cuNo]="cuNo" [personPage]="personPage"></app-zonghexinxi>
   </div>
   <div *ngIf="radioModel=='zlsc'">
-    <app-khziliaoshangchuan ></app-khziliaoshangchuan>
+    <div>
+      <span>财务报表资料上传</span>
+      <app-khziliaoshangchuan></app-khziliaoshangchuan>
+    </div>
+    <div>
+      <span>营业执照材料上传</span>
+      <app-khziliaoshangchuan [minRow]="5"></app-khziliaoshangchuan>
+    </div>
+
   </div>
 
 

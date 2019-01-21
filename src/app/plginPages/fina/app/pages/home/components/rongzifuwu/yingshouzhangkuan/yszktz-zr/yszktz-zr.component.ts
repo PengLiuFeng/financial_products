@@ -11,6 +11,8 @@ export class YszktzZrComponent implements OnInit {
   radioModel:any="zrtz";//传给头部组件,暂时用于判断切换按钮的选中状态
   constructor() { }
 q:any;
+exmail:boolean;
+mail:boolean;
   zrtzs={
     traInfNo:"",  //转让通知书编号
     rcuNo:"",   //买方名
@@ -122,6 +124,11 @@ q:any;
     }
 
   timestamp(){
+    if(!this.exmail&&!this.mail){
+       alert("请您先选择一种线下的转让通知")
+      return;
+    }
+    
     var sign = new Date(this.signDate.year+"/"+this.signDate.month+"/"+this.signDate.day).getTime();
     this.zrtzs.signDate = String(sign);
     sign = new Date(this.traInfTime.year+"/"+this.traInfTime.month+"/"+this.traInfTime.day).getTime();

@@ -157,7 +157,48 @@
             <br><br>
         </div>
     </div>
-    <div id="foot_div">
+    <div>
+        请选择线下的通知书发放方式
+        <mdb-checkbox style="display:inline-block;">邮件</mdb-checkbox>
+        <mdb-checkbox style="display:inline-block;">邮寄</mdb-checkbox>
+
+
+        <!-- <div class="form-check" style="display:inline-block;">
+            <input type="radio" class="form-check-input" id="materialUnchecked1" name="materialExampleRadios"
+                mdbInputDirective>
+            <label class="form-check-label" for="materialUnchecked">邮件</label>
+        </div>
+        <div class="form-check" style="display:inline-block;">
+            <input type="radio" class="form-check-input" id="materialUnchecked2" name="materialExampleRadios"
+                mdbInputDirective>
+            <label class="form-check-label" for="materialUnchecked">邮寄</label>
+        </div> -->
+    </div>
+    <div class="exmail">
+        <div class="md-form input-group mb-4" style="width:30%;margin-left:2%;float: left;">
+            <span style="position:relative;top:15px;">发送邮箱</span>
+            <input type="text" class="form-control" placeholder="Recipient's username" label="发送邮箱" aria-describedby="material-addon2">
+            <div class="input-group-append">
+                <span class="input-group-text md-addon" id="material-addon2">.com</span>
+            </div>
+        </div>
+        <div class="md-form input-group mb-4" style="width:30%;margin-left:2%;float: left;">
+            <span style="position:relative;top:15px;">接收邮箱</span>
+            <input type="text" class="form-control" placeholder="Recipient's username" aria-describedby="material-addon2">
+            <div class="input-group-append">
+                <span class="input-group-text md-addon" id="material-addon2">.com</span>
+            </div>
+        </div>
+
+    </div>
+    <div class="mail">
+
+    </div>
+<br>
+<br>
+<br>
+
+    <div id="foot_div" style="text-align:center;">
         <button mdbBtn type="button" color="secondary" form="" class="waves-light" (click)="timestamp()" mdbWavesEffect>提交</button>
     </div>
     <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">

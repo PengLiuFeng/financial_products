@@ -78,7 +78,7 @@ export const PAGES_MENU =
             "path": "/rz/rzsq"
           },
           {
-            "grade": [4],
+            "grade": [],//暂时未确定
             "name": "业务调查与审批",
             "path": "/ywdc"
           }, {

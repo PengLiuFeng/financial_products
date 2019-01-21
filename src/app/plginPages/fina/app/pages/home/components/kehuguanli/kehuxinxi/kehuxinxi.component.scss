@@ -5,7 +5,11 @@
     float: right;
     margin-right: 0%;
 }
-#mtk_div{
+.XS_div{
+    width: 60%;
+    margin: 0 auto
+}
+.mtk_div{
   //  max-height: calc(100vh - 100px);
     max-height: calc(100vh - 100px);
     overflow-y: scroll;

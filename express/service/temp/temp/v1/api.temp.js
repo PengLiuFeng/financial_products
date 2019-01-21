@@ -55,7 +55,7 @@ module.exports = function attachHandlers(router) {
         function (req, res) {
             res.send(handleRes.handleRes(false, { statusCode: 200 }, req.session.user));
         });
-    router.get('/fina/init',
+    router.get('/finas/init',
         function (req, res) {
             userList.user = {
                 id: 1,
@@ -72,8 +72,50 @@ module.exports = function attachHandlers(router) {
         });
 
     /*********************************************************/
+    router.get('/fina/orders/ultimateApprove',
+        function (req, res) {
+            // console.log(req.query.approvalStatus)
+            //查询用户当前步骤
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            if (id) {
+                let user = userList[userid];
+                var msgInfo = "";
+                if (user.data.steps == 5) {
+                    user.data.steps = 6;
+                    msgInfo = "审批通过";
+                } else {
+                    msgInfo = "当前进度错误";
+                }
+            } else {
+                msgInfo = "错误"
+            }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: msgInfo, t: 1 }));
+        });
+
+    router.get('/fina/orders/creditApprove',
+        function (req, res) {
+            // console.log(req.query.approvalStatus)
+            //查询用户当前步骤
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            if (id) {
+                let user = userList[userid];
+                var msgInfo = "";
+                if (user.data.steps == 4) {
+                    user.data.steps = 5;
+                    msgInfo = "审批通过";
+                } else {
+                    msgInfo = "当前进度错误";
+                }
+            } else {
+                msgInfo = "错误"
+            }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: msgInfo, t: 1 }));
+        });
+
     router.get('/fina/orders/getSteps',
-        function (req, res) {//得到被驳回的数据
+        function (req, res) {//得到当前的步骤
             let id = req.query.id;
             let userid = userListId["id" + id];
             var steps;
@@ -85,7 +127,7 @@ module.exports = function attachHandlers(router) {
                 message = "请求成功";
                 tNum = 1;
             }
-            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: message, t: tNum, step:steps }));
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: message, t: tNum, step: steps }));
         });
 
     router.get('/fina/orders/rejectedStatus',
@@ -123,32 +165,41 @@ module.exports = function attachHandlers(router) {
                 let user = userList[userid];
                 if (req.body) {
                     if (req.body.disDesction) {
-                        let arr = ['cwbb', 'yyzz', 'qtzl'];
-                        for (let j = 0; j < arr.length; j++) {
-                            if (req.body.disDesction[arr[j]].length > 0) {//判断cwbb的长度
-                                for (var i = req.body.disDesction[arr[j]].length - 1; i > -1; i--) {
-                                    if (!req.body.disDesction[arr[j]][i]) {
-                                        req.body.disDesction[arr[j]].splice(i, 1);
-                                        // console.log(req.body.disDesction[arr[j]][i])
-                                    } else {
-
-                                        if (!req.body.disDesction[arr[j]][i].fileName) {
+                        if (req.body.procedure == 4 || req.body.procedure == 5) {
+                            if(req.body.disDesction.qtzlInfo){
+                                user.data.rejectDatas.push(req.body);
+                                user.data.steps = 3;
+                                message = { msg: "已驳回", t: 1, data: req.body };
+                            }else{
+                                message = { msg: "驳回描述为空", t: 0 };
+                            }
+                        } else if (req.body.procedure == 3) {
+                            let arr = ['cwbb', 'yyzz', 'qtzl'];
+                            for (let j = 0; j < arr.length; j++) {
+                                if (req.body.disDesction[arr[j]].length > 0) {//判断cwbb的长度
+                                    for (var i = req.body.disDesction[arr[j]].length - 1; i > -1; i--) {
+                                        if (!req.body.disDesction[arr[j]][i]) {
                                             req.body.disDesction[arr[j]].splice(i, 1);
-                                            //  console.log(req.body.disDesction[arr[j]][i])
+                                            // console.log(req.body.disDesction[arr[j]][i])
+                                        } else {
+                                            if (!req.body.disDesction[arr[j]][i].fileName) {
+                                                req.body.disDesction[arr[j]].splice(i, 1);
+                                                //  console.log(req.body.disDesction[arr[j]][i])
+                                            }
                                         }
                                     }
                                 }
                             }
-                        }
-                        for (let j = 0; j < arr.length; j++) {
-                            if (req.body.disDesction[arr[j]].length < 1) {
-                                delete req.body.disDesction[arr[j]];
-                                delete req.body.disDesction[arr[j] + 'Info'];
+                            for (let j = 0; j < arr.length; j++) {
+                                if (req.body.disDesction[arr[j]].length < 1) {
+                                    delete req.body.disDesction[arr[j]];
+                                    delete req.body.disDesction[arr[j] + 'Info'];
+                                }
                             }
+                            user.data.rejectDatas.push(req.body);
+                            user.data.steps = 2;
+                            message = { msg: "已驳回", t: 1, data: req.body }; //打印回去的信息
                         }
-                        user.data.rejectDatas.push(req.body);
-                        user.data.steps = 2;
-                        message = { msg: "已驳回", t: 1, data: req.body }; //打印回去的信息
                     } else {
                         message = { msg: "数据缺失", t: 0 }; //打印回去的信息
                     }
@@ -299,7 +350,7 @@ module.exports = function attachHandlers(router) {
                 data = JSON.parse(data)
                 if (data.pb && data.pb.list) {
                     for (var i = 0; i < data.pb.list.length; i++) {
-                        data.pb.list[i].steps = 3;
+                        data.pb.list[i].steps = userList.user.data.steps;
                     }
                 }
                 res.send(handleRes.handleRes(error, response, data));

@@ -83,7 +83,7 @@ export class RongzifafangComponent implements OnInit {
       ,'合同起始日期','合同到期日','发放状态','发放时间','操作',
   ];
   table_body=[
-    { id:1, cuNo:'客户号',cuName:'客户名称',contNo:'合同编号',busType:'业务类型',actualAmt:'实际融资金额',termType:'期限类型',term:'期限',auRate:'利率',
+    { id:1, cuNo:'20180305',cuName:'华软科技',contNo:'1864353',busType:'保理业务',actualAmt:'100,000.00',termType:'期限类型',term:'期限',auRate:'3%',
     startTimestamp:'合同起始日期',dueTimestamp:'合同到期日',loanIs:'发放状态',begTimestamp:'发放时间'},
     
   ]

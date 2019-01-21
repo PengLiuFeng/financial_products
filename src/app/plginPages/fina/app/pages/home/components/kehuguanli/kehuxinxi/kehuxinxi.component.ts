@@ -31,11 +31,11 @@ export class KehuxinxiComponent implements OnInit {
       },
       {
         title: "步骤4",
-        name: "线下尽调"
+        name: "信审"
       },
       {
         title: "步骤5",
-        name: "审贷会"
+        name: "终审"
       },
       {
         title: "步骤6",
@@ -291,17 +291,10 @@ export class KehuxinxiComponent implements OnInit {
       } else if (res.type == "zltj") {
         this.dfSteps.active = res.zltjFlag;
       } else if (res.type == "home") {
-        if (res.homeFlag >= 0) {
-          this.dfSteps.active = res.homeFlag;
-          this.BHBlock = false;
-          this.activeError = -3;
-        } else {
-          this.dfSteps.active = Math.abs(res.homeFlag);
-          this.BHBlock = true;
-          this.activeError = 3;
-        }
+        this.dfSteps.active = res.homeFlag;
       }
       // Math.abs(8)
+      this.rejectedStatus();
     })
     this.requestTableData();
     this.requestselectData();
@@ -319,13 +312,28 @@ export class KehuxinxiComponent implements OnInit {
   }
   rollbackjd() {
     this.isAjax = true;
-    this._http.get('/fina/orders/rollbackjd', (e) => {
+    this._http.get('/fina/orders/rollbackjd?id=1', (e) => {
       // console.log(e);
       if (e.data.t) {
-        this.dfSteps.active = e.data.steps;
         this.BHBlock = false;
-        this.activeError = -3
+        this.activeError = this.activeError * -1;
       }
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
+  }
+  disDesction=""
+  rejectedStatus() {
+    this.isAjax = true;
+    this._http.get("/fina/orders/rejectedStatus?id=1", (e) => {
+      console.log(e);
+      if (e.data.t) {
+        this.BHBlock = true;
+        this.activeError = e.data.data.procedure;
+        this.disDesction = e.data.data.disDesction;
+      }
+      // this.dangerShow(e.data.msg);
       this.isAjax = false;
     }, () => {
       this.isAjax = false;

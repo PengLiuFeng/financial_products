@@ -13,9 +13,8 @@
           <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active" [activeError]="activeError" ></app-df-steps>
         </div>
         <div *ngIf="BHBlock" id="bhblock">
-          <h4>当前尽调资料已被驳回,请
-            <!-- <a>重新上传</a> -->
-           <button mdbBtn (click)="rollbackjd()" type="button" size="sm" color="info" class="waves-light form_button" mdbWavesEffect>重新上传</button>
+          <h4>{{disDesction}}
+           <button mdbBtn (click)="rollbackjd()" type="button" size="sm" color="info" class="waves-light form_button" mdbWavesEffect>处理</button>
           </h4>
         </div>
       </div>

@@ -18,7 +18,8 @@ export class KhziliaoshangchuanComponent implements OnInit {
   @Input() minRow: number;
   beginNumber: number = 3;
   items = []
-  item = { id: "oFInput", model: "", flag: "", fileInfo: "", checked: false }
+  //model是文件名，fileInfo是文件描述，checked是文件是否被选中的属性，power是文件的权限字段
+  item = { id: "oFInput", model: "", flag: "", fileInfo: "", checked: false, power:'filePower' }
 
   isAjax = false;
 
@@ -37,8 +38,10 @@ export class KhziliaoshangchuanComponent implements OnInit {
     var fileInfo = this.items[i].fileInfo;
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
+    formData.append('fileInfo',fileInfo); //文件描述
+    formData.append('filePower',this.items[i].power); //文件的私有属性添加
     // formData.append('fileInfo',fileInfo);//文件描述
-    this._http.post('/fina/uploadFile?fileInfo=' + fileInfo, formData, (e) => {
+    this._http.post('/fina/uploadFile?', formData, (e) => {
       // console.log(e)
       if (!e.data.file) {
         this.dangerShow(this.items[i].model + "上传失败");
@@ -71,11 +74,13 @@ export class KhziliaoshangchuanComponent implements OnInit {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].model != "") {
         this.onup(this.items[i].id, i);
+
       } else {
         this.items[i].flag = '0';
         this.nullFlag = true;
       }
     }
+    
     setTimeout(() => {
       this.nullFlag = false;
       // this.closeItem();

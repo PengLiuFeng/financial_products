@@ -2,7 +2,7 @@
 import { Component,ViewChild, OnInit, ViewChildren, QueryList, Input, Output,EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, turnState } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../../params.service'
-
+import { ModalDirective, flyInOut } from 'ng-uikit-pro-standard';
 @Component({
   selector: 'app-yszktz',
   templateUrl: './yszktz.component.html',
@@ -17,7 +17,7 @@ export class YszktzComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
   @Output() yszktzLeftChange=new EventEmitter();
   @Output() hidFlagChange = new EventEmitter();
-
+  @ViewChild('demoBasic') demoBasic:ModalDirective;
   adviceNote ={
     cuNo:"",
     cuName:"",
@@ -204,8 +204,17 @@ export class YszktzComponent implements OnInit {
   }
   public myDatePickerOptions: IMyOptions = {};
   tongzhi(t):void{
-    this.radioModel=t;
-    this.isShow=true;
+    if(t=='zrtz'){
+      this.radioModel=t;
+      this.isShow=true;
+      this.demoBasic.show();
+    }
+    if(t=='qrhz'){
+      var suerOK=confirm("是否收到回执")
+      if(suerOK){
+      }
+    }
+    
   }
 /*全选*/
   qx_btn=false;

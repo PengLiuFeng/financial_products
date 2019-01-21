@@ -45,12 +45,24 @@ export class QiantaishenpiComponent implements OnInit {
         this.dangerShow("错误,请检查后重试");
       })
     } else {
-      this._http.post('/fina/orders/noticeDismissal', this.rejectData, (e) => {
-        console.log(e)
-        // console.log(typeof(e.data.data.rejectFlag)) //Boolean
-        this.dangerShow(e.data.msg);//弹窗
-        this.isAjax = false;
-      }, () => {/*出现错误 弹窗提示*/
+      this._http.get('/fina/orders/getSteps?&id=' + 1, (s) => {
+        // console.log(s)
+        // console.log(s.data.step)
+        if(s.data.step==3){
+          this._http.post('/fina/orders/noticeDismissal', this.rejectData, (e) => {
+            console.log(e)
+            // console.log(typeof(e.data.data.rejectFlag)) //Boolean
+            this.dangerShow(e.data.msg);//弹窗
+            this.isAjax = false;
+          }, () => {/*出现错误 弹窗提示*/
+            this.dangerShow("失败 请重试");
+            this.isAjax = false;
+          })
+        }else{
+          this.dangerShow("权限不足");
+          this.isAjax = false;
+        }
+      }, () => {
         this.dangerShow("失败 请重试");
         this.isAjax = false;
       })

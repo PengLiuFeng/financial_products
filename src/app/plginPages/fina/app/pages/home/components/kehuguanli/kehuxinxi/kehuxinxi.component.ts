@@ -31,11 +31,11 @@ export class KehuxinxiComponent implements OnInit {
       },
       {
         title: "步骤4",
-        name: "线下尽调"
+        name: "信审"
       },
       {
         title: "步骤5",
-        name: "审贷会"
+        name: "终审"
       },
       {
         title: "步骤6",

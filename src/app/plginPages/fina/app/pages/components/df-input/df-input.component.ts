@@ -16,6 +16,7 @@ export class DfInputComponent implements OnInit {
   @Output() valuesChange=new EventEmitter();
   @Input() slot:any;
   @Input() slotType:any;
+  @Input() parentClass:string;
   constructor() { }
 
   ngOnInit() {

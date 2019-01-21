@@ -93,6 +93,7 @@ if(this.values){
   // }
 }
 }
+isshow=2;
   constructor() { }
 dqli={
   ul1:{},
@@ -111,24 +112,25 @@ dqli={
     //console.log('注销事件');
     this.isTap=false;
     let dom=document.querySelector('body');
-    dom['i']=2;
-    dom.removeEventListener('click',window['fu']);
+    this.isshow=2;
+    dom.removeEventListener('click',this.fuSelect);
     this.dqli.ul2={};
     this.dqli.ul1={};
   }
+  fuSelect:any;
   // 事件定义
   onTap():void{
     if(!this.isTap){
       let _this=this;
-      window['fu']=function fu(e){
+      this.fuSelect=function fu(e){
         e.preventDefault();//阻止事件目标的默认动作
-        if(this.i==1){
+        if(_this.isshow==1){
           _this.removeEve();
-        }else{this.i=1;}
+        }else{_this.isshow=1;}
       }
       this.isTap=true;
       // console.log('注册事件')
-      document.querySelector('body').addEventListener('click',window['fu']);
+      document.querySelector('body').addEventListener('click',this.fuSelect);
     }else{
       this.removeEve();
     }

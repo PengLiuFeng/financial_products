@@ -1,4 +1,5 @@
 
+
 <ng-container *ngIf="ref">
 	<div class="qloud-input qloud-input-group" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size,slot)">
 			<ng-container *ngIf="slot=='prepend'">
@@ -20,8 +21,58 @@
 <ng-container *ngIf="!ref">
 	
 	<div class="qloud-input" [ngStyle]="{width:width}" [class.is-disabled]="disabled" [ngClass]="jsclass(size)">
-		<input [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
+		<input *ngIf="type !== 'textarea'" [placeholder]="placeholder?placeholder:'请输入'" [type]="type?type:'text'" 
 		[disabled]="disabled" rows="2" validateevent="true" class="qloud-input__inner" [(ngModel)]="values" (input)="oninput($event)"
 		>
+		<ng-container *ngIf="type === 'textarea'">
+			<textarea class="qloud-textarea__inner" #textarea
+			  [style]="textareaStyles"
+			  [(ngModel)]="values" [name]="name"
+			  [placeholder]="placeholder" [autofocus]="autofocus"
+			  [disabled]="disabled" [readonly]="readonly"
+			  [maxlength]="maxlength" [minlength]="minlength"
+			  [ngModel]="model"  (input)="oninput($event)"
+			  ></textarea>
+		  </ng-container>
 	</div>
 </ng-container>
+
+<!-- 
+<div [class]="(type === 'text' ? 'qloud-input' : 'qloud-textarea') + (size ? ' qloud-input--' + size : '') + ' ' + parentClass"
+      [class.is-disabled]="disabled"
+      [class.qloud-input-group]="ref"
+      [class.qloud-input-group--append]="slot=='append'"
+      [class.qloud-input-group--prepend]="slot=='prepend'">
+      <ng-container *ngIf="type !== 'textarea'">
+        
+        <div class="qloud-input-group__prepend" *ngIf="slot=='prepend">
+          <ng-template [ngTemplateOutlet]="slot">
+          </ng-template>
+        </div>
+        
+        <input class="qloud-input__inner"
+          [autocomplete]="autoComplete" [value]="value" [name]="name" [type]="nativeType"
+          [placeholder]="placeholder" [autofocus]="autofocus"
+          [disabled]="disabled" [readonly]="readonly"
+          [maxlength]="maxlength" [minlength]="minlength"
+          [ngModel]="model" (ngModelChange)="handleInput($event)"
+          (focus)="focus.emit($event)" (blur)="blur.emit($event)">
+        <i *ngIf="validating" class="qloud-input__icon qloud-icon-loading"></i>
+        
+        <div class="qloud-input-group__append" *ngIf="append">
+          <ng-template [ngTemplateOutlet]="append">
+          </ng-template>
+        </div>
+      </ng-container>
+      
+      <ng-container *ngIf="type === 'textarea'">
+        <textarea class="qloud-textarea__inner" #textarea
+          [style]="textareaStyles"
+          [value]="value" [name]="name"
+          [placeholder]="placeholder" [autofocus]="autofocus"
+          [disabled]="disabled" [readonly]="readonly"
+          [maxlength]="maxlength" [minlength]="minlength"
+          [ngModel]="model" (input)="handleInput($event.target.value)"
+          (focus)="focus.emit($event)" (blur)="blur.emit($event)"></textarea>
+      </ng-container>
+    </div> -->

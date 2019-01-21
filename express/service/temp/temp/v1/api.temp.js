@@ -72,6 +72,21 @@ module.exports = function attachHandlers(router) {
         });
 
     /*********************************************************/
+    router.get('/fina/orders/getSteps',
+        function (req, res) {//得到被驳回的数据
+            let id = req.query.id;
+            let userid = userListId["id" + id];
+            var steps;
+            var tNum = 0;
+            message = "请求失败";
+            if (id) {
+                let user = userList[userid];
+                steps = user.data.steps;
+                message = "请求成功";
+                tNum = 1;
+            }
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: message, t: tNum, step:steps }));
+        });
 
     router.get('/fina/orders/rejectedStatus',
         function (req, res) {//得到被驳回的数据
@@ -108,27 +123,27 @@ module.exports = function attachHandlers(router) {
                 let user = userList[userid];
                 if (req.body) {
                     if (req.body.disDesction) {
-                        let arr=['cwbb','yyzz','qtzl'];
-                        for(let j=0;j<arr.length;j++){
+                        let arr = ['cwbb', 'yyzz', 'qtzl'];
+                        for (let j = 0; j < arr.length; j++) {
                             if (req.body.disDesction[arr[j]].length > 0) {//判断cwbb的长度
                                 for (var i = req.body.disDesction[arr[j]].length - 1; i > -1; i--) {
                                     if (!req.body.disDesction[arr[j]][i]) {
                                         req.body.disDesction[arr[j]].splice(i, 1);
                                         // console.log(req.body.disDesction[arr[j]][i])
-                                    }else{
-                                         
-                                        if(!req.body.disDesction[arr[j]][i].fileName){
+                                    } else {
+
+                                        if (!req.body.disDesction[arr[j]][i].fileName) {
                                             req.body.disDesction[arr[j]].splice(i, 1);
                                             //  console.log(req.body.disDesction[arr[j]][i])
                                         }
                                     }
                                 }
-                            } 
+                            }
                         }
-                        for(let j=0;j<arr.length;j++){
+                        for (let j = 0; j < arr.length; j++) {
                             if (req.body.disDesction[arr[j]].length < 1) {
                                 delete req.body.disDesction[arr[j]];
-                                delete req.body.disDesction[arr[j]+'Info'];
+                                delete req.body.disDesction[arr[j] + 'Info'];
                             }
                         }
                         user.data.rejectDatas.push(req.body);

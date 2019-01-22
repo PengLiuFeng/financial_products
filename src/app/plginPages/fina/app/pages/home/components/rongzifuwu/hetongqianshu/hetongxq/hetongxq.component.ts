@@ -1,7 +1,7 @@
 //合同详情
 import { Component, OnInit, Input,OnChanges,EventEmitter } from '@angular/core';
 import { ParamsService } from './../../../../../../params.service'
-
+import {GradeService} from './../../../../../../grade.service';
 @Component({
   selector: 'app-hetongxq',
   templateUrl: './hetongxq.component.html',
@@ -14,7 +14,7 @@ export class HetongxqComponent implements OnInit, OnChanges {
   editChange = new EventEmitter();
   isEdit: boolean = !this.edit;
   model:any;
-  constructor(public params:ParamsService) { }
+  constructor(public params:ParamsService , public grade:GradeService) { }
   ngOnChanges(it:any){
     console.log(it)
   }
@@ -124,7 +124,7 @@ export class HetongxqComponent implements OnInit, OnChanges {
   }
   
   yszkTable = {
-    thead: ["序号", "买方", "基础交易合同名称", "基础交易合同编号", "单据类型", "单据号码", "应收账款金额", "应收账款到期日", "融资比例(%)", "融资款金额", "指定收款金额"],
+    thead: ["序号", "买方", "基础交易合同名称", "基础交易合同编号", "单据类型", "单据号码", "应收账款金额", "应收账款到期日", "资料下载", "融资比例(%)", "融资款金额", "指定收款金额","操作"],
     data: [
       { id: 1, firstName: 'Mark', lastName: 'Otto', username: '@mdo' },
       { id: 2, firstName: 'John', lastName: 'Doe', username: '@john' },

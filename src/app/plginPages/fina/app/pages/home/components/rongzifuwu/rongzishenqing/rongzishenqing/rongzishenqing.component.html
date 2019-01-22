@@ -107,7 +107,7 @@
                   <td>
                     <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                      >申请详情</button> -->
-                    <a (click)="shenqingxiangqing(i);demoBasic.show();">申请详情 </a>
+                    <a (click)="shenqingxiangqing(i);demoBasic.show();" >申请详情 </a>
                   </td>
                 </tr>
               </ng-container>
@@ -167,11 +167,12 @@
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="wins" role="document">
     <div class="modal-content">
-      <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
+      <button type="button" class="close pull-right"  aria-label="Close" (click)="demoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body" style="overflow:auto;">
-        <app-sq-xx [InputData]="InputData"></app-sq-xx>
+      <div id="mtk_div" class="wins-body">
+        <app-sq-xx [InputData]="InputData" *ngIf="grade.vals[0]==5"></app-sq-xx>
+        <app-hetongxq [edit]="true" *ngIf="grade.vals[0]!=5"></app-hetongxq>
       </div>
     </div>
   </div>

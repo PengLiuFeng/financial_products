@@ -22,9 +22,10 @@ export class QiantaishenpiComponent implements OnInit {
     { fileName: '文件名', fileInfo: "文件描述", fileAddress: "3", fileReason: "3333" },
     { fileName: '文件名', fileInfo: "文件描述", fileAddress: "4", fileReason: "4444" },
   ]
-  itemslength: number = this.items.length;
+  itemslength: number;
 
   ngOnInit() {
+    this.itemslength=this.items.length
   }
   approvalStatus: boolean;
   isAjax = false

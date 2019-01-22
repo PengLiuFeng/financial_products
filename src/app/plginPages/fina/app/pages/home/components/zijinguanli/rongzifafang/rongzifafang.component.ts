@@ -83,8 +83,8 @@ export class RongzifafangComponent implements OnInit {
       ,'合同起始日期','合同到期日','发放状态','发放时间','操作',
   ];
   table_body=[
-    { id:1, cuNo:'123241223',cuName:'腾讯科技有限公司',contNo:'2312d4433',busType:'保理',actualAmt:'CNY 700,000.00',termType:'月',term:'3',auRate:'9%',
-    startTimestamp:'2018-11-3',dueTimestamp:'2019-2-3',loanIs:'正常',begTimestamp:'2018-11-5'},
+    { id:1, cuNo:'20180305',cuName:'华软科技',contNo:'1864353',busType:'保理业务',actualAmt:'100,000.00',termType:'期限类型',term:'期限',auRate:'3%',
+    startTimestamp:'合同起始日期',dueTimestamp:'合同到期日',loanIs:'发放状态',begTimestamp:'发放时间'},
     
   ]
   activePage = 1;

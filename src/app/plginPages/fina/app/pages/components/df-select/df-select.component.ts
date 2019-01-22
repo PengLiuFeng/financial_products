@@ -15,6 +15,7 @@ export class DfSelectComponent implements OnInit {
   @Input() label:any;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();
+  fuid:string;
    isTap:boolean=false;
    isSet=true;//是否
   private bodydom:any;
@@ -41,13 +42,17 @@ options=[
     }
     ]
 */
-  constructor() { }
+  constructor() {
+    this.fuid=Math.random().toString(36).substr(2);
+    console.log(this.fuid)
+  }
 dqli={
   ul1:{},
   ul2:{},
   ul3:{},
 }
   ngOnInit() {
+    
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
       console.error('下拉数据不能为Null');
@@ -61,28 +66,30 @@ dqli={
     }
     this.inits();
   }
+  isshow=2;
   private removeEve(){
     //console.log('注销事件');
     this.isTap=false;
     let dom=document.querySelector('body');
-    dom['i']=2;
-    dom.removeEventListener('click',window['fuSelect']);
+    this.isshow=2;
+    dom.removeEventListener('click',this.fuSelect);
     this.dqli.ul2={};
     this.dqli.ul1={};
   }
+  fuSelect:any;
   // 事件定义
   onTap():void{
     if(!this.isTap){
       let _this=this;
-      window['fuSelect']=function fu(e){
+      this.fuSelect=function fu(e){
         e.preventDefault();//阻止事件目标的默认动作
-        if(this.i==1){
+        if(_this.isshow==1){
           _this.removeEve();
-        }else{this.i=1;}
+        }else{_this.isshow=1;}
       }
       this.isTap=true;
       // console.log('注册事件')
-      document.querySelector('body').addEventListener('click',window['fuSelect']);
+      document.querySelector('body').addEventListener('click',this.fuSelect);
     }else{
       this.removeEve();
     }

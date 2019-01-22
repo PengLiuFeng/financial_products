@@ -105,6 +105,8 @@
                 <td scope="row">
                   <a (click)="transmit(i)" style="color:blue;">综合信息</a>
                   <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">前台审批</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==4" (click)="showXinShen(data.cuNo)">信审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==5" (click)="showZhongShen(data.cuNo)">终审</a>
                   <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                     (click)="transmit(i)">综合信息</button> -->
                   <!-- <button type="button" (click)="transmit(i)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button> -->
@@ -156,7 +158,7 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="newdemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body">
+      <div class="mtk_div wins-body">
         <app-add-user (cuNoChange)="testdataHandler($event)" [khFlag]="khFlagFalse" [lastPage]="demoBasic" [nowPage]="newdemoBasic"></app-add-user>
       </div>
     </div>
@@ -170,7 +172,7 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body">
+      <div  class="mtk_div wins-body">
         <app-zonghexinxi [cuNo]="cuNo" [personPage]="personPage"></app-zonghexinxi>
       </div>
     </div>
@@ -184,13 +186,41 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="shenPiDemoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div id="mtk_div" class="wins-body">
+      <div class="mtk_div wins-body">
         <app-qiantaishenpi [shenPiDemoBasic]="shenPiDemoBasic"></app-qiantaishenpi>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ------------------------------------------------- -->
+<div mdbModal #zhongShenDemoBasic="mdbModal" style="padding:100px;" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="XS_div" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="zhongShenDemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="mtk_div wins-body">
+        <app-zhongshen [zhongShenDemoBasic]="zhongShenDemoBasic"></app-zhongshen>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div mdbModal #xinShenDemoBasic="mdbModal" style="padding:100px;" class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="XS_div" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="xinShenDemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <div class="mtk_div wins-body">
+        <app-xinshen [xinShenDemoBasic]="xinShenDemoBasic"></app-xinshen>
+      </div>
+    </div>
+  </div>
+</div>
 <style>
   .win-app {
     max-height: calc(100vh - 100px);

@@ -98,7 +98,7 @@
           <td scope="row">
             <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
           </td>
-          <td scope="row">{{data.busName}}</td>
+          <td scope="row" *ngIf="i==0" rowspan="2">{{data.busName}}</td>
           <td scope="row">{{data.busCoun}}</td>
           <td scope="row">{{data.busType}}</td>
           <td scope="row">{{data.busNo}}</td>

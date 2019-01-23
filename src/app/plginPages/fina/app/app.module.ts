@@ -106,6 +106,8 @@ import { DfButtonComponent } from './pages/components/df-button/df-button.compon
 import { DfButtonGroupComponent } from './pages/components/df-button-group/df-button-group.component';
 import { DfSelectComponent } from './pages/components/df-select/df-select.component';
 import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiPage/shenpi-page/shenpi-page.component';
+import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xinshen.component';
+import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
 
 @NgModule({
   declarations: [
@@ -206,7 +208,11 @@ import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiP
 
     DfSelectComponent,
 
-    ShenpiPageComponent
+    ShenpiPageComponent,
+
+    XinshenComponent,
+
+    ZhongshenComponent
   ],
   imports: [
     FormsModule,

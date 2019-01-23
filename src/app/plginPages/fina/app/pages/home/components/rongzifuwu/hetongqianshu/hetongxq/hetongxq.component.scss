@@ -1,4 +1,6 @@
 .htxq{
+    margin: 2% 2% 2% 2%;
+    max-width: 1200px;
     & .jbxx{
         padding: 0 50px;
     }
@@ -104,3 +106,7 @@ input.rzbl{
 /* .btn.btn-outline-danger:hover:not(:disabled){
     color: #ccc;
 } */
+th , td{
+    white-space: nowrap;
+    
+}

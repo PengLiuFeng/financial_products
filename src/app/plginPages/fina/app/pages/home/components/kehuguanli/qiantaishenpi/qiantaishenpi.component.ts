@@ -22,9 +22,10 @@ export class QiantaishenpiComponent implements OnInit {
     { fileName: '文件名', fileInfo: "文件描述", fileAddress: "3", fileReason: "3333" },
     { fileName: '文件名', fileInfo: "文件描述", fileAddress: "4", fileReason: "4444" },
   ]
-  itemslength: number = this.items.length;
+  itemslength: number;
 
   ngOnInit() {
+    this.itemslength=this.items.length
   }
   approvalStatus: boolean;
   isAjax = false
@@ -39,6 +40,10 @@ export class QiantaishenpiComponent implements OnInit {
         if (e.data.t) {
         }
         this.dangerShow(e.data.msg);
+        setTimeout(() => {
+          this.grande.sub.next({ type: "qtsp"});
+          this.closeShenPi();
+        }, 1000);
         this.isAjax = false;
       }, () => {
         this.isAjax = false;
@@ -48,17 +53,21 @@ export class QiantaishenpiComponent implements OnInit {
       this._http.get('/fina/orders/getSteps?&id=' + 1, (s) => {
         // console.log(s)
         // console.log(s.data.step)
-        if(s.data.step==3){
+        if (s.data.step == 3) {
           this._http.post('/fina/orders/noticeDismissal', this.rejectData, (e) => {
-            console.log(e)
+            // console.log(e)
             // console.log(typeof(e.data.data.rejectFlag)) //Boolean
             this.dangerShow(e.data.msg);//弹窗
             this.isAjax = false;
+            setTimeout(() => {
+              this.grande.sub.next({ type: "qtsp"});
+              this.closeShenPi();
+            }, 1000);
           }, () => {/*出现错误 弹窗提示*/
             this.dangerShow("失败 请重试");
             this.isAjax = false;
           })
-        }else{
+        } else {
           this.dangerShow("权限不足");
           this.isAjax = false;
         }

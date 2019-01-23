@@ -1,0 +1,27 @@
+<div class="backs-body">
+    <div class="win_div">
+      <h1 class="font_fff">终审</h1>
+      <div class="marg_div">
+        <span class="font_cen font_fff">公司印象：</span>
+        <div class="er_input">
+          <textarea class="txt_textarea" placeholder="选填" [(ngModel)]="addData.companyImp" autocomplete="off"></textarea>
+        </div>
+      </div>
+      <div class="marg_div">
+        <span class="font_cen font_fff">驳回描述：</span>
+        <div class="er_input">
+          <textarea class="txt_textarea" [(ngModel)]="addData.qtzlInfo" placeholder="驳回必填" autocomplete="off"></textarea>
+        </div>
+      </div>
+      <div class="marg_div">
+        <button mdbBtn type="button" color="primary" (click)="approvalStatus=true;inforApproval()" outline="true"
+          mdbWavesEffect>通过</button>
+        <button mdbBtn type="button" color="primary" (click)="approvalStatus=false;inforApproval()" outline="true"
+          mdbWavesEffect>驳回</button>
+        <button mdbBtn type="button" color="primary" (click)="closeShenPi()" outline="true" mdbWavesEffect>取消</button>
+      </div>
+    </div>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+      <strong>{{alertTxt}}</strong>
+    </div>
+  </div>

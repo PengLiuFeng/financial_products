@@ -119,16 +119,6 @@ export class HomeComponent implements OnInit {
               url: '/finas/home/rzgl/yszkgl/yszkzltj',
               treeid: '2'
             },
-            {
-              label: '应收账款转让通知',
-              url: '/finas/home/rzgl/yszkgl/yszktz',
-              treeid: '3'
-            },
-            {
-              label: '应收账款转让登记',
-              url: '/finas/home/rzgl/yszkgl/yszkzrdj',
-              treeid: '4'
-            },
           ]
         }
         
@@ -173,6 +163,16 @@ export class HomeComponent implements OnInit {
         }
         if(this.grande.vals[0]==4){
           this.treeData = [
+            // {
+            //   label: '应收账款转让通知',
+            //   url: '/finas/home/rzgl/yszkgl/yszktz',
+            //   treeid: '3'
+            // },
+            // {
+            //   label: '应收账款转让登记',
+            //   url: '/finas/home/rzgl/yszkgl/yszkzrdj',
+            //   treeid: '4'
+            // },
             {
               label: '融资发放',
               url: '/finas/home/rzgl/zjgl/rzff',

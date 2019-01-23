@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input ,OnChanges} from '@angular/core';
 //import { ParamsService } from './../../../../../../params.service'
 import { HttpHeaders } from '@angular/common/http';
 import { BaHttpInterceptorService } from './../../../../../../../../theme/services/index'
@@ -18,7 +18,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
   @Input() minRow: number;
   beginNumber: number = 3;
   items = []
-  //model是文件名，fileInfo是文件描述，checked是文件是否被选中的属性，power是文件的权限字段
+  //model是文件名，fileInfo是文件描述，checked是文件是否被选中的属性，power是文件的权限字段,flag判断是否上传成功
   item = { id: "oFInput", model: "", flag: "", fileInfo: "", checked: false, power:'filePower' }
 
   isAjax = false;
@@ -26,7 +26,14 @@ export class KhziliaoshangchuanComponent implements OnInit {
   constructor(private _http: BaHttpInterceptorService, public grande: GradeService) {
     this.httpHeaders.set('Content-Type', undefined);
   }
+//监听事件
+successFileNumber:number;  //上传成功的文件数
+ngOnChanges(it : any){
+  if(this.successFileNumber==this.items.length){
+    alert(this.successFileNumber)
+  }
 
+}
   getFileName(it) {
     console.log(it)
     var fileName = document.querySelector("#" + it.id)['files'][0].name;
@@ -38,11 +45,9 @@ export class KhziliaoshangchuanComponent implements OnInit {
     var fileInfo = this.items[i].fileInfo;
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
-    formData.append('fileInfo',fileInfo); //文件描述
-    formData.append('filePower',this.items[i].power); //文件的私有属性添加
     // formData.append('fileInfo',fileInfo);//文件描述
-    this._http.post('/fina/uploadFile?', formData, (e) => {
-      // console.log(e)
+    this._http.post('/fina/uploadFile?fileInfo=' + fileInfo, formData, (e) => {
+     this.successFileNumber++
       if (!e.data.file) {
         this.dangerShow(this.items[i].model + "上传失败");
         this.items[i].flag = "0";
@@ -52,7 +57,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
         var filePath = e.data.file.destination + e.data.file.newfilename;
         var oldFileName = e.data.file.originalname;
         var fileInfo = e.data.fileInfo;
-        this.infoArr.push({ "filePath": filePath, "oldFileName": oldFileName, "fileInfo": fileInfo });
+        this.infoArr.push({ "filePath": filePath, "oldFileName": oldFileName, "fileInfo": fileInfo,"filePower":this.items[i].power});
         // console.log(filePath);
         // console.log(oldFileName);
         // console.log(fileInfo);
@@ -61,6 +66,7 @@ export class KhziliaoshangchuanComponent implements OnInit {
         this.flag += 1;
       }
     }, () => {
+     this.successFileNumber++
       this.dangerShow("错误,请检查后重试");
     }, this.httpHeaders)
   }
@@ -74,27 +80,26 @@ export class KhziliaoshangchuanComponent implements OnInit {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].model != "") {
         this.onup(this.items[i].id, i);
-
       } else {
+        this.successFileNumber++
         this.items[i].flag = '0';
         this.nullFlag = true;
       }
     }
-    
-    setTimeout(() => {
+    setTimeout(()=>{
       this.nullFlag = false;
-      // this.closeItem();
+    // this.closeItem();
 
-      if (this.flag > 0) {
-        this.dangerShow(this.flag + "个文件上传成功");
-        this.flag = 0;
-      } else {
-        this.dangerShow("无文件");
-      }
-      this.isAjax = false;
-    }, 2000);
+    if (this.flag > 0) {
+      this.dangerShow(this.flag + "个文件上传成功");
+      this.flag = 0;
+    } else {
+      this.dangerShow("无文件");
+    }
+    this.isAjax = false;
+    },2000)
   }
-
+ 
   createFileInput() {//添加一个文件框
     var val = Math.round(Math.random() * 1000000)
     this.item.id = "oFInput" + val;

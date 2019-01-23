@@ -13,6 +13,8 @@ export class KehuxinxiComponent implements OnInit {
   @ViewChild('demoBasic') demoBasic: ModalDirective;
   @ViewChild('newDemoBasic') newDemoBasic: ModalDirective;
   @ViewChild('shenPiDemoBasic') shenPiDemoBasic: ModalDirective;
+  @ViewChild('xinShenDemoBasic') xinShenDemoBasic: ModalDirective;
+  @ViewChild('zhongShenDemoBasic') zhongShenDemoBasic: ModalDirective;
 
   dfSteps = {
     active: 0,
@@ -294,6 +296,7 @@ export class KehuxinxiComponent implements OnInit {
         this.dfSteps.active = res.homeFlag;
       }
       // Math.abs(8)
+      this.requestTableData();
       this.rejectedStatus();
     })
     this.requestTableData();
@@ -306,9 +309,15 @@ export class KehuxinxiComponent implements OnInit {
   newDemoBasicShow() {
     this.newDemoBasic.show();
   }
+  showXinShen(e){
+    this.xinShenDemoBasic.show()
+  }
   showShenPi(e) {
     // alert(e)<a href="/fina/rollbackjd">
     this.shenPiDemoBasic.show()
+  }
+  showZhongShen(e){
+    this.zhongShenDemoBasic.show()
   }
   rollbackjd() {
     this.isAjax = true;

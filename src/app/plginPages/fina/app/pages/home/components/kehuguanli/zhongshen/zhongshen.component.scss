@@ -1,0 +1,34 @@
+.win_div{
+    background-color: #ffffff;
+    margin-top: 2%;
+    border:1px solid #dcdfe6;
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+    padding-top:60px;
+}
+.txt_textarea{
+    min-height: 33px;
+    width: 100%
+}
+#alert_div{
+    position: fixed;
+    top: 130px;
+    left: 130px;
+}
+.marg_div button{
+    padding: 0.3rem 1rem;
+}
+.font_fff{
+    color:#336799;
+}
+.marg_div{
+    margin: 10% auto;
+}
+.er_input{
+    // width: 78% !important;
+     width: 74%;
+     display: inline-block;
+}

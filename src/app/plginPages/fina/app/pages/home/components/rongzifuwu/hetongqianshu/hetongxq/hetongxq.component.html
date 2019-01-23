@@ -63,7 +63,7 @@
         </fieldset>
         <fieldset>
             <legend>应收账款明细</legend>
-            <table class="table-center" bordered="true" scrollX="true" maxWidth="100%" mdbTable mdbTableScroll>
+            <table class="table-center" bordered="true" scrollX="true" maxWidth="85%"  mdbTable mdbTableScroll>
                 <thead class="lighten-2">
                     <tr>
                         <ng-container *ngFor="let data of yszkTable.thead; let i = index">
@@ -82,6 +82,9 @@
                             <td scope="row">{{data.username}}</td>
                             <td scope="row">{{data.username}}</td>
                             <td scope="row">{{data.username}}</td>
+                            <td scope="row">
+                                <button type="button" mdbBtn color="primary" size="sm" mdbWavesEffect>资料下载</button>
+                            </td>
                             <td scope="row" name="融资比例">
                                 <ng-container *ngIf="isEdit">
                                     {{data.username}}
@@ -105,6 +108,10 @@
                                 <ng-container *ngIf="!isEdit">
                                     <input id="" type="text" placeholder="请输入" class="form-control rzbl">
                                 </ng-container>
+                            </td>
+                            <td scope="row" name="操作" >
+                                <a>通过</a>
+                                <a>驳回</a>
                             </td>
                         </tr>
                     </ng-container>

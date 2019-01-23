@@ -90,7 +90,7 @@
           </thead>
           <tbody>
             <ng-container *ngFor="let data of tableData; let i = index">
-              <tr>
+              <tr (dblclick)="transmit(i)">
                 <td scope="row" class="index_td">{{i+1}}</td>
                 <td scope="row">
                   <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>

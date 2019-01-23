@@ -108,6 +108,7 @@ import { DfSelectComponent } from './pages/components/df-select/df-select.compon
 import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiPage/shenpi-page/shenpi-page.component';
 import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xinshen.component';
 import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
+import { RegisterComponent } from './pages/home/components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -212,7 +213,9 @@ import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen
 
     XinshenComponent,
 
-    ZhongshenComponent
+    ZhongshenComponent,
+
+    RegisterComponent
   ],
   imports: [
     FormsModule,

@@ -1,52 +1,52 @@
 
-<span class="el-cascader" [class.df-mdb-cascader]="isMDBstyle">
+<span class="qloud-cascader" [class.df-mdb-cascader]="isMDBstyle">
   <ng-container *ngIf="isMDBstyle">
-    <div class="el-input el-input--suffix df-mdb" (click)="onTap()">
+    <div class="qloud-input qloud-input--suffix df-mdb" (click)="onTap()">
       <input type="text" readonly="readonly" autocomplete="off" [value]="myval" [name]="myval">
-      <span class="el-input__suffix">
-          <span class="el-input__suffix-inner">
-            <i class="el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+      <span class="qloud-input__suffix">
+          <span class="qloud-input__suffix-inner">
+            <i class="qloud-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
           </span>
       </span>
     </div>
-    <span class="df-mdb-label" [class.df-mdb-label-active]="!!myval" (click)="onTap()" >
+    <span class="df-mdb-label" [class.df-mdb-labqloud-active]="!!myval" (click)="onTap()" >
       {{label?label:myval?'':'请选择'}}
     </span>
   </ng-container>
   <ng-container *ngIf="!isMDBstyle">
-      <div class="el-input el-input--suffix">
-        <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="el-input__inner" style="box-sizing: inherit;"
+      <div class="qloud-input qloud-input--suffix">
+        <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="qloud-input__inner" style="box-sizing: inherit;"
         [value]="myval">
-        <span class="el-input__suffix">
-            <span class="el-input__suffix-inner">
-              <i class="el-input__icon el-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
+        <span class="qloud-input__suffix">
+            <span class="qloud-input__suffix-inner">
+              <i class="qloud-input__icon qloud-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
             </span>
         </span>
       </div>
-      <span class="el-cascader__label" (click)="onTap()">
+      <span class="qloud-cascader__label" (click)="onTap()">
         {{myval}}
       </span>
     </ng-container>
-  <div  *ngIf="isTap" (click)="onEls($event)" class="el-cascader-menus el-popper" style="z-index:33; position: absolute; left:18px;">
+  <div  *ngIf="isTap" (click)="onEls($event)" class="qloud-cascader-menus qloud-popper" style="z-index:33; position: absolute; left:18px;">
       <div x-arrow="true" class="popper__arrow" style="left:60px;"></div>
-      <ul role="menu" class="el-cascader-menu">
+      <ul role="menu" class="qloud-cascader-menu">
         <ng-container *ngFor="let it of options;let i=index;">
-          <li class="el-cascader-menu__item" [class.el-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul1.label==it.label" (click)="dqli.ul1=it;dqli.ul2=dqli.ul3='';onIt(1,it)" aria-expanded="true">
+          <li class="qloud-cascader-menu__item" [class.qloud-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul1.label==it.label" (click)="dqli.ul1=it;dqli.ul2=dqli.ul3='';onIt(1,it)" aria-expanded="true">
             <span>{{it.label}}</span>
           </li>
         </ng-container>
       </ul>
-      <ul *ngIf="dqli.ul1.children&&dqli.ul1.children.length>0" role="menu" class="el-cascader-menu" style="position: relative;">
+      <ul *ngIf="dqli.ul1.children&&dqli.ul1.children.length>0" role="menu" class="qloud-cascader-menu" style="position: relative;">
           <ng-container *ngFor="let it of dqli.ul1.children;let i=index;">
-            <li tabindex="-1" role="menuitem" class="el-cascader-menu__item" [class.el-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul2.label==it.label" (click)="dqli.ul2=it;onIt(1,it)">
+            <li tabindex="-1" role="menuitem" class="qloud-cascader-menu__item" [class.qloud-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul2.label==it.label" (click)="dqli.ul2=it;onIt(1,it)">
               <span>{{it.label}}</span>
             </li>
           </ng-container>
         <svg style="position: absolute; top: 0px; height: 100%; width: 100%; left: 0px; pointer-events: none;"></svg>
       </ul>
-      <ul *ngIf="dqli.ul2.children&&dqli.ul2.children.length>0" role="menu" class="el-cascader-menu" style="position: relative;">
+      <ul *ngIf="dqli.ul2.children&&dqli.ul2.children.length>0" role="menu" class="qloud-cascader-menu" style="position: relative;">
           <ng-container *ngFor="let it of dqli.ul2.children;let i=index;">
-              <li tabindex="-1" role="menuitem" class="el-cascader-menu__item" [class.el-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul3.label==it.label" (click)="dqli.ul3=it;onIt(1,it)">
+              <li tabindex="-1" role="menuitem" class="qloud-cascader-menu__item" [class.qloud-cascader-menu__item--extensible]="it.children&&it.children.length>0" [class.is-active]="dqli.ul3.label==it.label" (click)="dqli.ul3=it;onIt(1,it)">
                 <span>{{it.label}}</span>
               </li>
             </ng-container>
@@ -54,7 +54,7 @@
     </div>
 </span>
 <style>
-.demo-cascader .el-cascader {
+.demo-cascader .qloud-cascader {
     width: 222px;
 }
 </style>

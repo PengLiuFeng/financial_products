@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,7 +6,6 @@ import { Router, ActivatedRoute, NavigationStart } from '@angular/router'
 import { BaHttpInterceptorService } from './../../../../../theme/services/index'
 import { ParamsService } from './../../params.service'
 import { GradeService } from './../../grade.service'
-import { v } from '@angular/core/src/render3';
 
 
 @Component({
@@ -270,13 +269,13 @@ export class HomeComponent implements OnInit {
     this.activer['itactive'] = tid;
   }
   onGetDate() {///custom/list
-    // this._http.get('/v1/index/custom/list?pageNum=1&pageSize=10&cuName=22&idType&idNo',(e)=>{
+    //测试请求
+/*     
     this._http.post('/fina/dict/dictList', { "fieldName": "AP_ID_TYPE" }, (e) => {
       console.log(e)
     }, () => {
 
     })
-
     if (this.params.urlList) {
       this._http.get(this.params.urlList.customList + '?pageNum=1&pageSize=10&cuName=22&idType&idNo', (e) => {
         console.log(e)
@@ -284,6 +283,7 @@ export class HomeComponent implements OnInit {
         console.log(errors)
       })
     }
+ */
   }
   isAjax=false;
   loginSub() {

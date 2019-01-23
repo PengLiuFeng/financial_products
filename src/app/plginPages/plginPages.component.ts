@@ -62,7 +62,7 @@ export class PlginPages implements  AfterViewInit{
       this.routers.navigate(['/finas/home/khgl/khxx']);
     }else if(url=='/finas/home/rzgl'){
       // this.routers.navigate(['/finas/home/rzgl/yszkgl/yszkmx']);
-      this.routers.navigate(['/finas/home/rzgl/htqs/htqsList']);
+      this.routers.navigate(['/finas/home/rzgl/rz/rzsq']);
     }else if(url=='/finas/home/znhygl'){
       this.routers.navigate(['/finas/home/znhygl/rzffhygz']);
     }

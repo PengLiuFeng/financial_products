@@ -37,6 +37,9 @@ export class DfInputComponent implements OnInit {
     }
     return jsons;
   }
+  ngAfterViewInit(){
+    // console.log('页面已加载完毕')
+  }
   kk(e){
     if(e){
       this.slot=e.nativeElement.getAttribute('slot')

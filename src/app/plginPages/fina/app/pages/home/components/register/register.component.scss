@@ -1,0 +1,35 @@
+.backs-body{
+    padding:0;
+    margin-top: 2px;
+    display: flex;
+    min-height: calc(100vh - 168px);
+}
+.font_fff{
+    color:#336799;
+}
+.font_cen{
+    width: 18%;
+    display: inline-block;
+}
+.marg_div{
+    margin: 10% auto;
+}
+.er_input{
+    // width: 78% !important;
+     width: 72%;
+     display: inline-block;
+}
+#alert_div{
+    position: fixed;
+    top: 130px;
+    left: 130px;
+}
+.win_div{
+    margin-top: 2%;
+    position: absolute;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    text-align: center;
+    padding-top:60px;
+}

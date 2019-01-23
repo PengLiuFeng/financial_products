@@ -72,6 +72,43 @@ module.exports = function attachHandlers(router) {
         });
 
     /*********************************************************/
+
+    router.post('/fina/registerAccount',
+        function (req, res) {//注册用户接口
+            var msage = "";
+            var num = 0;
+
+            var userName = "";
+            var id = Math.round(Math.random() * 1000000)
+            if (req.body) {
+                if (req.body.userName && req.body.pwd && req.body.affirmPwd) {
+                    if (req.body.pwd == req.body.affirmPwd) {
+                        userName = req.body.userName
+                        userList[req.body.userName] = {
+                            name: req.body.userName,
+                            id: id,
+                            pwd: req.body.pwd,//客户
+                            grade: [5],
+                            data: {
+                                steps: 0,
+                                rejectDatas: []
+                            }
+                        }
+                        userListId["id" + id] = req.body.userName;
+                        msage = "注册成功"
+                        num = 1;
+                    } else {
+                        msage = "两次输入密码不一致"
+                    }
+                } else {
+                    msage = "数据丢失"
+                }
+            } else {
+                msage = "数据丢失";
+            }/* ,userData:userList[userName],userId:userListId["id" + id] */
+            res.send(handleRes.handleRes(false, { statusCode: 200 }, { msg: msage, t: num }));
+        });
+
     router.get('/fina/orders/ultimateApprove',
         function (req, res) {
             // console.log(req.query.approvalStatus)
@@ -166,11 +203,11 @@ module.exports = function attachHandlers(router) {
                 if (req.body) {
                     if (req.body.disDesction) {
                         if (req.body.procedure == 4 || req.body.procedure == 5) {
-                            if(req.body.disDesction.qtzlInfo){
+                            if (req.body.disDesction.qtzlInfo) {
                                 user.data.rejectDatas.push(req.body);
                                 user.data.steps = 3;
                                 message = { msg: "已驳回", t: 1, data: req.body };
-                            }else{
+                            } else {
                                 message = { msg: "驳回描述为空", t: 0 };
                             }
                         } else if (req.body.procedure == 3) {

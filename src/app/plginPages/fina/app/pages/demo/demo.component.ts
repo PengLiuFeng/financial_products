@@ -67,21 +67,17 @@ export class DemoComponent implements OnInit {
     options:[
       {
         value: '1',
-        label: '选项1'
+        label: '年'
       },
       {
         value: '2',
-        label: '选项2'
+        label: '月'
       },
       {
         value: '3',
-        label: '选项3',
+        label: '日',
         disabled:true
       },
-      {
-        value: '4',
-        label: '选项4'
-      }
     ]
   }
   options=[

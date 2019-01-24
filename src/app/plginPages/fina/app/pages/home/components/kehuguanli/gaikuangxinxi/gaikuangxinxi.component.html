@@ -4,81 +4,154 @@
     <button mdbBtn type="button" color="primary" class="waves-light" mdbWavesEffect>概况信息</button>
 </div> -->
 <form action="" method="">
-<div class="body_div">
-  <div class="title_div"><strong class="title_b">企业资本信息</strong></div>
-    <div class="form_div">
-        <div class="bk_div">
-            <div class="md-form">
-                <mdb-select [disabled]='Idisabled' name="gkxx.curType" placeholder="请选择" [options]="CUR_NO" [(ngModel)]="gkxx.curType" label="币种*:" ></mdb-select>
-            </div>
-        </div>
-        <div class="bk_div">
-            <div class="md-form input-group">
-                <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"regFund")' type="number" [(ngModel)]="gkxx.regFund" class="form-control" name="gkxx.regFund" aria-describedby="basic-addon1">
-                <label for="fddbr_input" >注册资本<span class="font_red">*</span>:</label>
-                <div class="input-group-prepend" id="basic-addon1">
-                    <span class="input-group-text" id="basic-addon1">万</span>
+    <div class="body_div">
+        <div class="title_div"><strong class="title_b">营业执照信息</strong></div>
+        <div class="charter_inform">
+                <div class="md-form">
+                      <input mdbInputDirective type="text" [disabled]="bo" name="license" [(ngModel)]="testarray.license"
+                            id="form10" class="form-control">
+                      <label for="form10">营业执照号 ： </label>
                 </div>
-            </div>
-        </div>
-       <div class="bk_div">
-            <div class="md-form input-group" >
-                <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"factFund")' type="number" [(ngModel)]="gkxx.factFund" class="form-control" name="gkxx.factFund" aria-describedby="basic-addon2">
-                <label for="fddbr_input" >实收资本<span class="font_red">*</span>:</label>
-                <div class="input-group-prepend" id="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2">万</span>
+                <div class="md-form">
+                      <input mdbInputDirective type="text" [disabled]="bo" name="regAddr" [(ngModel)]="testarray.regAddr"
+                            id="form15" class="form-control">
+                      <label for="form15">营业执照注册地址 ： </label>
                 </div>
-            </div>
-       </div>
-       <br><br>
+                <!-- <div class="col-md-6">
+                                        
+                                        <mdb-select  id="form11" name="regType" [disabled]="bo" [options]="testarray" placeholder=""  label="营业执照登记注册类型"></mdb-select><br/>
+                                  </div>
+                                  <div class="col-md-6">
+                                        
+                                        <mdb-select  id="form12" name="holdType"  [disabled]="bo" [options]="testarray" placeholder=""  label="控股类型"></mdb-select><br/>
+                                  </div> -->
+                <div class="col-md-6">
+                      <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="testarray.regType" [options]="regTypes"
+                            placeholder="请选择" label="营业执照登记注册类型"></mdb-select><br />
+    
+                </div>
+                <div class="col-md-6">
+                      <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="testarray.holdType" [options]="holdTypes"
+                            placeholder="请选择" label="控股类型"></mdb-select><br />
+    
+                </div>
+                <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
+    
+                      <mdb-date-picker name="licBegDate" id="form13" (click)="pickerFocus($event);" [disabled]="bo" label=" 注册登记时间"
+                            [options]="myDatePickerOptions" [(ngModel)]="testarray.licBegDate" required></mdb-date-picker>
+                </div>
+                <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
+    
+                      <mdb-date-picker name="licEndDate" id="form14" (click)="pickerFocus($event);" [disabled]="bo" label=" 到期时间"
+                            [options]="myDatePickerOptions" [(ngModel)]="testarray.licEndDate" required></mdb-date-picker>
+                </div>
+    
+                <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
+    
+                      <mdb-date-picker name="licChkDate" id="form16" (click)="pickerFocus($event);" label="营业执照年检时间"
+                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.licChkDate" required></mdb-date-picker>
+                </div>
+                <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
+    
+                      <mdb-date-picker name="idChkDate" id="form17" (click)="pickerFocus($event);" label=" 组织机构代码年检时间"
+                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.idChkDate" required></mdb-date-picker>
+                </div>
+    
+    
+          </div>
+        
     </div>
-</div>
-<div class="body_div">
-    <div class="title_div"><strong class="title_b">企业经营信息</strong></div>
-    <div class="form_div">
-        <div class="chang_div  mt-5">
-            <div class="md-form">
-                <textarea [disabled]='Idisabled' [(ngModel)]="gkxx.runRange" name="gkxx.runRange" type="text" id="JYFW_text" class="md-textarea form-control" mdbInputDirective></textarea>
-                <label for="JYFW_text">经营范围<span class="font_red">*</span></label>
-            </div>
-        </div>
-        <div class="bk_div">
-            <div class="md-form">
-                <mdb-select [disabled]='Idisabled' placeholder="请选择" name="gkxx.mainBus" [options]="MAIN_BUS" [(ngModel)]="gkxx.mainBus" label="主营业务:" ></mdb-select>
-            </div>
-        </div>
-        <div class="bk_div">
-            <div class="md-form input-group">
-                <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"assTot")' type="number" [(ngModel)]="gkxx.assTot" class="form-control" name="gkxx.assTot" aria-describedby="basic-addon3">
-                <label for="fddbr_input" >资产总额<span class="font_red">*</span>:</label>
-                <div class="input-group-prepend" id="basic-addon3">
-                    <span class="input-group-text" id="basic-addon3">万</span>
+    <div class="body_div">
+        <div class="title_div"><strong class="title_b">企业资本信息</strong></div>
+        <div class="form_div">
+            <div class="bk_div">
+                <div class="md-form">
+                    <mdb-select [disabled]='Idisabled' name="gkxx.curType" placeholder="请选择" [options]="CUR_NO"
+                        [(ngModel)]="gkxx.curType" label="币种*:"></mdb-select>
                 </div>
             </div>
-        </div>
-        <div class="bk_div">
-            <div class="md-form input-group" >
-                <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"saleTot")' type="number" [(ngModel)]="gkxx.saleTot" class="form-control" name="gkxx.saleTot" aria-describedby="basic-addon4">
-                <label for="fddbr_input" >年销售额<span class="font_red">*</span>:</label>                    
-                <div class="input-group-prepend" id="basic-addon4">
-                    <span class="input-group-text" id="basic-addon4">万</span>
+            <div class="bk_div">
+                <div class="md-form input-group">
+                    <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"regFund")'
+                        type="number" [(ngModel)]="gkxx.regFund" class="form-control" name="gkxx.regFund"
+                        aria-describedby="basic-addon1">
+                    <label for="fddbr_input">注册资本<span class="font_red">*</span>:</label>
+                    <div class="input-group-prepend" id="basic-addon1">
+                        <span class="input-group-text" id="basic-addon1">万</span>
+                    </div>
                 </div>
             </div>
+            <div class="bk_div">
+                <div class="md-form input-group">
+                    <input mdbInputDirective [disabled]='Idisabled' id="fddbr_input" (input)='verify($event,"factFund")'
+                        type="number" [(ngModel)]="gkxx.factFund" class="form-control" name="gkxx.factFund"
+                        aria-describedby="basic-addon2">
+                    <label for="fddbr_input">实收资本<span class="font_red">*</span>:</label>
+                    <div class="input-group-prepend" id="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2">万</span>
+                    </div>
+                </div>
+            </div>
+            <br><br>
         </div>
+    </div>
+    <div class="body_div">
+        <div class="title_div"><strong class="title_b">企业经营信息</strong></div>
+        <div class="form_div">
+            <div class="chang_div  mt-5">
+                <div class="md-form">
+                    <textarea [disabled]='Idisabled' [(ngModel)]="gkxx.runRange" name="gkxx.runRange" type="text" id="JYFW_text"
+                        class="md-textarea form-control" mdbInputDirective></textarea>
+                    <label for="JYFW_text">经营范围<span class="font_red">*</span></label>
+                </div>
+            </div>
+            <div class="bk_div">
+                <div class="md-form">
+                    <mdb-select [disabled]='Idisabled' placeholder="请选择" name="gkxx.mainBus" [options]="MAIN_BUS"
+                        [(ngModel)]="gkxx.mainBus" label="主营业务:"></mdb-select>
+                </div>
+            </div>
+            <div class="bk_div">
+                <div class="md-form input-group">
+                    <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"assTot")'
+                        type="number" [(ngModel)]="gkxx.assTot" class="form-control" name="gkxx.assTot"
+                        aria-describedby="basic-addon3">
+                    <label for="fddbr_input">资产总额<span class="font_red">*</span>:</label>
+                    <div class="input-group-prepend" id="basic-addon3">
+                        <span class="input-group-text" id="basic-addon3">万</span>
+                    </div>
+                </div>
+            </div>
+            <div class="bk_div">
+                <div class="md-form input-group">
+                    <input mdbInputDirective id="fddbr_input" [disabled]='Idisabled' (input)='verify($event,"saleTot")'
+                        type="number" [(ngModel)]="gkxx.saleTot" class="form-control" name="gkxx.saleTot"
+                        aria-describedby="basic-addon4">
+                    <label for="fddbr_input">年销售额<span class="font_red">*</span>:</label>
+                    <div class="input-group-prepend" id="basic-addon4">
+                        <span class="input-group-text" id="basic-addon4">万</span>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
-</div>
-<br>
-<div *ngIf="flag" id="button_div">
-        <button [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitData()" class="waves-light" mdbWavesEffect>保存</button>
-        <button [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="reSetModel()" class="waves-light" mdbWavesEffect>取消</button>
-</div>
-<div *ngIf="!flag" id="button_div">
-        <button *ngIf="btnFlag" [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="modification()" class="waves-light" mdbWavesEffect>修改</button>
-        <button *ngIf="!btnFlag" [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitUp()" class="waves-light" mdbWavesEffect>保存</button>
-        <button  [disabled]="isAjax" [hidden]="Idisabled" mdbBtn type="button" color="danger" (click)="confirmModification()" class="waves-light" mdbWavesEffect>取消</button>
-</div>
-<div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
-    <strong>{{alertTxt}}</strong>
-</div>
+    <br>
+    <div *ngIf="flag" id="button_div">
+        <button [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitData()" class="waves-light"
+            mdbWavesEffect>保存</button>
+        <button [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="reSetModel()" class="waves-light"
+            mdbWavesEffect>取消</button>
+    </div>
+    <div *ngIf="!flag" id="button_div">
+        <button *ngIf="btnFlag" [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="modification()" class="waves-light"
+            mdbWavesEffect>修改</button>
+        <button *ngIf="!btnFlag" [disabled]="isAjax" mdbBtn type="button" color="success" (click)="submitUp()" class="waves-light"
+            mdbWavesEffect>保存</button>
+        <button [disabled]="isAjax" [hidden]="Idisabled" mdbBtn type="button" color="danger" (click)="confirmModification()"
+            class="waves-light" mdbWavesEffect>取消</button>
+    </div>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+        <strong>{{alertTxt}}</strong>
+    </div>
 </form>

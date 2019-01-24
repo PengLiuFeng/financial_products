@@ -35,10 +35,26 @@
           <app-df-input disabled="disabled" [(values)]='loginUser.pwd' type="password"></app-df-input>
         </div>
       </div>
+      <a id="zczh" href="javaScript:;" (click)="registerDemoBasic.show()">注册账号</a>
       <div class="marg_div">
         <button mdbBtn type="button" color="primary" (click)="loginSub()" outline="true" mdbWavesEffect>登录</button>
         <button mdbBtn type="button" color="primary" outline="true" mdbWavesEffect>取消</button>
       </div>
     </div>
+    <!-- ------------注册页------------ -->
+    <div mdbModal #registerDemoBasic="mdbModal" style="padding:100px;" class="modal fade" tabindex="-1" role="dialog"
+      aria-labelledby="myBasicModalLabel" aria-hidden="true">
+      <div class="XS_div" role="document">
+        <div class="modal-content">
+          <button type="button" class="close pull-right" aria-label="Close" (click)="registerDemoBasic.hide()">
+            <span aria-hidden="true">×</span>
+          </button>
+          <div class="mtk_div wins-body">
+            <app-register [registerDemoBasic]="registerDemoBasic"></app-register>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>

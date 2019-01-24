@@ -154,11 +154,11 @@ export class HomeComponent implements OnInit {
               url: '/finas/home/rzgl/zjgl/dkhk',
               treeid: '2'
             },
-            {
-              label: '应收账款回购',
-              url: '/finas/home/rzgl/zjgl/yszkhg',
-              treeid: '3'
-            },
+            // {
+            //   label: '应收账款回购',
+            //   url: '/finas/home/rzgl/zjgl/yszkhg',
+            //   treeid: '3'
+            // },
           ]
         }
         if(this.grande.vals[0]==4){

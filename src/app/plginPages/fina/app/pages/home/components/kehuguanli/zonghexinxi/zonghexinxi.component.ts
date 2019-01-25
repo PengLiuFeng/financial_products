@@ -2,8 +2,6 @@ import { Component, ViewChild, Input, OnInit, OnChanges } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, InputAutoFillDirective } from 'ng-uikit-pro-standard';
 import { Location } from '@angular/common';
 import { ParamsService } from './../../../../../params.service';
-import { JibenxinxiComponent } from './../../kehuguanli/jibenxinxi/jibenxinxi.component';
-import { LianxixinxiComponent } from './../../kehuguanli/lianxixinxi/lianxixinxi.component';
 
 @Component({
   selector: 'app-zonghexinxi',

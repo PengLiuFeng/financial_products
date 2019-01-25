@@ -82,7 +82,7 @@ export const PAGES_MENU =
             "name": "业务调查与审批",
             "path": "/ywdc"
           }, {
-            "grade": [4, 5],
+            "grade": [],
             "name": "合同签署",
             "path": "/htqs/htqsList"
           }, {
@@ -91,7 +91,7 @@ export const PAGES_MENU =
             "path": "/dzht/htqsList"
           },
           {
-            "grade": [4, 5],
+            "grade": [4],
             "name": "资金管理",
             "path": "/zjgl"
           },

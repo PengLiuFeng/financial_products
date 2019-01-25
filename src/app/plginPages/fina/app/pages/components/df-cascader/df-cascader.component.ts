@@ -1,4 +1,4 @@
-import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter,OnChanges } from '@angular/core';
 // import { Button } from 'primeng/button';
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
   templateUrl: './df-cascader.component.html',
   styleUrls: ['./df-cascader.component.scss']
 })
-export class DfCascaderComponent implements OnInit {
+export class DfCascaderComponent implements OnInit,OnChanges {
   @Input() showAllLevels:boolean;//是否显示完整路径
   @Input() options:Array<any>;//数据
   @Input()isMDBstyle:boolean;//是否采用MDB样式
@@ -107,6 +107,9 @@ dqli={
     }else{
       this.inits();
     }
+  }
+  ngOnChanges(){
+    this.inits();
   }
   private removeEve(){
     //console.log('注销事件');

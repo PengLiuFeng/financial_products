@@ -122,7 +122,7 @@ export class DemoComponent implements OnInit {
     setTimeout(()=>{
       this.isShow=true;
       this.selectData.val="1";
-      this.mval='dingbudaohang';
+      this.mval='yizhi';
     },3000)
   }
 oncl(){

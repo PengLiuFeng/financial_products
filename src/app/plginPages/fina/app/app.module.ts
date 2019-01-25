@@ -109,6 +109,7 @@ import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiP
 import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xinshen.component';
 import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
 import { RegisterComponent } from './pages/home/components/register/register.component';
+import { DfDatePickerComponent } from './pages/components/df-date-picker/df-date-picker.component';
 
 @NgModule({
   declarations: [
@@ -215,7 +216,9 @@ import { RegisterComponent } from './pages/home/components/register/register.com
 
     ZhongshenComponent,
 
-    RegisterComponent
+    RegisterComponent,
+
+    DfDatePickerComponent
   ],
   imports: [
     FormsModule,

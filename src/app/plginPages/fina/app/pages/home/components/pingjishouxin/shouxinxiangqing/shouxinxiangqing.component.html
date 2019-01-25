@@ -33,11 +33,11 @@
                 <span class="font_red">*</span>
                 <span style="margin-left:20px">{{!!zhsx.idNo?'（'+zhsx.idNo.length+'位）':''}}</span>：
             </span>
-            <app-df-input [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+            <app-df-input [disabled]="Idisabled" [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
         </div>
         <div class="bk_div">
             <span>客户名称<span class="font_red">*</span>：</span>
-            <app-df-input [width]="inputW" [(values)]="zhsx.cuName"></app-df-input>
+            <app-df-input [disabled]="Idisabled" [width]="inputW" [(values)]="zhsx.cuName"></app-df-input>
         </div>
     </div>
     <div class="title_div">
@@ -58,7 +58,7 @@
 
             <div class="bk_div">
                 <span>综合授信额度<span class="font_red">*</span>：</span>
-                <app-df-input [width]="inputW" [(values)]="zhsx.authAmt"></app-df-input>
+                <app-df-input [disabled]="Idisabled" [width]="inputW" [(values)]="zhsx.authAmt"></app-df-input>
             </div>
 
             <div class="bk_div">
@@ -75,7 +75,7 @@
             <div class="bk_div">
                 <span>期限<span class="font_red">*</span>：</span>
                 <app-df-input [disabled]="Idisabled" [(values)]="zhsx.term" width="250px" slot="append">
-                    <df-select #content [(values)]="zhsx.termType" [options]="TERM_TYPE" [disabled]="false" slot="append-select"></df-select>
+                    <span #content slot="append">{{termTypeTxt}}</span>
                 </app-df-input>
             </div>
 
@@ -93,14 +93,14 @@
             </div>
             <div class="bk_div">
                 <span>综合授信额度起始日期<span class="font_red">*</span>：</span>
-                <df-date-picker [(values)]="zhsx.begDate" width="206px" ></df-date-picker>
+                <df-date-picker [disabled]="Idisabled" [(values)]="zhsx.begDate" width="inputW"></df-date-picker>
 
                 <!-- <p-calendar [showTime]="true" [(ngModel)]="zhsx.begDate" placeholder="请选择" [locale]="params.es"
                     dateFormat="yy/mm/dd"></p-calendar> -->
             </div>
             <div class="bk_div">
                 <span>额度终止日期<span class="font_red">*</span>：</span>
-                <df-date-picker [(values)]="zhsx.endDate" width="206px" ></df-date-picker>
+                <df-date-picker [disabled]="Idisabled" [(values)]="zhsx.endDate" width="inputW"></df-date-picker>
                 <!-- <p-calendar [showTime]="true" [(ngModel)]="zhsx.endDate" placeholder="请选择" [locale]="params.es"
                     dateFormat="yy/mm/dd"></p-calendar> -->
             </div>
@@ -143,11 +143,11 @@
             <thead class="lighten-2">
                 <tr>
                     <th scope="row" hidden="hidden"></th>
-                    <th scope="row">文件名</th>
-                    <th scope="row">文件描述</th>
+                    <th scope="row" *ngIf="fileModelArr.length>0">文件名</th>
+                    <th scope="row" *ngIf="fileModelArr.length>0">文件描述</th>
                     <th scope="row">
-                        <button mdbBtn type="button" color="primary" size="sm" (click)="selectFile()" outline="true"
-                            mdbWavesEffect>点击上传</button>
+                        <button mdbBtn type="button" style="margin:0%" [disabled]="Idisabled" color="primary" size="sm"
+                            (click)="selectFile()" outline="true" mdbWavesEffect>点击上传</button>
                     </th>
                 </tr>
             </thead>
@@ -157,19 +157,19 @@
                         <div class="file-field md-form" mdbWavesEffect>
                             <div mdbBtn color="primary" size="sm" class="waves-light">
                                 <span>选择文件</span>
-                                <input class="identifierUsedForTheValue" type="file" (change)="getFileName(item)"
-                                    [(ngModel)]="item.fileModel">
+                                <input class="identifierUsedForTheValue" type="file" (change)="getFileName(item)" [(ngModel)]="item.fileModel">
                             </div>
                         </div>
                     </td>
                     <td scope="row">
-                        <app-df-input class="th_mh" disabled="disabled" [(values)]='item.fileName'></app-df-input>
+                        <app-df-input [disabled]="Idisabled" class="th_mh" disabled="disabled" [(values)]='item.fileName'></app-df-input>
                     </td>
                     <td scope="row">
-                        <app-df-input class="th_mh" placeholder='请输入文件描述' [(values)]='item.fileInfo' type='textarea'></app-df-input>
+                        <app-df-input [disabled]="Idisabled" class="th_mh" placeholder='请输入文件描述' [(values)]='item.fileInfo'
+                            type='textarea'></app-df-input>
                     </td>
                     <td scope="row" style="text-align: center;">
-                        <button class="delbtn" (click)="delThisFileTr(i)">
+                        <button [disabled]="Idisabled" class="delbtn" (click)="delThisFileTr(i)">
                             <i class="fa fa-times-circle-o"></i>&nbsp;删除
                         </button>
                     </td>
@@ -189,7 +189,7 @@
                         <span class="btx" style="padding-top: 0.98rem;">收款账户</span>
                     </div>
                     <div class="col-sm txtright">
-                        <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                        <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.skData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
                         </button>
@@ -211,17 +211,18 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
-                                                outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.skData,i)">
+                                            <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
+                                                class="df-btn df-btn-border-none btn-sm" outline="true" mdbWavesEffect
+                                                (click)="onRemove(fkxx.zhTable.skData,i)">
                                                 <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
                                             </button>
                                         </td>
@@ -236,7 +237,7 @@
                         <span class="btx" style="padding-top: 0.98rem;">还款账户</span>
                     </div>
                     <div class="col-sm txtright">
-                        <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                        <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.hkData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
                         </button>
@@ -258,17 +259,18 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
-                                                outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.hkData,i)">
+                                            <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
+                                                class="df-btn df-btn-border-none btn-sm" outline="true" mdbWavesEffect
+                                                (click)="onRemove(fkxx.zhTable.hkData,i)">
                                                 <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
                                             </button>
                                         </td>
@@ -283,7 +285,7 @@
                         <span class="btx" style="padding-top: 0.98rem;">共管账户</span>
                     </div>
                     <div class="col-sm txtright">
-                        <button mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
+                        <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.ggData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
                         </button>
@@ -305,17 +307,18 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.zh" placeholder="账户" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.khh" placeholder="开户行" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <input type="text" [(ngModel)]="data.name" placeholder="账户名称" class="form-control">
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <button mdbBtn type="button" color="danger" icon="fa-trash" class="df-btn df-btn-border-none btn-sm"
-                                                outline="true" mdbWavesEffect (click)="onRemove(fkxx.zhTable.ggData,i)">
+                                            <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
+                                                class="df-btn df-btn-border-none btn-sm" outline="true" mdbWavesEffect
+                                                (click)="onRemove(fkxx.zhTable.ggData,i)">
                                                 <i class="fa fa-trash df-icon" aria-hidden="true"></i> <span>删除</span>
                                             </button>
                                         </td>

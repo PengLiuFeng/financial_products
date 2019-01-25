@@ -74,7 +74,7 @@ export class ShouxinxiangqingComponent implements OnInit {
     cuName: '',
     idType: "",
     idNo: "",
-    repayType:"",
+    repayType: "",
   }
 
   zhu: string = "注 ：额度核准编号 + 金融产品号 + 分项授信额度类型 + 细分流水号";;//注释内容
@@ -82,6 +82,7 @@ export class ShouxinxiangqingComponent implements OnInit {
   constructor(public params: ParamsService, public grande: GradeService) {
     this._http = params._http;
   }
+  termTypeTxt = "";
 
   _http: any;
   isAjax = false;
@@ -104,12 +105,13 @@ export class ShouxinxiangqingComponent implements OnInit {
           for (var j = 0; j < this.TERM_TYPE.length; j++) {
             if (this.TERM_TYPE[j].label == "月") {
               this.zhsx.termType = this.TERM_TYPE[j].value;
+              this.termTypeTxt = this.TERM_TYPE[j].label;
               break;
             }
           }
-        }else if (it.myid == 'ID_TYPE') {
+        } else if (it.myid == 'ID_TYPE') {
           this.ID_TYPE = it.data;
-        }else if(it.myid == 'REPAY_TYPE'){
+        } else if (it.myid == 'REPAY_TYPE') {
           this.REPAY_TYPE = it.data;
         }
       }
@@ -186,7 +188,7 @@ export class ShouxinxiangqingComponent implements OnInit {
       cuName: '',
       idType: "",
       idNo: "",
-      repayType:"",
+      repayType: "",
     }
   }
   formatDate(flag) {
@@ -255,6 +257,9 @@ export class ShouxinxiangqingComponent implements OnInit {
     this.fileModelArr.push({ fileModel: "", fileName: "", fileInfo: "" })
     setTimeout(() => {
       document.getElementsByClassName("identifierUsedForTheValue")[this.fileModelArr.length - 1]['click']();
+      setTimeout(()=>{
+        console.log(this.fileModelArr)
+      },2000);
     });
     // setTimeout(() =>{
     //   console.log(typeof(this.fileModelArr[this.fileModelArr.length - 1].fileModel))
@@ -268,8 +273,8 @@ export class ShouxinxiangqingComponent implements OnInit {
   }
   onup(i: any, fu: any, arr: Array<any>) {
     i--;
-    if (this.fileModelArr[i].fileModel) {
-      if (i > 0 || i == 0) {
+    if (i > 0 || i == 0) {
+      if (this.fileModelArr[i].fileModel) {
         var uploadFile = document.getElementsByClassName("identifierUsedForTheValue")[i]['files'][0];
         var fileInfo = this.fileModelArr[i].fileInfo;
         var formData = new FormData();
@@ -286,9 +291,11 @@ export class ShouxinxiangqingComponent implements OnInit {
           this.isAjax = false;
           fu();
         })
-      } else {
-        fu(arr);
+      }else{
+        this.onup(i, fu, arr);
       }
+    } else {
+      fu(arr);
     }
   }
   startUpload(): void {

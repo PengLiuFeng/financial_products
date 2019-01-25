@@ -22,6 +22,7 @@ export class DemoComponent implements OnInit {
   mval='';
   onup(uploadFile?:any,back?:any){
     uploadFile=document.getElementById("uploadFile")['files'][0];
+    console.log(uploadFile)
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
     let ms="这是描述"

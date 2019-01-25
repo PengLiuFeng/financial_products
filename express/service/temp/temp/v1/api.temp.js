@@ -368,6 +368,7 @@ module.exports = function attachHandlers(router) {
             //文件重命名
             fs.renameSync('./uploads/' + file.filename, `./uploads/${file.filename}.${suffix}`);
             file['newfilename'] = `${file.filename}.${suffix}`;
+            file['path']=`${file['path']}.${suffix}`;
         } else {
             ret['error'] = "请选择文件";
         }

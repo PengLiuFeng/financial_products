@@ -121,6 +121,8 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
     setTimeout(()=>{
       this.isShow=true;
+      this.selectData.val="1";
+      this.mval='yizhi';
     },3000)
   }
 oncl(){

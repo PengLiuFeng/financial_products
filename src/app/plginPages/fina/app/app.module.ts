@@ -110,6 +110,8 @@ import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xin
 import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
 import { RegisterComponent } from './pages/home/components/register/register.component';
 import { MyselfpageComponent } from './pages/home/components/kehuguanli/myselfpage/myselfpage.component';
+import { DfDatePickerComponent } from './pages/components/df-date-picker/df-date-picker.component';
+import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzifafang/zijinfafang/zijinfafang.component';
 
 @NgModule({
   declarations: [
@@ -218,7 +220,10 @@ import { MyselfpageComponent } from './pages/home/components/kehuguanli/myselfpa
 
     RegisterComponent,
 
-    MyselfpageComponent
+    MyselfpageComponent,
+    DfDatePickerComponent,
+
+    ZijinfafangComponent
   ],
   imports: [
     FormsModule,

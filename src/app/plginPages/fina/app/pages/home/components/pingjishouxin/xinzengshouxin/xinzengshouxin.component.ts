@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, ModalDirective } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../params.service'
+// this.grande.sub.next({ type: "add_user", flag: e.data.steps });
 @Component({
   selector: 'app-xinzengshouxin',
   templateUrl: './xinzengshouxin.component.html',

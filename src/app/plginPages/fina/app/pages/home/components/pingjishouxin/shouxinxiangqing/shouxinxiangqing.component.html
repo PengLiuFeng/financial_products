@@ -85,19 +85,24 @@
             </div>
             <div class="bk_div ">
                 <span>还款方式：</span>
-                <df-select [(values)]="zhsx.authSts" [options]="CRE_RATIN" [disabled]="Idisabled"></df-select>
+                <df-select [(values)]="zhsx.repayType" [options]="REPAY_TYPE" [disabled]="Idisabled"></df-select>
             </div>
             <div class="bk_div ">
                 <span>授信类型<span class="font_red">*</span>：</span>
                 <df-select [(values)]="zhsx.authLume" [options]="AUTH_LUME" [disabled]="Idisabled"></df-select>
             </div>
-            <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="Idisabled" name="zhsx.begDate" [options]="myDatePickerOptions"
-                    label="综合授信额度起始日期*" [(ngModel)]="zhsx.begDate" required></mdb-date-picker>
+            <div class="bk_div">
+                <span>综合授信额度起始日期<span class="font_red">*</span>：</span>
+                <df-date-picker [(values)]="zhsx.begDate" width="206px" ></df-date-picker>
+
+                <!-- <p-calendar [showTime]="true" [(ngModel)]="zhsx.begDate" placeholder="请选择" [locale]="params.es"
+                    dateFormat="yy/mm/dd"></p-calendar> -->
             </div>
-            <div class="short_div">
-                <mdb-date-picker (click)="pickerFocus($event)" [disabled]="Idisabled" name="zhsx.endDate" [options]="myDatePickerOptions"
-                    label="额度终止日期*" [(ngModel)]="zhsx.endDate" required></mdb-date-picker>
+            <div class="bk_div">
+                <span>额度终止日期<span class="font_red">*</span>：</span>
+                <df-date-picker [(values)]="zhsx.endDate" width="206px" ></df-date-picker>
+                <!-- <p-calendar [showTime]="true" [(ngModel)]="zhsx.endDate" placeholder="请选择" [locale]="params.es"
+                    dateFormat="yy/mm/dd"></p-calendar> -->
             </div>
             <div class="bk_div">
                 <div class="check_div">额度使用方式<span class="font_red">*</span></div>

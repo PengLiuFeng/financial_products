@@ -48,6 +48,7 @@ export class ShouxinxiangqingComponent implements OnInit {
   AUTH_SPLIT_TYPT = []
   TERM_TYPE = []
   ID_TYPE = []
+  REPAY_TYPE = []
   AUTH_LUME = [
     { label: '明保理', value: '明保理' },
     { label: '暗保理', value: '暗保理' },
@@ -73,6 +74,7 @@ export class ShouxinxiangqingComponent implements OnInit {
     cuName: '',
     idType: "",
     idNo: "",
+    repayType:"",
   }
 
   zhu: string = "注 ：额度核准编号 + 金融产品号 + 分项授信额度类型 + 细分流水号";;//注释内容
@@ -85,7 +87,7 @@ export class ShouxinxiangqingComponent implements OnInit {
   isAjax = false;
   reqDdListData() {
     this.isAjax = true;
-    this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT,TERM_TYPE,ID_TYPE', (e) => {
+    this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT,REPAY_TYPE,TERM_TYPE,ID_TYPE', (e) => {
       let it = null;
       for (let i = 0; i < e.data.length; i++) {
         it = e.data[i];
@@ -105,8 +107,10 @@ export class ShouxinxiangqingComponent implements OnInit {
               break;
             }
           }
-        } if (it.myid == 'ID_TYPE') {
+        }else if (it.myid == 'ID_TYPE') {
           this.ID_TYPE = it.data;
+        }else if(it.myid == 'REPAY_TYPE'){
+          this.REPAY_TYPE = it.data;
         }
       }
       this.isAjax = false;
@@ -141,8 +145,6 @@ export class ShouxinxiangqingComponent implements OnInit {
     })
 
   }
-  public myDatePickerOptions: IMyOptions = this.params.mdb_es;
-
 
   ngOnInit() {
     this.reqDdListData();
@@ -184,6 +186,7 @@ export class ShouxinxiangqingComponent implements OnInit {
       cuName: '',
       idType: "",
       idNo: "",
+      repayType:"",
     }
   }
   formatDate(flag) {
@@ -196,26 +199,26 @@ export class ShouxinxiangqingComponent implements OnInit {
       this.show_fenlei = '0';
     }
   }
-  private pickeri = 2;
-  private pickerdom = null;
-  private picker_m = null;
-  pickerFocus(e) {
-    if ((!this.picker_m) || this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
-      this.picker_m = e.target.parentNode.parentNode;
-      this.pickeri++;
-      window['e'] = e.target;
-      console.log(e)
-      this.pickerdom = e.target.parentNode.parentNode.parentNode;
-      this.pickerdom.style['z-index'] = this.pickeri;
-    } else {
-      setTimeout(() => {
-        if (this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
-          this.picker_m = null;
-          this.pickerdom.style['z-index'] = 0;
-        }
-      }, 200)
-    }
-  }
+  // private pickeri = 2;
+  // private pickerdom = null;
+  // private picker_m = null;
+  // pickerFocus(e) {
+  //   if ((!this.picker_m) || this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+  //     this.picker_m = e.target.parentNode.parentNode;
+  //     this.pickeri++;
+  //     window['e'] = e.target;
+  //     console.log(e)
+  //     this.pickerdom = e.target.parentNode.parentNode.parentNode;
+  //     this.pickerdom.style['z-index'] = this.pickeri;
+  //   } else {
+  //     setTimeout(() => {
+  //       if (this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+  //         this.picker_m = null;
+  //         this.pickerdom.style['z-index'] = 0;
+  //       }
+  //     }, 200)
+  //   }
+  // }
   danger_hid = true;
   alertTxt = '';
   dangerShow(str) {

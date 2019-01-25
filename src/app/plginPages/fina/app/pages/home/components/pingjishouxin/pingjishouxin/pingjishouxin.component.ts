@@ -1,7 +1,9 @@
 import { Component, ViewChild, OnInit, ViewChildren, QueryList } from '@angular/core';
-import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
+import { MDBDatePickerComponent, IMyOptions, ModalDirective } from 'ng-uikit-pro-standard';
 import { ParamsService } from './../../../../../params.service'
+import { GradeService } from './../../../../../grade.service'
 
+// this.grande.sub.next({ type: "add_user", flag: e.data.steps });
 @Component({
   selector: 'app-pingjishouxin',
   templateUrl: './pingjishouxin.component.html',
@@ -10,38 +12,36 @@ import { ParamsService } from './../../../../../params.service'
 export class PingjishouxinComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @ViewChildren('pages') pages: QueryList<any>;
-  authId="";
-  dataObject={
-    Idisabled:false,
-    controlIndicators:{
-      cuName:'',
-      cuNo:'',
-      authId:'',
-      authAppNo:''
-    },
-  }
+  @ViewChild('demoBasic') demoBasic: ModalDirective;
+  Idisabled = false;
+  // controlIndicators:{
+  //   cuName:'',
+  //   cuNo:'',
+  //   authId:'',
+  //   authAppNo:''
+  // },
   FINPRO_NO = []
   AUTH_SPLI_TYPE = []
 
-/*当前页面位置 */
+  /*当前页面位置 */
   title = [
     '客户管理',
     '评级授信'
   ]
   pjsx = {
     //文本框的model
-    cuName:"",
-    authId:"",
-    authAppNo:"",
-    cuNo:"",
+    cuName: "",
+    authId: "",
+    authAppNo: "",
+    cuNo: "",
     //下拉菜单的model
-    
-    finproNo:"",
-    authSplitType:"",
+
+    finproNo: "",
+    authSplitType: "",
 
     //日期的model
-    begDate:'',
-    endDate:''
+    begDate: '',
+    endDate: ''
   }
 
 
@@ -57,104 +57,103 @@ export class PingjishouxinComponent implements OnInit {
   firstVisiblePaginator = 0;
   lastVisiblePaginator = this.numberOfVisiblePaginators;
 
-   tableData=[]
+  tableData = []
 
-  _http:any;
-  isAjax=false;
-  constructor(public params:ParamsService) {
-    this._http=params._http;
-   }
-   authid='';
-   reSetModel(){
-     this.path='';
-     this.pjsx = {
+  _http: any;
+  isAjax = false;
+  constructor(public params: ParamsService, public grande: GradeService) {
+    this._http = params._http;
+  }
+  reSetModel() {
+    this.path = '';
+    this.pjsx = {
       //文本框的model
-      cuName:"",
-      authId:"",
-      authAppNo:"",
-      cuNo:"",
+      cuName: "",
+      authId: "",
+      authAppNo: "",
+      cuNo: "",
       //下拉菜单的model
-      
-      finproNo:"",
-      authSplitType:"",
-  
-      //日期的model
-      begDate:"",
-      endDate:""
-    }
-   }
 
-   path="";
-   queryTableDataWithConditions(){
-    this.path = 
-      '&cuNo='+this.pjsx.cuNo+'&cuName='+this.pjsx.cuName+
-      '&authId='+this.pjsx.authId+'&authAppNo='+this.pjsx.authAppNo+
-      '&finproNo='+this.pjsx.finproNo+'&authSplitType='+this.pjsx.authSplitType;
-    
-    if(!!this.pjsx.endDate){
-      this.path+='&endDate='+(new Date(this.pjsx.endDate).getTime());
+      finproNo: "",
+      authSplitType: "",
+
+      //日期的model
+      begDate: "",
+      endDate: ""
     }
-    if(this.pjsx.begDate){
-      this.path+='&begDate='+(new Date(this.pjsx.begDate).getTime())
+  }
+
+  path = "";
+  queryTableDataWithConditions() {
+    this.path =
+      '&cuNo=' + this.pjsx.cuNo + '&cuName=' + this.pjsx.cuName +
+      '&authId=' + this.pjsx.authId + '&authAppNo=' + this.pjsx.authAppNo +
+      '&finproNo=' + this.pjsx.finproNo + '&authSplitType=' + this.pjsx.authSplitType;
+
+    if (!!this.pjsx.endDate) {
+      this.path += '&endDate=' + (new Date(this.pjsx.endDate).getTime());
+    }
+    if (this.pjsx.begDate) {
+      this.path += '&begDate=' + (new Date(this.pjsx.begDate).getTime())
     }
     this.activePage = 1;
     this.requestTableData();
-   }
-   requestTableData(){
-    this.isAjax=true;
-    this._http.get('/fina/grade/list?pageNum='+this.activePage+'&pageSize='+this.itemsPerPage+this.path,(e)=>{
-      this.isAjax=false;
-     this.tableData=e.data.pb.list;
+  }
+  requestTableData() {
+    this.isAjax = true;
+    this._http.get('/fina/grade/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.path, (e) => {
+      this.isAjax = false;
+      this.tableData = e.data.pb.list;
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-    //  console.log("表数据",this.tableData)
+      //  console.log("表数据",this.tableData)
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
         this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
       } else {
         this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage + 1);
       }
-      this.paginators=[];
+      this.paginators = [];
       for (let i = 1; i <= this.numberOfPaginators; i++) {
         this.paginators.push(i);
       }
-      if(e.data.pb.totalRecord>0){
-       this. whetherTheCycle();
+      if (e.data.pb.totalRecord > 0) {
+        this.whetherTheCycle();
       }
       this.check_arr = new Array(this.tableData.length);
-      this.qx_btn=false;
-      this.isAjax=false;
-     },()=>{
-     this.isAjax=false;
-   
-     })
-   }
-   reqDdListData(){
-    this.isAjax=true;
-      this._http.get('/fina/dict/dictListList?ids=FINPRO_NO,AUTH_SPLIT_TYPE',(e)=>{
-        let it=null;
-        for(let i=0;i<e.data.length;i++){
-          it=e.data[i];
-          if(it.myid=='FINPRO_NO'){
-            this.FINPRO_NO=it.data;
-          }else if(it.myid=='AUTH_SPLIT_TYPE'){
-            this.AUTH_SPLI_TYPE=it.data;
-          }
+      this.qx_btn = false;
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+
+    })
+  }
+  reqDdListData() {
+    this.isAjax = true;
+    this._http.get('/fina/dict/dictListList?ids=FINPRO_NO,AUTH_SPLIT_TYPE', (e) => {
+      let it = null;
+      for (let i = 0; i < e.data.length; i++) {
+        it = e.data[i];
+        if (it.myid == 'FINPRO_NO') {
+          this.FINPRO_NO = it.data;
+        } else if (it.myid == 'AUTH_SPLIT_TYPE') {
+          this.AUTH_SPLI_TYPE = it.data;
         }
-        this.isAjax=false;
-      },()=>{
-     this.isAjax=false;
-     })
-   }
+      }
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
+  }
   ngOnInit() {/* 初始化动态赋值与显示 */
     this.requestTableData();
     this.reqDdListData();
   }
-  dateFormat(e):string{
-    if(!e){
-      return'';
+  dateFormat(e): string {
+    if (!e) {
+      return '';
     }
-    if(typeof e!='number'){
-      e=parseInt(e);
-      if(isNaN(e)){
+    if (typeof e != 'number') {
+      e = parseInt(e);
+      if (isNaN(e)) {
         return '';
       }
     }
@@ -238,62 +237,67 @@ export class PingjishouxinComponent implements OnInit {
     });
   }
 
-  del(){
+  del() {
     for (let i = 0; i < this.check_arr.length; i++) {
-      if(this.check_arr[i]){
-        alert("第"+i+"个复选框被选中了");
+      if (this.check_arr[i]) {
+        alert("第" + i + "个复选框被选中了");
       }
     }
   }
-  sxxqAllDate:any;
-  submitAllData(item){
-    this.isAjax=true;
-    this._http.get('/fina/grade/detail?authId='+item,(e)=>{
-      this.sxxqAllDate = e;
-      this.isAjax=false;
-    },()=>{
-   this.isAjax=false;
-   })
-  }
-  private pickeri=2;
-  private pickerdom=null;
-  private picker_m=null;
-  pickerFocus(e){
-    if((!this.picker_m)||this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
-      this.picker_m=e.target.parentNode.parentNode;
+  // sxxqAllDate:any;
+  // submitAllData(item){
+  //   this.isAjax=true;
+  //   this._http.get('/fina/grade/detail?authId='+item,(e)=>{
+  //     this.sxxqAllDate = e;
+  //     this.isAjax=false;
+  //   },()=>{
+  //  this.isAjax=false;
+  //  })
+  // }
+  private pickeri = 2;
+  private pickerdom = null;
+  private picker_m = null;
+  pickerFocus(e) {
+    if ((!this.picker_m) || this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+      this.picker_m = e.target.parentNode.parentNode;
       this.pickeri++;
-      window['e']=e.target;
-      this.pickerdom=e.target.parentNode.parentNode.parentNode;
-      this.pickerdom.style['z-index']=this.pickeri;
-    }else{
-      setTimeout(()=>{
-        if(this.picker_m.getAttribute('class').indexOf('picker--opened')==-1){
-          this.picker_m=null;
-          this.pickerdom.style['z-index']=0;
+      window['e'] = e.target;
+      this.pickerdom = e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index'] = this.pickeri;
+    } else {
+      setTimeout(() => {
+        if (this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+          this.picker_m = null;
+          this.pickerdom.style['z-index'] = 0;
         }
-      },200)
+      }, 200)
     }
   }
 
-  whetherTheCycle(){
-    for(var i = 0;i < this.tableData.length; i++){
+  whetherTheCycle() {
+    for (var i = 0; i < this.tableData.length; i++) {
       var oData = this.tableData[i]['recycle']
-      if(oData=='true'||oData=='是'){
-        this.tableData[i]['recycle']='循环';
-      }else{
-        this.tableData[i]['recycle']='非循环';
+      if (oData == 'true' || oData == '是') {
+        this.tableData[i]['recycle'] = '循环';
+      } else {
+        this.tableData[i]['recycle'] = '非循环';
       }
     }
-    
+
   }
-  
-  dataBinding(item){
-    this.authId=item;
-    this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
-    this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
+
+  dataBinding(item) {
+    this.demoBasic.show()
+    this.grande.sub.next({ type: "dataBinding", aBauthId: item, Idisabled: this.Idisabled });
+    // this.dataObject.controlIndicators.cuName = this.pjsx.cuName;
+    // this.dataObject.controlIndicators.cuNo = this.pjsx.cuNo;
   }
-  reSetAndReqTD(){
+  reSetAndReqTD() {
     this.reSetModel();
     this.requestTableData();
+  }
+  newCredit() {
+    this.demoBasic.show()
+    this.grande.sub.next({ type: "newCredit", Idisabled: this.Idisabled });
   }
 }

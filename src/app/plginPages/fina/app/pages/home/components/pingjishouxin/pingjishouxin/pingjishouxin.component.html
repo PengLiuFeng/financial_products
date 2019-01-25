@@ -73,7 +73,7 @@
     <div id="bottom_title_div">
       <h3><strong>评级授信查询结果</strong></h3>
       <div id="head_right_div">
-        <button mdbBtn [disabled]='isAjax' (click)="dataObject.Idisabled=false;newDemoBasic.show();" type="button"
+        <button mdbBtn [disabled]='isAjax' (click)="Idisabled=false;newCredit();" type="button"
           color="success" class="waves-light" mdbWavesEffect>新增</button>
         <button mdbBtn disabled='disabled' type="button" color="danger" class="waves-light" mdbWavesEffect>修改</button>
         <button mdbBtn disabled='disabled' type="button" (click)="del()" color="success" class="waves-light"
@@ -121,10 +121,9 @@
             <td scope="row">{{data.recycle}}</td>
             <td scope="row">{{data.term}}{{data.termType}}</td>
             <td scope="row">{{dateFormat(data.begDate)}}</td>
-            <td scope="row">{{dateFormat(data.endDate)}}</td>
+            <td scope="row">{{dateFormat(data.endDate)}}</td><!-- demoBasic.show() -->
             <td scope="row">
-              <a *ngIf="!isAjax" href="javaScript:;" (click)="dataObject.Idisabled=true;dataBinding(data.authId); demoBasic.show()">授信详情</a>
-              <a href="javaScript:;" *ngIf="isAjax">授信详情</a>
+                <button [disabled]="isAjax" size="sm" mdbBtn type="button" color="primary" (click)="Idisabled=true;dataBinding(data.authId); " outline="true" mdbWavesEffect>授信详情</button>
             </td>
           </tr>
         </ng-container>
@@ -168,7 +167,7 @@
 
 
   <!-- 新增授信模态框 -->
-  <div mdbModal #newDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+  <!-- <div mdbModal #newDemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="wins" role="document">
       <div class="modal-content">
@@ -179,7 +178,7 @@
           [newDemoBasic]="newDemoBasic"></app-xinzengshouxin>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- 授信详情查看页面-->
   <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
@@ -189,9 +188,8 @@
         <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
           <span aria-hidden="true">×</span>
         </button>
-        <div id="mtk_div" class="wins-body">
-          <app-shouxinxiangqing [(dataObject)]="dataObject" [authId]="authId" [newDemoBasic]="newDemoBasic" [demoBasic]='demoBasic'
-            [sxxqAllDate]="sxxqAllDate"></app-shouxinxiangqing>
+        <div id="mtk_div" class="wins-body"><!-- [authId]="authId"  -->
+          <app-shouxinxiangqing [demoBasic]='demoBasic'></app-shouxinxiangqing>
         </div>
       </div>
     </div>

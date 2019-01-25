@@ -13,6 +13,7 @@ export class DfSelectComponent implements OnInit {
   @Input() values:any;
   @Input() disabled:Boolean;
   @Input() label:any;
+  @Input() size;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();
   fuid:string;

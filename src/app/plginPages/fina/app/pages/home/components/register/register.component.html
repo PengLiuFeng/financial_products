@@ -1,0 +1,30 @@
+<div class="backs-body">
+  <div class="win_div">
+    <h1 class="font_fff">注册金融服务平台</h1>
+    <!--background-color:#336799;-->
+    <div class="marg_div">
+      <span class="font_cen font_fff">账号：</span>
+      <div class="er_input">
+        <app-df-input [(values)]='loginUser.userName'></app-df-input>
+      </div>
+    </div>
+    <div class="marg_div">
+      <span class="font_cen font_fff">密码：</span>
+      <div class="er_input">
+        <app-df-input [(values)]='loginUser.pwd' type="password"></app-df-input>
+      </div>
+    </div>
+    <div class="marg_div">
+      <span class="font_cen font_fff">确认密码：</span>
+      <div class="er_input">
+        <app-df-input [(values)]='loginUser.affirmPwd' type="password"></app-df-input>
+      </div>
+    </div>
+    <div class="marg_div">
+      <button mdbBtn type="button" color="primary" outline="true" (click)="subReg()" mdbWavesEffect>提交</button>
+      <button mdbBtn type="button" color="primary" outline="true" (click)="cancel()" mdbWavesEffect>取消</button>
+    </div>
+    <div class="alert alert-danger" [hidden]="danger_hid" id="alert_div" role="alert">
+      <strong>{{alertTxt}}</strong>
+    </div>
+  </div>

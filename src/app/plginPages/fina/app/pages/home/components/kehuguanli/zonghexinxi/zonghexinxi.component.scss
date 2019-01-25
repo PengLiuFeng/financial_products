@@ -52,12 +52,12 @@
 .down_zonghexinxi{
     width: 100%;
     min-width:660px;
-    max-height: 740px;
+    //max-height: 740px;
     //height: 800px;
     float: left;
     
-    //overflow-y: scroll;
-    background-color:  #e6ecf7;
+    overflow: scroll;
+    background-color:   #e6ecf7;
 }
 .title_top{
     width: 100%;

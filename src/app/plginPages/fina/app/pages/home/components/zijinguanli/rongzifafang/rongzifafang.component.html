@@ -94,7 +94,7 @@
             </thead>
             <tbody>
               <ng-container *ngFor="let el of table_body; let i = index">
-                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex">
+                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex" (dblclick)="basicModal.show();">
                   <td scope="row">{{i+1}}</td>
                   <td scope="row">
                     <mdb-checkbox [checked]="allcheck"></mdb-checkbox>

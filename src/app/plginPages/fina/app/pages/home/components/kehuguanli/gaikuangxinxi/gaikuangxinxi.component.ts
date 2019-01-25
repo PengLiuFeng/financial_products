@@ -26,6 +26,17 @@ export class GaikuangxinxiComponent implements OnInit {
       this. Idisabled = false;
     }
   }
+  //前台绑定值
+  testarray: any = {
+    license: '',
+    regAddr: '',
+    regType: '',
+    holdType: '',
+    licBegDate: '',
+    licEndDate: '',
+    licChkDate: '',
+    idChkDate: '',
+  };
   CUR_NO = []
   MAIN_BUS = []
   gkxx = {
@@ -40,7 +51,9 @@ export class GaikuangxinxiComponent implements OnInit {
     curType: "",
     mainBus: ""
   }
-
+//下拉框值定义
+  regTypes: Array<any>
+  holdTypes: Array<any>
   public myDatePickerOptions: IMyOptions = {};
 
   _http: any;
@@ -50,7 +63,7 @@ export class GaikuangxinxiComponent implements OnInit {
   }
   reqDdListData() {
     this.isAjax = true;
-    this._http.get('/fina/dict/dictListList?ids=CUR_NO,MAIN_BUS', (e) => {
+    this._http.get('/fina/dict/dictListList?ids=CUR_NO,MAIN_BUS,HOLD_TYPE,REG_TYPE', (e) => {
       let it = null;
       //console.log(e)
       for (let i = 0; i < e.data.length; i++) {
@@ -59,6 +72,10 @@ export class GaikuangxinxiComponent implements OnInit {
           this.CUR_NO = it.data;
         } else if (it.myid == 'MAIN_BUS') {
           this.MAIN_BUS = it.data;
+        }else if(it.myid=='HOLD_TYPE'){
+          this.holdTypes=it.data;
+        }else if(it.myid=='REG_TYPE'){
+          this.regTypes=it.data;
         }
       }
       this.isAjax = false;
@@ -183,5 +200,26 @@ export class GaikuangxinxiComponent implements OnInit {
     this.submitData();
     this.Idisabled = true;
     this.btnFlag = true;
+  }
+  //日期框显示级别的调整
+  private pickeri = 2;
+  private pickerdom = null;
+  private picker_m = null;
+  pickerFocus(e) {
+    if ((!this.picker_m) || this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+      this.picker_m = e.target.parentNode.parentNode;
+      this.pickeri++;
+      window['e'] = e.target;
+      console.log(e)
+      this.pickerdom = e.target.parentNode.parentNode.parentNode;
+      this.pickerdom.style['z-index'] = this.pickeri;
+    } else {
+      setTimeout(() => {
+        if (this.picker_m.getAttribute('class').indexOf('picker--opened') == -1) {
+          this.picker_m = null;
+          this.pickerdom.style['z-index'] = 0;
+        }
+      }, 200)
+    }
   }
 }

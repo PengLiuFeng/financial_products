@@ -10,11 +10,12 @@
     <div style="padding: 20px">
       <div class="backColor-it">
         <div style="padding: 24px;">
-          <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active" [activeError]="activeError" ></app-df-steps>
+          <app-df-steps [options]="dfSteps.options" [active]="dfSteps.active" [activeError]="activeError"></app-df-steps>
         </div>
         <div *ngIf="BHBlock" id="bhblock">
           <h4>{{disDesction}}
-           <button mdbBtn (click)="rollbackjd()" type="button" size="sm" color="info" class="waves-light form_button" mdbWavesEffect>处理</button>
+            <button mdbBtn (click)="rollbackjd()" type="button" size="sm" color="info" class="waves-light form_button"
+              mdbWavesEffect>处理</button>
           </h4>
         </div>
       </div>
@@ -32,30 +33,47 @@
 
   <div class="body backColor" *ngIf="grande.vals!=5">
     <div class="setdiv">
-      <div class="row">
-        <div class="inputd">
-          <div class="md-form">
-            <input mdbInputDirective type="text" [(ngModel)]="client.cuName" class="form-control">
-            <label for="form2">客户名称</label>
-          </div>
+      <div style="width:100%;background-color:white;">
+        <div>
+          客户名称
+          <app-df-input [(values)]="client.cuName" size="small"></app-df-input>
         </div>
-        <div class="inputd">
-          <div class="md-form">
-            <input mdbInputDirective type="text" [(ngModel)]="client.idNo" class="form-control">
-            <label for="form2">证件号码</label>
-          </div>
+        <div>
+          客户号
+          <app-df-input [(values)]="client.idNo" size="small"></app-df-input>
         </div>
-        <div class="inputd">
-          <mdb-select [options]="idTypes" class="idType" label="证件类型" placeholder="证件类型" [(ngModel)]="client.idType"></mdb-select>
+
+
+        <!-- <div class="inputd">
+        <div class="md-form">
+          <input mdbInputDirective type="text" [(ngModel)]="client.idNo" class="form-control">
+          <label for="form2">证件号码</label>
         </div>
+      </div> -->
+        <div>
+          证件类型
+          <df-select [options]="idTypes" size="small" label="证件类型" [(values)]="client.idType"></df-select>
+        </div>
+
+        <!-- <div class="inputd">
+        <mdb-select  class="idType"  placeholder="证件类型" [(ngModel)]="client.idType"></mdb-select>
+      </div> -->
         <div style="padding: 10px;">
           <!-- <button class="btn-sm" mdbBtn type="button" color="primary" rounded="true" outline="true" mdbWavesEffect (click)="oncz()">重置</button>
-              <button type="button" (click)="search()" class="btn btn-outline-primary waves-effect btn-sm">查询</button> -->
+            <button type="button" (click)="search()" class="btn btn-outline-primary waves-effect btn-sm">查询</button> -->
           <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="search()" mdbWavesEffect>查询</button>
           <button mdbBtn type="button" color="primary" class="waves-light btn-sm" (click)="oncz()" mdbWavesEffect
             mdbWavesEffect>重置</button>
         </div>
       </div>
+      <!-- <div class="inputd">
+          <div class="md-form">
+            <input mdbInputDirective type="text"  class="form-control">
+            <label for="form2">客户名称</label>
+          </div>
+        </div> -->
+
+
     </div>
     <div class="khxxb">
       <h4 id="title_h4">客户信息表</h4>
@@ -104,9 +122,9 @@
                 <td scope="row">{{data.opName}}</td>
                 <td scope="row">
                   <a (click)="transmit(i)" style="color:blue;">综合信息</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">前台审批</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==4" (click)="showXinShen(data.cuNo)">信审</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==5" (click)="showZhongShen(data.cuNo)">终审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">资料初审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==4" (click)="showXinShen(data.cuNo)">综合信审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==5" (click)="showZhongShen(data.cuNo)">最终审核</a>
                   <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                     (click)="transmit(i)">综合信息</button> -->
                   <!-- <button type="button" (click)="transmit(i)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button> -->
@@ -172,7 +190,7 @@
       <button type="button" class="close pull-right" aria-label="Close" (click)="demoBasic.hide()">
         <span aria-hidden="true">×</span>
       </button>
-      <div  class="mtk_div wins-body">
+      <div class="mtk_div wins-body">
         <app-zonghexinxi [cuNo]="cuNo" [personPage]="personPage"></app-zonghexinxi>
       </div>
     </div>

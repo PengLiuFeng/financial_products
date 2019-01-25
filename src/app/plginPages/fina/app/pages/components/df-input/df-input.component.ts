@@ -1,11 +1,11 @@
-import { Component, OnInit, Input,Output, EventEmitter,ContentChild,ElementRef } from '@angular/core';
+import { Component, Input,Output, EventEmitter,ContentChild,ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-df-input',
   templateUrl: './df-input.component.html',
   styleUrls: ['./df-input.component.scss']
 })
-export class DfInputComponent implements OnInit {
+export class DfInputComponent {
   @ContentChild('content') ref: ElementRef;
   @Input() values:any;
   @Input() placeholder:any;
@@ -19,8 +19,7 @@ export class DfInputComponent implements OnInit {
   @Input() parentClass:string;
   constructor() { }
 
-  ngOnInit() {
-  }
+  
   oninput(v){
    this.valuesChange.emit(v.target.value);
   }

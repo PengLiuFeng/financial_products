@@ -22,6 +22,7 @@ export class DemoComponent implements OnInit {
   mval='';
   onup(uploadFile?:any,back?:any){
     uploadFile=document.getElementById("uploadFile")['files'][0];
+    console.log(uploadFile)
     var formData = new FormData();
     formData.append('file', uploadFile);//文件
     let ms="这是描述"
@@ -120,6 +121,8 @@ export class DemoComponent implements OnInit {
   ngOnInit() {
     setTimeout(()=>{
       this.isShow=true;
+      this.selectData.val="1";
+      this.mval='dingbudaohang';
     },3000)
   }
 oncl(){

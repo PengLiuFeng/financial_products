@@ -12,8 +12,14 @@ export class GradeService{
   sub = new Subject<any>();
   public isLogin:any=false;
   win:{//缓存全局基础数据
-    dictList:{}//下拉框
+    dictList:{
+      
+    }//下拉框
   };
+  getDictList(arr:any){
+    
+    return{};
+  }
   loginName="";
   vals:any;
   user:any;

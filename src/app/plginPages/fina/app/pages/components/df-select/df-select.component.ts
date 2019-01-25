@@ -1,11 +1,11 @@
-import { Component, OnInit,Input,EventEmitter,Output } from '@angular/core';
+import { Component, OnInit,Input,EventEmitter,Output,OnChanges } from '@angular/core';
 
 @Component({
   selector: 'df-select',
   templateUrl: './df-select.component.html',
   styleUrls: ['./df-select.component.scss']
 })
-export class DfSelectComponent implements OnInit {
+export class DfSelectComponent implements OnInit,OnChanges {
 
  showAllLevels:boolean=false;//是否显示完整路径
   @Input() options:Array<any>;//数据
@@ -13,6 +13,7 @@ export class DfSelectComponent implements OnInit {
   @Input() values:any;
   @Input() disabled:Boolean;
   @Input() label:any;
+  @Input() size;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();
   fuid:string;
@@ -43,8 +44,8 @@ options=[
     ]
 */
   constructor() {
-    this.fuid=Math.random().toString(36).substr(2);
-    console.log(this.fuid)
+    // this.fuid=Math.random().toString(36).substr(2);
+    // console.log(this.fuid)
   }
 dqli={
   ul1:{},
@@ -52,7 +53,6 @@ dqli={
   ul3:{},
 }
   ngOnInit() {
-    
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
       console.error('下拉数据不能为Null');
@@ -64,6 +64,9 @@ dqli={
           }
         ]
     }
+    this.inits();
+  }
+  ngOnChanges(){
     this.inits();
   }
   isshow=2;

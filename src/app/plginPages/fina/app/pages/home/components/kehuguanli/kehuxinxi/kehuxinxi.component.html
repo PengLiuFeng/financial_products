@@ -122,9 +122,9 @@
                 <td scope="row">{{data.opName}}</td>
                 <td scope="row">
                   <a (click)="transmit(i)" style="color:blue;">综合信息</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">前台审批</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==4" (click)="showXinShen(data.cuNo)">信审</a>
-                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==5" (click)="showZhongShen(data.cuNo)">终审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==3" (click)="showShenPi(data.cuNo)">资料初审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==4" (click)="showXinShen(data.cuNo)">综合信审</a>
+                  <a class="table_a" *ngIf="grande.vals==4&&data.steps==5" (click)="showZhongShen(data.cuNo)">最终审核</a>
                   <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
                     (click)="transmit(i)">综合信息</button> -->
                   <!-- <button type="button" (click)="transmit(i)" class="btn btn-outline-primary waves-effect btn-sm">综合信息</button> -->

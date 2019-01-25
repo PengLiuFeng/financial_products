@@ -10,21 +10,21 @@
     <div class="rzsq_body">
       <div class="rzsq_body_head">
        
-        <div class="myselfInput">
+        <div class="myselfInput" *ngIf="grade.vals[0]!=5">
           证件类型： <df-select [(values)]="testarray.idType" size="small " [options]="idTypes" [disabled]="false"></df-select>
         </div>
-        <div class="myselfInput">
+        <div class="myselfInput"  *ngIf="grade.vals[0]!=5">
           证件号码：
           <app-df-input [(values)]="testarray.idNo" size="small "></app-df-input>
         </div>
-        <div class="myselfInput">
-          客户名称：
+        <div class="myselfInput"  *ngIf="grade.vals[0]!=5">
+          资产方：
           <app-df-input [(values)]="testarray.cuName" size="small "></app-df-input>
         </div>
-        <div class="myselfInput">
+        <div class="myselfInput"  *ngIf="grade.vals[0]!=5">
           金融产品: <df-select [(values)]="testarray.finproNo" size="small " [options]="finproNos" [disabled]="false"></df-select>
         </div>
-        <div class="myselfInput">
+        <div class="myselfInput"  *ngIf="grade.vals[0]!=5">
           业务类型： <df-select [(values)]="testarray.busType" size="small " [options]="busTypes" [disabled]="false"></df-select>
         </div>
         <div class="myselfInput">
@@ -60,7 +60,7 @@
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>删除</button>
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>修改</button>
             <button mdbBtn type="button" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>导出</button> -->
-            <button mdbBtn type="button" color="primary" *ngIf="grade.vals==5" class="waves-light btn-sm" (click)="newdemoBasic.show()"
+            <button mdbBtn type="button" color="primary" *ngIf="grade.vals==5" class="waves-light btn-sm" (click)="newApply();"
               mdbWavesEffect>新增</button>
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>删除</button>
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect>修改</button>
@@ -85,7 +85,7 @@
             </thead>
             <tbody>
               <ng-container *ngFor="let el of tableData; let i = index">
-                <tr>
+                <tr (dblclick)="shenqingxiangqing(i);demoBasic.show();">
                   <td scope="row">{{i+1}}</td>
                   <td>
                     <span *ngIf="check==false">
@@ -104,11 +104,7 @@
                   <td>{{el.termType}}</td>
                   <td>{{el.term}}</td>
                   <td>{{el.auSta}}</td>
-                  <td>
-                    <!-- <button mdbBtn type="button" color="blue-grey" class="df-btn btn-sm" outline="true" mdbWavesEffect
-                     >申请详情</button> -->
-                    <a (click)="shenqingxiangqing(i);demoBasic.show();" >申请详情 </a>
-                  </td>
+                  
                 </tr>
               </ng-container>
             </tbody>
@@ -149,7 +145,7 @@
     </div>
  
 </div>
-<div mdbModal #newdemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
+<!-- <div mdbModal #newdemoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">
   <div class="wins" role="document">
     <div class="modal-content">
@@ -161,7 +157,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 <div mdbModal #demoBasic="mdbModal" style="padding:100px" class="modal fade" tabindex="-1" role="dialog"
   aria-labelledby="myBasicModalLabel" aria-hidden="true">

@@ -184,26 +184,26 @@ export class HomeComponent implements OnInit {
               url: '/finas/home/rzgl/zjgl/dkhk',
               treeid: '2'
             },
-            {
-              label: '应收账款回购',
-              url: '/finas/home/rzgl/zjgl/yszkhg',
-              treeid: '3'
-            },
-            {
-              label: '费用管理',
-              url: '/finas/home/rzgl/zjgl/fygl',
-              treeid: '4'
-            },
-            {
-              label: '资金账户',
-              url: '/finas/home/rzgl/zjgl/zjzh',
-              treeid: '5'
-            },
-            {
-              label: '买方回款',
-              url: '/finas/home/rzgl/zjgl/mfhk',
-              treeid: '6'
-            },
+            // {
+            //   label: '应收账款回购',
+            //   url: '/finas/home/rzgl/zjgl/yszkhg',
+            //   treeid: '3'
+            // },
+            // {
+            //   label: '费用管理',
+            //   url: '/finas/home/rzgl/zjgl/fygl',
+            //   treeid: '4'
+            // },
+            // {
+            //   label: '资金账户',
+            //   url: '/finas/home/rzgl/zjgl/zjzh',
+            //   treeid: '5'
+            // },
+            // {
+            //   label: '买方回款',
+            //   url: '/finas/home/rzgl/zjgl/mfhk',
+            //   treeid: '6'
+            // },
           ]
         }
         

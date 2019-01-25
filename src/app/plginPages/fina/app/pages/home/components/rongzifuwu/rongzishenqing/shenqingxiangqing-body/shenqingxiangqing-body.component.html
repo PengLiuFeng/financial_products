@@ -68,54 +68,7 @@
       </div>
     </div>
   </div>
-  <div >
-    <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
-      分类业务授信
-    </diV>
-    <div class="fenxingshouxin">
 
-      <div class="form_div">
-
-        <div class='col-md-6'>
-          <mdb-select [options]="models" [(ngModel)]="model" [disabled]="bo" name="flywsx.finproNo" placeholder="请选择" label="金融服务产品*:"></mdb-select>
-        </div>
-
-        <div class='col-md-6'>
-          <mdb-select [options]="models" [(ngModel)]="model" [disabled]="bo" name="flywsx.authSplitType" placeholder="请选择" label="授信额度类型*:"></mdb-select>
-        </div>
-
-      </div>
-
-      <div class="md-form">
-        <input mdbInputDirective name="flywsx.sauthAmt" [disabled]="bo" [(ngModel)]="model" type="text" id="fxzed_input" class="form-control">
-        <label for="fxzed_input" class="">分项子额度<span class="font_red">*</span>:</label>
-      </div>
-
-
-      <div class="md-form">
-        <input mdbInputDirective name="flywsx.sauthBal" [disabled]="bo" [(ngModel)]="model" type="text" id="fxzedye_input" class="form-control">
-        <label for="fxzedye_input" class="">分项子额度余额<span class="font_red">*</span>:</label>
-      </div>
-
-      <div class="short_div">
-        <mdb-date-picker (click)="pickerFocus($event)" [disabled]="bo" name="flywsx.begDate" [options]="myDatePickerOptions" label="分项授信起始日期*"
-          [(ngModel)]="model" required></mdb-date-picker>
-      </div>
-      <div class="short_div">
-        <mdb-date-picker (click)="pickerFocus($event)" [disabled]="bo" name="flywsx.endDate" [options]="myDatePickerOptions" label="分项授信终止日期*"
-          [(ngModel)]="model" required></mdb-date-picker>
-      </div>
-
-      <div class="md-form" *ngIf="InputData.personPage=='oldPage'">
-        <input mdbInputDirective [(ngModel)]="model" name="flywsx.authAppNo"  [disabled]="true" type="text" id="sxxybh_input" class="form-control">
-        <label for="sxxybh_input" class="">授信申请编号<span class="font_red">*</span>:</label>
-      </div>
-
-      <span class="font_red"></span>
-      <br><br>
-    </div>
-
-  </div>
   <!-- 应收账款添加 -->
   <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
     应收账款
@@ -129,68 +82,74 @@
         </button>
       </div>
       <div style="overflow:scroll;width:100%;">
-          <table class="table-center" bordered="true" scrollX="true"  mdbTable mdbTableScroll>
-              <tr>
-                <th class="text-center">买方</th>
-                <th class="text-center">基础交易合同</th>
-                <th class="text-center">基础交易合同编号</th>
-                <th class="text-center">单据类型</th>
-                <th class="text-center">单据号码</th>
-                <th class="text-center">票面金额</th>
-                <th class="text-center">票面日期</th>
-                <th class="text-center">应收账款金额</th>
-                <th class="text-center">应收账款到期日</th>  
-                <th class="text-center" *ngIf='grade.vals!=5'>资料下载</th>
-                <th class="text-center" *ngIf='grade.vals!=5'>单笔融资金额</th>
-                <th class="text-center" *ngIf='grade.vals!=5'>利率</th>
-                <th class="text-center" *ngIf='grade.vals!=5'>单笔融资金额到期日</th>  
-                <th class="text-center" *ngIf='grade.vals==5'>资料上传</th>
-                <th class="text-center">资料名称</th>
-                <th class="text-center">操作</th>
-              </tr>
-      
-              <tr *ngFor="let person of client.list; let id = index">
-                <td><input type="text" class="form-control" [(ngModel)]="person.busName" name="busName" placeholder="买方"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.busCouna" name="busCouna" placeholder="基础交易合同"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.busCoun" name="busCoun" placeholder="基础交易合同编号"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.busType" name="busType" placeholder="单据类型"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.busNo" name="busNo" placeholder="单据号码"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.billAmt" name="billAmt" placeholder="票面金额"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.billDate" name="billDate" placeholder="票面日期"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.busRecei" name="busRecei" placeholder="应收账款金额"></td>
-                <td><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate " placeholder="应收账款到期日"></td>
-                <td *ngIf='grade.vals!=5'>
-                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);" type="button">
-                        <span>点击下载</span>
-                      </button>
-                </td>
-                <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.billDate" name="billDate" placeholder="单笔融资金额"></td>
-                <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.busRecei" name="busRecei" placeholder="单笔融资金额到期日"></td>
-                <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate " placeholder="利率"></td>
-                
-                <td *ngIf='grade.vals==5'>
-                  <div tabindex="0" class="qloud-upload qloud-upload--text">
-                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);" type="button">
-                      <span>点击上传</span>
-                    </button>
-                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input" type="file">
-                  </div>
-                </td>
-                <td>{{person.fileName}}</td>
-                <td style="min-width:130px;" *ngIf='grade.vals!=5'>
-                  
-                  <a (click)="deleteTableData(id)" style="color:blue;">通过</a>/
-                  <a (click)="deleteTableData(id)" style="color:red;">驳回</a>
-                </td>
-                <td style="min-width:130px;" *ngIf='grade.vals==5'>
-                    <a (click)="deleteTableData(id)" style="color:red;">删除</a>
-                  </td>
-              </tr>
-            </table>
+        <table class="table-center" bordered="true" scrollX="true" mdbTable mdbTableScroll>
+          <tr>
+            <th class="text-center">买方</th>
+            <th class="text-center">基础交易合同</th>
+            <th class="text-center">基础交易合同编号</th>
+            <th class="text-center">单据类型</th>
+            <th class="text-center">单据号码</th>
+            <th class="text-center">票面金额</th>
+            <th class="text-center">票面日期</th>
+            <th class="text-center">应收账款金额</th>
+            <th class="text-center">应收账款到期日</th>
+            <th class="text-center" *ngIf='grade.vals!=5'>资料下载</th>
+            <th class="text-center" *ngIf='grade.vals!=5'>单笔融资金额</th>
+            <th class="text-center" *ngIf='grade.vals!=5'>利率</th>
+            <th class="text-center" *ngIf='grade.vals!=5'>单笔融资金额到期日</th>
+            <th class="text-center" *ngIf='grade.vals==5'>资料上传</th>
+            <th class="text-center">资料名称</th>
+            <th class="text-center">操作</th>
+          </tr>
+
+          <tr *ngFor="let person of client.list; let id = index">
+            <td><input type="text" class="form-control" [(ngModel)]="person.busName" name="busName" placeholder="买方"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.busCouna" name="busCouna" placeholder="基础交易合同"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.busCoun" name="busCoun" placeholder="基础交易合同编号"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.busType" name="busType" placeholder="单据类型"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.busNo" name="busNo" placeholder="单据号码"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.billAmt" name="billAmt" placeholder="票面金额"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.billDate" name="billDate" placeholder="票面日期"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.busRecei" name="busRecei" placeholder="应收账款金额"></td>
+            <td><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate " placeholder="应收账款到期日"></td>
+            <td *ngIf='grade.vals!=5'>
+              <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);"
+                type="button">
+                <span>点击下载</span>
+              </button>
+            </td>
+            <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.billDate" name="billDate"
+                placeholder="单笔融资金额"></td>
+            <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.busRecei" name="busRecei"
+                placeholder="单笔融资金额到期日"></td>
+            <td *ngIf='grade.vals!=5'><input type="text" class="form-control" [(ngModel)]="person.endDate" name="endDate "
+                placeholder="利率"></td>
+
+            <td *ngIf='grade.vals==5'>
+              <div tabindex="0" class="qloud-upload qloud-upload--text">
+                <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);"
+                  type="button">
+                  <span>点击上传</span>
+                </button>
+                <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input"
+                  type="file">
+              </div>
+            </td>
+            <td>{{person.fileName}}</td>
+            <td style="min-width:130px;" *ngIf='grade.vals!=5'>
+
+              <a (click)="deleteTableData(id)" style="color:blue;">通过</a>/
+              <a (click)="deleteTableData(id)" style="color:red;">驳回</a>
+            </td>
+            <td style="min-width:130px;" *ngIf='grade.vals==5'>
+              <a (click)="deleteTableData(id)" style="color:red;">删除</a>
+            </td>
+          </tr>
+        </table>
       </div>
-      
+
     </div>
-    
+
   </div>
   <!-- 融资信息 -->
   <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;">
@@ -233,7 +192,7 @@
   <diV style="position:relative ; left: 5%; top: 25px; background-color: white;width: 100px;" *ngIf="grade.vals[0]!=5">
     登记信息
   </diV>
-  <div class="dengjixinxi"  *ngIf="grade.vals[0]!=5">
+  <div class="dengjixinxi" *ngIf="grade.vals[0]!=5">
     <div class="md-form">
 
       <input mdbInputDirective type="text" name="opName" [(ngModel)]="testarray.opName" id="form20" class="form-control"
@@ -271,9 +230,8 @@
   </div>
 
   <div class="buttonhero">
-    <button mdbBtn type="button" color="info" rounded="true" (click)="tijiao()" mdbWavesEffect>审核通过</button>
-    <button mdbBtn type="button" color="danger" rounded="true" mdbWavesEffect>驳回</button>
-    <button mdbBtn type="button" color="warning" rounded="true" (click)="revision()" mdbWavesEffect>修改</button>
-    <button mdbBtn type="button" color="danger" rounded="true" mdbWavesEffect>取消</button>
+    <button mdbBtn type="button" color="info" rounded="true" *ngIf="bo==false;" (click)="tijiao()" mdbWavesEffect>提交</button>
+    <button mdbBtn type="button" color="info" rounded="true" (click)="revision()" mdbWavesEffect>修改</button>
+    <button mdbBtn type="button" color="info" rounded="true" mdbWavesEffect>取消</button>
   </div>
 </div>

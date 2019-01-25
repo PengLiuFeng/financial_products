@@ -14,7 +14,7 @@ import { GradeService } from './../../../../../../grade.service';
 })
 export class RongzishenqingComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
-  demoBasic:ModalDirective;
+  @ViewChild('demoBasic') demoBasic:ModalDirective;
   trangetData(event:any){
       this.InputData=event;
   }
@@ -42,8 +42,8 @@ export class RongzishenqingComponent implements OnInit {
   }
   //表数据
   table_head = [
-    '序号', 'checklabel', '客户名称', '业务类型', '授信核准编号', '融资申请金额', '融资申请日期', '融资到期日期', '期限类型', '融资期限'
-    , '申请状态', '操作',
+    '序号', 'checklabel', '资产方', '业务类型', '授信核准编号', '融资申请金额', '融资申请日期', '融资到期日期', '期限类型', '融资期限'
+    , '申请状态',
   ];
   tableData=[]; //表格数据
   //下拉框的对象
@@ -318,5 +318,9 @@ export class RongzishenqingComponent implements OnInit {
   shenqingxiangqing(date: any): void {
     this.InputData.personPage='oldPage';
   }
-
+  //新增申请界面
+  newApply(){
+    this.InputData.personPage='newPage';
+    this.demoBasic.show();
+  }
 }

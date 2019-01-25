@@ -109,6 +109,7 @@ import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiP
 import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xinshen.component';
 import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
 import { RegisterComponent } from './pages/home/components/register/register.component';
+import { MyselfpageComponent } from './pages/home/components/kehuguanli/myselfpage/myselfpage.component';
 import { DfDatePickerComponent } from './pages/components/df-date-picker/df-date-picker.component';
 import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzifafang/zijinfafang/zijinfafang.component';
 
@@ -219,6 +220,7 @@ import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzi
 
     RegisterComponent,
 
+    MyselfpageComponent,
     DfDatePickerComponent,
 
     ZijinfafangComponent

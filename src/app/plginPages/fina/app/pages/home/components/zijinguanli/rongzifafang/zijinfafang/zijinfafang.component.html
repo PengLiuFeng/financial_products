@@ -1,3 +1,55 @@
-<p>
-  zijinfafang works!
-</p>
+<div class="dom_div">
+    <div id="title_div">
+        <h3><strong>资金发放</strong></h3>
+    </div>
+
+    <div class="fjsc_div">
+        <div class="bk_div">
+            <span>应放款金额<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+
+        <div class="bk_div">
+            <span>实际放款金额<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+
+        <div class="bk_div">
+            <span>经办人<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+
+        <div class="bk_div">
+            <span>预计放款时间<span class="font_red">*</span>：</span>
+            <df-date-picker  [(values)]="zhsx.idNo" width="inputW"></df-date-picker>
+        </div>
+
+        <div class="bk_div">
+            <span>实际放款时间<span class="font_red">*</span>：</span>
+            <df-date-picker  [(values)]="zhsx.idNo" width="inputW"></df-date-picker>
+        </div>
+    </div>
+    <div class="title_div">
+        <h4>收款账户信息</h4>
+    </div>
+    <div class="fjsc_div">
+        <div class="bk_div">
+            <span>账号<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+
+        <div class="bk_div">
+            <span>账户开户行<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+
+        <div class="bk_div">
+            <span>账户名称<span class="font_red">*</span>：</span>
+            <app-df-input  [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
+        </div>
+    </div>
+    <div id="button_div">
+        <button mdbBtn type="button" color="success" class="waves-light form_button" mdbWavesEffect>提交</button>
+        <button mdbBtn type="button" color="danger" class="waves-light form_button" mdbWavesEffect>取消</button>
+    </div>
+</div>

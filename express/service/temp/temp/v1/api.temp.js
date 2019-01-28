@@ -46,11 +46,22 @@ let userList = {
     }
 
 }
-
+let chinas={};
+fs.readFile('chinas.json',function(err,data){
+if(err){
+    return console.error(err);
+}
+var person = data.toString();//将二进制的数据转换为字符串
+chinas = JSON.parse(person);//将字符串转换为json对象
+})
 module.exports = function attachHandlers(router) {
     process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
     let num = 0;
     /* 数据挡板 */
+    router.get('/fina/getChinas',
+    function (req, res) {
+        res.send(handleRes.handleRes(false, { statusCode: 200 },{t:1,data:chinas}));
+    });
     router.get('/fina/orders/getUser',
         function (req, res) {
             res.send(handleRes.handleRes(false, { statusCode: 200 }, req.session.user));

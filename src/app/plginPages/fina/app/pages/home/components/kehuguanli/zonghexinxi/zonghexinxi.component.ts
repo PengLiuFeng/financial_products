@@ -90,7 +90,7 @@ export class ZonghexinxiComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.requestselectData()
+    //this.requestselectData()
     if (this.cuNo == null || this.cuNo == undefined) {
       this.inputdata = {
         idNo: '',

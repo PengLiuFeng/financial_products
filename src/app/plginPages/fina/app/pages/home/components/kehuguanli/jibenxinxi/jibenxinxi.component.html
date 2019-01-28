@@ -86,10 +86,10 @@
 
       <!-- 以上是企业类别信息 -->
 
-      <diV>
+      <diV *ngIf="true==false">
             营业执照信息
       </diV>
-      <div class="charter_inform">
+      <div class="charter_inform" *ngIf="true==false">
             <div class="md-form">
                   <input mdbInputDirective type="text" [disabled]="bo" name="license" [(ngModel)]="testarray.license"
                         id="form10" class="form-control">

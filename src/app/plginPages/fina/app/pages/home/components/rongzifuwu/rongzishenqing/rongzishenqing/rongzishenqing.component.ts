@@ -4,7 +4,7 @@ import { ParamsService } from './../../../../../../params.service';
 import { ModalDirective } from 'ng-uikit-pro-standard';
 import { GradeService } from './../../../../../../grade.service';
 
-
+import { Router } from '@angular/router'
 
 //融资申请
 @Component({
@@ -14,14 +14,14 @@ import { GradeService } from './../../../../../../grade.service';
 })
 export class RongzishenqingComponent implements OnInit {
   @ViewChildren('pages') pages: QueryList<any>;
-  @ViewChild('demoBasic') demoBasic:ModalDirective;
-  trangetData(event:any){
-      this.InputData=event;
+  @ViewChild('demoBasic') demoBasic: ModalDirective;
+  trangetData(event: any) {
+    this.InputData = event;
   }
-  InputData:any={
-    authId:'',
-    personPage:'',
-    cuNo:''
+  InputData: any = {
+    authId: '',
+    personPage: '',
+    cuNo: ''
   }
   check: boolean = false;
   alldata: any;
@@ -45,96 +45,96 @@ export class RongzishenqingComponent implements OnInit {
     '序号', 'checklabel', '资产方', '业务类型', '授信核准编号', '融资申请金额', '融资申请日期', '融资到期日期', '期限类型', '融资期限'
     , '申请状态',
   ];
-  tableData=[]; //表格数据
+  tableData = []; //表格数据
   //下拉框的对象
   idTypes: Array<any>        //证件类型
   finproNos: Array<any>      //金融产品
   busTypes: Array<any>       //业务类型
   auStas: Array<any>         //申请状态
-  termTypes:Array<any>       //期限类型
+  termTypes: Array<any>       //期限类型
   //请求下拉框得数据
-  requestSelectData(fu:any) {
+  requestSelectData(fu: any) {
     this._http.get('/fina/dict/dictListList?ids=AU_STA,BUS_TYPE,FINPRO_NO,ID_TYPE,TERM_TYPE', (e) => {
       var newdata = e.data
-     
-        for (var i = 0; i < newdata.length; i++) {
 
-          if (newdata[i].data[0].fieldName == 'ID_TYPE') {
-            this.idTypes = newdata[i].data
-           
-          }
-          if (newdata[i].data[0].fieldName == 'AU_STA') {
-            this.auStas = newdata[i].data
-           
-  
-          }
-          if (newdata[i].data[0].fieldName == 'BUS_TYPE') {
-            this.busTypes = newdata[i].data
-            console.log(new Date().getTime())
-          
-          }
-          if (newdata[i].data[0].fieldName == 'FINPRO_NO') {
-            this.finproNos = newdata[i].data
-  
-          }
-          if (newdata[i].data[0].fieldName == 'TERM_TYPE') {
-            this.termTypes = newdata[i].data
-  
-          }
+      for (var i = 0; i < newdata.length; i++) {
+
+        if (newdata[i].data[0].fieldName == 'ID_TYPE') {
+          this.idTypes = newdata[i].data
+
         }
-     
-      
-     fu();
+        if (newdata[i].data[0].fieldName == 'AU_STA') {
+          this.auStas = newdata[i].data
+
+
+        }
+        if (newdata[i].data[0].fieldName == 'BUS_TYPE') {
+          this.busTypes = newdata[i].data
+          console.log(new Date().getTime())
+
+        }
+        if (newdata[i].data[0].fieldName == 'FINPRO_NO') {
+          this.finproNos = newdata[i].data
+
+        }
+        if (newdata[i].data[0].fieldName == 'TERM_TYPE') {
+          this.termTypes = newdata[i].data
+
+        }
+      }
+
+
+      fu();
     }, () => { })
   }
   // 得到请求的凭借条件
   getPath() {
-    
-    if (this.testarray.begDate != null && this.testarray.begDate != undefined&& this.testarray.begDate != '')
+
+    if (this.testarray.begDate != null && this.testarray.begDate != undefined && this.testarray.begDate != '')
       this.testarray.begDate = new Date(this.testarray.begDate)['Format']('yyyy-MM-dd')
-    if (this.testarray.endDate != null && this.testarray.endDate != undefined&& this.testarray.endDate != '')
+    if (this.testarray.endDate != null && this.testarray.endDate != undefined && this.testarray.endDate != '')
       this.testarray.endDate = new Date(this.testarray.endDate)['Format']('yyyy-MM-dd')
-    this.paths = '&idType='+this.testarray.idType+'&idNo='+this.testarray.idNo+'&cuName='+this.testarray.cuName+'&finproNo='+this.testarray.finproNo
-    +'&busType='+this.testarray.busType+'&auSta='+this.testarray.auSta;
+    this.paths = '&idType=' + this.testarray.idType + '&idNo=' + this.testarray.idNo + '&cuName=' + this.testarray.cuName + '&finproNo=' + this.testarray.finproNo
+      + '&busType=' + this.testarray.busType + '&auSta=' + this.testarray.auSta;
   }
   //请求得到总数据
   requestTableData() {
     this.getPath();
     this._http.get('/fina/fa/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.paths, (e) => {
       console.log(e)
-      if(this.grade.vals[0]==5)
-        this.tableData=new Array( e.data.pb.list[0])
-        if(this.grade.vals[0]==4)
-       
-      this.tableData = e.data.pb.list
+      if (this.grade.vals[0] == 5)
+        this.tableData = new Array(e.data.pb.list[0])
+      if (this.grade.vals[0] == 4)
+
+        this.tableData = e.data.pb.list
       for (var i = 0; i < this.tableData.length; i++) {
         for (var p in this.tableData[i]) {
           if (p.search('Date') != -1 || p.search('Time') != -1) {
             this.tableData[i][p] = new Date(this.tableData[i][p])['Format']('yyyy-MM-dd')
           }
           if (p == 'idType') {
-           
+
             this.tableData[i].idType = this.getLabel(this.tableData[i][p], this.idTypes)
           }
-          if(p=='createTime'){
-         
-            this.tableData[i].begDate=this.tableData[i].createTime;
+          if (p == 'createTime') {
+
+            this.tableData[i].begDate = this.tableData[i].createTime;
           }
-          
-          if(p=='busType'){
-          
-           this.tableData[i].busType=this.getLabel(this.tableData[i][p],this.busTypes)
-        
+
+          if (p == 'busType') {
+
+            this.tableData[i].busType = this.getLabel(this.tableData[i][p], this.busTypes)
+
           }
-          if(p=='auSta'){
-         
-           this.tableData[i].auSta=this.getLabel(this.tableData[i][p],this.auStas)
-           
+          if (p == 'auSta') {
+
+            this.tableData[i].auSta = this.getLabel(this.tableData[i][p], this.auStas)
+
           }
         }
-        
+
       }
-      console.log(typeof(this.tableData))
+      console.log(typeof (this.tableData))
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
         this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
@@ -153,7 +153,7 @@ export class RongzishenqingComponent implements OnInit {
   }
   //通过下拉框的vaule的到label
   getLabel(value: any, select: Array<any>): any {
-    console.log(value,select)
+    console.log(value, select)
     for (var p in select) {
       if (select[p]['value'] == value) {
         console.log(select[p]['label'])
@@ -290,20 +290,20 @@ export class RongzishenqingComponent implements OnInit {
     }
   }
   pageTable = [];
-  constructor(public param: ParamsService,public grade:GradeService) {
+  constructor(public param: ParamsService, public grade: GradeService, public router: Router) {
     this._http = param._http
-    
+
   }
 
   ngOnInit() {
-    this.requestSelectData(()=>{
+    this.requestSelectData(() => {
       this.requestTableData()
     });
-  
+
   }
 
   search(): void {
-      this.requestTableData();
+    this.requestTableData();
   }
   allCheck(): void {
     if (this.check == false)
@@ -316,11 +316,28 @@ export class RongzishenqingComponent implements OnInit {
     "融资申请"
   ]
   shenqingxiangqing(date: any): void {
-    this.InputData.personPage='oldPage';
+    this.InputData.personPage = 'oldPage';
   }
   //新增申请界面
-  newApply(){
-    this.InputData.personPage='newPage';
+  newApply() {
+    console.log(this.grade.user)
+    var grades = this.grade.user.grade
+    var step = this.grade.user.data.steps
+    if (grades.indexOf(5) > -1) {
+      if (step <= 3) {
+        var back=confirm("对不起，您的授信还没有完成,是否回到授信申请")
+        if(back){
+          this.router.navigate(['/finas/home/khgl/khxx'])
+          return
+        }else{
+          return
+        }   
+      } else {
+        alert("您的授信正在审核中，您暂时还不能进行融资申请，请您耐心等待")
+        return
+      }
+    }
+    this.InputData.personPage = 'newPage';
     this.demoBasic.show();
   }
 }

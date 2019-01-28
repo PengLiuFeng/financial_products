@@ -2,7 +2,7 @@ import { Component, ViewChild, Input, OnInit, OnChanges } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions, InputAutoFillDirective } from 'ng-uikit-pro-standard';
 import { Location } from '@angular/common';
 import { ParamsService } from './../../../../../params.service';
-
+import { GradeService } from './../../../../../grade.service';
 @Component({
   selector: 'app-zonghexinxi',
   templateUrl: './zonghexinxi.component.html',
@@ -25,7 +25,7 @@ export class ZonghexinxiComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   public myDatePickerOptions: IMyOptions = {};
 
-  constructor(private location: Location, private param: ParamsService) {
+  constructor(private location: Location, private param: ParamsService,public grade:GradeService) {
     this._http = param._http
   }
   isajax = false;    //用于判断是否请求被占用

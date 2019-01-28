@@ -204,7 +204,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //下拉框的数据
   idTypes: Array<any>
   countrys: Array<any>
-  cifAreas: any
+  cifAreas:  Array<any>=[]
   wayNos: Array<any>
   regTypes: Array<any>
   cuTypes: Array<any>
@@ -212,6 +212,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   outGrades: Array<any>
   ngOnInit() {
     this.requestselectData();
+    console.log(this.cifAreas)
   }
 
   go_reset() { }

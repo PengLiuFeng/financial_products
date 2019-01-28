@@ -298,6 +298,6 @@ export class PingjishouxinComponent implements OnInit {
   }
   newCredit() {
     this.demoBasic.show()
-    this.grande.sub.next({ type: "newCredit", Idisabled: this.Idisabled });
+    this.grande.sub.next({ type: "newCredit", Idisabled: this.Idisabled});
   }
 }

@@ -23,7 +23,7 @@
         </div>
         <div class="inputd">
           <div class="md-form">
-            <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动" [isMDBstyle]="true"></app-df-cascader>
+            <app-df-cascader [options]="chinas" [(values)]="mval" [showAllLevels]="false" label="三级联动" [isMDBstyle]="true"></app-df-cascader>
           </div>
         </div>
         <div class="inputd">
@@ -96,7 +96,7 @@
         <br/>
       <input type="file" id="uploadFile"> <button (click)="onup()">上传</button>
       
-      <app-df-cascader [options]="options" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>
+      <app-df-cascader [options]="chinas" [(values)]="mval" [showAllLevels]="true" label="三级联动"></app-df-cascader>
       <div>
           <df-button-group>
             <df-button type="primary" size="medium">重置</df-button>

@@ -1,0 +1,131 @@
+<div class="page">
+  <div class="pagehead">
+
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
+      <label for="form1" class="">客户号</label>
+    </div>
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="form2" [disabled]="true" class="form-control">
+      <label for="form2" class="">客户名</label>
+    </div>
+
+  </div>
+
+  <div class="pagebody">
+    <div class="tablesshow">
+      <table mdbTable border="1 !importent;">
+        <thead>
+          <tr>
+            <th *ngFor="let head of tables.head" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of tables.body,let i=index;">
+            <td   title="" scope="row">{{i+1}}</td>
+            <td   title="{{el.begdata}}" >{{el.begdata}}</td>
+            <td   title="{{el.allMoney}}"  >{{el.allMoney}}</td>
+            <td   title="{{el.children}}">{{el.children}}</td>
+            <td   title="{{el.childrenbalance}}">{{el.childrenbalance}}</td>
+            <td   title="{{el.Enddata}}"  >{{el.Enddata}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="dataupdate">
+      <table mdbTable border="1 !importent;">
+        <thead>
+          <tr>
+            <th *ngFor="let head of Filetables.head" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of Filetables.zhizhao,let i=index;">
+            <td scope="row">{{i+1}}</td>
+            <td title="{{el.filename}}">{{el.filename}}</td>
+            <td title="{{el.uploadData}}">{{el.uploadData}}</td>
+            <td title="{{el.filetype}}">{{el.filetype}}</td>
+            <td title="{{el.fileDes}}">{{el.fileDes}}</td>
+            <td>
+                <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.zhizhao.length-1;">
+                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);"
+                      type="button">
+                      <span>点击上传</span>
+                    </button>
+                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input"
+                      type="file">
+                  </div>
+                  <div style="display:inline-block;"><df-button (click)="addFile('zhizhao');" type="primary" size="mini" *ngIf="i+1==Filetables.zhizhao.length;">添加</df-button></div>
+                  <div style="display:inline-block;"><df-button (click)="deleteFile('zhizhao',i);" type="primary" size="mini" *ngIf="i+1==Filetables.zhizhao.length;">删除</df-button></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    <br>
+    <br>
+    <table mdbTable border="1 !importent;">
+        <thead>
+          <tr>
+            <th *ngFor="let head of Filetables.head" scope="col">{{head}} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let el of Filetables.caiwu,let i=index;">
+            <td scope="row">{{i+1}}</td>
+            <td title="{{el.filename}}">{{el.filename}}</td>
+            <td title="{{el.uploadData}}">{{el.uploadData}}</td>
+            <td title="{{el.filetype}}">{{el.filetype}}</td>
+            <td title="{{el.fileDes}}">{{el.fileDes}}</td>
+            <td>
+                <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.caiwu.length-1;">
+                    <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);"
+                      type="button">
+                      <span>点击上传</span>
+                    </button>
+                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input"
+                      type="file">
+                  </div>
+                  <div style="display:inline-block;"><df-button (click)="addFile('caiwu');" type="primary" size="mini" *ngIf="i+1==Filetables.caiwu.length;">添加</df-button></div>
+                  <div style="display:inline-block;"><df-button (click)="deleteFile('caiwu',i);" type="primary" size="mini" *ngIf="i+1==Filetables.caiwu.length;">删除</df-button></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <br>
+      <table mdbTable border="1 !importent;">
+          <thead>
+            <tr>
+              <th *ngFor="let head of Filetables.head" scope="col">{{head}} </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr mdbTableCol *ngFor="let el of Filetables.other,let i=index;">
+              <td scope="row">{{i+1}}</td>
+              <td title="{{el.filename}}">{{el.filename}}</td>
+              <td title="{{el.uploadData}}">{{el.uploadData}}</td>
+              <td title="{{el.filetype}}">{{el.filetype}}</td>
+              <td title="{{el.fileDes}}">{{el.fileDes}}</td>
+              <td>
+                  <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.other.length-1;">
+                      <button class="qloud-button qloud-button--primary qloud-button--small" id="test111" (click)="fileUpdata($event);"
+                        type="button">
+                        <span>点击上传</span>
+                      </button>
+                      <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input"
+                        type="file">
+                    </div>
+                    <div style="display:inline-block;"><df-button (click)="addFile('other');" type="primary" size="mini" *ngIf="i+1==Filetables.other.length;">添加</df-button></div>
+                    <div style="display:inline-block;"><df-button (click)="deleteFile('other',i);" type="primary" size="mini" *ngIf="i+1==Filetables.other.length;">删除</df-button></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+  </div>
+
+  <div class="pagefoot">
+
+  </div>
+</div>

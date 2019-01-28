@@ -42,14 +42,14 @@
             <mdb-date-picker name="mydate" [options]="myDatePickerOptions" label="合同结束日期" [(ngModel)]="model" required></mdb-date-picker>
           </div> -->
           <div class="inputd" style="margin-left: 1%; display: inline-block;">
-              <div class="ui-inputgroup">
-                <span class="i-h">融资开始日期：</span>
-                <p-calendar [showTime]="true" placeholder="开始时间"   [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
-                <span class="ui-inputgroup-addon" class="i-h">至</span>
-                <p-calendar [showTime]="true" placeholder="结束时间"  [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
-              </div>
+            <div class="ui-inputgroup">
+              <span class="i-h">融资开始日期：</span>
+              <p-calendar [showTime]="true" placeholder="开始时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+              <span class="ui-inputgroup-addon" class="i-h">至</span>
+              <p-calendar [showTime]="true" placeholder="结束时间" [locale]="params.es" dateFormat="yy/mm/dd"></p-calendar>
+            </div>
           </div>
-         
+
           <div class="bk_div marg_div">
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>查询</button>
             <button mdbBtn type="button" color="primary" class="waves-light btn-sm" mdbWavesEffect mdbWavesEffect>重置</button>
@@ -94,7 +94,7 @@
             </thead>
             <tbody>
               <ng-container *ngFor="let el of table_body; let i = index">
-                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex" (dblclick)="basicModal.show();">
+                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex" (dblclick)="ZJFFDemoBasic.show();">
                   <td scope="row">{{i+1}}</td>
                   <td scope="row">
                     <mdb-checkbox [checked]="allcheck"></mdb-checkbox>
@@ -172,15 +172,22 @@
         <h4 class="modal-title w-100" id="myModalLabel">业务线
         </h4>
       </div>
-
       <div class="modal-body" style="overflow-y:auto;height:600px;">
-
         <app-fafangxinxi [inputdata]="inputdata"></app-fafangxinxi>
-
       </div>
     </div>
   </div>
-
+</div>
+<div mdbModal #ZJFFDemoBasic="mdbModal" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="wins" role="document">
+    <div class="modal-content">
+      <button type="button" class="close pull-right" aria-label="Close" (click)="ZJFFDemoBasic.hide()">
+        <span aria-hidden="true">×</span>
+      </button>
+      <app-zijinfafang [ZJFFDemoBasic]="ZJFFDemoBasic"></app-zijinfafang>
+    </div>
+  </div>
 </div>
 <div id="yszktz" [ngStyle]="{'left': yszktzLeft}">
   <app-yszktz [(hidFlag)]='hidFlag' [(yszktzLeft)]="yszktzLeft"></app-yszktz>

@@ -101,12 +101,11 @@
           <th scope="row">期限月</th>
           <th scope="row">授信起始日期</th>
           <th scope="row">授信结束日期</th>
-          <th scope="row" class="dc_td">操作</th>
         </tr>
       </thead>
       <tbody>
         <ng-container *ngFor="let data of tableData; let i = index">
-          <tr>
+          <tr (dblclick)="Idisabled=true;dataBinding(data.authId);">
             <td scope="row" class="index_td">{{i+1}}</td>
             <td scope="row">
               <mdb-checkbox [(ngModel)]="check_arr[i]"></mdb-checkbox>
@@ -122,9 +121,6 @@
             <td scope="row">{{data.term}}{{data.termType}}</td>
             <td scope="row">{{dateFormat(data.begDate)}}</td>
             <td scope="row">{{dateFormat(data.endDate)}}</td><!-- demoBasic.show() -->
-            <td scope="row">
-                <button [disabled]="isAjax" size="sm" mdbBtn type="button" color="primary" (click)="Idisabled=true;dataBinding(data.authId); " outline="true" mdbWavesEffect>授信详情</button>
-            </td>
           </tr>
         </ng-container>
       </tbody>

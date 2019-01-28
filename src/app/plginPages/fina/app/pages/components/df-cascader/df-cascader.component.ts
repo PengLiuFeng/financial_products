@@ -60,6 +60,13 @@ export class DfCascaderComponent implements OnInit,OnChanges {
     }
   ] */
   forarr(arr:Array<any>,val,lab?:any):any{
+    /* for(let i=0;i<arr.length;i++){
+      if(arr[i].children&&arr[i].children.length>0){
+
+      }
+    } */
+
+
     for(let i=0;i<arr.length;i++){
       if(arr[i].children&&arr[i].children.length>0){
         if(this.showAllLevels){
@@ -74,7 +81,10 @@ export class DfCascaderComponent implements OnInit,OnChanges {
             lab+=arr[i].label;
             return lab;
           }
+          console.log(arr[i])
           return arr[i].label;
+        }else{
+
         }
       }
     }
@@ -158,7 +168,6 @@ dqli={
         ".popper__arrow"
         this.renderer2s.setStyle(divs,'transform',`translateX(${js}px)`);
       }
-      console.log(wz)
     }
   }
   myval="";

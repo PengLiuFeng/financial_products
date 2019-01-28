@@ -30,12 +30,13 @@ export class LianxixinxiComponent implements OnInit {
   reqData(){
     this.isAjax=true;
       this._http.get('/fina/custom/contractDetail?cuNo='+this.cuNo,(e)=>{
-        //console.log(e)
-        if(e.data.data!=''&&e.data.data!=null){
-          if(e.data.t){
-            this.lxxx=e.data.data;
-          } 
-        }
+        // console.log(e)
+        this.lxxx=e.data;
+        // if(e.data.data!=''&&e.data.data!=null){
+        //   if(e.data.t){
+        //     this.lxxx=e.data.data;
+        //   } 
+        // }
         this.isAjax=false;
       },()=>{
      this.isAjax=false;

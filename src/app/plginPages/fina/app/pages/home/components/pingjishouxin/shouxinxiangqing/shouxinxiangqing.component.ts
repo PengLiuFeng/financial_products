@@ -11,35 +11,14 @@ import { GradeService } from './../../../../../grade.service'
 export class ShouxinxiangqingComponent implements OnInit {
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() demoBasic: ModalDirective;
-  @Input() authId: any;
-
   // @Output() IdisabledChange = new EventEmitter();
 
-  Idisabled: false;
+  Idisabled: boolean;
   personPage = "oldUser"
   inputW = "206px"
-  ngOnChanges(changes: SimpleChanges): void {
-    this.reSetModel();
-    if (this.authId) {
-      //alert(this.authId)
-      this.isAjax = true;
-      this._http.get('/fina/grade/detail?authId=' + this.authId, (e) => {
-        //console.log(e)
-        this.zhsx = e.data.mBody;
-        if (this.zhsx.authSts == '冻结') {
-          this.zhsx.edsfdj = '1';
-        } else {
-          this.zhsx.edsfdj = '0';
-        }
-        this.formatDate(e.data.isClassify == '是');
-        // this.dataObject.controlIndicators.cuNo = this.zhsx.cuNo;
-        // this.dataObject.controlIndicators.cuName = this.zhsx.cuName;
-        this.isAjax = false;
-      }, () => {
-        this.isAjax = false;
-      })
-    }
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+
+  // }
   isShow: boolean = false;
 
   CRE_RATIN = []
@@ -49,10 +28,7 @@ export class ShouxinxiangqingComponent implements OnInit {
   TERM_TYPE = []
   ID_TYPE = []
   REPAY_TYPE = []
-  AUTH_LUME = [
-    { label: '明保理', value: '明保理' },
-    { label: '暗保理', value: '暗保理' },
-  ]
+  AUTH_LUME = []
 
   //文本框的model
   zhsx = {
@@ -82,13 +58,12 @@ export class ShouxinxiangqingComponent implements OnInit {
   constructor(public params: ParamsService, public grande: GradeService) {
     this._http = params._http;
   }
-  termTypeTxt = "";
 
   _http: any;
   isAjax = false;
   reqDdListData() {
     this.isAjax = true;
-    this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT,REPAY_TYPE,TERM_TYPE,ID_TYPE', (e) => {
+    this._http.get('/fina/dict/dictListList?ids=CRE_RATIN,authLume,AUTH_STS,FINPRO_NO,AUTH_SPLIT_TYPT,repayType,TERM_TYPE,ID_TYPE', (e) => {
       let it = null;
       for (let i = 0; i < e.data.length; i++) {
         it = e.data[i];
@@ -105,14 +80,15 @@ export class ShouxinxiangqingComponent implements OnInit {
           for (var j = 0; j < this.TERM_TYPE.length; j++) {
             if (this.TERM_TYPE[j].label == "月") {
               this.zhsx.termType = this.TERM_TYPE[j].value;
-              this.termTypeTxt = this.TERM_TYPE[j].label;
               break;
             }
           }
         } else if (it.myid == 'ID_TYPE') {
           this.ID_TYPE = it.data;
-        } else if (it.myid == 'REPAY_TYPE') {
+        } else if (it.myid == 'repayType') {
           this.REPAY_TYPE = it.data;
+        } else if (it.myid == 'authLume') {
+          this.AUTH_LUME = it.data;
         }
       }
       this.isAjax = false;
@@ -131,14 +107,16 @@ export class ShouxinxiangqingComponent implements OnInit {
     zhsx.endDate = new Date(this.zhsx.endDate).getTime();
     parjson['mBody'] = zhsx;
     parjson['isClassify'] = this.show_fenlei == '1' ? '是' : '否';
-    console.log(parjson)
+    // console.log(parjson)
     var item = "";
     this.isAjax = true;
     this._http.post('/fina/grade/detailInsert', parjson, (e) => {
       item = e.data.t;
-      console.log(e)
+      // console.log(e)
       if (e.data.t) {
-        this.closeWin();
+        setTimeout(() => {
+          this.closeWin();
+        }, 2000);
       }
       this.dangerShow(e.data.msg)
       this.isAjax = false;
@@ -147,21 +125,60 @@ export class ShouxinxiangqingComponent implements OnInit {
     })
 
   }
-
+  flag = true;
+  btnFlag = true;
   ngOnInit() {
     this.reqDdListData();
-    this.onZhAdd(this.fkxx.zhTable.hkData);
-    this.onZhAdd(this.fkxx.zhTable.skData);
-    this.onZhAdd(this.fkxx.zhTable.ggData);
-
     this.grande.sub.subscribe(res => {
       if (res.type == "dataBinding") {
         this.zhsx.authId = res.aBauthId;
         this.Idisabled = res.Idisabled;
+        this.detail(res.aBauthId);
+        this.onZhAdd(this.fkxx.zhTable.hkData);
+        this.onZhAdd(this.fkxx.zhTable.skData);
+        this.onZhAdd(this.fkxx.zhTable.ggData);
+        this.flag = false;
+        this.btnFlag = true;
       } else if (res.type == "newCredit") {
+        this.flag = true;
         this.Idisabled = res.Idisabled;
+        this.reSetModel();
+        this.fkxx = {
+          zhTable: {
+            thead: ['序号', '账号', '账户开户行', '账户名称', '操作'],
+            defaultData: { zh: '', khh: '', name: '' },
+            skData: [],
+            hkData: [],
+            ggData: [],
+          }
+        }
       }
     })
+  }
+  detail(authId) {
+    this.reSetModel();
+    if (authId) {
+      //alert(this.authId)
+      this.isAjax = true;
+      this._http.get('/fina/grade/detail?authId=' + authId, (e) => {
+        // console.log(e)
+        this.fkxx.zhTable.skData = e.data.cData.collectionAccount;
+        this.fkxx.zhTable.hkData = e.data.cData.repaymentAccount;
+        this.fkxx.zhTable.ggData = e.data.cData.managedAccount;
+        this.zhsx = e.data.mData;
+        if (this.zhsx.authSts == '冻结') {
+          this.zhsx.edsfdj = '1';
+        } else {
+          this.zhsx.edsfdj = '0';
+        }
+        this.formatDate(e.data.isClassify == '是');
+        // this.dataObject.controlIndicators.cuNo = this.zhsx.cuNo;
+        // this.dataObject.controlIndicators.cuName = this.zhsx.cuName;
+        this.isAjax = false;
+      }, () => {
+        this.isAjax = false;
+      })
+    }
   }
   closeWin() {
     this.reSetModel()
@@ -242,7 +259,7 @@ export class ShouxinxiangqingComponent implements OnInit {
   }
   onZhAdd(tTable: Array<any>): void {//添加账户
     tTable.push(JSON.parse(JSON.stringify(this.fkxx.zhTable.defaultData)));
-    console.log(this.fkxx.zhTable);
+    // console.log(this.fkxx.zhTable);
   }
   onRemove(tTable: Array<any>, i): void {//删除账户
     tTable.splice(i, 1);
@@ -257,9 +274,9 @@ export class ShouxinxiangqingComponent implements OnInit {
     this.fileModelArr.push({ fileModel: "", fileName: "", fileInfo: "" })
     setTimeout(() => {
       document.getElementsByClassName("identifierUsedForTheValue")[this.fileModelArr.length - 1]['click']();
-      setTimeout(()=>{
-        console.log(this.fileModelArr)
-      },2000);
+      // setTimeout(() => {
+      //   console.log(this.fileModelArr)
+      // }, 2000);
     });
     // setTimeout(() =>{
     //   console.log(typeof(this.fileModelArr[this.fileModelArr.length - 1].fileModel))
@@ -291,7 +308,7 @@ export class ShouxinxiangqingComponent implements OnInit {
           this.isAjax = false;
           fu();
         })
-      }else{
+      } else {
         this.onup(i, fu, arr);
       }
     } else {
@@ -317,5 +334,25 @@ export class ShouxinxiangqingComponent implements OnInit {
       // this.dangerShow("共上传" + (f + t) + "个文件," + t + "个成功," + f + "个失败");
       this.isAjax = false;
     }, []);
+    this.btnFlag = true;
+  }
+
+  modification() { //开始修改
+    this.btnFlag = false;//切换为保存按钮
+    this.Idisabled = false;
+    window['reqData'] = JSON.parse(JSON.stringify(this.zhsx));
+    window['zhTable'] = JSON.parse(JSON.stringify(this.fkxx.zhTable));
+  }
+  confirmModification() {//取消修改
+    let data = window['reqData'];
+    let zhTable = window['zhTable']
+    for (let it in data) {
+      this.zhsx[it] = data[it];
+    }
+    for (const key in zhTable) {
+      this.fkxx.zhTable[key] = zhTable[key];
+    }
+    this.Idisabled = true;//全局禁用
+    this.btnFlag = true;//切换回修改按钮
   }
 }

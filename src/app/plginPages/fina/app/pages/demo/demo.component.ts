@@ -1,6 +1,7 @@
 import { Component,ViewChild, OnInit } from '@angular/core';
 import { MDBDatePickerComponent, IMyOptions } from 'ng-uikit-pro-standard';
 import { BaHttpInterceptorService } from './../../../../../theme/services/index'
+import { GradeService } from './../../grade.service'
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 @Component({
   selector: 'app-demo',
@@ -8,6 +9,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
   styleUrls: ['./demo.component.scss']
 })
 export class DemoComponent implements OnInit {
+  
   model: any;
   modell: any;
   inputVal="华软"
@@ -16,7 +18,7 @@ export class DemoComponent implements OnInit {
 
   public myDatePickerOptions: IMyOptions = {};
   httpHeaders:HttpHeaders=new HttpHeaders();
-  constructor(private _http:BaHttpInterceptorService) {
+  constructor(private _http:BaHttpInterceptorService,private grades:GradeService) {
     this.httpHeaders.set('Content-Type',undefined);
   }
   mval='';
@@ -117,13 +119,15 @@ export class DemoComponent implements OnInit {
                 }
               ]
     }
-  ]
+  ];
+chinas:any=[];
   ngOnInit() {
-    setTimeout(()=>{
-      this.isShow=true;
-      this.selectData.val="1";
-      this.mval='yizhi';
-    },3000)
+    console.log(this.grades.win)
+    this.grades.getChinas().then((ResultJson)=>{
+      this.chinas=ResultJson;
+    }).catch(function(ErrMsg){
+      console.log(ErrMsg)
+    })
   }
 oncl(){
   this.mval=Math.random()+'';

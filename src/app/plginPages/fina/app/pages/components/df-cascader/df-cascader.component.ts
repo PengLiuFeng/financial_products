@@ -78,19 +78,10 @@ export class DfCascaderComponent implements OnInit,OnChanges {
     }
   }
 inits(){
-if(this.values){
-  this.myval=this.values;
-  this.myval=this.forarr(this.options,this.values,'');
-  // let it=null;
-  // for(let i=0;i<this.options.length;i++){
-  //   it=this.options[i];
-  //   if(it.children&&it.children.length>0){
-
-  //   }else{
-
-  //   }
-  // }
-}
+  if(this.values){
+    this.myval=this.forarr(this.options,this.values,'');
+    alert(this.myval)
+  }
 }
 isshow=2;
   constructor() { }
@@ -107,8 +98,11 @@ dqli={
       this.inits();
     }
   }
+  ischanges=true;
   ngOnChanges(){
-    this.inits();
+    if(this.ischanges){
+      this.inits();
+    }
   }
   private removeEve(){
     //console.log('注销事件');
@@ -143,6 +137,7 @@ dqli={
   }
   myval="";
   onIt(i,it){
+    this.ischanges=false;
     if(it.children&&it.children.length>0){
     }else{
       let dqli=this.dqli;
@@ -156,5 +151,8 @@ dqli={
       }
       this.removeEve();
     }
+    setTimeout(()=>{
+      this.ischanges=true;
+    },1000)
   }
 }

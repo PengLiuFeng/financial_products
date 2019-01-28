@@ -2,7 +2,7 @@
     <div>
         <!-- 左侧的页面设计 -->
         <div class="row"  >
-            <div class="left_zonghexinxi" > 
+            <div class="left_zonghexinxi" *ngIf="true==false"> 
                     <div class="kuhugaikuang">
                     <label >客户管理</label><br/>
                         <button (click)="opens('jbxx')">基本信息</button>
@@ -45,7 +45,7 @@
 
             <!-- 右上侧的页面设计 -->
             <div class="right_zonghexinxi">
-                <div class="top_zonghexinxi">
+                <div class="top_zonghexinxi" *ngIf="true==false">
                     <!-- <div style="width: 100%;height:3%;max-height:40px;float:right">
                             <button mdbBtn type="button" style="float:right" (click)="gaibian()" color="warning" rounded="true" outline="true" size="sm" mdbWavesEffect>修改信息</button>
                             <button mdbBtn type="button" style="float:right" (click)="goback()" color="info" rounded="true" outline="true" size="sm" mdbWavesEffect>返回上一级</button>
@@ -82,7 +82,7 @@
                         <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('myselfpage')" mdbWavesEffect>我的平台</button>
                 </div>
                 <!-- 右下侧的页面设计 -->
-                    <div class="down_zonghexinxi">
+                    <div class="zhxxpage">
                             
                             <app-jibenxinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
                             <app-lianxixinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='lxxx'"></app-lianxixinxi>

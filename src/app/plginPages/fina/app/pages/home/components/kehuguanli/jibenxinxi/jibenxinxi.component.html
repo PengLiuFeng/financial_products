@@ -45,6 +45,7 @@
                   <mdb-select id="form6" name="cuType" [disabled]="bo" [(ngModel)]="testarray.cuType" [options]="cuTypes"
                         placeholder="请选择" label="客户类型"></mdb-select><br />
             </div>
+            <!-- <df-select [(values)]="testarray.cuType" [options]="cuTypes" [disabled]="bo"></df-select> -->
 
             <div >
                   <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.wayNo" [isMDBstyle]="true"
@@ -63,6 +64,7 @@
                   <mdb-select id="form5" name="country" [disabled]="bo" [(ngModel)]="testarray.country" [options]="countrys"
                         placeholder="请选择" label="国别"></mdb-select>
             </div>
+            <!-- <df-select [(values)]="testarray.country" [options]="countrys" [disabled]="bo"></df-select> -->
 
             <div >
                   <app-df-cascader [options]="cifAreas" disabled="bo" [(values)]="testarray.cifArea" [isMDBstyle]="true"

@@ -79,7 +79,6 @@ export class DfCascaderComponent implements OnInit,OnChanges {
   }
 inits(){
 if(this.values){
-  console.log('初始化')
   this.myval=this.values;
   this.myval=this.forarr(this.options,this.values,'');
   // let it=null;

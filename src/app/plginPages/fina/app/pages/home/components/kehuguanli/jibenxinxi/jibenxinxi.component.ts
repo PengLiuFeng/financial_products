@@ -153,11 +153,14 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
         console.log(this.testarray)
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {
+          if(p=="cifArea")
+          this.testarray[p]="110000"
 
           if (p.search('Date') != -1 || p.search('Time') != -1) {
             this.testarray[p] = this.trandate(this.allData[p]);
           }
         }
+        console.log(this.testarray)
       }
 
       console.log(this.testarray)
@@ -167,6 +170,19 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     })
 
   }
+  //请求三级联动数据
+  requestThreeData(){
+    this._http.get("/fina/getChinas",(e)=>{
+      if(e.data!=undefined&&e.data!=null){
+        this.cifAreas=e.data.data
+        console.log(this.cifAreas)
+      }
+    },()=>{
+      console.log("三级联动数据请求失败了")
+    })
+  }
+    
+  
   //向后台提交数据
   saveData() {
     this.isajax = true
@@ -204,7 +220,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //下拉框的数据
   idTypes: Array<any>
   countrys: Array<any>
-  cifAreas: any
+  cifAreas:  Array<any>=[]
   wayNos: Array<any>
   regTypes: Array<any>
   cuTypes: Array<any>
@@ -212,6 +228,8 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   outGrades: Array<any>
   ngOnInit() {
     this.requestselectData();
+    this.requestThreeData();
+    
   }
 
   go_reset() { }

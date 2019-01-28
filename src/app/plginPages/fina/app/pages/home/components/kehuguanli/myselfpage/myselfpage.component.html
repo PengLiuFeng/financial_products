@@ -2,11 +2,11 @@
   <div class="pagehead">
 
     <div class="md-form">
-      <input mdbInputDirective type="text" id="form1" [disabled]="true" class="form-control">
+      <input mdbInputDirective type="text" id="form1" [(ngModel)]="allData.cuId" [disabled]="true" class="form-control">
       <label for="form1" class="">客户号</label>
     </div>
     <div class="md-form">
-      <input mdbInputDirective type="text" id="form2" [disabled]="true" class="form-control">
+      <input mdbInputDirective type="text" id="form2" [(ngModel)]="allData.cuName" [disabled]="true" class="form-control">
       <label for="form2" class="">客户名</label>
     </div>
 
@@ -33,6 +33,7 @@
       </table>
     </div>
     <div class="dataupdate">
+      <span style="font-size:18px;">{{Filetables.zhizhao[0].filetype}}</span>
       <table mdbTable border="1 !importent;">
         <thead>
           <tr>
@@ -44,7 +45,7 @@
             <td scope="row">{{i+1}}</td>
             <td title="{{el.filename}}">{{el.filename}}</td>
             <td title="{{el.uploadData}}">{{el.uploadData}}</td>
-            <td title="{{el.filetype}}">{{el.filetype}}</td>
+            
             <td title="{{el.fileDes}}">{{el.fileDes}}</td>
             <td>
                 <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.zhizhao.length-1;">
@@ -52,7 +53,7 @@
                       type="button">
                       <span>点击上传</span>
                     </button>
-                    <input name="file" (ngModelChange)="uploadFile($event,id);" [(ngModel)]="fileName" class="qloud-upload__input"
+                    <input name="file" (ngModelChange)="uploadFile($event,id,'zhizhao');"  [(value)]="fileName" class="qloud-upload__input"
                       type="file">
                   </div>
                   <div style="display:inline-block;"><df-button (click)="addFile('zhizhao');" type="primary" size="mini" *ngIf="i+1==Filetables.zhizhao.length;">添加</df-button></div>
@@ -63,6 +64,8 @@
       </table>
     <br>
     <br>
+    <span style="font-size:18px;">{{Filetables.caiwu[0].filetype}}</span>
+
     <table mdbTable border="1 !importent;">
         <thead>
           <tr>
@@ -74,7 +77,7 @@
             <td scope="row">{{i+1}}</td>
             <td title="{{el.filename}}">{{el.filename}}</td>
             <td title="{{el.uploadData}}">{{el.uploadData}}</td>
-            <td title="{{el.filetype}}">{{el.filetype}}</td>
+           
             <td title="{{el.fileDes}}">{{el.fileDes}}</td>
             <td>
                 <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.caiwu.length-1;">
@@ -93,6 +96,8 @@
       </table>
       <br>
       <br>
+      <span style="font-size:18px;">{{Filetables.other[0].filetype}}</span>
+
       <table mdbTable border="1 !importent;">
           <thead>
             <tr>
@@ -104,7 +109,7 @@
               <td scope="row">{{i+1}}</td>
               <td title="{{el.filename}}">{{el.filename}}</td>
               <td title="{{el.uploadData}}">{{el.uploadData}}</td>
-              <td title="{{el.filetype}}">{{el.filetype}}</td>
+      
               <td title="{{el.fileDes}}">{{el.fileDes}}</td>
               <td>
                   <div tabindex="0" class="qloud-upload qloud-upload--text" *ngIf="i<Filetables.other.length-1;">

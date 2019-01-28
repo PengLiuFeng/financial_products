@@ -7,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyselfpageComponent implements OnInit {
 
+
+  //前台数据绑定
+  allData={
+    cuName:"",
+    cuId:"",
+    
+  }
   constructor() { }
   //表数据
   tables:any={
@@ -21,7 +28,7 @@ export class MyselfpageComponent implements OnInit {
   //文件查看和修改
   Filetables:any={
     head:[
-      "序号","文件名","文件上传日期","文件类型","文件描述","重新上传"
+      "序号","文件名","文件上传日期","文件描述","重新上传"
     ],
     zhizhao:[
       {filename:"营业执照信息",uploadData:'2018-3-4',filetype:'营业执照',fileDes:'这是华软集团最新的执照信息'},
@@ -37,6 +44,14 @@ export class MyselfpageComponent implements OnInit {
     ]
     
 
+  }
+  //获取到文件
+  uploadFile(file:any,id:number,sort:string){
+    if(sort=='zhizhao'){
+      var doc=document.getElementsByClassName("qloud-upload__input")
+      console.log(doc)
+    }
+    console.log(file)
   }
   FileModel={filename:"",uploadData:'',filetype:'',fileDes:''}
   addFile(t:any){

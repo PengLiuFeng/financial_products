@@ -8,12 +8,12 @@
         <div class="title_div"><strong class="title_b">营业执照信息</strong></div>
         <div class="charter_inform">
                 <div class="md-form">
-                      <input mdbInputDirective type="text" [disabled]="bo" name="license" [(ngModel)]="testarray.license"
+                      <input mdbInputDirective type="text" [disabled]="bo" name="license" [(ngModel)]="gkxx.license"
                             id="form10" class="form-control">
                       <label for="form10">营业执照号 ： </label>
                 </div>
                 <div class="md-form">
-                      <input mdbInputDirective type="text" [disabled]="bo" name="regAddr" [(ngModel)]="testarray.regAddr"
+                      <input mdbInputDirective type="text" [disabled]="bo" name="regAddr" [(ngModel)]="gkxx.regAddr"
                             id="form15" class="form-control">
                       <label for="form15">营业执照注册地址 ： </label>
                 </div>
@@ -26,35 +26,35 @@
                                         <mdb-select  id="form12" name="holdType"  [disabled]="bo" [options]="testarray" placeholder=""  label="控股类型"></mdb-select><br/>
                                   </div> -->
                 <div class="col-md-6">
-                      <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="testarray.regType" [options]="regTypes"
+                      <mdb-select id="form11" name="regType" [disabled]="bo" [(ngModel)]="gkxx.regType" [options]="regTypes"
                             placeholder="请选择" label="营业执照登记注册类型"></mdb-select><br />
     
                 </div>
                 <div class="col-md-6">
-                      <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="testarray.holdType" [options]="holdTypes"
+                      <mdb-select id="form12" name="holdType" [disabled]="bo" [(ngModel)]="gkxx.holdType" [options]="holdTypes"
                             placeholder="请选择" label="控股类型"></mdb-select><br />
     
                 </div>
                 <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
     
                       <mdb-date-picker name="licBegDate" id="form13" (click)="pickerFocus($event);" [disabled]="bo" label=" 注册登记时间"
-                            [options]="myDatePickerOptions" [(ngModel)]="testarray.licBegDate" required></mdb-date-picker>
+                            [options]="myDatePickerOptions" [(ngModel)]="gkxx.licBegDate" required></mdb-date-picker>
                 </div>
                 <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
     
                       <mdb-date-picker name="licEndDate" id="form14" (click)="pickerFocus($event);" [disabled]="bo" label=" 到期时间"
-                            [options]="myDatePickerOptions" [(ngModel)]="testarray.licEndDate" required></mdb-date-picker>
+                            [options]="myDatePickerOptions" [(ngModel)]="gkxx.licEndDate" required></mdb-date-picker>
                 </div>
     
                 <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
     
                       <mdb-date-picker name="licChkDate" id="form16" (click)="pickerFocus($event);" label="营业执照年检时间"
-                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.licChkDate" required></mdb-date-picker>
+                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="gkxx.licChkDate" required></mdb-date-picker>
                 </div>
                 <div class="md-form" style="width:20%;position: relative;bottom: 30px;">
     
                       <mdb-date-picker name="idChkDate" id="form17" (click)="pickerFocus($event);" label=" 组织机构代码年检时间"
-                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="testarray.idChkDate" required></mdb-date-picker>
+                            [disabled]="bo" [options]="myDatePickerOptions" [(ngModel)]="gkxx.idChkDate" required></mdb-date-picker>
                 </div>
     
     

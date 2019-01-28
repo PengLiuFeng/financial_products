@@ -10,33 +10,33 @@ export class GaikuangxinxiComponent implements OnInit {
 
   @ViewChild('datePicker') datePicker: MDBDatePickerComponent;
   @Input() cuNo: any;
-  @Input() personPage:any;
+  @Input() personPage: any;
 
   ngOnChanges(changes: SimpleChanges): void {
     this.flag = true;
     this.btnFlag = true;
     this.Idisabled = false;
     this.reSetModel();
-    if(this.personPage=='oldUser'){//查询修改
+    if (this.personPage == 'oldUser') {//查询修改
       this.reqData();
       this.flag = false;
-      this. Idisabled = true;
-    }else if(this.personPage=='newUser'){//新增
+      this.Idisabled = true;
+    } else if (this.personPage == 'newUser') {//新增
       this.flag = true;
-      this. Idisabled = false;
+      this.Idisabled = false;
     }
   }
   //前台绑定值
-  testarray: any = {
-    license: '',
-    regAddr: '',
-    regType: '',
-    holdType: '',
-    licBegDate: '',
-    licEndDate: '',
-    licChkDate: '',
-    idChkDate: '',
-  };
+  // testarray: any = {
+  //   license: '',
+  //   regAddr: '',
+  //   regType: '',
+  //   holdType: '',
+  //   licBegDate: '',
+  //   licEndDate: '',
+  //   licChkDate: '',
+  //   idChkDate: '',
+  // };
   CUR_NO = []
   MAIN_BUS = []
   gkxx = {
@@ -49,9 +49,18 @@ export class GaikuangxinxiComponent implements OnInit {
     cuNo: "",
     //下拉菜单model
     curType: "",
-    mainBus: ""
+    mainBus: "",
+
+    license: '',
+    regAddr: '',
+    regType: '',
+    holdType: '',
+    licBegDate: '',
+    licEndDate: '',
+    licChkDate: '',
+    idChkDate: '',
   }
-//下拉框值定义
+  //下拉框值定义
   regTypes: Array<any>
   holdTypes: Array<any>
   public myDatePickerOptions: IMyOptions = {};
@@ -72,10 +81,10 @@ export class GaikuangxinxiComponent implements OnInit {
           this.CUR_NO = it.data;
         } else if (it.myid == 'MAIN_BUS') {
           this.MAIN_BUS = it.data;
-        }else if(it.myid=='HOLD_TYPE'){
-          this.holdTypes=it.data;
-        }else if(it.myid=='REG_TYPE'){
-          this.regTypes=it.data;
+        } else if (it.myid == 'HOLD_TYPE') {
+          this.holdTypes = it.data;
+        } else if (it.myid == 'REG_TYPE') {
+          this.regTypes = it.data;
         }
       }
       this.isAjax = false;
@@ -96,71 +105,80 @@ export class GaikuangxinxiComponent implements OnInit {
       runRange: "",
       cuNo: "",
       curType: "",
-      mainBus: ""
+      mainBus: "",
+
+
+      license: '',
+      regAddr: '',
+      regType: '',
+      holdType: '',
+      licBegDate: '',
+      licEndDate: '',
+      licChkDate: '',
+      idChkDate: '',
     }
   }
-  reqData(){
-    this.isAjax=true;
-      this._http.get('/fina/custom/generalDetail?cuNo='+this.cuNo,(e)=>{
-        console.log(e)
-        if(e.data.data!=''&&e.data.data!=null){
-          if(e.data.t){
-            this.gkxx=e.data.data;
-            this.gkxx.regFund = (parseInt(this.gkxx.regFund) / 10000).toString();
-            this.gkxx.factFund = (parseInt(this.gkxx.factFund) / 10000).toString();
-            this.gkxx.assTot = (parseInt(this.gkxx.assTot) / 10000).toString();
-            this.gkxx.saleTot = (parseInt(this.gkxx.saleTot) / 10000).toString();
-          } 
-        }
-        
-        this.isAjax=false;
-      },()=>{
-     this.isAjax=false;
-     })
+  reqData() {
+    this.isAjax = true;
+    this._http.get('/fina/custom/generalDetail?cuNo=' + this.cuNo, (e) => {
+      console.log(e)
+      // if(e.data.data!=''&&e.data.data!=null){
+      //   if(e.data.t){
+      this.gkxx = e.data;
+      this.gkxx.regFund = (parseInt(this.gkxx.regFund) / 10000).toString();
+      this.gkxx.factFund = (parseInt(this.gkxx.factFund) / 10000).toString();
+      this.gkxx.assTot = (parseInt(this.gkxx.assTot) / 10000).toString();
+      this.gkxx.saleTot = (parseInt(this.gkxx.saleTot) / 10000).toString();
+      //   } 
+      // }
+      this.isAjax = false;
+    }, () => {
+      this.isAjax = false;
+    })
   }
 
   submitData() {
-    if(this.isAjax){
+    if (this.isAjax) {
       alert("占用")
       return;
     }
     this.isAjax = true;
 
-      this.gkxx.cuNo = this.cuNo;//把接收到的数据赋值到当前页面对象
+    this.gkxx.cuNo = this.cuNo;//把接收到的数据赋值到当前页面对象
 
-      var reqData = JSON.parse(JSON.stringify(this.gkxx));//复制对象
+    var reqData = JSON.parse(JSON.stringify(this.gkxx));//复制对象
 
-      /*计算指定数据 */
-      reqData.regFund = (parseInt(this.gkxx.regFund) * 10000).toString();
-      reqData.factFund = (parseInt(this.gkxx.factFund) * 10000).toString();
-      reqData.assTot = (parseInt(this.gkxx.assTot) * 10000).toString();
-      reqData.saleTot = (parseInt(this.gkxx.saleTot) * 10000).toString();
-      
-      var item:string = "";
-      this._http.post('/fina/custom/generalInsert', reqData, (e) => {
-        item = e.data.t;//是否成功标识
-        //console.log(e)
-        if (e.data.t) {//请求成功
-          //this.dangerShow("保存成功");//弹窗
-          this.Idisabled = true;//全局禁用
-          this.flag = false;//切换按钮组为修改
-        }
-          this.dangerShow(e.data.msg);//弹窗
-        
-        this.isAjax = false;
-      }, () => {/*出现错误 弹窗提示*/
-        this.dangerShow("失败 请重试");
-        this.isAjax = false;
-      })
+    /*计算指定数据 */
+    reqData.regFund = (parseInt(this.gkxx.regFund) * 10000).toString();
+    reqData.factFund = (parseInt(this.gkxx.factFund) * 10000).toString();
+    reqData.assTot = (parseInt(this.gkxx.assTot) * 10000).toString();
+    reqData.saleTot = (parseInt(this.gkxx.saleTot) * 10000).toString();
+
+    var item: string = "";
+    this._http.post('/fina/custom/generalInsert', reqData, (e) => {
+      item = e.data.t;//是否成功标识
+      //console.log(e)
+      if (e.data.t) {//请求成功
+        //this.dangerShow("保存成功");//弹窗
+        this.Idisabled = true;//全局禁用
+        this.flag = false;//切换按钮组为修改
+      }
+      this.dangerShow(e.data.msg);//弹窗
+
+      this.isAjax = false;
+    }, () => {/*出现错误 弹窗提示*/
+      this.dangerShow("失败 请重试");
+      this.isAjax = false;
+    })
 
   }
-  verify(e,k){
+  verify(e, k) {
     var txt = e.target.value;
 
-    if (!/^\d+(\.\d+)?$/.test(txt)){
+    if (!/^\d+(\.\d+)?$/.test(txt)) {
       this.dangerShow('输入有误');
-      setTimeout(()=>{
-        this.gkxx[k]="";
+      setTimeout(() => {
+        this.gkxx[k] = "";
       })
     }
   }
@@ -169,7 +187,7 @@ export class GaikuangxinxiComponent implements OnInit {
   alertTxt: string;//弹窗内容
 
   dangerShow(str) {//弹窗
-    this.alertTxt=str;
+    this.alertTxt = str;
     this.danger_hid = false;//显示
     setTimeout(() => {//三秒后隐藏
       this.danger_hid = true
@@ -180,22 +198,22 @@ export class GaikuangxinxiComponent implements OnInit {
   btnFlag = true;//修改与保存按钮切换
   Idisabled = false;//全局禁用
 
-  modification(){ //开始修改
+  modification() { //开始修改
     this.btnFlag = false;//切换为保存按钮
     this.Idisabled = false;
-    window['reqData']= JSON.parse(JSON.stringify(this.gkxx));
+    window['reqData'] = JSON.parse(JSON.stringify(this.gkxx));
   }
-  confirmModification(){//取消修改
-    let data=window['reqData'];
-    for(let it in data){
-      this.gkxx[it]=data[it];
+  confirmModification() {//取消修改
+    let data = window['reqData'];
+    for (let it in data) {
+      this.gkxx[it] = data[it];
     }
     //this.reqData();//数据回滚
     this.Idisabled = true;//全局禁用
     this.btnFlag = true;//切换回修改按钮
   }
 
-  submitUp(){//保存修改
+  submitUp() {//保存修改
     //提交数据
     this.submitData();
     this.Idisabled = true;

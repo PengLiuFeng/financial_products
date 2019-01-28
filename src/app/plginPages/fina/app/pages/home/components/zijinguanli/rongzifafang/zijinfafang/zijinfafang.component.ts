@@ -9,12 +9,37 @@ import { ModalDirective } from 'ng-uikit-pro-standard';
 export class ZijinfafangComponent implements OnInit {
   @Input() ZJFFDemoBasic: ModalDirective;
   inputW = "206px"
-  zhsx={
-    idNo:""
+  zjff = {
+    sBeleAmt: "",
+    actlAmt: "",
+    resibPn: "",
+    estinTime: "",
+    actunTime: "",
+
+    bankAcount: "",
+    opengBank: "",
+    acoutit: "",
+  }
+  reSetModel() {
+    this.zjff = {
+      sBeleAmt: "",
+      actlAmt: "",
+      resibPn: "",
+      estinTime: "",
+      actunTime: "",
+
+      bankAcount: "",
+      opengBank: "",
+      acoutit: "",
+    }
   }
   constructor() { }
 
   ngOnInit() {
   }
 
+  cancel() {
+    this.reSetModel();
+    this.ZJFFDemoBasic.hide();
+  }
 }

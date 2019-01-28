@@ -31,7 +31,7 @@
             <span>
                 证件号码
                 <span class="font_red">*</span>
-                <span style="margin-left:20px">{{!!zhsx.idNo?'（'+zhsx.idNo.length+'位）':''}}</span>：
+                <span style="margin-left:5px">{{!!zhsx.idNo?'（'+zhsx.idNo.length+'位）':''}}</span>：
             </span>
             <app-df-input [disabled]="Idisabled" [width]="inputW" [(values)]="zhsx.idNo"></app-df-input>
         </div>
@@ -74,8 +74,12 @@
                 </div> -->
             <div class="bk_div">
                 <span>期限<span class="font_red">*</span>：</span>
-                <app-df-input [disabled]="Idisabled" [(values)]="zhsx.term" width="250px" slot="append">
+                <!-- <app-df-input [disabled]="Idisabled" [(values)]="zhsx.term" width="250px" slot="append">
                     <span #content slot="append">{{termTypeTxt}}</span>
+                </app-df-input> -->
+                <app-df-input [disabled]="Idisabled" [(values)]="zhsx.term" width="250px" slot="append">
+                    <df-select [disabled]="Idisabled" #content [(values)]="zhsx.termType" [options]="TERM_TYPE"
+                        [disabled]="false" slot="append-select"></df-select>
                 </app-df-input>
             </div>
 
@@ -138,7 +142,10 @@
     <div class="title_div">
         <h4>附件上传</h4>
     </div>
-    <div class="fjsc_div">
+    <div class="fjsc_div" style="text-align: center;" [hidden]="!Idisabled">
+        <h4 style="padding: 1%;">当前暂无附件</h4>
+    </div>
+    <div class="fjsc_div" [hidden]="Idisabled">
         <table class="table table-hover table-responsive-md mb-0 table-bordered">
             <thead class="lighten-2">
                 <tr>
@@ -157,12 +164,13 @@
                         <div class="file-field md-form" mdbWavesEffect>
                             <div mdbBtn color="primary" size="sm" class="waves-light">
                                 <span>选择文件</span>
-                                <input class="identifierUsedForTheValue" type="file" (change)="getFileName(item)" [(ngModel)]="item.fileModel">
+                                <input class="identifierUsedForTheValue" type="file" (change)="getFileName(item)"
+                                    [(ngModel)]="item.fileModel">
                             </div>
                         </div>
                     </td>
                     <td scope="row">
-                        <app-df-input class="th_mh"  placeholder='无文件' disabled="disabled" [(values)]='item.fileName'></app-df-input>
+                        <app-df-input class="th_mh" placeholder='无文件' disabled="disabled" [(values)]='item.fileName'></app-df-input>
                     </td>
                     <td scope="row">
                         <app-df-input [disabled]="Idisabled" class="th_mh" placeholder='请输入文件描述' [(values)]='item.fileInfo'
@@ -188,7 +196,7 @@
                     <div class="col-sm txtleft">
                         <span class="btx" style="padding-top: 0.98rem;">收款账户</span>
                     </div>
-                    <div class="col-sm txtright">
+                    <div [hidden]="Idisabled" class="col-sm txtright">
                         <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.skData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
@@ -211,13 +219,13 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.accountNum"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.bankDeposit"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.accountName"></app-df-input>
                                         </td>
                                         <td scope="row">
                                             <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
@@ -236,7 +244,7 @@
                     <div class="col-sm txtleft">
                         <span class="btx" style="padding-top: 0.98rem;">还款账户</span>
                     </div>
-                    <div class="col-sm txtright">
+                    <div [hidden]="Idisabled" class="col-sm txtright">
                         <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.hkData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
@@ -259,13 +267,13 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.accountNum"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.bankDeposit"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.accountName"></app-df-input>
                                         </td>
                                         <td scope="row">
                                             <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
@@ -284,7 +292,7 @@
                     <div class="col-sm txtleft">
                         <span class="btx" style="padding-top: 0.98rem;">共管账户</span>
                     </div>
-                    <div class="col-sm txtright">
+                    <div [hidden]="Idisabled" class="col-sm txtright">
                         <button [disabled]="Idisabled" mdbBtn type="button" color="primary" icon="fa-trash" class="df-btn btn-sm df-btn-border-none"
                             outline="true" mdbWavesEffect (click)="onZhAdd(fkxx.zhTable.ggData)">
                             <i class="fa fa-plus df-icon" aria-hidden="true"></i> <span>添加</span>
@@ -307,13 +315,13 @@
                                     <tr>
                                         <td scope="row">{{i+1}}</td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.zh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户" [(values)]="data.accountNum"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.khh"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="开户行" [(values)]="data.bankDeposit"></app-df-input>
                                         </td>
                                         <td scope="row">
-                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.name"></app-df-input>
+                                            <app-df-input [disabled]="Idisabled" placeholder="账户名称" [(values)]="data.accountName"></app-df-input>
                                         </td>
                                         <td scope="row">
                                             <button [disabled]="Idisabled" mdbBtn type="button" color="danger" icon="fa-trash"
@@ -332,13 +340,21 @@
         </fieldset>
     </div>
 
-    <div id="button_div">
-        <!-- submitAllData() -->
+    <!-- <div id="button_div">
         <button mdbBtn [disabled]='isAjax' type="button" (click)="startUpload()" [hidden]="Idisabled" color="success"
             class="waves-light form_button" mdbWavesEffect>提交</button>
         <button mdbBtn [disabled]='isAjax' type="button" (click)="closeWin()" [hidden]="Idisabled" color="danger" class="waves-light form_button"
             mdbWavesEffect>取消</button>
-        <div [hidden]="!Idisabled"><br><br></div>
+    </div> -->
+
+    <div *ngIf="flag" id="button_div">
+            <button [disabled]="isAjax" mdbBtn type="button" color="success" (click)="startUpload()" class="waves-light" mdbWavesEffect>保存</button>
+            <button [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="reSetModel()" class="waves-light" mdbWavesEffect>取消</button>
+    </div>
+    <div *ngIf="!flag" id="button_div">
+            <button *ngIf="btnFlag" [disabled]="isAjax" mdbBtn type="button" color="danger" (click)="modification()" class="waves-light" mdbWavesEffect>修改</button>
+            <button *ngIf="!btnFlag" [disabled]="isAjax" mdbBtn type="button" color="success" (click)="startUpload()" class="waves-light" mdbWavesEffect>保存</button>
+            <button  [disabled]="isAjax" [hidden]="Idisabled" mdbBtn type="button" color="danger" (click)="confirmModification()" class="waves-light" mdbWavesEffect>取消</button>
     </div>
 
     <div mdbModal #demoBasic2="mdbModal" style="width:100vw;left: -10%;bottom: -10%;" class="modal fade" tabindex="-1"

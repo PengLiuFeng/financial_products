@@ -94,7 +94,7 @@
             </thead>
             <tbody>
               <ng-container *ngFor="let el of table_body; let i = index">
-                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex" (dblclick)="ZJFFDemoBasic.show();">
+                <tr *ngIf="el.id >= firstVisibleIndex && el.id <=lastVisibleIndex" (dblclick)="basicModal.show();">
                   <td scope="row">{{i+1}}</td>
                   <td scope="row">
                     <mdb-checkbox [checked]="allcheck"></mdb-checkbox>
@@ -117,7 +117,7 @@
                     <!-- <button type="button" style="float:right;margin:2% 2% 0 0;" size="sm" mdbBtn color="light" 
                         mdbWavesEffect>发放</button> -->
 
-                    <a (click)="basicModal.show();" style="color:blue;">发放</a>
+                    <a (click)="ZJFFDemoBasic.show();" style="color:blue;">发放</a>
                     <a class="table_a" href="https://www.zhongdengwang.org.cn/zhongdeng/index.shtml" target="_blank">转让登记</a>
                     <a class="table_a" (click)="hidFlag=true;showZrtz();">转让通知</a>
                   </td>

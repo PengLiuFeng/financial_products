@@ -56,6 +56,9 @@ export class PlginPages implements  AfterViewInit{
   //监听路由
   topage(url:string):void{
     this.params.dq.url=url;
+    if(url=='#/'){
+      this.routers.navigate(['/finas/home/rzgl/rz/rzsq']);
+    }else
     if(url=='/finas/home/wdsy'){
       this.routers.navigate(['/finas/home/wdsy/mygzt']);
     }else if(url=='/finas/home/khgl'){
@@ -138,9 +141,11 @@ export class PlginPages implements  AfterViewInit{
       this._elementRef.nativeElement.childNodes[0].childNodes[0].childNodes[0].childNodes[0].childNodes[0].style.height=height+'px';
     }
   }
+
   ngOnInit() {
+    this.topage(location.hash);
     this.router.events.subscribe(event => {
-      if (event instanceof NavigationStart) {
+        if (event instanceof NavigationStart) {
         // set page progress bar loading to start on NavigationStart event router
         this.loader.start();
         this.topage(event.url);

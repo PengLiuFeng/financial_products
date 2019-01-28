@@ -122,7 +122,6 @@ export class DemoComponent implements OnInit {
   ];
 chinas:any=[];
   ngOnInit() {
-    console.log(this.grades.win)
     this.grades.getChinas().then((ResultJson)=>{
       this.chinas=ResultJson;
     }).catch(function(ErrMsg){

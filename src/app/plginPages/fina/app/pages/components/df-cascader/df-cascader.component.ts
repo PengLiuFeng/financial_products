@@ -1,4 +1,5 @@
-import { Component, OnInit,Input,Output,EventEmitter,OnChanges } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter,OnChanges,ElementRef,Renderer2 } from '@angular/core';
+import { Observable,fromEvent }from 'rxjs';
 // import { Button } from 'primeng/button';
 
 @Component({
@@ -14,6 +15,7 @@ export class DfCascaderComponent implements OnInit,OnChanges {
   @Input() label:any;
   @Output() valuesChange = new EventEmitter();
   @Output() labelChange = new EventEmitter();
+  constructor(private el:ElementRef,private renderer2s: Renderer2) { }
    isTap:boolean=false;
    isSet=true;//是否
   private bodydom:any;
@@ -83,13 +85,15 @@ inits(){
   }
 }
 isshow=2;
-  constructor() { }
 dqli={
   ul1:{},
   ul2:{},
   ul3:{},
 }
   ngOnInit() {
+    fromEvent(window,'resize').subscribe((event) => {//监听页面大小变化
+      　　this.removeEve();
+    });
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
       console.error('三级联动数据不能为Null');
@@ -130,15 +134,38 @@ dqli={
       this.removeEve();
     }
   }
+  getWindowDimensions(){
+    var w = window,
+        d = document,
+        e = d.documentElement,
+        g = d.body,
+        x = w.innerWidth || e.clientWidth || g.clientWidth,
+        y = w.innerHeight || e.clientHeight || g.clientHeight;
+  
+    return {x:x,y:y};
+  }
   onEls(e):void{
     e.preventDefault();
     e.stopPropagation();//阻止事件冒泡
+    let divs=this.el.nativeElement.querySelector('.qloud-cascader-menus');
+    if(divs){
+      let xy=this.getWindowDimensions();
+      let wz=divs.getBoundingClientRect();
+      let cc=wz.x+wz.width+100;
+      if(cc>xy.x){
+        let js=xy.x-cc;
+        this.renderer2s.setStyle(this.el.nativeElement.querySelector('.popper__arrow'),'transform',`translateX(${Math.abs(js)}px)`);
+        ".popper__arrow"
+        this.renderer2s.setStyle(divs,'transform',`translateX(${js}px)`);
+      }
+      console.log(wz)
+    }
   }
   myval="";
   onIt(i,it){
-    this.ischanges=false;
     if(it.children&&it.children.length>0){
     }else{
+      this.ischanges=false;
       let dqli=this.dqli;
       if(this.showAllLevels){
         this.myval=dqli.ul3['label']?(dqli.ul1['label']?(dqli.ul1['label']+(dqli.ul2['label']?('/'+dqli.ul2['label']+(dqli.ul3['label']?('/'+dqli.ul3['label']):'')):'')):''):'';
@@ -149,9 +176,9 @@ dqli={
         this.valuesChange.emit(dqli.ul3['value']);
       }
       this.removeEve();
+      setTimeout(()=>{
+        this.ischanges=true;
+      },1000)
     }
-    setTimeout(()=>{
-      this.ischanges=true;
-    },1000)
   }
 }

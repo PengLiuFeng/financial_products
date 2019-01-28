@@ -80,7 +80,6 @@ export class DfCascaderComponent implements OnInit,OnChanges {
 inits(){
   if(this.values){
     this.myval=this.forarr(this.options,this.values,'');
-    alert(this.myval)
   }
 }
 isshow=2;

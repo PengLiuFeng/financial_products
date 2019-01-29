@@ -79,7 +79,7 @@
                         <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('jbxx')" mdbWavesEffect>基本信息</button>
                         <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('lxxx')" mdbWavesEffect>联系信息</button>
                         <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('gkxx')" mdbWavesEffect>概况信息</button>
-                        <button mdbBtn type="submit" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('myselfpage')" mdbWavesEffect>我的平台</button>
+                        <button mdbBtn type="submit" *ngIf="grade.user.data.step==6" color="primary" rounded="true" class="waves-light" size="sm" (click)="opens('myselfpage')" mdbWavesEffect>我的平台</button>
                 </div>
                 <!-- 右下侧的页面设计 -->
                     <div class="zhxxpage">
@@ -87,7 +87,7 @@
                             <app-jibenxinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='jbxx'"></app-jibenxinxi>
                             <app-lianxixinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='lxxx'"></app-lianxixinxi>
                             <app-gaikuangxinxi [cuNo]="inputdata.cuNo" [personPage]="personPage"  *ngIf="apps=='gkxx'"></app-gaikuangxinxi>
-                            <!-- <div *ngIf="grade.user.data.step==6"><myselfpage *ngIf="apps=='myselfpage'"></myselfpage></div> -->
+                            <div ><myselfpage *ngIf="apps=='myselfpage'"></myselfpage></div>
                             
                     </div>
             </div>

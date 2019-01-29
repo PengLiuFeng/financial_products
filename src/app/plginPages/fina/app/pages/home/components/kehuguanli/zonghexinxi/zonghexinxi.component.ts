@@ -86,7 +86,7 @@ export class ZonghexinxiComponent implements OnInit {
   ngOnChanges(it: any) {
     console.log(this.cuNo)
     if (this.cuNo != null && this.cuNo != undefined) {
-      this.requestData()
+      //this.requestData()
     }
   }
   ngOnInit() {

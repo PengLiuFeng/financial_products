@@ -175,14 +175,20 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
 
   }
   //请求三级联动数据
+  
   requestThreeData(){
-    this._http.get("/fina/getChinas",(e)=>{
-      if(e.data!=undefined&&e.data!=null){
-        this.cifAreas=e.data.data
-        console.log(this.cifAreas)
-      }
-    },()=>{
-      console.log("三级联动数据请求失败了")
+    // this._http.get("/fina/getChinas",(e)=>{
+    //   if(e.data!=undefined&&e.data!=null){
+    //     this.cifAreas=e.data.data
+    //     console.log(this.cifAreas)
+    //   }
+    // },()=>{
+    //   console.log("三级联动数据请求失败了")
+    // })
+   this.grande.getChinas().then((ResultJson)=>{
+      this.cifAreas=ResultJson;
+    }).catch(function(ErrMsg){
+      console.log(ErrMsg)
     })
   }
     
@@ -224,7 +230,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
   //下拉框的数据
   idTypes: Array<any>
   countrys: Array<any>
-  cifAreas:  Array<any>=[]
+  cifAreas:any=[]
   wayNos: Array<any>
   regTypes: Array<any>
   cuTypes: Array<any>

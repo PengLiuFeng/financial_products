@@ -1,19 +1,20 @@
 <div>
-      this is head       
+  this is head
 </div>
 <div>
   <form>
     <div class="file-field md-form">
-        <div mdbBtn rounded="true" outline="true" color="secondary" size="md" mdbWavesEffect>
-          <span class="pt-1">Choose file</span>
-          <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
-        </div>
+      <div mdbBtn rounded="true" outline="true" color="secondary" size="md" mdbWavesEffect>
+        <span class="pt-1">Choose file</span>
+        <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+      </div>
       <div class="file-path-wrapper mt-2">
         <input class="file-path" type="text" placeholder="Upload your file" [value]="showFiles()">
       </div>
     </div>
-    <button mdbBtn type="button" rounded="true" outline="true" color="secondary" (click)="startUpload()" mdbWavesEffect>Start uploading</button>
-</form>
+    <button mdbBtn type="button" rounded="true" outline="true" color="secondary" (click)="startUpload()" mdbWavesEffect>Start
+      uploading</button>
+  </form>
 </div>
 
 
@@ -23,9 +24,9 @@
   <div class="col-sm-9">
 
   选择本地文件 - multiple="multiple"多选；accept=".xls,.doc,.pdf"限制条件；(change)="fileChange()"每次选择本地文件完成后触发的函数；-->
-    <!-- <input type="file" class="btn" multiple="multiple" (change)="fileChange()" accept=".xls,.doc,.pdf" #filesMulti style="padding-left:0; "/> -->
+<!-- <input type="file" class="btn" multiple="multiple" (change)="fileChange()" accept=".xls,.doc,.pdf" #filesMulti style="padding-left:0; "/> -->
 
-   <!-- 本地文件列表 
+<!-- 本地文件列表 
     <table *ngIf="fileData.length && fileData" class="table table-bordered table-striped wjccgl_table" id="file_name_contain" #fileNameContain>
       <thead>
         <tr>

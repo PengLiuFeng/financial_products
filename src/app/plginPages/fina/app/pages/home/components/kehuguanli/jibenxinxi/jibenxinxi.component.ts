@@ -60,7 +60,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
       this.picker_m = e.target.parentNode.parentNode;
       this.pickeri++;
       window['e'] = e.target;
-      console.log(e)
+      
       this.pickerdom = e.target.parentNode.parentNode.parentNode;
       this.pickerdom.style['z-index'] = this.pickeri;
     } else {
@@ -111,8 +111,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax = true;
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE,COUNTRY,REG_TYPE,CU_TYPE,HOLD_TYPE,OUT_GRADE', (e) => {
       var newdata = e.data
-      console.log(newdata)
-      console.log(newdata.length)
+     
       for (var i = 0; i < newdata.length; i++) {
 
         if (newdata[i].data[0].fieldName == 'ID_TYPE') {
@@ -151,10 +150,10 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax = true
     this._http.get('/fina/custom/corpDetail?cuNo=' + this.cuNo, (e) => {
       if (e != null && e != undefined) {
-        console.log(e)
+       
         this.allData = e.data
         this.testarray = this.allData;
-        console.log(this.testarray)
+       
         //this.testarray.setupDate=this.trandate(this.allData.setupDate)      
         for (var p in this.allData) {
           if(p=="cifArea")
@@ -164,10 +163,10 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
             this.testarray[p] = this.trandate(this.allData[p]);
           }
         }
-        console.log(this.testarray)
+       
       }
 
-      console.log(this.testarray)
+    
     }, () => {
       this.isajax = false;
       alert('请求失败')
@@ -188,7 +187,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
    this.grande.getChinas().then((ResultJson)=>{
       this.cifAreas=ResultJson;
     }).catch(function(ErrMsg){
-      console.log(ErrMsg)
+    
     })
   }
     
@@ -198,7 +197,7 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
     this.isajax = true
     this._http.post('/fina/custom/corpInsert', this.testarray, (e) => {
       this.isajax = false
-      //   console.log(e)
+      
       this.grande.sub.next({ type: "jbxx", jbFlag: e.data.steps });
       if (e.data.t == '1') {
         alert("您的基本信息提交成功")
@@ -244,14 +243,14 @@ export class JibenxinxiComponent implements OnInit, OnChanges {
 
   go_reset() { }
   tijiao() {
-    console.log(this.testarray)
+
     for (var p in this.testarray) {
       if (p.search('Date') != -1 || p.search('Time') != -1) {
         this.testarray[p] = Date.parse(this.testarray[p]);
       }
     }
     this.saveData()
-    //console.log(this.testarray)
+   
   }
   gaibian() {
     if (this.bo == false)

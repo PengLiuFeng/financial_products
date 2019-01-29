@@ -232,7 +232,7 @@ export class KehuxinxiComponent implements OnInit {
     this.isAjax = true;
     this._http.get('/fina/custom/list?pageNum=' + this.activePage + '&pageSize=' + this.itemsPerPage + this.paths, (e) => {
       this.isAjax = false;
-      console.log(e)
+     
       this.tableData = e.data.pb.list
       if (!!this.tableData) {
         for (var i = 0; i < this.tableData.length; i++) {
@@ -245,9 +245,9 @@ export class KehuxinxiComponent implements OnInit {
             }
           }
         }
-        console.log(this.tableData)
+      
         this.theTotalNumberOfEntries = e.data.pb.totalRecord;
-        //  console.log("表数据",this.tableData)
+        
         if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
           this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
         } else {
@@ -285,7 +285,7 @@ export class KehuxinxiComponent implements OnInit {
       }
     })
     this.grande.sub.subscribe(res => {
-      // console.log(res)
+     
       if (res.type == "add_user") {
         this.dfSteps.active = res.flag;
       } else if (res.type == "jbxx") {
@@ -322,7 +322,7 @@ export class KehuxinxiComponent implements OnInit {
   rollbackjd() {
     this.isAjax = true;
     this._http.get('/fina/orders/rollbackjd?id=1', (e) => {
-      // console.log(e);
+      
       if (e.data.t) {
         this.BHBlock = false;
         this.activeError = this.activeError * -1;
@@ -336,7 +336,7 @@ export class KehuxinxiComponent implements OnInit {
   rejectedStatus() {
     this.isAjax = true;
     this._http.get("/fina/orders/rejectedStatus?id=1", (e) => {
-      console.log(e);
+    
       if (e.data.t) {
         this.BHBlock = true;
         this.activeError = e.data.data.procedure;

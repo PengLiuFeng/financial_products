@@ -20,14 +20,14 @@ export class RongzishenqingComponent implements OnInit {
   }
   InputData: any = {
     authId: '',
-    personPage: '',
+    auSta: '',
     cuNo: ''
   }
   check: boolean = false;
   alldata: any;
   paths: any;       //请求路径，请求时拼接请求条件
   theTotalNumberOfEntries = 0
-  _http: any;     //请求对象
+  _http: any;       //请求对象
 
   //以下是搜索框的内容
   testarray = {
@@ -134,7 +134,7 @@ export class RongzishenqingComponent implements OnInit {
         }
 
       }
-      console.log(typeof (this.tableData))
+
       this.theTotalNumberOfEntries = e.data.pb.totalRecord;
       if (this.theTotalNumberOfEntries % this.itemsPerPage === 0) {
         this.numberOfPaginators = Math.floor(this.theTotalNumberOfEntries / this.itemsPerPage);
@@ -316,7 +316,8 @@ export class RongzishenqingComponent implements OnInit {
     "融资申请"
   ]
   shenqingxiangqing(date: any): void {
-    this.InputData.personPage = 'oldPage';
+    this.InputData.auSta = this.tableData[date].auSta;
+    this.grade.sub.next({ type: 'app-hetongxq', data: this.InputData })
   }
   //新增申请界面
   newApply() {
@@ -325,19 +326,33 @@ export class RongzishenqingComponent implements OnInit {
     var step = this.grade.user.data.steps
     if (grades.indexOf(5) > -1) {
       if (step <= 3) {
-        var back=confirm("对不起，您的授信还没有完成,是否回到授信申请")
-        if(back){
+        var back = confirm("对不起，您的授信还没有完成,是否回到授信申请")
+        if (back) {
           this.router.navigate(['/finas/home/khgl/khxx'])
           return
-        }else{
+        } else {
           return
-        }   
-      } else {
+        }
+      } else if (step < 6) {
         alert("您的授信正在审核中，您暂时还不能进行融资申请，请您耐心等待")
         return
+      } else if (step == 6) {
+        this.InputData.auSta = '申请中';
+        this.grade.sub.next({
+          type: 'app-hetongxq',
+          data: this.InputData
+        })
+        this.demoBasic.show();
+        return
       }
+      
     }
-    this.InputData.personPage = 'newPage';
+    this.InputData.auSta = '申请中';
+    this.grade.sub.next({
+      type: 'app-hetongxq',
+      data: this.InputData
+    }
+    )
     this.demoBasic.show();
   }
 }

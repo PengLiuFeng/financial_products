@@ -8,7 +8,8 @@ import {GradeService} from './../../../../../../grade.service';
   styleUrls: ['./hetongxq.component.scss']
 })
 export class HetongxqComponent implements OnInit, OnChanges {
-  @Input() edit: boolean;
+  @Input() edit: boolean=false;
+  @Input() InputData:any;
   @Input() demoBasic;
   @Input() isInit:any;
   editChange = new EventEmitter();
@@ -101,6 +102,8 @@ export class HetongxqComponent implements OnInit, OnChanges {
     // e.target.style['z-index']=0;
   }
   ngOnInit() {
+    
+   
     this.onZhAdd(this.fkxx.zhTable.skData)
     this.onZhAdd(this.fkxx.zhTable.hkData)
     this.isEdit = !this.edit;
@@ -121,6 +124,18 @@ export class HetongxqComponent implements OnInit, OnChanges {
       { value: '3', label: '保理商' },
       { value: '4', label: '担保方' },
     ]
+
+    this.grade.sub.subscribe(res=>{
+      if(res.type=='app-hetongxq'){
+        if(res.data.auSta=="申请中"){
+          this.isEdit=false
+        }else if(res.data.auSta=="客户准入"){
+          this.isEdit=true
+        }else if(res.data.auSta=="拒绝"){
+          this.isEdit=true
+        }
+      }
+    })
   }
   
   yszkTable = {

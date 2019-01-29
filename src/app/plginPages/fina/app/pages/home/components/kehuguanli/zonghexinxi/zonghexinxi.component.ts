@@ -33,12 +33,12 @@ export class ZonghexinxiComponent implements OnInit {
     this.isajax = true
     this._http.get('/fina/custom/corpDetail?cuNo=' + this.cuNo, (e) => {
       this.isajax = false
-      console.log(e)
+     
       // this.inputdata.idNo=e.data.apb.idNo
       // this.inputdata.idType=e.data.apb.idType
       // this.inputdata.cuName=e.data.apb.cuName
       // this.inputdata.cuNo=e.data.apb.cuNo
-      console.log(e.data)
+   
       if (e.data != null && e.data != undefined) {
 
         this.inputdata = e.data
@@ -61,7 +61,7 @@ export class ZonghexinxiComponent implements OnInit {
     this.isajax = true;
     this._http.get('/fina/dict/dictListList?ids=ID_TYPE', (e) => {
       var newdata = e.data
-      console.log(newdata)
+     
       for (var i = 0; i < newdata.length; i++) {
 
         if (newdata[i].data[0].fieldName == 'ID_TYPE') {
@@ -84,7 +84,7 @@ export class ZonghexinxiComponent implements OnInit {
   }
 
   ngOnChanges(it: any) {
-    console.log(this.cuNo)
+   
     if (this.cuNo != null && this.cuNo != undefined) {
       //this.requestData()
     }

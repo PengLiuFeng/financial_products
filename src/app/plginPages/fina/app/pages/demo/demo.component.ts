@@ -21,6 +21,27 @@ export class DemoComponent implements OnInit {
   constructor(private _http:BaHttpInterceptorService,private grades:GradeService) {
     this.httpHeaders.set('Content-Type',undefined);
   }
+  tabs={
+    activeName:'first',
+    option:[
+      {
+        label:'用户管理',
+        value:'first'//该值不可重复
+      },
+      {
+        label:'配置管理',
+        value:'second'
+      },
+      {
+        label:'角色管理',
+        value:'third'
+      },
+      {
+        label:'定时任务补偿',
+        value:'fourth'
+      },
+    ]
+  }
   mval='430105';
   onup(uploadFile?:any,back?:any){
     uploadFile=document.getElementById("uploadFile")['files'][0];

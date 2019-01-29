@@ -1,0 +1,30 @@
+<div class="qloud-tabs qloud-tabs--top">
+  <div class="qloud-tabs__header is-top">
+    <div class="qloud-tabs__nav-wrap is-top">
+      <div class="qloud-tabs__nav-scroll">
+        <div role="tablist" class="qloud-tabs__nav" style="transform: translateX(0px);">
+          <div class="qloud-tabs__active-bar is-top" style="width: 56px; transform: translateX(192px);"></div>
+          <ng-container *ngFor="let it of optionsArr;let i=index;">
+            <div aria-controls="pane-third" role="tab" tabindex="0" class="qloud-tabs__item is-top"[class.is-active]="dq.option.name==it.name" (click)="tapit(it,$event)" aria-selected="true">{{it.label}}</div>
+          </ng-container>
+<!-- 
+          <div id="tab-second" aria-controls="pane-second" role="tab" tabindex="-1" class="qloud-tabs__item is-top">配置管理</div>
+          <div id="tab-fourth" aria-controls="pane-fourth" role="tab" tabindex="-1" class="qloud-tabs__item is-top">定时任务补偿</div>
+           -->
+        </div>
+      </div>
+      <div class="resize-triggers">
+        <div class="expand-trigger">
+          <div style="width: 862px; height: 41px;"></div>
+        </div>
+        <div class="contract-trigger"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="qloud-tabs__content">
+      <div role="tabpanel" aria-labelledby="tab-fourth" class="qloud-tab-pane">
+          <ng-content></ng-content>
+      </div>
+    </div>
+</div>

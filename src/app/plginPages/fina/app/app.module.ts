@@ -92,26 +92,29 @@ import { BreadcrumbsComponent } from './pages/components/breadcrumbs/breadcrumbs
 
 import { MaifanghuikuanComponent } from './pages/home/components/zijinguanli/maifanghuikuan/maifanghuikuan.component';
 import { HuikuanyemianComponent } from './pages/home/components/zijinguanli/maifanghuikuan/huikuanyemian/huikuanyemian.component';
-import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.component';
 import { ZiliaoshangchuanComponent } from './pages/home/components/rongzifuwu/yewudiaochayushenpi/ziliaoshangchuan/ziliaoshangchuan.component';
 import { DaikuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/daikuanhuankuan/daikuanhuankuan.component';
 import { YingshouzhangkuanhuankuanComponent } from './pages/home/components/zijinguanli/daikuanhuanhuan/yingshouzhangkuanhuankuan/yingshouzhangkuanhuankuan.component';
-import { DfStepsComponent } from './pages/components/df-steps/df-steps.component';
 import { KehuxinxiHeaderComponent } from './pages/home/components/components/kehuxinxi-header/kehuxinxi-header.component';
 import { KhziliaoshangchuanComponent } from './pages/home/components/kehuguanli/khziliaoshangchuan/khziliaoshangchuan.component';
-import { DfDialogComponent } from './pages/components/df-dialog/df-dialog.component';
 import { QiantaishenpiComponent } from './pages/home/components/kehuguanli/qiantaishenpi/qiantaishenpi.component';
-import { DfInputComponent } from './pages/components/df-input/df-input.component';
-import { DfButtonComponent } from './pages/components/df-button/df-button.component';
-import { DfButtonGroupComponent } from './pages/components/df-button-group/df-button-group.component';
-import { DfSelectComponent } from './pages/components/df-select/df-select.component';
 import { ShenpiPageComponent } from './pages/home/components/zijinguanli/shenpiPage/shenpi-page/shenpi-page.component';
 import { XinshenComponent } from './pages/home/components/kehuguanli/xinshen/xinshen.component';
 import { ZhongshenComponent } from './pages/home/components/kehuguanli/zhongshen/zhongshen.component';
 import { RegisterComponent } from './pages/home/components/register/register.component';
 import { MyselfpageComponent } from './pages/home/components/kehuguanli/myselfpage/myselfpage.component';
-import { DfDatePickerComponent } from './pages/components/df-date-picker/df-date-picker.component';
 import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzifafang/zijinfafang/zijinfafang.component';
+
+import { DfCascaderComponent } from './pages/components/df-cascader/df-cascader.component';
+import { DfStepsComponent } from './pages/components/df-steps/df-steps.component';
+import { DfDialogComponent } from './pages/components/df-dialog/df-dialog.component';
+import { DfInputComponent } from './pages/components/df-input/df-input.component';
+import { DfButtonComponent } from './pages/components/df-button/df-button.component';
+import { DfButtonGroupComponent } from './pages/components/df-button-group/df-button-group.component';
+import { DfSelectComponent } from './pages/components/df-select/df-select.component';
+import { DfDatePickerComponent } from './pages/components/df-date-picker/df-date-picker.component';
+import { DfTabsComponent } from './pages/components/df-tabs/df-tabs.component';
+import { DfTabPaneComponent } from './pages/components/df-tabs/df-tab-pane/df-tab-pane.component';
 
 @NgModule({
   declarations: [
@@ -193,24 +196,25 @@ import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzi
     YonghuguanliComponent,
     YonghuzhuceComponent,
     BreadcrumbsComponent,
-    DfCascaderComponent,
     ZiliaoshangchuanComponent,
     DaikuanhuankuanComponent,
     YingshouzhangkuanhuankuanComponent,
-    DfStepsComponent,
     KehuxinxiHeaderComponent,
     KhziliaoshangchuanComponent,
-    DfDialogComponent,
-
+    
     QiantaishenpiComponent,
-
+    
+    
+    
+    
+    DfCascaderComponent,
+    DfStepsComponent,
+    DfDialogComponent,
     DfInputComponent,
-
     DfButtonComponent,
-
     DfButtonGroupComponent,
-
     DfSelectComponent,
+    DfDatePickerComponent,
 
     ShenpiPageComponent,
 
@@ -221,9 +225,12 @@ import { ZijinfafangComponent } from './pages/home/components/zijinguanli/rongzi
     RegisterComponent,
 
     MyselfpageComponent,
-    DfDatePickerComponent,
 
-    ZijinfafangComponent
+    ZijinfafangComponent,
+
+    DfTabsComponent,
+
+    DfTabPaneComponent
   ],
   imports: [
     FormsModule,

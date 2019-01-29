@@ -59,8 +59,42 @@ export class DfCascaderComponent implements OnInit,OnChanges {
               ]
     }
   ] */
+  isforarr=true;
   forarr(arr:Array<any>,val,lab?:any):any{
     for(let i=0;i<arr.length;i++){
+      if(arr[i].value==val){
+        lab=arr[i].label;
+        return lab;
+      }
+      if(arr[i].children&&arr[i].children.length>0){
+        for(let ii=0;ii<arr[i].children.length;ii++){
+          if(arr[i].children[ii].value==val){
+            lab=arr[i].children[ii].label;
+            return lab;
+          }
+          if(arr[i].children[ii].children&&arr[i].children[ii].children.length>0){
+            for(let iii=0;iii<arr[i].children[ii].children.length;iii++){
+              if(arr[i].children[ii].children[iii].value==val){
+                lab=arr[i].children[ii].children[iii].label;
+                if(this.showAllLevels){
+                  lab=arr[i].label+'/'+arr[i].children[ii].label+'/'+lab
+                }
+                return lab;
+              }else{
+                lab="";
+              }
+            }
+          }else{
+            lab="";
+          }
+        }
+      }else{
+        lab="";
+      }
+    }
+    return lab;
+
+ /*    for(let i=0;i<arr.length;i++){
       if(arr[i].children&&arr[i].children.length>0){
         if(this.showAllLevels){
           lab+=arr[i].label+'/';
@@ -74,14 +108,20 @@ export class DfCascaderComponent implements OnInit,OnChanges {
             lab+=arr[i].label;
             return lab;
           }
+          console.log(arr[i])
           return arr[i].label;
+        }else{
+
         }
       }
-    }
+    } */
   }
 inits(){
   if(this.values){
-    this.myval=this.forarr(this.options,this.values,'');
+    let v=this.forarr(this.options,this.values,'');
+    if(v){
+      this.mylab=v;
+    }
   }
 }
 isshow=2;
@@ -96,7 +136,7 @@ dqli={
     });
     this.bodydom=document.querySelector('body');
     if(!(this.options&&this.options.length>0)){
-      console.error('三级联动数据不能为Null');
+      // console.error('三级联动数据不能为Null');
     }else{
       this.inits();
     }
@@ -104,7 +144,9 @@ dqli={
   ischanges=true;
   ngOnChanges(){
     if(this.ischanges){
-      this.inits();
+      if(this.values&&this.values!=this.myval){
+        this.inits();
+      }
     }
   }
   private removeEve(){
@@ -158,21 +200,22 @@ dqli={
         ".popper__arrow"
         this.renderer2s.setStyle(divs,'transform',`translateX(${js}px)`);
       }
-      console.log(wz)
     }
   }
   myval="";
+  mylab="";
   onIt(i,it){
     if(it.children&&it.children.length>0){
     }else{
       this.ischanges=false;
       let dqli=this.dqli;
       if(this.showAllLevels){
-        this.myval=dqli.ul3['label']?(dqli.ul1['label']?(dqli.ul1['label']+(dqli.ul2['label']?('/'+dqli.ul2['label']+(dqli.ul3['label']?('/'+dqli.ul3['label']):'')):'')):''):'';
+        this.mylab=dqli.ul3['label']?(dqli.ul1['label']?(dqli.ul1['label']+(dqli.ul2['label']?('/'+dqli.ul2['label']+(dqli.ul3['label']?('/'+dqli.ul3['label']):'')):'')):''):'';
       }else{
-        this.myval=dqli.ul3['label']?dqli.ul3['label']:'';
+        this.mylab=dqli.ul3['label']?dqli.ul3['label']:'';
       }
-      if(this.myval){
+      if(this.mylab){
+        this.myval=dqli.ul3['value'];
         this.valuesChange.emit(dqli.ul3['value']);
       }
       this.removeEve();

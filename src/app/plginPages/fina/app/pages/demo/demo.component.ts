@@ -21,7 +21,7 @@ export class DemoComponent implements OnInit {
   constructor(private _http:BaHttpInterceptorService,private grades:GradeService) {
     this.httpHeaders.set('Content-Type',undefined);
   }
-  mval='';
+  mval='430105';
   onup(uploadFile?:any,back?:any){
     uploadFile=document.getElementById("uploadFile")['files'][0];
     console.log(uploadFile)

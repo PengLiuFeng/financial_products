@@ -1,21 +1,21 @@
 <span class="qloud-cascader" [class.df-mdb-cascader]="isMDBstyle">
   <ng-container *ngIf="isMDBstyle">
     <div class="qloud-input qloud-input--suffix df-mdb" (click)="onTap()">
-      <input type="text" readonly="readonly" autocomplete="off" [value]="myval" [name]="myval">
+      <input type="text" readonly="readonly" autocomplete="off" [value]="mylab" [name]="mylab">
       <span class="qloud-input__suffix">
           <span class="qloud-input__suffix-inner">
             <i class="qloud-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
           </span>
       </span>
     </div>
-    <span class="df-mdb-label" [class.df-mdb-labqloud-active]="!!myval" (click)="onTap()" >
-      {{label?label:myval?'':'请选择'}}
+    <span class="df-mdb-label" [class.df-mdb-labqloud-active]="!!mylab" (click)="onTap()" >
+      {{label?label:mylab?'':'请选择'}}
     </span>
   </ng-container>
   <ng-container *ngIf="!isMDBstyle">
       <div class="qloud-input qloud-input--suffix">
         <input type="text" readonly="readonly" autocomplete="off" placeholder="请选择" class="qloud-input__inner" style="box-sizing: inherit;"
-        [value]="myval">
+        [value]="mylab">
         <span class="qloud-input__suffix">
             <span class="qloud-input__suffix-inner">
               <i class="qloud-input__icon qloud-icon-arrow-down fa fa-angle-down" [class.is-reverse]="isTap"></i>
@@ -23,7 +23,7 @@
         </span>
       </div>
       <span class="qloud-cascader__label" (click)="onTap()">
-        {{myval}}
+        {{mylab}}
       </span>
     </ng-container>
   <div  *ngIf="isTap" (click)="onEls($event)" class="qloud-cascader-menus qloud-popper" style="z-index:33; position: absolute; left:18px;">

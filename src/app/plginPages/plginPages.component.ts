@@ -57,7 +57,7 @@ export class PlginPages implements  AfterViewInit{
   topage(url:string):void{
     this.params.dq.url=url;
     if(url=='#/'){
-      this.routers.navigate(['/finas/home/rzgl/rz/rzsq']);
+      this.routers.navigate(['/finas/home/khgl/khxx']);
     }else
     if(url=='/finas/home/wdsy'){
       this.routers.navigate(['/finas/home/wdsy/mygzt']);

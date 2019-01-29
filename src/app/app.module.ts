@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+// import { DfModule } from './plginPages/fina/app/pages/components/release/qloud-angular.module';
 
 
 
@@ -50,6 +51,7 @@ export type StoreType = {
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
+    // DfModule.forRoot(),
     PlginPagesModule,
     routing
   ],

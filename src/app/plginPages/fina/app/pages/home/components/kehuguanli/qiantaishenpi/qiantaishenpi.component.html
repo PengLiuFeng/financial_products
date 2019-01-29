@@ -12,7 +12,6 @@
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
           <th scope="row">操作</th>
-
         </tr>
       </thead>
       <tbody>
@@ -57,7 +56,7 @@
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
           <th scope="row">操作</th>
-          <th scope="row">审批意见（驳回必填）</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -75,12 +74,7 @@
           <td>
             <df-button type="text" size="mini">查看附件</df-button>
           </td>
-          <td *ngIf="i==0" rowspan="4" style="background-color:white !important;">
-            <div class="el-textarea">
-              <textarea [(ngModel)]="addData.yyzzInfo" class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
-                rows="2" autocomplete="off"></textarea>
-            </div>
-          </td>
+          
         </tr>
 
       </tbody>
@@ -104,7 +98,7 @@
           <th scope="row">文件名</th>
           <th scope="row">文件描述</th>
           <th scope="row">操作</th>
-          <th scope="row">审批意见（驳回必填）</th>
+         
         </tr>
       </thead>
       <tbody>
@@ -122,12 +116,7 @@
           <td>
             <df-button type="text" size="mini">查看附件</df-button>
           </td>
-          <td *ngIf="i==0" rowspan=4 style="background-color:white !important;">
-            <div class="el-textarea">
-              <textarea [(ngModel)]="addData.qtzlInfo" class="el-textarea__inner" style="min-height: 33px;" placeholder="请输入内容"
-                rows="2" autocomplete="off"></textarea>
-            </div>
-          </td>
+          
         </tr>
 
       </tbody>
@@ -138,9 +127,9 @@
       </div> -->
   </div>
   <div>
-    驳回意见
+    
     <textarea type="text" id="form7" class="md-textarea md-textarea-auto form-control" mdbInputDirective></textarea>
-    <label for="form7">Auto resizing textarea</label>
+    <label for="form7">驳回意见</label>
   </div>
   <div id="button_div">
     <button mdbBtn type="button" color="info" class="waves-light form_button" (click)="approvalStatus=true;inforApproval()"
